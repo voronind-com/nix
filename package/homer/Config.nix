@@ -21,19 +21,21 @@
 
 		theme = "default";
 		colors = let
-			colors = {
-				background          = "#1b1b1b";
-				card-background     = "#2b2b2b";
-				card-shadow         = "#2b2b2b";
-				highlight-hover     = "#003006";
-				highlight-primary   = "#004016";
-				highlight-secondary = "#004016";
-				link                = "#666666";
-				link-hover          = "#ffdd57";
-				text                = "#eaeaea";
-				text-header         = "#ffffff";
-				text-subtitle       = "#f5f5f5";
-				text-title          = "#fafafa";
+			colors = let
+				cfg = config.style.color;
+			in {
+				background          = "#${cfg.bg.dark}";
+				card-background     = "#${cfg.bg.regular}";
+				card-shadow         = "#${cfg.bg.regular}";
+				highlight-hover     = "#${cfg.accent}";
+				highlight-primary   = "#${cfg.bg.regular}";
+				highlight-secondary = "#${cfg.bg.dark}";
+				link                = "#${cfg.link}";
+				link-hover          = "#${cfg.accent}";
+				text                = "#${cfg.fg.regular}";
+				text-header         = "#${cfg.fg.regular}";
+				text-subtitle       = "#${cfg.fg.light}";
+				text-title          = "#${cfg.fg.light}";
 			};
 		in {
 			light = colors;
