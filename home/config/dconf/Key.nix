@@ -82,31 +82,31 @@ in {
 	};
 
 	"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
-		binding = "${config.setting.sysctrl}z";
+		binding = "printz";
 		command = "systemctl suspend -i";
 		name    = "System Sleep";
 	};
 
 	"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
-		binding = "${config.setting.sysctrl}x";
+		binding = "printx";
 		command = "systemctl poweroff -i";
 		name    = "System Poweroff";
 	};
 
 	"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
-		binding = "${config.setting.sysctrl}c";
+		binding = "printc";
 		command = "systemctl reboot -i";
 		name    = "System Reboot";
 	};
 
 	"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4" = {
-		binding = "${config.setting.sysctrl}p";
+		binding = "printp";
 		command = "powersave toggle";
 		name    = "Toggle Powersave";
 	};
 
 	"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5" = {
-		binding = "${config.setting.sysctrl}l";
+		binding = "printl";
 		command = "powerlimit toggle";
 		name    = "Toggle Powerlimit";
 	};

@@ -1,5 +1,5 @@
-{ config, ... }: let
-	mod = config.setting.sysctrl;
+{ ... }: let
+	mod = "print";
 in {
 	text = ''
 		bindsym ${mod} input * xkb_switch_layout 0

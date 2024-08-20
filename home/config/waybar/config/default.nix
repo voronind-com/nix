@@ -30,7 +30,7 @@ in {
 			"battery"
 			"custom/powerlimit"
 			"cpu"
-			# "temperature"
+			"temperature"
 			"memory"
 			"custom/powersave"
 			"custom/display"
@@ -81,7 +81,7 @@ in {
 			on-click-right = "powerlimit toggle";
 		};
 		pulseaudio = {
-			scroll-step  = config.setting.step.volume;
+			scroll-step  = 5;
 			format       = "{volume}% {icon}";
 			format-muted = "󰸈";
 			format-icons = {
@@ -108,26 +108,29 @@ in {
 		cpu = {
 			format         = "{usage}% ({load})";
 			interval       = refreshInterval;
-			on-click       = "${config.setting.terminal.bin} -e bash -c btop";
+			on-click       = "foot -e bash -c btop";
 			on-click-right = "powersave toggle";
 			tooltip        = false;
 		};
 		memory = {
 			format         = "{percentage}%";
 			interval       = refreshInterval;
-			on-click       = "${config.setting.terminal.bin} -e bash -c btop";
+			on-click       = "foot -e bash -c btop";
 			on-click-right = "powersave toggle";
 		};
 		temperature = {
 			format         = "{temperatureC}°C";
+			hwmon-path-abs = "${config.setting.cpu.hwmon.path}";
+			input-filename = "${config.setting.cpu.hwmon.file}";
 			interval       = refreshInterval;
-			on-click       = "${config.setting.terminal.bin} -e bash -c btop";
+			on-click       = "foot -e bash -c btop";
 			on-click-right = "powersave toggle";
+			tooltip        = false;
 		};
 		"custom/powersave" = {
 			exec           = "powersave waybar";
 			interval       = refreshInterval;
-			on-click       = "${config.setting.terminal.bin} -e bash -c btop";
+			on-click       = "foot -e bash -c btop";
 			on-click-right = "powersave toggle";
 		};
 		"custom/display" = {

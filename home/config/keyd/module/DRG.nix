@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
 	file = (pkgs.formats.ini {}).generate "KeydDrgConfig" {
 		steam-app-548430 = {
 			"alt.1" = "macro(enter 10ms L e t ' s 10ms space d o 10ms space t h i s 10ms space T e x a s 10ms space s t y l e ! 10ms enter)";
@@ -26,7 +26,7 @@
 			"alt.w" = "macro(enter 10ms r enter)";
 			"alt.x" = "macro(enter 10ms > space H e r e space < enter)";
 			"alt.z" = "macro(enter 10ms < space L e f t enter)";
-			leftshift = "timeout(leftcontrol, ${toString config.setting.timeout.keyd}, leftshift)";
+			leftshift = "timeout(leftcontrol, 150, leftshift)";
 		};
 	};
 }

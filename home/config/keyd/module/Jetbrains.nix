@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
 	file = (pkgs.formats.ini {}).generate "KeydJetbrainsConfig" {
 		"jetbrains-*" = {
 			"alt./" = "C-/";
@@ -16,7 +16,7 @@
 			"alt.q" = "A-left";
 			"alt.r" = "S-f10";
 			"alt.s" = "C-A-s";
-			"alt.tab" = "timeout(f8, ${toString config.setting.timeout.keyd}, macro2(0, 0, f7))";
+			"alt.tab" = "timeout(f8, 150, macro2(0, 0, f7))";
 			"alt.v" = "C-q";
 			"alt.w" = "C-S-A-t";
 			"alt.x" = "C-f4";

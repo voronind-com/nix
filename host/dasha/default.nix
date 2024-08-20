@@ -1,4 +1,4 @@
-{ lib, ... }: {
+{ ... }: {
 	imports = [
 		./Filesystem.nix
 	];
@@ -24,4 +24,12 @@
 			gaming.enable   = true;
 		};
 	};
+
+	setting = {
+		cpu.hwmon = {
+			path = "/sys/devices/platform/coretemp.0/hwmon";
+			file = "temp1_input";
+		};
+	};
+
 }

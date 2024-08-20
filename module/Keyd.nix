@@ -19,7 +19,7 @@ in {
 						backspace    = "delete";                                   # Delete key on backspace.
 						capslock     = "overload(control, esc)";                   # Ctrl/esc combo.
 						compose      = "layer(layer_number)";                      # Number input layer.
-						esc          = "${config.setting.sysctrl}";                # System controls.
+						esc          = "print";                                    # System controls.
 						leftcontrol  = "overload(layer_alternative, leftcontrol)"; # Alternative layer for home, end etc.
 						rightcontrol = "layer(layer_control)";                     # Media and other controls.
 						rightshift   = "backspace";                                # Backspace.

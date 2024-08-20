@@ -33,4 +33,11 @@
 			desktop.enable = true;
 		};
 	};
+
+	setting = {
+		cpu.hwmon = {
+			path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon";
+			file = "temp1_input";
+		};
+	};
 }

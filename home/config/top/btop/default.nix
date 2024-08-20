@@ -55,7 +55,7 @@
 		shown_boxes = "cpu mem net proc"
 
 		#* Update time in milliseconds, recommended 2000 ms or above for better sample times for graphs.
-		update_ms = ${toString config.setting.refresh.top}
+		update_ms = 2000
 
 		#* Processes sorting, "pid" "program" "arguments" "threads" "user" "memory" "cpu lazy" "cpu direct",
 		#* "cpu lazy" sorts top process over time (easier to follow), "cpu direct" updates top process directly.

@@ -17,42 +17,10 @@
 			};
 		};
 
-		# Default browser settings.
-		browser = mkOption {
-			default = { };
-			type = types.submodule {
-				options = {
-					bin = mkOption {
-						default = "firefox-esr";
-						type    = types.str;
-					};
-				};
-			};
-		};
-
-		# Terminal settings.
-		terminal = mkOption {
-			default = { };
-			type = types.submodule {
-				options = {
-					bin = mkOption {
-						default = "foot";
-						type    = types.str;
-					};
-				};
-			};
-		};
-
 		# Whether to use Dpi-aware setting in supported apps.
 		dpiAware = mkOption {
 			default = false;
 			type    = types.bool;
-		};
-
-		# The key used for system-related shortcuts.
-		sysctrl = mkOption {
-			default = "print";
-			type    = types.str;
 		};
 
 		# Keyboard options.
@@ -72,57 +40,6 @@
 			};
 		};
 
-		# Settings related to different refreshes, like top apps.
-		refresh = mkOption {
-			default = { };
-			type = types.submodule {
-				options = {
-					top = mkOption {
-						default = 2000;
-						type    = types.int;
-					};
-				};
-			};
-		};
-
-		# Configure steps for different actions.
-		step = mkOption {
-			default = { };
-			type = types.submodule {
-				options = {
-					brightness = mkOption {
-						default = 5;
-						type    = types.int;
-					};
-					volume = mkOption {
-						default = 5;
-						type    = types.int;
-					};
-					media = mkOption {
-						default = 10;
-						type    = types.int;
-					};
-				};
-			};
-		};
-
-		# Specify timeouts.
-		timeout = mkOption {
-			default = { };
-			type = types.submodule {
-				options = {
-					popup = mkOption {
-						default = 5000;
-						type    = types.int;
-					};
-					keyd = mkOption {
-						default = 150;
-						type    = types.int;
-					};
-				};
-			};
-		};
-
 		# Zapret params.
 		zapret = mkOption {
 			default = {};
@@ -131,6 +48,30 @@
 					params = mkOption {
 						default = "--dpi-desync=disorder --dpi-desync-ttl=1 --dpi-desync-split-pos=3";
 						type    = types.str;
+					};
+				};
+			};
+		};
+
+		# CPU configurations.
+		cpu = mkOption {
+			default = {};
+			type = types.submodule {
+				options = {
+					hwmon = mkOption {
+						default = {};
+						type = types.submodule {
+							options = {
+								path = mkOption {
+									default = "";
+									type    = types.str;
+								};
+								file = mkOption {
+									default = "";
+									type    = types.str;
+								};
+							};
+						};
 					};
 				};
 			};

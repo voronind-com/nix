@@ -38,7 +38,7 @@
 		}
 
 		# Hide mouse cursor after a period of inactivity.
-		seat seat0 hide_cursor ${toString config.setting.timeout.popup}
+		seat seat0 hide_cursor 5000
 
 		# Per-window languages.
 		exec swaykbdd

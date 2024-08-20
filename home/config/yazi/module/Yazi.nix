@@ -30,7 +30,7 @@
 			browser = [{
 				desc   = "Browser";
 				orphan = true;
-				run    = openWith config.setting.browser.bin;
+				run    = openWith "firefox-esr";
 			}];
 			text = [{
 				desc  = "Text";

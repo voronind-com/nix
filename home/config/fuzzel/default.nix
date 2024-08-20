@@ -9,7 +9,7 @@ in {
 			lines        = 20;
 			prompt       = "\"\"";
 			show-actions = "yes";
-			terminal     = config.setting.terminal.bin;
+			terminal     = "foot";
 			width        = 40;
 			# list-executables-in-path = "no";
 		};
