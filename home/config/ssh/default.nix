@@ -33,12 +33,12 @@
 			Port 22143
 
 		Host laptop
-			Hostname 10.0.0.9
+			Hostname 192.168.1.9
 			User root
 			Port 22143
 
 		Host pi
-			Hostname 10.0.0.6
+			Hostname 192.168.1.6
 			User root
 			Port 22143
 
@@ -48,7 +48,7 @@
 			Port 22143
 
 		Host work
-			Hostname 10.0.0.5
+			Hostname 192.168.1.5
 			User root
 			Port 22143
 	'';
