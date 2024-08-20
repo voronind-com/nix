@@ -30,18 +30,18 @@ in {
 
 		containers.git = container.mkContainer cfg {
 			bindMounts = {
-				"/var/lib/gitea" = {
+				"/var/lib/forgejo" = {
 					hostPath   = "${cfg.storage}/data";
 					isReadOnly = false;
 				};
 			};
 
 			config = { ... }: container.mkContainerConfig cfg {
-				environment.systemPackages = with pkgs; [ gitea ];
+				environment.systemPackages = with pkgs; [ forgejo ];
 
-				services.gitea = {
+				services.forgejo = {
 					enable = true;
-					stateDir = "/var/lib/gitea";
+					stateDir = "/var/lib/forgejo";
 
 					database = let
 						postgre = config.container.module.postgres;
@@ -49,8 +49,8 @@ in {
 						type = "postgres";
 						host = postgre.address;
 						port = postgre.port;
-						user = "gitea";
-						name = "gitea";
+						user = "forgejo";
+						name = "forgejo";
 						createDatabase = false;
 					};
 

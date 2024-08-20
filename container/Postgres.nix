@@ -36,12 +36,12 @@ in {
 				services.postgresql = let
 					# Populate with services here.
 					configurations = with config.container.module; {
-						gitea       = git;
-						nextcloud   = cloud;
-						privatebin  = paste;
-						onlyoffice  = office;
-						paperless   = paper;
-						invidious   = yt;
+						forgejo    = git;
+						invidious  = yt;
+						nextcloud  = cloud;
+						onlyoffice = office;
+						paperless  = paper;
+						privatebin = paste;
 					};
 
 					access = configurations // {
