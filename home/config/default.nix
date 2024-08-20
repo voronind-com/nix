@@ -39,6 +39,6 @@ in {
 	".nixos".source                         = self;
 	".parallel/will-cite".text              = "";
 	".ssh/config".text                      = ssh.text;
-	".wallpaper".source                     = config.module.wallpaper.path;
+	".Wallpaper".source                     = config.module.wallpaper.path;
 	"media/template".source                 = ./template;
 }
