@@ -89,7 +89,7 @@ in {
 			};
 			on-click-right  = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
 			on-click-middle = "swayscript sound_output_cycle";
-			on-click        = "pavucontrol";
+			on-click        = "pwvucontrol";
 		};
 		mpris = {
 			format        = "{player_icon}  {title} - {artist}";
