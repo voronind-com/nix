@@ -2,13 +2,13 @@
 	cfg = pkgs.writeText "PrivateBinConfig" (import ./Config.nix args).text;
 in php.buildComposerProject (finalAttrs:  {
 	pname   = "PrivateBin";
-	version = "1.7.3";
+	version = "1.7.4";
 
 	src = pkgs.fetchFromGitHub {
 		owner = "PrivateBin";
 		repo  = "PrivateBin";
 		rev   = finalAttrs.version;
-		hash  = "sha256-9aTpLixvvyy3xTk8QQFj4rI6gFtElO4naPgTARtpo1k=";
+		hash  = "sha256-RFP6rhzfBzTmqs4eJXv7LqdniWoeBJpQQ6fLdoGd5Fk=";
 	};
 
 	vendorHash = "sha256-JGuO8kXLLXqq76EccdNSoHwYO5OuJT3Au1O2O2szAHI=";
