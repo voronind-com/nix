@@ -106,7 +106,8 @@ in {
 						customDNS = {
 							mapping = {
 								# All subdomains to current host.
-								${config.container.domain} = config.container.host;
+								# ${config.container.domain} = config.container.host;
+								"voronind.com" = "10.0.0.1";
 							};
 						};
 						port = cfg.port;
