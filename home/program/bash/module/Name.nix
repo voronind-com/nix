@@ -219,9 +219,9 @@
 				local ext=''${target##*.}
 
 				if [[ -d "''${target}" ]]; then
-					local new_name="$(parse_titlecase $(parse_simple ''${target%.*}))"
+					local new_name="$(parse_startcase $(parse_simple ''${target%.*}))"
 				else
-					local new_name="$(parse_titlecase $(parse_simple ''${target%.*})).''${ext}"
+					local new_name="$(parse_startcase $(parse_simple ''${target%.*})).''${ext}"
 				fi
 
 				# Skip on no change.
