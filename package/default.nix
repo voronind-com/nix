@@ -34,7 +34,7 @@
 		man               # App to read manuals.
 		neovim            # Text editor.
 		nixd              # Nix LSP.
-		nmap              # Network analyzer.
+		nmap zmap         # Network analyzer.
 		openssh sshfs     # Ssh client.
 		parallel          # Run programs in parallel.
 		parted gparted    # GUI/CLI disk partition tool.
