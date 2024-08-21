@@ -27,7 +27,6 @@
 			storage = "/storage/hot/ftp";
 		};
 		package = {
-			android.enable = true;
 			common.enable  = true;
 			core.enable    = true;
 			desktop.enable = true;

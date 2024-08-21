@@ -23,7 +23,6 @@ in {
 				default = {};
 				type    = types.submodule {
 					options = {
-						android.enable  = mkEnableOption "Android apks.";
 						common.enable   = mkEnableOption "Common apps.";
 						core.enable     = mkEnableOption "Core apps.";
 						creative.enable = mkEnableOption "Creative apps.";
@@ -49,7 +48,6 @@ in {
 			programs = import ./program args;
 			dconf.settings = util.catSet (util.ls ./config/dconf) args;
 		}
-		(mkIf cfg.package.android.enable  { home.packages = package.android;  })
 		(mkIf cfg.package.common.enable   { home.packages = package.common;   })
 		(mkIf cfg.package.core.enable     { home.packages = package.core;     })
 		(mkIf cfg.package.creative.enable { home.packages = package.creative; })

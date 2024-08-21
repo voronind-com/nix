@@ -105,10 +105,6 @@
 		jetbrains.idea-community
 	];
 
-	android = [
-		(pkgs.callPackage ./apks {})
-	];
-
 	extra = with pkgs; [
 		anilibria-winmaclinux       # Anime!
 		appimage-run                # Tool to run .AppImage files in NixOS.

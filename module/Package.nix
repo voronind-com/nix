@@ -4,7 +4,6 @@
 in {
 	options = {
 		module.package = {
-			android.enable  = mkEnableOption "Android Apks.";
 			common.enable   = mkEnableOption "Common Apps.";
 			core.enable     = mkEnableOption "Core apps.";
 			creative.enable = mkEnableOption "Creative Apps.";
@@ -49,11 +48,6 @@ in {
 			environment.systemPackages = package.common;
 
 			services.gvfs.enable = true;
-		})
-
-		# Android apps.
-		(mkIf cfg.android.enable {
-			environment.systemPackages = package.android;
 		})
 
 		# Desktop apps.
