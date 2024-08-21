@@ -61,8 +61,8 @@ in {
 						settings = let
 							exclude = "{RU},{UA},{BY},{KZ},{CN},{??}";
 						in {
-							ExcludeExitNodes = exclude;
-							ExcludeNodes     = exclude;
+							# ExcludeExitNodes = exclude;
+							# ExcludeNodes     = exclude;
 							#DNSPort = dnsport;
 							UseBridges = true;
 							ClientTransportPlugin = "obfs4 exec ${pkgs.obfs4}/bin/lyrebird";
