@@ -1,6 +1,6 @@
 { ... }: {
 	text = ''
-		export VDL_PROXY="--proxy 'socks5://10.0.0.1:1080/' "
+		export VDL_PROXY="--proxy socks5://10.1.0.69:1080/"
 
 		# Download video from URL. When no `[LINK]` specified, it tries to update previously downloaded link.
 		# Usage: vdl [LINK]
