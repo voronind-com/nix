@@ -45,6 +45,10 @@
 		// Disable built-in DoH.
 		user_pref("doh-rollout.disable-heuristics", true);
 		user_pref("network.trr.mode", 5);
+
+		// HTTPS only mode.
+		user_pref("dom.security.https_only_mode", true);
+		user_pref("dom.security.https_only_mode_ever_enabled", true);
 	'';
 
 	mkExtension = install_url: {
