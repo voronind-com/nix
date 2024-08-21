@@ -124,7 +124,7 @@
 		; Pick compression algorithm or disable it. Only applies to pastes/comments
 		; created after changing the setting.
 		; Can be set to one these values: "none" / "zlib" (default).
-		; compression = "zlib"
+		compression = "none"
 
 		[expire]
 		; expire value that is selected per default
