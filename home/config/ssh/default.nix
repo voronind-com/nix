@@ -1,55 +1,25 @@
 # SSH client configuration.
-{ util, ... }: {
-	text = util.trimTabs ''
-		Host dasha
-			HostName 10.0.0.7
-			User root
-			Port 22143
+{ util, ... }: let
+	mkHost = name: address: port: user: extra: util.trimTabs ''
+		Host ${name}
+			HostName ${address}
+			User ${user}
+			Port ${toString port}
+			ControlPath ~/.ssh/${name}.socket
+			ControlMaster auto
+			ControlPersist yes
+	'' + extra;
+in {
+	text = ""
+		+ mkHost "dasha"    "10.0.0.7"       22143 "root" ""
+		+ mkHost "desktop"  "10.0.0.3"       22143 "root" ""
+		+ mkHost "fmpmaven" "10.30.22.10"    22    "root" ""
+		+ mkHost "home"     "10.0.0.1"       22143 "root" ""
+		+ mkHost "laptop"   "192.168.1.9"    22143 "root" ""
+		+ mkHost "pi"       "192.168.1.6"    22143 "root" ""
+		+ mkHost "vpn"      "194.113.233.38" 22143 "root" ""
+		+ mkHost "work"     "192.168.1.5"    22143 "root" ""
 
-		Host desktop
-			Hostname 10.0.0.3
-			User root
-			Port 22143
-
-		Host fmpmaven
-			Hostname 10.30.22.10
-			User root
-			Port 22
-
-		Host fsight
-			Hostname 10.30.217.25
-			User root
-			Port 22143
-
-		Host home
-			HostName 10.0.0.1
-			User root
-			Port 22143
-
-		Host nixbuilder
-			HostName 10.0.0.1
-			User nixbuilder
-			StrictHostKeyChecking=accept-new
-			Port 22143
-
-		Host laptop
-			Hostname 192.168.1.9
-			User root
-			Port 22143
-
-		Host pi
-			Hostname 192.168.1.6
-			User root
-			Port 22143
-
-		Host vpn
-			Hostname 194.113.233.38
-			User root
-			Port 22143
-
-		Host work
-			Hostname 192.168.1.5
-			User root
-			Port 22143
-	'';
+		+ mkHost "nixbuilder" "10.0.0.1"    "22143" "nixbuilder" "StrictHostKeyChecking=accept-new"
+		;
 }
