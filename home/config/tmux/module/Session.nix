@@ -7,7 +7,7 @@ in {
 
 		bind -n ${mod}-( switch-client -p
 		bind -n ${mod}-) switch-client -n
-		bind -n ${mod}-g choose-session
+		bind -n ${mod}-g choose-session -Z
 
 		set -g window-size smallest
 	'';
