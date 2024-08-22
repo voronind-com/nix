@@ -1,7 +1,7 @@
 { pkgs, lib, ... }: with lib; let
-	url    = "https://i.imgur.com/0hghmnl.png";
-	sha256 = "0l963jwb40xx7prnr58yfj5lvqmqw9nifn970dhqvzlcbfq17nbp";
-	forceContrastText = true;
+	url    = "https://i.imgur.com/RJMSMgF.jpeg";
+	sha256 = "0063fcgmdj0nalqisxg8lm9gvksw9n24ry4gr53pdxwaz902xk2m";
+	forceContrastText = false;
 in {
 	options = {
 		module.wallpaper = {
