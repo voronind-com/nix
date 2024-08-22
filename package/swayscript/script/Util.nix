@@ -2,7 +2,7 @@
 	text = ''
 		# Find currently active SWAYSOCK paths.
 		function _sway_find_sockets() {
-			ls /run/user/1000/sway-ipc.1000.*.sock
+			ls /run/user/''${UID}/sway-ipc.''${UID}.*.sock
 		}
 
 		function _sway_iterate_sockets() {
