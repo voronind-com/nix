@@ -20,6 +20,6 @@ in {
 		+ mkHost "vpn"      "194.113.233.38" 22143 "root" ""
 		+ mkHost "work"     "192.168.1.5"    22143 "root" ""
 
-		+ mkHost "nixbuilder" "10.0.0.1"    "22143" "nixbuilder" "StrictHostKeyChecking=accept-new"
+		+ mkHost "nixbuilder" "10.0.0.1"    "22143" "nixbuilder" "	StrictHostKeyChecking=accept-new"
 		;
 }
