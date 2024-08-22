@@ -34,13 +34,14 @@
 		function monbar() {
 			local __monstate=$(_monstate)
 			local __gamingstate=$(_gamingstate)
+			local __recording=$(_recording)
 			local class=""
 
-			if [[ "''${__monstate}" = "off" ]] || [[ "''${__gamingstate}" = "on" ]]; then
+			if [[ "''${__monstate}" = "off" ]] || [[ "''${__gamingstate}" = "on" ]] || [[ "''${__recording}" = "on" ]]; then
 				class="modified"
 			fi
 
-			printf "{\"text\": \"󰍹\", \"tooltip\": \"Monitor: ''${__monstate^} / Gaming: ''${__gamingstate^}\", \"class\": \"''${class}\"}\n"
+			printf "{\"text\": \"󰍹\", \"tooltip\": \"Monitor: ''${__monstate^} / Gaming: ''${__gamingstate^} / Recording: ''${__recording^}\", \"class\": \"''${class}\"}\n"
 		}
 
 		function _monstate() {
@@ -49,6 +50,10 @@
 			else
 				echo "''${*}" > /tmp/.monstate
 			fi
+		}
+
+		function _recording() {
+			[[ "$(ps cax | rg wf-recorder)" = "" ]] && echo off || echo on
 		}
 	'';
 }

@@ -64,7 +64,7 @@
 	desktop = with pkgs; [
 		foot                           # Terminal emulator.
 		fuzzel                         # Application launcher.
-		grim slurp                     # Screenshot.
+		grim slurp wf-recorder         # Screenshot.
 		mako                           # Notification system.
 		networkmanagerapplet           # Internet configuration.
 		pamixer pavucontrol pulseaudio # Audio.

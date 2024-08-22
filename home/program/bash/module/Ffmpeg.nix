@@ -77,6 +77,19 @@
 			rm -d out/
 		}
 
+		# Rotate the video clock-wise.
+		# Usage: ffmpeg_rotate <ANGLE> <TARGET>
+		function ffmpeg_rotate() {
+			if [[ "''${2}" = "" ]]; then
+				help ffmpeg_rotate
+			fi
+
+			local angle="''${1}"
+			local target="''${2}"
+
+			ffmpeg -display_rotation ''${angle} -i ''${target} -c copy _''${target} && mv _''${target} ''${target} || rm _''${target}
+		}
+
 		# Get video FPS.
 		function _ffprobe_fps() {
 			local fps=$(ffprobe -v 0 -of csv=p=0 -select_streams v:0 -show_entries stream=r_frame_rate "''${1}")
