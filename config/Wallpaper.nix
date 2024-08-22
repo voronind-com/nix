@@ -6,7 +6,7 @@ in {
 	options = {
 		module.wallpaper = {
 			forceContrastText = mkOption {
-				default = forceContrastText;
+				default = lib.warnIf forceContrastText "Style : Forced text contrast." forceContrastText;
 				type    = types.bool;
 			};
 			path = mkOption {
