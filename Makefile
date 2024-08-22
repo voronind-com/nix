@@ -20,8 +20,8 @@ check:
 
 # HACK: https://github.com/nix-community/home-manager/issues/5589
 fix-hm-root:
-	mv /etc/nix/nix.conf /etc/nix/nix.conf_
-	systemctl restart home-manager-root.service
+	mv /etc/nix/nix.conf /etc/nix/nix.conf_; \
+	systemctl restart home-manager-root.service; \
 	mv /etc/nix/nix.conf_ /etc/nix/nix.conf
 
 install-nix:
