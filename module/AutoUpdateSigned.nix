@@ -39,7 +39,8 @@ in {
 					echo "Verification failed."
 					exit 1
 				};
-				${getExe pkgs.gnumake} switch fix-hm-root
+				${getExe pkgs.gnumake} switch
+				${getExe pkgs.gnumake} fix-hm-root
 			'';
 			after = [ "network-online.target" ];
 			wants = [ "network-online.target" ];
