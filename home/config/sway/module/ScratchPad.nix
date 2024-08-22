@@ -29,7 +29,7 @@
 		}
 
 		# Sound.
-		for_window [app_id="pwvucontrol"] {
+		for_window [app_id="pavucontrol"] {
 			move scratchpad
 			scratchpad show
 		}

@@ -67,7 +67,7 @@
 		grim slurp                     # Screenshot.
 		mako                           # Notification system.
 		networkmanagerapplet           # Internet configuration.
-		pamixer pwvucontrol pulseaudio # Audio.
+		pamixer pavucontrol pulseaudio # Audio.
 		playerctl                      # Multimedia controls.
 		sway waybar                    # Sway WM.
 
