@@ -57,7 +57,7 @@ in {
 					"i686-linux"
 					"aarch64-linux"
 				];
-				maxJobs     = 1;
+				maxJobs     = 16;
 				speedFactor = 2;
 				mandatoryFeatures = [ ];
 				supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
