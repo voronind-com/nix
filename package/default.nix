@@ -6,7 +6,7 @@
 		btop htop         # System monitors.
 		coreutils         # UNIX Core utilities.
 		cryptsetup        # Filesystem encryption (LUKS).
-		curl              # CLI http client.
+		curl wcurl        # CLI http client.
 		ddrescue testdisk # Apps to recover data from drives.
 		diffutils         # Diff tool.
 		dnsutils          # NS utilities.
@@ -50,7 +50,6 @@
 		usbutils          # Usb utilities like udiskctl.
 		utillinux         # Common Linux utilities.
 		ventoy            # Boot multiple ISO/images from a single USB stick.
-		wget              # CLI http download tool.
 		wireguard-tools   # Tools to work with Wireguard.
 		yazi chafa        # CLI file manager.
 		yt-dlp            # Video downloader.
