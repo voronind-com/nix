@@ -1,3 +1,0 @@
-{ ... }: {
-	home.nixos.enable = true;
-}

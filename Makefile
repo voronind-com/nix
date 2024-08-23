@@ -16,7 +16,7 @@ boot-no-nixconf:
 	mv /etc/nix/nix.conf_ /etc/nix/nix.conf
 
 check:
-	nix flake check
+	nix flake check --show-trace
 
 # HACK: https://github.com/nix-community/home-manager/issues/5589
 fix-hm-root:
@@ -44,9 +44,6 @@ show:
 
 switch:
 	nixos-rebuild switch $(options) --flake $(flake)
-
-trace:
-	nix flake check --show-trace
 
 update:
 	nix flake update

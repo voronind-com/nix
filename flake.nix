@@ -142,7 +142,7 @@
 		__findFile = _: p: ./${p};
 
 		# List all files in a dir.
-		lsFiles = path: map (f: "${path}/${f}") (
+		findFiles = path: map (f: "${path}/${f}") (
 			builtins.filter (i: builtins.readFileType "${path}/${i}" == "regular") (
 				builtins.attrNames (builtins.readDir path)
 			)
@@ -158,7 +158,7 @@
 				# List of modules to use by defualt for all the hosts.
 				modules = modules ++ [
 					# There I put host-specific configurations.
-					./host/${hostname}
+					./host/${system}/${hostname}
 
 					# Make a device hostname match the one from this config.
 					{ networking.hostName = hostname; }
@@ -168,10 +168,10 @@
 
 					# Add modules.
 					{ imports =
-						(self.lsFiles ./config) ++
-						(self.lsFiles ./container) ++
-						(self.lsFiles ./module) ++
-						(self.lsFiles ./overlay) ++
+						(self.findFiles ./config) ++
+						(self.findFiles ./container) ++
+						(self.findFiles ./module) ++
+						(self.findFiles ./overlay) ++
 						[ ./home/NixOs.nix ];
 					}
 
@@ -210,39 +210,10 @@
 				};
 			};
 
-			liveModules = [
-				"${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-				"${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
-
-				{ networking.wireless.enable = nixpkgs.lib.mkForce false; }
-
-				# Override my settings to allow SSH logins using root password.
-				{ services.openssh.settings.PasswordAuthentication = nixpkgs.lib.mkForce true; }
-				{ services.openssh.settings.PermitRootLogin        = nixpkgs.lib.mkForce "yes"; }
-
-				# Disable auto-updates as they are not possible for Live ISO.
-				{ module.autoupdate.enable = false; }
-
-				# Base Live images also require the LTS kernel.
-				{ module.kernel.latest = false; }
-			];
-
 			x86System = hostname: mkSystem hostname "x86_64-linux" [];
-
-			x86LiveSystem = hostname: mkSystem hostname "x86_64-linux" liveModules;
-		in nixpkgs.lib.foldl' (acc: h: acc // h) {} [
-			# Bellow is the list of all the hosts I currently use.
-			# They call the `mkSystem` function that I defined above
-			# with their specific parameters.
-			# You might be interested in `live` and `nixOnDroidConfiguration`
-			# for Live ISO and Android configurations respectively.
-			(x86System "dasha")
-			(x86System "desktop")
-			(x86System "home")
-			(x86System "laptop")
-			(x86System "work")
-			(x86LiveSystem "live")
-		];
+		in nixpkgs.lib.foldl' (acc: h: acc // h) {} (
+			map (host: x86System host) (builtins.attrNames (builtins.readDir ./host/x86_64-linux))
+		);
 
 
 		# Home manager (distro-independent).
@@ -270,7 +241,7 @@
 						inherit self inputs secret util pkgs pkgsStable pkgsMaster;
 						inherit (self) const __findFile;
 					};
-					modules = modules ++ (self.lsFiles ./config) ++ [
+					modules = modules ++ (self.findFiles ./config) ++ [
 						./home/HomeManager.nix
 						{ home.hm.enable        = true; }
 						{ home.hm.username      = username; }
@@ -292,13 +263,8 @@
 		in nixpkgs.lib.foldl' (acc: h: acc // h) {} [
 			x86LinuxRoot
 			(x86LinuxHome "voronind" [
-				{
-					home.hm.package = {
-						android.enable = true;
-						core.enable    = true;
-						common.enable  = true;
-					};
-				}
+				{ home.hm.package.core.enable   = true; }
+				{ home.hm.package.common.enable = true; }
 			])
 		];
 
