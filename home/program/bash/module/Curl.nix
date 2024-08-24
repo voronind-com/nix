@@ -1,5 +1,9 @@
 { ... }: {
 	text = ''
-		alias wcurl="wcurl --curl-options='--progress-bar --http2 --continue-at -'"
+		# Download a file from the web.
+		# Usage: dl <FILE> [FILES...]
+		function dl() {
+			wcurl --curl-options='--http2 --continue-at -' -- ''${@}
+		}
 	'';
 }
