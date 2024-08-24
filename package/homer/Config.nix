@@ -28,9 +28,9 @@
 				card-background     = "#${cfg.bg.regular}";
 				card-shadow         = "#${cfg.bg.regular}";
 				highlight-hover     = "#${cfg.accent}";
-				highlight-primary   = "#${cfg.bg.regular}";
+				highlight-primary   = "#${cfg.fg.regular}";
 				highlight-secondary = "#${cfg.bg.dark}";
-				link                = "#${cfg.link}";
+				link                = "#${cfg.fg.regular}";
 				link-hover          = "#${cfg.accent}";
 				text                = "#${cfg.fg.regular}";
 				text-header         = "#${cfg.fg.regular}";
