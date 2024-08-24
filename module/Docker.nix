@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: with lib; let
+{ lib, config, ... }: with lib; let
 	cfg = config.module.docker;
 in {
 	options = {
@@ -15,27 +15,24 @@ in {
 		};
 	};
 
-	config = mkIf cfg.enable {
-		virtualisation.docker.enable = true;
+	config = mkIf cfg.enable (mkMerge [
+		{
+			virtualisation.docker.enable = true;
 
-		virtualisation.docker.rootless = mkIf cfg.rootless {
-			enable = true;
-			setSocketVariable = true;
-		};
+			systemd = {
+				services = {
+					docker-prune.enable = mkForce cfg.autostart;
+					docker.enable       = mkForce cfg.autostart;
+				};
+				sockets.docker.enable = mkForce cfg.autostart;
+			};
+		}
 
-		systemd.services.docker-prune.enable = mkForce cfg.autostart;
-		systemd.services.docker.enable       = mkForce cfg.autostart;
-		systemd.sockets.docker.enable        = mkForce cfg.autostart;
-	};
-
-	# NOTE: mkMerge example.
-	# config = mkIf cfg.enable (mkMerge [
-	# 	{ virtualisation.docker.enable = true; }
-	# 	(mkIf cfg.rootless {
-	# 		virtualisation.docker.rootless = {
-	# 			enable = true;
-	# 			setSocketVariable = true;
-	# 		};
-	# 	})
-	# ]);
+		(mkIf cfg.rootless {
+			virtualisation.docker.rootless = {
+				enable            = true;
+				setSocketVariable = true;
+			};
+		})
+	]);
 }
