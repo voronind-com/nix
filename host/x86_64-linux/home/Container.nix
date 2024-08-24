@@ -1,6 +1,7 @@
 { ... }: {
 	container = {
-		enable = true;
+		enable    = true;
+		autoStart = true;
 
 		module = {
 			change.enable   = true;
