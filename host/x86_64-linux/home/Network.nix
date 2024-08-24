@@ -80,6 +80,10 @@ in {
 			+ (mkForward external 54631 cfg.download.address 54631 tcp)
 			+ (mkForward external 54630 cfg.download.address 54630 udp)
 			+ (mkForward external 54631 cfg.download.address 54631 udp)
+
+			# Git ssh connections.
+			+ (mkForward external cfg.git.portSsh cfg.git.address cfg.git.portSsh tcp)
+			+ (mkForward internal cfg.git.portSsh cfg.git.address cfg.git.portSsh tcp)
 			;
 		};
 

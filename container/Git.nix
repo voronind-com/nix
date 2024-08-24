@@ -12,6 +12,10 @@ in {
 				default = 3000;
 				type    = types.int;
 			};
+			portSsh = mkOption {
+				default = 22144;
+				type    = types.int;
+			};
 			domain = mkOption {
 				default = "git.${config.container.domain}";
 				type    = types.str;
@@ -61,7 +65,9 @@ in {
 						"service".DISABLE_REGISTRATION = true;
 						"log".LEVEL = "Error";
 						"server" = {
-							DISABLE_SSH = true;
+							DISABLE_SSH      = false;
+							SSH_PORT         = cfg.portSsh;
+							START_SSH_SERVER = true;
 							DOMAIN      = cfg.domain;
 							HTTP_ADDR   = cfg.address;
 							ROOT_URL    = "https://${cfg.domain}";
