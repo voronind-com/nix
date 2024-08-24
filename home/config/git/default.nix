@@ -1,6 +1,6 @@
 { secret, pkgs, ... }: {
 	file = (pkgs.formats.gitIni { listsAsDuplicateKeys = true; }).generate "GitConfig" {
-		credential.helper          = "store";
+		# credential.helper          = "store";
 		gpg.format                 = secret.crypto.sign.git.format;
 		gpg.ssh.allowedSignersFile = toString secret.crypto.sign.git.allowed;
 		init.defaultBranch         = "main";
