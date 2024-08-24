@@ -179,7 +179,7 @@
 				return 2
 			fi
 
-			git clone https://git.voronind.com/voronind/"''${repo}"
+			git clone ssh://git@git.voronind.com:22144/voronind/"''${repo}"
 		}
 
 		# See diff for a specific commit. Last commit by default.

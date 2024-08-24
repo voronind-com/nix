@@ -65,12 +65,14 @@ in {
 						"service".DISABLE_REGISTRATION = true;
 						"log".LEVEL = "Error";
 						"server" = {
-							DISABLE_SSH      = false;
-							SSH_PORT         = cfg.portSsh;
-							START_SSH_SERVER = true;
-							DOMAIN      = cfg.domain;
-							HTTP_ADDR   = cfg.address;
-							ROOT_URL    = "https://${cfg.domain}";
+							DOMAIN    = cfg.domain;
+							HTTP_ADDR = cfg.address;
+							ROOT_URL  = "https://${cfg.domain}";
+
+							BUILTIN_SSH_SERVER_USER = "git";
+							DISABLE_SSH             = false;
+							SSH_PORT                = cfg.portSsh;
+							START_SSH_SERVER        = true;
 						};
 						"ui" = {
 							AMBIGUOUS_UNICODE_DETECTION = false;
