@@ -1,6 +1,6 @@
 # Improve DE performance.
 { lib, config, ... }: with lib; let
-	cfg = config.module.desktop.realtime;
+	cfg = config.module.realtime;
 in {
 	options = {
 		module.realtime.enable = mkEnableOption "Realtime access.";
