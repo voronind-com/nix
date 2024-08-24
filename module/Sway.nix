@@ -8,13 +8,15 @@ in {
 	};
 
 	config = mkIf cfg.enable {
-		module.desktop = {
-			bluetooth.enable  = true;
-			brightness.enable = true;
-			portal.enable     = true;
-			realtime.enable   = true;
-			sound.enable      = true;
-			wayland.enable    = true;
+		module = {
+			desktop = {
+				bluetooth.enable  = true;
+				brightness.enable = true;
+				portal.enable     = true;
+				sound.enable      = true;
+				wayland.enable    = true;
+			};
+			realtime.enable = true;
 		};
 
 		services.gnome.gnome-keyring.enable       = mkForce false;

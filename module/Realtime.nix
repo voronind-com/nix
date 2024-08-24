@@ -3,7 +3,7 @@
 	cfg = config.module.desktop.realtime;
 in {
 	options = {
-		module.desktop.realtime.enable = mkEnableOption "Realtime access.";
+		module.realtime.enable = mkEnableOption "Realtime access.";
 	};
 
 	config = mkIf cfg.enable {
