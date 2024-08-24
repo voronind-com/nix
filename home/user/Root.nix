@@ -6,7 +6,7 @@
 in {
 	options = {
 		user.root = {
-			enable = mkEnableOption "root" // { default = true; };
+			enable = mkEnableOption "root";
 		};
 	};
 

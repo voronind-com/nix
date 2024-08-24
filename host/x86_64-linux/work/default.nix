@@ -6,8 +6,11 @@
 	# Keyd Print to Macro remap.
 	services.keyd.keyboards.default.settings.main.print = "layer(layer_macro)";
 
-	home.nixos.enable    = true;
-	user.voronind.enable = true;
+	home.nixos.enable = true;
+	user = {
+		root.enable     = true;
+		voronind.enable = true;
+	};
 
 	module = {
 		autoupdate.enable          = true;

@@ -8,8 +8,11 @@
 		./YaMusicDownload.nix
 	];
 
-	home.nixos.enable    = true;
-	user.voronind.enable = true;
+	home.nixos.enable = true;
+	user = {
+		root.enable     = true;
+		voronind.enable = true;
+	};
 
 	module = {
 		builder.server.enable = true;
