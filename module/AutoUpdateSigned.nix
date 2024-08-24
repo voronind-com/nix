@@ -7,7 +7,7 @@
 in {
 	options = {
 		module.autoupdate = {
-			enable = mkEnableOption "System auto-updates." // { default = true; };
+			enable = mkEnableOption "System auto-updates.";
 		};
 	};
 

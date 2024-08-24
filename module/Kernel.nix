@@ -4,7 +4,7 @@ in {
 	options = {
 		module.kernel = {
 			latest = mkOption {
-				default = true;
+				default = false;
 				type    = types.bool;
 			};
 		};

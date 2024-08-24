@@ -6,7 +6,7 @@ in {
 			enable = mkEnableOption "Containers!!";
 
 			autoStart = mkOption {
-				default = true;
+				default = false;
 				type    = types.bool;
 			};
 

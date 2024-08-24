@@ -10,6 +10,7 @@
 	};
 
 	module = {
+		autoupdate.enable     = true;
 		builder.client.enable = true;
 		desktop.sway.enable   = true;
 		print.enable          = true;

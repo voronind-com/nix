@@ -10,6 +10,7 @@
 	user.voronind.enable = true;
 
 	module = {
+		autoupdate.enable          = true;
 		builder.client.enable      = true;
 		desktop.sway.enable        = true;
 		intel.cpu.enable           = true;

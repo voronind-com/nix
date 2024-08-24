@@ -12,7 +12,6 @@
 	user.voronind.enable = true;
 
 	module = {
-		autoupdate.enable     = false;
 		builder.server.enable = true;
 		desktop.sway.enable   = true;
 		amd = {

@@ -7,6 +7,7 @@
 	user.dasha.enable = true;
 
 	module = {
+		autoupdate.enable     = true;
 		amd.gpu.enable        = true;
 		builder.client.enable = true;
 		desktop.sway.enable   = true;

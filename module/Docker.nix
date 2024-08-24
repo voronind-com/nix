@@ -9,7 +9,7 @@ in {
 				type    = types.bool;
 			};
 			autostart = mkOption {
-				default = true;
+				default = false;
 				type    = types.bool;
 			};
 		};
