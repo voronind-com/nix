@@ -23,10 +23,10 @@ in {
 		];
 
 		# Some extra hosts for local access.
-		extraHosts = util.trimTabs ''
-			10.1.0.2 git.voronind.com
-			10.1.0.2 iot.voronind.com
-			10.1.0.2 pass.voronind.com
+		extraHosts = with config.container.module; util.trimTabs ''
+			${git.address} git.voronind.com
+			${proxy.address} iot.voronind.com
+			${proxy.address} pass.voronind.com
 		'';
 
 		firewall = {
