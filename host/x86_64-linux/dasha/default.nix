@@ -14,7 +14,10 @@
 		amd.gpu.enable        = true;
 		builder.client.enable = true;
 		desktop.sway.enable   = true;
-		intel.cpu.enable      = true;
+		intel.cpu = {
+			enable    = true;
+			powersave = true;
+		};
 		print.enable          = true;
 		strongswan.enable     = true;
 		tablet.enable         = true;

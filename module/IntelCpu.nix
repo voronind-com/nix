@@ -8,8 +8,8 @@
 in {
 	options = {
 		module.intel.cpu = {
-			enable = mkEnableOption "Support for Shintel CPUs";
-			powersave.enable = mkEnableOption "Enable Shintel Cpu powersave." // { default = true; };
+			enable    = mkEnableOption "Support for Shintel CPUs";
+			powersave = mkEnableOption "Enable Shintel Cpu powersave.";
 		};
 	};
 
@@ -17,7 +17,7 @@ in {
 		{
 			boot.kernelModules = [ "kvm-intel" ];
 		}
-		(mkIf cfg.powersave.enable {
+		(mkIf cfg.powersave {
 			module.powersave = {
 				enable = true;
 				cpu.boost = { inherit controlFile enableCmd disableCmd; };
