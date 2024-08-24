@@ -18,8 +18,11 @@
 		virtmanager.enable    = true;
 		amd = {
 			compute.enable = true;
-			cpu.enable     = true;
 			gpu.enable     = true;
+			cpu = {
+				enable    = true;
+				powersave = true;
+			};
 		};
 		docker = {
 			enable    = true;

@@ -18,10 +18,7 @@
 		builder.server.enable = true;
 		desktop.sway.enable   = true;
 		amd = {
-			cpu = {
-				enable = true;
-				powersave.enable = false;
-			};
+			cpu.enable = true;
 			gpu.enable = true;
 		};
 		ftpd = {

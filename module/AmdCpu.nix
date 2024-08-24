@@ -7,8 +7,8 @@
 in {
 	options = {
 		module.amd.cpu = {
-			enable = mkEnableOption "Enable AMD Cpu support.";
-			powersave.enable = mkEnableOption "Enable AMD Cpu powersave." // { default = true; };
+			enable    = mkEnableOption "Enable AMD Cpu support.";
+			powersave = mkEnableOption "Enable AMD Cpu powersave.";
 		};
 	};
 
@@ -17,7 +17,7 @@ in {
 			boot.kernelModules = [ "kvm-amd" ];
 			hardware.cpu.amd.updateMicrocode = mkDefault config.hardware.enableRedistributableFirmware;
 		}
-		(mkIf cfg.powersave.enable {
+		(mkIf cfg.powersave {
 			module.powersave = {
 				enable = true;
 				cpu.boost = { inherit controlFile enableCmd disableCmd; };

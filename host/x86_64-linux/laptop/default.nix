@@ -19,7 +19,10 @@
 		tablet.enable         = true;
 		amd = {
 			compute.enable = true;
-			cpu.enable     = true;
+			cpu = {
+				enable    = true;
+				powersave = true;
+			};
 			gpu.enable     = true;
 		};
 		package = {
