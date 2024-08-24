@@ -3,7 +3,7 @@
 in {
 	options = {
 		module.distrobox = {
-			enable = mkEnableOption "Distrobox." // { default = true; };
+			enable = mkEnableOption "Distrobox.";
 		};
 	};
 
