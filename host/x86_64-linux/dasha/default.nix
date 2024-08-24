@@ -10,17 +10,18 @@
 	};
 
 	module = {
-		autoupdate.enable     = true;
 		amd.gpu.enable        = true;
+		autoupdate.enable     = true;
 		builder.client.enable = true;
 		desktop.sway.enable   = true;
+		kernel.enable         = true;
+		print.enable          = true;
+		strongswan.enable     = true;
+		tablet.enable         = true;
 		intel.cpu = {
 			enable    = true;
 			powersave = true;
 		};
-		print.enable          = true;
-		strongswan.enable     = true;
-		tablet.enable         = true;
 		package = {
 			common.enable   = true;
 			core.enable     = true;

@@ -16,12 +16,13 @@
 		autoupdate.enable          = true;
 		builder.client.enable      = true;
 		desktop.sway.enable        = true;
+		kernel.enable              = true;
+		powerlimit.thinkpad.enable = true;
+		print.enable               = true;
 		intel.cpu = {
 			enable    = true;
 			powersave = true;
 		};
-		powerlimit.thinkpad.enable = true;
-		print.enable               = true;
 		package = {
 			common.enable   = true;
 			core.enable     = true;

@@ -17,6 +17,7 @@
 	module = {
 		builder.server.enable = true;
 		desktop.sway.enable   = true;
+		kernel.enable         = true;
 		amd = {
 			cpu.enable = true;
 			gpu.enable = true;

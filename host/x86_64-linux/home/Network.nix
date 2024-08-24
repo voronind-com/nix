@@ -8,8 +8,8 @@
 in {
 	# Allow packet routing (we are a router).
 	boot.kernel.sysctl = {
-		"net.ipv4.conf.all.src_valid_mark" = 1;
-		"net.ipv4.ip_forward" = 1;
+		"net.ipv4.conf.all.src_valid_mark" = lib.mkForce 1;
+		"net.ipv4.ip_forward" = lib.mkForce 1;
 	};
 
 	# Disable SSH access from everywhere, configure access bellow.

@@ -14,6 +14,7 @@
 		autoupdate.enable     = true;
 		builder.client.enable = true;
 		desktop.sway.enable   = true;
+		kernel.enable         = true;
 		print.enable          = true;
 		strongswan.enable     = true;
 		tablet.enable         = true;
