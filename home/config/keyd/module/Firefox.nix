@@ -1,24 +1,24 @@
 { pkgs, ... }: {
 	file = (pkgs.formats.ini {}).generate "KeydFirefoxConfig" {
 		"firefox-esr" = {
-			"alt.E" = "C-S-pagedown";
-			"alt.N" = "S-f3";
-			"alt.Q" = "C-S-pageup";
-			"alt.a" = "A-left";
-			"alt.capslock" = "C-t";
-			"alt.d" = "A-right";
-			"alt.e" = "C-pagedown";
-			"alt.f" = "C-f";
-			"alt.l" = "A-S-a";
-			"alt.n" = "f3";
-			"alt.p" = "C-S-l";
-			"alt.q" = "C-pageup";
-			"alt.r" = "C-f5";
-			"alt.s" = "down";
-			"alt.space" = "f6";
-			"alt.u" = "C-S-t";
-			"alt.w" = "up";
-			"alt.x" = "C-w";
+			"alt.capslock" = "C-t";          # New tab.
+			"alt.x"        = "C-w";          # Close tab.
+			"alt.u"        = "C-S-t";        # Restore closed tab.
+			"alt.q"        = "C-pageup";     # Prev tab.
+			"alt.e"        = "C-pagedown";   # Next tab.
+			"alt.Q"        = "C-S-pageup";   # Move tab left.
+			"alt.E"        = "C-S-pagedown"; # Move tab right.
+			"alt.a"        = "A-left";       # Go back.
+			"alt.d"        = "A-right";      # Go forward.
+			"alt.s"        = "down";         # Scroll down.
+			"alt.w"        = "up";           # Scroll up.
+			"alt.f"        = "C-f";          # Find text.
+			"alt.N"        = "S-f3";         # Find prev.
+			"alt.n"        = "f3";           # Find next.
+			"alt.space"    = "f6";           # Focus address bar.
+			"alt.r"        = "C-f5";         # Full refresh.
+			"alt.l"        = "A-S-a";        # Toggle dark mode.
+			"alt.p"        = "C-S-l";        # Fill password.
 		};
 	};
 }
