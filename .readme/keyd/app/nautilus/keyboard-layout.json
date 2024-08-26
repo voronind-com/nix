@@ -1,0 +1,167 @@
+[
+  [
+    "~\n`",
+    {
+      "c": "#8ec07c"
+    },
+    "List View",
+    "Grid View",
+    {
+      "c": "#cccccc"
+    },
+    "#\n3",
+    "$\n4",
+    "%\n5",
+    "^\n6",
+    "&\n7",
+    "*\n8",
+    "(\n9",
+    ")\n0",
+    "_\n-",
+    "+\n=",
+    {
+      "w": 2
+    },
+    "Backspace"
+  ],
+  [
+    {
+      "w": 1.5
+    },
+    "Tab",
+    {
+      "c": "#8ec07c"
+    },
+    "Prev Tab / Move",
+    {
+      "c": "#cccccc"
+    },
+    "W",
+    {
+      "c": "#8ec07c"
+    },
+    "Next Tab / Move",
+    "Refresh Dir",
+    "New window",
+    "Copy Selection",
+    {
+      "c": "#cccccc"
+    },
+    "U",
+    {
+      "c": "#8ec07c"
+    },
+    "Invert Selec-tion",
+    {
+      "c": "#cccccc"
+    },
+    "O",
+    "P",
+    "{\n[",
+    "}\n]",
+    {
+      "w": 1.5
+    },
+    "\\"
+  ],
+  [
+    {
+      "c": "#8ec07c",
+      "w": 1.75
+    },
+    "New Tab",
+    "Create Dir",
+    "Rename",
+    "Delete",
+    "Search Dir",
+    {
+      "c": "#cccccc"
+    },
+    "G",
+    {
+      "c": "#8ec07c"
+    },
+    "Toggle Hidden Files",
+    {
+      "c": "#cccccc"
+    },
+    "J",
+    "K",
+    "L",
+    ":\n;",
+    "\"\n'",
+    {
+      "w": 2.25
+    },
+    "Enter"
+  ],
+  [
+    {
+      "w": 2.25
+    },
+    "Shift",
+    "Z",
+    {
+      "c": "#8ec07c"
+    },
+    "Close Tab",
+    {
+      "c": "#cccccc"
+    },
+    "C",
+    {
+      "c": "#8ec07c"
+    },
+    "File Info",
+    "Go Back",
+    {
+      "c": "#cccccc"
+    },
+    "N",
+    "M",
+    "<\n,",
+    ">\n.",
+    "?\n/",
+    {
+      "w": 2.75
+    },
+    "Shift"
+  ],
+  [
+    {
+      "w": 1.25
+    },
+    "Ctrl",
+    {
+      "w": 1.25
+    },
+    "Win",
+    {
+      "c": "#d79921",
+      "w": 1.25
+    },
+    "App Controls",
+    {
+      "c": "#8ec07c",
+      "w": 6.25
+    },
+    "Focus Navigation Bar",
+    {
+      "c": "#cccccc",
+      "w": 1.25
+    },
+    "Alt",
+    {
+      "w": 1.25
+    },
+    "Win",
+    {
+      "w": 1.25
+    },
+    "Menu",
+    {
+      "w": 1.25
+    },
+    "Ctrl"
+  ]
+]
