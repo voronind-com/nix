@@ -102,4 +102,4 @@ Tmux:<br>
 <img src="https://i.imgur.com/HnAdVSd.png" />
 </details>
 
-[Link](http://www.keyboard-layout-editor.com) to the tool I used to draw the images.
+[Link](http://www.keyboard-layout-editor.com) / [Source](https://github.com/ijprest/keyboard-layout-editor) of the tool I used to draw the images.
