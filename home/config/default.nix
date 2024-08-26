@@ -40,5 +40,5 @@ in {
 	".parallel/will-cite".text              = "";
 	".ssh/config".text                      = ssh.text;
 	".Wallpaper".source                     = config.module.wallpaper.path;
-	"media/template".source                 = ./template;
+	"template".source                       = ./template;
 }

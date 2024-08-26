@@ -13,7 +13,7 @@
 		path_mount="/storage/cold_1"
 		path_backup="''${path_mount}/backup"
 		path_container="''${path_backup}/home"
-		path_media="/storage/cold_1/media /storage/cold_2/media"
+		path_media="/storage/cold_1 /storage/cold_2"
 
 		# Check if backup drive is mounted.
 		if [ ! -f "''${path_mount}"/.mount ]; then
@@ -42,7 +42,7 @@
 		mv ''${container} ''${path_container}/ || report "Backup : Failed to save containers!"
 
 		# Backup some media.
-		cd ''${path_src}/media/
+		cd ''${path_src}
 		paper=$(archive paper/)
 		mv ''${paper} ''${path_backup}/paper/ || report "Backup : Failed to save paper!"
 		cd -

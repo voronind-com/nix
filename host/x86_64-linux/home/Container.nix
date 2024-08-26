@@ -40,19 +40,19 @@
 		interface   = "enp8s0";
 		localAccess = "10.0.0.0/24";
 		media = {
-			anime    = [ "/storage/cold_1/media/anime" "/storage/cold_2/media/anime" ];
-			book     = [ "/storage/hot/media/book" ];
+			anime    = [ "/storage/cold_1/anime" "/storage/cold_2/anime" ];
+			book     = [ "/storage/hot/book" ];
 			download = [ "/storage/hot/download" ];
-			manga    = [ "/storage/cold_1/media/manga" "/storage/cold_2/media/manga" ];
-			movie    = [ "/storage/cold_1/media/movie" "/storage/cold_2/media/movie" ];
-			music    = [ "/storage/cold_2/media/music" "/storage/hot/media/music" ];
-			paper    = [ "/storage/hot/media/paper" ];
-			porn     = [ "/storage/cold_2/media/porn" ];
-			photo    = [ "/storage/hot/container/cloud/data/data/cakee/files/media/photo" "/storage/cold_1/backup/tmp/photo" ];
-			show     = [ "/storage/cold_1/media/show" "/storage/cold_2/media/show" ];
-			study    = [ "/storage/cold_1/media/study" "/storage/cold_2/media/study" ];
-			work     = [ "/storage/cold_2/media/work" ];
-			youtube  = [ "/storage/cold_1/media/youtube" "/storage/cold_2/media/youtube" ];
+			manga    = [ "/storage/cold_1/manga" "/storage/cold_2/manga" ];
+			movie    = [ "/storage/cold_1/movie" "/storage/cold_2/movie" ];
+			music    = [ "/storage/cold_2/music" "/storage/hot/music" ];
+			paper    = [ "/storage/hot/paper" ];
+			porn     = [ "/storage/cold_2/porn" ];
+			photo    = [ "/storage/hot/container/cloud/data/data/cakee/files/photo" "/storage/cold_1/backup/tmp/photo" ];
+			show     = [ "/storage/cold_1/show" "/storage/cold_2/show" ];
+			study    = [ "/storage/cold_1/study" "/storage/cold_2/study" ];
+			work     = [ "/storage/cold_2/work" ];
+			youtube  = [ "/storage/cold_1/youtube" "/storage/cold_2/youtube" ];
 		};
 	};
 }

@@ -5,11 +5,11 @@
 		desktop     = "${homeDirectory}/";
 		documents   = "${homeDirectory}/document/";
 		download    = "${homeDirectory}/download/";
-		music       = "${homeDirectory}/media/music/";
-		pictures    = "${homeDirectory}/media/picture/";
-		publicShare = "${homeDirectory}/media/share/";
-		templates   = "${homeDirectory}/media/template/";
-		videos      = "${homeDirectory}/media/video/";
+		music       = "${homeDirectory}/music/";
+		pictures    = "${homeDirectory}/picture/";
+		publicShare = "${homeDirectory}/share/";
+		templates   = "${homeDirectory}/template/";
+		videos      = "${homeDirectory}/video/";
 		extraConfig = {
 			XDG_TMP_DIR = "${homeDirectory}/tmp/";
 		};

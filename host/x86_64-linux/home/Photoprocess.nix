@@ -1,6 +1,6 @@
 # Takes pictures from first photo dir, processes and stores to the second one.
 { util, pkgs, lib, ... } @args: let
-	imgInput  = "/storage/hot/container/cloud/data/data/cakee/files/media/photo";
+	imgInput  = "/storage/hot/container/cloud/data/data/cakee/files/photo";
 	imgOutput = "/storage/cold_1/backup/tmp/photo";
 in {
 	systemd.services.photosprocess = let
