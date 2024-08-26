@@ -46,7 +46,7 @@
 			type = types.submodule {
 				options = {
 					params = mkOption {
-						default = "--dpi-desync=disorder --dpi-desync-ttl=1 --dpi-desync-split-pos=3";
+						default = "--dpi-desync=fake,split2 --dpi-desync-fooling=datanoack";
 						type    = types.str;
 					};
 				};
