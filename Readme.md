@@ -80,7 +80,7 @@ Gnome:<br>
 Firefox:<br>
 <img src="https://i.imgur.com/GI0apoV.png" /><br>
 Jetbrains:<br>
-<img src="https://i.imgur.com/scijaJI.png" /><br>
+<img src="https://i.imgur.com/QChn9qU.png" /><br>
 Nautilus:<br>
 <img src="https://i.imgur.com/9W1GmLn.png" /><br>
 Tmux:<br>
