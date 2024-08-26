@@ -13,7 +13,6 @@
 		autoupdate.enable     = true;
 		builder.client.enable = true;
 		desktop.sway.enable   = true;
-		kernel.enable         = true;
 		ollama.enable         = true;
 		print.enable          = true;
 		virtmanager.enable    = true;
@@ -29,6 +28,10 @@
 			enable    = true;
 			autostart = false;
 			rootless  = false;
+		};
+		kernel = {
+			enable = true;
+			latest = true;
 		};
 		package = {
 			common.enable   = true;
