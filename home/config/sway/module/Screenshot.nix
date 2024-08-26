@@ -3,7 +3,7 @@
 	color     = config.style.color;
 	container = "mkv";
 	format    = "%Y-%m-%d_%H-%M-%S";
-	framerate = 10;
+	framerate = 30;
 	opacity   = "26";
 	selection = "slurp -d -b ${color.bg.light}${opacity} -c ${color.fg.light} -w 0 -s 00000000";
 	pixfmt    = "yuv420p10le";
