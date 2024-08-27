@@ -30,7 +30,10 @@ in {
 				};
 
 				imports = [ <module/Zapret.nix> ];
-				module.zapret.enable = true;
+				module.zapret = {
+					enable = true;
+					params = config.module.zapret.params;
+				};
 
 				services = {
 					microsocks = {

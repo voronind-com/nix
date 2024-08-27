@@ -26,9 +26,6 @@ in {
 	config = mkIf cfg.enable {
 		containers.yt = container.mkContainer cfg {
 			config = { ... }: container.mkContainerConfig cfg {
-				imports = [ <module/Zapret.nix> ];
-				module.zapret.enable = true;
-
 				services.invidious = {
 					enable = true;
 					domain = cfg.domain;
