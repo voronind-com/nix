@@ -1,3 +1,4 @@
+# SOURCE: https://github.com/bol-van/zapret
 { lib, config, pkgs, util, ... }: with lib; let
 	cfg = config.module.zapret;
 
