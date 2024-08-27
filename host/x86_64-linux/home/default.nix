@@ -33,6 +33,7 @@
 		};
 		zapret = {
 			enable = true;
+			params = "--dpi-desync=fake,split2 --dpi-desync-fooling=datanoack";
 			whitelist = ''
 				youtube.com
 				googlevideo.com

@@ -17,7 +17,7 @@ in {
 				options = {
 					enable = mkEnableOption "Enable Zapret service.";
 					params = mkOption {
-						default = "--dpi-desync=fake,split2 --dpi-desync-fooling=datanoack";
+						default = null;
 						type    = types.str;
 					};
 					whitelist = mkOption {
@@ -28,6 +28,10 @@ in {
 						default = null;
 						type    = types.nullOr types.str;
 					};
+					qnum = mkOption {
+						default = 200;
+						type    = types.int;
+					};
 				};
 			};
 		};
@@ -35,7 +39,7 @@ in {
 
 	config = mkIf cfg.enable {
 		networking.firewall.extraCommands = ''
-			iptables -t mangle -I POSTROUTING -p tcp -m multiport --dports 80,443 -m connbytes --connbytes-dir=original --connbytes-mode=packets --connbytes 1:6 -m mark ! --mark 0x40000000/0x40000000 -j NFQUEUE --queue-num 200 --queue-bypass
+			iptables -t mangle -I POSTROUTING -p tcp -m multiport --dports 80,443 -m connbytes --connbytes-dir=original --connbytes-mode=packets --connbytes 1:6 -m mark ! --mark 0x40000000/0x40000000 -j NFQUEUE --queue-num ${toString cfg.qnum} --queue-bypass
 		'';
 
 		systemd = {
@@ -45,7 +49,7 @@ in {
 				requires = [ "network.target" ];
 				path = with pkgs; [ zapret ];
 				serviceConfig = {
-					ExecStart  = "${pkgs.zapret}/bin/nfqws --pidfile=/run/nfqws.pid ${cfg.params} ${whitelist} ${blacklist} --qnum=200";
+					ExecStart  = "${pkgs.zapret}/bin/nfqws --pidfile=/run/nfqws.pid ${cfg.params} ${whitelist} ${blacklist} --qnum=${toString cfg.qnum}";
 					Type       = "simple";
 					PIDFile    = "/run/nfqws.pid";
 					ExecReload = "/bin/kill -HUP $MAINPID";
