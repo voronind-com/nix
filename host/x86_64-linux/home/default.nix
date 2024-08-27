@@ -31,6 +31,17 @@
 			core.enable    = true;
 			desktop.enable = true;
 		};
+		zapret = {
+			enable = true;
+			whitelist = ''
+				youtube.com
+				googlevideo.com
+				ytimg.com
+				rutracker.org
+				rutracker.cc
+				rutrk.org
+			'';
+		};
 	};
 
 	setting = {

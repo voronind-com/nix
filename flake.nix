@@ -150,7 +150,8 @@
 
 		nixosConfigurations = let
 			# Function to create a host. It does basic setup, like adding common modules.
-			mkHost = { system, hostname, modules } @args: nixpkgs.lib.nixosSystem {
+			mkHost = { system, hostname, modules }: let
+			in nixpkgs.lib.nixosSystem {
 				# `Inherit` is just an alias for `system = system;`, which means that
 				# keep the `system` argument as a property in a resulting set.
 				inherit system;
@@ -167,12 +168,11 @@
 					{ system.stateVersion = self.const.stateVersion; }
 
 					# Add modules.
-					{ imports =
+					{ imports = [ ./home/NixOs.nix ] ++
 						(self.findFiles ./config) ++
 						(self.findFiles ./container) ++
 						(self.findFiles ./module) ++
-						(self.findFiles ./overlay) ++
-						[ ./home/NixOs.nix ];
+						(self.findFiles ./overlay);
 					}
 
 					# Add Home Manager module.

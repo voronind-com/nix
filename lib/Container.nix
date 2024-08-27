@@ -45,8 +45,14 @@
 			# HACK: Fix for upstream issue: https://github.com/NixOS/nixpkgs/issues/162686
 			useHostResolvConf = lib.mkForce false;
 
-			# Disable firewall.
-			firewall.enable = false;
+			# Configure firewall.
+			firewall = {
+				enable = true;
+				extraCommands = ''
+					# Full access from the host.
+					iptables -I INPUT -s ${config.container.host} -j ALLOW
+				'';
+			};
 		};
 	} extra;
 

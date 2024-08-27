@@ -1,6 +1,6 @@
 # TODO: Saved just in case for the dark future.
 # в целом просто сделай себе шелл алиас gw-default="sudo ip route del default; sudo ip route add default via айпишник роутера" и шелл алиас gw-vpn="sudo ip route del default; sudo ip route add default via айпишник_впна"
-{ container, pkgs, lib, config, ... }: with lib; let
+{ container, pkgs, lib, config, __findFile, ... }: with lib; let
 	cfg = config.container.module.zapret;
 in {
 	options = {
@@ -29,20 +29,8 @@ in {
 					"net.ipv4.ip_forward" = 1;
 				};
 
-				environment.systemPackages = with pkgs; [ iptables ];
-
-				networking = {
-					nameservers = [
-						"10.1.0.6"
-						"1.1.1.1"
-					];
-					firewall = {
-						extraCommands = ''
-							iptables -t mangle -I POSTROUTING -p tcp -m multiport --dports 80,443 -m connbytes --connbytes-dir=original --connbytes-mode=packets --connbytes 1:6 -m mark ! --mark 0x40000000/0x40000000 -j NFQUEUE --queue-num 200 --queue-bypass
-						'';
-						#iptables -A OUTPUT -p tcp -m tcp --sport 443 --tcp-flags SYN,ACK SYN,ACK -j NFQUEUE --queue-num 200 --queue-bypass
-					};
-				};
+				imports = [ <module/Zapret.nix> ];
+				module.zapret.enable = true;
 
 				services = {
 					microsocks = {
@@ -87,56 +75,14 @@ in {
 				};
 
 				systemd = {
-					timers = {
-						tor = {
-							timerConfig = {
-								OnBootSec = 5;
-								Unit      = "tor.service";
-							};
-							wantedBy = [ "timers.target" ];
-						};
-						zapret = {
-							timerConfig = {
-								OnBootSec = 5;
-								Unit      = "zapret.service";
-							};
-							wantedBy = [ "timers.target" ];
-						};
-						routes = {
-							timerConfig = {
-								OnBootSec = 5;
-								Unit      = "routes.service";
-							};
-							wantedBy = [ "timers.target" ];
-						};
-					};
+					services.tor.wantedBy = lib.mkForce [];
 
-					services = {
-						tor.wantedBy = lib.mkForce [];
-						zapret = {
-							description = "FRKN";
-							wantedBy = [ ];
-							requires = [ "network.target" ];
-							path = with pkgs; [ zapret ];
-							serviceConfig = {
-								ExecStart  = "${pkgs.zapret}/bin/nfqws --pidfile=/run/nfqws.pid ${config.setting.zapret.params} --qnum=200";
-								Type       = "simple";
-								PIDFile    = "/run/nfqws.pid";
-								ExecReload = "/bin/kill -HUP $MAINPID";
-								Restart    = "always";
-								RestartSec = "5s";
-							};
+					timers.tor = {
+						timerConfig = {
+							OnBootSec = 5;
+							Unit      = "tor.service";
 						};
-						routes = {
-							description = "FRKN routes";
-							wantedBy = [ ];
-							requires = [ "network.target" ];
-							path = with pkgs; [ iptables ];
-							serviceConfig = {
-								ExecStart = "${pkgs.iptables}/bin/iptables -t mangle -I POSTROUTING -p tcp -m multiport --dports 80,443 -m connbytes --connbytes-dir=original --connbytes-mode=packets --connbytes 1:6 -m mark ! --mark 0x40000000/0x40000000 -j NFQUEUE --queue-num 200 --queue-bypass";
-								Type = "oneshot";
-							};
-						};
+						wantedBy = [ "timers.target" ];
 					};
 				};
 			};

@@ -40,19 +40,6 @@
 			};
 		};
 
-		# Zapret params.
-		zapret = mkOption {
-			default = {};
-			type = types.submodule {
-				options = {
-					params = mkOption {
-						default = "--dpi-desync=fake,split2 --dpi-desync-fooling=datanoack";
-						type    = types.str;
-					};
-				};
-			};
-		};
-
 		# CPU configurations.
 		cpu = mkOption {
 			default = {};
