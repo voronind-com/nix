@@ -38,6 +38,7 @@
 				youtube.com
 				googlevideo.com
 				ytimg.com
+				youtu.be
 				rutracker.org
 				rutracker.cc
 				rutrk.org
