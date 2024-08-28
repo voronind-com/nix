@@ -42,6 +42,7 @@
 				rutracker.org
 				rutracker.cc
 				rutrk.org
+				t-ru.org
 			'';
 		};
 	};
