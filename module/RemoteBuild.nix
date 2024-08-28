@@ -1,4 +1,3 @@
-# Module that enables remote builds. This is a client configuration.
 { pkgs, lib, config, secret, ... }: with lib; let
 	cfg = config.module.builder;
 
@@ -14,7 +13,7 @@ in {
 	config = mkMerge [
 		(mkIf cfg.server.enable {
 			# Service that generates new key on boot if not present.
-			# Don't forget to add new key to secret.ssh.buildKeys.
+			# Don't forget to add new public key to secret.ssh.buildKeys.
 			systemd.services.generate-nix-cache-key = {
 				wantedBy = [ "multi-user.target" ];
 				serviceConfig.Type = "oneshot";
@@ -48,7 +47,7 @@ in {
 		})
 
 		(mkIf cfg.client.enable {
-			# NOTE: Requires host private key to be present in secret.ssh.builderKeys.
+			# NOTE: Requires host public key to be present in secret.ssh.builderKeys.
 			nix.buildMachines = [{
 				hostName = "nixbuilder";
 				protocol = "ssh-ng";
