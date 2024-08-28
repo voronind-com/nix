@@ -1,4 +1,4 @@
-{ container, pkgs, lib, config, ... } @args: with lib; let
+{ container, pkgs, lib, config, util, ... } @args: with lib; let
 	cfg = config.container.module.dns;
 in {
 	options = {
@@ -104,10 +104,17 @@ in {
 							};
 						};
 						customDNS = {
-							mapping = {
+							mapping = let
+								block = "0.0.0.0";
+							in {
 								# All subdomains to current host.
 								# ${config.container.domain} = config.container.host;
 								"voronind.com" = "10.0.0.1";
+
+								# Blocklist.
+								"gosuslugi.ru" = block;
+								"rutube.ru"    = block;
+								"vk.com"       = block;
 							};
 						};
 						port = cfg.port;
