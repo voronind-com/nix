@@ -12,7 +12,8 @@ in {
 		bind -n ${mod}-\\ split-window  -h -c "#{pane_current_path}"
 		bind -n ${mod}--  split-window  -v -c "#{pane_current_path}"
 		bind -n ${mod}-=  select-layout tiled
-		bind -n ${mod}-+  select-layout even-vertical
+		bind -n ${mod}-_  select-layout even-vertical
+		bind -n ${mod}-|  select-layout even-horizontal
 		bind -n ${mod}-k  resize-pane -U ${toString stepVertical}
 		bind -n ${mod}-j  resize-pane -D ${toString stepVertical}
 		bind -n ${mod}-h  resize-pane -L ${toString stepHorizontal}
