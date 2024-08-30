@@ -1,6 +1,9 @@
 options = --option eval-cache false --fallback
 flake   = .
 
+help:
+	@printf "Please specify a target.\n"
+
 android:
 	nix-on-droid switch --flake $(flake)
 	cp ~/.termux/_font.ttf ~/.termux/font.ttf
@@ -24,10 +27,8 @@ fix-hm-root:
 	systemctl restart home-manager-root.service; \
 	mv /etc/nix/nix.conf_ /etc/nix/nix.conf
 
-install-nix:
-	sh <(curl -L https://nixos.org/nix/install) --no-daemon
-
-install-hm:
+install:
+	sh <(curl -L https://nixos.org/nix/install) --daemon
 	nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 	nix-channel --update
 	nix-shell '<home-manager>' -A install
