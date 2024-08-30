@@ -18,11 +18,30 @@ in {
 				default = 9150;
 				type    = types.int;
 			};
+			xrayport = mkOption {
+				default = 1081;
+				type    = types.int;
+			};
+			storage = mkOption {
+				default = "${config.container.storage}/zapret";
+				type    = types.str;
+			};
 		};
 	};
 
 	config = mkIf cfg.enable {
+		systemd.tmpfiles.rules = container.mkContainerDir cfg [
+			"data"
+		];
+
 		containers.zapret = container.mkContainer cfg {
+			bindMounts = {
+				"/data" = {
+					hostPath   = "${cfg.storage}/data";
+					isReadOnly = true;
+				};
+			};
+
 			config = { ... }: container.mkContainerConfig cfg {
 				boot.kernel.sysctl = {
 					"net.ipv4.conf.all.src_valid_mark" = 1;
@@ -74,6 +93,11 @@ in {
 								port = cfg.torport;
 							};
 						};
+					};
+
+					xray = {
+						enable = true;
+						settingsFile = "/data/Client.json";
 					};
 				};
 
