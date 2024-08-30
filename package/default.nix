@@ -51,9 +51,9 @@
 		utillinux         # Common Linux utilities.
 		ventoy            # Boot multiple ISO/images from a single USB stick.
 		wireguard-tools   # Tools to work with Wireguard.
+		xray zapret       # FRKN.
 		yazi chafa        # CLI file manager.
 		yt-dlp            # Video downloader.
-		zapret            # FRKN.
 		zip unzip         # Zip archive/unarchive tools.
 
 		(pkgs.callPackage ./yamusicdownload {})
