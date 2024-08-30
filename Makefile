@@ -32,6 +32,10 @@ install-hm:
 	nix-channel --update
 	nix-shell '<home-manager>' -A install
 
+.PHONY: home
+home:
+	home-manager switch --flake $(flake)#$$USER
+
 .PHONY: live
 live:
 	nix build -o live $(options) $(flake)#nixosConfigurations.live.config.system.build.isoImage

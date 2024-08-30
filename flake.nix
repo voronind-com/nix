@@ -246,7 +246,7 @@
 						{ home.hm.enable        = true; }
 						{ home.hm.username      = username; }
 						{ home.hm.homeDirectory = homeDirectory; }
-						{ home.hm.packages.core.enable = true; }
+						{ home.hm.package.core.enable = true; }
 
 						{ nixpkgs.config.allowUnfree = true; }
 						{ nixpkgs.config.allowUnfreePredicate = (pkg: true); }
