@@ -1,7 +1,7 @@
 { config, ... }: let
 	codec     = "libsvtav1";
 	color     = config.style.color;
-	container = "mkv";
+	container = "mp4";
 	format    = "%Y-%m-%d_%H-%M-%S";
 	framerate = 10;
 	opacity   = "26";
@@ -16,6 +16,6 @@ in {
 		bindsym --to-code $mod+v exec grim -g "$(${selection})" - | tee "''${XDG_PICTURES_DIR[0]}/$(date +${format}).png" | wl-copy
 
 		# Select recording.
-		bindsym --to-code $mod+shift+v exec 'pkill -SIGINT wf-recorder || wf-recorder --geometry "$(${selection})" --codec ${codec} --file "''${XDG_VIDEOS_DIR[0]}/$(date +${format}).${container}" --framerate ${toString framerate} --pixel-format ${pixfmt}'
+		bindsym --to-code $mod+shift+v exec 'pkill -SIGINT wf-recorder || { export targetFile="''${XDG_VIDEOS_DIR[0]}/$(date +${format}).${container}"; wf-recorder --geometry "$(${selection})" --codec ${codec} --file "''${targetFile}" --framerate ${toString framerate} --pixel-format ${pixfmt} && ffmpeg -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 -i "''${targetFile}" -c:v copy -c:a libopus -shortest -f ${container} "''${targetFile}_" && mv "''${targetFile}_" "''${targetFile}"; }'
 	'';
 }
