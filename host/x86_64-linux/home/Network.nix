@@ -63,10 +63,12 @@ in {
 			+ (mkForward internal 993 cfg.mail.address 993 tcp)
 
 			# FRKN internal proxy server.
-			+ (mkForward internal cfg.zapret.port    cfg.zapret.address cfg.zapret.port    tcp)
-			+ (mkForward internal cfg.zapret.torport cfg.zapret.address cfg.zapret.torport tcp)
-			+ (mkForward internal cfg.zapret.port    cfg.zapret.address cfg.zapret.port    udp)
-			+ (mkForward internal cfg.zapret.torport cfg.zapret.address cfg.zapret.torport udp)
+			+ (mkForward internal cfg.zapret.port     cfg.zapret.address cfg.zapret.port     tcp)
+			+ (mkForward internal cfg.zapret.torport  cfg.zapret.address cfg.zapret.torport  tcp)
+			+ (mkForward internal cfg.zapret.xrayport cfg.zapret.address cfg.zapret.xrayport tcp)
+			+ (mkForward internal cfg.zapret.port     cfg.zapret.address cfg.zapret.port     udp)
+			+ (mkForward internal cfg.zapret.torport  cfg.zapret.address cfg.zapret.torport  udp)
+			+ (mkForward internal cfg.zapret.xrayport cfg.zapret.address cfg.zapret.xrayport udp)
 
 			# Allow VPN connections from Wan.
 			+ (mkForward external cfg.vpn.port cfg.vpn.address cfg.vpn.port udp)
