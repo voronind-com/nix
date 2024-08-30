@@ -32,6 +32,8 @@ install:
 	nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 	nix-channel --update
 	nix-shell '<home-manager>' -A install
+	mkdir -p $$HOME/.config/nix
+	printf "experimental-features = nix-command flakes" > $$HOME/.config/nix/nix.conf
 
 .PHONY: home
 home:
