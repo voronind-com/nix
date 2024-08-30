@@ -6,7 +6,7 @@ target="${1}"
 host="${2}"
 
 if [[ "${target}" = "" ]]; then
-	printf "Usage: bootstrap_nixos <DRIVE> [HOST]\n"
+	printf "Usage: ./Bootstrap.sh <DRIVE> [HOST]\n"
 	return 2
 fi
 
