@@ -129,21 +129,31 @@ in {
 					dkimKeyDirectory = "/var/dkim";
 
 					mailboxes = {
+						All = {
+							auto       = "subscribe";
+							specialUse = "All";
+						};
+						Archive = {
+							auto       = "subscribe";
+							specialUse = "Archive";
+						};
 						Drafts = {
 							auto       = "subscribe";
 							specialUse = "Drafts";
 						};
 						Junk = {
-							auto       = "subscribe";
-							specialUse = "Junk";
+							auto        = "subscribe";
+							specialUse  = "Junk";
+							autoexpunge = "7d";
 						};
 						Sent = {
 							auto       = "subscribe";
 							specialUse = "Sent";
 						};
 						Trash = {
-							auto       = "no";
-							specialUse = "Trash";
+							auto        = "subscribe";
+							specialUse  = "Trash";
+							autoexpunge = "30d";
 						};
 					};
 
