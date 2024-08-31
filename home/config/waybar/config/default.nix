@@ -12,9 +12,9 @@ in {
 		spacing      = 4;
 		start_hidden = false;
 		output = [
-			"!Huawei Technologies Co., Inc. ZQE-CBA 0xC080F622"
-			"!AOC 24G2W1G4 ATNL61A129625"
-			"!UGD Artist15.6Pro 20200316"
+			"!Huawei Technologies Co., Inc. ZQE-CBA 0xC080F622" # Desktop monitor.
+			"!AOC 24G2W1G4 ATNL61A129625" # Dasha monitor.
+			"!UGD Artist15.6Pro 20200316" # XP-Pen Tablet.
 			"*"
 		];
 		modules-left = [

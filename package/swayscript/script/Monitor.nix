@@ -3,10 +3,10 @@
 		# Enable monitors.
 		function monon() {
 			on() {
-				swaymsg "output \"ASUSTek COMPUTER INC ASUS VA24E R2LMTF127165\" power on"
-				swaymsg "output \"AU Optronics 0x418D Unknown\" power on"
-				swaymsg "output \"AOC 24G2W1G4 ATNL61A129625\" power on"
-				swaymsg "output \"Chimei Innolux Corporation 0x1521 Unknown\" power on"
+				swaymsg "output \"ASUSTek COMPUTER INC ASUS VA24E R2LMTF127165\" power on" # Desktop monitor.
+				swaymsg "output \"AU Optronics 0x418D Unknown\" power on" # Work monitor.
+				swaymsg "output \"AOC 24G2W1G4 ATNL61A129625\" power on" # Dasha monitor.
+				swaymsg "output \"Chimei Innolux Corporation 0x1521 Unknown\" power on"  # Laptop monitor.
 				_monstate on
 			}
 			_sway_iterate_sockets on
@@ -15,10 +15,10 @@
 		# Disable monitors.
 		function monoff() {
 			off() {
-				swaymsg "output \"ASUSTek COMPUTER INC ASUS VA24E R2LMTF127165\" power off"
-				swaymsg "output \"AU Optronics 0x418D Unknown\" power off"
-				swaymsg "output \"AOC 24G2W1G4 ATNL61A129625\" power off"
-				swaymsg "output \"Chimei Innolux Corporation 0x1521 Unknown\" power off"
+				swaymsg "output \"ASUSTek COMPUTER INC ASUS VA24E R2LMTF127165\" power off" # Desktop monitor.
+				swaymsg "output \"AU Optronics 0x418D Unknown\" power off" # Work monitor.
+				swaymsg "output \"AOC 24G2W1G4 ATNL61A129625\" power off" # Dasha monitor.
+				swaymsg "output \"Chimei Innolux Corporation 0x1521 Unknown\" power off"  # Laptop monitor.
 				_monstate off
 			}
 			_sway_iterate_sockets off
