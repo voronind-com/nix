@@ -32,7 +32,7 @@ in {
 				services.cloudflare-dyndns = {
 					enable        = true;
 					apiTokenFile  = "/data/token";
-					deleteMissing = true;
+					deleteMissing = false;
 					ipv4          = true;
 					ipv6          = false;
 					proxied       = false;
@@ -46,10 +46,6 @@ in {
 						"paste"
 						"play"
 						"vpn"
-						"fmp-git"
-						"fmp-cloud"
-						"fmp-dev"
-						"fmp-master"
 					];
 				};
 			};

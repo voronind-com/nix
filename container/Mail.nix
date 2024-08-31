@@ -144,7 +144,7 @@ in {
 						Junk = {
 							auto        = "subscribe";
 							specialUse  = "Junk";
-							autoexpunge = "7d";
+							# autoexpunge = "3d";
 						};
 						Sent = {
 							auto       = "subscribe";
@@ -153,7 +153,7 @@ in {
 						Trash = {
 							auto        = "subscribe";
 							specialUse  = "Trash";
-							autoexpunge = "30d";
+							# autoexpunge = "30d";
 						};
 					};
 
@@ -170,31 +170,54 @@ in {
 					# };
 				};
 
-				services.roundcube = {
-					enable = true;
-					dicts = with pkgs.aspellDicts; [ en ru ];
-					hostName = cfg.domain;
-					plugins = [
-						"managesieve"
-					];
-					extraConfig = ''
-						# starttls needed for authentication, so the fqdn required to match
-						# the certificate
-						# $config['smtp_server'] = "tls://${config.mailserver.fqdn}";
-						# $config['smtp_server'] = "tls://localhost";
-						$config['smtp_server'] = "localhost:25";
-						$config['smtp_auth_type'] = null;
-						$config['smtp_user'] = "";
-						$config['smtp_pass'] = "";
-						# $config['smtp_user'] = "%u";
-						# $config['smtp_pass'] = "%p";
-				 '';
+				services = {
+					roundcube = {
+						enable = true;
+						dicts = with pkgs.aspellDicts; [ en ru ];
+						hostName = cfg.domain;
+						plugins = [
+							"managesieve"
+						];
+						extraConfig = ''
+							# starttls needed for authentication, so the fqdn required to match
+							# the certificate
+							# $config['smtp_server'] = "tls://${config.mailserver.fqdn}";
+							# $config['smtp_server'] = "tls://localhost";
+							$config['smtp_server'] = "localhost:25";
+							$config['smtp_auth_type'] = null;
+							$config['smtp_user'] = "";
+							$config['smtp_pass'] = "";
+							# $config['smtp_user'] = "%u";
+							# $config['smtp_pass'] = "%p";
+					 '';
+					};
+
+					nginx = {
+						virtualHosts.${cfg.domain} = {
+							forceSSL   = false;
+							enableACME = false;
+						};
+					};
 				};
 
-				services.nginx = {
-					virtualHosts.${cfg.domain} = {
-						forceSSL   = false;
-						enableACME = false;
+				systemd = {
+					services.autoexpunge = {
+						description = "Delete old mail";
+						serviceConfig.Type = "oneshot";
+						path = [ pkgs.dovecot ];
+						script = ''
+							doveadm expunge -A mailbox Junk SENTBEFORE 7d
+							doveadm expunge -A mailbox Trash SENTBEFORE 30d
+						'';
+					};
+
+					timers.autoexpunge = {
+						timerConfig = {
+							OnCalendar = "daily";
+							Persistent = true;
+							Unit       = "autoexpunge.service";
+						};
+						wantedBy = [ "timers.target" ];
 					};
 				};
 			};
