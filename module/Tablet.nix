@@ -7,5 +7,6 @@ in {
 
 	config = mkIf cfg.enable {
 		hardware.opentabletdriver.enable = true;
+		systemd.user.services.opentabletdriver.wantedBy = [ "default.target" ];
 	};
 }

@@ -14,6 +14,7 @@ in {
 		output = [
 			"!Huawei Technologies Co., Inc. ZQE-CBA 0xC080F622"
 			"!AOC 24G2W1G4 ATNL61A129625"
+			"!UGD Artist15.6Pro 20200316"
 			"*"
 		];
 		modules-left = [
