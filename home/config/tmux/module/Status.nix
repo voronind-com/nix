@@ -1,12 +1,10 @@
 { config, ... }: let
-	mod = "M";
-
 	accent = config.style.color.accent;
 	# bg     = style.color.bg.dark;
 	fg     = config.style.color.fg.light;
 in {
 	text = ''
-		bind-key -n ${mod}-f set-option -g status;
+		bind-key -n M-f set-option -g status;
 		set -g status-left-length 50
 		set -g status-position bottom
 		set -g status-justify  left

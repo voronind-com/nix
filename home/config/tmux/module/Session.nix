@@ -1,13 +1,11 @@
-{ ... }: let
-	mod = "M";
-in {
+{ ... }: {
 	text = ''
-		bind -n ${mod}-z detach-client
-		bind -n ${mod}-Z detach-client -a
+		bind -n M-z detach-client
+		bind -n M-Z detach-client -a
 
-		bind -n ${mod}-( switch-client -p
-		bind -n ${mod}-) switch-client -n
-		bind -n ${mod}-g choose-session -Z
+		bind -n M-( switch-client -p
+		bind -n M-) switch-client -n
+		bind -n M-g choose-session -Z
 
 		set -g window-size smallest
 	'';
