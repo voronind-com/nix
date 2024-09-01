@@ -47,7 +47,7 @@ in {
 
 				# Full access from VPN clients.
 				iptables -I INPUT -j ACCEPT -s ${cfg.vpn.address} -d ${internal}
-				iptables -I INPUT -j ACCEPT -s ${cfg.zapret.address} -d ${internal}
+				iptables -I INPUT -j ACCEPT -s ${cfg.frkn.address} -d ${internal}
 
 				# Full access from Lan.
 				iptables -I INPUT -j ACCEPT -i ${lan} -d ${internal}
@@ -63,12 +63,12 @@ in {
 			+ (mkForward internal 993 cfg.mail.address 993 tcp)
 
 			# FRKN internal proxy server.
-			+ (mkForward internal cfg.zapret.port     cfg.zapret.address cfg.zapret.port     tcp)
-			+ (mkForward internal cfg.zapret.torport  cfg.zapret.address cfg.zapret.torport  tcp)
-			+ (mkForward internal cfg.zapret.xrayport cfg.zapret.address cfg.zapret.xrayport tcp)
-			+ (mkForward internal cfg.zapret.port     cfg.zapret.address cfg.zapret.port     udp)
-			+ (mkForward internal cfg.zapret.torport  cfg.zapret.address cfg.zapret.torport  udp)
-			+ (mkForward internal cfg.zapret.xrayport cfg.zapret.address cfg.zapret.xrayport udp)
+			+ (mkForward internal cfg.frkn.port     cfg.frkn.address cfg.frkn.port     tcp)
+			+ (mkForward internal cfg.frkn.torport  cfg.frkn.address cfg.frkn.torport  tcp)
+			+ (mkForward internal cfg.frkn.xrayport cfg.frkn.address cfg.frkn.xrayport tcp)
+			+ (mkForward internal cfg.frkn.port     cfg.frkn.address cfg.frkn.port     udp)
+			+ (mkForward internal cfg.frkn.torport  cfg.frkn.address cfg.frkn.torport  udp)
+			+ (mkForward internal cfg.frkn.xrayport cfg.frkn.address cfg.frkn.xrayport udp)
 
 			# Allow VPN connections from Wan.
 			+ (mkForward external cfg.vpn.port cfg.vpn.address cfg.vpn.port udp)

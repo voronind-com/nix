@@ -4,13 +4,14 @@
 		autoStart = true;
 
 		module = {
+			# ISSUE: hdd.enable      = true;
 			change.enable   = true;
 			cloud.enable    = true;
 			ddns.enable     = true;
 			dns.enable      = true;
 			download.enable = true;
+			frkn.enable     = true;
 			git.enable      = true;
-			# ISSUE: hdd.enable      = true;
 			home.enable     = true;
 			iot.enable      = true;
 			jobber.enable   = true;
@@ -31,7 +32,6 @@
 			vpn.enable      = true;
 			watch.enable    = true;
 			yt.enable       = true;
-			zapret.enable   = true;
 		};
 
 		storage     = "/storage/hot/container";

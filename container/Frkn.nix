@@ -1,10 +1,10 @@
 # TODO: Saved just in case for the dark future.
 # в целом просто сделай себе шелл алиас gw-default="sudo ip route del default; sudo ip route add default via айпишник роутера" и шелл алиас gw-vpn="sudo ip route del default; sudo ip route add default via айпишник_впна"
 { container, pkgs, lib, config, __findFile, ... }: with lib; let
-	cfg = config.container.module.zapret;
+	cfg = config.container.module.frkn;
 in {
 	options = {
-		container.module.zapret = {
+		container.module.frkn = {
 			enable = mkEnableOption "FRKN";
 			address = mkOption {
 				default = "10.1.0.69";
@@ -23,7 +23,7 @@ in {
 				type    = types.int;
 			};
 			storage = mkOption {
-				default = "${config.container.storage}/zapret";
+				default = "${config.container.storage}/frkn";
 				type    = types.str;
 			};
 		};
@@ -34,7 +34,7 @@ in {
 			"data"
 		];
 
-		containers.zapret = container.mkContainer cfg {
+		containers.frkn = container.mkContainer cfg {
 			bindMounts = {
 				"/data" = {
 					hostPath   = "${cfg.storage}/data";

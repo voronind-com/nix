@@ -11,7 +11,7 @@ in {
 				# allow ${config.container.localAccess};
 				# allow ${config.container.module.status.address};
 				# allow ${config.container.module.vpn.address};
-				# allow ${config.container.module.zapret.address};
+				# allow ${config.container.module.frkn.address};
 				# deny all;
 				add_header X-Forwarded-Proto https;
 				proxy_pass http://''$${name}$request_uri;
