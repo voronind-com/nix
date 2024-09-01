@@ -1,20 +1,21 @@
 { self, config, ... } @args: let
-	btop     = import ./top/btop     args;
-	editor   = import ./editorconfig args;
-	foot     = import ./foot         args;
-	fuzzel   = import ./fuzzel       args;
-	git      = import ./git          args;
-	gtk3     = import ./gtk/3        args;
-	htop     = import ./top/htop     args;
-	keyd     = import ./keyd         args;
-	mako     = import ./mako         args;
-	mangohud = import ./mangohud     args;
-	nvim     = import ./nvim         args;
-	ssh      = import ./ssh          args;
-	sway     = import ./sway         args;
-	tmux     = import ./tmux         args;
-	waybar   = import ./waybar       args;
-	yazi     = import ./yazi         args;
+	btop      = import ./top/btop     args;
+	editor    = import ./editorconfig args;
+	foot      = import ./foot         args;
+	fuzzel    = import ./fuzzel       args;
+	git       = import ./git          args;
+	gtk3      = import ./gtk/3        args;
+	htop      = import ./top/htop     args;
+	jetbrains = import ./jetbrains    args;
+	keyd      = import ./keyd         args;
+	mako      = import ./mako         args;
+	mangohud  = import ./mangohud     args;
+	nvim      = import ./nvim         args;
+	ssh       = import ./ssh          args;
+	sway      = import ./sway         args;
+	tmux      = import ./tmux         args;
+	waybar    = import ./waybar       args;
+	yazi      = import ./yazi         args;
 in {
 	".config/MangoHud/MangoHud.conf".text   = mangohud.config;
 	".config/MangoHud/presets.conf".text    = mangohud.presets;
@@ -41,4 +42,5 @@ in {
 	".ssh/config".text                      = ssh.text;
 	".Wallpaper".source                     = config.module.wallpaper.path;
 	".template".source                      = ./template;
+	".ideavimrc".text                       = jetbrains.ideavimrc;
 }

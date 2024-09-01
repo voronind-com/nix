@@ -2,15 +2,17 @@
 	text = ''
 		-- TODO: Add comments and separate files.
 		vim.opt.clipboard     = "unnamedplus"
-		-- vim.opt.completeopt   = "menuone,noselect"
 		vim.opt.cursorline    = false
 		vim.opt.fixeol        = false
+		vim.opt.incsearch     = true;
 		vim.opt.number        = true
+		vim.opt.scrolloff     = 4
 		vim.opt.splitbelow    = true
 		vim.opt.splitright    = true
 		vim.opt.termguicolors = true
 		vim.opt.ttyfast       = true
 		vim.opt.wildmode      = "longest,list"
+		-- vim.opt.completeopt   = "menuone,noselect"
 
 		-- Disable continuing comments on newline.
 		vim.cmd("autocmd BufEnter * set fo-=c fo-=r fo-=o")
