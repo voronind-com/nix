@@ -84,7 +84,7 @@ Jetbrains:<br>
 Nautilus:<br>
 <img src="https://i.imgur.com/9W1GmLn.png" /><br>
 Tmux:<br>
-<img src="https://i.imgur.com/Soo85vk.png" />
+<img src="https://i.imgur.com/GhmwyCO.png" />
 </details>
 
 <details>
