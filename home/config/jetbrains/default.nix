@@ -1,5 +1,11 @@
 { util, ... }: {
 	ideavimrc = util.trimTabs ''
+		" Plugins.
+		Plug 'tpope/vim-commentary'
+		Plug 'machakann/vim-highlightedyank'
+		" Plug 'junegunn/vim-easy-align'
+
+		" General config.
 		set scrolloff=4
 		set incsearch
 		set hlsearch
@@ -7,7 +13,14 @@
 		set relativenumber
 		set number
 
-		Plug 'tpope/vim-commentary'
-		Plug 'machakann/vim-highlightedyank'
+		" Space as a leader.
+		nnoremap <SPACE> <Nop>
+		let mapleader=" "
+
+		" Align. ISSUE: Broken.
+		" vmap <Leader>a <Plug>(EasyAlign)
+
+		" Sort.
+		vmap <Leader>A :sort<cr>
 	'';
 }
