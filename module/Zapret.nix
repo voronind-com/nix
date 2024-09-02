@@ -9,6 +9,11 @@
 	blacklist = if cfg.blacklist != null then
 		"--hostlist-exclude ${pkgs.writeText "ZapretBlacklist" (util.trimTabs cfg.blacklist)}"
 	else "";
+
+	# ISSUE: Seems broken. Adds nothing automatically.
+	autolist = if cfg.autolist != null then
+		"--hostlist-auto ${cfg.autolist}"
+	else "";
 in {
 	options = {
 		module.zapret = mkOption {
@@ -25,6 +30,10 @@ in {
 						type    = types.nullOr types.str;
 					};
 					blacklist = mkOption {
+						default = null;
+						type    = types.nullOr types.str;
+					};
+					autolist = mkOption {
 						default = null;
 						type    = types.nullOr types.str;
 					};
@@ -49,7 +58,7 @@ in {
 				requires = [ "network.target" ];
 				path = with pkgs; [ zapret ];
 				serviceConfig = {
-					ExecStart  = "${pkgs.zapret}/bin/nfqws --pidfile=/run/nfqws.pid ${cfg.params} ${whitelist} ${blacklist} --qnum=${toString cfg.qnum}";
+					ExecStart  = "${pkgs.zapret}/bin/nfqws --pidfile=/run/nfqws.pid ${cfg.params} ${whitelist} ${blacklist} ${autolist} --qnum=${toString cfg.qnum}";
 					Type       = "simple";
 					PIDFile    = "/run/nfqws.pid";
 					ExecReload = "/bin/kill -HUP $MAINPID";

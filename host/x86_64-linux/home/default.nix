@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, ... }: {
 	imports = [
 		./Backup.nix
 		./Container.nix
@@ -33,7 +33,8 @@
 		};
 		zapret = {
 			enable = true;
-			params = "--dpi-desync=fake,split2 --dpi-desync-fooling=datanoack";
+			params = "--dpi-desync=fake,disorder2 --dpi-desync-ttl=1 --dpi-desync-autottl=2";
+			autolist = "${config.container.module.frkn.storage}/Autolist.txt";
 			whitelist = ''
 				youtube.com
 				googlevideo.com
@@ -43,6 +44,9 @@
 				rutracker.cc
 				rutrk.org
 				t-ru.org
+				medium.com
+				quora.com
+				quoracdn.net
 			'';
 		};
 	};
