@@ -53,6 +53,7 @@ in {
 						e = "nextsong";
 						q = "previoussong";
 						s = "volumedown";
+						v = "micmute";
 						w = "volumeup";
 						x = "stopcd";
 						z = "mute";
