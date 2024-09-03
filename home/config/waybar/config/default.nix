@@ -90,9 +90,9 @@ in {
 			# };
 			format-source       = "";
 			format-source-muted = " 󰍭";
-			on-click-right  = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
-			on-click-middle = "swayscript sound_output_cycle";
-			on-click        = "pavucontrol";
+			on-click        = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
+			on-click-middle = "pavucontrol";
+			on-click-right  = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
 		};
 		mpris = {
 			format        = "{player_icon}  {title} - {artist}";
