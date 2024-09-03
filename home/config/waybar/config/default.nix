@@ -83,11 +83,13 @@ in {
 		};
 		pulseaudio = {
 			scroll-step  = 5;
-			format       = "{volume}% {icon}";
-			format-muted = "󰸈";
-			format-icons = {
-				default = [ "" "" "" ];
-			};
+			format       = "{volume}%{icon}{format_source}";
+			format-muted = "󰸈{format_source}";
+			# format-icons = {
+			# 	default = [ " " " " " " ];
+			# };
+			format-source       = "";
+			format-source-muted = " 󰍭";
 			on-click-right  = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
 			on-click-middle = "swayscript sound_output_cycle";
 			on-click        = "pavucontrol";
