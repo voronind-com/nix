@@ -83,11 +83,11 @@
     },
     "Mute",
     "Stop",
-    "Cycle Output",
+    "Cycle Output (Sound)",
+    "Cycle Input (Voice)",
     {
       "c": "#cccccc"
     },
-    "V",
     "B",
     "N",
     "M",
