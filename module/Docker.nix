@@ -19,12 +19,12 @@ in {
 		{
 			virtualisation.docker.enable = true;
 
-			systemd = {
+			systemd = if cfg.autostart then {} else {
 				services = {
-					docker-prune.enable = mkForce cfg.autostart;
-					docker.enable       = mkForce cfg.autostart;
+					docker-prune.wantedBy = mkForce [];
+					docker.wantedBy       = mkForce [];
 				};
-				sockets.docker.enable = mkForce cfg.autostart;
+				sockets.docker.wantedBy = mkForce [];
 			};
 		}
 
