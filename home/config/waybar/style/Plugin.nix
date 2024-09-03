@@ -62,6 +62,7 @@ in {
 		}
 
 		#pulseaudio.muted,
+		#pulseaudio.source-muted,
 		#battery.critical,
 		#tray.needs-attention,
 		#custom-display.modified {
