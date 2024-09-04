@@ -76,7 +76,7 @@
 	common = with pkgs; [
 		adwaita-icon-theme    # GTK icons.
 		evince                # Document viewer.
-		firefox-esr           # Web browser.
+		firefox-esr chromium  # Web browser and chromium just in case.
 		gimp                  # Image manipulation program.
 		gnome-calculator      # Calculator.
 		nautilus              # File manager.
