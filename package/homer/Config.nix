@@ -73,6 +73,7 @@
 			(mkGroup "Bookmark" "fa-bookmark" [
 				(mkLink "2gis"        "fa-map-location-dot" "https://2gis.ru")
 				(mkLink "FontAwesome" "fa-font-awesome"     "https://fontawesome.com/search?o=r&m=free")
+				(mkLink "Flibusta"    "fa-book"             "https://flibusta.is")
 				(mkLink "MonkeyType"  "fa-keyboard"         "https://monkeytype.com")
 				(mkLink "NerdFonts"   "fa-font"             "https://www.nerdfonts.com/cheat-sheet")
 				(mkLink "Reddit"      "fab fa-reddit"       "https://reddit.com")
