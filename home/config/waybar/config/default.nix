@@ -42,7 +42,8 @@ in {
 		};
 		"sway/language" = {
 			tooltip = false;
-			on-click = "swaymsg 'input * xkb_switch_layout next'";
+			on-click       = "swaymsg 'input * xkb_switch_layout next'";
+			on-click-right = "xdg-open https://translate.yandex.ru";
 		};
 		"sway/scratchpad" = {
 			format         = "{icon}  {count}";
