@@ -123,13 +123,14 @@ in {
 			on-click-right = "powersave toggle";
 		};
 		temperature = {
-			format         = "{temperatureC}°C";
-			hwmon-path-abs = "${config.setting.cpu.hwmon.path}";
-			input-filename = "${config.setting.cpu.hwmon.file}";
-			interval       = refreshInterval;
-			on-click       = "foot -e bash -c btop";
-			on-click-right = "powersave toggle";
-			tooltip        = false;
+			critical-threshold = 80;
+			format             = "{temperatureC}°C";
+			hwmon-path-abs     = "${config.setting.cpu.hwmon.path}";
+			input-filename     = "${config.setting.cpu.hwmon.file}";
+			interval           = refreshInterval;
+			on-click           = "foot -e bash -c btop";
+			on-click-right     = "powersave toggle";
+			tooltip            = false;
 		};
 		"custom/powersave" = {
 			exec           = "powersave waybar";

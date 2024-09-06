@@ -64,6 +64,7 @@ in {
 		#pulseaudio.muted,
 		#pulseaudio.source-muted,
 		#battery.critical,
+		#temperature.critical,
 		#tray.needs-attention,
 		#custom-display.modified {
 			border-top: ${toString config.style.window.border}px solid #${config.style.color.accent};
