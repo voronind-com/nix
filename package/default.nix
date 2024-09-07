@@ -30,19 +30,16 @@
 		lm_sensors        # Hardware sensors, like temperature and fan speeds.
 		lshw              # Detailed hardware info tool.
 		lsof              # Find current file users.
-		ltex-ls           # Latex LSP for neovim spellcheck.
 		man               # App to read manuals.
 		neovim            # Text editor.
-		nixd              # Nix LSP.
 		nmap zmap         # Network analyzer.
 		openssh sshfs     # Ssh client.
 		parallel          # Run programs in parallel.
-		parted gparted    # GUI/CLI disk partition tool.
+		parted            # CLI disk partition tool.
 		pv                # IO progress bar.
 		radare2           # Hex editor.
 		ripgrep           # Better grep.
 		rsync             # File copy tool.
-		scanmem           # Memory edit tool.
 		smartmontools     # S.M.A.R.T. tools.
 		sqlite            # Serverless file-based database engine.
 		tmux              # Terminal multiplexor.
@@ -56,11 +53,11 @@
 		yt-dlp            # Video downloader.
 		zip unzip         # Zip archive/unarchive tools.
 
-		(pkgs.callPackage ./yamusicdownload {})
 		# (pkgs.callPackage ./ytdlp {})
 	];
 
 	desktop = with pkgs; [
+		adwaita-icon-theme             # GTK icons.
 		foot                           # Terminal emulator.
 		fuzzel                         # Application launcher.
 		grim slurp wf-recorder         # Screenshot.
@@ -74,23 +71,25 @@
 	];
 
 	common = with pkgs; [
-		adwaita-icon-theme    # GTK icons.
 		evince                # Document viewer.
-		firefox-esr chromium  # Web browser and chromium just in case.
+		firefox-esr chromium  # Web browser. And chromium just in case.
 		gimp                  # Image manipulation program.
 		gnome-calculator      # Calculator.
-		nautilus              # File manager.
+		gparted               # GUI disk utility just in case.
 		jellyfin-media-player # Jellyfin client (self-hosted Netflix).
 		loupe                 # Image viewer.
+		nautilus              # File manager.
 		obs-studio            # Streaming/recording app.
 		onlyoffice-bin        # Office documents app suite.
 
-		(mpv.override {scripts = [mpvScripts.mpris];}) # Media player.
+		(mpv.override { scripts = [ mpvScripts.mpris ]; }) # Media player.
+		(pkgs.callPackage ./yamusicdownload {})
 	];
 
 	gaming = with pkgs; [
 		steam-run # Run games outside of Steam.
 		steam bottles dxvk gamescope mangohud vkd3d wine64 # Gaming!
+		scanmem # Memory edit tool.
 	];
 
 	creative = with pkgs; [
@@ -102,6 +101,8 @@
 	dev = with pkgs; [
 		android-studio
 		jetbrains.idea-community
+		nixd    # Nix LSP.
+		ltex-ls # Latex LSP for neovim spellcheck.
 	];
 
 	extra = with pkgs; [
@@ -112,7 +113,7 @@
 		cbonsai cmatrix             # CLI Screensavers.
 		cowsay lolcat               # CLI funni.
 		gnome-font-viewer           # Font viewer.
-		ollama                      # LLMs.
+		# ollama                      # LLMs.
 		tor-browser                 # Privacy browser.
 		universal-android-debloater # Debloat Android devices.
 	];

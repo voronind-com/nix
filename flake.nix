@@ -243,10 +243,15 @@
 					};
 					modules = modules ++ (self.findFiles ./config) ++ [
 						./home/HomeManager.nix
-						{ home.hm.enable        = true; }
-						{ home.hm.username      = username; }
-						{ home.hm.homeDirectory = homeDirectory; }
-						{ home.hm.package.core.enable = true; }
+						{
+							home.hm = {
+								inherit username homeDirectory;
+								enable = true;
+								package = {
+									core.enable = true;
+								};
+							};
+						}
 
 						{ nixpkgs.config.allowUnfree = true; }
 						{ nixpkgs.config.allowUnfreePredicate = (pkg: true); }
