@@ -36,7 +36,7 @@ in {
 				scrSelection=$(${selection})
 				[[ -n "''${scrSelection}" ]] || exit
 
-				scrRecFile="''${XDG_VIDEOS_DIR[0]}/$(date +${format}).${container}"
+				scrFile="''${XDG_VIDEOS_DIR[0]}/$(date +${format}).${container}"
 
 				scrTransform="$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .transform')"
 				[[ "''${scrTransform}" = "normal" ]] && scrTransform=""
@@ -44,51 +44,51 @@ in {
 				wf-recorder \
 					--geometry "''${scrSelection}" \
 					--codec ${codec} \
-					--file "''${scrRecFile}" \
+					--file "''${scrFile}" \
 					--framerate ${toString framerate} \
 					--pixel-format ${pixfmt} \
 				&& ffmpeg \
 					-f lavfi \
 					-i anullsrc=channel_layout=stereo:sample_rate=44100 \
-					-i "''${scrRecFile}" \
+					-i "''${scrFile}" \
 					-c:v copy \
 					-c:a libopus \
 					-shortest \
-					-f ${container} "''${scrRecFile}_" \
-				&& mv "''${scrRecFile}_" "''${scrRecFile}" \
+					-f ${container} "''${scrFile}_" \
+				&& mv "''${scrFile}_" "''${scrFile}" \
 				&& [[ -n "''${scrTransform}" ]] \
-				&& ffmpeg -display_rotation ''${scrTransform} -i ''${scrRecFile} -c copy -f ${container} ''${scrRecFile}_ \
-				&& mv ''${scrRecFile}_ ''${scrRecFile} \
-				|| rm ''${scrRecFile}_
+				&& ffmpeg -display_rotation ''${scrTransform} -i ''${scrFile} -c copy -f ${container} ''${scrFile}_ \
+				&& mv ''${scrFile}_ ''${scrFile} \
+				|| rm ''${scrFile}_
 			};
 		'';
 
 		fullrec = pkgs.writeShellScriptBin "FullscreenRecording" ''
 			pkill -SIGINT wf-recorder \
 			|| {
-				scrRecFile="''${XDG_VIDEOS_DIR[0]}/$(date +${format}).${container}"
+				scrFile="''${XDG_VIDEOS_DIR[0]}/$(date +${format}).${container}"
 				scrTransform="$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .transform')"
 				[[ "''${scrTransform}" = "normal" ]] && scrTransform=""
 
 				wf-recorder \
 					-o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") - \
 					--codec ${codec} \
-					--file "''${scrRecFile}" \
+					--file "''${scrFile}" \
 					--framerate ${toString framerate} \
 					--pixel-format ${pixfmt} \
 				&& ffmpeg \
 					-f lavfi \
 					-i anullsrc=channel_layout=stereo:sample_rate=44100 \
-					-i "''${scrRecFile}" \
+					-i "''${scrFile}" \
 					-c:v copy \
 					-c:a libopus \
 					-shortest \
-					-f ${container} "''${scrRecFile}_" \
-				&& mv "''${scrRecFile}_" "''${scrRecFile}" \
+					-f ${container} "''${scrFile}_" \
+				&& mv "''${scrFile}_" "''${scrFile}" \
 				&& [[ -n "''${scrTransform}" ]] \
-				&& ffmpeg -display_rotation ''${scrTransform} -i ''${scrRecFile} -c copy -f ${container} ''${scrRecFile}_ \
-				&& mv ''${scrRecFile}_ ''${scrRecFile} \
-				|| rm ''${scrRecFile}_
+				&& ffmpeg -display_rotation ''${scrTransform} -i ''${scrFile} -c copy -f ${container} ''${scrFile}_ \
+				&& mv ''${scrFile}_ ''${scrFile} \
+				|| rm ''${scrFile}_
 			};
 		'';
 	in ''
