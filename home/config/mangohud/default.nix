@@ -1,16 +1,11 @@
 { util, ... }: {
 	config = util.trimTabs ''
-		af=16
 		blacklist=example
-		fps_limit=165
-		fps_limit_method=early
 		fps_sampling_period=1000
 		frame_timing=0
-		gl_vsync=1
 		preset=0,1,2
 		toggle_preset=F1
 		toggle_logging=F2
-		vsync=3
 	'';
 
 	presets = util.trimTabs ''
