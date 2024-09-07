@@ -10,12 +10,12 @@
 in {
 	text = ''
 		# Fullscreen screenshot.
-		# bindsym --to-code $mod+shift+v exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy -t image/png
+		bindsym --to-code $mod+y exec 'export scrFile="''${XDG_PICTURES_DIR[0]}/$(date +${format}).png"; grim -o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") - | tee "''${scrFile}" | wl-copy -t image/png'
 
 		# Select screenshot.
-		bindsym --to-code $mod+v exec grim -g "$(${selection})" - | tee "''${XDG_PICTURES_DIR[0]}/$(date +${format}).png" | wl-copy
+		bindsym --to-code $mod+v exec 'export scrFile="''${XDG_PICTURES_DIR[0]}/$(date +${format}).png"; { grim -g "$(${selection})" - || rm "''${scrFile}"; } | tee "''${scrFile}" | wl-copy -t image/png'
 
 		# Select recording.
-		bindsym --to-code $mod+shift+v exec 'pkill -SIGINT wf-recorder || { export targetFile="''${XDG_VIDEOS_DIR[0]}/$(date +${format}).${container}"; wf-recorder --geometry "$(${selection})" --codec ${codec} --file "''${targetFile}" --framerate ${toString framerate} --pixel-format ${pixfmt} && ffmpeg -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 -i "''${targetFile}" -c:v copy -c:a libopus -shortest -f ${container} "''${targetFile}_" && mv "''${targetFile}_" "''${targetFile}"; }'
+		bindsym --to-code $mod+shift+v exec 'pkill -SIGINT wf-recorder || { export scrRecFile="''${XDG_VIDEOS_DIR[0]}/$(date +${format}).${container}"; wf-recorder --geometry "$(${selection})" --codec ${codec} --file "''${scrRecFile}" --framerate ${toString framerate} --pixel-format ${pixfmt} && ffmpeg -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 -i "''${scrRecFile}" -c:v copy -c:a libopus -shortest -f ${container} "''${scrRecFile}_" && mv "''${scrRecFile}_" "''${scrRecFile}"; }'
 	'';
 }
