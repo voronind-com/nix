@@ -54,12 +54,18 @@ in {
 					-c:v copy \
 					-c:a libopus \
 					-shortest \
-					-f ${container} "''${scrFile}_" \
+					-f ${container} \
+					"''${scrFile}_" \
 				&& mv "''${scrFile}_" "''${scrFile}" \
 				&& [[ -n "''${scrTransform}" ]] \
-				&& ffmpeg -display_rotation ''${scrTransform} -i ''${scrFile} -c copy -f ${container} ''${scrFile}_ \
-				&& mv ''${scrFile}_ ''${scrFile} \
-				|| rm ''${scrFile}_
+				&& ffmpeg \
+					-display_rotation ''${scrTransform} \
+					-i "''${scrFile}" \
+					-c copy \
+					-f ${container} \
+					"''${scrFile}_" \
+				&& mv "''${scrFile}_" "''${scrFile}" \
+				|| rm "''${scrFile}_"
 			};
 		'';
 
@@ -83,12 +89,18 @@ in {
 					-c:v copy \
 					-c:a libopus \
 					-shortest \
-					-f ${container} "''${scrFile}_" \
+					-f ${container} \
+					"''${scrFile}_" \
 				&& mv "''${scrFile}_" "''${scrFile}" \
 				&& [[ -n "''${scrTransform}" ]] \
-				&& ffmpeg -display_rotation ''${scrTransform} -i ''${scrFile} -c copy -f ${container} ''${scrFile}_ \
-				&& mv ''${scrFile}_ ''${scrFile} \
-				|| rm ''${scrFile}_
+				&& ffmpeg \
+					-display_rotation ''${scrTransform} \
+					-i "''${scrFile}" \
+					-c copy \
+					-f ${container} \
+					"''${scrFile}_" \
+				&& mv "''${scrFile}_" "''${scrFile}" \
+				|| rm "''${scrFile}_"
 			};
 		'';
 	in ''
