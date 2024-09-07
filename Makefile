@@ -29,9 +29,9 @@ fix-hm:
 	systemctl restart home-manager-dasha.service; \
 	mv /etc/nix/nix.conf_ /etc/nix/nix.conf
 
+# SOURCE: https://github.com/DeterminateSystems/nix-installer
 install-system:
-	curl -L https://nixos.org/nix/install | sh /dev/stdin --daemon
-	printf "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
+	curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 
 install-user:
 	curl -L https://nixos.org/nix/install | sh /dev/stdin --no-daemon
