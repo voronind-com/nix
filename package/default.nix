@@ -72,7 +72,7 @@
 
 	common = with pkgs; [
 		evince                # Document viewer.
-		firefox-esr chromium  # Web browser. And chromium just in case.
+		chromium              # Just in case I ever need it.
 		gimp                  # Image manipulation program.
 		gnome-calculator      # Calculator.
 		gparted               # GUI disk utility just in case.
@@ -87,9 +87,9 @@
 	];
 
 	gaming = with pkgs; [
-		steam-run # Run games outside of Steam.
-		steam bottles dxvk gamescope mangohud vkd3d wine64 # Gaming!
 		scanmem # Memory edit tool.
+		steam bottles dxvk gamescope mangohud vkd3d wine64 # Gaming!
+		steam-run # Run games outside of Steam.
 	];
 
 	creative = with pkgs; [
@@ -101,8 +101,8 @@
 	dev = with pkgs; [
 		android-studio
 		jetbrains.idea-community
-		nixd    # Nix LSP.
 		ltex-ls # Latex LSP for neovim spellcheck.
+		nixd    # Nix LSP.
 	];
 
 	extra = with pkgs; [
@@ -113,7 +113,6 @@
 		cbonsai cmatrix             # CLI Screensavers.
 		cowsay lolcat               # CLI funni.
 		gnome-font-viewer           # Font viewer.
-		# ollama                      # LLMs.
 		tor-browser                 # Privacy browser.
 		universal-android-debloater # Debloat Android devices.
 	];

@@ -267,7 +267,13 @@
 			x86LinuxRoot = mkCommonHome "root" "/root" "x86_64-linux" [];
 		in nixpkgs.lib.foldl' (acc: h: acc // h) {} [
 			x86LinuxRoot
-			(x86LinuxHome "voronind" [])
+			(x86LinuxHome "voronind" [
+				{
+					home.hm.package = {
+						common.enable = true;
+					};
+				}
+			])
 		];
 
 		# Android.
