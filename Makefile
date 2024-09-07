@@ -29,8 +29,12 @@ fix-hm:
 	systemctl restart home-manager-dasha.service; \
 	mv /etc/nix/nix.conf_ /etc/nix/nix.conf
 
-install:
+install-system:
 	curl -L https://nixos.org/nix/install | sh /dev/stdin --daemon
+	printf "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
+
+install-user:
+	curl -L https://nixos.org/nix/install | sh /dev/stdin --no-daemon
 	mkdir -p $$HOME/.config/nix
 	printf "experimental-features = nix-command flakes" > $$HOME/.config/nix/nix.conf
 
