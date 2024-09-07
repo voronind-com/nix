@@ -30,12 +30,14 @@ fix-hm:
 	mv /etc/nix/nix.conf_ /etc/nix/nix.conf
 
 install:
-	sh <(curl -L https://nixos.org/nix/install) --daemon
+	curl -L https://nixos.org/nix/install | sh /dev/stdin --daemon
+	mkdir -p $$HOME/.config/nix
+	printf "experimental-features = nix-command flakes" > $$HOME/.config/nix/nix.conf
+
+install-hm:
 	nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 	nix-channel --update
 	nix-shell '<home-manager>' -A install
-	mkdir -p $$HOME/.config/nix
-	printf "experimental-features = nix-command flakes" > $$HOME/.config/nix/nix.conf
 
 .PHONY: home
 home:
