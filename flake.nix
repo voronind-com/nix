@@ -134,7 +134,7 @@
 			droidStateVersion = "23.11";
 			stateVersion      = "24.05";
 			timeZone = "Europe/Moscow";
-			url = "https://git.voronind.com/voronind/nixos.git";
+			url = "https://git.voronind.com/voronind/nix.git";
 		};
 
 		# Hack to use <container/Change.nix> in other files.
