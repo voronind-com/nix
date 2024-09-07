@@ -30,6 +30,7 @@
 		lm_sensors        # Hardware sensors, like temperature and fan speeds.
 		lshw              # Detailed hardware info tool.
 		lsof              # Find current file users.
+		ltex-ls           # Latex LSP for neovim spellcheck.
 		man               # App to read manuals.
 		neovim            # Text editor.
 		nmap zmap         # Network analyzer.
@@ -101,7 +102,6 @@
 	dev = with pkgs; [
 		android-studio
 		jetbrains.idea-community
-		ltex-ls # Latex LSP for neovim spellcheck.
 		nixd    # Nix LSP.
 	];
 
