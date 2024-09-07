@@ -41,7 +41,7 @@ install-hm:
 
 .PHONY: home
 home:
-	home-manager switch --flake $(flake)#$$USER
+	home-manager switch -b old --flake $(flake)#$$USER
 
 .PHONY: live
 live:
