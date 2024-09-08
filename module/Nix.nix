@@ -15,8 +15,8 @@
 		# When running GC, keep build dependencies.
 		keep-outputs = true;
 
-		# Run GC automatically when there's a 50 GB or less free space.
-		min-free = 50 * 1000 * 1000 * 1000;
+		# Run GC automatically when there's a less free space than specified.
+		min-free = 1 * 1000 * 1000 * 1000;
 	};
 
 	# NOTE: Currently I run GC completely, but this setting (put above near min-free)
