@@ -61,11 +61,8 @@
 		# Enable Gaming.
 		function gamingon() {
 			on() {
-				swaymsg "output \"Huawei Technologies Co., Inc. ZQE-CBA 0xC080F622\" adaptive_sync on"
-				# swaymsg "output \"Huawei Technologies Co., Inc. ZQE-CBA 0xC080F622\" mode 3440x1440@164.999Hz"
-				swaymsg "output \"AOC 24G2W1G4 ATNL61A129625\" adaptive_sync on"
-				# swaymsg "output \"AOC 24G2W1G4 ATNL61A129625\" mode 1920x1080@144.000Hz"
-				_gamingstate on
+				local output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
+				swaymsg "output \"''${output}\" adaptive_sync on"
 			}
 			_sway_iterate_sockets on
 		}
@@ -73,11 +70,8 @@
 		# Disable Gaming.
 		function gamingoff() {
 			off() {
-				swaymsg "output \"Huawei Technologies Co., Inc. ZQE-CBA 0xC080F622\" adaptive_sync off"
-				# swaymsg "output \"Huawei Technologies Co., Inc. ZQE-CBA 0xC080F622\" mode 3440x1440@59.973Hz"
-				swaymsg "output \"AOC 24G2W1G4 ATNL61A129625\" adaptive_sync off"
-				# swaymsg "output \"AOC 24G2W1G4 ATNL61A129625\" mode 1920x1080@60.000Hz"
-				_gamingstate off
+				local output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
+				swaymsg "output \"''${output}\" adaptive_sync off"
 			}
 			_sway_iterate_sockets off
 		}
@@ -92,11 +86,17 @@
 		}
 
 		function _gamingstate() {
-			if [[ "''${1}" = "" ]]; then
-				cat /tmp/.gamingstate 2> /dev/null || echo off
-			else
-				echo "''${*}" > /tmp/.gamingstate
-			fi
+			local outputs=($(swaymsg -t get_outputs | jq -r '.[] | .adaptive_sync_status'))
+
+			for state in "''${outputs[@]}"; do
+				[[ "''${state}" = "disabled" ]] || {
+					echo on
+					return 1
+				}
+			done
+
+			echo off
+			return 0
 		}
 	'';
 }
