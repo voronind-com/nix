@@ -70,7 +70,7 @@ Yellow are modifier keys, they enable layers when held. Green ones are just modi
 <details>
 <summary>WM keys</summary>
 Sway:<br>
-<img src="https://i.imgur.com/PhR67M3.png" /><br>
+<img src="https://i.imgur.com/0zqRARr.png" /><br>
 Gnome:<br>
 <img src="https://i.imgur.com/TrqC5jt.png" />
 </details>

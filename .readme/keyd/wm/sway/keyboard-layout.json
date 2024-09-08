@@ -38,7 +38,13 @@
       "c": "#cccccc"
     },
     "T",
-    "Y",
+    {
+      "c": "#8ec07c"
+    },
+    "Full Scr / Rec",
+    {
+      "c": "#cccccc"
+    },
     "U",
     "I",
     "O",
@@ -90,7 +96,7 @@
     "Lock / +Sus-pend",
     "Close Window",
     "Scratch toggle / move",
-    "Screen select / full",
+    "Select Scr / Rec",
     {
       "c": "#cccccc"
     },
