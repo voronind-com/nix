@@ -1,23 +1,11 @@
 { ... }: {
 	text = ''
-		# Enable VPN.
-		function vpnon() {
-			nmcli connection up vpn
-			_vpnstate on
-		}
-
-		# Disable vpn.
-		function vpnoff() {
-			nmcli connection down vpn
-			_vpnstate off
-		}
-
 		# Toggle vpn.
 		function vpntoggle() {
 			if [[ "$(_vpnstate)" = "on" ]]; then
-				vpnoff
+				nmcli connection down vpn
 			else
-				vpnon
+				nmcli connection up vpn
 			fi
 		}
 
