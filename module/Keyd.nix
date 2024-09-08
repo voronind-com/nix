@@ -3,7 +3,7 @@
 in {
 	options = {
 		module.keyd = {
-			enable = mkEnableOption "Keyboard remaps." // { default = true; };
+			enable = mkEnableOption "Keyboard remaps.";
 		};
 	};
 

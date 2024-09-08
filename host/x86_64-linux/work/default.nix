@@ -17,6 +17,7 @@
 		builder.client.enable      = true;
 		desktop.sway.enable        = true;
 		kernel.enable              = true;
+		keyd.enable           = true;
 		powerlimit.thinkpad.enable = true;
 		print.enable               = true;
 		intel.cpu = {
