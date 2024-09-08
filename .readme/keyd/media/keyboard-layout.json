@@ -81,10 +81,10 @@
     {
       "c": "#8ec07c"
     },
-    "Mute",
+    "Mute Sound",
     "Stop",
-    "Cycle Output (Sound)",
-    "Cycle Input (Voice)",
+    "Cycle Sound Device",
+    "Mute Mic",
     {
       "c": "#cccccc"
     },

@@ -94,7 +94,7 @@ Tmux:<br>
 
 <details>
 <summary>Media Controls</summary>
-<img src="https://i.imgur.com/cfcPLpK.png" />
+<img src="https://i.imgur.com/HvdSdRP.png" />
 </details>
 
 <details>
