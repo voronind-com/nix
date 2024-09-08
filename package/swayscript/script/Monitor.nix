@@ -1,29 +1,36 @@
 { ... }: {
 	text = ''
-		# Enable monitors.
-		function monon() {
-			on() {
-				local output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
-				swaymsg "output \"''${output}\" power on"
-			}
-			_sway_iterate_sockets on
-		}
-
-		# Disable monitors.
-		function monoff() {
-			off() {
-				local output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
-				swaymsg "output \"''${output}\" power off"
-			}
-			_sway_iterate_sockets off
-		}
-
 		# Toggle monitors.
 		function montoggle() {
-			local state=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .power')
-			''${state} && monoff || monon
+			toggle() {
+				local output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
+				local state=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .power')
+
+				if ''${state}; then
+					swaymsg "output \"''${output}\" power off"
+				else
+					swaymsg "output \"''${output}\" power on"
+				fi
+			}
+			_sway_iterate_sockets toggle
 		}
 
+		# Toggle gaming.
+		function gamingtoggle() {
+			toggle() {
+				local output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
+				local state=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .adaptive_sync_status')
+
+				if [[ "''${state}" = "disabled" ]]; then
+					swaymsg "output \"''${output}\" adaptive_sync on"
+				else
+					swaymsg "output \"''${output}\" adaptive_sync off"
+				fi
+			}
+			_sway_iterate_sockets toggle
+		}
+
+		# Waybar output.
 		function monbar() {
 			local __monstate=$(_monstate)
 			local __gamingstate=$(_gamingstate)
@@ -42,41 +49,17 @@
 
 			for state in "''${outputs[@]}"; do
 				''${state} || {
-					echo off
+					printf off
 					return 1
 				}
 			done
 
-			echo on
+			printf on
 			return 0
 		}
 
 		function _recording() {
-			[[ "$(ps cax | rg wf-recorder)" = "" ]] && echo off || echo on
-		}
-
-		# Enable Gaming.
-		function gamingon() {
-			on() {
-				local output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
-				swaymsg "output \"''${output}\" adaptive_sync on"
-			}
-			_sway_iterate_sockets on
-		}
-
-		# Disable Gaming.
-		function gamingoff() {
-			off() {
-				local output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
-				swaymsg "output \"''${output}\" adaptive_sync off"
-			}
-			_sway_iterate_sockets off
-		}
-
-		# Toggle gaming.
-		function gamingtoggle() {
-			local state=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .adaptive_sync_status')
-			[[ "''${state}" = "disabled" ]] && gamingon || gamingoff
+			[[ "$(ps cax | rg wf-recorder)" = "" ]] && printf off || printf on
 		}
 
 		function _gamingstate() {
@@ -84,12 +67,12 @@
 
 			for state in "''${outputs[@]}"; do
 				[[ "''${state}" = "disabled" ]] || {
-					echo on
+					printf on
 					return 1
 				}
 			done
 
-			echo off
+			printf off
 			return 0
 		}
 	'';
