@@ -7,9 +7,9 @@
 			keyd.enable           = lib.mkForce false;
 		};
 		virtualisation = {
-			# diskSize   = 20 * 1024;
 			cores      = 4;
 			diskImage  = null;
+			diskSize   = 20 * 1024;
 			memorySize = 4  * 1024;
 			msize      = 1024 * 1024;
 			restrictNetwork = false;
