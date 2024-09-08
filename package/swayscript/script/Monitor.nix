@@ -20,11 +20,8 @@
 
 		# Toggle monitors.
 		function montoggle() {
-			if [[ "$(_monstate)" = "on" ]]; then
-				monoff
-			else
-				monon
-			fi
+			local state=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .power')
+			''${state} && monoff || monon
 		}
 
 		function monbar() {
@@ -78,11 +75,8 @@
 
 		# Toggle gaming.
 		function gamingtoggle() {
-			if [[ "$(_gamingstate)" = "on" ]]; then
-				gamingoff
-			else
-				gamingon
-			fi
+			local state=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .adaptive_sync_status')
+			[[ "''${state}" = "disabled" ]] && gamingon || gamingoff
 		}
 
 		function _gamingstate() {
