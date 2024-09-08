@@ -1,5 +1,6 @@
-options = --option eval-cache false --fallback
-flake   = .
+options  = --option eval-cache false --fallback
+flake    = .
+hostname = $(shell hostname)
 
 help:
 	@printf "Please specify a target.\n"
@@ -68,4 +69,4 @@ verify:
 
 # Untested.
 vm:
-	nix run $(options) $(flake)#nixosConfigurations.${nixosConfig.networking.hostName}.config.system.build.vm
+	nix run $(options) $(flake)#nixosConfigurations.$(hostname).config.system.build.vm
