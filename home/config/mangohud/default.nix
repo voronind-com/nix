@@ -23,7 +23,7 @@
 		device_battery=gamepad,mouse
 		font_size=12
 		fps_sampling_period=1000
-		gpu_junction_temp=1
+		gpu_junction_temp=0
 		gpu_mem_temp=1
 		gpu_temp=1
 		hud_no_margin=1
