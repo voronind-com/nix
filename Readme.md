@@ -68,11 +68,8 @@ Yellow are modifier keys, they enable layers when held. Green ones are just modi
 </details>
 
 <details>
-<summary>WM keys</summary>
-Sway:<br>
-<img src="https://i.imgur.com/zfCWDA6.png" /><br>
-Gnome:<br>
-<img src="https://i.imgur.com/TrqC5jt.png" />
+<summary>Sway keys</summary>
+<img src="https://i.imgur.com/GS9MUZp.png" /><br>
 </details>
 
 <details>
@@ -99,7 +96,7 @@ Tmux:<br>
 
 <details>
 <summary>System controls</summary>
-<img src="https://i.imgur.com/VmpOq6d.png" />
+<img src="https://i.imgur.com/n50RZMy.png" />
 </details>
 
 [Link](http://www.keyboard-layout-editor.com) / [Source](https://github.com/ijprest/keyboard-layout-editor) of the tool I used to draw the images.

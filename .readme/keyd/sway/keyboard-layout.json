@@ -11,7 +11,13 @@
     "*\n8",
     "(\n9",
     ")\n0",
-    "_\n-",
+    {
+      "c": "#8ec07c"
+    },
+    "Split Vertic-ally",
+    {
+      "c": "#cccccc"
+    },
     "+\n=",
     {
       "w": 2
@@ -23,16 +29,22 @@
       "c": "#8ec07c",
       "w": 1.5
     },
-    "Switch app",
+    "Tab mode toggle",
     "Prev Work-space",
-    "Maxi-mize",
+    "Up",
     "Next Work-space",
-    "Resize Mode",
+    "Float layer / Waybar",
     {
       "c": "#cccccc"
     },
     "T",
-    "Y",
+    {
+      "c": "#8ec07c"
+    },
+    "Full Scr / Rec",
+    {
+      "c": "#cccccc"
+    },
     "U",
     "I",
     "O",
@@ -40,28 +52,34 @@
     "{\n[",
     "}\n]",
     {
+      "c": "#8ec07c",
       "w": 1.5
     },
-    "|\n\\"
+    "Split Hori-zontally"
   ],
   [
     {
-      "c": "#8ec07c",
       "w": 1.75
     },
     "Terminal",
-    "Tile Left",
-    "Mini-mize",
-    "Rile Right",
-    "Full-screen",
+    "Left",
+    "Down",
+    "Right",
+    "Full-screen / Float",
     {
       "c": "#cccccc"
     },
     "G",
-    "H",
-    "J",
-    "K",
-    "L",
+    {
+      "c": "#8ec07c"
+    },
+    "Resize Left",
+    "Resize Down",
+    "Resize Up",
+    "Resize Right",
+    {
+      "c": "#cccccc"
+    },
     ":\n;",
     "\"\n'",
     {
@@ -74,16 +92,22 @@
       "c": "#8ec07c",
       "w": 2.25
     },
-    "Alternative action",
-    "Lock",
+    "Alternative action (after slash) or move window",
+    "Lock / +Sus-pend",
     "Close Window",
-    "Hide All Window",
-    "Screen select",
+    "Scratch toggle / move",
+    "Select Scr / Rec",
     {
       "c": "#cccccc"
     },
     "B",
-    "N",
+    {
+      "c": "#8ec07c"
+    },
+    "Last notif / Dismiss",
+    {
+      "c": "#cccccc"
+    },
     "M",
     "<\n,",
     ">\n.",

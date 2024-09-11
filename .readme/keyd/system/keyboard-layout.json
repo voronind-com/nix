@@ -73,7 +73,13 @@
     },
     "D",
     "F",
-    "G",
+    {
+      "c": "#8ec07c"
+    },
+    "Toggle Gaming Mode",
+    {
+      "c": "#cccccc"
+    },
     "H",
     "J",
     "K",
@@ -108,7 +114,13 @@
     },
     "B",
     "N",
-    "M",
+    {
+      "c": "#8ec07c"
+    },
+    "Toggle Monitor Power",
+    {
+      "c": "#cccccc"
+    },
     "<\n,",
     ">\n.",
     "?\n/",
