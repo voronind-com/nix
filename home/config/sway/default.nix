@@ -1,10 +1,10 @@
 { pkgs, util, config, ... } @args: let
 	# Order is required for Sway configuration.
 	swayRc = util.catText [
+		./module/Mod.nix
 		./module/Style.nix
 		./module/Display.nix
 		./module/Input.nix
-		./module/Mod.nix
 		./module/Font.nix
 		./module/Launcher.nix
 		./module/Terminal.nix
