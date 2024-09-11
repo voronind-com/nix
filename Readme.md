@@ -1,4 +1,4 @@
-# Dmitry 🌊 NixOS configuration.
+# Dmitry 🌊 Nix configuration.
 
 ## Screenshots.
 
