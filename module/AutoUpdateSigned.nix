@@ -33,14 +33,13 @@ in {
 			script = ''
 				pushd /tmp
 				rm -rf ./nixos
-				${getExe pkgs.git} clone --depth=1 --single-branch --branch=main ${const.url} ./nixos
+				git clone --depth=1 --single-branch --branch=main ${const.url} ./nixos
 				pushd ./nixos
-				${getExe pkgs.git} verify-commit HEAD || {
+				git verify-commit HEAD || {
 					echo "Verification failed."
 					exit 1
 				};
-				${getExe pkgs.gnumake} switch
-				${getExe pkgs.gnumake} fix-hm-root
+				make switch fix-hm
 			'';
 			after = [ "network-online.target" ];
 			wants = [ "network-online.target" ];
