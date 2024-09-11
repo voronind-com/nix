@@ -11,6 +11,8 @@
 				else
 					swaymsg "output \"''${output}\" power on"
 				fi
+
+				pkill -RTMIN+4 waybar
 			}
 			_sway_iterate_sockets toggle
 		}
@@ -26,6 +28,8 @@
 				else
 					swaymsg "output \"''${output}\" adaptive_sync off"
 				fi
+
+				pkill -RTMIN+4 waybar
 			}
 			_sway_iterate_sockets toggle
 		}

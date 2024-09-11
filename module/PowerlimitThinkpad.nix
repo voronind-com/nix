@@ -15,6 +15,7 @@
 				echo ${toString cfg.onMax} > ${controlFileMax}
 			fi
 
+			pkill -RTMIN+6 waybar
 			true
 		}
 

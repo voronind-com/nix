@@ -77,11 +77,6 @@ in {
 			on-click-right  = "powerlimit toggle";
 			interval        = refreshInterval;
 		};
-		"custom/powerlimit" = {
-			exec           = "powerlimit waybar";
-			interval       = refreshInterval;
-			on-click-right = "powerlimit toggle";
-		};
 		pulseaudio = {
 			scroll-step  = 5;
 			format       = "{volume}%{icon}{format_source}";
@@ -132,18 +127,23 @@ in {
 			on-click-right     = "powersave toggle";
 			tooltip            = false;
 		};
-		"custom/powersave" = {
-			exec           = "powersave waybar";
-			interval       = refreshInterval;
-			on-click       = "foot -e bash -c btop";
-			on-click-right = "powersave toggle";
-		};
 		"custom/display" = {
 			exec           = "swayscript monbar";
-			interval       = refreshInterval;
 			on-click       = "sleep 0.1 && swayscript montoggle"; # FIXME: remove sleep when resolved: https://github.com/Alexays/Waybar/issues/216
 			on-click-right = "sleep 0.1 && swayscript gamingtoggle";
 			return-type    = "json";
+			signal         = 4;
+		};
+		"custom/powersave" = {
+			exec           = "powersave waybar";
+			on-click       = "foot -e bash -c btop";
+			on-click-right = "powersave toggle";
+			signal         = 5;
+		};
+		"custom/powerlimit" = {
+			exec           = "powerlimit waybar";
+			on-click-right = "powerlimit toggle";
+			signal         = 6;
 		};
 	};
 }

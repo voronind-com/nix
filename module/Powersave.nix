@@ -9,6 +9,7 @@
 				echo ${cfg.cpu.boost.enableCmd} > ${cfg.cpu.boost.controlFile}
 			fi
 
+			pkill -RTMIN+5 waybar
 			true
 		}
 
