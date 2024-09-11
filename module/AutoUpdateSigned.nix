@@ -39,7 +39,8 @@ in {
 					echo "Verification failed."
 					exit 1
 				};
-				make switch fix-hm
+				make switch
+				make fix-hm
 			'';
 			after = [ "network-online.target" ];
 			wants = [ "network-online.target" ];
