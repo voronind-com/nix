@@ -30,7 +30,13 @@
     },
     "Tab",
     "Q",
-    "W",
+    {
+      "c": "#8ec07c"
+    },
+    "Bright- ness Up",
+    {
+      "c": "#cccccc"
+    },
     "E",
     "R",
     "T",
@@ -58,16 +64,16 @@
     },
     "Caps Lock",
     "A",
-    "S",
-    "D",
-    "F",
     {
       "c": "#8ec07c"
     },
-    "Toggle Gaming",
+    "Bright-ness Down",
     {
       "c": "#cccccc"
     },
+    "D",
+    "F",
+    "G",
     "H",
     "J",
     "K",
@@ -102,13 +108,7 @@
     },
     "B",
     "N",
-    {
-      "c": "#8ec07c"
-    },
-    "Toggle moni-tors",
-    {
-      "c": "#cccccc"
-    },
+    "M",
     "<\n,",
     ">\n.",
     "?\n/",

@@ -9,7 +9,6 @@
 		./module/Launcher.nix
 		./module/Terminal.nix
 		./module/TitleBar.nix
-		./module/Brightness.nix
 		./module/Navigation.nix
 		./module/Notification.nix
 		./module/Resize.nix

@@ -99,7 +99,7 @@ Tmux:<br>
 
 <details>
 <summary>System controls</summary>
-<img src="https://i.imgur.com/wZOTRCm.png" />
+<img src="https://i.imgur.com/VmpOq6d.png" />
 </details>
 
 [Link](http://www.keyboard-layout-editor.com) / [Source](https://github.com/ijprest/keyboard-layout-editor) of the tool I used to draw the images.

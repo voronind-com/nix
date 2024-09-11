@@ -1,5 +1,6 @@
 { ... }: let
 	mod = "print";
+	brstep = 5;
 in {
 	text = ''
 		bindsym ${mod} input * xkb_switch_layout 0
@@ -10,5 +11,10 @@ in {
 		bindsym --to-code ${mod}+v exec 'swayscript vpntoggle'
 		bindsym --to-code ${mod}+x exec 'systemctl poweroff -i'
 		bindsym --to-code ${mod}+z exec 'systemctl suspend -i'
+
+		bindsym --to-code ${mod}+w    exec light -U ${toString brstep}
+		bindsym XF86MonBrightnessDown exec light -U ${toString brstep}
+		bindsym --to-code ${mod}+s    exec light -A ${toString brstep}
+		bindsym XF86MonBrightnessUp   exec light -A ${toString brstep}
 	'';
 }
