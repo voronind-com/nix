@@ -1,4 +1,4 @@
-# Dmitry 🌊 Nix configuration.
+# Dmitry 🌊 NixOS, HomeManager and Nix-on-droid configurations.
 
 ## Screenshots.
 

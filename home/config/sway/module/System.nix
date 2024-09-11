@@ -12,9 +12,9 @@ in {
 		bindsym --to-code ${mod}+x exec 'systemctl poweroff -i'
 		bindsym --to-code ${mod}+z exec 'systemctl suspend -i'
 
-		bindsym --to-code ${mod}+w    exec light -U ${toString brstep}
-		bindsym XF86MonBrightnessDown exec light -U ${toString brstep}
-		bindsym --to-code ${mod}+s    exec light -A ${toString brstep}
+		bindsym --to-code ${mod}+w    exec light -A ${toString brstep}
 		bindsym XF86MonBrightnessUp   exec light -A ${toString brstep}
+		bindsym --to-code ${mod}+s    exec light -U ${toString brstep}
+		bindsym XF86MonBrightnessDown exec light -U ${toString brstep}
 	'';
 }
