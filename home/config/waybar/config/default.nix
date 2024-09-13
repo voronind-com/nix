@@ -130,9 +130,9 @@ in {
 		};
 		"custom/display" = {
 			exec            = "swayscript displaywidget";
-			on-click        = "swayscript dnd";
-			on-click-right  = "swayscript monitor";
-			on-click-middle = "swayscript gaming";
+			on-click        = "sleep 0.1 && swayscript dnd"; # HACK: https://github.com/Alexays/Waybar/issues/2166 & https://github.com/Alexays/Waybar/issues/1968
+			on-click-right  = "sleep 0.1 && swayscript monitor";
+			on-click-middle = "sleep 0.1 && swayscript gaming";
 			return-type     = "json";
 			signal          = 4;
 		};
