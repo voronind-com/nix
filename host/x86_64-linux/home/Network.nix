@@ -96,6 +96,8 @@ in {
 		bridges.${lan}.interfaces = [
 			"enp6s0f0"
 			"enp6s0f1"
+			"enp7s0f1"
+			"enp7s0f1"
 		];
 
 		interfaces = {
