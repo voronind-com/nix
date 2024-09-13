@@ -43,7 +43,7 @@ in {
 		"sway/language" = {
 			tooltip = false;
 			on-click       = "swaymsg 'input * xkb_switch_layout next'";
-			on-click-right = "xdg-open https://translate.yandex.ru";
+			on-click-right = "xdg-open https://translate.yandex.ru/";
 		};
 		"sway/scratchpad" = {
 			format         = "{icon}  {count}";
@@ -62,6 +62,7 @@ in {
 			# timezone = "America/New_York";
 			tooltip-format = "<big><tt>{calendar}</tt></big>";
 			format-alt = "{:%d %a %H:%M}";
+			on-click-right = "xdg-open https://cloud.voronind.com/apps/calendar/";
 		};
 		battery = {
 			states = {
