@@ -13,7 +13,7 @@
 			true
 		}
 
-		function waybar() {
+		function widget() {
 			status || echo -n "󰓅"
 		}
 

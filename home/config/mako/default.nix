@@ -14,5 +14,11 @@ in {
 			text-color       = "#${config.style.color.fg.light}";
 			width            = 480;
 		};
+
+		sections = {
+			"mode=dnd" = {
+				invisible = 1;
+			};
+		};
 	};
 }

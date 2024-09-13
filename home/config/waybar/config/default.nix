@@ -128,20 +128,21 @@ in {
 			tooltip            = false;
 		};
 		"custom/display" = {
-			exec           = "swayscript monbar";
-			on-click       = "sleep 0.1 && swayscript montoggle"; # FIXME: remove sleep when resolved: https://github.com/Alexays/Waybar/issues/216
-			on-click-right = "sleep 0.1 && swayscript gamingtoggle";
-			return-type    = "json";
-			signal         = 4;
+			exec            = "swayscript displaywidget";
+			on-click        = "swayscript dnd";
+			on-click-right  = "swayscript monitor";
+			on-click-middle = "swayscript gaming";
+			return-type     = "json";
+			signal          = 4;
 		};
 		"custom/powersave" = {
-			exec           = "powersave waybar";
+			exec           = "powersave widget";
 			on-click       = "foot -e bash -c btop";
 			on-click-right = "powersave toggle";
 			signal         = 5;
 		};
 		"custom/powerlimit" = {
-			exec           = "powerlimit waybar";
+			exec           = "powerlimit widget";
 			on-click-right = "powerlimit toggle";
 			signal         = 6;
 		};
