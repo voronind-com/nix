@@ -20,7 +20,7 @@
 		}
 
 		function widget() {
-			status || echo -n ""
+			status && printf '​' || printf ''
 		}
 
 		function status() {

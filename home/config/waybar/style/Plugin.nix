@@ -3,11 +3,11 @@
 	paddingH = "12px";
 in {
 	# ISSUE: https://github.com/Alexays/Waybar/issues/3303
+	# This way I am forced to apply the padding to children of each group
+	# instead of the whole group.
 	text = ''
-		#batteryinfo,
 		#clock,
 		#custom-display,
-		#hardware,
 		#language,
 		#mpris,
 		#pulseaudio,
@@ -16,6 +16,16 @@ in {
 			padding: ${paddingV} ${paddingH};
 			border-top: ${toString config.style.window.border}px solid transparent;
 			border-bottom: ${toString config.style.window.border}px solid transparent;
+		}
+
+		#cpu,
+		#battery {
+			padding-left: ${paddingH};
+		}
+
+		#custom-powersave,
+		#custom-powerlimit {
+			padding-right: ${paddingH};
 		}
 
 		#clock {
