@@ -20,6 +20,14 @@
 <a href="https://i.imgur.com/H943DFl.jpeg">Wallpaper link</a>
 </details>
 
+<details>
+<summary>Screenshot 4 + Android</summary>
+<img src="https://i.imgur.com/00BTwv7.png" />
+<img width=400px src="https://i.imgur.com/51M56xK.png" />
+<img width=400px src="https://i.imgur.com/TbW3MGS.png" />
+<br><a href="https://i.imgur.com/Q8ZTZCH.png">Wallpaper link</a>
+</details>
+
 [My current wallpaper](https://git.voronind.com/voronind/nixos/src/branch/main/config/Wallpaper.nix#L2)
 
 Color theming based on wallpaper thanks to [Stylix](https://github.com/danth/stylix).
