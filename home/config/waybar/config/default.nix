@@ -3,8 +3,7 @@
 in {
 	file = (pkgs.formats.json {}).generate "WaybarConfig" {
 		height       = 34;
-		layer        = "top";
-		margin-left  = config.style.window.gap;
+		layer        = "top"; margin-left  = config.style.window.gap;
 		margin-right = config.style.window.gap;
 		margin-top   = config.style.window.gap;
 		mode         = "dock";
@@ -28,12 +27,8 @@ in {
 		modules-right = [
 			"sway/language"
 			"pulseaudio"
-			"battery"
-			"custom/powerlimit"
-			"cpu"
-			"temperature"
-			"memory"
-			"custom/powersave"
+			"group/batteryinfo"
+			"group/hardware"
 			"custom/display"
 			"tray"
 		];
@@ -77,6 +72,15 @@ in {
 			format-icons    = ["󰂎" "󱊡" "󱊢" "󱊣" "󱊣"];
 			on-click-right  = "powerlimit toggle";
 			interval        = refreshInterval;
+		};
+		"custom/powerlimit" = {
+			exec           = "powerlimit widget";
+			on-click-right = "powerlimit toggle";
+			signal         = 6;
+		};
+		"group/batteryinfo" = {
+			orientation = "horizontal";
+			modules     = [ "battery" "custom/powerlimit" ];
 		};
 		pulseaudio = {
 			scroll-step  = 5;
@@ -128,6 +132,16 @@ in {
 			on-click-right     = "powersave toggle";
 			tooltip            = false;
 		};
+		"custom/powersave" = {
+			exec           = "powersave widget";
+			on-click       = "foot -e bash -c btop";
+			on-click-right = "powersave toggle";
+			signal         = 5;
+		};
+		"group/hardware" = {
+			orientation = "horizontal";
+			modules     = [ "cpu" "memory" "temperature" "custom/powersave" ];
+		};
 		"custom/display" = {
 			exec            = "swayscript displaywidget";
 			on-click        = "sleep 0.1 && swayscript dnd"; # HACK: https://github.com/Alexays/Waybar/issues/2166 & https://github.com/Alexays/Waybar/issues/1968
@@ -135,17 +149,6 @@ in {
 			on-click-middle = "sleep 0.1 && swayscript gaming";
 			return-type     = "json";
 			signal          = 4;
-		};
-		"custom/powersave" = {
-			exec           = "powersave widget";
-			on-click       = "foot -e bash -c btop";
-			on-click-right = "powersave toggle";
-			signal         = 5;
-		};
-		"custom/powerlimit" = {
-			exec           = "powerlimit widget";
-			on-click-right = "powerlimit toggle";
-			signal         = 6;
 		};
 	};
 }

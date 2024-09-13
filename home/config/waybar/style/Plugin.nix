@@ -2,61 +2,42 @@
 	paddingV = "0";
 	paddingH = "12px";
 in {
+	# ISSUE: https://github.com/Alexays/Waybar/issues/3303
 	text = ''
-		#pulseaudio,
-		#mpris,
-		#battery,
-		#custom-display,
-		#custom-powersave,
-		#custom-powerlimit,
-		#tray,
-		#temperature,
-		#memory,
-		#cpu,
+		#batteryinfo,
 		#clock,
+		#custom-display,
+		#hardware,
+		#language,
+		#mpris,
+		#pulseaudio,
 		#scratchpad,
-		#language {
+		#tray {
 			padding: ${paddingV} ${paddingH};
 			border-top: ${toString config.style.window.border}px solid transparent;
 			border-bottom: ${toString config.style.window.border}px solid transparent;
-		}
-
-		#cpu {
-			padding-right: 0;
-		}
-
-		#temperature {
-			padding-left: 0;
-			padding-right: 0;
-		}
-
-		#memory {
-			padding-left: 0;
-		}
-
-		#custom-powersave,
-		#custom-powerlimit {
-			margin-left: -${paddingH};
-			padding-left: 0;
 		}
 
 		#clock {
 			font-weight: bold;
 		}
 
-		#battery:hover,
+		#custom-powerlimit,
+		#custom-powersave,
+		#memory,
+		#temperature {
+			padding-left: 4px;
+		}
+
+		#batteryinfo:hover,
 		#clock:hover,
-		#cpu:hover,
 		#custom-display:hover,
-		#custom-powerlimit:hover,
-		#custom-powersave:hover,
+		#hardware:hover,
 		#language:hover,
-		#memory:hover,
 		#mpris:hover,
 		#pulseaudio:hover,
-		#temperature:hover,
-		#tray:hover,
 		#scratchpad:hover,
+		#tray:hover,
 		#workspaces button:hover {
 			background-color: rgba(${config.style.color.border-r},${config.style.color.border-g},${config.style.color.border-b},${toString config.style.opacity.desktop});
 		}
