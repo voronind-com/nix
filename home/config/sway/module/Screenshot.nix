@@ -10,17 +10,26 @@
 in {
 	text = let
 		picEdit      = ''| swappy -f - -o -'';
-		picFile      = ''scrFile="''${XDG_PICTURES_DIR[0]}/$(date +${format}).png"'';
 		picFull      = ''-o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") -'';
-		picSelect    = ''-g "''${scrSelection}" -'';
+		picSelected  = ''-g "''${scrSelection}" -'';
 		picToBuffer  = ''| wl-copy -t image/png'';
 		picToFile    = ''| tee "''${scrFile}"'';
 		screenshot   = ''grim'';
 		updateWaybar = ''pkill -RTMIN+4 waybar'';
-		vidFile      = ''scrFile="''${XDG_VIDEOS_DIR[0]}/$(date +${format}).${container}"'';
 		vidFull      = ''-o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") -'';
-		vidSelect    = ''--geometry "''${scrSelection}"'';
+		vidSelected  = ''--geometry "''${scrSelection}"'';
 		vidStop      = ''pkill -SIGINT wf-recorder'';
+
+		prepFile = path: ext: ''
+			curWindow=$(parse_snake $(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .app_id'))
+			[[ "''${curWindow}" = "null" ]] && curWindow=$(parse_snake $(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .name'))
+			scrDir="${path}/''${curWindow}"
+			mkdir -p "''${scrDir}"
+			scrFile="''${scrDir}/$(date +${format}).${ext}"
+		'';
+
+		vidPrepFile = prepFile "\${XDG_VIDEOS_DIR[0]}"   container;
+		picPrepFile = prepFile "\${XDG_PICTURES_DIR[0]}" "png";
 
 		getSelection = ''
 			scrSelection=$(${selection})
@@ -70,10 +79,10 @@ in {
 		SelectRecording = pkgs.writeShellScriptBin "SelectRecording" ''
 			${vidStop} || {
 				${getSelection}
-				${vidFile}
 				${getTransform}
+				${vidPrepFile}
 				${updateWaybar}
-				${vidStart} ${vidSelect}
+				${vidStart} ${vidSelected}
 				${vidMuxAudio}
 				${vidTransform}
 				${updateWaybar}
@@ -82,8 +91,8 @@ in {
 
 		FullscreenRecording = pkgs.writeShellScriptBin "FullscreenRecording" ''
 			${vidStop} || {
-				${vidFile}
 				${getTransform}
+				${vidPrepFile}
 				${updateWaybar}
 				${vidStart} ${vidFull}
 				${vidMuxAudio}
@@ -93,28 +102,22 @@ in {
 		'';
 
 		FullscreenScreenshot = pkgs.writeShellScriptBin "FullscreenScreenshot" ''
-			${picFile}
+			${picPrepFile}
 
 			${screenshot} ${picFull} ${picToFile} ${picToBuffer}
 		'';
 
 		SelectScreenshot = pkgs.writeShellScriptBin "SelectScreenshot" ''
 			${getSelection}
-			${picFile}
+			${picPrepFile}
 
-			${screenshot} ${picSelect} ${picEdit} ${picToFile} ${picToBuffer}
+			${screenshot} ${picSelected} ${picEdit} ${picToFile} ${picToBuffer}
 		'';
 	in ''
-		# Fullscreen screenshot.
-		bindsym --to-code $mod+y exec ${lib.getExe FullscreenScreenshot}
-
-		# Fullscreen recording.
+		bindsym --to-code $mod+y       exec ${lib.getExe FullscreenScreenshot}
 		bindsym --to-code $mod+shift+y exec ${lib.getExe FullscreenRecording}
 
-		# Select screenshot.
-		bindsym --to-code $mod+v exec ${lib.getExe SelectScreenshot}
-
-		# Select recording.
+		bindsym --to-code $mod+v       exec ${lib.getExe SelectScreenshot}
 		bindsym --to-code $mod+shift+v exec ${lib.getExe SelectRecording}
 	'';
 }
