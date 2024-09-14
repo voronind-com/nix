@@ -9,16 +9,20 @@
 	pixfmt    = "yuv420p10le";
 in {
 	text = let
-		picEdit      = ''| swappy -f - -o -'';
-		picFull      = ''-o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") -'';
-		picSelected  = ''-g "''${scrSelection}" -'';
-		picToBuffer  = ''| wl-copy -t image/png'';
-		picToFile    = ''| tee "''${scrFile}"'';
-		screenshot   = ''grim'';
-		updateWaybar = ''pkill -RTMIN+4 waybar'';
-		vidFull      = ''-o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") -'';
-		vidSelected  = ''--geometry "''${scrSelection}"'';
-		vidStop      = ''pkill -SIGINT wf-recorder'';
+		picEdit          = ''swappy -f - -o -'';
+		picFull          = ''-o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") -'';
+		picPrepFile      = prepFile "\${XDG_PICTURES_DIR[0]}" "png";
+		picRefLatestFile = refLatestFile "png";
+		picSelected      = ''-g "''${scrSelection}" -'';
+		picToBuffer      = ''wl-copy -t image/png'';
+		picToFile        = ''tee "''${scrFile}"'';
+		screenshot       = ''grim'';
+		updateWaybar     = ''pkill -RTMIN+4 waybar'';
+		vidFull          = ''-o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") -'';
+		vidPrepFile      = prepFile "\${XDG_VIDEOS_DIR[0]}"   container;
+		vidRefLatestFile = refLatestFile container;
+		vidSelected      = ''--geometry "''${scrSelection}"'';
+		vidStop          = ''pkill -SIGINT wf-recorder'';
 
 		prepFile = path: ext: ''
 			# Focused app id by default.
@@ -28,16 +32,22 @@ in {
 			[[ "''${curWindow}" = "null" ]] && curWindow=$(parse_snake $(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .name'))
 
 			# If no app in focus, use "unknown" dir.
-			[[ "''${curWindow}" -eq "''${curWindow}" ]] && curWindow="unknown"
+			[[ "''${curWindow}" =~ ^[0-9]+$ ]] && curWindow="unknown"
 
 			# Prepare dir and file path.
+			scrPath="${path}"
 			scrDir="${path}/''${curWindow}"
 			mkdir -p "''${scrDir}"
-			scrFile="''${scrDir}/$(date +${format}).${ext}"
+			scrName="$(date +${format}).${ext}"
+			scrFile="''${scrDir}/''${scrName}"
+			scrLatestRef="./''${curWindow}/''${scrName}"
 		'';
 
-		vidPrepFile = prepFile "\${XDG_VIDEOS_DIR[0]}"   container;
-		picPrepFile = prepFile "\${XDG_PICTURES_DIR[0]}" "png";
+		refLatestFile = ext: ''
+			scrLatest="''${scrPath}/Latest.${ext}"
+			rm "''${scrLatest}"
+			ln -s "''${scrLatestRef}" "''${scrLatest}"
+		'';
 
 		getSelection = ''
 			scrSelection=$(${selection})
@@ -93,6 +103,7 @@ in {
 				${vidStart} ${vidSelected}
 				${vidMuxAudio}
 				${vidTransform}
+				${vidRefLatestFile}
 				${updateWaybar}
 			};
 		'';
@@ -105,6 +116,7 @@ in {
 				${vidStart} ${vidFull}
 				${vidMuxAudio}
 				${vidTransform}
+				${vidRefLatestFile}
 				${updateWaybar}
 			};
 		'';
@@ -112,14 +124,14 @@ in {
 		FullscreenScreenshot = pkgs.writeShellScriptBin "FullscreenScreenshot" ''
 			${picPrepFile}
 
-			${screenshot} ${picFull} ${picToFile} ${picToBuffer}
+			${screenshot} ${picFull} | ${picToFile} | ${picToBuffer} && ${picRefLatestFile}
 		'';
 
 		SelectScreenshot = pkgs.writeShellScriptBin "SelectScreenshot" ''
 			${getSelection}
 			${picPrepFile}
 
-			${screenshot} ${picSelected} ${picEdit} ${picToFile} ${picToBuffer}
+			${screenshot} ${picSelected} | ${picEdit} | ${picToFile} | ${picToBuffer} && ${picRefLatestFile}
 		'';
 	in ''
 		bindsym --to-code $mod+y       exec ${lib.getExe FullscreenScreenshot}
