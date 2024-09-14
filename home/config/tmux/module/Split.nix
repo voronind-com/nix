@@ -17,7 +17,9 @@ in {
 		bind -n M-h  resize-pane -L ${toString stepHorizontal}
 		bind -n M-l  resize-pane -R ${toString stepHorizontal}
 		bind -n M-A  swap-pane   -U
+		bind -n M-W  swap-pane   -U
 		bind -n M-D  swap-pane   -D
+		bind -n M-S  swap-pane   -D
 		unbind '"'
 		unbind %
 
