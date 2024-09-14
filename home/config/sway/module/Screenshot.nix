@@ -9,58 +9,54 @@
 	pixfmt    = "yuv420p10le";
 in {
 	text = let
-		fullscr = pkgs.writeShellScriptBin "FullscreenScreenshot" ''
-			scrFile="''${XDG_PICTURES_DIR[0]}/$(date +${format}).png"
+		picEdit      = ''| swappy -f - -o -'';
+		picFile      = ''scrFile="''${XDG_PICTURES_DIR[0]}/$(date +${format}).png"'';
+		picFull      = ''-o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") -'';
+		picSelect    = ''-g "''${scrSelection}" -'';
+		picToBuffer  = ''| wl-copy -t image/png'';
+		picToFile    = ''| tee "''${scrFile}"'';
+		screenshot   = ''grim'';
+		updateWaybar = ''pkill -RTMIN+4 waybar'';
+		vidFile      = ''scrFile="''${XDG_VIDEOS_DIR[0]}/$(date +${format}).${container}"'';
+		vidFull      = ''-o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") -'';
+		vidSelect    = ''--geometry "''${scrSelection}"'';
+		vidStop      = ''pkill -SIGINT wf-recorder'';
 
-			grim \
-				-o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") - \
-			| tee "''${scrFile}" \
-			| wl-copy -t image/png
-		'';
-
-		selectscr = pkgs.writeShellScriptBin "SelectScreenshot" ''
+		getSelection = ''
 			scrSelection=$(${selection})
 			[[ -n "''${scrSelection}" ]] || exit
-
-			scrFile="''${XDG_PICTURES_DIR[0]}/$(date +${format}).png"
-
-			grim \
-				-g "''${scrSelection}" - \
-			| swappy -f - -o - \
-			| tee "''${scrFile}" \
-			| wl-copy -t image/png
 		'';
 
-		selectrec = pkgs.writeShellScriptBin "SelectRecording" ''
-			pkill -SIGINT wf-recorder \
-			|| {
-				scrSelection=$(${selection})
-				[[ -n "''${scrSelection}" ]] || exit
+		getTransform = ''
+			scrTransform="$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .transform')"
+			[[ "''${scrTransform}" = "normal" ]] && scrTransform=""
+		'';
 
-				scrFile="''${XDG_VIDEOS_DIR[0]}/$(date +${format}).${container}"
+		vidStart = ''
+			wf-recorder \
+				--codec ${codec} \
+				--file "''${scrFile}" \
+				--framerate ${toString framerate} \
+				--pixel-format ${pixfmt} \
+		'';
 
-				scrTransform="$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .transform')"
-				[[ "''${scrTransform}" = "normal" ]] && scrTransform=""
+		vidMuxAudio = ''
+			ffmpeg \
+				-f lavfi \
+				-i anullsrc=channel_layout=stereo:sample_rate=44100 \
+				-i "''${scrFile}" \
+				-c:v copy \
+				-c:a libopus \
+				-shortest \
+				-f ${container} \
+				"''${scrFile}_" \
+			&& mv "''${scrFile}_" "''${scrFile}" \
+			|| rm "''${scrFile}_"
+		'';
 
-				pkill -RTMIN+4 waybar \
-				& wf-recorder \
-					--geometry "''${scrSelection}" \
-					--codec ${codec} \
-					--file "''${scrFile}" \
-					--framerate ${toString framerate} \
-					--pixel-format ${pixfmt} \
-				&& ffmpeg \
-					-f lavfi \
-					-i anullsrc=channel_layout=stereo:sample_rate=44100 \
-					-i "''${scrFile}" \
-					-c:v copy \
-					-c:a libopus \
-					-shortest \
-					-f ${container} \
-					"''${scrFile}_" \
-				&& mv "''${scrFile}_" "''${scrFile}" \
-				&& [[ -n "''${scrTransform}" ]] \
-				&& ffmpeg \
+		vidTransform = ''
+			if [[ -n "''${scrTransform}" ]]; then
+				ffmpeg \
 					-display_rotation ''${scrTransform} \
 					-i "''${scrFile}" \
 					-c copy \
@@ -68,59 +64,57 @@ in {
 					"''${scrFile}_" \
 				&& mv "''${scrFile}_" "''${scrFile}" \
 				|| rm "''${scrFile}_"
+			fi
+		'';
 
-				pkill -RTMIN+4 waybar
+		SelectRecording = pkgs.writeShellScriptBin "SelectRecording" ''
+			${vidStop} || {
+				${getSelection}
+				${vidFile}
+				${getTransform}
+				${updateWaybar}
+				${vidStart} ${vidSelect}
+				${vidMuxAudio}
+				${vidTransform}
+				${updateWaybar}
 			};
 		'';
 
-		fullrec = pkgs.writeShellScriptBin "FullscreenRecording" ''
-			pkill -SIGINT wf-recorder \
-			|| {
-				scrFile="''${XDG_VIDEOS_DIR[0]}/$(date +${format}).${container}"
-				scrTransform="$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .transform')"
-				[[ "''${scrTransform}" = "normal" ]] && scrTransform=""
-
-				pkill -RTMIN+4 waybar \
-				& wf-recorder \
-					-o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") - \
-					--codec ${codec} \
-					--file "''${scrFile}" \
-					--framerate ${toString framerate} \
-					--pixel-format ${pixfmt} \
-				&& ffmpeg \
-					-f lavfi \
-					-i anullsrc=channel_layout=stereo:sample_rate=44100 \
-					-i "''${scrFile}" \
-					-c:v copy \
-					-c:a libopus \
-					-shortest \
-					-f ${container} \
-					"''${scrFile}_" \
-				&& mv "''${scrFile}_" "''${scrFile}" \
-				&& [[ -n "''${scrTransform}" ]] \
-				&& ffmpeg \
-					-display_rotation ''${scrTransform} \
-					-i "''${scrFile}" \
-					-c copy \
-					-f ${container} \
-					"''${scrFile}_" \
-				&& mv "''${scrFile}_" "''${scrFile}" \
-				|| rm "''${scrFile}_"
-
-				pkill -RTMIN+4 waybar
+		FullscreenRecording = pkgs.writeShellScriptBin "FullscreenRecording" ''
+			${vidStop} || {
+				${vidFile}
+				${getTransform}
+				${updateWaybar}
+				${vidStart} ${vidFull}
+				${vidMuxAudio}
+				${vidTransform}
+				${updateWaybar}
 			};
+		'';
+
+		FullscreenScreenshot = pkgs.writeShellScriptBin "FullscreenScreenshot" ''
+			${picFile}
+
+			${screenshot} ${picFull} ${picToFile} ${picToBuffer}
+		'';
+
+		SelectScreenshot = pkgs.writeShellScriptBin "SelectScreenshot" ''
+			${getSelection}
+			${picFile}
+
+			${screenshot} ${picSelect} ${picEdit} ${picToFile} ${picToBuffer}
 		'';
 	in ''
 		# Fullscreen screenshot.
-		bindsym --to-code $mod+y exec ${lib.getExe fullscr}
+		bindsym --to-code $mod+y exec ${lib.getExe FullscreenScreenshot}
 
 		# Fullscreen recording.
-		bindsym --to-code $mod+shift+y exec ${lib.getExe fullrec}
+		bindsym --to-code $mod+shift+y exec ${lib.getExe FullscreenRecording}
 
 		# Select screenshot.
-		bindsym --to-code $mod+v exec ${lib.getExe selectscr}
+		bindsym --to-code $mod+v exec ${lib.getExe SelectScreenshot}
 
 		# Select recording.
-		bindsym --to-code $mod+shift+v exec ${lib.getExe selectrec}
+		bindsym --to-code $mod+shift+v exec ${lib.getExe SelectRecording}
 	'';
 }
