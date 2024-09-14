@@ -21,8 +21,16 @@ in {
 		vidStop      = ''pkill -SIGINT wf-recorder'';
 
 		prepFile = path: ext: ''
+			# Focused app id by default.
 			curWindow=$(parse_snake $(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .app_id'))
+
+			# If no id (i.e. xwayland), then use a name (title).
 			[[ "''${curWindow}" = "null" ]] && curWindow=$(parse_snake $(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .name'))
+
+			# If no app in focus, use "unknown" dir.
+			[[ "''${curWindow}" -eq "''${curWindow}" ]] && curWindow="unknown"
+
+			# Prepare dir and file path.
 			scrDir="${path}/''${curWindow}"
 			mkdir -p "''${scrDir}"
 			scrFile="''${scrDir}/$(date +${format}).${ext}"
