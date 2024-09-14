@@ -43,7 +43,7 @@ in {
 				[[ "''${scrTransform}" = "normal" ]] && scrTransform=""
 
 				pkill -RTMIN+4 waybar \
-				| wf-recorder \
+				& wf-recorder \
 					--geometry "''${scrSelection}" \
 					--codec ${codec} \
 					--file "''${scrFile}" \
@@ -81,7 +81,7 @@ in {
 				[[ "''${scrTransform}" = "normal" ]] && scrTransform=""
 
 				pkill -RTMIN+4 waybar \
-				| wf-recorder \
+				& wf-recorder \
 					-o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") - \
 					--codec ${codec} \
 					--file "''${scrFile}" \
