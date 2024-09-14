@@ -26,6 +26,7 @@ in {
 
 			grim \
 				-g "''${scrSelection}" - \
+			| swappy -f - -o - \
 			| tee "''${scrFile}" \
 			| wl-copy -t image/png
 		'';

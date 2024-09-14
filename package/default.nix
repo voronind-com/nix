@@ -61,7 +61,7 @@
 		adwaita-icon-theme             # GTK icons.
 		foot                           # Terminal emulator.
 		fuzzel                         # Application launcher.
-		grim slurp wf-recorder         # Screenshot.
+		grim slurp wf-recorder swappy  # Screenshot.
 		mako                           # Notification system.
 		networkmanagerapplet           # Internet configuration.
 		pamixer pavucontrol pulseaudio # Audio.
