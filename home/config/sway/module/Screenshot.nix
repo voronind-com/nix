@@ -42,7 +42,8 @@ in {
 				scrTransform="$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .transform')"
 				[[ "''${scrTransform}" = "normal" ]] && scrTransform=""
 
-				wf-recorder \
+				pkill -RTMIN+4 waybar \
+				| wf-recorder \
 					--geometry "''${scrSelection}" \
 					--codec ${codec} \
 					--file "''${scrFile}" \
@@ -67,6 +68,8 @@ in {
 					"''${scrFile}_" \
 				&& mv "''${scrFile}_" "''${scrFile}" \
 				|| rm "''${scrFile}_"
+
+				pkill -RTMIN+4 waybar
 			};
 		'';
 
@@ -77,7 +80,8 @@ in {
 				scrTransform="$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .transform')"
 				[[ "''${scrTransform}" = "normal" ]] && scrTransform=""
 
-				wf-recorder \
+				pkill -RTMIN+4 waybar \
+				| wf-recorder \
 					-o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") - \
 					--codec ${codec} \
 					--file "''${scrFile}" \
@@ -102,6 +106,8 @@ in {
 					"''${scrFile}_" \
 				&& mv "''${scrFile}_" "''${scrFile}" \
 				|| rm "''${scrFile}_"
+
+				pkill -RTMIN+4 waybar
 			};
 		'';
 	in ''
