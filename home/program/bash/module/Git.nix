@@ -107,9 +107,9 @@
 		}
 
 		# Git patch create.
-		# Usage: gpc <FILE>
+		# Usage: gpc > <FILE>
 		function gpc() {
-			git diff --cached --binary > "''${@}"
+			git diff --cached --binary
 		}
 
 		# Git patch (apply).
