@@ -11,10 +11,10 @@ android:
 	cp ~/.termux/_colors.properties ~/.termux/colors.properties
 	cp ~/.Wallpaper /sdcard/Download/Wallpaper.jpg
 
-boot:
+boot: fix-ulimit
 	nixos-rebuild boot $(options) --flake $(flake)
 
-boot-no-nixconf:
+boot-no-nixconf: fix-ulimit
 	mv /etc/nix/nix.conf /etc/nix/nix.conf_; \
 	nixos-rebuild boot $(options) --flake $(flake); \
 	mv /etc/nix/nix.conf_ /etc/nix/nix.conf
@@ -30,6 +30,13 @@ fix-hm:
 	systemctl restart home-manager-dasha.service; \
 	mv /etc/nix/nix.conf_ /etc/nix/nix.conf
 
+fix-ulimit:
+	ulimit -n 999999999
+
+.PHONY: home
+home:
+	home-manager switch -b old --flake $(flake)#$$USER
+
 # SOURCE: https://github.com/DeterminateSystems/nix-installer
 install-system:
 	curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
@@ -44,10 +51,6 @@ install-hm:
 	nix-channel --update
 	nix-shell '<home-manager>' -A install
 
-.PHONY: home
-home:
-	home-manager switch -b old --flake $(flake)#$$USER
-
 .PHONY: live
 live:
 	nix build -o live $(options) $(flake)#nixosConfigurations.live.config.system.build.isoImage
@@ -58,7 +61,7 @@ reboot: boot
 show:
 	nix flake show
 
-switch:
+switch: fix-ulimit
 	nixos-rebuild switch $(options) --flake $(flake)
 
 update:
