@@ -77,6 +77,7 @@ in {
 			exec           = "powerlimit widget";
 			on-click-right = "powerlimit toggle";
 			signal         = 6;
+			tooltip        = false;
 		};
 		"group/batteryinfo" = {
 			orientation = "horizontal";
@@ -137,6 +138,7 @@ in {
 			on-click       = "foot -e bash -c btop";
 			on-click-right = "powersave toggle";
 			signal         = 5;
+			tooltip        = false;
 		};
 		"group/hardware" = {
 			orientation = "horizontal";
