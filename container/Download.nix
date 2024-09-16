@@ -49,7 +49,10 @@ in {
 					web.enable = true;
 				};
 
-				systemd.services.deluged.serviceConfig.MemoryLimit = cfg.memLimit;
+				systemd.services.deluged.serviceConfig = {
+					MemoryLimit   = cfg.memLimit;
+					RuntimeMaxSec = "1d";
+				};
 			};
 		};
 	};
