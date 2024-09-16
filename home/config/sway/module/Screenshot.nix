@@ -17,7 +17,7 @@ in {
 		picToBuffer      = ''wl-copy -t image/png'';
 		picToFile        = ''tee "''${scrFile}"'';
 		screenshot       = ''grim'';
-		updateWaybar     = ''pkill -RTMIN+4 waybar &''; # NOTE: Might need to add a delay here if it becomes inconsistent one day.
+		updateWaybar     = ''pkill -RTMIN+4 waybar''; # NOTE: Might need to add a delay here if it becomes inconsistent one day.
 		vidFull          = ''-o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") -'';
 		vidPrepFile      = prepFile "\${XDG_VIDEOS_DIR[0]}"   container;
 		vidRefLatestFile = refLatestFile container;
