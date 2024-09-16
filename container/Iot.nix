@@ -69,15 +69,20 @@ in {
 						aiodhcpwatcher
 						aiodiscover
 						aiogithubapi
+						arrow
 						async-upnp-client
+						av
+						gtts
 						ha-ffmpeg
 						hassil
 						home-assistant-intents
 						mutagen
 						numpy
+						pymicro-vad
 						pynacl
-						pyturbojpeg
 						python-telegram-bot
+						pyturbojpeg
+						pyspeex-noise
 						zeroconf
 					];
 					configDir = "/var/lib/hass";
