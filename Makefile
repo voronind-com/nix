@@ -33,6 +33,10 @@ fix-hm:
 fix-ulimit:
 	ulimit -n 999999999
 
+gc:
+	nix-collect-garbage -d
+	# nix-store --gc
+
 .PHONY: home
 home:
 	home-manager switch -b old --flake $(flake)#$$USER
