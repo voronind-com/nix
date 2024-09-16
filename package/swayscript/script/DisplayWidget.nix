@@ -55,11 +55,11 @@
 			local __dnd=$(_dnd)
 			local class=""
 
-			if [[ "''${__monitor}" = "on" ]] || [[ "''${__gaming}" = "on" ]] || [[ "''${__recording}" = "on" ]] || [[ "''${__dnd}" = "on" ]]; then
+			if [[ "''${__monitor}" = "Y" ]] || [[ "''${__gaming}" = "Y" ]] || [[ "''${__recording}" = "Y" ]] || [[ "''${__dnd}" = "Y" ]]; then
 				class="modified"
 			fi
 
-			printf "{\"text\": \"󰍹\", \"tooltip\": \"DND: ''${__dnd^} / Monitor: ''${__monitor^} / Gaming: ''${__gaming^} / Recording: ''${__recording^}\", \"class\": \"''${class}\"}\n"
+			printf "{\"text\": \"󰍹\", \"tooltip\": \"DND: ''${__dnd} / Monitor: ''${__monitor} / Gaming: ''${__gaming} / Recording: ''${__recording}\", \"class\": \"''${class}\"}\n"
 		}
 
 		function _monitor() {
@@ -67,21 +67,21 @@
 
 			for state in "''${outputs[@]}"; do
 				''${state} || {
-					printf on
+					printf Y
 					return 1
 				}
 			done
 
-			printf off
+			printf n
 			return 0
 		}
 
 		function _recording() {
-			[[ "$(ps cax | rg wf-recorder)" = "" ]] && printf off || printf on
+			[[ "$(ps cax | rg wf-recorder)" = "" ]] && printf n || printf Y
 		}
 
 		function _dnd() {
-			[[ "$(makoctl mode)" = "dnd" ]] && printf on || printf off
+			[[ "$(makoctl mode)" = "dnd" ]] && printf Y || printf n
 		}
 
 		function _gaming() {
@@ -89,12 +89,12 @@
 
 			for state in "''${outputs[@]}"; do
 				[[ "''${state}" = "disabled" ]] || {
-					printf on
+					printf Y
 					return 1
 				}
 			done
 
-			printf off
+			printf n
 			return 0
 		}
 	'';
