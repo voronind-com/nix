@@ -61,29 +61,24 @@ in {
 
 					# Number inputs.
 					layer_number = {
-						q = "1";
-						w = "2";
-						e = "3";
+						q = "7";
+						w = "8";
+						e = "9";
 						a = "4";
 						s = "5";
 						d = "6";
-						z = "7";
-						x = "8";
-						c = "9";
+						z = "1";
+						x = "2";
+						c = "3";
 						space = "0";
-						"1" = "f13";
-						"2" = "f14";
-						"3" = "f15";
-						"4" = "f16";
-						"5" = "f17";
-						"6" = "f18";
-						"7" = "f19";
-						"8" = "f20";
-						"9" = "f21";
-						"0" = "f22";
-						"-" = "f23";
-						"=" = "f24";
-						enter = "kpenter";
+						"1" = "kpequal";
+						"2" = "kpslash";
+						"3" = "kpasterisk";
+						"4" = "kpminus";
+						f = "kpenter";
+						r = "kpplus";
+						v = "kpcomma";
+						shift = "backspace";
 					};
 				};
 			};

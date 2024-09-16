@@ -94,7 +94,7 @@ Tmux:<br>
 
 <details>
 <summary>Extra numbers</summary>
-<img src="https://i.imgur.com/PW5eGSF.png" />
+<img src="https://i.imgur.com/89ERKd9.png" />
 </details>
 
 <details>
