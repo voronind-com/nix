@@ -83,10 +83,13 @@
 			rules = let
 				mkRule = mime: use: { inherit mime; use = use ++ [ "text" "hex" ]; };
 			in [
-				(mkRule "application/gzip"  [ "archive" ])
-				(mkRule "application/x-tar" [ "archive" ])
-				(mkRule "application/x-xz"  [ "archive" ])
-				(mkRule "application/zip"   [ "archive" ])
+				# Use `file -i file.txt` to find file mime type.
+				# Use `xdg-mime query default "text/plain"` to find default app.
+				(mkRule "application/gzip"            [ "archive" ])
+				(mkRule "application/x-tar"           [ "archive" ])
+				(mkRule "application/x-xz"            [ "archive" ])
+				(mkRule "application/zip"             [ "archive" ])
+				(mkRule "application/x-7z-compressed" [ "archive" ])
 				(mkRule "application/pdf" [ "pdf" ])
 				(mkRule "audio/*" [ "audio" ])
 				(mkRule "image/*" [ "image" "image_edit" ])
