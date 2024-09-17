@@ -1,7 +1,6 @@
 { pkgs, pkgsStable, pkgsMaster, ... } @args: {
 	core = with pkgs; [
-		android-tools     # Android adb tool. Can be used to connect to itself via wireless debugging.
-		binwalk           # Can analyze files for other files inside them.
+		android-tools     # Android adb tool. Can be used to connect to itself via wireless debugging. binwalk           # Can analyze files for other files inside them.
 		bridge-utils      # Network bridges.
 		btop htop         # System monitors.
 		coreutils         # UNIX Core utilities.
@@ -113,6 +112,7 @@
 		cbonsai cmatrix             # CLI Screensavers.
 		cowsay lolcat               # CLI funni.
 		gnome-font-viewer           # Font viewer.
+		p7zip                       # Weird archive tool.
 		tor-browser                 # Privacy browser.
 		universal-android-debloater # Debloat Android devices.
 	];
