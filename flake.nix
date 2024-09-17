@@ -118,10 +118,6 @@
 			url   = "github:folke/trouble.nvim";
 			flake = false;
 		};
-		nvimWhichKey = {
-			url   = "github:folke/which-key.nvim";
-			flake = false;
-		};
 	};
 
 	# Those are outputs (hosts, configurations) that can be produced by this whole config.

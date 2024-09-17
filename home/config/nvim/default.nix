@@ -36,7 +36,6 @@ in {
 			"${inputs.nvimTreesitter}"
 			"${inputs.nvimTree}"
 			"${inputs.nvimTrouble}"
-			"${inputs.nvimWhichKey}"
 		];
 
 		configs = [
@@ -80,7 +79,6 @@ in {
 			./module/key/Terminal.nix
 			./module/key/Todo.nix
 			./module/key/Trouble.nix
-			./module/key/Whichkey.nix
 		];
 	};
 }
