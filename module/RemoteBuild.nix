@@ -1,7 +1,7 @@
 { pkgs, lib, config, secret, ... }: with lib; let
 	cfg = config.module.builder;
-
-	serverKeyPath = "/root/.nixbuilder";
+	serverKeyPath       = "/root/.nixbuilder";
+	serverSshPublicKey  = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFqr7zKGOy/2bbAQCD85Ol+NoGGtvdMbSy3jGb98jM+f"; # Use ssh-keyscan.
 in {
 	options = {
 		module.builder = {
@@ -48,30 +48,36 @@ in {
 
 		(mkIf cfg.client.enable {
 			# NOTE: Requires host public key to be present in secret.ssh.builderKeys.
-			nix.buildMachines = [{
-				hostName = "nixbuilder";
-				protocol = "ssh-ng";
-				systems  = [
-					"x86_64-linux"
-					"i686-linux"
-					"aarch64-linux"
-				];
-				maxJobs     = 16;
-				speedFactor = 2;
-				mandatoryFeatures = [ ];
-				supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-			}];
-			nix.distributedBuilds = true;
-			nix.settings = let
-				substituters = [ "ssh-ng://nixbuilder" ];
-			in {
-				substituters = mkForce substituters;
-				trusted-substituters = substituters ++ [ "https://cache.nixos.org/" ];
-				builders-use-substitutes = true;
-				max-jobs = 0;
-				trusted-public-keys = [ secret.ssh.builderKey ];
-				# require-sigs = false;
-				# substitute = false;
+			nix = {
+				distributedBuilds = true;
+				buildMachines = [{
+					hostName = "nixbuilder";
+					protocol = "ssh-ng";
+					systems  = [
+						"x86_64-linux"
+						"i686-linux"
+						"aarch64-linux"
+					];
+					maxJobs     = 16;
+					speedFactor = 2;
+					mandatoryFeatures = [ ];
+					supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+				}];
+				settings = let
+					substituters = [ "ssh-ng://nixbuilder" ];
+				in {
+					substituters = mkForce substituters;
+					trusted-substituters = substituters ++ [ "https://cache.nixos.org/" ];
+					builders-use-substitutes = true;
+					max-jobs = 0;
+					trusted-public-keys = [ secret.ssh.builderKey ];
+					# require-sigs = false;
+					# substitute = false;
+				};
+			};
+			services.openssh.knownHosts.nixbuilder = {
+				publicKey      = serverSshPublicKey;
+				extraHostNames = [ "[10.0.0.1]:22143" ];
 			};
 		})
 	];
