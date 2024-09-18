@@ -49,6 +49,39 @@
 		// HTTPS only mode.
 		user_pref("dom.security.https_only_mode", true);
 		user_pref("dom.security.https_only_mode_ever_enabled", true);
+
+		// Style.
+		user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+	'';
+
+	userChrome = util.trimTabs ''
+		* {
+			font-family: "${config.style.font.serif.name}" !important;
+			font-size:   ${toString config.style.font.size.application}pt !important;
+		}
+	'';
+
+	userContent = util.trimTabs ''
+		@-moz-document url(about:home), url(about:newtab), url(about:privatebrowsing), url(about:blank) {
+			.click-target-container *, .top-sites-list * {
+				color: #fff !important ;
+				text-shadow: 2px 2px 2px #222 !important ;
+			}
+			body::before {
+				content: "" ;
+				z-index: -1 ;
+				position: fixed ;
+				top: 0 ;
+				left: 0 ;
+				background: #f9a no-repeat url("${config.module.wallpaper.path}?raw=true") center ;
+				background-size: cover ;
+				/* filter: blur(4px) ; */
+				width: 100vw ;
+				height: 100vh ;
+			}
+			/* .logo { background-image: url("{repo}/logo.png?raw=true") !important; } */
+			/* .logo { background-image: none !important; } */
+		}
 	'';
 
 	mkExtension = install_url: {
@@ -62,7 +95,7 @@ in {
 	package = pkgs.firefox-esr;
 	# languagePacks = [ "en-US" "ru" ];
 	profiles.default = {
-		inherit extraConfig;
+		inherit extraConfig userChrome userContent;
 	};
 	policies = {
 		ManagedBookmarks = [
