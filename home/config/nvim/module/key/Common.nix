@@ -29,7 +29,7 @@
 		rekey_visual("<Leader>.", "@:")
 
 		-- Save everything.
-		rekey_normal("zz", "<cmd>wa<cr>")
+		rekey_normal("<C-s>", "<cmd>wa!<cr>")
 
 		-- Save all we can and leave.
 		rekey_normal("<Leader>z", "<cmd>lua bye()<cr>")
