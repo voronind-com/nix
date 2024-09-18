@@ -112,6 +112,7 @@
 		cbonsai cmatrix             # CLI Screensavers.
 		cowsay lolcat               # CLI funni.
 		gnome-font-viewer           # Font viewer.
+		jamesdsp                    # Active audio processing.
 		p7zip                       # Weird archive tool.
 		tor-browser                 # Privacy browser.
 		universal-android-debloater # Debloat Android devices.
