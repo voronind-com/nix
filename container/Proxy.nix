@@ -77,8 +77,8 @@ in {
 						}
 
 						map $http_accept_language $resume {
-							default https://git.${config.container.domain}/voronind/resume/releases/download/latest/voronind_en.pdf;
-							~ru     https://git.${config.container.domain}/voronind/resume/releases/download/latest/voronind_ru.pdf;
+							default https://git.${config.container.domain}/voronind/resume/releases/download/latest/VoronindEn.pdf;
+							~ru     https://git.${config.container.domain}/voronind/resume/releases/download/latest/VoronindRu.pdf;
 						}
 
 						server {
