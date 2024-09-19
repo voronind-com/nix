@@ -63,7 +63,7 @@ in {
 					PIDFile    = "/run/nfqws.pid";
 					ExecReload = "/bin/kill -HUP $MAINPID";
 					Restart       = "always";
-					RestartSec    = "5s";
+					# RestartSec    = "5s";
 					RuntimeMaxSec = "1h";
 				};
 			};
