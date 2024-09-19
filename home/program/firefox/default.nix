@@ -74,6 +74,7 @@
 				top: 0 ;
 				left: 0 ;
 				background: #f9a no-repeat url("${config.module.wallpaper.path}?raw=true") center ;
+				background-color: #222;
 				background-size: cover ;
 				/* filter: blur(4px) ; */
 				width: 100vw ;
