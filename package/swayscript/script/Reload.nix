@@ -15,6 +15,9 @@
 
 				# Bash.
 				pkill -SIGUSR1 bash
+
+				# Notifications.
+				makoctl reload
 			}
 
 			_sway_iterate_sockets re
