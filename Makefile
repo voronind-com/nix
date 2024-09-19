@@ -22,14 +22,6 @@ boot-no-nixconf: fix-ulimit
 check:
 	nix flake check --show-trace
 
-# HACK: https://github.com/nix-community/home-manager/issues/5589
-fix-hm:
-	mv /etc/nix/nix.conf /etc/nix/nix.conf_; \
-	systemctl restart home-manager-root.service; \
-	systemctl restart home-manager-voronind.service; \
-	systemctl restart home-manager-dasha.service; \
-	mv /etc/nix/nix.conf_ /etc/nix/nix.conf
-
 fix-ulimit:
 	ulimit -n 999999999
 

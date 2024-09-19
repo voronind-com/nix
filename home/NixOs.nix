@@ -28,6 +28,9 @@ in {
 						inherit (user) username homeDirectory;
 						file             = import ./config args;
 						sessionVariables = import ./variable args;
+
+						# ISSUE: https://github.com/nix-community/home-manager/issues/5589
+						extraActivationPath = with pkgs; [ openssh ];
 					};
 					xdg      = import ./xdg { inherit (user) homeDirectory; };
 					programs = import ./program args;
