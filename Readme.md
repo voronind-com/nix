@@ -77,7 +77,7 @@ Yellow are modifier keys, they enable layers when held. Green ones are just modi
 
 <details>
 <summary>Sway keys</summary>
-<img src="https://i.imgur.com/GS9MUZp.png" /><br>
+<img src="https://i.imgur.com/hiGZ86w.png" /><br>
 </details>
 
 <details>
@@ -104,7 +104,7 @@ Tmux:<br>
 
 <details>
 <summary>System controls</summary>
-<img src="https://i.imgur.com/n50RZMy.png" />
+<img src="https://i.imgur.com/F4gm5NF.png" />
 </details>
 
 [Link](http://www.keyboard-layout-editor.com) / [Source](https://github.com/ijprest/keyboard-layout-editor) of the tool I used to draw the images.

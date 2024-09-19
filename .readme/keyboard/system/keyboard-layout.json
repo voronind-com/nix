@@ -38,7 +38,13 @@
       "c": "#cccccc"
     },
     "E",
-    "R",
+    {
+      "c": "#8ec07c"
+    },
+    "Live Config Reload",
+    {
+      "c": "#cccccc"
+    },
     "T",
     "Y",
     "U",
