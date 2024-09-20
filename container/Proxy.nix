@@ -58,7 +58,7 @@ in {
 					enable = true;
 					recommendedOptimisation  = true;
 					recommendedProxySettings = true;
-					clientMaxBodySize = "1024m";
+					clientMaxBodySize = "4096m";
 					appendConfig = util.trimTabs ''
 						worker_processes 4;
 					'';
@@ -67,6 +67,9 @@ in {
 					'';
 					# TODO: Fix 80 redirect and 403 default.
 					appendHttpConfig = util.trimTabs ''
+						proxy_max_temp_file_size 0;
+						proxy_buffering off;
+
 						server {
 							server_name default_server;
 							listen 80;
