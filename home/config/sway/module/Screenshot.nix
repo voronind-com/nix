@@ -61,6 +61,7 @@ in {
 
 		vidStart = ''
 			wf-recorder \
+				--no-damage \
 				--codec ${codec} \
 				--file "''${scrFile}" \
 				--framerate ${toString framerate} \
