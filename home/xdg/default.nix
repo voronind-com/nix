@@ -8,7 +8,7 @@
 		music       = "${homeDirectory}/music/";
 		pictures    = "${homeDirectory}/picture/";
 		publicShare = "${homeDirectory}/share/";
-		templates   = "${homeDirectory}/template/";
+		templates   = "${homeDirectory}/.template/";
 		videos      = "${homeDirectory}/video/";
 		extraConfig = {
 			XDG_TMP_DIR = "${homeDirectory}/tmp/";
