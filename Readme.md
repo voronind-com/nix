@@ -85,7 +85,7 @@ Yellow are modifier keys, they enable layers when held. Green ones are just modi
 Firefox:<br>
 <img src="https://i.imgur.com/GI0apoV.png" /><br>
 Jetbrains:<br>
-<img src="https://i.imgur.com/QChn9qU.png" /><br>
+<img src="https://i.imgur.com/OFNlHnW.png" /><br>
 Nautilus:<br>
 <img src="https://i.imgur.com/9W1GmLn.png" /><br>
 Tmux:<br>

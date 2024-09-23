@@ -2,6 +2,7 @@
 	file = (pkgs.formats.ini {}).generate "KeydJetbrainsConfig" {
 		"jetbrains-*" = {
 			"alt./"        = "C-/";          # Toggle comment.
+			"alt.."        = "C-f8";         # Toggle line breakpoint.
 			"alt.="        = "C-A-l";        # Reformat.
 			"alt.c"        = "S-escape";     # Close panel.
 			"alt.capslock" = "C-A-S-insert"; # New scratch file.
