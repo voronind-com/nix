@@ -37,6 +37,8 @@ in {
 		#memory,
 		#temperature {
 			padding-left: 4px;
+			border-top: ${toString config.style.window.border}px solid transparent;
+			border-bottom: ${toString config.style.window.border}px solid transparent;
 		}
 
 		#batteryinfo:hover,
@@ -64,6 +66,7 @@ in {
 		#workspaces button {
 			padding: ${paddingV} 4px;
 			border-top: ${toString config.style.window.border}px solid transparent;
+			border-bottom: ${toString config.style.window.border}px solid transparent;
 			border-radius: 0;
 		}
 
