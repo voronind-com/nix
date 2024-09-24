@@ -208,6 +208,7 @@ in {
 						script = ''
 							doveadm expunge -A mailbox Junk SENTBEFORE 7d
 							doveadm expunge -A mailbox Trash SENTBEFORE 30d
+							doveadm expunge -u trash@voronind.com mailbox Inbox SENTBEFORE 30d
 							doveadm purge -A
 						'';
 					};
