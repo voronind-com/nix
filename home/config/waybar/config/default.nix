@@ -3,7 +3,8 @@
 in {
 	file = (pkgs.formats.json {}).generate "WaybarConfig" {
 		height       = 34;
-		layer        = "top"; margin-left  = config.style.window.gap;
+		layer        = "top";
+		margin-left  = config.style.window.gap;
 		margin-right = config.style.window.gap;
 		margin-top   = config.style.window.gap;
 		mode         = "dock";
