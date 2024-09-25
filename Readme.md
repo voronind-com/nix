@@ -3,29 +3,29 @@
 ## Screenshots.
 
 <details>
-<summary>Screenshot 1</summary>
+<summary>Screenshot 1 + Android</summary>
+<img src="https://i.imgur.com/00BTwv7.png" />
+<img width=400px src="https://i.imgur.com/51M56xK.png" />
+<img width=400px src="https://i.imgur.com/TbW3MGS.png" />
+<br><a href="https://i.imgur.com/Q8ZTZCH.png">Wallpaper link</a>
+</details>
+
+<details>
+<summary>Screenshot 2</summary>
 <img src="https://i.imgur.com/LbxpvMt.jpeg" />
 <a href="https://i.imgur.com/GA96791.jpeg">Wallpaper link</a>
 </details>
 
 <details>
-<summary>Screenshot 2</summary>
+<summary>Screenshot 3</summary>
 <img src="https://i.imgur.com/7XMd58c.jpeg" />
 <a href="https://pixeldrain.com/api/file/ppeeEr4d">Wallpaper link</a>
 </details>
 
 <details>
-<summary>Screenshot 3</summary>
+<summary>Screenshot 4</summary>
 <img src="https://i.imgur.com/67nW8XT.jpeg" />
 <a href="https://i.imgur.com/H943DFl.jpeg">Wallpaper link</a>
-</details>
-
-<details>
-<summary>Screenshot 4 + Android</summary>
-<img src="https://i.imgur.com/00BTwv7.png" />
-<img width=400px src="https://i.imgur.com/51M56xK.png" />
-<img width=400px src="https://i.imgur.com/TbW3MGS.png" />
-<br><a href="https://i.imgur.com/Q8ZTZCH.png">Wallpaper link</a>
 </details>
 
 [My current wallpaper](https://git.voronind.com/voronind/nixos/src/branch/main/config/Wallpaper.nix#L2)
@@ -45,21 +45,6 @@ Please tell me if you find any undocumented parts.
 * NixOnDroid can be used to set up your environment inside the Termux app on Android. It also gives you access to all the Nixpkgs binaries for Arm. Configuration can be found [here](home/Android.nix), but you also need to add the definition to the root `flake.nix (nixOnDroidConfigurations.default)`. [Here](https://github.com/nix-community/nix-on-droid) are the docs.
 * [Stylix](config/Stylix.nix) can be used to change colors for the whole system based on current wallpaper. Example usages: [Sway](home/config/sway/module/Style.nix), [fuzzel](home/config/fuzzel/default.nix) and [Tmux](home/config/tmux/module/Status.nix).
 * [Signed auto-updates](module/AutoUpdateSigned.nix). Updates are pulled every hour and require the last commit to be signed with my signature.
-
-## WIP: NixOS learning roadmap.
-
-0. [Nix Pills](https://nixos.org/guides/nix-pills/). This is a bit controversial one. Try it, but if it's hard to read for you - just skip it for now.
-
-??? Where to look for stuff.  
-??? Nix language.  
-??? Nix package manager.  
-??? Nixpkgs.  
-??? Home manager.  
-
-??? (Optional) Remote builders.  
-??? (Optional) Live ISO.  
-??? (Optional) Dev Shells.  
-??? (Optional) Impermanence.  
 
 ## Keyboard layouts.
 
