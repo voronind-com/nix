@@ -2,8 +2,18 @@
 
 ## Screenshots.
 
+Newest first.
+
 <details>
 <summary>Screenshot 1 + Android</summary>
+<img src="https://i.imgur.com/qMolcsw.png" />
+<img width=400px src="https://i.imgur.com/i67Rewo.png" />
+<img width=400px src="https://i.imgur.com/CaVDQn8.png" />
+<br><a href="https://i.imgur.com/OpZzgJZ.png">Wallpaper link</a>
+</details>
+
+<details>
+<summary>Screenshot 2 + Android</summary>
 <img src="https://i.imgur.com/00BTwv7.png" />
 <img width=400px src="https://i.imgur.com/51M56xK.png" />
 <img width=400px src="https://i.imgur.com/TbW3MGS.png" />
@@ -11,15 +21,9 @@
 </details>
 
 <details>
-<summary>Screenshot 2</summary>
+<summary>Screenshot 3</summary>
 <img src="https://i.imgur.com/LbxpvMt.jpeg" />
 <a href="https://i.imgur.com/GA96791.jpeg">Wallpaper link</a>
-</details>
-
-<details>
-<summary>Screenshot 3</summary>
-<img src="https://i.imgur.com/7XMd58c.jpeg" />
-<a href="https://pixeldrain.com/api/file/ppeeEr4d">Wallpaper link</a>
 </details>
 
 <details>
