@@ -17,12 +17,12 @@ in {
 			"*"
 		];
 		modules-left = [
-			"sway/workspaces"
-			"sway/scratchpad"
-		];
-		modules-center = [
 			"clock"
 			"mpris"
+		];
+		modules-center = [
+			"sway/workspaces"
+			"sway/scratchpad"
 		];
 		modules-right = [
 			"sway/language"
