@@ -1,5 +1,10 @@
 { ... }: {
 	text = ''
+		# Check smartcard pin.
+		function pincheck() {
+			echo verify | gpg --card-edit --no-tty --command-fd=0
+		}
+
 		# Encrypt files to myself.
 		# Usage: encrypt <FILES>
 		function encrypt() {
