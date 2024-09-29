@@ -1,4 +1,4 @@
-options  = --option eval-cache false --fallback
+options  = --option eval-cache false --fallback --print-build-logs --verbose
 flake    = .
 hostname = $(shell hostname)
 
