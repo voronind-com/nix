@@ -19,15 +19,12 @@
 		}
 
 		# Decrypt files to myself.
-		# Usage: decrypt <FILES>
+		# Usage: decrypt [FILES]
 		function decrypt() {
 			local IFS=$'\n'
 			local targets=(''${@})
 
-			if [[ "''${targets}" = "" ]]; then
-				help decrypt
-				return 2
-			fi
+			[[ "''${targets}" = "" ]] && targets=(*.gpg)
 
 			process() {
 				gpg --decrypt --output "''${target%.gpg}" "''${target}"
