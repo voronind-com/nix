@@ -1,4 +1,4 @@
-{ lib, config, ... }: with lib; let
+{ lib, config, pkgs, ... }: with lib; let
 	cfg = config.module.desktop.waybar;
 in {
 	options = {
@@ -8,10 +8,7 @@ in {
 	};
 
 	config = mkIf cfg.enable {
-		programs.waybar.enable = true;
-
-		# Do not start automatically ffs.
-		systemd.user.services.waybar.enable = lib.mkForce false;
+		environment.systemPackages = with pkgs; [ waybar ];
 	};
 }
 
