@@ -105,6 +105,7 @@ in {
 			(mkBookmark "Music"     "https://music.yandex.ru")
 			(mkBookmark "Telegram"  "https://web.telegram.org/a")
 			(mkBookmark "Discord"   "https://discord.com")
+			(mkBookmark "Mail"      "https://mail.voronind.com")
 			(mkBookmark "WorkMail"  "https://mail.fsight.ru")
 			(mkBookmark "Git"       "https://git.voronind.com")
 			(mkBookmark "WorkGit"   "https://git.fmp.fsight.world")
