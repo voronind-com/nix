@@ -98,8 +98,9 @@ in {
 			on-click-right  = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
 		};
 		mpris = {
-			format        = "{player_icon}  {title} - {artist}";
-			format-paused = "{status_icon}  {title} - {artist}";
+			format         = "{player_icon}  {title} - {artist}";
+			format-paused  = "{status_icon}  {title} - {artist}";
+			tooltip-format = "{player}: {dynamic}";
 			player-icons = {
 				"default" = "";
 				"firefox" = "󰈹";
