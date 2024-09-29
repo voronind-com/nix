@@ -1,12 +1,12 @@
 { pkgs, lib, ... }: with lib; let
-	url    = "https://i.imgur.com/OpZzgJZ.png";
-	sha256 = "0rzcpqx4m6lg91nx465qs4flvnad4cqqr1prl0ky24r5vz3z87z5";
+	url    = "https://i.imgur.com/44bzkA9.jpeg";
+	sha256 = "16xwi6n76vgkj97nqs9pxrd4px939izjfs7ns4qmylimkvmaiyd8";
 	forceContrastText = false;
 in {
 	options = {
 		module.wallpaper = {
 			forceContrastText = mkOption {
-				default = lib.warnIf forceContrastText "Style : Forced text contrast." forceContrastText;
+				default = warnIf forceContrastText "Style : Forced text contrast." forceContrastText;
 				type    = types.bool;
 			};
 			path = mkOption {

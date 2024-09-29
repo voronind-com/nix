@@ -13,7 +13,7 @@
 
 	# Yubikey touch notification.
 	# ISSUE: Not working on Sway with Mako for some reason.
-	# programs.yubikey-touch-detector.enable = true;
+	programs.yubikey-touch-detector.enable = true;
 
 	environment.systemPackages = with pkgs; [
 		yubikey-manager
