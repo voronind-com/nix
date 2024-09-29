@@ -1,11 +1,10 @@
 { self, config, ... } @args: let
-	btop      = import ./top/btop     args;
+	btop      = import ./btop         args;
 	editor    = import ./editorconfig args;
 	foot      = import ./foot         args;
 	fuzzel    = import ./fuzzel       args;
 	git       = import ./git          args;
 	gtk3      = import ./gtk/3        args;
-	htop      = import ./top/htop     args;
 	jetbrains = import ./jetbrains    args;
 	keyd      = import ./keyd         args;
 	mako      = import ./mako         args;
@@ -18,13 +17,13 @@
 	waybar    = import ./waybar       args;
 	yazi      = import ./yazi         args;
 in {
+	".Wallpaper".source                     = config.module.wallpaper.path;
 	".config/MangoHud/MangoHud.conf".source = mangohud.config;
 	".config/MangoHud/presets.conf".source  = mangohud.presets;
 	".config/btop/btop.conf".text           = btop.text;
 	".config/foot/foot.ini".source          = foot.file;
 	".config/fuzzel/fuzzel.ini".source      = fuzzel.file;
 	".config/gtk-3.0/bookmarks".text        = gtk3.bookmarks;
-	".config/htop/htoprc".text              = htop.text;
 	".config/keyd/app.conf".text            = keyd.text;
 	".config/mako/config".source            = mako.file;
 	".config/nvim/init.vim".text            = nvim.text;
@@ -39,10 +38,9 @@ in {
 	".config/yazi/yazi.toml".source         = yazi.yazi;
 	".editorconfig".source                  = editor.file;
 	".gitconfig".source                     = git.file;
-	".nixos".source                         = self;
+	".ideavimrc".text                       = jetbrains.ideavimrc;
+	".nix".source                           = self;
 	".parallel/will-cite".text              = "";
 	".ssh/config".text                      = ssh.text;
-	".Wallpaper".source                     = config.module.wallpaper.path;
 	".template".source                      = ./template;
-	".ideavimrc".text                       = jetbrains.ideavimrc;
 }
