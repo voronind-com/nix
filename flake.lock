@@ -753,6 +753,22 @@
         "type": "github"
       }
     },
+    "nvimTransparent": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1724573095,
+        "narHash": "sha256-6jOLgcWqnVzabT2+CehY92Z4mYzJHiRiInn5T5OXqZE=",
+        "owner": "xiyaowong",
+        "repo": "transparent.nvim",
+        "rev": "8a2749a2fa74f97fe6557f61b89ac7fd873f3c21",
+        "type": "github"
+      },
+      "original": {
+        "owner": "xiyaowong",
+        "repo": "transparent.nvim",
+        "type": "github"
+      }
+    },
     "nvimTree": {
       "flake": false,
       "locked": {
@@ -848,6 +864,7 @@
         "nvimTelescope": "nvimTelescope",
         "nvimTodo": "nvimTodo",
         "nvimTokyonight": "nvimTokyonight",
+        "nvimTransparent": "nvimTransparent",
         "nvimTree": "nvimTree",
         "nvimTreesitter": "nvimTreesitter",
         "nvimTrouble": "nvimTrouble",

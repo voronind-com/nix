@@ -33,6 +33,7 @@ in {
 			"${inputs.nvimTelescope}"
 			"${inputs.nvimTodo}"
 			"${inputs.nvimTokyonight}"
+			"${inputs.nvimTransparent}"
 			"${inputs.nvimTreesitter}"
 			"${inputs.nvimTree}"
 			"${inputs.nvimTrouble}"
@@ -61,6 +62,7 @@ in {
 			./module/plugin/Fold.nix
 			./module/plugin/Ollama.nix
 			./module/plugin/Colorizer.nix
+			./module/plugin/Transparent.nix
 			./module/plugin/lsp/Haskell.nix
 			./module/plugin/lsp/Rust.nix
 			./module/plugin/lsp/Tex.nix
@@ -77,7 +79,6 @@ in {
 			./module/key/Sort.nix
 			./module/key/Telescope.nix
 			./module/key/Terminal.nix
-			./module/key/Todo.nix
 			./module/key/Trouble.nix
 		];
 	};

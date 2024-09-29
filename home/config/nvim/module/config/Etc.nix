@@ -4,7 +4,7 @@
 		vim.opt.clipboard     = "unnamedplus"
 		vim.opt.cursorline    = false
 		vim.opt.fixeol        = false
-		vim.opt.incsearch     = true;
+		vim.opt.incsearch     = true
 		vim.opt.number        = true
 		vim.opt.scrolloff     = 4
 		vim.opt.splitbelow    = true
