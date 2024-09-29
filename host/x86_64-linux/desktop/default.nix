@@ -12,7 +12,6 @@
 	module = {
 		autoupdate.enable     = true;
 		builder.client.enable = true;
-		desktop.sway.enable   = true;
 		keyd.enable           = true;
 		print.enable          = true;
 		virtmanager.enable    = true;
@@ -23,6 +22,12 @@
 				enable    = true;
 				powersave = true;
 			};
+		};
+		desktop.sway = {
+			enable = true;
+			extraConfig = ''
+				workspace 1 output "ASUSTek COMPUTER INC ASUS VA24E R2LMTF127165"
+			'';
 		};
 		docker = {
 			enable    = true;

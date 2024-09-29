@@ -27,6 +27,6 @@ in {
 	text = (util.trimTabs ''
 		# Read `man 5 sway` for a complete reference.
 		include /etc/sway/config.d/*
-	'') + swayRc;
+	'') + swayRc + config.module.desktop.sway.extraConfig or "";
 }
 

@@ -4,6 +4,10 @@ in {
 	options = {
 		module.desktop.sway = {
 			enable = mkEnableOption "Use Sway WM.";
+			extraConfig = mkOption {
+				default = "";
+				type    = types.str;
+			};
 		};
 	};
 
