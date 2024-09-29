@@ -2,6 +2,8 @@
 	text = ''
 		# Check smartcard pin.
 		function pincheck() {
+			pkill keyboxd   &> /dev/null
+			# pkill gpg-agent &> /dev/null
 			echo verify | gpg --card-edit --no-tty --command-fd=0
 		}
 
