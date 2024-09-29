@@ -5,10 +5,14 @@
 		function encrypt() {
 			local IFS=$'\n'
 			local targets=(''${@})
-			[[ "''${targets}" = "" ]] && targets=($(_ls_file))
+
+			if [[ "''${targets}" = "" ]]; then
+				help encrypt
+				return 2
+			fi
 
 			process() {
-				gpg --encrypt --armor --recipient hi@voronind.com --output "''${target}.enc" "''${target}"
+				gpg --encrypt --armor --recipient hi@voronind.com --output "''${target}.gpg" "''${target}"
 			}
 
 			_iterate_targets process ''${targets[@]}
@@ -19,10 +23,14 @@
 		function decrypt() {
 			local IFS=$'\n'
 			local targets=(''${@})
-			[[ "''${targets}" = "" ]] && targets=($(_ls_file))
+
+			if [[ "''${targets}" = "" ]]; then
+				help decrypt
+				return 2
+			fi
 
 			process() {
-				gpg --decrypt --output "''${target%.enc}" "''${target}"
+				gpg --decrypt --output "''${target%.gpg}" "''${target}"
 			}
 
 			_iterate_targets process ''${targets[@]}
@@ -33,7 +41,11 @@
 		function sign() {
 			local IFS=$'\n'
 			local targets=(''${@})
-			[[ "''${targets}" = "" ]] && targets=($(_ls_file))
+
+			if [[ "''${targets}" = "" ]]; then
+				help sign
+				return 2
+			fi
 
 			process() {
 				gpg --detach-sig --armor --output "''${target}.sig" "''${target}"
@@ -42,11 +54,12 @@
 			_iterate_targets process ''${targets[@]}
 		}
 
-		# Verify a signature.
-		# Usage: verify <FILES>
+		# Verify a signature. All .sig files by default.
+		# Usage: verify [FILES]
 		function verify() {
 			local IFS=$'\n'
 			local targets=(''${@})
+
 			[[ "''${targets}" = "" ]] && targets=(*.sig)
 
 			process() {
