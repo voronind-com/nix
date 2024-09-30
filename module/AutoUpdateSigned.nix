@@ -35,7 +35,7 @@ in {
 				rm -rf ./nixos
 				git clone --depth=1 --single-branch --branch=main ${const.url} ./nixos
 				pushd ./nixos
-				git verify-commit HEAD || {
+				git verify-commit HEAD && git fsck || {
 					echo "Verification failed."
 					exit 1
 				};

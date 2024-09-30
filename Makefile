@@ -66,6 +66,7 @@ update:
 
 verify:
 	git verify-commit HEAD
+	git fsck
 
 vm:
 	nix run $(options) $(flake)#nixosConfigurations.$(hostname).config.system.build.vm
