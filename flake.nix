@@ -148,39 +148,38 @@
 			)
 		);
 
+		# Nixos systems.
 		nixosConfigurations = let
 			# Function to create a host. It does basic setup, like adding common modules.
-			mkHost = { system, hostname, modules }: let
-			in nixpkgs.lib.nixosSystem {
+			mkHost = { system, hostname, modules }: nixpkgs.lib.nixosSystem {
 				# `Inherit` is just an alias for `system = system;`, which means that
 				# keep the `system` argument as a property in a resulting set.
 				inherit system;
 
 				# List of modules to use by defualt for all the hosts.
-				modules = modules ++ [
-					# There I put host-specific configurations.
-					./host/${system}/${hostname}
-
+				modules = [
 					# Make a device hostname match the one from this config.
 					{ networking.hostName = hostname; }
 
 					# Specify current release version.
 					{ system.stateVersion = self.const.stateVersion; }
 
-					# Add modules.
-					{ imports = [ ./home/NixOs.nix ] ++
-						(self.findFiles ./config) ++
-						(self.findFiles ./container) ++
-						(self.findFiles ./module) ++
-						(self.findFiles ./overlay);
-					}
-
 					# Add Home Manager module.
 					home-manager.nixosModules.home-manager
 
 					# Add Stylix module.
 					stylix.nixosModules.stylix
-				];
+
+					# HM config.
+					./home/NixOs.nix
+				] ++
+				modules ++
+				(self.findFiles ./host/${system}/${hostname}) ++
+				(self.findFiles ./config) ++
+				(self.findFiles ./container) ++
+				(self.findFiles ./module) ++
+				(self.findFiles ./system) ++
+				(self.findFiles ./overlay);
 
 				# SpecialArgs allows you to pass objects down to other NixOS modules.
 				specialArgs = let
@@ -241,7 +240,7 @@
 						inherit self inputs secret util pkgs pkgsStable pkgsMaster;
 						inherit (self) const __findFile;
 					};
-					modules = modules ++ (self.findFiles ./config) ++ [
+					modules = [
 						./home/HomeManager.nix
 						{
 							home.hm = {
@@ -259,7 +258,10 @@
 						{ nix.settings.experimental-features = [ "nix-command " "flakes" ]; }
 
 						inputs.stylix.homeManagerModules.stylix
-					];
+					] ++
+					modules ++
+					(self.findFiles ./config) ++
+					(self.findFiles ./module);
 				};
 			};
 
@@ -303,7 +305,8 @@
 					inherit (self) __findFile;
 					inherit lib pkgs;
 				})
-			];
+			] ++
+			(self.findFiles ./module);
 
 			# SpecialArgs allows you to pass objects down to other configuration.
 			extraSpecialArgs = {

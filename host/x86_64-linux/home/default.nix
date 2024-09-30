@@ -1,13 +1,4 @@
 { config, ... }: {
-	imports = [
-		./Backup.nix
-		./Container.nix
-		./Filesystem.nix
-		./Network.nix
-		./Photoprocess.nix
-		./YaMusicDownload.nix
-	];
-
 	home.nixos.enable = true;
 	user = {
 		root.enable     = true;

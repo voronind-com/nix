@@ -1,8 +1,4 @@
 { ... }: {
-	imports = [
-		./Filesystem.nix
-	];
-
 	home.nixos.enable = true;
 	user = {
 		root.enable     = true;
