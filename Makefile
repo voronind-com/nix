@@ -34,6 +34,10 @@ gc:
 home:
 	home-manager switch -b old --flake $(flake)#$$USER
 
+housekeep:
+	git gc --aggressive --no-cruft --prune=now
+	git fsck
+
 # SOURCE: https://github.com/DeterminateSystems/nix-installer
 install-system:
 	curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
@@ -64,6 +68,7 @@ switch: fix-ulimit
 update:
 	nix flake update
 
+# NOTE: Run `housekeep` target to fix git fsck issues.
 verify:
 	git verify-commit HEAD
 	git fsck
