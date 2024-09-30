@@ -19,11 +19,11 @@ in {
 		];
 		modules-left = [
 			"clock"
+			"sway/scratchpad"
 			"mpris"
 		];
 		modules-center = [
 			"sway/workspaces"
-			"sway/scratchpad"
 		];
 		modules-right = [
 			"sway/language"
