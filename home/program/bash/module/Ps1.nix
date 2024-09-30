@@ -85,9 +85,11 @@ in {
 			# Command on new line.
 			PS1+="\n"
 
-			# Show nix shell name.
-			if [ -n "''${NIX_SHELL}" ]; then
-				PS1+="''${NIX_SHELL} "
+			# Show nix shell name or shell depth.
+			if [ -n "''${SHELL_NAME}" ]; then
+				PS1+="''${SHELL_NAME} "
+			elif [[ "''${SHLVL}" -gt "''${SHLVLMIN}" ]]; then
+				PS1+="($((''${SHLVL} - ''${SHLVLMIN}))) "
 			fi
 
 			# Show remote connections.

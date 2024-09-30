@@ -37,7 +37,7 @@
 
 		# Spawn Nix shell with required tools.
 		function dvd_shell() {
-			NIX_SHELL="dvd" tmpshell dvdplusrwtools cdrkit
+			SHELL_NAME="dvd" tmpshell dvdplusrwtools cdrkit
 		}
 	'';
 }

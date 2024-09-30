@@ -32,7 +32,7 @@
 			# Create Nix GC root in .NixRoot{NAME}.
 			nix build ".#devShells.''${NIX_CURRENT_SYSTEM}.''${target}" -o ".NixRoot''${target^}"
 
-			NIX_SHELL="''${target}" nix develop ".#devShells.''${NIX_CURRENT_SYSTEM}.''${target}"
+			SHELL_NAME="''${target}" nix develop ".#devShells.''${NIX_CURRENT_SYSTEM}.''${target}"
 		}
 		alias shell="nix_shell"
 
@@ -42,7 +42,7 @@
 			local IFS=$'\n'
 			local input=("''${@}")
 			local pkgs=()
-			local tag="''${NIX_SHELL}"
+			local tag="''${SHELL_NAME}"
 
 			if [[ "''${input}" = "" ]]; then
 				help nix_tmpshell
@@ -55,7 +55,7 @@
 				pkgs+=("nixpkgs#''${pkg}")
 			done
 
-			NIX_SHELL="''${tag}" NIXPKGS_ALLOW_UNFREE=1 nix shell --impure ''${pkgs[@]}
+			SHELL_NAME="''${tag}" NIXPKGS_ALLOW_UNFREE=1 nix shell --impure ''${pkgs[@]}
 		}
 		alias tmpshell="nix_tmpshell"
 
