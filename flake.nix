@@ -172,14 +172,14 @@
 
 					# HM config.
 					./home/NixOs.nix
-				] ++
-				modules ++
-				(self.findFiles ./host/${system}/${hostname}) ++
-				(self.findFiles ./config) ++
-				(self.findFiles ./container) ++
-				(self.findFiles ./module) ++
-				(self.findFiles ./system) ++
-				(self.findFiles ./overlay);
+				]
+				++ modules
+				++ (self.findFiles ./host/${system}/${hostname})
+				++ (self.findFiles ./config)
+				++ (self.findFiles ./container)
+				++ (self.findFiles ./module)
+				++ (self.findFiles ./system)
+				++ (self.findFiles ./overlay);
 
 				# SpecialArgs allows you to pass objects down to other NixOS modules.
 				specialArgs = let
@@ -258,10 +258,9 @@
 						{ nix.settings.experimental-features = [ "nix-command " "flakes" ]; }
 
 						inputs.stylix.homeManagerModules.stylix
-					] ++
-					modules ++
-					(self.findFiles ./config) ++
-					(self.findFiles ./module);
+					]
+					++ modules
+					++ (self.findFiles ./config);
 				};
 			};
 
@@ -305,8 +304,7 @@
 					inherit (self) __findFile;
 					inherit lib pkgs;
 				})
-			] ++
-			(self.findFiles ./module);
+			];
 
 			# SpecialArgs allows you to pass objects down to other configuration.
 			extraSpecialArgs = {
