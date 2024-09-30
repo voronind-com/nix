@@ -13,7 +13,6 @@
 		kernel.enable         = true;
 		keyd.enable           = true;
 		print.enable          = true;
-		strongswan.enable     = true;
 		tablet.enable         = true;
 		intel.cpu = {
 			enable    = true;
