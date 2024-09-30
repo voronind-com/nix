@@ -112,6 +112,7 @@ in {
 			(mkBookmark "WorkBoard" "https://support.fsight.ru")
 			(mkBookmark "Hass"      "https://iot.voronind.com")
 			(mkBookmark "Cloud"     "https://cloud.voronind.com")
+			(mkBookmark "Watch"     "https://watch.voronind.com")
 		];
 		ExtensionUpdate = true;
 		ExtensionSettings = {
