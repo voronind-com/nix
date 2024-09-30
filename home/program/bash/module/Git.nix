@@ -123,6 +123,11 @@
 			git gc --aggressive --no-cruft --prune=now
 		}
 
+		# Check git file integrity.
+		function gfsck() {
+			git fsck
+		}
+
 		# Preview diff while adding. Adds current dir by default.
 		# Usage: ga [FILES]
 		function ga() {
