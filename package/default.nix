@@ -1,6 +1,7 @@
 { pkgs, pkgsStable, pkgsMaster, ... } @args: {
 	core = with pkgs; [
 		android-tools     # Android adb tool. Can be used to connect to itself via wireless debugging. binwalk           # Can analyze files for other files inside them.
+		bat               # Pretty cat.
 		bridge-utils      # Network bridges.
 		btop htop         # System monitors.
 		coreutils         # UNIX Core utilities.
