@@ -147,7 +147,7 @@
 		# Nixos systems.
 		nixosConfigurations = let
 			# Function to create a host. It does basic setup, like adding common modules.
-			mkHost = { system, hostname, modules }: nixpkgs.lib.nixosSystem {
+			mkHost = { system, hostname }: nixpkgs.lib.nixosSystem {
 				# `Inherit` is just an alias for `system = system;`, which means that
 				# keep the `system` argument as a property in a resulting set.
 				inherit system;
@@ -169,7 +169,6 @@
 					# HM config.
 					./home/NixOs.nix
 				]
-				++ modules
 				++ (self.findFiles ./host/${system}/${hostname})
 				++ (self.findFiles ./config)
 				++ (self.findFiles ./container)
@@ -199,15 +198,19 @@
 				};
 			};
 
-			mkSystem = hostname: system: modules: {
+			mkSystem = system: hostname: {
 				"${hostname}" = mkHost {
-					inherit hostname system modules;
+					inherit system hostname;
 				};
 			};
-
-			x86System = hostname: mkSystem hostname "x86_64-linux" [];
 		in nixpkgs.lib.foldl' (acc: h: acc // h) {} (
-			map (host: x86System host) (builtins.attrNames (builtins.readDir ./host/x86_64-linux))
+			map (system:
+				nixpkgs.lib.foldl' (acc: h: acc // h) {} (
+					map (host:
+						mkSystem system host
+					) (builtins.attrNames (builtins.readDir ./host/${system}))
+				)
+			) (builtins.attrNames (builtins.readDir ./host))
 		);
 
 
