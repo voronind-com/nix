@@ -29,7 +29,6 @@ in {
 			"${inputs.nvimLspconfig}"
 			"${inputs.nvimOllama}"
 			"${inputs.nvimPlenary}"
-			"${inputs.nvimSingleComment}"
 			"${inputs.nvimTelescope}"
 			"${inputs.nvimTodo}"
 			"${inputs.nvimTokyonight}"

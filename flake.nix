@@ -90,10 +90,6 @@
 			url   = "github:nvim-lua/plenary.nvim";
 			flake = false;
 		};
-		nvimSingleComment = {
-			url   = "github:LucasTavaresA/singlecomment.nvim";
-			flake = false;
-		};
 		nvimTelescope = {
 			url   = "github:nvim-telescope/telescope.nvim";
 			flake = false;

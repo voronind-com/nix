@@ -641,22 +641,6 @@
         "type": "github"
       }
     },
-    "nvimSingleComment": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1717376019,
-        "narHash": "sha256-9DOW9EiezrahDyipb4UnZ5ET3DhXhdzCT7XmFrsJ/gg=",
-        "owner": "LucasTavaresA",
-        "repo": "singlecomment.nvim",
-        "rev": "cf1ae4c179e5c36a27b41662f418b28b38c1d4ee",
-        "type": "github"
-      },
-      "original": {
-        "owner": "LucasTavaresA",
-        "repo": "singlecomment.nvim",
-        "type": "github"
-      }
-    },
     "nvimTelescope": {
       "flake": false,
       "locked": {
@@ -812,7 +796,6 @@
         "nvimLspconfig": "nvimLspconfig",
         "nvimOllama": "nvimOllama",
         "nvimPlenary": "nvimPlenary",
-        "nvimSingleComment": "nvimSingleComment",
         "nvimTelescope": "nvimTelescope",
         "nvimTodo": "nvimTodo",
         "nvimTokyonight": "nvimTokyonight",
