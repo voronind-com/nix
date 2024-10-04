@@ -2,6 +2,7 @@
 	core = with pkgs; [
 		android-tools     # Android adb tool. Can be used to connect to itself via wireless debugging. binwalk           # Can analyze files for other files inside them.
 		bat               # Pretty cat.
+		bitwarden-cli     # Password manager.
 		bridge-utils      # Network bridges.
 		btop htop         # System monitors.
 		coreutils         # UNIX Core utilities.
