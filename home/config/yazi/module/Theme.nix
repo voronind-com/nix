@@ -8,6 +8,8 @@
 in {
 	file = (pkgs.formats.toml {}).generate "YaziThemeConfig" {
 		manager = {
+			border_style  = border;
+			border_symbol = " ";
 			cwd = {
 				fg = "#${config.style.color.fg.light}";
 				# bg = "#${style.color.bg.regular}";
@@ -20,7 +22,6 @@ in {
 				fg = "#${config.style.color.fg.light}";
 				bg = "#${config.style.color.bg.regular}";
 			};
-			border_style = border;
 			tab_active = {
 				bg = "#${config.style.color.accent}";
 			};
