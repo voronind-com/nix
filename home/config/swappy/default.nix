@@ -5,7 +5,7 @@
 			fill_shape = false;
 			line_size  = 4;
 			paint_mode = "arrow";
-			show_panel = true;
+			show_panel = false;
 			text_font  = config.style.font.serif.name;
 			text_size  = config.style.font.size.popup;
 		};
