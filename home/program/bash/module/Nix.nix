@@ -24,8 +24,8 @@
 
 		# Spawn shell with specified nix environment.
 		# Uses flake.nix in current dir by default.
-		# Usage: nix_shell [NAME]
-		function nix_shell() {
+		# Usage: shell [NAME]
+		function shell() {
 			local target="''${1}"
 			[[ "''${target}" = "" ]] && target="default"
 
@@ -34,18 +34,17 @@
 
 			SHELL_NAME="''${target}" nix develop ".#devShells.''${NIX_CURRENT_SYSTEM}.''${target}"
 		}
-		alias shell="nix_shell"
 
 		# Spawn temporary nix-shell with specified packages.
-		# Usage: nix_tmpshell <PACKAGES>
-		function nix_tmpshell() {
+		# Usage: tmpshell <PACKAGES>
+		function tmpshell() {
 			local IFS=$'\n'
 			local input=("''${@}")
 			local pkgs=()
 			local tag="''${SHELL_NAME}"
 
 			if [[ "''${input}" = "" ]]; then
-				help nix_tmpshell
+				help tmpshell
 				return 2
 			fi
 
@@ -57,7 +56,6 @@
 
 			SHELL_NAME="''${tag}" NIXPKGS_ALLOW_UNFREE=1 nix shell --impure ''${pkgs[@]}
 		}
-		alias tmpshell="nix_tmpshell"
 
 		# Build live image.
 		function nixos_live() {

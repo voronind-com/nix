@@ -1,11 +1,10 @@
 { ... }: {
 	text = ''
 		# Open file/dir in GUI.
-		# Usage: open <FILE>
-		function open() {
+		# Usage: o <FILE>
+		function o() {
 			xdg-open "''${@}"
 		}
-		alias o="open"
 
 		# Play media file from CLI. All files by default.
 		# Usage: play [FILE]
