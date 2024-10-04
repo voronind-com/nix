@@ -13,8 +13,8 @@
 		}
 
 		# Unlock encrypted disk file.
-		# Usage: unlock <FILE> <DIR>
-		function unlock() {
+		# Usage: funlock <FILE> <DIR>
+		function funlock() {
 			if [[ "''${UID}" != 0 ]]; then
 				_error "Must be root."
 				return 2
@@ -24,7 +24,7 @@
 			local dir="''${2}"
 
 			if [[ "''${dir}" = "" ]]; then
-				help unlock
+				help funlock
 				return 2
 			fi
 
