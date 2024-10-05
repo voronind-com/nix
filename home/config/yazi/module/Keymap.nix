@@ -17,6 +17,11 @@
 					run  = "create --dir";
 					desc = "Who wants files anyway?";
 				}
+				{
+					on   = "A";
+					run  = "create --force";
+					desc = "I want, sometimes.";
+				}
 			];
 		};
 	};
