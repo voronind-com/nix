@@ -12,6 +12,11 @@
 					run  = "remove --permanently --force";
 					desc = "Dangerous life.";
 				}
+				{
+					on   = "a";
+					run  = "create --dir";
+					desc = "Who wants files anyway?";
+				}
 			];
 		};
 	};
