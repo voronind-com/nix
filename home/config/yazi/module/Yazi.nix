@@ -81,22 +81,25 @@
 
 		open = {
 			rules = let
-				mkRule = mime: use: { inherit mime; use = use ++ [ "text" "hex" ]; };
+				defaultUse = [ "text" "hex" ];
+				mkMime = mime: use: { inherit mime; use = use ++ defaultUse; };
+				mkName = name: use: { inherit name; use = use ++ defaultUse; };
 			in [
 				# Use `file -i file.txt` to find file mime type.
 				# Use `xdg-mime query default "text/plain"` to find default app.
-				(mkRule "application/gzip"            [ "archive" ])
-				(mkRule "application/x-tar"           [ "archive" ])
-				(mkRule "application/x-xz"            [ "archive" ])
-				(mkRule "application/zip"             [ "archive" ])
-				(mkRule "application/x-7z-compressed" [ "archive" ])
-				(mkRule "application/pdf" [ "pdf" ])
-				(mkRule "audio/*" [ "audio" ])
-				(mkRule "image/*" [ "image" "image_edit" ])
-				(mkRule "video/*" [ "video" ])
-				(mkRule "text/html" [ "browser" ])
-				(mkRule "application/vnd.openxmlformats-officedocument.*" [ "document" ])
-				(mkRule "*" [ ])
+				(mkMime "application/gzip"            [ "archive" ])
+				(mkMime "application/x-tar"           [ "archive" ])
+				(mkMime "application/x-xz"            [ "archive" ])
+				(mkMime "application/zip"             [ "archive" ])
+				(mkMime "application/x-7z-compressed" [ "archive" ])
+				(mkMime "application/pdf" [ "pdf" ])
+				(mkMime "audio/*" [ "audio" ])
+				(mkName "*.mka"   [ "audio" ])
+				(mkMime "image/*" [ "image" "image_edit" ])
+				(mkMime "video/*" [ "video" ])
+				(mkMime "text/html" [ "browser" ])
+				(mkMime "application/vnd.openxmlformats-officedocument.*" [ "document" ])
+				(mkMime "*" [ ])
 			];
 		};
 	};
