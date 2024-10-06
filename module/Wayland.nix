@@ -6,6 +6,8 @@ in {
 	};
 
 	config = {
+		programs.xwayland.enable = true;
+
 		environment = {
 			systemPackages = with pkgs; [
 				wl-clipboard # CLI clipboard support.
