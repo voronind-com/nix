@@ -141,7 +141,8 @@
 		# Usage: parse_startcase <STRING>
 		function parse_startcase() {
 			local IFS=$'\n'
-			local parts=($(_parse_split ''${*}))
+			local lower="''${*,,}"
+			local parts=($(_parse_split ''${lower}))
 
 			for part in ''${parts[@]}; do
 				echo -n "''${part^}"
