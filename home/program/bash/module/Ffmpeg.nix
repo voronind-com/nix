@@ -70,7 +70,7 @@
 
 				# echo "''${artist}; ''${album}; ''${year}; ''${track}; ''${title}"
 				# TODO: make it format-specific.
-				ffmpeg -i "''${file}" -map 0 -c copy -metadata "artist=''${artist}" -metadata "album_artist=''${artist}" -metadata "album=''${album}" -metadata "date=''${year}" -metadata "year=''${year}" -metadata "date_released=''${year}" -metadata "track=''${track}" -metadata "part_number=''${track}" -metadata "title=''${title}" ./out/"''${file}" || return 1
+				ffmpeg -i "''${file}" -map 0 -c copy -metadata "artists=" -metadata "artist=''${artist}" -metadata "album_artist=''${artist}" -metadata "album=''${album}" -metadata "date=''${year}" -metadata "year=''${year}" -metadata "date_released=''${year}" -metadata "track=''${track}" -metadata "part_number=''${track}" -metadata "title=''${title}" ./out/"''${file}" || return 1
 			done
 
 			mv out/* .
