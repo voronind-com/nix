@@ -97,10 +97,17 @@ in {
 			on-click-middle = "pavucontrol";
 			on-click-right  = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
 		};
-		mpris = {
-			format         = "{player_icon}  {title} - {artist}";
-			format-paused  = "{status_icon}  {title} - {artist}";
-			tooltip-format = "{player}: {dynamic}";
+		mpris = let
+			maxLength = 32;
+		in {
+			format          = "{player_icon}  {title} - {artist}";
+			format-paused   = "{status_icon}  {title} - {artist}";
+			tooltip-format  = "{player}: {dynamic}";
+			on-click-middle = "playerctl stop";
+			album-len       = maxLength;
+			artist-len      = maxLength;
+			title-len       = maxLength;
+			# ignored-players = [ "firefox" ];
 			player-icons = {
 				"default" = "";
 				"firefox" = "󰈹";
@@ -109,8 +116,6 @@ in {
 			status-icons = {
 				"paused" = "";
 			};
-			on-click-middle = "playerctl stop";
-			# ignored-players = [ "firefox" ];
 		};
 		cpu = {
 			format         = "{usage}% ({load})";
