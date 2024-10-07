@@ -102,7 +102,7 @@ in {
 		ManagedBookmarks = [
 			{ toplevel_name = "Pin"; }
 			(mkBookmark "Dashboard" "https://home.voronind.com")
-			(mkBookmark "Music"     "https://music.yandex.ru")
+			(mkBookmark "Watch"     "https://watch.voronind.com")
 			(mkBookmark "Telegram"  "https://web.telegram.org/a")
 			(mkBookmark "Discord"   "https://discord.com")
 			(mkBookmark "Mail"      "https://mail.voronind.com")
@@ -112,7 +112,6 @@ in {
 			(mkBookmark "WorkBoard" "https://support.fsight.ru")
 			(mkBookmark "Hass"      "https://iot.voronind.com")
 			(mkBookmark "Cloud"     "https://cloud.voronind.com")
-			(mkBookmark "Watch"     "https://watch.voronind.com")
 		];
 		ExtensionUpdate = true;
 		ExtensionSettings = {

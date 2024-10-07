@@ -84,7 +84,6 @@
 		onlyoffice-bin        # Office documents app suite.
 
 		(mpv.override { scripts = [ mpvScripts.mpris ]; }) # Media player.
-		(pkgs.callPackage ./yamusicdownload {})
 	];
 
 	gaming = with pkgs; [

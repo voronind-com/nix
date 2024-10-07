@@ -45,7 +45,7 @@
 			download = [ "/storage/hot/download" ];
 			manga    = [ "/storage/cold_1/manga" "/storage/cold_2/manga" ];
 			movie    = [ "/storage/cold_1/movie" "/storage/cold_2/movie" ];
-			music    = [ "/storage/cold_2/music" "/storage/hot/music" ];
+			music    = [ "/storage/cold_2/music" ];
 			paper    = [ "/storage/hot/paper" ];
 			porn     = [ "/storage/cold_2/porn" ];
 			photo    = [ "/storage/hot/container/cloud/data/data/cakee/files/photo" "/storage/cold_1/backup/tmp/photo" ];
