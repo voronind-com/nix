@@ -14,11 +14,6 @@ in {
 		export -f $(find_function | tr '\n' ' ')
 		export -f find_function
 
-		# Nested shell indicator support.
-		if [ -z ''${SHLVLMIN} ]; then
-			export SHLVLMIN=''${SHLVL}
-		fi
-
 		# Autostart Sway.
 		if [[ -z $DISPLAY ]] && [[ "$(tty)" = "/dev/tty1" ]]; then
 			exec sway
