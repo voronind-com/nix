@@ -104,7 +104,6 @@ in {
 			(mkBookmark "Dashboard" "https://home.voronind.com")
 			(mkBookmark "Watch"     "https://watch.voronind.com")
 			(mkBookmark "Telegram"  "https://web.telegram.org/a")
-			(mkBookmark "Discord"   "https://discord.com")
 			(mkBookmark "Mail"      "https://mail.voronind.com")
 			(mkBookmark "WorkMail"  "https://mail.fsight.ru")
 			(mkBookmark "Git"       "https://git.voronind.com")
