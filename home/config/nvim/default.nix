@@ -68,14 +68,17 @@ in {
 			./module/plugin/lsp/Nix.nix
 			./module/key/Autocomplete.nix
 			./module/key/Buffer.nix
+			./module/key/Cmd.nix
 			./module/key/Colorscheme.nix
 			./module/key/Comment.nix
-			./module/key/Common.nix
 			./module/key/Filetree.nix
 			./module/key/Gitsigns.nix
 			./module/key/Navigation.nix
+			./module/key/Newline.nix
 			./module/key/Ollama.nix
+			./module/key/Save.nix
 			./module/key/Sort.nix
+			./module/key/TabWidth.nix
 			./module/key/Telescope.nix
 			./module/key/Terminal.nix
 			./module/key/Trouble.nix
