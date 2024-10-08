@@ -68,9 +68,8 @@
 				run    = openWith "gimp";
 			}];
 			archive = [{
-				desc  = "Archive";
-				block = true;
-				run   = openWith "unpack";
+				desc = "Archive";
+				run  = openWith "unpack";
 			}];
 			hex = [{
 				desc  = "Hex";
