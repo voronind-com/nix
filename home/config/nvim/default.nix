@@ -74,7 +74,6 @@ in {
 			./module/key/Filetree.nix
 			./module/key/Gitsigns.nix
 			./module/key/Navigation.nix
-			./module/key/Newline.nix
 			./module/key/Ollama.nix
 			./module/key/Save.nix
 			./module/key/Sort.nix
