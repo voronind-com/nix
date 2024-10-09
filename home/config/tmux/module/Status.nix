@@ -10,7 +10,7 @@ in {
 		set -g status-justify  left
 		set -g status-style "fg=#${fg}"
 
-		set -g status-left "#[bold] #H-#S "
+		set -g status-left "#[bold] #H-#S #[default]"
 		set -g status-right ""
 
 		set-window-option -g window-status-separator ""
