@@ -31,8 +31,6 @@ in {
 			"${inputs.nvimPlenary}"
 			"${inputs.nvimTelescope}"
 			"${inputs.nvimTodo}"
-			"${inputs.nvimTokyonight}"
-			"${inputs.nvimTransparent}"
 			"${inputs.nvimTreesitter}"
 			"${inputs.nvimTree}"
 			"${inputs.nvimTrouble}"
@@ -52,7 +50,6 @@ in {
 			./module/plugin/Autoclose.nix
 			./module/plugin/Gitsigns.nix
 			./module/plugin/Trouble.nix
-			./module/plugin/Tokyonight.nix
 			./module/plugin/Closebuffers.nix
 			./module/plugin/Telescope.nix
 			./module/plugin/Todo.nix
@@ -62,7 +59,6 @@ in {
 			./module/plugin/Fold.nix
 			./module/plugin/Ollama.nix
 			./module/plugin/Colorizer.nix
-			./module/plugin/Transparent.nix
 			./module/plugin/lsp/Haskell.nix
 			./module/plugin/lsp/Rust.nix
 			./module/plugin/lsp/Tex.nix

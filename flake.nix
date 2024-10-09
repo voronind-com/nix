@@ -98,14 +98,6 @@
 			url   = "github:folke/todo-comments.nvim";
 			flake = false;
 		};
-		nvimTokyonight = {
-			url   = "github:folke/tokyonight.nvim";
-			flake = false;
-		};
-		nvimTransparent = {
-			url   = "github:xiyaowong/transparent.nvim";
-			flake = false;
-		};
 		nvimTree = {
 			url   = "github:nvim-tree/nvim-tree.lua";
 			flake = false;
