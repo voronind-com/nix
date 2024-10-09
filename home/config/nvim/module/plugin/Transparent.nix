@@ -17,7 +17,9 @@
 				'NormalFloat',
 			},
 			-- table: groups you don't want to clear
-			exclude_groups = {},
+			exclude_groups = {
+				'CursorLine',
+			},
 			-- function: code to be executed after highlight groups are cleared
 			-- Also the user event "TransparentClear" will be triggered
 			on_clear = function() end,
