@@ -1,5 +1,5 @@
 { config, ... }: let
-	fg        = config.style.color.bg.dark;
+	fg        = config.style.color.fg.dark;
 	selection = config.style.color.selection;
 in {
 	text = ''
