@@ -55,6 +55,7 @@
 		zip unzip         # Zip archive/unarchive tools.
 
 		# (pkgs.callPackage ./ytdlp {})
+		(pkgs.callPackage ./yamusicdownload {})
 	];
 
 	desktop = with pkgs; [
