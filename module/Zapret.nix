@@ -1,80 +1,156 @@
-# SOURCE: https://github.com/bol-van/zapret
-{ lib, config, pkgs, util, ... }: with lib; let
+{
+	lib,
+	config,
+	pkgs,
+	...
+}:
+let
 	cfg = config.module.zapret;
 
-	whitelist = if cfg.whitelist != null then
-		"--hostlist ${pkgs.writeText "ZapretWhitelist" (util.trimTabs cfg.whitelist)}"
-	else "";
+	whitelist =
+		if cfg.whitelist != null then
+			"--hostlist ${pkgs.writeText "zapret-whitelist" (lib.concatStringsSep "\n" cfg.whitelist)}"
+		else
+			"";
 
-	blacklist = if cfg.blacklist != null then
-		"--hostlist-exclude ${pkgs.writeText "ZapretBlacklist" (util.trimTabs cfg.blacklist)}"
-	else "";
+	blacklist =
+		if cfg.blacklist != null then
+			"--hostlist-exclude ${pkgs.writeText "zapret-blacklist" (lib.concatStringsSep "\n" cfg.blacklist)}"
+		else
+			"";
 
-	# ISSUE: Seems broken. Adds nothing automatically.
-	autolist = if cfg.autolist != null then
-		"--hostlist-auto ${cfg.autolist}"
-	else "";
-in {
-	options = {
-		module.zapret = mkOption {
-			default = {};
-			type = types.submodule {
-				options = {
-					enable = mkEnableOption "Enable Zapret service.";
-					params = mkOption {
-						default = null;
-						type    = types.str;
-					};
-					whitelist = mkOption {
-						default = null;
-						type    = types.nullOr types.str;
-					};
-					blacklist = mkOption {
-						default = null;
-						type    = types.nullOr types.str;
-					};
-					autolist = mkOption {
-						default = null;
-						type    = types.nullOr types.str;
-					};
-					qnum = mkOption {
-						default = 200;
-						type    = types.int;
-					};
-				};
-			};
+	ports = if cfg.httpSupport then "80,443" else "443";
+in
+	{
+	options.module.zapret = {
+		enable = lib.mkEnableOption "Enable Zapret DPI bypass service.";
+		package = lib.mkPackageOption pkgs "zapret" { };
+		params = lib.mkOption {
+			default = null;
+			type = with lib.types; listOf str;
+			example = ''
+				[
+					"--dpi-desync=fake,disorder2"
+					"--dpi-desync-ttl=1"
+					"--dpi-desync-autottl=2"
+				];
+			'';
+			description = ''
+				Specify the bypass parameters for Zapret binary.
+				There are no universal parameters as they vary between different networks, so you'll have to find them yourself.
+
+				This can be done by running the `blockcheck` binary from zapret package, i.e. `nix-shell -p zapret --command blockcheck`.
+				It'll try different params and then tell you which params are working for your network.
+			'';
+		};
+		whitelist = lib.mkOption {
+			default = null;
+			type = with lib.types; nullOr (listOf str);
+			example = ''
+				[
+					"youtube.com"
+					"googlevideo.com"
+					"ytimg.com"
+					"youtu.be"
+				]
+			'';
+			description = ''
+				Specify a list of domains to bypass. All other domains will be ignored.
+				You can specify either whitelist or blacklist, but not both.
+				If neither are specified, then bypass all domains.
+
+				It is recommended to specify the whitelist. This will make sure that other resources won't be affected by this service.
+			'';
+		};
+		blacklist = lib.mkOption {
+			default = null;
+			type = with lib.types; nullOr (listOf str);
+			example = ''
+				[
+					"example.com"
+				]
+			'';
+			description = ''
+				Specify a list of domains NOT to bypass. All other domains will be bypassed.
+				You can specify either whitelist or blacklist, but not both.
+				If neither are specified, then bypass all domains.
+			'';
+		};
+		qnum = lib.mkOption {
+			default = 200;
+			type = lib.types.int;
+			description = ''
+				Routing queue number.
+				Only change this if you already use the default queue number somewhere else.
+			'';
+		};
+		configureFirewall = lib.mkOption {
+			default = true;
+			type = lib.types.bool;
+			description = ''
+				Whether to setup firewall routing so that system http(s) traffic is forwarded via this service.
+				Disable if you want to set it up manually.
+			'';
+		};
+		httpSupport = lib.mkOption {
+			default = true;
+			type = lib.types.bool;
+			description = ''
+				Whether to route http traffic on port 80.
+				Http bypass rarely works and you might want to disable it if you don't utilise http connections.
+			'';
 		};
 	};
 
-	config = mkIf cfg.enable {
-		networking.firewall.extraCommands = ''
-			iptables -t mangle -I POSTROUTING -p tcp -m multiport --dports 80,443 -m connbytes --connbytes-dir=original --connbytes-mode=packets --connbytes 1:6 -m mark ! --mark 0x40000000/0x40000000 -j NFQUEUE --queue-num ${toString cfg.qnum} --queue-bypass
-		'';
+	config = lib.mkIf cfg.enable (
+		lib.mkMerge [
+			{
+				assertions = [
+					{
+						assertion = cfg.whitelist == null || cfg.blacklist == null;
+						message = "Can't specify both whitelist and blacklist.";
+					}
+				];
 
-		systemd = {
-			services.zapret = {
-				description = "FRKN";
-				wantedBy = [ ];
-				requires = [ "network.target" ];
-				path = with pkgs; [ zapret ];
-				serviceConfig = {
-					ExecStart  = "${pkgs.zapret}/bin/nfqws --pidfile=/run/nfqws.pid ${cfg.params} ${whitelist} ${blacklist} ${autolist} --qnum=${toString cfg.qnum}";
-					Type       = "simple";
-					PIDFile    = "/run/nfqws.pid";
-					ExecReload = "/bin/kill -HUP $MAINPID";
-					Restart       = "always";
-					# RestartSec    = "5s";
-					RuntimeMaxSec = "1h";
-				};
-			};
+				systemd.services.zapret = {
+					description = "DPI bypass service.";
+					wantedBy = [ "multi-user.target" ];
+					after = [ "network.target" ];
+					serviceConfig = {
+						ExecStart = "${cfg.package}/bin/nfqws --pidfile=/run/nfqws.pid ${lib.concatStringsSep " " cfg.params} ${whitelist} ${blacklist} --qnum=${toString cfg.qnum}";
+						Type = "simple";
+						PIDFile = "/run/nfqws.pid";
+						Restart = "always";
+						RuntimeMaxSec = "1h"; # This service loves to crash silently or cause network slowdowns. It also restarts instantly. In my experience restarting it hourly provided the best experience.
 
-			timers.zapret = {
-				timerConfig = {
-					OnBootSec = 5;
-					Unit      = "zapret.service";
+						# Hardening.
+						DevicePolicy = "closed";
+						KeyringMode = "private";
+						PrivateTmp = true;
+						PrivateMounts = true;
+						ProtectHome = true;
+						ProtectHostname = true;
+						ProtectKernelModules = true;
+						ProtectKernelTunables = true;
+						ProtectSystem = "strict";
+						ProtectProc = "invisible";
+						RemoveIPC = true;
+						RestrictNamespaces = true;
+						RestrictRealtime = true;
+						RestrictSUIDSGID = true;
+						SystemCallArchitectures = "native";
+					};
 				};
-				wantedBy = [ "timers.target" ];
-			};
-		};
-	};
+			}
+
+			# Route system traffic via service for specified ports.
+			(lib.mkIf cfg.configureFirewall {
+				networking.firewall.extraCommands = ''
+					iptables -t mangle -I POSTROUTING -p tcp -m multiport --dports ${ports} -m connbytes --connbytes-dir=original --connbytes-mode=packets --connbytes 1:6 -m mark ! --mark 0x40000000/0x40000000 -j NFQUEUE --queue-num ${toString cfg.qnum} --queue-bypass
+				'';
+			})
+		]
+	);
+
+	meta.maintainers = with lib.maintainers; [ voronind ];
 }
