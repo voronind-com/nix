@@ -1,4 +1,4 @@
-{ self, config, ... } @args: let
+{ self, inputs, config, ... } @args: let
 	btop      = import ./btop         args;
 	editor    = import ./editorconfig args;
 	foot      = import ./foot         args;
@@ -40,6 +40,10 @@ in {
 	".gitconfig".source                     = git.file;
 	".ideavimrc".text                       = jetbrains.ideavimrc;
 	".nix".source                           = self;
+	".nixpkgs".source                       = inputs.nixpkgs;
+	# TODO: Add after migrating to stable.
+	# ".nixpkgs_unstable".source                       = inputs.nixpkgs;
+	# ".nixpkgs_master".source                       = inputs.nixpkgs;
 	".parallel/will-cite".text              = "";
 	".ssh/config".text                      = ssh.text;
 	".template".source                      = ./template;
