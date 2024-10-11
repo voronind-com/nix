@@ -1,7 +1,8 @@
-{ ... }: {
-	text = ''
-		local lspconfig = require("lspconfig")
+{ ... }:
+{
+  text = ''
+    local lspconfig = require("lspconfig")
 
-		lspconfig.pyright.setup {}
-	'';
+    lspconfig.pyright.setup {}
+  '';
 }

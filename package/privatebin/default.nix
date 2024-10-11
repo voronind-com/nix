@@ -1,35 +1,43 @@
-{ php, pkgs, util, config, ... } @args: let
-	cfg = pkgs.writeText "PrivateBinConfig" (import ./Config.nix args).text;
-in php.buildComposerProject (finalAttrs:  {
-	pname   = "PrivateBin";
-	version = "1.7.4";
+{
+  php,
+  pkgs,
+  util,
+  config,
+  ...
+}@args:
+let
+  cfg = pkgs.writeText "PrivateBinConfig" (import ./Config.nix args).text;
+in
+php.buildComposerProject (finalAttrs: {
+  pname = "PrivateBin";
+  version = "1.7.4";
 
-	src = pkgs.fetchFromGitHub {
-		owner = "PrivateBin";
-		repo  = "PrivateBin";
-		rev   = finalAttrs.version;
-		hash  = "sha256-RFP6rhzfBzTmqs4eJXv7LqdniWoeBJpQQ6fLdoGd5Fk=";
-	};
+  src = pkgs.fetchFromGitHub {
+    owner = "PrivateBin";
+    repo = "PrivateBin";
+    rev = finalAttrs.version;
+    hash = "sha256-RFP6rhzfBzTmqs4eJXv7LqdniWoeBJpQQ6fLdoGd5Fk=";
+  };
 
-	vendorHash = "sha256-JGuO8kXLLXqq76EccdNSoHwYO5OuJT3Au1O2O2szAHI=";
+  vendorHash = "sha256-JGuO8kXLLXqq76EccdNSoHwYO5OuJT3Au1O2O2szAHI=";
 
-	installPhase = ''
-		runHook preInstall
+  installPhase = ''
+    runHook preInstall
 
-		mv $out/share/php/PrivateBin/* $out
-		rm -r $out/share
+    mv $out/share/php/PrivateBin/* $out
+    rm -r $out/share
 
-		cp ${cfg} $out/cfg/conf.php
+    cp ${cfg} $out/cfg/conf.php
 
-		touch $out/.env
-		pushd $out
+    touch $out/.env
+    pushd $out
 
-		runHook postInstall
-	'';
+    runHook postInstall
+  '';
 
-	postFixup = ''
-		substituteInPlace $out/index.php --replace-fail \
-			"define('PATH', ''')" \
-			"define('PATH', '$out/')"
-	'';
+  postFixup = ''
+    substituteInPlace $out/index.php --replace-fail \
+      "define('PATH', ''')" \
+      "define('PATH', '$out/')"
+  '';
 })

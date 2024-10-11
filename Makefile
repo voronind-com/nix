@@ -26,6 +26,9 @@ check:
 fix-ulimit:
 	ulimit -n 999999999
 
+format:
+	treefmt --no-cache --on-unmatched=info
+
 gc:
 	nix-collect-garbage -d
 	# nix-store --gc

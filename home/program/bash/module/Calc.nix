@@ -1,8 +1,9 @@
-{ ... }: {
-	text = ''
-		# Launch calculator app.
-		function calc() {
-			gnome-calculator
-		}
-	'';
+{ ... }:
+{
+  text = ''
+    # Launch calculator app.
+    function calc() {
+      gnome-calculator
+    }
+  '';
 }

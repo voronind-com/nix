@@ -2,22 +2,12 @@
 end_of_line  = lf
 charset      = utf-8
 indent_style = tab
-indent_size  = 2
 insert_final_newline     = true
 trim_trailing_whitespace = true
 
-[*.{nix,js}]
-indent_size = 2
-
-[*.lua]
-indent_size = 4
-
-[*.sh]
-indent_size = 8
-
-[Makefile]
-indent_size = 2
+[*.nix]
+indent_style = space
+indent_size  = 2
 
 [*.md]
-indent_size = 8
 trim_trailing_whitespace = false

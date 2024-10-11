@@ -1,17 +1,19 @@
-{ secret, ... } @args: let
-	bash = import ./bash args;
-in {
-	home-manager.enable = true;
+{ secret, ... }@args:
+let
+  bash = import ./bash args;
+in
+{
+  home-manager.enable = true;
 
-	gpg = {
-		enable = true;
-		inherit (secret.crypto) publicKeys;
-	};
+  gpg = {
+    enable = true;
+    inherit (secret.crypto) publicKeys;
+  };
 
-	firefox = import ./firefox args;
+  firefox = import ./firefox args;
 
-	bash = {
-		enable = true;
-		initExtra = bash.bashrc;
-	};
+  bash = {
+    enable = true;
+    initExtra = bash.bashrc;
+  };
 }
