@@ -22,7 +22,10 @@ in {
 		systemd.services.autoupdate = util.mkStaticSystemdService {
 			enable      = true;
 			description = "Signed system auto-update.";
-			serviceConfig.Type = "oneshot";
+			serviceConfig = {
+				RuntimeMaxSec = "55m";
+				Type = "oneshot";
+			};
 			path = with pkgs; [
 				bash
 				git
