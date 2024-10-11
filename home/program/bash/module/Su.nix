@@ -6,6 +6,7 @@
 		function s() {
 			su - ''${1}
 		}
+		alias su="SHELL_NAME=su su"
 
 		# Run something as root. Runs command as a current user if su is not available.
 		# Usage: sudo <COMMAND>
