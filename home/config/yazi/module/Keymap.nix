@@ -22,6 +22,11 @@
 					run  = "create --force";
 					desc = "I want, sometimes.";
 				}
+				{
+					on   = "<Enter>";
+					run  = ''shell "SHELL_NAME=yazi $SHELL" --block --confirm'';
+					desc = "Spawn shell here.";
+				}
 			];
 		};
 	};
