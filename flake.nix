@@ -136,6 +136,23 @@
 			)
 		);
 
+		# Dev shell for this repo.
+		devShells = let
+			system = "x86_64-linux";
+			lib    = nixpkgs.lib;
+			pkgs   = nixpkgs.legacyPackages.${system};
+		in {
+			${system}.default = pkgs.mkShell {
+				nativeBuildInputs = with pkgs; [
+					nixd
+				];
+				# buildInputs = with pkgs; [ ];
+
+				# LD_LIBRARY_PATH   = "${lib.makeLibraryPath buildInputs}";
+				# SOURCE_DATE_EPOCH = "${toString self.lastModified}";
+			};
+		};
+
 		# Nixos systems.
 		nixosConfigurations = let
 			# Function to create a host. It does basic setup, like adding common modules.
