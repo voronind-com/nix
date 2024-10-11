@@ -39,6 +39,13 @@
 			git stash "''${@}"
 		}
 
+		# Cd to git's root dir.
+		function gcd() {
+			local path=$(git rev-parse --show-toplevel)
+			[[ "''${path}" = "" ]] && return 1
+			cd "''${path}"
+		}
+
 		# Git diff.
 		function gd() {
 			git diff "''${@}"
