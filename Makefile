@@ -62,9 +62,6 @@ live:
 reboot: boot
 	reboot
 
-shell:
-	SHELL_NAME="default" nix develop
-
 show:
 	nix flake show
 
