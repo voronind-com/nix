@@ -13,40 +13,58 @@
 		}
 
 		# Unlock encrypted disk file.
-		# Usage: funlock <FILE> <DIR>
+		# Usage: funlock <FILE>
 		function funlock() {
-			if [[ "''${UID}" != 0 ]]; then
-				_error "Must be root."
-				return 2
-			fi
-
 			local file="''${1}"
-			local dir="''${2}"
 
-			if [[ "''${dir}" = "" ]]; then
+			if [[ "''${file}" = "" ]]; then
 				help funlock
 				return 2
 			fi
 
 			local name=$(parse_alnum "''${file##*/}")
-			cryptsetup open "''${file}" "''${name}"
-			mount "/dev/mapper/''${name}" "''${dir}"
+
+			local loop=$(udisksctl loop-setup --no-user-interaction --file "''${file}")
+			loop="''${loop##* }"; loop="''${loop%.}"
+
+			local decrypted=$(udisksctl unlock --block-device "''${loop}")
+			decrypted="''${decrypted##* }"; decrypted="''${decrypted%.}"
+
+			local mount=$(udisksctl mount --no-user-interaction --block-device "''${decrypted}")
+			mount="''${mount#* at }"
+
+			cd "''${mount}"
 		}
 
-		# Unlock encrypted disk file.
-		# Usage: unlock <FILE>
-		# function unlock() {
-		# 	_filter() {
-		# 		sed -e "s/.*\ a[st]\ //" -e "s/\.$//"
-		# 	}
-		# 	local file="''${1}"
-		# 	local name=$(parse_alnum ''${file} | _filter)
-		# 	local loop=$(udisksctl loop-setup -f "''${file}" | _filter)
-		# 	local unlock=$(udisksctl unlock -b "''${loop}" | _filter)
-		# 	local mount=$(udisksctl mount -b "''${unlock}" | _filter)
+		# Mount file.
+		# Usage: fmount <FILE>
+		function fmount() {
+			local file="''${1}"
+			if [[ "''${file}" = "" ]]; then
+				help fmount
+				return 2
+			fi
 
-		# 	[ -L "./''${name}" ] || ln -s "''${mount}" "./''${name}"
-		# 	cd "''${mount}"
-		# }
+			local loop=$(udisksctl loop-setup --no-user-interaction --file "''${file}")
+			loop="''${loop##* }"; loop="''${loop%.}"
+
+			local mount=$(udisksctl mount --no-user-interaction --block-device "''${loop}")
+			mount="''${mount#* at }"
+
+			cd "''${mount}"
+		}
+
+		# Unmount file.
+		# Usage: fumount <LOOPDEVICE>
+		function fumount() {
+			local loop="''${1}"
+			if [[ "''${loop}" = "" ]]; then
+				help fumount
+				return 2
+			fi
+
+			udisksctl unmount --no-user-interaction --block-device "''${loop}"
+			udisksctl loop-delete --no-user-interaction --block-device "''${loop}"
+		}
 	'';
 }
