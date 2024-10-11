@@ -27,35 +27,29 @@
 				orphan = true;
 				run    = openWith "xdg-open";
 			}];
-			browser = [{
-				desc   = "Browser";
-				orphan = true;
-				run    = openWith "firefox-esr";
-			}];
-			text = [{
-				desc  = "Text";
-				block = true;
-				run   = openWith "nvim";
+			archive = [{
+				desc = "Archive";
+				run  = openWith "unpack";
 			}];
 			audio = [{
 				desc   = "Audio";
 				orphan = true;
 				run    = openWith "mpv --no-video";
 			}];
-			video = [{
-				desc   = "Video";
+			browser = [{
+				desc   = "Browser";
 				orphan = true;
-				run    = openWith "mpv";
+				run    = openWith "firefox-esr";
 			}];
 			document = [{
 				desc   = "Document";
 				orphan = true;
 				run    = openWith "onlyoffice-desktopeditors";
 			}];
-			pdf = [{
-				desc   = "Pdf";
-				orphan = true;
-				run    = openWith "evince";
+			hex = [{
+				desc  = "Hex";
+				block = true;
+				run   = openWith "radare2 -c V -w";
 			}];
 			image = [{
 				desc   = "Image";
@@ -67,14 +61,29 @@
 				orphan = true;
 				run    = openWith "gimp";
 			}];
-			archive = [{
-				desc = "Archive";
-				run  = openWith "unpack";
+			mount = [{
+				desc = "Mount";
+				run  = openWith "fmount";
 			}];
-			hex = [{
-				desc  = "Hex";
+			pdf = [{
+				desc   = "Pdf";
+				orphan = true;
+				run    = openWith "evince";
+			}];
+			text = [{
+				desc  = "Text";
 				block = true;
-				run   = openWith "radare2 -c V -w";
+				run   = openWith "nvim";
+			}];
+			video = [{
+				desc   = "Video";
+				orphan = true;
+				run    = openWith "mpv";
+			}];
+			unlock = [{
+				desc  = "Unlock";
+				block = true;
+				run   = openWith "funlock";
 			}];
 		};
 
@@ -91,6 +100,8 @@
 				(mkMime "application/x-xz"            [ "archive" ])
 				(mkMime "application/zip"             [ "archive" ])
 				(mkMime "application/x-7z-compressed" [ "archive" ])
+				(mkMime "application/x-iso9660-image"  [ "mount" ])
+				(mkMime "application/x-raw-disk-image" [ "unlock" ])
 				(mkMime "application/pdf" [ "pdf" ])
 				(mkMime "audio/*" [ "audio" ])
 				(mkName "*.mka"   [ "audio" ])

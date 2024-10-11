@@ -33,6 +33,7 @@
 			local mount=$(udisksctl mount --no-user-interaction --block-device "''${decrypted}")
 			mount="''${mount#* at }"
 
+			ya pub dds-cd --str "''${mount}" 2> /dev/null
 			cd "''${mount}"
 		}
 
@@ -51,6 +52,7 @@
 			local mount=$(udisksctl mount --no-user-interaction --block-device "''${loop}")
 			mount="''${mount#* at }"
 
+			ya pub dds-cd --str "''${mount}" 2> /dev/null
 			cd "''${mount}"
 		}
 
