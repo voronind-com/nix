@@ -77,36 +77,9 @@ in
             eventsConfig = ''
               worker_connections 4096;
             '';
-            # TODO: Fix 80 redirect and 403 default.
             appendHttpConfig = ''
               proxy_max_temp_file_size 0;
               proxy_buffering off;
-
-              server {
-                server_name default_server;
-                listen 80;
-
-                location / {
-                  return 301 https://$host$request_uri;
-                }
-              }
-
-              map $http_accept_language $resume {
-                default https://git.${config.container.domain}/voronind/resume/releases/download/latest/VoronindEn.pdf;
-                ~ru     https://git.${config.container.domain}/voronind/resume/releases/download/latest/VoronindRu.pdf;
-              }
-
-              server {
-                server_name ${config.container.domain};
-                listen 443 ssl;
-
-                ssl_certificate /etc/letsencrypt/live/${config.container.domain}/fullchain.pem;
-                ssl_certificate_key /etc/letsencrypt/live/${config.container.domain}/privkey.pem;
-                include /etc/letsencrypt/conf/options-ssl-nginx.conf;
-                ssl_dhparam /etc/letsencrypt/conf/ssl-dhparams.pem;
-
-                return 301 $resume;
-              }
 
               server {
                 listen 443 ssl default_server;
