@@ -3,6 +3,7 @@
   util,
   pkgs,
   lib,
+  secret,
   ...
 }@args:
 let
@@ -14,7 +15,7 @@ in
     let
       script = pkgs.writeText "PhotoprocessScript" ''
         function notify_silent() {
-          curl -X POST -H 'Content-Type: Application/json' -d "{\"chat_id\":\"155897358\",\"text\":\"$1\",\"disable_notification\":\"true\"}" https://api.telegram.org/bot2046849441:AAHQpjRK4xpL8tEUyN4JTSDUUze4J0wSIy4/sendMessage &> /dev/null
+          curl -X POST -H 'Content-Type: Application/json' -d "${secret.tg.dt "true"}" ${secret.tg.bt} &> /dev/null
         }
 
         cd ${imgInput}
