@@ -1,6 +1,8 @@
 # Dmitry 🌊 NixOS, Home Manager and Nix-on-Droid configurations.
 
-## Please, support tabs in Nix! [Discussion](https://github.com/NixOS/nix/pull/2911)
+## Please, support tabs in Nix!
+
+[Discussion](https://github.com/NixOS/nix/pull/2911) and [Open issue](https://github.com/NixOS/nix/issues/7834).
 
 ## Screenshots.
 

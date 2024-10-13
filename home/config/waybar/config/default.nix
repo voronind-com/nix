@@ -176,7 +176,7 @@ in
       exec = "swayscript displaywidget";
       on-click = "sleep 0.1 && swayscript dnd"; # HACK: https://github.com/Alexays/Waybar/issues/2166 & https://github.com/Alexays/Waybar/issues/1968
       on-click-right = "sleep 0.1 && swayscript monitor";
-      on-click-middle = "sleep 0.1 && swayscript gaming";
+      on-click-middle = "sleep 0.1 && swayscript displayreset";
       return-type = "json";
       signal = 4;
     };

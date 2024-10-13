@@ -19,6 +19,9 @@
 
         # Notifications.
         makoctl reload
+
+        # Reset displays.
+        displayreset
       }
 
       _sway_iterate_sockets re

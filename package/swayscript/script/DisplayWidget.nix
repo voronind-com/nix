@@ -17,6 +17,11 @@
       _sway_iterate_sockets toggle
     }
 
+    function monitorreset() {
+      swaymsg 'output * power on'
+      pkill -RTMIN+4 waybar
+    }
+
     function gaming() {
       toggle() {
         local output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
@@ -31,6 +36,11 @@
         pkill -RTMIN+4 waybar
       }
       _sway_iterate_sockets toggle
+    }
+
+    function gamingreset() {
+      swaymsg 'output * adaptive_sync off'
+      pkill -RTMIN+4 waybar
     }
 
     function dnd() {
@@ -48,22 +58,31 @@
       _sway_iterate_sockets toggle
     }
 
+    # Reset the state of everything.
+    function displayreset() {
+      [[ "''$(monitorstate)"   = "Y" ]] && monitorreset
+      [[ "''$(gamingstate)"    = "Y" ]] && gamingreset
+      [[ "''$(recordingstate)" = "Y" ]] && pkill wf-recorder
+      [[ "''$(dndstate)"       = "Y" ]] && dnd
+      true
+    }
+
     # Waybar output.
     function displaywidget() {
-      local __monitor=$(_monitor)
-      local __gaming=$(_gaming)
-      local __recording=$(_recording)
-      local __dnd=$(_dnd)
+      local _monitorstate=$(monitorstate)
+      local _gamingstate=$(gamingstate)
+      local _recordingstate=$(recordingstate)
+      local _dndstate=$(dndstate)
       local class=""
 
-      if [[ "''${__monitor}" = "Y" ]] || [[ "''${__gaming}" = "Y" ]] || [[ "''${__recording}" = "Y" ]] || [[ "''${__dnd}" = "Y" ]]; then
+      if [[ "''${_monitorstate}" = "Y" ]] || [[ "''${_gamingstate}" = "Y" ]] || [[ "''${_recordingstate}" = "Y" ]] || [[ "''${_dndstate}" = "Y" ]]; then
         class="modified"
       fi
 
-      printf "{\"text\": \"󰍹\", \"tooltip\": \"DND: ''${__dnd} / Monitor: ''${__monitor} / Gaming: ''${__gaming} / Recording: ''${__recording}\", \"class\": \"''${class}\"}\n"
+      printf "{\"text\": \"󰍹\", \"tooltip\": \"DND: ''${_dndstate} / Monitor: ''${_monitorstate} / Gaming: ''${_gamingstate} / Recording: ''${_recordingstate}\", \"class\": \"''${class}\"}\n"
     }
 
-    function _monitor() {
+    function monitorstate() {
       local outputs=($(swaymsg -t get_outputs | jq -r '.[] | .power'))
 
       for state in "''${outputs[@]}"; do
@@ -77,15 +96,15 @@
       return 0
     }
 
-    function _recording() {
+    function recordingstate() {
       [[ "$(ps cax | rg wf-recorder)" = "" ]] && printf n || printf Y
     }
 
-    function _dnd() {
+    function dndstate() {
       [[ "$(makoctl mode)" = "dnd" ]] && printf Y || printf n
     }
 
-    function _gaming() {
+    function gamingstate() {
       local outputs=($(swaymsg -t get_outputs | jq -r '.[] | .adaptive_sync_status'))
 
       for state in "''${outputs[@]}"; do
