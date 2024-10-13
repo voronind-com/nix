@@ -35,7 +35,6 @@ in
       "${inputs.nvimGruvboxMaterial}"
       "${inputs.nvimIndentoMatic}"
       "${inputs.nvimLspconfig}"
-      "${inputs.nvimOllama}"
       "${inputs.nvimPlenary}"
       "${inputs.nvimTelescope}"
       "${inputs.nvimTodo}"
@@ -65,7 +64,6 @@ in
       ./module/plugin/Align.nix
       ./module/plugin/Treesitter.nix
       ./module/plugin/Fold.nix
-      ./module/plugin/Ollama.nix
       ./module/plugin/Colorizer.nix
       ./module/plugin/lsp/Haskell.nix
       ./module/plugin/lsp/Rust.nix
@@ -79,7 +77,6 @@ in
       ./module/key/Filetree.nix
       ./module/key/Gitsigns.nix
       ./module/key/Navigation.nix
-      ./module/key/Ollama.nix
       ./module/key/Save.nix
       ./module/key/Sort.nix
       ./module/key/TabWidth.nix

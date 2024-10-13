@@ -30,7 +30,7 @@ fix-ulimit:
 # HACK: They broke switching in systemd service ffs.
 # https://github.com/NixOS/nixpkgs/issues/347315
 fix-unlock:
-	pkill nixos-rebuild
+	pkill nixos-rebuild || true
 
 format:
 	treefmt --no-cache --on-unmatched=info
