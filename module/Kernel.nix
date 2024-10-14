@@ -85,12 +85,8 @@ in
       };
     })
 
-    (mkIf cfg.hotspotTtlBypass {
-      boot.kernel.sysctl."net.ipv4.ip_default_ttl" = 65;
-    })
+    (mkIf cfg.hotspotTtlBypass { boot.kernel.sysctl."net.ipv4.ip_default_ttl" = 65; })
 
-    (mkIf cfg.latest {
-      boot.kernelPackages = pkgs.linuxPackages_latest;
-    })
+    (mkIf cfg.latest { boot.kernelPackages = pkgs.linuxPackages_latest; })
   ]);
 }

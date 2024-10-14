@@ -10,9 +10,7 @@
     cfg: extra:
     lib.recursiveUpdate {
       # Allow nested containers.
-      additionalCapabilities = [
-        ''all" --system-call-filter="add_key keyctl bpf" --capability="all''
-      ];
+      additionalCapabilities = [ ''all" --system-call-filter="add_key keyctl bpf" --capability="all'' ];
       enableTun = true;
 
       # Start containers with the system by default.
@@ -71,11 +69,7 @@
   mkContainerDir = cfg: dirs: map (path: "d '${cfg.storage}/${path}' 1777 root root - -") dirs;
 
   # Common configuration for Nginx server.
-  mkServer =
-    cfg:
-    lib.recursiveUpdate {
-      forceSSL = false;
-    } cfg;
+  mkServer = cfg: lib.recursiveUpdate { forceSSL = false; } cfg;
 
   # Attach the host media directory to container.
   # They will be added to /type/{0..9}

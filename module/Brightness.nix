@@ -8,7 +8,5 @@ in
     module.desktop.brightness.enable = mkEnableOption "Brightness.";
   };
 
-  config = mkIf cfg.enable {
-    programs.light.enable = true;
-  };
+  config = mkIf cfg.enable { programs.light.enable = true; };
 }

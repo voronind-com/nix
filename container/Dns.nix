@@ -30,9 +30,7 @@ in
       config =
         { ... }:
         container.mkContainerConfig cfg {
-          environment.systemPackages = [
-            pkgs.cloudflared
-          ];
+          environment.systemPackages = [ pkgs.cloudflared ];
 
           systemd.services.cloudflared = {
             description = "Cloudflare DoH server.";
@@ -96,9 +94,7 @@ in
                     "https://raw.githubusercontent.com/AssoEchap/stalkerware-indicators/master/generated/hosts"
                     "https://urlhaus.abuse.ch/downloads/hostfile/"
                   ];
-                  other = [
-                    "https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser"
-                  ];
+                  other = [ "https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser" ];
                 };
                 # whiteLists = {
                 #   other = [

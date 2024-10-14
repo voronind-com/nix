@@ -60,9 +60,7 @@ in
     })
 
     # Desktop apps.
-    (mkIf cfg.desktop.enable {
-      environment.systemPackages = package.desktop;
-    })
+    (mkIf cfg.desktop.enable { environment.systemPackages = package.desktop; })
 
     # Gaming.
     (mkIf cfg.gaming.enable {
@@ -86,18 +84,12 @@ in
     })
 
     # Creative.
-    (mkIf cfg.creative.enable {
-      environment.systemPackages = package.creative;
-    })
+    (mkIf cfg.creative.enable { environment.systemPackages = package.creative; })
 
     # Development.
-    (mkIf cfg.dev.enable {
-      environment.systemPackages = package.dev;
-    })
+    (mkIf cfg.dev.enable { environment.systemPackages = package.dev; })
 
     # Extras.
-    (mkIf cfg.extra.enable {
-      environment.systemPackages = package.extra;
-    })
+    (mkIf cfg.extra.enable { environment.systemPackages = package.extra; })
   ];
 }

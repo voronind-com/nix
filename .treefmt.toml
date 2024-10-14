@@ -12,4 +12,5 @@
 
 [formatter.nixfmt-rfc-style]
 command  = "nixfmt"
+options  = [ "-s" ]
 includes = [ "*.nix" ]

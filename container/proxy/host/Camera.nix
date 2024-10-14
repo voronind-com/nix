@@ -1,8 +1,4 @@
-{
-  config,
-  container,
-  ...
-}:
+{ config, container, ... }:
 let
   domain = "camera.${config.container.domain}";
   address = "192.168.2.249";

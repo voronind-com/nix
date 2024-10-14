@@ -31,9 +31,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    systemd.tmpfiles.rules = container.mkContainerDir cfg [
-      "data"
-    ];
+    systemd.tmpfiles.rules = container.mkContainerDir cfg [ "data" ];
 
     containers.jobber = container.mkContainer cfg {
       bindMounts = {
@@ -58,11 +56,7 @@ in
             ]);
         in
         container.mkContainerConfig cfg {
-          networking = lib.mkForce {
-            nameservers = [
-              "10.30.218.2"
-            ];
-          };
+          networking = lib.mkForce { nameservers = [ "10.30.218.2" ]; };
 
           systemd.services.jobber = {
             description = "My job is pushing the button.";

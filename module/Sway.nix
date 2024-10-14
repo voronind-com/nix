@@ -41,9 +41,7 @@ in
         base = true;
         gtk = true;
       };
-      extraPackages = with pkgs; [
-        swaykbdd
-      ];
+      extraPackages = with pkgs; [ swaykbdd ];
     };
   };
 }

@@ -22,9 +22,7 @@ in
   };
 
   config = mkIf cfg.enable (mkMerge [
-    {
-      boot.kernelModules = [ "kvm-intel" ];
-    }
+    { boot.kernelModules = [ "kvm-intel" ]; }
     (mkIf cfg.powersave {
       module.powersave = {
         enable = true;

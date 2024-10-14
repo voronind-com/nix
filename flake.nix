@@ -231,11 +231,7 @@
                 };
             };
 
-          mkSystem = system: hostname: {
-            "${hostname}" = mkHost {
-              inherit system hostname;
-            };
-          };
+          mkSystem = system: hostname: { "${hostname}" = mkHost { inherit system hostname; }; };
         in
         nixpkgs.lib.foldl' (acc: h: acc // h) { } (
           map (

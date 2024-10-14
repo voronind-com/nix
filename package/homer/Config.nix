@@ -47,9 +47,7 @@ let
         dark = colors;
       };
 
-    links = [
-      (mkLink "Status" "fa-heartbeat" "https://${config.container.module.status.domain}")
-    ];
+    links = [ (mkLink "Status" "fa-heartbeat" "https://${config.container.module.status.domain}") ];
 
     services = [
       (mkGroup "App" "fa-server" [

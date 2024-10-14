@@ -1,8 +1,4 @@
-{
-  lib,
-  config,
-  ...
-}:
+{ lib, config, ... }:
 with lib;
 let
   cfg = config.user.dasha;

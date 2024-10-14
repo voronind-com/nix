@@ -50,9 +50,7 @@
     {
       devShells.${system} = {
         default = pkgs.mkShell rec {
-          nativeBuildInputs = with pkgs; [
-            tex
-          ];
+          nativeBuildInputs = with pkgs; [ tex ];
           buildInputs = with pkgs; [ ];
           SOURCE_DATE_EPOCH = "${toString self.lastModified}";
         };

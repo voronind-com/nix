@@ -1,8 +1,4 @@
-{
-  container,
-  config,
-  ...
-}:
+{ container, config, ... }:
 let
   cfg = config.container.module.iot;
   name = "iot";

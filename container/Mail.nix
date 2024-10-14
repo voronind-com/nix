@@ -193,9 +193,7 @@ in
                 ru
               ];
               hostName = cfg.domain;
-              plugins = [
-                "managesieve"
-              ];
+              plugins = [ "managesieve" ];
               extraConfig = ''
                 # starttls needed for authentication, so the fqdn required to match
                 # the certificate

@@ -33,9 +33,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    systemd.tmpfiles.rules = container.mkContainerDir cfg [
-      "data"
-    ];
+    systemd.tmpfiles.rules = container.mkContainerDir cfg [ "data" ];
 
     containers.iot = container.mkContainer cfg {
       bindMounts = {

@@ -17,9 +17,7 @@ in
   config = mkIf cfg.enable {
     security.polkit.enable = true;
     systemd = {
-      packages = with pkgs; [
-        polkit-kde-agent
-      ];
+      packages = with pkgs; [ polkit-kde-agent ];
       user = {
         services.plasma-polkit-agent = {
           serviceConfig = {

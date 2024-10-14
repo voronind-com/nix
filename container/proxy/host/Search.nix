@@ -1,8 +1,4 @@
-{
-  container,
-  config,
-  ...
-}:
+{ container, config, ... }:
 let
   cfg = config.container.module.search;
   name = "search";

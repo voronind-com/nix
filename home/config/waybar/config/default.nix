@@ -24,9 +24,7 @@ in
       "sway/scratchpad"
       "mpris"
     ];
-    modules-center = [
-      "sway/workspaces"
-    ];
+    modules-center = [ "sway/workspaces" ];
     modules-right = [
       "sway/language"
       "pulseaudio"

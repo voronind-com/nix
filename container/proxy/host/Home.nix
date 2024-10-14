@@ -1,8 +1,4 @@
-{
-  config,
-  container,
-  ...
-}:
+{ config, container, ... }:
 let
   cfg = config.container.module.home;
   name = "home";

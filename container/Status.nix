@@ -32,9 +32,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    systemd.tmpfiles.rules = container.mkContainerDir cfg [
-      "data"
-    ];
+    systemd.tmpfiles.rules = container.mkContainerDir cfg [ "data" ];
 
     containers.status = container.mkContainer cfg {
       bindMounts = {
@@ -48,9 +46,7 @@ in
         { lib, ... }:
         container.mkContainerConfig cfg {
           networking = {
-            nameservers = mkForce [
-              config.container.module.dns.address
-            ];
+            nameservers = mkForce [ config.container.module.dns.address ];
           };
 
           services.uptime-kuma = {
