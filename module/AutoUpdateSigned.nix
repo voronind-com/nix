@@ -34,11 +34,12 @@ in
       enable = true;
       description = "Signed system auto-update.";
       serviceConfig = {
-        RuntimeMaxSec = "55m";
+        # RuntimeMaxSec = "55m"; # Doesn't work with oneshot, using timeout bellow.
         Type = "oneshot";
       };
       path = with pkgs; [
         bash
+        coreutils
         git
         gnumake
         nixos-rebuild
@@ -53,7 +54,7 @@ in
           echo "Verification failed."
           exit 1
         };
-        make switch
+        timeout 55m make switch
       '';
       after = [ "network-online.target" ];
       wants = [ "network-online.target" ];
