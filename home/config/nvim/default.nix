@@ -66,10 +66,12 @@ in
       ./module/plugin/Treesitter.nix
       ./module/plugin/Fold.nix
       ./module/plugin/Colorizer.nix
+      ./module/plugin/lsp/Go.nix
       ./module/plugin/lsp/Haskell.nix
+      ./module/plugin/lsp/Lua.nix
+      ./module/plugin/lsp/Nix.nix
       ./module/plugin/lsp/Rust.nix
       ./module/plugin/lsp/Tex.nix
-      ./module/plugin/lsp/Nix.nix
       ./module/key/Autocomplete.nix
       ./module/key/Buffer.nix
       ./module/key/Cmd.nix
