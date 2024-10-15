@@ -1,10 +1,13 @@
 { ... }:
 {
   text = ''
+    pid = vim.fn.getpid()
+
     -- Disable error messages popup.
-    -- Instead write them to /tmp/NeovimError<PID>.txt
+    -- Instead print them and write to /tmp/NeovimError<PID>.txt
     vim.notify = function(msg, log_level, opts)
-      local pid  = vim.fn.getpid()
+      print(string.sub(msg, 1, vim.v.echospace))
+
       local file = io.open("/tmp/NeovimError"..tostring(pid)..".txt", "a")
       file:write(msg.."\n")
       file:close()
