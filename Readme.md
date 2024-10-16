@@ -36,7 +36,7 @@ Newest first.
 <a href="https://i.imgur.com/H943DFl.jpeg">Wallpaper link</a>
 </details>
 
-[My current wallpaper](https://git.voronind.com/voronind/nixos/src/branch/main/config/Wallpaper.nix#L2)
+[My current wallpaper](https://git.voronind.com/voronind/nixos/src/branch/main/config/Wallpaper.nix#L4)
 
 Color theming based on wallpaper thanks to [Stylix](https://github.com/danth/stylix).
 
