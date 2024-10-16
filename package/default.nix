@@ -10,13 +10,11 @@
     bat # Pretty cat.
     bridge-utils # Network bridges.
     btop
-    htop # System monitors.
+    chafa # CLI file manager.
     coreutils # UNIX Core utilities.
     cryptsetup # Filesystem encryption (LUKS).
     curl
-    wcurl # CLI http client.
     ddrescue
-    testdisk # Apps to recover data from drives.
     diffutils # Diff tool.
     dnsutils # NS utilities.
     exiftool # Image info.
@@ -33,7 +31,7 @@
     gnused # Sed.
     gnutar
     gzip
-    xz # Archive and compression tools.
+    htop # System monitors.
     imagemagick # Image converter and transformation tool.
     inetutils # Things like FTP.
     iputils # IP tools.
@@ -45,9 +43,7 @@
     man # App to read manuals.
     neovim # Text editor.
     nmap
-    zmap # Network analyzer.
     openssh
-    sshfs # Ssh client.
     parallel # Run programs in parallel.
     parted # CLI disk partition tool.
     pv # IO progress bar.
@@ -56,19 +52,24 @@
     rsync # File copy tool.
     smartmontools # S.M.A.R.T. tools.
     sqlite # Serverless file-based database engine.
+    sshfs # Ssh client.
+    testdisk # Apps to recover data from drives.
     tmux # Terminal multiplexor.
     tree # Show directory stricture as a tree.
+    tree-sitter # A parser generator tool and an incremental parsing library.
+    unzip # Zip archive/unarchive tools.
     usbutils # Usb utilities like udiskctl.
     utillinux # Common Linux utilities.
     ventoy # Boot multiple ISO/images from a single USB stick.
+    wcurl # CLI http client.
     wireguard-tools # Tools to work with Wireguard.
     xray
-    zapret # FRKN.
+    xz # Archive and compression tools.
     yazi
-    chafa # CLI file manager.
     yt-dlp # Video downloader.
+    zapret # FRKN.
     zip
-    unzip # Zip archive/unarchive tools.
+    zmap # Network analyzer.
 
     # (pkgs.callPackage ./ytdlp {})
     (pkgs.callPackage ./yamusicdownload { })
