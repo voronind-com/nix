@@ -11,7 +11,8 @@
       local remotes=($(git remote))
       for remote in ''${remotes[@]}; do
         echo -n "''${remote}: "
-        git push "''${remote}" --tags "refs/remotes/origin/*:refs/heads/*"
+        # git push "''${remote}" --tags "refs/remotes/origin/*:refs/heads/*"
+        git push "''${remote}" --tags "refs/remotes/origin/*"
       done
     }
 
