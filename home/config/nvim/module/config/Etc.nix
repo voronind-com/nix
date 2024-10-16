@@ -26,7 +26,7 @@
 
     -- Display invisible characters.
     -- vim.cmd("set list listchars=tab:>\\ ,trail:-,eol:,lead:.")
-    vim.cmd("set list listchars=tab:>\\ ,trail:-,lead:.")
+    vim.cmd("set list listchars=tab:>\\ ,trail:-,lead:·")
 
     -- Relative line numbers.
     vim.wo.relativenumber = true
