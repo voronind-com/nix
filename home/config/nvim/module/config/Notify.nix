@@ -1,16 +1,14 @@
 { ... }:
 {
   text = ''
-    pid = vim.fn.getpid()
-
     -- Disable error messages popup.
-    -- Instead print them and write to /tmp/NeovimError<PID>.txt
+    -- Instead print them and write to system journal.
     bequiet = function(msg, log_level, opts)
       print(string.sub(tostring(msg), 1, vim.v.echospace))
 
-      local file = io.open("/tmp/NeovimError"..tostring(pid)..".txt", "a")
-      file:write(msg.."\n")
-      file:close()
+      local log = io.popen("systemd-cat -t nvim", "w")
+      log:write(tostring(msg))
+      log:close()
     end
 
     vim.notify = bequiet
