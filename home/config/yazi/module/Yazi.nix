@@ -136,6 +136,7 @@
       rules =
         let
           defaultUse = [
+            "archive"
             "archive_fast"
             "hex"
           ];
