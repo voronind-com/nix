@@ -66,7 +66,7 @@ in
         OnCalendar = "hourly";
         Persistent = true;
         Unit = "autoupdate.service";
-        # RandomizedDelaySec = 60;
+        RandomizedDelaySec = 60;
       };
       wantedBy = [ "timers.target" ];
     };
