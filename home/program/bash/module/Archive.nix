@@ -363,7 +363,8 @@
 
     # Check if file is an archive.
     function _is_archive() {
-      local out=$(echo "''${*}" | grep -E ''${_archive_pattern})
+      local target="''${*}"
+      local out=$(echo "''${target##*/}" | grep -E ''${_archive_pattern})
 
       [[ "''${out}" != "" ]]
     }

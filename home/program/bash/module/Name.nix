@@ -10,7 +10,7 @@
 
       process() {
         # Skip archive.
-        if $(_is_archive ''${target}); then
+        if $(_is_archive "''${target}"); then
           _iterate_skip "File is an archive, skip."
           return 0
         fi
@@ -51,7 +51,7 @@
 
       process() {
         # Skip archive.
-        if $(_is_archive ''${target}); then
+        if $(_is_archive "''${target}"); then
           _iterate_skip "File is an archive, skip."
           return 0
         fi

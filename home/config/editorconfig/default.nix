@@ -9,8 +9,8 @@
         charset = "utf-8";
         indent_style = "tab";
         indent_size = 2;
-        insert_final_newline = "true";
-        trim_trailing_whitespace = "true";
+        insert_final_newline = false;
+        trim_trailing_whitespace = true;
       };
 
       "Makefile" = {

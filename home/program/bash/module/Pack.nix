@@ -70,6 +70,12 @@
         # Use full path to file.
         target=''$(realpath "''${target}")
 
+        # Check for archive.
+        if $(_is_archive "''${target}"); then
+          unarchive "''${target}"
+          return 0
+        fi
+
         # Unpack file type.
         local type="''${target##*.}"
 

@@ -39,7 +39,13 @@
         archive = [
           {
             desc = "Archive";
-            run = openWith "unpack";
+            run = openWith "archive";
+          }
+        ];
+        archive_fast = [
+          {
+            desc = "Archive Fast";
+            run = openWith "archive_fast";
           }
         ];
         audio = [
@@ -118,13 +124,19 @@
             run = openWith "funlock";
           }
         ];
+        unpack = [
+          {
+            desc = "Unpack";
+            run = openWith "unpack";
+          }
+        ];
       };
 
     open = {
       rules =
         let
           defaultUse = [
-            "text"
+            "archive_fast"
             "hex"
           ];
           mkMime = mime: use: {
@@ -139,11 +151,11 @@
         [
           # Use `file -i file.txt` to find file mime type.
           # Use `xdg-mime query default "text/plain"` to find default app.
-          (mkMime "application/gzip" [ "archive" ])
-          (mkMime "application/x-tar" [ "archive" ])
-          (mkMime "application/x-xz" [ "archive" ])
-          (mkMime "application/zip" [ "archive" ])
-          (mkMime "application/x-7z-compressed" [ "archive" ])
+          (mkMime "application/gzip" [ "unpack" ])
+          (mkMime "application/x-tar" [ "unpack" ])
+          (mkMime "application/x-xz" [ "unpack" ])
+          (mkMime "application/zip" [ "unpack" ])
+          (mkMime "application/x-7z-compressed" [ "unpack" ])
           (mkMime "application/x-iso9660-image" [ "mount" ])
           (mkMime "application/x-raw-disk-image" [ "unlock" ])
           (mkMime "application/pdf" [ "pdf" ])
@@ -155,7 +167,10 @@
           ])
           (mkMime "video/*" [ "video" ])
           (mkMime "text/html" [ "browser" ])
+          (mkMime "text/*" [ "text" ])
           (mkMime "application/vnd.openxmlformats-officedocument.*" [ "document" ])
+          (mkMime "inode/directory" [ "archive" ])
+          (mkMime "inode/x-empty" [ "text" ])
           (mkMime "*" [ ])
         ];
     };
