@@ -138,6 +138,7 @@
           defaultUse = [
             "archive"
             "archive_fast"
+            "text"
             "hex"
           ];
           mkMime = mime: use: {
@@ -168,10 +169,7 @@
           ])
           (mkMime "video/*" [ "video" ])
           (mkMime "text/html" [ "browser" ])
-          (mkMime "text/*" [ "text" ])
           (mkMime "application/vnd.openxmlformats-officedocument.*" [ "document" ])
-          (mkMime "inode/directory" [ "archive" ])
-          (mkMime "inode/x-empty" [ "text" ])
           (mkMime "*" [ ])
         ];
     };
