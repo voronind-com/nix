@@ -117,7 +117,7 @@
     # Git patch create.
     # Usage: gpc > <FILE>
     function gpc() {
-      git diff --cached --binary
+      git diff --staged --patch --binary
     }
 
     # Git patch (apply).
