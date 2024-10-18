@@ -126,6 +126,12 @@
       git apply --index "''${@}"
     }
 
+    # Unstage changes.
+    # Usage: grs <FILES>
+    function grs() {
+      git restore --staged "''${@}"
+    }
+
     # Run git garbage collection.
     function ggc() {
       git gc --aggressive --no-cruft --prune=now
