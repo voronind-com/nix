@@ -57,6 +57,7 @@
     tmux # Terminal multiplexor.
     tree # Show directory stricture as a tree.
     tree-sitter # A parser generator tool and an incremental parsing library.
+    tun2socks # Use proxy as a vpn.
     unzip # Zip archive/unarchive tools.
     usbutils # Usb utilities like udiskctl.
     utillinux # Common Linux utilities.
