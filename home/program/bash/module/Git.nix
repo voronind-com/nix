@@ -123,7 +123,7 @@
     # Git patch (apply).
     # Usage: gp <FILE>
     function gp() {
-      git apply "''${@}"
+      git apply --index "''${@}"
     }
 
     # Run git garbage collection.
