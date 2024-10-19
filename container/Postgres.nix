@@ -48,6 +48,7 @@ in
               configurations = with config.container.module; {
                 forgejo = git;
                 invidious = yt;
+                mattermost = chat;
                 nextcloud = cloud;
                 onlyoffice = office;
                 paperless = paper;
