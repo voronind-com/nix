@@ -1,5 +1,32 @@
 { pkgs, config, ... }:
 let
+  bookmarks = [
+    (mkBookmark "Dashboard" "https://home.voronind.com")
+    (mkBookmark "Watch" "https://watch.voronind.com")
+    (mkBookmark "Telegram" "https://web.telegram.org/a")
+    (mkBookmark "Mail" "https://mail.voronind.com")
+    (mkBookmark "WorkMail" "https://mail.fsight.ru")
+    (mkBookmark "Git" "https://git.voronind.com")
+    (mkBookmark "WorkGit" "https://git.fmp.fsight.world")
+    (mkBookmark "WorkBoard" "https://support.fsight.ru")
+    (mkBookmark "Hass" "https://iot.voronind.com")
+    (mkBookmark "Cloud" "https://cloud.voronind.com")
+  ];
+
+  extensions = {
+    "addon@darkreader.org" = mkExtension "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
+    "cliget@zaidabdulla.com" = mkExtension "https://addons.mozilla.org/firefox/downloads/latest/cliget/latest.xpi";
+    "foxyproxy@eric.h.jung" = mkExtension "https://addons.mozilla.org/firefox/downloads/latest/foxyproxy-standard/latest.xpi";
+    "uBlock0@raymondhill.net" = mkExtension "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+    "{446900e4-71c2-419f-a6a7-df9c091e268b}" = mkExtension "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
+    "{a6c4a591-f1b2-4f03-b3ff-767e5bedf4e7}" = mkExtension "https://addons.mozilla.org/firefox/downloads/latest/user-agent-string-switcher/latest.xpi";
+    "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = mkExtension "https://addons.mozilla.org/firefox/downloads/latest/vimium-ff/latest.xpi";
+    "{e7625f06-e252-479d-ac7a-db68aeaff2cb}" = mkExtension "https://addons.mozilla.org/firefox/downloads/latest/togglefonts/latest.xpi";
+    # NOTE: This extension is helpful to find the required parameters for this config.
+    # Or find them yourself inside the `about:support`.
+    # "queryamoid@kaply.com"                   = mkExtension "https://github.com/mkaply/queryamoid/releases/download/v0.1/query_amo_addon_id-0.1-fx.xpi";
+  };
+
   extraConfig = ''
     // Bookmarks.
     user_pref("browser.microsummary.enabled",          true);
@@ -101,19 +128,7 @@ in
     inherit extraConfig userChrome userContent;
   };
   policies = {
-    ManagedBookmarks = [
-      { toplevel_name = "Pin"; }
-      (mkBookmark "Dashboard" "https://home.voronind.com")
-      (mkBookmark "Watch" "https://watch.voronind.com")
-      (mkBookmark "Telegram" "https://web.telegram.org/a")
-      (mkBookmark "Mail" "https://mail.voronind.com")
-      (mkBookmark "WorkMail" "https://mail.fsight.ru")
-      (mkBookmark "Git" "https://git.voronind.com")
-      (mkBookmark "WorkGit" "https://git.fmp.fsight.world")
-      (mkBookmark "WorkBoard" "https://support.fsight.ru")
-      (mkBookmark "Hass" "https://iot.voronind.com")
-      (mkBookmark "Cloud" "https://cloud.voronind.com")
-    ];
+    ManagedBookmarks = [ { toplevel_name = "Pin"; } ] ++ bookmarks;
     ExtensionUpdate = true;
     ExtensionSettings = {
       # Block extension installation outside of this config.
@@ -121,18 +136,7 @@ in
         install_sources = [ "*" ];
         installation_mode = "blocked";
       };
-      "addon@darkreader.org" = mkExtension "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
-      "cliget@zaidabdulla.com" = mkExtension "https://addons.mozilla.org/firefox/downloads/latest/cliget/latest.xpi";
-      "foxyproxy@eric.h.jung" = mkExtension "https://addons.mozilla.org/firefox/downloads/latest/foxyproxy-standard/latest.xpi";
-      "uBlock0@raymondhill.net" = mkExtension "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
-      "{446900e4-71c2-419f-a6a7-df9c091e268b}" = mkExtension "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
-      "{a6c4a591-f1b2-4f03-b3ff-767e5bedf4e7}" = mkExtension "https://addons.mozilla.org/firefox/downloads/latest/user-agent-string-switcher/latest.xpi";
-      "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = mkExtension "https://addons.mozilla.org/firefox/downloads/latest/vimium-ff/latest.xpi";
-      "{e7625f06-e252-479d-ac7a-db68aeaff2cb}" = mkExtension "https://addons.mozilla.org/firefox/downloads/latest/togglefonts/latest.xpi";
-      # NOTE: This extension is helpful to find the required parameters for this config.
-      # Or find them yourself inside the `about:support`.
-      # "queryamoid@kaply.com"                   = mkExtension "https://github.com/mkaply/queryamoid/releases/download/v0.1/query_amo_addon_id-0.1-fx.xpi";
-    };
+    } // extensions;
     # NOTE: `firefox-esr` edition is required to change default search engine.
     SearchEngines = {
       Default = "Searx";
