@@ -1,8 +1,6 @@
 { ... }:
 {
   text = ''
-    export VDL_PROXY=""
-
     # Download video from URL. When no `[LINK]` specified, it tries to update previously downloaded link.
     # Usage: vdl [LINK]
     function vdl() {
@@ -28,7 +26,7 @@
       [[ -f "Src.txt" ]] || echo "''${target}" > Src.txt
 
       # Download [LINK] content.
-      yt-dlp ''${VDL_PROXY} -S 'res:1080,codec:av1,codec:vp9,codec:h264' --download-archive Index.txt --embed-thumbnail --embed-subs --write-auto-subs --embed-metadata --merge-output-format mkv -cio '%(playlist_index)000006d_%(id)s.%(ext)s' ''${target} # || _vdl_retry
+      yt-dlp -S 'res:1080,codec:av1,codec:vp9,codec:h264' --download-archive Index.txt --embed-thumbnail --embed-subs --write-auto-subs --embed-metadata --merge-output-format mkv -cio '%(playlist_index)000006d_%(id)s.%(ext)s' ''${target} # || _vdl_retry
     }
 
     # Temporary fix for vk downloads.
