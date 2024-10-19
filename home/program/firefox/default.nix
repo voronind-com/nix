@@ -80,6 +80,18 @@ let
 
     // Style.
     user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+
+    // Disable auto gain for the mic.
+    user_pref("media.getusermedia.audio.processing.aec", 0);
+    user_pref("media.getusermedia.audio.processing.aec.enabled", false);
+    user_pref("media.getusermedia.audio.processing.agc", 0);
+    user_pref("media.getusermedia.audio.processing.agc.enabled", false);
+    user_pref("media.getusermedia.audio.processing.agc2.forced", false)
+    user_pref("media.getusermedia.audio.processing.hpf.enabled", false);
+    user_pref("media.getusermedia.audio.processing.noise", 0);
+    user_pref("media.getusermedia.audio.processing.noise.enabled", false);
+    user_pref("media.getusermedia.audio.processing.platform.enabled", false);
+    user_pref("media.getusermedia.audio.processing.transient.enabled", false);
   '';
 
   userChrome = ''
