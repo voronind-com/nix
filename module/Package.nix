@@ -43,6 +43,8 @@ in
 
     # Common apps.
     (mkIf cfg.common.enable {
+      environment.systemPackages = package.common;
+
       xdg.mime.defaultApplications = {
         # Use `file -i file.txt` to find file mime type.
         # Use `xdg-mime query default "text/plain"` to find default app.
@@ -53,8 +55,6 @@ in
         "text/*" = "nvim.desktop";
         "video/*" = "mpv.desktop";
       };
-
-      environment.systemPackages = package.common;
 
       services.gvfs.enable = true;
     })

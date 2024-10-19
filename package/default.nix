@@ -9,12 +9,12 @@
     android-tools # Android adb tool. Can be used to connect to itself via wireless debugging. binwalk           # Can analyze files for other files inside them.
     bat # Pretty cat.
     bridge-utils # Network bridges.
-    btop
+    btop # System monitoring.
     chafa # CLI file manager.
     coreutils # UNIX Core utilities.
     cryptsetup # Filesystem encryption (LUKS).
-    curl
-    ddrescue
+    curl # Http client.
+    ddrescue # Data rescue extractor.
     diffutils # Diff tool.
     dnsutils # NS utilities.
     exiftool # Image info.
@@ -29,8 +29,8 @@
     gnugrep # Grep.
     gnumake # Make.
     gnused # Sed.
-    gnutar
-    gzip
+    gnutar # Tar.
+    gzip # Fast compression.
     htop # System monitors.
     imagemagick # Image converter and transformation tool.
     inetutils # Things like FTP.
@@ -42,8 +42,8 @@
     ltex-ls # Latex LSP for neovim spellcheck.
     man # App to read manuals.
     neovim # Text editor.
-    nmap
-    openssh
+    nmap # Network scanning.
+    openssh # Ssh client.
     parallel # Run programs in parallel.
     parted # CLI disk partition tool.
     pv # IO progress bar.
@@ -64,34 +64,34 @@
     ventoy # Boot multiple ISO/images from a single USB stick.
     wcurl # CLI http client.
     wireguard-tools # Tools to work with Wireguard.
-    xray
+    xray # Proxy.
     xz # Archive and compression tools.
-    yazi
+    yazi # File manager.
     yt-dlp # Video downloader.
     zapret # FRKN.
-    zip
+    zip # Zip utility.
     zmap # Network analyzer.
 
-    # (pkgs.callPackage ./ytdlp {})
-    (pkgs.callPackage ./yamusicdownload { })
+    # (pkgs.callPackage ./ytdlp {}) # Youtube downloader bin package.
+    (pkgs.callPackage ./yamusicdownload { }) # Yandex music downloader.
   ];
 
   desktop = with pkgs; [
     adwaita-icon-theme # GTK icons.
     foot # Terminal emulator.
     fuzzel # Application launcher.
-    grim
-    slurp
-    wf-recorder
-    swappy # Screenshot.
+    grim # Screenshots.
+    slurp # Screen selection.
+    wf-recorder # Screen recording.
+    swappy # Screenshot editing.
     mako # Notification system.
     networkmanagerapplet # Internet configuration.
-    pamixer
-    pavucontrol
+    pamixer # Sound controls.
+    pavucontrol # Sound applet.
     pulseaudio # Audio.
     playerctl # Multimedia controls.
-    sway
-    waybar # Sway WM.
+    sway # Sway WM.
+    waybar # Sway bar.
 
     (pkgs.callPackage ./swayscript args)
   ];
@@ -113,13 +113,13 @@
 
   gaming = with pkgs; [
     scanmem # Memory edit tool.
-    steam
-    bottles
-    dxvk
-    gamescope
-    mangohud
-    vkd3d
-    wine64 # Gaming!
+    steam # Gaming platform.
+    bottles # GUI for Wine.
+    dxvk # Directx to Vulkan.
+    gamescope # Compositor for Steam.
+    mangohud # Realtime stats overlay.
+    vkd3d # Directx to Vulkan.
+    wine64 # Run Windows software on Linux.
     steam-run # Run games outside of Steam.
   ];
 
@@ -130,8 +130,8 @@
   ];
 
   dev = with pkgs; [
-    android-studio
-    jetbrains.idea-community
+    android-studio # I hate you.
+    jetbrains.idea-community # Okay, but LSP would be better.
   ];
 
   extra = with pkgs; [
@@ -139,10 +139,10 @@
     appimage-run # Tool to run .AppImage files in NixOS.
     blanket # Sounds generator.
     calibre # Book library manager.
-    cbonsai
+    cbonsai # Draw trees.
     cmatrix # CLI Screensavers.
-    cowsay
-    lolcat # CLI funni.
+    cowsay # Cow quotes.
+    lolcat # CLI funni colors.
     gnome-font-viewer # Font viewer.
     jamesdsp # Active audio processing.
     p7zip # Weird archive tool.
