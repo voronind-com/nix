@@ -13,6 +13,7 @@
         TEST = { icon = "⏲ ", color = "test",    alt = { "TESTING", "PASSED", "FAILED" } },
         TODO = { icon = " ", color = "info",    alt = { "LATER", "FUTURE", "ROADMAP" }},
         WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
+        WIP  = { icon = " ", color = "warning", alt = { "PROGRESS" } },
       },
       gui_style = {
         bg = "BOLD",
