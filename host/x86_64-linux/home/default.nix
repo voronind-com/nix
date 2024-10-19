@@ -41,8 +41,18 @@
         "rutrk.org"
         "t-ru.org"
         "medium.com"
-        "quora.com"
-        "quoracdn.net"
+        "dis.gd"
+        "discord.co"
+        "discord.com"
+        "discord.dev"
+        "discord.gg"
+        "discord.gift"
+        "discord.media"
+        "discord.new"
+        "discordapp.com"
+        "discordapp.net"
+        "discordcdn.com"
+        "discordstatus.com"
       ];
     };
   };
