@@ -45,6 +45,7 @@ in
             # SRC: https://0xerr0r.github.io/blocky/main/configuration/
             settings = {
               bootstrapDns = "tcp+udp:1.1.1.1";
+              connectIPVersion = "v4";
               upstreams.groups = {
                 default = [ "https://dns.quad9.net/dns-query" ];
               };
