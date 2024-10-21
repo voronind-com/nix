@@ -87,5 +87,10 @@
       gpg --locate-keys "''${email}" \
       || gpg --locate-keys --auto-key-locate hkps://keys.openpgp.org "''${email}"
     }
+
+    # Update keys.
+    function gpg_refresh() {
+      gpg --refresh-keys
+    }
   '';
 }
