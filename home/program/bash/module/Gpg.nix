@@ -73,5 +73,19 @@
 
       _iterate_targets process ''${targets[@]}
     }
+
+    # Find user keys using keyservers.
+    # Usage: gpg_find <EMAIL>
+    function gpg_find() {
+      local email="''${1}"
+
+      if [[ "''${email}" = "" ]]; then
+        help gpg_find
+        return 2
+      fi
+
+      gpg --locate-keys "''${email}" \
+      || gpg --locate-keys --auto-key-locate hkps://keys.openpgp.org "''${email}"
+    }
   '';
 }
