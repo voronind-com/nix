@@ -150,20 +150,59 @@ in
         installation_mode = "blocked";
       };
     } // extensions;
-    # NOTE: `firefox-esr` edition is required to change default search engine.
+    # NOTE: `firefox-esr` edition is required to change search engines.
     SearchEngines = {
       Default = "Searx";
+      PreventInstalls = true;
       Add = [
         {
           Alias = "s";
-          Description = "Searx Search";
+          Description = "SearX";
           IconURL = "https://search.voronind.com/favicon.ico";
           Method = "POST";
           Name = "Searx";
           PostData = "q={searchTerms}";
           # SuggestURLTemplate = "https://search.voronind.com/autocomplete?q={searchTerms}";
-          URLTemplate = "https://search.voronind.com/search?q=%{searchTerms}";
+          URLTemplate = "https://search.voronind.com/search?q={searchTerms}";
         }
+        {
+          Alias = "ru";
+          Description = "RuTracker";
+          IconURL = "https://rutracker.org/favicon.ico";
+          Method = "GET";
+          Name = "RuTracker";
+          URLTemplate = "https://rutracker.org/forum/tracker.php?nm={searchTerms}";
+        }
+        {
+          Alias = "re";
+          Description = "Reddit";
+          IconURL = "https://www.reddit.com/favicon.ico";
+          Method = "GET";
+          Name = "Reddit";
+          URLTemplate = "https://www.reddit.com/search/?q={searchTerms}";
+        }
+        {
+          Alias = "no";
+          Description = "NixOS Option";
+          IconURL = "https://search.nixos.org/favicon.ico";
+          Method = "GET";
+          Name = "NixOS Option";
+          URLTemplate = "https://search.nixos.org/options?query={searchTerms}";
+        }
+        {
+          Alias = "np";
+          Description = "NixOS Package";
+          IconURL = "https://search.nixos.org/favicon.ico";
+          Method = "GET";
+          Name = "NixOS Package";
+          URLTemplate = "https://search.nixos.org/packages?query={searchTerms}";
+        }
+      ];
+      Remove = [
+        "Bing"
+        "DuckDuckGo"
+        "Google"
+        "Wikipedia (en)"
       ];
     };
   };
