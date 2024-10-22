@@ -7,7 +7,6 @@
     module = {
       # ISSUE: hdd.enable      = true;
       change.enable = true;
-      chat.enable = true;
       cloud.enable = true;
       ddns.enable = true;
       dns.enable = true;
