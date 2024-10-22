@@ -47,5 +47,18 @@
 
       SHELL_NAME="''${pkg}" NIXPKGS_ALLOW_UNFREE=1 nix shell --impure github:NixOS/nixpkgs/''${rev}#''${pkg} -c ''${cmd}
     }
+
+    # Prefetch to nix store.
+    # Usage: prefetch <URL>
+    function prefetch() {
+      local url="''${1}"
+
+      if [[ "''${url}" = "" ]]; then
+        help prefetch
+        return 2
+      fi
+
+      nix hash to-sri --type sha256 $(nix-prefetch-url "''${url}")
+    }
   '';
 }
