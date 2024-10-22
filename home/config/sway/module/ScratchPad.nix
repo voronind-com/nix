@@ -45,5 +45,11 @@
       move scratchpad
       scratchpad show
     }
+
+    # JamesDsp.
+    for_window [title="JamesDSP for Linux"] {
+      move scratchpad
+      scratchpad show
+    }
   '';
 }
