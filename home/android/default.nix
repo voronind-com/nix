@@ -6,8 +6,9 @@
     }/share/fonts/truetype/NerdFonts/TerminessNerdFontMono-Regular.ttf $out
   '';
 
-  colors = ''
-    background=#${config.style.color.bg.dark}
-    foreground=#${config.style.color.fg.light}
-  '';
+  colors = with config.style.color; {
+    background = "#${bg.dark}";
+    cursor = "#${fg.light}";
+    foreground = "#${fg.light}";
+  };
 }

@@ -7,8 +7,6 @@ help:
 
 android:
 	nix-on-droid switch --flake $(flake)
-	cp ~/.termux/_font.ttf ~/.termux/font.ttf
-	cp ~/.termux/_colors.properties ~/.termux/colors.properties
 	cp ~/.Wallpaper /sdcard/Download/Wallpaper.jpg
 	cp ~/.Wallpaper /sdcard/Download/Wallpaper.png
 

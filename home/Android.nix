@@ -27,17 +27,19 @@ in
   };
 
   config = mkIf cfg.enable {
-    time.timeZone = const.timeZone;
     environment.packages = package.core;
+    time.timeZone = const.timeZone;
+
+    terminal = {
+      inherit (android) font colors;
+    };
+
     home-manager.config = stylix // {
       imports = [ inputs.stylix.homeManagerModules.stylix ];
       home = {
-        stateVersion = const.droidStateVersion;
+        file = import ./config args;
         sessionVariables = import ./variable args;
-        file = (import ./config args) // {
-          ".termux/_font.ttf".source = android.font;
-          ".termux/_colors.properties".text = android.colors;
-        };
+        stateVersion = const.droidStateVersion;
       };
       programs = import ./program args;
     };
