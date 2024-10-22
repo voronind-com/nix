@@ -1,7 +1,8 @@
 { pkgs, ... }:
 let
   apps = [
-    "*|gnu-image-manipulation-program"
+    "gimp"
+    "gimp-*"
     "steam-proton"
   ];
 
