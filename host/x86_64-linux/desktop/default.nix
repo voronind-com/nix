@@ -11,6 +11,7 @@
     builder.client.enable = true;
     distrobox.enable = true;
     keyd.enable = true;
+    ollama.enable = true;
     print.enable = true;
     virtmanager.enable = true;
     amd = {

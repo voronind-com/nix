@@ -82,6 +82,10 @@
       url = "github:neovim/nvim-lspconfig";
       flake = false;
     };
+    nvimOllama = {
+      url = "github:nomnivore/ollama.nvim";
+      flake = false;
+    };
     nvimPlenary = {
       url = "github:nvim-lua/plenary.nvim";
       flake = false;

@@ -609,6 +609,22 @@
         "type": "github"
       }
     },
+    "nvimOllama": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1717906114,
+        "narHash": "sha256-8tW5tp2GiYw+PnR7rqiKfykLW/yqvGOtqauZCgEeQCg=",
+        "owner": "nomnivore",
+        "repo": "ollama.nvim",
+        "rev": "45e58779fecde7ac5b8f62800bbe7180d4b48507",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nomnivore",
+        "repo": "ollama.nvim",
+        "type": "github"
+      }
+    },
     "nvimPlenary": {
       "flake": false,
       "locked": {
@@ -746,6 +762,7 @@
         "nvimGruvboxMaterial": "nvimGruvboxMaterial",
         "nvimIndentoMatic": "nvimIndentoMatic",
         "nvimLspconfig": "nvimLspconfig",
+        "nvimOllama": "nvimOllama",
         "nvimPlenary": "nvimPlenary",
         "nvimTelescope": "nvimTelescope",
         "nvimTodo": "nvimTodo",
