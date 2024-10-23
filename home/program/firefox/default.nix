@@ -14,6 +14,16 @@ let
     (mkBookmark "Cloud" "https://cloud.voronind.com")
   ];
 
+  searchEngines = [
+    (mkSearchEngine "s" "SearX" "https://search.voronind.com/search?q={searchTerms}")
+    (mkSearchEngine "ru" "RuTracker" "https://rutracker.org/forum/tracker.php?nm={searchTerms}")
+    (mkSearchEngine "re" "Reddit" "https://www.reddit.com/search/?q={searchTerms}")
+    (mkSearchEngine "no" "NixOS Options" "https://search.nixos.org/options?query={searchTerms}")
+    (mkSearchEngine "np" "NixOS Packages" "https://search.nixos.org/packages?query={searchTerms}")
+    (mkSearchEngine "so" "Stack Overflow" "https://stackoverflow.com/search?tab=votes&q={searchTerms}")
+    (mkSearchEngine "hm" "Home Manager" "https://home-manager-options.extranix.com/?query={searchTerms}")
+  ];
+
   extensions = {
     "addon@darkreader.org" = mkExtension "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
     "cliget@zaidabdulla.com" = mkExtension "https://addons.mozilla.org/firefox/downloads/latest/cliget/latest.xpi";
@@ -27,15 +37,6 @@ let
     # Or find them yourself inside the `about:support`.
     # "queryamoid@kaply.com"                   = mkExtension "https://github.com/mkaply/queryamoid/releases/download/v0.1/query_amo_addon_id-0.1-fx.xpi";
   };
-
-  searchEngines = [
-    (mkSearchEngine "s" "SearX" "https://search.voronind.com/search?q={searchTerms}")
-    (mkSearchEngine "ru" "RuTracker" "https://rutracker.org/forum/tracker.php?nm={searchTerms}")
-    (mkSearchEngine "re" "Reddit" "https://www.reddit.com/search/?q={searchTerms}")
-    (mkSearchEngine "no" "NixOS Options" "https://search.nixos.org/options?query={searchTerms}")
-    (mkSearchEngine "np" "NixOS Packages" "https://search.nixos.org/packages?query={searchTerms}")
-    (mkSearchEngine "so" "Stack Overflow" "https://stackoverflow.com/search?tab=votes&q={searchTerms}")
-  ];
 
   extraConfig = ''
     // Bookmarks.
