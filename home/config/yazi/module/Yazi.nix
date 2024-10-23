@@ -136,9 +136,9 @@
       rules =
         let
           defaultUse = [
+            "text"
             "archive"
             "archive_fast"
-            "text"
             "hex"
           ];
           mkMime = mime: use: {
