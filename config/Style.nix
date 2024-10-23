@@ -110,7 +110,7 @@ in
     # };
 
     cursor = {
-      name = mkStrOption "phinger-cursors-dark";
+      name = mkStrOption "phinger-cursors-light";
       package = mkPkgOption pkgs.phinger-cursors;
       size = mkIntOption 24;
     };
