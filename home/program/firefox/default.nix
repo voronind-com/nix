@@ -28,6 +28,15 @@ let
     # "queryamoid@kaply.com"                   = mkExtension "https://github.com/mkaply/queryamoid/releases/download/v0.1/query_amo_addon_id-0.1-fx.xpi";
   };
 
+  searchEngines = [
+    (mkSearchEngine "s" "SearX" "https://search.voronind.com/search?q={searchTerms}")
+    (mkSearchEngine "ru" "RuTracker" "https://rutracker.org/forum/tracker.php?nm={searchTerms}")
+    (mkSearchEngine "re" "Reddit" "https://www.reddit.com/search/?q={searchTerms}")
+    (mkSearchEngine "no" "NixOS Options" "https://search.nixos.org/options?query={searchTerms}")
+    (mkSearchEngine "np" "NixOS Packages" "https://search.nixos.org/packages?query={searchTerms}")
+    (mkSearchEngine "so" "Stack Overflow" "https://stackoverflow.com/search?tab=votes&q={searchTerms}")
+  ];
+
   extraConfig = ''
     // Bookmarks.
     user_pref("browser.microsummary.enabled",          true);
@@ -132,6 +141,12 @@ let
   };
 
   mkBookmark = name: url: { inherit name url; };
+
+  mkSearchEngine = Alias: Description: URLTemplate: {
+    inherit Alias Description URLTemplate;
+    Method = "GET";
+    Name = Description;
+  };
 in
 {
   enable = true;
@@ -152,52 +167,9 @@ in
     } // extensions;
     # NOTE: `firefox-esr` edition is required to change search engines.
     SearchEngines = {
+      Add = searchEngines;
       Default = "Searx";
       PreventInstalls = true;
-      Add = [
-        {
-          Alias = "s";
-          Description = "SearX";
-          IconURL = "https://search.voronind.com/favicon.ico";
-          Method = "POST";
-          Name = "Searx";
-          PostData = "q={searchTerms}";
-          # SuggestURLTemplate = "https://search.voronind.com/autocomplete?q={searchTerms}";
-          URLTemplate = "https://search.voronind.com/search?q={searchTerms}";
-        }
-        {
-          Alias = "ru";
-          Description = "RuTracker";
-          IconURL = "https://rutracker.org/favicon.ico";
-          Method = "GET";
-          Name = "RuTracker";
-          URLTemplate = "https://rutracker.org/forum/tracker.php?nm={searchTerms}";
-        }
-        {
-          Alias = "re";
-          Description = "Reddit";
-          IconURL = "https://www.reddit.com/favicon.ico";
-          Method = "GET";
-          Name = "Reddit";
-          URLTemplate = "https://www.reddit.com/search/?q={searchTerms}";
-        }
-        {
-          Alias = "no";
-          Description = "NixOS Option";
-          IconURL = "https://search.nixos.org/favicon.ico";
-          Method = "GET";
-          Name = "NixOS Option";
-          URLTemplate = "https://search.nixos.org/options?query={searchTerms}";
-        }
-        {
-          Alias = "np";
-          Description = "NixOS Package";
-          IconURL = "https://search.nixos.org/favicon.ico";
-          Method = "GET";
-          Name = "NixOS Package";
-          URLTemplate = "https://search.nixos.org/packages?query={searchTerms}";
-        }
-      ];
       Remove = [
         "Bing"
         "DuckDuckGo"
