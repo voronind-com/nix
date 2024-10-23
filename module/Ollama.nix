@@ -1,31 +1,29 @@
 # SRC: https://github.com/ollama/ollama
 {
-  pkgsStable,
+  pkgsUnstable,
   lib,
   config,
   ...
 }:
-with lib;
 let
-  pkgs = pkgsStable;
   cfg = config.module.ollama;
 in
 {
   options = {
     module.ollama = {
-      enable = mkEnableOption "Local LLM server";
-      primaryModel = mkOption {
+      enable = lib.mkEnableOption "Local LLM server";
+      primaryModel = lib.mkOption {
         default = "llama3.2";
-        type = types.str;
+        type = lib.types.str;
       };
-      models = mkOption {
+      models = lib.mkOption {
         default = [ cfg.primaryModel ];
-        type = types.listOf types.str;
+        type = with lib.types; listOf str;
       };
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     environment = {
       # Specify default model.
       variables.OLLAMA_MODEL = cfg.primaryModel;
@@ -38,7 +36,7 @@ in
         wantedBy = [ "multi-user.target" ];
         serviceConfig.Type = "simple";
         script = ''
-          HOME=/root ${getExe pkgs.ollama} serve
+          HOME=/root ${lib.getExe pkgsUnstable.ollama} serve
         '';
       };
 
@@ -57,7 +55,7 @@ in
         serviceConfig.Type = "simple";
         script = ''
           sleep 5
-          ${getExe pkgs.ollama} pull ${concatStringsSep " " cfg.models}
+          ${lib.getExe pkgsUnstable.ollama} pull ${lib.concatStringsSep " " cfg.models}
         '';
       };
     };

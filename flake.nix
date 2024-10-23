@@ -8,6 +8,7 @@
     # Manual:   https://nixos.org/manual/nixos/stable
     # Search:   https://search.nixos.org/packages and https://search.nixos.org/options
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgsStable.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgsMaster.url = "github:nixos/nixpkgs/master";
 
@@ -120,6 +121,7 @@
     {
       self,
       nixpkgs,
+      nixpkgsUnstable,
       nixpkgsStable,
       nixpkgsMaster,
       nix-on-droid,
@@ -221,6 +223,7 @@
 
                   pkgsJobber = nixpkgsJobber.legacyPackages.${system}.pkgs;
                   pkgsStable = nixpkgsStable.legacyPackages.${system}.pkgs;
+                  pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
                   pkgsMaster = nixpkgsMaster.legacyPackages.${system}.pkgs;
 
                   secret = import ./secret { }; # Secrets (public keys).
@@ -265,6 +268,7 @@
             let
               pkgs = nixpkgs.legacyPackages.${system};
               pkgsStable = nixpkgsStable.legacyPackages.${system};
+              pkgsUnstable = nixpkgsUnstable.legacyPackages.${system};
               pkgsMaster = nixpkgsMaster.legacyPackages.${system};
             in
             {
@@ -327,9 +331,13 @@
       # Android.
       nixOnDroidConfigurations.default =
         let
+          system = "aarch64-linux";
           config = self.nixOnDroidConfigurations.default.config;
           lib = nixpkgs.lib;
-          pkgs = nixpkgs.legacyPackages."aarch64-linux".pkgs;
+          pkgs = nixpkgs.legacyPackages.${system}.pkgs;
+          pkgsStable = nixpkgsStable.legacyPackages.${system}.pkgs;
+          pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
+          pkgsMaster = nixpkgsMaster.legacyPackages.${system}.pkgs;
         in
         nix-on-droid.lib.nixOnDroidConfiguration {
           modules = [
