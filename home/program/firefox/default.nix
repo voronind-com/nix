@@ -168,7 +168,7 @@ in
     # NOTE: `firefox-esr` edition is required to change search engines.
     SearchEngines = {
       Add = searchEngines;
-      Default = "Searx";
+      Default = "SearX";
       PreventInstalls = true;
       Remove = [
         "Bing"
