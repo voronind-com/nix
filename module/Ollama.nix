@@ -24,10 +24,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment = {
-      # Specify default model.
-      variables.OLLAMA_MODEL = cfg.primaryModel;
-    };
+    # Specify default model.
+    environment.variables.OLLAMA_MODEL = cfg.primaryModel;
 
     systemd.services = {
       # Enable Ollama server.

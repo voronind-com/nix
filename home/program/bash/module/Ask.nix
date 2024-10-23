@@ -5,9 +5,10 @@
     # Usage: ask <QUERY>
     function ask() {
       curl http://localhost:11434/api/generate -d "{
-        \"model\": \"''${OLLAMA_MODEL}\",
+        \"model\":\"''${OLLAMA_MODEL}\",
+        \"raw\":true,
         \"prompt\":\"''${*}\"
-      }" 2> /dev/null | parallel -j1 -- "echo {} | jq -r .response | tr -d '\n'"
+      }" 2> /dev/null | parallel -j1 -- "printf '%s\n' {} | jq -r .response | sed -e 's/^$/\+\+\+/' | tr -d '\n' | sed -e 's/\+\+\+/\n/'"
       echo
     }
 
