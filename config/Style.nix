@@ -103,10 +103,16 @@ in
       hex = mkStrOption "D9";
     };
 
+    # cursor = {
+    #   name = mkStrOption "Adwaita";
+    #   package = mkPkgOption pkgs.adwaita-icon-theme;
+    #   size = mkIntOption 14;
+    # };
+
     cursor = {
-      name = mkStrOption "Adwaita";
-      package = mkPkgOption pkgs.adwaita-icon-theme;
-      size = mkIntOption 14;
+      name = mkStrOption "phinger-cursors";
+      package = mkPkgOption pkgs.phinger-cursors;
+      size = mkIntOption 24;
     };
 
     window = {
