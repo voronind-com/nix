@@ -67,6 +67,14 @@
       url = "github:nvim-tree/nvim-web-devicons";
       flake = false;
     };
+    nvimDressing = {
+      url = "github:stevearc/dressing.nvim";
+      flake = false;
+    };
+    nvimGen = {
+      url = "github:David-Kunz/gen.nvim";
+      flake = false;
+    };
     nvimGitsigns = {
       url = "github:lewis6991/gitsigns.nvim";
       flake = false;
@@ -81,10 +89,6 @@
     };
     nvimLspconfig = {
       url = "github:neovim/nvim-lspconfig";
-      flake = false;
-    };
-    nvimOllama = {
-      url = "github:nomnivore/ollama.nvim";
       flake = false;
     };
     nvimPlenary = {

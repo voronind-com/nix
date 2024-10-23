@@ -1,0 +1,6 @@
+{ ... }:
+{
+  text = ''
+    require("dressing").setup({ })
+  '';
+}

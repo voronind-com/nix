@@ -561,6 +561,38 @@
         "type": "github"
       }
     },
+    "nvimDressing": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726594554,
+        "narHash": "sha256-EtLYhAwoSoHyGiGrHAVYL4/CqcgO4rSbV6otO3V08hM=",
+        "owner": "stevearc",
+        "repo": "dressing.nvim",
+        "rev": "1b7921eecc65af1baf8ac1dc06f0794934cbcfb2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "stevearc",
+        "repo": "dressing.nvim",
+        "type": "github"
+      }
+    },
+    "nvimGen": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1728201978,
+        "narHash": "sha256-rBUltJdluSseNUiTfjBZyuBwrGrASWbW1ROVdcAW6ug=",
+        "owner": "David-Kunz",
+        "repo": "gen.nvim",
+        "rev": "83f1d6b6ffa6a6f32f6a93a33adc853f27541a94",
+        "type": "github"
+      },
+      "original": {
+        "owner": "David-Kunz",
+        "repo": "gen.nvim",
+        "type": "github"
+      }
+    },
     "nvimGitsigns": {
       "flake": false,
       "locked": {
@@ -622,22 +654,6 @@
       "original": {
         "owner": "neovim",
         "repo": "nvim-lspconfig",
-        "type": "github"
-      }
-    },
-    "nvimOllama": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1717906114,
-        "narHash": "sha256-8tW5tp2GiYw+PnR7rqiKfykLW/yqvGOtqauZCgEeQCg=",
-        "owner": "nomnivore",
-        "repo": "ollama.nvim",
-        "rev": "45e58779fecde7ac5b8f62800bbe7180d4b48507",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nomnivore",
-        "repo": "ollama.nvim",
         "type": "github"
       }
     },
@@ -775,11 +791,12 @@
         "nvimCloseBuffers": "nvimCloseBuffers",
         "nvimColorizer": "nvimColorizer",
         "nvimDevicons": "nvimDevicons",
+        "nvimDressing": "nvimDressing",
+        "nvimGen": "nvimGen",
         "nvimGitsigns": "nvimGitsigns",
         "nvimGruvboxMaterial": "nvimGruvboxMaterial",
         "nvimIndentoMatic": "nvimIndentoMatic",
         "nvimLspconfig": "nvimLspconfig",
-        "nvimOllama": "nvimOllama",
         "nvimPlenary": "nvimPlenary",
         "nvimTelescope": "nvimTelescope",
         "nvimTodo": "nvimTodo",

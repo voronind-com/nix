@@ -31,11 +31,12 @@ in
       "${inputs.nvimCloseBuffers}"
       "${inputs.nvimColorizer}"
       "${inputs.nvimDevicons}"
+      "${inputs.nvimDressing}"
+      "${inputs.nvimGen}"
       "${inputs.nvimGitsigns}"
       "${inputs.nvimGruvboxMaterial}"
       "${inputs.nvimIndentoMatic}"
       "${inputs.nvimLspconfig}"
-      "${inputs.nvimOllama}"
       "${inputs.nvimPlenary}"
       "${inputs.nvimTelescope}"
       "${inputs.nvimTodo}"
@@ -66,8 +67,9 @@ in
       ./module/plugin/Align.nix
       ./module/plugin/Treesitter.nix
       ./module/plugin/Fold.nix
-      ./module/plugin/Ollama.nix
+      ./module/plugin/Gen.nix
       ./module/plugin/Colorizer.nix
+      ./module/plugin/Dressing.nix
       ./module/plugin/lsp/Go.nix
       ./module/plugin/lsp/Haskell.nix
       ./module/plugin/lsp/Lua.nix

@@ -22,6 +22,10 @@ let
   transparent = {
     bg = lib.generators.mkLuaInline "clear";
   };
+  border = {
+    bg = lib.generators.mkLuaInline "clear";
+    fg = "#${color.accent}";
+  };
 in
 {
   text = ''
@@ -29,15 +33,23 @@ in
       group   = vim.api.nvim_create_augroup('Color', {}),
       pattern = "*",
       callback = function ()
-        -- Backgrounds.
+        -- Background.
         ${mkHighlight "CursorLine" bg}
-        ${mkHighlight "TelescopeSelection" bg}
+        ${mkHighlight "Pmenu" bg}
+        ${mkHighlight "PmenuExtra" bg}
 
         -- Selection.
         ${mkHighlight "Visual" selection}
+        ${mkHighlight "PmenuSel" selection}
+        ${mkHighlight "TelescopeSelection" selection}
 
         -- Transparent.
         ${mkHighlight "NormalFloat" transparent}
+
+        -- Border.
+        ${mkHighlight "FloatBorder" border}
+        ${mkHighlight "FloatTitle" border}
+        ${mkHighlight "TelescopeBorder" border}
       end
     })
   '';
