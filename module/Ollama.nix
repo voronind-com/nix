@@ -36,8 +36,6 @@ in
       ollama = {
         description = "Ollama LLM server.";
         wantedBy = [ "multi-user.target" ];
-        wants = [ "NetworkManager-wait-online.service" ];
-        after = [ "NetworkManager-wait-online.service" ];
         serviceConfig.Type = "simple";
         script = ''
           HOME=/root ${getExe pkgs.ollama} serve
@@ -48,11 +46,16 @@ in
       ollama-pull = {
         description = "Ollama LLM model.";
         wantedBy = [ "multi-user.target" ];
-        wants = [ "ollama.service" ];
-        after = [ "ollama.service" ];
+        wants = [
+          "NetworkManager-wait-online.service"
+          "ollama.service"
+        ];
+        after = [
+          "NetworkManager-wait-online.service"
+          "ollama.service"
+        ];
         serviceConfig.Type = "simple";
         script = ''
-          sleep 5
           ${getExe pkgs.ollama} pull ${concatStringsSep " " cfg.models}
         '';
       };
