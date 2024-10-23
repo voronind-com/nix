@@ -224,6 +224,19 @@
       open "''${url}"
     }
 
+    # Search for string in whole git history.
+    # Usage: git_search <STRING>
+    function git_search() {
+      local target="''${*}"
+
+      if [[ "''${target}" = "" ]]; then
+        help git_search
+        return 2
+      fi
+
+      git log -p -S "''${target}"
+    }
+
     # Sign the old commits. 0 to resign from root.
     # Usage: git_sign [COMMIT_COUNT]
     function git_sign() {
