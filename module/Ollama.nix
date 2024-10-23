@@ -56,6 +56,7 @@ in
         ];
         serviceConfig.Type = "simple";
         script = ''
+          sleep 5
           ${getExe pkgs.ollama} pull ${concatStringsSep " " cfg.models}
         '';
       };
