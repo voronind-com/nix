@@ -225,12 +225,12 @@
     }
 
     # Search for string in whole git history.
-    # Usage: git_search <STRING>
-    function git_search() {
+    # Usage: gsearch <STRING>
+    function gsearch() {
       local target="''${*}"
 
       if [[ "''${target}" = "" ]]; then
-        help git_search
+        help gsearch
         return 2
       fi
 
@@ -238,8 +238,8 @@
     }
 
     # Sign the old commits. 0 to resign from root.
-    # Usage: git_sign [COMMIT_COUNT]
-    function git_sign() {
+    # Usage: gsign [COMMIT_COUNT]
+    function gsign() {
       local base="''${1}"
 
       # Resign last commit by default.
