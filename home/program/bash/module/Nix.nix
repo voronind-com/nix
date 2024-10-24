@@ -60,5 +60,11 @@
 
       nix hash to-sri --type sha256 $(nix-prefetch-url "''${url}")
     }
+
+    # Run nix locally with no builders.
+    # Usage: nix_local <COMMAND>
+    function nix_local() {
+      nix --option max-jobs $(_core_count) --builders "" --substituters https://cache.nixos.org ''${@}
+    }
   '';
 }
