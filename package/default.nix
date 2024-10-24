@@ -98,7 +98,6 @@
 
   common = with pkgs; [
     evince # Document viewer.
-    ungoogled-chromium # Just in case I ever need it.
     gimp # Image manipulation program.
     gnome-calculator # Calculator.
     gparted # GUI disk utility just in case.

@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
-  file = (pkgs.formats.ini { }).generate "KeydFirefoxConfig" {
-    "firefox-esr" = {
+  file = (pkgs.formats.ini { }).generate "KeydChromiumConfig" {
+    "chromium-browser" = {
       "alt.capslock" = "C-t"; # New tab.
       "alt.x" = "C-w"; # Close tab.
       "alt.u" = "C-S-t"; # Restore closed tab.
@@ -18,8 +18,12 @@
       "alt.n" = "f3"; # Find next.
       "alt.space" = "f6"; # Focus address bar.
       "alt.r" = "C-f5"; # Full refresh.
-      "alt.l" = "A-S-a"; # Toggle dark mode.
+      "alt.l" = "A-S-l"; # Toggle dark mode.
       "alt.enter" = "C-S-l"; # Fill password.
+      "alt.p" = "A-S-p"; # Toggle proxy.
+      "alt.j" = "A-S-j"; # Toggle js.
+      "alt.k" = "A-S-k"; # Block element.
+      "alt.b" = "A-S-b"; # Show uBlock.
     };
   };
 }

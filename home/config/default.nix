@@ -6,6 +6,7 @@
 }@args:
 let
   btop = import ./btop args;
+  chromium = import ./chromium args;
   editor = import ./editorconfig args;
   foot = import ./foot args;
   fuzzel = import ./fuzzel args;
@@ -28,6 +29,7 @@ in
   ".config/MangoHud/MangoHud.conf".source = mangohud.config;
   ".config/MangoHud/presets.conf".source = mangohud.presets;
   ".config/btop/btop.conf".text = btop.text;
+  ".config/chromium/Default/Preferences".source = chromium.file;
   ".config/foot/foot.ini".source = foot.file;
   ".config/fuzzel/fuzzel.ini".source = fuzzel.file;
   ".config/gtk-3.0/bookmarks".text = gtk3.bookmarks;
@@ -48,10 +50,10 @@ in
   ".ideavimrc".text = jetbrains.ideavimrc;
   ".nix".source = self;
   ".nixpkgs".source = inputs.nixpkgs;
-  # TODO: Add after migrating to stable.
-  # ".nixpkgs_unstable".source                       = inputs.nixpkgs;
-  # ".nixpkgs_master".source                       = inputs.nixpkgs;
   ".parallel/will-cite".text = "";
   ".ssh/config".text = ssh.text;
   ".template".source = ./template;
+  # ".nixpkgs_master".source = inputs.nixpkgs;
+  # ".nixpkgs_unstable".source = inputs.nixpkgs;
+  # TODO: Add after migrating to stable.
 }

@@ -28,6 +28,7 @@ in
   };
 
   desktop = {
+    chromium = import ./chromium args;
     firefox = import ./firefox args;
   };
 }
