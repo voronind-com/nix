@@ -12,6 +12,8 @@
     end
 
     vim.notify = bequiet
+    vim.api.nvim_out_write = bequiet
+    vim.api.nvim_err_write = bequiet
     vim.api.nvim_err_writeln = bequiet
   '';
 }
