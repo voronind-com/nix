@@ -42,7 +42,7 @@ in
 
           services.blocky = {
             enable = true;
-            # SRC: https://0xerr0r.github.io/blocky/main/configuration/
+            # REF: https://0xerr0r.github.io/blocky/main/configuration/
             settings = {
               bootstrapDns = "tcp+udp:1.1.1.1";
               connectIPVersion = "v4";
@@ -62,7 +62,7 @@ in
                 blockTTL = "1m";
                 blockType = "zeroIP";
                 loading = {
-                  refreshPeriod = "1h";
+                  refreshPeriod = "24h";
                   strategy = "blocking";
                   downloads = {
                     timeout = "5m";
