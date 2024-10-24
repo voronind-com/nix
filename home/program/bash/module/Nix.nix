@@ -66,5 +66,17 @@
     function nix_local() {
       nix --option max-jobs $(_core_count) --builders "" --substituters https://cache.nixos.org ''${@}
     }
+
+    # Run test app from other people PRs.
+    # Usage: nix_test github:user/nixpkgs/<REV>#<PKG>
+    function nix_test() {
+      if [[ "''${@}" = "" ]]; then
+        help nix_test
+        return 2
+      fi
+
+      local name=''${*##*#}
+      SHELL_NAME="''${name}" NIXPKGS_ALLOW_UNFREE=1 nix --option max-jobs $(_core_count) --builders "" --substituters https://cache.nixos.org shell --impure ''${@}
+    }
   '';
 }
