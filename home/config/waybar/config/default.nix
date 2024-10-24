@@ -51,7 +51,7 @@ in
       tooltip = true;
       tooltip-format = "{app}: {title}";
       on-click = "swaymsg 'scratchpad show'";
-      on-click-right = "swayscript scratchpad_kill";
+      on-click-middle = "swayscript scratchpad_kill";
     };
     tray = {
       # icon-size = 21;
