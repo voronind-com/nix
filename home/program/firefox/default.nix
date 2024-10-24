@@ -16,14 +16,16 @@ let
 
   searchEngines = [
     (mkSearchEngine "s" "SearX" "https://search.voronind.com/search?q={searchTerms}")
-    (mkSearchEngine "ru" "RuTracker" "https://rutracker.org/forum/tracker.php?nm={searchTerms}")
-    (mkSearchEngine "re" "Reddit" "https://www.reddit.com/search/?q={searchTerms}")
-    (mkSearchEngine "no" "NixOS Options" "https://search.nixos.org/options?query={searchTerms}")
-    (mkSearchEngine "np" "NixOS Packages" "https://search.nixos.org/packages?query={searchTerms}")
-    (mkSearchEngine "so" "Stack Overflow" "https://stackoverflow.com/search?tab=votes&q={searchTerms}")
+    (mkSearchEngine "gh" "GitHub" "https://github.com/search?q={searchTerms}")
+    (mkSearchEngine "ghc" "GitHub Code" "https://github.com/search?q={searchTerms}&type=code")
     (mkSearchEngine "hm" "Home Manager"
       "https://home-manager-options.extranix.com/?query={searchTerms}"
     )
+    (mkSearchEngine "no" "NixOS Options" "https://search.nixos.org/options?query={searchTerms}")
+    (mkSearchEngine "np" "NixOS Packages" "https://search.nixos.org/packages?query={searchTerms}")
+    (mkSearchEngine "re" "Reddit" "https://www.reddit.com/search/?q={searchTerms}")
+    (mkSearchEngine "ru" "RuTracker" "https://rutracker.org/forum/tracker.php?nm={searchTerms}")
+    (mkSearchEngine "so" "Stack Overflow" "https://stackoverflow.com/search?tab=votes&q={searchTerms}")
   ];
 
   extensions = {
