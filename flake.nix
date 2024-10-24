@@ -268,7 +268,7 @@
           util = import ./lib/Util.nix { inherit lib; };
 
           mkCommonHome =
-            username: homeDirectory: system: modules:
+            username: system:
             let
               pkgs = nixpkgs.legacyPackages.${system};
               pkgsStable = nixpkgsStable.legacyPackages.${system};
@@ -295,11 +295,8 @@
                   ./home/HomeManager.nix
                   {
                     home.hm = {
-                      inherit username homeDirectory;
+                      inherit username;
                       enable = true;
-                      package = {
-                        core.enable = true;
-                      };
                     };
                   }
 
@@ -314,23 +311,20 @@
                   }
 
                   inputs.stylix.homeManagerModules.stylix
-                ] ++ modules ++ (self.findFiles ./config);
+                ] ++ (self.findFiles ./home/user/${system}/${username}) ++ (self.findFiles ./config);
               };
             };
-
-          x86LinuxHome = username: modules: mkCommonHome username "/home/${username}" "x86_64-linux" modules;
-          x86LinuxRoot = mkCommonHome "root" "/root" "x86_64-linux" [ ];
         in
-        nixpkgs.lib.foldl' (acc: h: acc // h) { } [
-          x86LinuxRoot
-          (x86LinuxHome "voronind" [
-            {
-              home.hm.package = {
-                common.enable = true;
-              };
-            }
-          ])
-        ];
+        nixpkgs.lib.foldl' (acc: h: acc // h) { } (
+          map (
+            system:
+            nixpkgs.lib.foldl' (acc: h: acc // h) { } (
+              map (username: mkCommonHome username system) (
+                builtins.attrNames (builtins.readDir ./home/user/${system})
+              )
+            )
+          ) (builtins.attrNames (builtins.readDir ./home/user))
+        );
 
       # Android.
       nixOnDroidConfigurations.default =

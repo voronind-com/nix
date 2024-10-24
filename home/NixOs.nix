@@ -5,6 +5,7 @@
   util,
   lib,
   pkgs,
+  __findFile,
   ...
 }@args:
 with lib;
@@ -13,7 +14,7 @@ let
   programs = import ./program args;
 in
 {
-  imports = (util.ls ./user);
+  imports = (util.ls <user>);
 
   options = {
     home.nixos = {
