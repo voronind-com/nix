@@ -10,6 +10,7 @@
 with lib;
 let
   cfg = config.home.nixos;
+  programs = import ./program args;
 in
 {
   imports = (util.ls ./user);
@@ -41,7 +42,7 @@ in
               extraActivationPath = with pkgs; [ openssh ];
             };
             xdg = import ./xdg { inherit (user) homeDirectory; };
-            programs = import ./program args;
+            programs = with programs; core // desktop;
             dconf.settings = util.catSet (util.ls ./config/dconf) args;
           };
         }

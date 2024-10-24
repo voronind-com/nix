@@ -11,6 +11,7 @@ with lib;
 let
   cfg = config.home.hm;
   package = import <package> args;
+  programs = import ./program args;
 in
 {
   options = {
@@ -50,13 +51,18 @@ in
         sessionVariables = import ./variable args;
       };
       xdg = import ./xdg { inherit (cfg) homeDirectory; };
-      programs = import ./program args;
+      programs = with programs; core;
       dconf.settings = util.catSet (util.ls ./config/dconf) args;
     }
     (mkIf cfg.package.common.enable { home.packages = package.common; })
     (mkIf cfg.package.core.enable { home.packages = package.core; })
     (mkIf cfg.package.creative.enable { home.packages = package.creative; })
-    (mkIf cfg.package.desktop.enable { home.packages = package.desktop; })
+    (mkIf cfg.package.desktop.enable {
+      home = {
+        packages = package.desktop;
+        programs = programs.desktop;
+      };
+    })
     (mkIf cfg.package.dev.enable { home.packages = package.dev; })
     (mkIf cfg.package.extra.enable { home.packages = package.extra; })
     (mkIf cfg.package.gaming.enable { home.packages = package.gaming; })

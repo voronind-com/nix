@@ -17,6 +17,7 @@ let
   stylix = import <config/Stylix.nix> args;
   android = import ./android args;
   package = import <package> args;
+  programs = import ./program args;
 in
 # homePath = "/data/data/com.termux.nix/files/home";
 {
@@ -41,7 +42,7 @@ in
         sessionVariables = import ./variable args;
         stateVersion = const.droidStateVersion;
       };
-      programs = import ./program args;
+      programs = with programs; core;
     };
   };
 }
