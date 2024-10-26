@@ -6,6 +6,7 @@
   home.nixos.enable = true;
   user = {
     root.enable = true;
+    dasha.enable = true;
     voronind.enable = true;
   };
 
