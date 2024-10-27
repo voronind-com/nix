@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   file = (pkgs.formats.json { }).generate "ChromiumConfig" {
     bookmark_bar.show_on_all_tabs = false;
@@ -64,8 +64,8 @@
         default_font_size = 17;
         minimum_font_size = 16;
         fonts = let
-          mono = "Terminess Nerd Font Mono";
-          sans = "SF Pro";
+          mono = config.style.font.monospace.name;
+          sans = config.style.font.sansSerif.name;
         in
         {
           fixed.Zyyy = mono;
