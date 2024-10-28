@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 {
-  file = (pkgs.formats.json { }).generate "ChromiumConfig" {
+  preferences = (pkgs.formats.json { }).generate "ChromiumConfig" {
     bookmark_bar.show_on_all_tabs = false;
     browser.show_home_button = false;
     default_apps_install_state = 2;
@@ -74,6 +74,15 @@
           standard.Zyyy = sans;
         };
       };
+    };
+  };
+
+  localState = (pkgs.formats.json { }).generate "ChromiumLocalState" {
+    browser = {
+      enabled_labs_experiments = [
+        "smooth-scrolling@2"
+      ];
+      first_run_finished = true;
     };
   };
 }

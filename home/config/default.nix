@@ -29,7 +29,8 @@ in
   ".config/MangoHud/MangoHud.conf".source = mangohud.config;
   ".config/MangoHud/presets.conf".source = mangohud.presets;
   ".config/btop/btop.conf".text = btop.text;
-  ".config/chromium/Default/Preferences".source = chromium.file;
+  ".config/chromium/Default/Preferences".source = chromium.preferences;
+  ".config/chromium/Local State".source = chromium.localState;
   ".config/foot/foot.ini".source = foot.file;
   ".config/fuzzel/fuzzel.ini".source = fuzzel.file;
   ".config/gtk-3.0/bookmarks".text = gtk3.bookmarks;
