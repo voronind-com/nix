@@ -17,6 +17,7 @@
   programs.yubikey-touch-detector.enable = true;
 
   environment.systemPackages = with pkgs; [
+    libfido2
     yubikey-manager
     # yubioath-desktop # OTP.
   ];
