@@ -57,6 +57,16 @@ in
       };
 
       services.gvfs.enable = true;
+
+      # Chromium config.
+      environment.etc =
+        let
+          chromium = import <home/config/chromium> args;
+        in
+        {
+          "chromium/initial_preferences".source = lib.mkForce chromium.preferences;
+          "chromium/policies/managed/extra.json".source = lib.mkForce chromium.policy;
+        };
     })
 
     # Desktop apps.

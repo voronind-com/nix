@@ -123,7 +123,7 @@
   ];
 
   creative = with pkgs; [
-    aseprite # Pixel Art draw app. WARNING: Always builds from source.
+    libresprite # Pixel Art draw app.
     blender-hip # Blender with HiP support.
     krita # Draw!
   ];

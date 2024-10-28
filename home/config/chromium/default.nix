@@ -63,26 +63,27 @@
         default_fixed_font_size = 14;
         default_font_size = 17;
         minimum_font_size = 16;
-        fonts = let
-          mono = config.style.font.monospace.name;
-          sans = config.style.font.sansSerif.name;
-        in
-        {
-          fixed.Zyyy = mono;
-          sansserif.Zyyy = sans;
-          serif.Zyyy = sans;
-          standard.Zyyy = sans;
-        };
+        fonts =
+          let
+            mono = config.style.font.monospace.name;
+            sans = config.style.font.sansSerif.name;
+          in
+          {
+            fixed.Zyyy = mono;
+            sansserif.Zyyy = sans;
+            serif.Zyyy = sans;
+            standard.Zyyy = sans;
+          };
       };
     };
   };
 
   localState = (pkgs.formats.json { }).generate "ChromiumLocalState" {
     browser = {
-      enabled_labs_experiments = [
-        "smooth-scrolling@2"
-      ];
+      enabled_labs_experiments = [ "smooth-scrolling@2" ];
       first_run_finished = true;
     };
   };
+
+  policy = (pkgs.formats.json { }).generate "ChromiumPolicy" { URLBlocklist = [ "darkreader.org" ]; };
 }
