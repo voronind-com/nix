@@ -234,7 +234,7 @@
         return 2
       fi
 
-      git log -p -S "''${target}"
+      git log -p -G "''${target}"
     }
 
     # Sign the old commits. 0 to resign from root.
