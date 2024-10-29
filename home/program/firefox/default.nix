@@ -16,6 +16,7 @@ let
 
   searchEngines = [
     (mkSearchEngine "s" "SearX" "https://search.voronind.com/search?q={searchTerms}")
+    (mkSearchEngine "aw" "Arch Wiki" "https://wiki.archlinux.org/index.php?search={searchTerms}")
     (mkSearchEngine "gh" "GitHub" "https://github.com/search?q={searchTerms}")
     (mkSearchEngine "ghc" "GitHub Code" "https://github.com/search?q={searchTerms}&type=code")
     (mkSearchEngine "hm" "Home Manager"
