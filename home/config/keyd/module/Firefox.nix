@@ -19,6 +19,7 @@
       "alt.space" = "f6"; # Focus address bar.
       "alt.r" = "C-f5"; # Full refresh.
       "alt.l" = "A-S-a"; # Toggle dark mode.
+      "alt.m" = "C-m"; # Toggle tab mute.
       "alt.enter" = "C-S-l"; # Fill password.
     };
   };
