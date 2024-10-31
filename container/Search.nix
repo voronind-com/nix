@@ -100,7 +100,7 @@ in
                 remove = [
                   "(.*\.)?dzen\.ru?$"
                   "(.*\.)?facebook.com$"
-                  "(.*\.)?gosuslugi\.com?$"
+                  "(.*\.)?gosuslugi\.ru?$"
                   "(.*\.)?quora\.com?$"
                   "(.*\.)?rutube\.ru?$"
                   "(.*\.)?vk\.com?$"
