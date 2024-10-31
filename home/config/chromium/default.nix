@@ -85,5 +85,9 @@
     };
   };
 
-  policy = (pkgs.formats.json { }).generate "ChromiumPolicy" { URLBlocklist = [ "darkreader.org" ]; };
+  # REF: https://chromeenterprise.google/intl/en_us/policies/
+  policy = (pkgs.formats.json { }).generate "ChromiumPolicy" {
+    URLBlocklist = [ "darkreader.org" ];
+    DefaultBrowserSettingEnabled = false;
+  };
 }
