@@ -276,7 +276,7 @@ in
         enableForProtectedPages = false;
         fetchNews = false;
         previewNewDesign = true;
-        syncSettings = false;
+        syncSettings = true;
         syncSitesFixes = true;
         disabledFor = [
           "home.voronind.com"
