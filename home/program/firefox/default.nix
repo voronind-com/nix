@@ -25,7 +25,7 @@ let
     (mkSearchEngine "no" "NixOS Options" "https://search.nixos.org/options?query={searchTerms}")
     (mkSearchEngine "np" "NixOS Packages" "https://search.nixos.org/packages?query={searchTerms}")
     (mkSearchEngine "re" "Reddit" "https://www.reddit.com/search/?q={searchTerms}")
-    (mkSearchEngine "ru" "RuTracker" "https://rutracker.org/forum/tracker.php?nm={searchTerms}")
+    (mkSearchEngine "rt" "RuTracker" "https://rutracker.org/forum/tracker.php?nm={searchTerms}")
     (mkSearchEngine "so" "Stack Overflow" "https://stackoverflow.com/search?tab=votes&q={searchTerms}")
     (mkSearchEngine "st" "Steam" "https://store.steampowered.com/search/?term={searchTerms}")
   ];
