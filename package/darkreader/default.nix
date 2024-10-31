@@ -7,7 +7,7 @@
 }:
 buildNpmPackage rec {
   # version = "4.9.96";
-  version = "c700f9e03440131d46c6506eca79499a65fb1bd8";
+  version = "af57bb1370bd449a7b294759bf2ce353f358ace8";
 
   pname = "dark-reader";
 
@@ -15,12 +15,11 @@ buildNpmPackage rec {
     owner = "nenikitov";
     repo = "darkreader";
     # rev = "v${version}";
-    # rev = "c700f9e03440131d46c6506eca79499a65fb1bd8";
     rev = version;
-    hash = "sha256-oscW2V6GBBAa6/1uwhU4nimu2kMnd429p9rCEYZC7ZM=";
+    hash = "sha256-cX/kwG6lOjNTsf6x86jVWmYLvB6qIeK/B0s2aT08oJU=";
   };
 
-  npmDepsHash = "sha256-e41PXGgoQkVSHQj6kElqXPhzc6irnr09ltBAPmcUjik=";
+  npmDepsHash = "sha256-+FPYo5ev/ccp28vX6As/KbFtOtf9bQfhA0b1ufHVmTo=";
   # npmDepsHash = "sha256-dSuCL8GZXiksqVQ+TypzOdAROn3q30ExaGCJu72GLyY=";
   # npmDeps = fetchNpmDeps {
   #   inherit src;

@@ -54,7 +54,7 @@ let
   ];
 
   prefs = [
-    # WARN: Remove when Dark Reader policies gets mnerged.
+    # WARN: Remove when Dark Reader policies gets merged.
     (mkLockedPref "xpinstall.signatures.required" false)
 
     # Bookmarks.
@@ -267,56 +267,55 @@ in
         ];
       };
       "addon@darkreader.org" = {
-        enabled = false;
-        enabledByDefault = false;
+        enabled = true;
+        enabledByDefault = true;
+        changeBrowserTheme = false;
+        detectDarkTheme = true;
+        enableContextMenus = true;
+        enableForPDF = true;
+        enableForProtectedPages = false;
+        fetchNews = false;
         previewNewDesign = true;
         syncSettings = false;
-        # disabledFor = [
-        #   "home.voronind.com"
-        # ];
-        # fetchNews = false;
-        # theme = {
-        #   mode = 1;
-        #   brightness = 100;
-        #   contrast = 100;
-        #   grayscale = 0;
-        #   sepia = 0;
-        #   useFont = true;
-        #   fontFamily = config.style.font.sansSerif.name;
-        #   textStroke = 0;
-        #   engine = "dynamicTheme"; # dynamicTheme, cssFilter or svgFilter.
-        #   stylesheet = "";
-        #   darkSchemeBackgroundColor = "ff0000";
-        #   darkSchemeTextColor = "00ff00";
-        #   lightSchemeBackgroundColor = "ff0000";
-        #   lightSchemeTextColor = "00ff00";
-        #   scrollbarColor = "0000ff";
-        #   selectionColor = "00ffff";
-        #   styleSystemControls = true;
-        #   lightColorScheme = "Default";
-        #   darkColorScheme = "Default";
-        #   immediateModify = true;
-        # };
-        # changeBrowserTheme = true;
-        # syncSitesFixes = true;
-        # automation = {
-        #   enabled = false;
-        #   mode = "";
-        #   behavior = "OnOff";
-        # };
-        # time = {
-        #   activation = "18:00";
-        #   deactivation = "9:00";
-        # };
-        # location = {
-        #   latitude = null;
-        #   longitude = null;
-        # };
-        # previewNewDesign = true;
-        # enableForPDF = true;
-        # enableForProtectedPages = false;
-        # enableContextMenus = true;
-        # detectDarkTheme = true;
+        syncSitesFixes = true;
+        disabledFor = [
+          "home.voronind.com"
+        ];
+        theme = {
+          mode = 1;
+          brightness = 100;
+          contrast = 100;
+          grayscale = 0;
+          sepia = 0;
+          useFont = false;
+          fontFamily = config.style.font.sansSerif.name;
+          textStroke = 0;
+          engine = "dynamicTheme"; # dynamicTheme, cssFilter or svgFilter.
+          stylesheet = "";
+          darkSchemeBackgroundColor = "#${config.style.color.bg.dark}";
+          darkSchemeTextColor = "#${config.style.color.fg.light}";
+          lightSchemeBackgroundColor = "#${config.style.color.bg.light}";
+          lightSchemeTextColor = "#${config.style.color.fg.dark}";
+          scrollbarColor = "#${config.style.color.neutral}";
+          selectionColor = "#${config.style.color.selection}";
+          styleSystemControls = true;
+          lightColorScheme = "Default";
+          darkColorScheme = "Default";
+          immediateModify = true;
+        };
+        automation = {
+          enabled = false;
+          mode = "";
+          behavior = "OnOff";
+        };
+        time = {
+          activation = "18:00";
+          deactivation = "9:00";
+        };
+        location = {
+          latitude = null;
+          longitude = null;
+        };
       };
     };
     # NOTE: `firefox-esr` edition is required to change search engines.
