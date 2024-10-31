@@ -23,6 +23,7 @@ in
       keyboards.default = {
         ids = [ "*" ];
         settings = {
+          # NOTE: Use `wev` to find key names.
           main = {
             backspace = "delete"; # Delete key on backspace.
             capslock = "overload(control, esc)"; # Ctrl/esc combo.
