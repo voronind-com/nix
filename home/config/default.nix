@@ -54,6 +54,7 @@ in
   ".parallel/will-cite".text = "";
   ".ssh/config".text = ssh.text;
   ".template".source = ./template;
+  ".mozilla/firefox/default/storage-sync-v2.sqlite".text = ""; # NOTE: Fix for Dark Reader not reloading policy values.
   # ".nixpkgs_master".source = inputs.nixpkgs;
   # ".nixpkgs_unstable".source = inputs.nixpkgs;
   # TODO: Add after migrating to stable.
