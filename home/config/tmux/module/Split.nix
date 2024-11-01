@@ -14,6 +14,7 @@ in
     bind -n M-=  select-layout tiled
     bind -n M-_  select-layout even-vertical
     bind -n M-|  select-layout even-horizontal
+    bind -n M-+  select-layout main-vertical
     bind -n M-k  resize-pane -U ${toString stepVertical}
     bind -n M-j  resize-pane -D ${toString stepVertical}
     bind -n M-h  resize-pane -L ${toString stepHorizontal}
