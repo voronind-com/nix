@@ -10,20 +10,22 @@ buildNpmPackage rec {
   pname = "dark-reader";
 
   src = fetchFromGitHub {
-    owner = "darkreader";
+    # owner = "darkreader";
+    owner = "voronind-com";
     repo = "darkreader";
-    rev = "v${version}";
-    hash = "sha256-2AYIFVTTMns1u0jKk3XeFuYdC1MfG9aOCMjAfZtlXuI=";
+    # rev = "v${version}";
+    rev = "ddd532cb92594d2f4a73480dae6e6c024657dfe2";
+    hash = "sha256-mONoHe/Aphm6T5UcucxlzMLDaNnqIKd35uCAVoYlJ8s=";
   };
 
-  npmDepsHash = "sha256-dSuCL8GZXiksqVQ+TypzOdAROn3q30ExaGCJu72GLyY=";
+  npmDepsHash = "sha256-e41PXGgoQkVSHQj6kElqXPhzc6irnr09ltBAPmcUjik=";
 
-  patches = [
-    (fetchpatch {
-      url = "https://github.com/darkreader/darkreader/pull/12920.diff";
-      hash = "sha256-3r54SliCgxihGXzZDRklB0vB3bk9rc1H31PojAYn2Ic=";
-    })
-  ];
+  # patches = [
+  #   (fetchpatch {
+  #     url = "https://github.com/darkreader/darkreader/pull/12920.diff";
+  #     hash = "sha256-3r54SliCgxihGXzZDRklB0vB3bk9rc1H31PojAYn2Ic=";
+  #   })
+  # ];
 
   installPhase = ''
     mkdir -p $out
