@@ -7,6 +7,7 @@ in
   file = (pkgs.formats.toml { }).generate "YaziKeymapConfig" {
     manager = {
       prepend_keymap = [
+        # TODO: Swap description & keys for better sorting?
         (mkKeymap "Delete" "d" "remove --permanently")
         (mkKeymap "Delete no questions asked" "D" "remove --permanently --force")
         (mkKeymap "Spawn shell here" "<Enter>" ''shell "SHELL_NAME=yazi $SHELL" --block --confirm'')
@@ -14,6 +15,12 @@ in
         (mkKeymap "Open default" "O" "open")
         (mkKeymap "Rename completely" "R" "rename --empty all")
         (mkKeymap "Close tab" "c" "close")
+        (mkKeymap "Prev tab" "q" "tab_switch -1 --relative")
+        (mkKeymap "Next tab" "e" "tab_switch 1 --relative")
+        (mkKeymap "Move to prev tab" "Q" "tab_swap -1 --relative")
+        (mkKeymap "Move to next tab" "E" "tab_swap 1 --relative")
+        (mkKeymap "Exit yazi" "z" "quit")
+        (mkKeymap "Exit yazi w/o cwd" "Z" "quit --no-cwd-file")
         # I wanna die thanks to nixfmt.
         (mkKeymap "Go to storage" [
           "g"
