@@ -48,7 +48,7 @@ in
       desc = text;
       mask = hover;
       rest = text;
-      separator = "=>";
+      separator = " - ";
       separator_style = text;
     };
 
