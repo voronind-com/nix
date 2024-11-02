@@ -13,6 +13,7 @@ in
         (mkKeymap "Open interactively" "o" "open --interactive")
         (mkKeymap "Open default" "O" "open")
         (mkKeymap "Rename completely" "R" "rename --empty all")
+        (mkKeymap "Close tab" "c" "close")
         # I wanna die thanks to nixfmt.
         (mkKeymap "Go to storage" [
           "g"
