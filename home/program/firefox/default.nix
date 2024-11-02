@@ -274,8 +274,8 @@ in
         enabled = true;
         enabledByDefault = true;
         changeBrowserTheme = false;
-        detectDarkTheme = true;
-        enableContextMenus = true;
+        detectDarkTheme = false;
+        enableContextMenus = false;
         enableForPDF = true;
         enableForProtectedPages = false;
         fetchNews = false;
