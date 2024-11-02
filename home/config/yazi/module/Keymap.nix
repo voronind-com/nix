@@ -12,6 +12,7 @@ in
         (mkKeymap "Spawn shell here" "<Enter>" ''shell "SHELL_NAME=yazi $SHELL" --block --confirm'')
         (mkKeymap "Open interactively" "o" "open --interactive")
         (mkKeymap "Open default" "O" "open")
+        (mkKeymap "Rename completely" "R" "rename --empty all")
         # I wanna die thanks to nixfmt.
         (mkKeymap "Go to storage" [
           "g"
