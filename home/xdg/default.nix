@@ -12,6 +12,7 @@
     templates = "${homeDirectory}/.template/";
     videos = "${homeDirectory}/video/";
     extraConfig = {
+      XDG_CONFIG_HOME = "${homeDirectory}/.config";
       XDG_TMP_DIR = "${homeDirectory}/tmp/";
     };
   };
