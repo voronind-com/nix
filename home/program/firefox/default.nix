@@ -20,23 +20,19 @@ let
   ];
 
   searchEngines = [
-    (mkSearchEngine "4p" "4pda"
-      "https://4pda.to/forum/index.php?act=search&forums[]=all&source=all&query={searchTerms}"
-    )
-    (mkSearchEngine "aw" "Arch Wiki" "https://wiki.archlinux.org/index.php?search={searchTerms}")
-    (mkSearchEngine "gh" "GitHub" "https://github.com/search?q={searchTerms}")
-    (mkSearchEngine "ghc" "GitHub Code" "https://github.com/search?q={searchTerms}&type=code")
-    (mkSearchEngine "hm" "Home Manager"
-      "https://home-manager-options.extranix.com/?query={searchTerms}"
-    )
-    (mkSearchEngine "no" "NixOS Options" "https://search.nixos.org/options?query={searchTerms}")
-    (mkSearchEngine "np" "NixOS Packages" "https://search.nixos.org/packages?query={searchTerms}")
-    (mkSearchEngine "re" "Reddit" "https://www.reddit.com/search/?q={searchTerms}")
-    (mkSearchEngine "rt" "RuTracker" "https://rutracker.org/forum/tracker.php?nm={searchTerms}")
-    (mkSearchEngine "s" "SearX" "https://search.voronind.com/search?q={searchTerms}")
-    (mkSearchEngine "so" "Stack Overflow" "https://stackoverflow.com/search?tab=votes&q={searchTerms}")
-    (mkSearchEngine "st" "Steam" "https://store.steampowered.com/search/?term={searchTerms}")
-    (mkSearchEngine "yt" "YouTube" "https://yt.voronind.com/search?q={searchTerms}")
+    (mkSearchEngine "4pda" "4pda"           "https://4pda.to/forum/index.php?act=search&forums[]=all&source=all&query={searchTerms}")
+    (mkSearchEngine "aw"   "Arch Wiki"      "https://wiki.archlinux.org/index.php?search={searchTerms}")
+    (mkSearchEngine "gh"   "GitHub"         "https://github.com/search?q={searchTerms}")
+    (mkSearchEngine "ghc"  "GitHub Code"    "https://github.com/search?q={searchTerms}&type=code")
+    (mkSearchEngine "hm"   "Home Manager"   "https://home-manager-options.extranix.com/?query={searchTerms}")
+    (mkSearchEngine "no"   "NixOS Options"  "https://search.nixos.org/options?query={searchTerms}")
+    (mkSearchEngine "np"   "NixOS Packages" "https://search.nixos.org/packages?query={searchTerms}")
+    (mkSearchEngine "re"   "Reddit"         "https://www.reddit.com/search/?q={searchTerms}")
+    (mkSearchEngine "rt"   "RuTracker"      "https://rutracker.org/forum/tracker.php?nm={searchTerms}")
+    (mkSearchEngine "s"    "SearX"          "https://search.voronind.com/search?q={searchTerms}")
+    (mkSearchEngine "so"   "Stack Overflow" "https://stackoverflow.com/search?tab=votes&q={searchTerms}")
+    (mkSearchEngine "st"   "Steam"          "https://store.steampowered.com/search/?term={searchTerms}")
+    (mkSearchEngine "yt"   "YouTube"        "https://yt.voronind.com/search?q={searchTerms}")
   ];
 
   extensions = [
