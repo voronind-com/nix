@@ -2,21 +2,21 @@
 let
   color = config.style.color;
   border = {
-    fg = "#${config.style.color.border}";
+    fg = "#${color.border}";
   };
   borderLight = {
-    fg = "#${config.style.color.accent}";
+    fg = "#${color.accent}";
   };
   hover = {
-    bg = "#${config.style.color.bg.regular}";
-    fg = "#${config.style.color.fg.light}";
+    bg = "#${color.bg.regular}";
+    fg = "#${color.fg.light}";
   };
   select = {
-    bg = "#${config.style.color.selection}";
-    fg = "#${config.style.color.fg.dark}";
+    bg = "#${color.selection}";
+    fg = "#${color.fg.dark}";
   };
   text = {
-    fg = "#${config.style.color.fg.light}";
+    fg = "#${color.fg.light}";
   };
 in
 {
@@ -24,17 +24,22 @@ in
   file = (pkgs.formats.toml { }).generate "YaziThemeConfig" {
     manager =
       let
-        mkMarker = color: {
-          bg = "#${color}";
-          fg = "#${color}";
+        mkMarker = markerColor: {
+          bg = "#${markerColor}";
+          fg = "#${markerColor}";
+        };
+
+        mkCounter = counterColor: {
+          bg = "#${counterColor}";
+          fg = "#${color.fg.light}";
         };
       in
       {
         border_style = border;
         border_symbol = " ";
-        count_copied = hover;
-        count_cut = hover;
-        count_selected = hover;
+        count_copied = mkCounter color.positive;
+        count_cut = mkCounter color.negative;
+        count_selected = mkCounter color.neutral;
         cwd = text;
         hovered = hover;
         marker_copied = mkMarker color.accent;
@@ -42,7 +47,7 @@ in
         marker_marked = mkMarker color.hl;
         marker_selected = mkMarker color.selection;
         preview_hovered = hover;
-        tab_active = hover;
+        tab_active = mkCounter color.selection;
       };
     select = {
       border = borderLight;
