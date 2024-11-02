@@ -1,5 +1,6 @@
 { pkgs, config, ... }:
 {
+  # REF: https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/yazi.toml
   file = (pkgs.formats.toml { }).generate "YaziYaziConfig" {
     manager = {
       # linemode = "mtime";

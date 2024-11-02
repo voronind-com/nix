@@ -1,5 +1,6 @@
 { pkgs, config, ... }:
 let
+  color = config.style.color;
   border = {
     fg = "#${config.style.color.border}";
   };
@@ -19,15 +20,30 @@ let
   };
 in
 {
+  # REF: https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/theme.toml
   file = (pkgs.formats.toml { }).generate "YaziThemeConfig" {
-    manager = {
-      border_style = border;
-      border_symbol = " ";
-      cwd = text;
-      hovered = hover;
-      preview_hovered = hover;
-      tab_active = hover;
-    };
+    manager =
+      let
+        mkMarker = color: {
+          bg = "#${color}";
+          fg = "#${color}";
+        };
+      in
+      {
+        border_style = border;
+        border_symbol = " ";
+        count_copied = hover;
+        count_cut = hover;
+        count_selected = hover;
+        cwd = text;
+        hovered = hover;
+        marker_copied = mkMarker color.accent;
+        marker_cut = mkMarker color.accent;
+        marker_marked = mkMarker color.hl;
+        marker_selected = mkMarker color.selection;
+        preview_hovered = hover;
+        tab_active = hover;
+      };
     select = {
       border = borderLight;
     };
@@ -51,7 +67,10 @@ in
       separator = " - ";
       separator_style = text;
     };
-
+    confirm = {
+      border = borderLight;
+      title = borderLight;
+    };
     status = {
       mode_normal = hover;
       mode_select = select;
