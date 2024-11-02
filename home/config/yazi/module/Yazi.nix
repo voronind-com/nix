@@ -2,7 +2,7 @@
 {
   file = (pkgs.formats.toml { }).generate "YaziYaziConfig" {
     manager = {
-      # linemode       = "mtime";
+      # linemode = "mtime";
       mouse_events = [ ];
       ratio = [
         1
@@ -172,6 +172,11 @@
           (mkMime "application/vnd.openxmlformats-officedocument.*" [ "document" ])
           (mkMime "*" [ ])
         ];
+    };
+
+    which = {
+      sort_by = "key";
+      sort_sensitive = false;
     };
   };
 }
