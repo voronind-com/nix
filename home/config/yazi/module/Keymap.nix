@@ -21,6 +21,7 @@ in
         (mkKeymap "Move to next tab" "E" "tab_swap 1 --relative")
         (mkKeymap "Exit yazi" "z" "quit")
         (mkKeymap "Exit yazi w/o cwd" "Z" "quit --no-cwd-file")
+        (mkKeymap "New tab" "<Tab>" "tab_create --current")
         # I wanna die thanks to nixfmt.
         (mkKeymap "Go to storage" [
           "g"
