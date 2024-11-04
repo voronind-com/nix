@@ -1,54 +1,32 @@
-{ pkgs, ... }:
-let
-  mkKeymap = desc: on: run: { inherit desc on run; };
-in
 {
-  # REF: https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml
-  file = (pkgs.formats.toml { }).generate "YaziKeymapConfig" {
-    manager = {
-      prepend_keymap = [
-        # TODO: Swap description & keys for better sorting?
-        (mkKeymap "Delete" "d" "remove --permanently")
-        (mkKeymap "Delete no questions asked" "D" "remove --permanently --force")
-        (mkKeymap "Spawn shell here" "<Enter>" ''shell "SHELL_NAME=yazi $SHELL" --block --confirm'')
-        (mkKeymap "Open interactively" "o" "open --interactive")
-        (mkKeymap "Open default" "O" "open")
-        (mkKeymap "Rename completely" "R" "rename --empty all")
-        (mkKeymap "Close tab" "c" "close")
-        (mkKeymap "Prev tab" "q" "tab_switch -1 --relative")
-        (mkKeymap "Next tab" "e" "tab_switch 1 --relative")
-        (mkKeymap "Move to prev tab" "Q" "tab_swap -1 --relative")
-        (mkKeymap "Move to next tab" "E" "tab_swap 1 --relative")
-        (mkKeymap "Exit yazi" "z" "quit")
-        (mkKeymap "Exit yazi w/o cwd" "Z" "quit --no-cwd-file")
-        (mkKeymap "New tab" "<Tab>" "tab_create --current")
-        # I wanna die thanks to nixfmt.
-        (mkKeymap "Go to storage" [
-          "g"
-          "s"
-        ] "cd /storage")
-        (mkKeymap "Go to tmp" [
-          "g"
-          "t"
-        ] "cd ~/tmp")
-        (mkKeymap "Go to system tmp" [
-          "g"
-          "T"
-        ] "cd /tmp")
-        (mkKeymap "Go to projects" [
-          "g"
-          "p"
-        ] "cd ~/project")
-        # Yazi devs are... special.
-        (mkKeymap "Go to downloads" [
-          "g"
-          "d"
-        ] "cd $XDG_DOWNLOAD_DIR")
-        (mkKeymap "Go to configs" [
-          "g"
-          "c"
-        ] "cd $XDG_CONFIG_HOME")
-      ];
-    };
-  };
+	pkgs,
+	...
+}: {
+	# REF: https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml
+	file = (pkgs.formats.toml { }).generate "YaziKeymapConfig" {
+		manager = {
+			prepend_keymap = [
+				{ on = "<Enter>";   desc = "Spawn shell here";  run = ''shell "SHELL_NAME=yazi $SHELL" --block --confirm''; }
+				{ on = "<Tab>";     desc = "New tab";           run = "tab_create --current"; }
+				{ on = "D";         desc = "Force delete";      run = "remove --permanently --force"; }
+				{ on = "E";         desc = "Move to next tab";  run = "tab_swap 1 --relative"; }
+				{ on = "O";         desc = "Open default";      run = "open"; }
+				{ on = "Q";         desc = "Move to prev tab";  run = "tab_swap -1 --relative"; }
+				{ on = "R";         desc = "Rename completely"; run = "rename --empty all"; }
+				{ on = "Z";         desc = "Exit yazi w/o cwd"; run = "quit --no-cwd-file"; }
+				{ on = "c";         desc = "Close tab";         run = "close"; }
+				{ on = "d";         desc = "Delete";            run = "remove --permanently"; }
+				{ on = "e";         desc = "Next tab";          run = "tab_switch 1 --relative"; }
+				{ on = "o";         desc = "Open interactively";run = "open --interactive"; }
+				{ on = "q";         desc = "Prev tab";          run = "tab_switch -1 --relative"; }
+				{ on = "z";         desc = "Exit yazi";         run = "quit"; }
+				{ on = [ "g" "T" ]; desc = "Go to system tmp";  run = "cd /tmp"; }
+				{ on = [ "g" "c" ]; desc = "Go to configs";     run = "noop"; }
+				{ on = [ "g" "d" ]; desc = "Go to downloads";   run = "cd $XDG_DOWNLOAD_DIR"; }
+				{ on = [ "g" "p" ]; desc = "Go to projects";    run = "cd ~/project"; }
+				{ on = [ "g" "s" ]; desc = "Go to storage";     run = "cd /storage"; }
+				{ on = [ "g" "t" ]; desc = "Go to tmp";         run = "cd ~/tmp"; }
+			];
+		};
+	};
 }

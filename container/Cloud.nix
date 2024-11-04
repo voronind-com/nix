@@ -1,85 +1,81 @@
 {
-  container,
-  pkgs,
-  lib,
-  config,
-  ...
-}@args:
-with lib;
-let
-  cfg = config.container.module.cloud;
+	config,
+	container,
+	lib,
+	pkgs,
+	...
+}: let
+	cfg      = config.container.module.cloud;
+	postgres = config.container.module.postgres;
+	proxy    = config.container.module.proxy;
+in {
+	options.container.module.cloud = {
+		enable = lib.mkEnableOption "the file cloud service.";
+		address = lib.mkOption {
+			default = "10.1.0.13";
+			type    = lib.types.str;
+		};
+		port = lib.mkOption {
+			default = 80;
+			type    = lib.types.int;
+		};
+		domain = lib.mkOption {
+			default = "cloud.${config.container.domain}";
+			type    = lib.types.str;
+		};
+		storage = lib.mkOption {
+			default = "${config.container.storage}/cloud";
+			type    = lib.types.str;
+		};
+	};
 
-  postgres = config.container.module.postgres;
-  proxy = config.container.module.proxy;
-in
-{
-  options = {
-    container.module.cloud = {
-      enable = mkEnableOption "File cloud service";
-      address = mkOption {
-        default = "10.1.0.13";
-        type = types.str;
-      };
-      port = mkOption {
-        default = 80;
-        type = types.int;
-      };
-      domain = mkOption {
-        default = "cloud.${config.container.domain}";
-        type = types.str;
-      };
-      storage = mkOption {
-        default = "${config.container.storage}/cloud";
-        type = types.str;
-      };
-    };
-  };
+	config = lib.mkIf cfg.enable {
+		systemd.tmpfiles.rules = container.mkContainerDir cfg [
+			"data"
+		];
 
-  config = mkIf cfg.enable {
-    systemd.tmpfiles.rules = container.mkContainerDir cfg [ "data" ];
+		containers.cloud = container.mkContainer cfg {
+			bindMounts = {
+				"/var/lib/nextcloud" = {
+					hostPath   = "${cfg.storage}/data";
+					isReadOnly = false;
+				};
+			};
 
-    containers.cloud = container.mkContainer cfg {
-      bindMounts = {
-        "/var/lib/nextcloud" = {
-          hostPath = "${cfg.storage}/data";
-          isReadOnly = false;
-        };
-      };
-
-      config =
-        { config, ... }:
-        container.mkContainerConfig cfg {
-          services.nextcloud = {
-            enable = true;
-            # package = pkgs.nextcloud29;
-            hostName = cfg.domain;
-            # phpOptions = {
-            #   memory_limit = lib.mkForce "20G";
-            # };
-            config = {
-              adminuser = "root";
-              adminpassFile = "${pkgs.writeText "NextcloudPassword" "root"}";
-
-              dbhost = postgres.address;
-              dbname = "nextcloud";
-              dbpassFile = "${pkgs.writeText "NextcloudDbPassword" "nextcloud"}";
-              dbtype = "pgsql";
-              dbuser = "nextcloud";
-            };
-            extraApps = {
-              inherit (config.services.nextcloud.package.packages.apps) contacts calendar onlyoffice;
-            };
-            extraAppsEnable = true;
-            settings = {
-              trusted_domains = [
-                cfg.address
-                cfg.domain
-              ];
-              trusted_proxies = [ proxy.address ];
-              allow_local_remote_servers = true;
-            };
-          };
-        };
-    };
-  };
+			config = { config, ... }: container.mkContainerConfig cfg {
+				services.nextcloud = {
+					enable   = true;
+					hostName = cfg.domain;
+					# package = pkgs.nextcloud29;
+					# phpOptions = {
+					#   memory_limit = lib.mkForce "20G";
+					# };
+					config = {
+						adminpassFile = "${pkgs.writeText "NextcloudPassword" "root"}";
+						adminuser     = "root";
+						dbhost        = postgres.address;
+						dbname        = "nextcloud";
+						dbpassFile    = "${pkgs.writeText "NextcloudDbPassword" "nextcloud"}";
+						dbtype        = "pgsql";
+						dbuser        = "nextcloud";
+					};
+					extraApps = {
+						inherit (config.services.nextcloud.package.packages.apps)
+							contacts calendar onlyoffice;
+					};
+					extraAppsEnable = true;
+					settings = {
+						allow_local_remote_servers = true;
+						trusted_domains = [
+							cfg.address
+							cfg.domain
+						];
+						trusted_proxies = [
+							proxy.address
+						];
+					};
+				};
+			};
+		};
+	};
 }

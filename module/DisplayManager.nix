@@ -1,18 +1,19 @@
-{ config, lib, ... }:
-with lib;
-let
-  cfg = config.module.desktop.dm;
-in
 {
-  options = {
-    module.desktop.dm.enable = mkEnableOption "Display Manager.";
-  };
+	config,
+	lib,
+	...
+}: let
+	cfg = config.module.desktop.dm;
+in {
+	options.module.desktop.dm.enable = lib.mkEnableOption "the display manager.";
 
-  config = mkIf cfg.enable {
-    services.xserver.enable = true;
-    services.xserver.xkb = {
-      layout = config.setting.keyboard.layouts;
-      options = config.setting.keyboard.options;
-    };
-  };
+	config = lib.mkIf cfg.enable {
+		services.xserver = {
+			enable = true;
+			xkb = {
+				layout  = config.module.keyboard.layouts;
+				options = config.module.keyboard.options;
+			};
+		};
+	};
 }

@@ -1,6 +1,5 @@
-{ ... }:
-{
-  text = ''
-    require("bufferline").setup()
-  '';
+{ ... }: {
+	text = ''
+		require("bufferline").setup()
+	'';
 }

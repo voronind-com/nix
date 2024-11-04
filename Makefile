@@ -30,9 +30,6 @@ fix-ulimit:
 fix-unlock:
 	pkill nixos-rebuild || true
 
-format:
-	treefmt --no-cache --on-unmatched=info
-
 gc:
 	nix-collect-garbage -d
 	# nix-store --gc

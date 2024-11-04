@@ -1,9 +1,8 @@
-{ ... }:
-{
-  text = ''
-    function reload() {
-      source ~/.bashrc
-    }
-    trap reload USR1
-  '';
+{ ... }: {
+	text = ''
+		function reload() {
+			source ~/.bashrc
+		}
+		trap reload USR1
+	'';
 }

@@ -1,18 +1,17 @@
-{ lib, config, ... }:
-with lib;
-let
-  cfg = config.module.desktop.bluetooth;
-in
 {
-  options = {
-    module.desktop.bluetooth.enable = mkEnableOption "Bluetooth.";
-  };
+	config,
+	lib,
+	...
+}: let
+	cfg = config.module.desktop.bluetooth;
+in {
+	options.module.desktop.bluetooth.enable = lib.mkEnableOption "the bluetooth support.";
 
-  config = mkIf cfg.enable {
-    hardware.bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
-    services.blueman.enable = true;
-  };
+	config = lib.mkIf cfg.enable {
+		services.blueman.enable = true;
+		hardware.bluetooth = {
+			enable      = true;
+			powerOnBoot = true;
+		};
+	};
 }

@@ -1,375 +1,163 @@
-# This is a configuration entry-point called "Flake".
-# Here you define your inputs (dependencies) and outputs (hosts).
 {
-  # Those are external dependencies.
-  inputs = {
-    # Core system.
-    # Homepage: https://github.com/NixOS/nixpkgs
-    # Manual:   https://nixos.org/manual/nixos/stable
-    # Search:   https://search.nixos.org/packages and https://search.nixos.org/options
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgsStable.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgsMaster.url = "github:nixos/nixpkgs/master";
+	inputs = {
+		nixpkgs.url         = "github:nixos/nixpkgs/nixos-unstable";
+		nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
+		nixpkgsStable.url   = "github:nixos/nixpkgs/nixos-24.05";
+		nixpkgsMaster.url   = "github:nixos/nixpkgs/master";
 
-    # This thing manages user's /home directroies. Because NixOS only manages system itself.
-    # Homepage: https://github.com/nix-community/home-manager
-    # Manual:   https://nix-community.github.io/home-manager
-    # Search:   https://home-manager-options.extranix.com
-    home-manager = {
-      url = "github:nix-community/home-manager";
+		home-manager = {
+			url = "github:nix-community/home-manager";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 
-      # This means that home-manager and our Flake both depend on the same nixpkgs version.
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+		stylix.url = "github:danth/stylix";
 
-    # This allows automatic styling based on active Wallpaper.
-    # Homepage: https://github.com/danth/stylix
-    # Manual:   https://danth.github.io/stylix
-    stylix.url = "github:danth/stylix";
+		nixpkgsJobber.url    = "github:nixos/nixpkgs/051f920625ab5aabe37c920346e3e69d7d34400e";
+		poetry2nixJobber.url = "github:nix-community/poetry2nix/304f8235fb0729fd48567af34fcd1b58d18f9b95";
 
-    # I use this for a single container called jobber. WARN: Do not update.
-    # You likely won't need this one, so just skip it for now.
-    poetry2nixJobber.url = "github:nix-community/poetry2nix/304f8235fb0729fd48567af34fcd1b58d18f9b95";
-    nixpkgsJobber.url = "github:nixos/nixpkgs/051f920625ab5aabe37c920346e3e69d7d34400e";
+		nix-on-droid = {
+			url = "github:t184256/nix-on-droid/release-23.11";
+			inputs.home-manager.follows = "home-manager";
+			inputs.nixpkgs.follows      = "nixpkgs";
+		};
 
-    # Nix on Android (inside Termux). It has no NixOS modules, but still allows the use of Nixpkgs arm packages with Home-Manager configurations.
-    # Homepage: https://github.com/nix-community/nix-on-droid
-    # Manual:   https://github.com/nix-community/nix-on-droid/blob/master/README.md
-    nix-on-droid = {
-      url = "github:t184256/nix-on-droid/release-23.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
+		nvimAlign           = { flake = false; url = "github:echasnovski/mini.align"; };
+		nvimAutoclose       = { flake = false; url = "github:m4xshen/autoclose.nvim"; };
+		nvimBufferline      = { flake = false; url = "github:akinsho/bufferline.nvim"; };
+		nvimCloseBuffers    = { flake = false; url = "github:kazhala/close-buffers.nvim"; };
+		nvimColorizer       = { flake = false; url = "github:brenoprata10/nvim-highlight-colors"; };
+		nvimDevicons        = { flake = false; url = "github:nvim-tree/nvim-web-devicons"; };
+		nvimDressing        = { flake = false; url = "github:stevearc/dressing.nvim"; };
+		nvimGen             = { flake = false; url = "github:David-Kunz/gen.nvim"; };
+		nvimGitsigns        = { flake = false; url = "github:lewis6991/gitsigns.nvim"; };
+		nvimGruvboxMaterial = { flake = false; url = "github:sainnhe/gruvbox-material"; };
+		nvimIndentoMatic    = { flake = false; url = "github:Darazaki/indent-o-matic"; };
+		nvimLspconfig       = { flake = false; url = "github:neovim/nvim-lspconfig"; };
+		nvimPlenary         = { flake = false; url = "github:nvim-lua/plenary.nvim"; };
+		nvimTelescope       = { flake = false; url = "github:nvim-telescope/telescope.nvim"; };
+		nvimTodo            = { flake = false; url = "github:folke/todo-comments.nvim"; };
+		nvimTree            = { flake = false; url = "github:nvim-tree/nvim-tree.lua"; };
+		nvimTreesitter      = { flake = false; url = "github:nvim-treesitter/nvim-treesitter"; };
+		nvimTrouble         = { flake = false; url = "github:folke/trouble.nvim"; };
+	};
 
-    # Those are Nvim plugins. I do not use package managers like Packer or Lazy, instead I use Nix to download them and later configure in [Neovim module](module/common/Nvim.nix).
-    nvimAlign = {
-      url = "github:echasnovski/mini.align";
-      flake = false;
-    };
-    nvimAutoclose = {
-      url = "github:m4xshen/autoclose.nvim";
-      flake = false;
-    };
-    nvimBufferline = {
-      url = "github:akinsho/bufferline.nvim";
-      flake = false;
-    };
-    nvimCloseBuffers = {
-      url = "github:kazhala/close-buffers.nvim";
-      flake = false;
-    };
-    nvimColorizer = {
-      url = "github:brenoprata10/nvim-highlight-colors";
-      flake = false;
-    };
-    nvimDevicons = {
-      url = "github:nvim-tree/nvim-web-devicons";
-      flake = false;
-    };
-    nvimDressing = {
-      url = "github:stevearc/dressing.nvim";
-      flake = false;
-    };
-    nvimGen = {
-      url = "github:David-Kunz/gen.nvim";
-      flake = false;
-    };
-    nvimGitsigns = {
-      url = "github:lewis6991/gitsigns.nvim";
-      flake = false;
-    };
-    nvimGruvboxMaterial = {
-      url = "github:sainnhe/gruvbox-material";
-      flake = false;
-    };
-    nvimIndentoMatic = {
-      url = "github:Darazaki/indent-o-matic";
-      flake = false;
-    };
-    nvimLspconfig = {
-      url = "github:neovim/nvim-lspconfig";
-      flake = false;
-    };
-    nvimPlenary = {
-      url = "github:nvim-lua/plenary.nvim";
-      flake = false;
-    };
-    nvimTelescope = {
-      url = "github:nvim-telescope/telescope.nvim";
-      flake = false;
-    };
-    nvimTodo = {
-      url = "github:folke/todo-comments.nvim";
-      flake = false;
-    };
-    nvimTree = {
-      url = "github:nvim-tree/nvim-tree.lua";
-      flake = false;
-    };
-    nvimTreesitter = {
-      url = "github:nvim-treesitter/nvim-treesitter";
-      flake = false;
-    };
-    nvimTrouble = {
-      url = "github:folke/trouble.nvim";
-      flake = false;
-    };
-  };
+	outputs = {
+		home-manager,
+		nix-on-droid,
+		nixpkgs,
+		nixpkgsJobber,
+		nixpkgsMaster,
+		nixpkgsStable,
+		nixpkgsUnstable,
+		poetry2nixJobber,
+		self,
+		stylix,
+		...
+	} @inputs: {
+		const = {
+			droidStateVersion = "23.11";
+			stateVersion      = "24.05";
+			timeZone = "Europe/Moscow";
+			url = "https://git.voronind.com/voronind/nix.git";
+		};
 
-  # Those are outputs (hosts, configurations) that can be produced by this whole config.
-  # Here you see a set of inputs we defined above, like nixpkgs, home-manager and so on.
-  # `...` at the end of a set means "ignore other arguments provided to this function".
-  # @inputs means aliasing all the inputs to the `inputs` name, so we can pass them all at once later.
-  outputs =
-    {
-      self,
-      nixpkgs,
-      nixpkgsUnstable,
-      nixpkgsStable,
-      nixpkgsMaster,
-      nix-on-droid,
-      home-manager,
-      stylix,
-      poetry2nixJobber,
-      nixpkgsJobber,
-      ...
-    }@inputs:
-    {
-      # Constant values.
-      const = {
-        droidStateVersion = "23.11";
-        stateVersion = "24.05";
-        timeZone = "Europe/Moscow";
-        url = "https://git.voronind.com/voronind/nix.git";
-      };
+		__findFile = _: p: ./${p};
 
-      # Hack to use <container/Change.nix> in other files.
-      # Need to add __findFile to args tho.
-      __findFile = _: p: ./${p};
+		findFiles = path: map (f: "${path}/${f}") (
+			builtins.filter (i: builtins.readFileType "${path}/${i}" == "regular") (
+				builtins.attrNames (builtins.readDir path)
+			)
+		);
 
-      # List all files in a dir.
-      findFiles =
-        path:
-        map (f: "${path}/${f}") (
-          builtins.filter (i: builtins.readFileType "${path}/${i}" == "regular") (
-            builtins.attrNames (builtins.readDir path)
-          )
-        );
+		devShells = let
+			lib    = nixpkgs.lib;
+			pkgs   = nixpkgs.legacyPackages.${system};
+			system = "x86_64-linux";
+		in {
+			${system}.default = pkgs.mkShell {
+				nativeBuildInputs = with pkgs; [
+					nixd
+				];
+				# buildInputs = with pkgs; [ ];
 
-      # Dev shell for this repo.
-      devShells =
-        let
-          system = "x86_64-linux";
-          lib = nixpkgs.lib;
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        {
-          ${system}.default = pkgs.mkShell {
-            nativeBuildInputs = with pkgs; [
-              nixd
-              nixfmt-rfc-style
-              treefmt
-            ];
-            # buildInputs = with pkgs; [ ];
+				# LD_LIBRARY_PATH   = "${lib.makeLibraryPath buildInputs}";
+				# SOURCE_DATE_EPOCH = "${toString self.lastModified}";
+			};
+		};
 
-            # LD_LIBRARY_PATH   = "${lib.makeLibraryPath buildInputs}";
-            # SOURCE_DATE_EPOCH = "${toString self.lastModified}";
-          };
-        };
+		nixosConfigurations = let
+			mkHost = { system, hostname }: nixpkgs.lib.nixosSystem {
+				inherit system;
+				modules = [
+					# Make a device hostname match the one from this config.
+					{ networking.hostName = hostname; }
 
-      # Nixos systems.
-      nixosConfigurations =
-        let
-          # Function to create a host. It does basic setup, like adding common modules.
-          mkHost =
-            { system, hostname }:
-            nixpkgs.lib.nixosSystem {
-              # `Inherit` is just an alias for `system = system;`, which means that
-              # keep the `system` argument as a property in a resulting set.
-              inherit system;
+					# Specify current release version.
+					{ system.stateVersion = self.const.stateVersion; }
 
-              # List of modules to use by defualt for all the hosts.
-              modules =
-                [
-                  # Make a device hostname match the one from this config.
-                  { networking.hostName = hostname; }
+					# Add Home Manager module.
+					home-manager.nixosModules.home-manager
 
-                  # Specify current release version.
-                  { system.stateVersion = self.const.stateVersion; }
+					# Add Stylix module.
+					stylix.nixosModules.stylix
 
-                  # Add Home Manager module.
-                  home-manager.nixosModules.home-manager
+					# HM config.
+					./home/NixOs.nix
+				]
+				++ (self.findFiles ./container)
+				++ (self.findFiles ./host/${system}/${hostname})
+				++ (self.findFiles ./module)
+				++ (self.findFiles ./overlay)
+				++ (self.findFiles ./system)
+				;
+				specialArgs = let
+					pkgs   = nixpkgs.legacyPackages.${system}.pkgs;
+					lib    = nixpkgs.lib;
+					config = self.nixosConfigurations.${hostname}.config;
+					util   = import ./lib/Util.nix { inherit lib; };
+				in {
+					inherit (self) const __findFile;
+					inherit inputs self poetry2nixJobber util;
+					container    = import ./lib/Container.nix { inherit lib pkgs config util; inherit (self) const; };
+					pkgsJobber   = nixpkgsJobber.legacyPackages.${system}.pkgs;
+					pkgsMaster   = nixpkgsMaster.legacyPackages.${system}.pkgs;
+					pkgsStable   = nixpkgsStable.legacyPackages.${system}.pkgs;
+					pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
+					secret       = import ./secret { };
+				};
+			};
 
-                  # Add Stylix module.
-                  stylix.nixosModules.stylix
+			mkSystem = system: hostname: { "${hostname}" = mkHost { inherit system hostname; }; };
+		in nixpkgs.lib.foldl' (acc: h: acc // h) { } (
+			map (system: nixpkgs.lib.foldl' (acc: h: acc // h) { } (
+				map (host: mkSystem system host) (builtins.attrNames (builtins.readDir ./host/${system}))
+			)) (builtins.attrNames (builtins.readDir ./host))
+		);
 
-                  # HM config.
-                  ./home/NixOs.nix
-                ]
-                ++ (self.findFiles ./host/${system}/${hostname})
-                ++ (self.findFiles ./config)
-                ++ (self.findFiles ./container)
-                ++ (self.findFiles ./module)
-                ++ (self.findFiles ./system)
-                ++ (self.findFiles ./overlay);
-
-              # SpecialArgs allows you to pass objects down to other NixOS modules.
-              specialArgs =
-                let
-                  pkgs = nixpkgs.legacyPackages.${system}.pkgs;
-                  lib = nixpkgs.lib;
-                  config = self.nixosConfigurations.${hostname}.config;
-                in
-                {
-                  inherit inputs self;
-                  inherit (self) const __findFile;
-
-                  pkgsJobber = nixpkgsJobber.legacyPackages.${system}.pkgs;
-                  pkgsStable = nixpkgsStable.legacyPackages.${system}.pkgs;
-                  pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
-                  pkgsMaster = nixpkgsMaster.legacyPackages.${system}.pkgs;
-
-                  secret = import ./secret { }; # Secrets (public keys).
-                  container = import ./lib/Container.nix {
-                    inherit lib pkgs config;
-                    inherit (self) const;
-                  }; # Container utils.
-                  util = import ./lib/Util.nix { inherit lib; }; # Util functions.
-
-                  # Stuff for Jobber container, skip this part.
-                  inherit poetry2nixJobber;
-                };
-            };
-
-          mkSystem = system: hostname: { "${hostname}" = mkHost { inherit system hostname; }; };
-        in
-        nixpkgs.lib.foldl' (acc: h: acc // h) { } (
-          map (
-            system:
-            nixpkgs.lib.foldl' (acc: h: acc // h) { } (
-              map (host: mkSystem system host) (builtins.attrNames (builtins.readDir ./host/${system}))
-            )
-          ) (builtins.attrNames (builtins.readDir ./host))
-        );
-
-      # Home manager (distro-independent).
-      # Install nix: sh <(curl -L https://nixos.org/nix/install) --no-daemon
-      # Or with --daemon for multi-user (as root).
-      # $ nix run home-manager/master -- init --switch
-      # $ nix shell '<home-manager>' -A install
-      # Add to /etc/nix/nix.conf > experimental-features = nix-command flakes
-      # And then # systemctl restart nix-daemon.service
-      # $ home-manager switch --flake ~/hmconf
-      homeConfigurations =
-        let
-          lib = nixpkgs.lib;
-          secret = import ./secret { };
-          util = import ./lib/Util.nix { inherit lib; };
-
-          mkCommonHome =
-            username: system:
-            let
-              pkgs = nixpkgs.legacyPackages.${system};
-              pkgsStable = nixpkgsStable.legacyPackages.${system};
-              pkgsUnstable = nixpkgsUnstable.legacyPackages.${system};
-              pkgsMaster = nixpkgsMaster.legacyPackages.${system};
-            in
-            {
-              ${username} = home-manager.lib.homeManagerConfiguration {
-                inherit pkgs;
-
-                extraSpecialArgs = {
-                  inherit
-                    self
-                    inputs
-                    secret
-                    util
-                    pkgs
-                    pkgsStable
-                    pkgsMaster
-                    ;
-                  inherit (self) const __findFile;
-                };
-                modules = [
-                  ./home/HomeManager.nix
-                  {
-                    home.hm = {
-                      inherit username;
-                      enable = true;
-                    };
-                  }
-
-                  { nixpkgs.config.allowUnfree = true; }
-                  { nixpkgs.config.allowUnfreePredicate = (pkg: true); }
-                  { nix.package = pkgs.nix; }
-                  {
-                    nix.settings.experimental-features = [
-                      "nix-command "
-                      "flakes"
-                    ];
-                  }
-
-                  inputs.stylix.homeManagerModules.stylix
-                ] ++ (self.findFiles ./home/user/${system}/${username}) ++ (self.findFiles ./config);
-              };
-            };
-        in
-        nixpkgs.lib.foldl' (acc: h: acc // h) { } (
-          map (
-            system:
-            nixpkgs.lib.foldl' (acc: h: acc // h) { } (
-              map (username: mkCommonHome username system) (
-                builtins.attrNames (builtins.readDir ./home/user/${system})
-              )
-            )
-          ) (builtins.attrNames (builtins.readDir ./home/user))
-        );
-
-      # Android.
-      nixOnDroidConfigurations.default =
-        let
-          system = "aarch64-linux";
-          config = self.nixOnDroidConfigurations.default.config;
-          lib = nixpkgs.lib;
-          pkgs = nixpkgs.legacyPackages.${system}.pkgs;
-          pkgsStable = nixpkgsStable.legacyPackages.${system}.pkgs;
-          pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
-          pkgsMaster = nixpkgsMaster.legacyPackages.${system}.pkgs;
-        in
-        nix-on-droid.lib.nixOnDroidConfiguration {
-          modules = [
-            # Android release version.
-            { system.stateVersion = self.const.droidStateVersion; }
-
-            # I put all my Android configuration there.
-            ./home/Android.nix
-            { home.android.enable = true; }
-
-            # { nixpkgs.config.allowUnfree = true; }
-            # { nixpkgs.config.allowUnfreePredicate = (pkg: true); }
-            { nix.extraOptions = "experimental-features = nix-command flakes"; }
-            { home-manager.config.stylix.autoEnable = lib.mkForce false; }
-
-            # Some common modules.
-            ./config/Setting.nix
-            ./config/Wallpaper.nix
-            (import ./config/Style.nix {
-              inherit (config.home-manager) config;
-              inherit (self) __findFile;
-              inherit lib pkgs;
-            })
-          ];
-
-          # SpecialArgs allows you to pass objects down to other configuration.
-          extraSpecialArgs = {
-            inherit inputs self;
-            inherit (self) const __findFile;
-
-            secret = import ./secret { }; # Secrets (public keys).
-            util = import ./lib/Util.nix { inherit lib; }; # Util functions.
-          };
-        };
-    };
+		nixOnDroidConfigurations.default = let
+			config       = self.nixOnDroidConfigurations.default.config;
+			lib          = nixpkgs.lib;
+			pkgs         = nixpkgs.legacyPackages.${system}.pkgs;
+			pkgsMaster   = nixpkgsMaster.legacyPackages.${system}.pkgs;
+			pkgsStable   = nixpkgsStable.legacyPackages.${system}.pkgs;
+			pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
+			system       = "aarch64-linux";
+		in nix-on-droid.lib.nixOnDroidConfiguration {
+			modules = [
+				(import ./module/Style.nix { inherit (config.home-manager) config; inherit (self) __findFile; inherit lib pkgs; })
+				./home/Android.nix
+				./module/Wallpaper.nix
+				{ home-manager.config.stylix.autoEnable = lib.mkForce false; }
+				{ home.android.enable = true; }
+				{ nix.extraOptions = "experimental-features = nix-command flakes"; }
+				{ system.stateVersion = self.const.droidStateVersion; }
+			];
+			extraSpecialArgs = {
+				inherit inputs self;
+				inherit (self) const __findFile;
+				secret = import ./secret { };
+				util   = import ./lib/Util.nix { inherit lib; };
+			};
+		};
+	};
 }
-# That's it!

@@ -1,10 +1,9 @@
-{ ... }:
-{
-  text = ''
-    local lspconfig = require("lspconfig")
+{ ... }: {
+	text = ''
+		local lspconfig = require("lspconfig")
 
-    lspconfig.hls.setup {
-      filetypes = { 'haskell', 'lhaskell', 'cabal' },
-    }
-  '';
+		lspconfig.hls.setup {
+			filetypes = { 'haskell', 'lhaskell', 'cabal' },
+		}
+	'';
 }

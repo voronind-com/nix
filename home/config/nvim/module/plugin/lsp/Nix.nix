@@ -1,18 +1,17 @@
-{ ... }:
-{
-  text = ''
-    local lspconfig = require("lspconfig")
+{ ... }: {
+	text = ''
+		local lspconfig = require("lspconfig")
 
-    lspconfig.nixd.setup({
-      settings = {
-        nixd = {
-          diagnostic = {
-            suppress = {
-              "sema-escaping-with"
-            },
-          },
-        },
-      },
-    })
-  '';
+		lspconfig.nixd.setup({
+			settings = {
+				nixd = {
+					diagnostic = {
+						suppress = {
+							"sema-escaping-with"
+						},
+					},
+				},
+			},
+		})
+	'';
 }

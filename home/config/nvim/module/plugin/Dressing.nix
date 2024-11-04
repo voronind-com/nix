@@ -1,6 +1,5 @@
-{ ... }:
-{
-  text = ''
-    require("dressing").setup({ })
-  '';
+{ ... }: {
+	text = ''
+		require("dressing").setup({ })
+	'';
 }

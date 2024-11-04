@@ -1,47 +1,42 @@
 # HACK: Add a patch for https://github.com/rvaiya/keyd/pull/545
-{ lib, ... }:
 {
-  nixpkgs.overlays = [
-    (final: prev: {
-      keyd = prev.keyd.overrideAttrs (old: rec {
-        patches = (old.patches or [ ]) ++ [
-          (prev.fetchpatch {
-            url = "https://patch-diff.githubusercontent.com/raw/rvaiya/keyd/pull/545.patch";
-            hash = "sha256-aal8oAXws6DcpeCl7G9GMJQXeLDDbyotWFut0Rf82WI=";
-          })
-        ];
+	lib,
+	util,
+	...
+}: {
+	nixpkgs.overlays = [(final: prev: {
+		keyd = prev.keyd.overrideAttrs (old: rec {
+			patches = (old.patches or [ ]) ++ [
+				(prev.fetchpatch {
+					hash = "sha256-aal8oAXws6DcpeCl7G9GMJQXeLDDbyotWFut0Rf82WI=";
+					url  = "https://patch-diff.githubusercontent.com/raw/rvaiya/keyd/pull/545.patch";
+				})
+			];
 
-        postInstall =
-          let
-            pypkgs = prev.python3.pkgs;
-            appMap = pypkgs.buildPythonApplication rec {
-              inherit (prev.keyd) version src;
-              inherit patches;
-
-              pname = "keyd-application-mapper";
-              format = "other";
-
-              postPatch = ''
-                substituteInPlace scripts/${pname} \
-                  --replace /bin/sh ${prev.runtimeShell}
-              '';
-
-              propagatedBuildInputs = with pypkgs; [ xlib ];
-
-              dontBuild = true;
-
-              installPhase = ''
-                install -Dm555 -t $out/bin scripts/${pname}
-              '';
-
-              meta.mainProgram = "keyd-application-mapper";
-            };
-          in
-          ''
-            ln -sf ${lib.getExe appMap} $out/bin/${appMap.pname}
-            rm -rf $out/etc
-          '';
-      });
-    })
-  ];
+			postInstall = let
+				pypkgs = prev.python3.pkgs;
+				appMap = pypkgs.buildPythonApplication rec {
+					inherit (prev.keyd) version src;
+					inherit patches;
+					dontBuild = true;
+					format    = "other";
+					meta.mainProgram = "keyd-application-mapper";
+					pname            = "keyd-application-mapper";
+					postPatch = util.trimTabs ''
+						substituteInPlace scripts/${pname} \
+							--replace /bin/sh ${prev.runtimeShell}
+					'';
+					propagatedBuildInputs = with pypkgs; [
+						xlib
+					];
+					installPhase = util.trimTabs ''
+						install -Dm555 -t $out/bin scripts/${pname}
+					'';
+				};
+			in ''
+				ln -sf ${lib.getExe appMap} $out/bin/${appMap.pname}
+				rm -rf $out/etc
+			'';
+		});
+	})];
 }

@@ -1,12 +1,13 @@
-{ lib, config, ... }:
-with lib;
-let
-  cfg = config.module.desktop.brightness;
-in
 {
-  options = {
-    module.desktop.brightness.enable = mkEnableOption "Brightness.";
-  };
+	lib,
+	config,
+	...
+}: let
+	cfg = config.module.desktop.brightness;
+in {
+	options.module.desktop.brightness.enable = lib.mkEnableOption "the brightness control.";
 
-  config = mkIf cfg.enable { programs.light.enable = true; };
+	config = lib.mkIf cfg.enable {
+		programs.light.enable = true;
+	};
 }

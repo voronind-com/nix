@@ -1,39 +1,36 @@
 {
-  pkgs,
-  lib,
-  config,
-  ...
-}:
-with lib;
-let
-  cfg = config.module.ftpd;
+	config,
+	lib,
+	pkgs,
+	util,
+	...
+}: let
+	cfg = config.module.ftpd;
 in
-{
-  options = {
-    module.ftpd = {
-      enable = mkEnableOption "Enable FTP server";
-      storage = mkOption {
-        default = null;
-        type = types.str;
-      };
-    };
-  };
+	{
+	options.module.ftpd = {
+		enable = lib.mkEnableOption "the FTP server";
+		storage = lib.mkOption {
+			default = null;
+			type    = lib.types.str;
+		};
+	};
 
-  config = mkIf cfg.enable {
-    services.vsftpd = {
-      enable = true;
-      anonymousUser = true;
-      anonymousUserNoPassword = true;
-      anonymousUploadEnable = true;
-      anonymousMkdirEnable = true;
-      anonymousUmask = "000";
-      anonymousUserHome = cfg.storage;
-      allowWriteableChroot = true;
-      writeEnable = true;
-      localUsers = false;
-      extraConfig = ''
-        anon_other_write_enable=YES
-      '';
-    };
-  };
+	config = lib.mkIf cfg.enable {
+		services.vsftpd = {
+			enable = true;
+			allowWriteableChroot    = true;
+			anonymousMkdirEnable    = true;
+			anonymousUmask          = "000";
+			anonymousUploadEnable   = true;
+			anonymousUser           = true;
+			anonymousUserHome       = cfg.storage;
+			anonymousUserNoPassword = true;
+			localUsers              = false;
+			writeEnable             = true;
+			extraConfig = util.trimTabs ''
+				anon_other_write_enable=YES
+			'';
+		};
+	};
 }

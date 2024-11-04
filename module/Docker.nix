@@ -1,45 +1,40 @@
-{ lib, config, ... }:
-with lib;
-let
-  cfg = config.module.docker;
-in
 {
-  options = {
-    module.docker = {
-      enable = mkEnableOption "Enable Cocker";
-      rootless = mkOption {
-        default = false;
-        type = types.bool;
-      };
-      autostart = mkOption {
-        default = false;
-        type = types.bool;
-      };
-    };
-  };
+	lib,
+	config,
+	...
+}: let
+	cfg = config.module.docker;
+in {
+	options.module.docker = {
+		enable = lib.mkEnableOption "the docker.";
+		rootless = lib.mkOption {
+			default = false;
+			type    = lib.types.bool;
+		};
+		autostart = lib.mkOption {
+			default = false;
+			type    = lib.types.bool;
+		};
+	};
 
-  config = mkIf cfg.enable (mkMerge [
-    {
-      virtualisation.docker.enable = true;
+	config = lib.mkIf cfg.enable (lib.mkMerge [
+		{
+			virtualisation.docker.enable = true;
 
-      systemd =
-        if cfg.autostart then
-          { }
-        else
-          {
-            services = {
-              docker-prune.wantedBy = mkForce [ ];
-              docker.wantedBy = mkForce [ ];
-            };
-            sockets.docker.wantedBy = mkForce [ ];
-          };
-    }
+			systemd = if cfg.autostart then { } else {
+				sockets.docker.wantedBy = lib.mkForce [ ];
+				services = {
+					docker-prune.wantedBy = lib.mkForce [ ];
+					docker.wantedBy       = lib.mkForce [ ];
+				};
+			};
+		}
 
-    (mkIf cfg.rootless {
-      virtualisation.docker.rootless = {
-        enable = true;
-        setSocketVariable = true;
-      };
-    })
-  ]);
+		(lib.mkIf cfg.rootless {
+			virtualisation.docker.rootless = {
+				enable = true;
+				setSocketVariable = true;
+			};
+		})
+	]);
 }

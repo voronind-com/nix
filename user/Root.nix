@@ -1,33 +1,27 @@
 {
-  lib,
-  config,
-  secret,
-  ...
-}:
-with lib;
-let
-  cfg = config.user.root;
-in
-{
-  options = {
-    user.root = {
-      enable = mkEnableOption "root";
-    };
-  };
+	config,
+	lib,
+	secret,
+	util,
+	...
+}: let
+	cfg = config.user.root;
+in {
+	options.user.root = {
+		enable = lib.mkEnableOption "root";
+	};
 
-  config = mkIf cfg.enable {
-    home.nixos.users = [
-      {
-        username = "root";
-        homeDirectory = "/root";
-      }
-    ];
-    users.users.root.hashedPassword = secret.hashedPassword;
-    security.sudo = {
-      enable = false;
-      extraConfig = ''
-        Defaults rootpw
-      '';
-    };
-  };
+	config = lib.mkIf cfg.enable {
+		users.users.root.hashedPassword = secret.hashedPassword;
+		home.nixos.users = [{
+			homeDirectory = "/root";
+			username      = "root";
+		}];
+		security.sudo = {
+			enable = false;
+			extraConfig = util.trimTabs ''
+				Defaults rootpw
+			'';
+		};
+	};
 }

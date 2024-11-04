@@ -1,8 +1,10 @@
-{ config, ... }:
 {
-  text = ''
-    require("gen").setup {
-      model = "${config.setting.ollama.primaryModel}"
-    }
-  '';
+	config,
+	...
+}: {
+	text = ''
+		require("gen").setup {
+			model = "${config.module.ollama.primaryModel}"
+		}
+	'';
 }
