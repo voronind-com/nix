@@ -143,8 +143,8 @@ in {
 		temperature = {
 			critical-threshold = 80;
 			format             = "{temperatureC}°C";
-			hwmon-path-abs     = "${config.module.hwmon.path}";
-			input-filename     = "${config.module.hwmon.file}";
+			hwmon-path-abs     = "${config.module.hwmon.path or ""}";
+			input-filename     = "${config.module.hwmon.file or ""}";
 			interval           = refreshInterval;
 			on-click           = "foot -e bash -c btop";
 			on-click-right     = "powersave toggle";

@@ -4,7 +4,7 @@
 	...
 }: let
 	borderSize = toString config.module.style.window.border;
-	dpiAware   = if config.module.dpi.aware then "yes" else "no";
+	dpiAware   = if (config.module.dpi.aware or false) then "yes" else "no";
 	fontStep   = 1;
 in {
 	file = (pkgs.formats.iniWithGlobalSection { }).generate "FootConfig" {

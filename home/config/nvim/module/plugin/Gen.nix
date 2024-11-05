@@ -4,7 +4,7 @@
 }: {
 	text = ''
 		require("gen").setup {
-			model = "${config.module.ollama.primaryModel}"
+			model = "${config.module.ollama.primaryModel or ""}"
 		}
 	'';
 }
