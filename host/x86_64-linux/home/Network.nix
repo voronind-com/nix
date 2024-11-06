@@ -89,7 +89,7 @@ in {
 			+ (mkForward external 54631 cfg.download.address 54631 udp)
 
 			# Git ssh connections.
-			# + (mkForward external cfg.git.portSsh cfg.git.address cfg.git.portSsh tcp)
+			+ (mkForward external cfg.git.portSsh cfg.git.address cfg.git.portSsh tcp)
 			+ (mkForward internal cfg.git.portSsh cfg.git.address cfg.git.portSsh tcp)
 
 			# Print serivce.
