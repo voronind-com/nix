@@ -57,7 +57,9 @@
 				return 2
 			fi
 
-			nix hash to-sri --type sha256 $(nix-prefetch-url "''${url}")
+			local result=$(nix hash to-sri --type sha256 $(nix-prefetch-url "''${url}"))
+			printf "%s" ''${result} | copy
+			printf "%s\n" ''${result}
 		}
 
 		# Run nix locally with no builders.
