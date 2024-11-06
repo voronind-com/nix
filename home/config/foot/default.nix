@@ -11,7 +11,7 @@ in {
 		globalSection = {
 			dpi-aware = dpiAware;
 			font             = "${config.module.style.font.monospace.name}:size=${toString config.module.style.font.size.terminal}";
-			font-bold        = "${config.module.style.font.monospace.name}:size=${toString config.module.style.font.size.terminal}";
+			# font-bold        = "${config.module.style.font.monospace.name}:size=${toString config.module.style.font.size.terminal}";
 			font-bold-italic = "${config.module.style.font.monospace.name}:size=${toString config.module.style.font.size.terminal}";
 			font-italic      = "${config.module.style.font.monospace.name}:size=${toString config.module.style.font.size.terminal}";
 			font-size-adjustment = fontStep;
