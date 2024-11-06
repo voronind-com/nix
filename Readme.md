@@ -6,7 +6,7 @@
 
 ## Screenshots.
 
-<img src="https://i.imgur.com/qMolcsw.png" />
-<img width=400px src="https://i.imgur.com/i67Rewo.png" />
-<img width=400px src="https://i.imgur.com/CaVDQn8.png" />
-<br><a href="https://i.imgur.com/OpZzgJZ.png">Wallpaper link</a>
+<img src="https://i.imgur.com/6GuplSE.png" />
+<img width=400px src="https://i.imgur.com/uU9IM2U.png" />
+<img width=400px src="https://i.imgur.com/8JDLZcw.png" />
+<br><a href="https://i.imgur.com/Btbcst7.jpeg">Wallpaper link</a>
