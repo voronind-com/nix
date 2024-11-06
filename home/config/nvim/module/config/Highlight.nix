@@ -11,7 +11,7 @@
 	selection = {
 		bg   = "#${color.selection}";
 		bold = true;
-		fg   = "#${color.bg.dark}";
+		fg   = "#${color.fg.dark}";
 	};
 	transparent = {
 		bg = lib.generators.mkLuaInline "clear";

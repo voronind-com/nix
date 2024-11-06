@@ -2,7 +2,7 @@
 	config,
 	...
 }: let
-	fg        = config.module.style.color.bg.dark;
+	fg        = config.module.style.color.fg.dark;
 	selection = config.module.style.color.selection;
 in {
 	text = ''
