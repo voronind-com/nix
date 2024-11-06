@@ -4,12 +4,8 @@
 	lib,
 	util,
 	...
-}: {
-	file = (pkgs.formats.ini {
-		mkKeyValue = with lib.generators; mkKeyValueDefault {
-			mkValueString = v: if builtins.isString v then "\"${toString v}\"" else toString v;
-		} " = ";
-	}).generate "PrivateBinConfig" {
+}: let
+	cfg = {
 		main = {
 			compression       = "none";
 			defaultformatter  = "plaintext";
@@ -21,7 +17,7 @@
 			password          = true;
 			qrcode            = true;
 			sizelimit         = 10 * 1000 * 1000;
-			template          = "bootstrap-dark-compact";
+			template          = "bootstrap";
 		};
 		expire = {
 			default = "1week";
@@ -49,4 +45,10 @@
 			usr = "privatebin";
 		};
 	};
+in {
+	file = (pkgs.formats.ini {
+		mkKeyValue = with lib.generators; mkKeyValueDefault {
+			mkValueString = v: if builtins.isString v then "\"${toString v}\"" else toString v;
+		} " = ";
+	}).generate "PrivateBinConfig" cfg;
 }
