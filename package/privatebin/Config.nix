@@ -1,10 +1,15 @@
 {
 	config,
 	pkgs,
+	lib,
 	util,
 	...
 }: {
-	file = (pkgs.formats.ini { }).generate "PrivateBinConfig" {
+	file = (pkgs.formats.ini {
+		mkKeyValue = with lib.generators; mkKeyValueDefault {
+			mkValueString = v: if builtins.isString v then "\"${toString v}\"" else toString v;
+		} " = ";
+	}).generate "PrivateBinConfig" {
 		main = {
 			compression       = "none";
 			defaultformatter  = "plaintext";
