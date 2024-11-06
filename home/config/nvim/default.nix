@@ -77,7 +77,6 @@ in {
 			./module/key/Buffer.nix
 			./module/key/Cmd.nix
 			./module/key/Colorscheme.nix
-			./module/key/Comment.nix
 			./module/key/Filetree.nix
 			./module/key/Gitsigns.nix
 			./module/key/Navigation.nix
