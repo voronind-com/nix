@@ -91,16 +91,16 @@ in {
 								"(.*\.)?youtube\.com$" = yt.domain;
 							};
 							remove = [
-								"(.*\.)?dzen\.ru?$"
+								"(.*\.)?dzen\.ru$"
 								"(.*\.)?facebook.com$"
-								"(.*\.)?gosuslugi\.ru?$"
-								"(.*\.)?quora\.com?$"
-								"(.*\.)?rutube\.ru?$"
-								"(.*\.)?vk\.com?$"
+								"(.*\.)?gosuslugi\.ru$"
+								"(.*\.)?quora\.com$"
+								"(.*\.)?rutube\.ru$"
+								"(.*\.)?vk\.com$"
 							];
 							low_priority = [
 								"(.*\.)?google(\..*)?$"
-								"(.*\.)?microsoft\.com?$"
+								"(.*\.)?microsoft\.com$"
 							];
 							high_priority = [
 								"(.*\.)?4pda.to$"
