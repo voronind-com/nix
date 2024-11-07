@@ -3,9 +3,9 @@
 	lib,
 	...
 }: let
-	cfg = config.module.desktop.sound;
+	cfg = config.module.sound;
 in {
-	options.module.desktop.sound.enable = lib.mkEnableOption "the sound.";
+	options.module.sound.enable = lib.mkEnableOption "the sound.";
 
 	config = lib.mkIf cfg.enable {
 		hardware.pulseaudio.enable = false;

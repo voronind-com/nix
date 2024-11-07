@@ -5,12 +5,12 @@
 	pkgs,
 	...
 }: let
-	cfg = config.module.desktop.gnome;
+	cfg = config.module.gnome;
 in {
-	options.module.desktop.gnome.enable = lib.mkEnableOption "the Gnome DE.";
+	options.module.gnome.enable = lib.mkEnableOption "the Gnome DE.";
 
 	config = lib.mkIf cfg.enable {
-		module.desktop = {
+		module = {
 			dm.enable      = true;
 			sound.enable   = true;
 			wayland.enable = true;

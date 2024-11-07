@@ -7,7 +7,7 @@
 
 	module = {
 		builder.server.enable = true;
-		desktop.sway.enable   = true;
+		sway.enable           = true;
 		kernel.enable         = true;
 		keyd.enable           = true;
 		amd = {

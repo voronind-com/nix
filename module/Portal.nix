@@ -5,9 +5,9 @@
 	pkgs,
 	...
 }: let
-	cfg = config.module.desktop.portal;
+	cfg = config.module.portal;
 in {
-	options.module.desktop.portal.enable = lib.mkEnableOption "the portals.";
+	options.module.portal.enable = lib.mkEnableOption "the portals.";
 
 	config = lib.mkIf cfg.enable {
 		xdg.portal = {

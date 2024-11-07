@@ -3,9 +3,9 @@
 	lib,
 	...
 }: let
-	cfg = config.module.desktop.bluetooth;
+	cfg = config.module.bluetooth;
 in {
-	options.module.desktop.bluetooth.enable = lib.mkEnableOption "the bluetooth support.";
+	options.module.bluetooth.enable = lib.mkEnableOption "the bluetooth support.";
 
 	config = lib.mkIf cfg.enable {
 		services.blueman.enable = true;

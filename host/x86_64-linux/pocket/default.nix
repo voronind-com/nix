@@ -1,19 +1,20 @@
 { ... }: {
 	home.nixos.enable = true;
 	user = {
-		dasha.enable = true;
-		root.enable  = true;
+		root.enable     = true;
+		voronind.enable = true;
 	};
 
 	module = {
-		amd.gpu.enable        = true;
 		autoupdate.enable     = true;
 		builder.client.enable = true;
 		sway.enable           = true;
-		kernel.enable         = true;
 		keyd.enable           = true;
 		print.enable          = true;
-		tablet.enable         = true;
+		kernel = {
+			enable = true;
+			latest = true;
+		};
 		hwmon = {
 			file = "temp1_input";
 			path = "/sys/devices/platform/coretemp.0/hwmon";

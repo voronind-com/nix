@@ -21,7 +21,7 @@
 				powersave = true;
 			};
 		};
-		desktop.sway = {
+		sway = {
 			enable = true;
 			extraConfig = ''
 				output "ASUSTek COMPUTER INC ASUS VA24E R2LMTF127165" mode 1920x1080@74.986Hz transform 180 pos 780,0

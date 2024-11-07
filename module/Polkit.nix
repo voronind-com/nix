@@ -5,9 +5,9 @@
 	pkgs,
 	...
 }: let
-	cfg = config.module.desktop.polkit;
+	cfg = config.module.polkit;
 in {
-	options.module.desktop.polkit.enable = lib.mkEnableOption "the polkit.";
+	options.module.polkit.enable = lib.mkEnableOption "the polkit.";
 
 	config = lib.mkIf cfg.enable {
 		security.polkit.enable = true;

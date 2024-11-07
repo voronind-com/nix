@@ -4,9 +4,9 @@
 	pkgs,
 	...
 }: let
-	cfg = config.module.desktop.wayland;
+	cfg = config.module.wayland;
 in {
-	options.module.desktop.wayland.enable = lib.mkEnableOption "the wayland.";
+	options.module.wayland.enable = lib.mkEnableOption "the wayland.";
 
 	config = {
 		programs.xwayland.enable = true;

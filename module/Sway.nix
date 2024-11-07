@@ -4,9 +4,9 @@
 	pkgs,
 	...
 }: let
-	cfg = config.module.desktop.sway;
+	cfg = config.module.sway;
 in {
-	options.module.desktop.sway = {
+	options.module.sway = {
 		enable = lib.mkEnableOption "the Sway WM.";
 		extraConfig = lib.mkOption {
 			default = "";
@@ -18,15 +18,13 @@ in {
 		services.gnome.gnome-keyring.enable = lib.mkForce false;
 		environment.variables.XDG_CURRENT_DESKTOP = "sway";
 		module = {
-			desktop = {
-				bluetooth.enable  = true;
-				brightness.enable = true;
-				portal.enable     = true;
-				sound.enable      = true;
-				waybar.enable     = true;
-				wayland.enable    = true;
-			};
-			realtime.enable = true;
+			bluetooth.enable  = true;
+			brightness.enable = true;
+			portal.enable     = true;
+			realtime.enable   = true;
+			sound.enable      = true;
+			waybar.enable     = true;
+			wayland.enable    = true;
 		};
 		programs.sway = {
 			enable = true;

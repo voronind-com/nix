@@ -4,9 +4,9 @@
 	pkgs,
 	...
 }: let
-	cfg = config.module.desktop.waybar;
+	cfg = config.module.waybar;
 in {
-	options.module.desktop.waybar.enable = lib.mkEnableOption "the Waybar.";
+	options.module.waybar.enable = lib.mkEnableOption "the Waybar.";
 
 	config = lib.mkIf cfg.enable {
 		environment.systemPackages = with pkgs; [
