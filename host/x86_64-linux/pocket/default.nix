@@ -8,9 +8,14 @@
 	module = {
 		autoupdate.enable     = true;
 		builder.client.enable = true;
-		sway.enable           = true;
 		keyd.enable           = true;
 		print.enable          = true;
+		sway = {
+			enable = true;
+			extraConfig = ''
+				output DSI-1 transform 90
+			'';
+		};
 		kernel = {
 			enable = true;
 			latest = true;
