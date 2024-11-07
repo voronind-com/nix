@@ -23,7 +23,9 @@
 				{ on = [ "g" "T" ]; desc = "Go to system tmp";  run = "cd /tmp"; }
 				{ on = [ "g" "c" ]; desc = "Go to configs";     run = "noop"; }
 				{ on = [ "g" "d" ]; desc = "Go to downloads";   run = "cd $XDG_DOWNLOAD_DIR"; }
+				{ on = [ "g" "m" ]; desc = "Go to mnt";         run = "cd /mnt"; }
 				{ on = [ "g" "p" ]; desc = "Go to projects";    run = "cd ~/project"; }
+				{ on = [ "g" "r" ]; desc = "Go to root";        run = "cd /"; }
 				{ on = [ "g" "s" ]; desc = "Go to storage";     run = "cd /storage"; }
 				{ on = [ "g" "t" ]; desc = "Go to tmp";         run = "cd ~/tmp"; }
 			];
