@@ -9,6 +9,18 @@ in {
 	# This way I am forced to apply the padding to children of each group
 	# instead of the whole group.
 	text = ''
+		/* See the ISSUE above. */
+		#custom-tag1,
+		#battery {
+			padding-left: ${paddingH};
+		}
+
+		#custom-tag2,
+		#custom-powerlimit {
+			padding-right: ${paddingH};
+		}
+
+		/* Padding for global widgets. */
 		#clock,
 		#custom-display,
 		#language,
@@ -17,33 +29,17 @@ in {
 		#scratchpad,
 		#tray {
 			padding: ${paddingV} ${paddingH};
-			border-top: ${toString config.module.style.window.border}px solid transparent;
-			border-bottom: ${toString config.module.style.window.border}px solid transparent;
 		}
 
-		#cpu,
-		#battery {
-			padding-left: ${paddingH};
-		}
-
-		#custom-powersave,
-		#custom-powerlimit {
-			padding-right: ${paddingH};
-		}
-
-		#clock {
-			font-weight: bold;
-		}
-
+		/* Padding for combined widgets. */
 		#custom-powerlimit,
 		#custom-powersave,
 		#memory,
 		#temperature {
 			padding-left: 4px;
-			border-top: ${toString config.module.style.window.border}px solid transparent;
-			border-bottom: ${toString config.module.style.window.border}px solid transparent;
 		}
 
+		/* Hover style. */
 		#batteryinfo:hover,
 		#clock:hover,
 		#custom-display:hover,
@@ -57,15 +53,30 @@ in {
 			background-color: rgba(${config.module.style.color.border-r},${config.module.style.color.border-g},${config.module.style.color.border-b},${toString config.module.style.opacity.desktop});
 		}
 
+		/* Critical state. */
+		#battery,
+		#cpu,
+		#custom-display,
+		#memory,
+		#pulseaudio,
+		#temperature,
+		#tray {
+			border-top: ${toString config.module.style.window.border}px solid transparent;
+			border-bottom: ${toString config.module.style.window.border}px solid transparent;
+		}
+
+		#battery.critical,
+		#cpu.critical,
+		#custom-display.modified,
+		#memory.critical,
 		#pulseaudio.muted,
 		#pulseaudio.source-muted,
-		#battery.critical,
 		#temperature.critical,
-		#tray.needs-attention,
-		#custom-display.modified {
+		#tray.needs-attention {
 			border-top: ${toString config.module.style.window.border}px solid #${config.module.style.color.accent};
 		}
 
+		/* Widget-specific styling. */
 		#workspaces button {
 			padding: ${paddingV} 4px;
 			border-top: ${toString config.module.style.window.border}px solid transparent;
@@ -75,6 +86,10 @@ in {
 
 		#workspaces button.focused {
 			border-top: ${toString config.module.style.window.border}px solid #${config.module.style.color.accent};
+		}
+
+		#clock {
+			font-weight: bold;
 		}
 	'';
 }

@@ -128,17 +128,19 @@ in {
 			};
 		};
 		cpu = {
-			format = "{usage}% ({load})";
-			interval = refreshInterval;
-			on-click = "foot -e bash -c btop";
-			on-click-right = "powersave toggle";
-			tooltip = false;
+			format          = "{usage}% ({load})";
+			interval        = refreshInterval;
+			on-click        = "foot -e bash -c btop";
+			on-click-right  = "powersave toggle";
+			states.critical = 80;
+			tooltip         = false;
 		};
 		memory = {
-			format         = "{percentage}%";
-			interval       = refreshInterval;
-			on-click       = "foot -e bash -c btop";
-			on-click-right = "powersave toggle";
+			format          = "{percentage}%";
+			interval        = refreshInterval;
+			on-click        = "foot -e bash -c btop";
+			on-click-right  = "powersave toggle";
+			states.critical = 80;
 		};
 		temperature = {
 			critical-threshold = 80;
@@ -160,10 +162,12 @@ in {
 		"group/hardware" = {
 			orientation = "horizontal";
 			modules = [
+				"custom/tag1"
 				"cpu"
 				"temperature"
 				"memory"
 				"custom/powersave"
+				"custom/tag2"
 			];
 		};
 		"custom/display" = {
@@ -173,6 +177,12 @@ in {
 			on-click-right  = "sleep 0.1 && swayscript monitor";
 			return-type     = "json";
 			signal          = 4;
+		};
+		"custom/tag1" = {
+			exec = "echo ​";
+		};
+		"custom/tag2" = {
+			exec = "echo ​";
 		};
 	};
 }
