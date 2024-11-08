@@ -184,46 +184,48 @@ in
 	};
 	# REF: https://mozilla.github.io/policy-templates/
 	policies = {
-		AppAutoUpdate = false;
-		BackgroundAppUpdate = false;
-		DisableBuiltinPDFViewer = true;
-		DisableFirefoxAccounts = true;
-		DisableFirefoxStudies = true;
-		DisableFormHistory = true;
+		AppAutoUpdate                 = false;
+		BackgroundAppUpdate           = false;
+		DisableBuiltinPDFViewer       = true;
+		DisableFirefoxAccounts        = true;
+		DisableFirefoxStudies         = true;
+		DisableFormHistory            = true;
 		DisableMasterPasswordCreation = true;
-		DisablePasswordReveal = true;
-		DisablePocket = true;
-		DisableProfileImport = true;
-		DisableSetDesktopBackground = true;
-		DisableTelemetry = true;
-		DontCheckDefaultBrowser = true;
-		ExtensionUpdate = true;
-		ManagedBookmarks = [ { toplevel_name = "Pin"; } ] ++ bookmarks;
-		NoDefaultBookmarks = true;
-		OfferToSaveLogins = false;
-		PasswordManagerEnabled = false;
-		Preferences = builtins.foldl' (acc: pref: acc // pref) { } prefs;
-		PromptForDownloadLocation = false;
-		SearchSuggestEnabled = false;
-		ShowHomeButton = false;
+		DisablePasswordReveal         = true;
+		DisablePocket                 = true;
+		DisableProfileImport          = true;
+		DisableSetDesktopBackground   = true;
+		DisableTelemetry              = true;
+		DontCheckDefaultBrowser       = true;
+		ExtensionUpdate               = true;
+		ManagedBookmarks              = [ { toplevel_name = "Pin"; } ] ++ bookmarks;
+		NoDefaultBookmarks            = true;
+		OfferToSaveLogins             = false;
+		PasswordManagerEnabled        = false;
+		Preferences                   = builtins.foldl' (acc: pref: acc // pref) { } prefs;
+		PromptForDownloadLocation     = false;
+		SearchSuggestEnabled          = false;
+		ShowHomeButton                = false;
 		StartDownloadsInTempDirectory = false;
-		UseSystemPrintDialog = true;
+		UseSystemPrintDialog          = true;
 		EnableTrackingProtection = {
-			Value = true;
-			Locked = false;
-			Cryptomining = true;
+			Value          = true;
+			Locked         = false;
+			Cryptomining   = true;
 			Fingerprinting = true;
-			EmailTracking = true;
-			Exceptions = [ "https://example.com" ];
+			EmailTracking  = true;
+			Exceptions = [
+				"https://example.com"
+			];
 		};
 		EncryptedMediaExtensions = {
 			Enabled = true;
-			Locked = true;
+			Locked  = true;
 		};
 		ExtensionSettings = {
 			# Block extension installation outside of this config.
 			"*" = {
-				install_sources = [ "*" ];
+				install_sources   = [ "*" ];
 				installation_mode = "blocked";
 			};
 		} // builtins.foldl' (acc: ext: acc // ext) { } extensions;
@@ -265,51 +267,53 @@ in
 				];
 			};
 			"addon@darkreader.org" = {
-				enabled = true;
-				enabledByDefault = true;
-				changeBrowserTheme = false;
-				detectDarkTheme = false;
-				enableContextMenus = false;
-				enableForPDF = true;
+				enabled                 = true;
+				enabledByDefault        = true;
+				changeBrowserTheme      = false;
+				detectDarkTheme         = false;
+				enableContextMenus      = false;
+				enableForPDF            = false;
 				enableForProtectedPages = false;
-				fetchNews = false;
-				previewNewDesign = true;
-				syncSettings = true;
-				syncSitesFixes = true;
-				disabledFor = [ "home.voronind.com" ];
+				fetchNews               = false;
+				previewNewDesign        = true;
+				syncSettings            = true;
+				syncSitesFixes          = false;
+				disabledFor = [
+					"home.voronind.com"
+				];
 				theme = {
-					mode = 1;
-					brightness = 100;
-					contrast = 100;
-					grayscale = 0;
-					sepia = 0;
-					useFont = false;
-					fontFamily = config.module.style.font.sansSerif.name;
-					textStroke = 0;
-					engine = "dynamicTheme"; # dynamicTheme, cssFilter or svgFilter.
-					stylesheet = "";
-					darkSchemeBackgroundColor = "#${config.module.style.color.bg.dark}";
-					darkSchemeTextColor = "#${config.module.style.color.fg.light}";
+					brightness                 = 100;
+					contrast                   = 100;
+					darkColorScheme            = "Default";
+					darkSchemeBackgroundColor  = "#${config.module.style.color.bg.dark}";
+					darkSchemeTextColor        = "#${config.module.style.color.fg.light}";
+					engine                     = "dynamicTheme"; # dynamicTheme, cssFilter or svgFilter.
+					fontFamily                 = config.module.style.font.sansSerif.name;
+					grayscale                  = 0;
+					immediateModify            = true;
+					lightColorScheme           = "Default";
 					lightSchemeBackgroundColor = "#${config.module.style.color.bg.light}";
-					lightSchemeTextColor = "#${config.module.style.color.fg.dark}";
-					scrollbarColor = "#${config.module.style.color.neutral}";
-					selectionColor = "#${config.module.style.color.selection}";
-					styleSystemControls = true;
-					lightColorScheme = "Default";
-					darkColorScheme = "Default";
-					immediateModify = true;
+					lightSchemeTextColor       = "#${config.module.style.color.fg.dark}";
+					mode                       = 1;
+					scrollbarColor             = "#${config.module.style.color.neutral}";
+					selectionColor             = "#${config.module.style.color.selection}";
+					sepia                      = 0;
+					styleSystemControls        = true;
+					stylesheet                 = "";
+					textStroke                 = 0;
+					useFont                    = false;
 				};
 				automation = {
-					enabled = false;
-					mode = "";
+					enabled  = false;
 					behavior = "OnOff";
+					mode     = "";
 				};
 				time = {
-					activation = "18:00";
+					activation   = "18:00";
 					deactivation = "9:00";
 				};
 				location = {
-					latitude = null;
+					latitude  = null;
 					longitude = null;
 				};
 			};
@@ -327,19 +331,19 @@ in
 			];
 		};
 		FirefoxHome = {
-			Search = false;
-			TopSites = false;
+			Highlights        = false;
+			Locked            = true;
+			Pocket            = false;
+			Search            = false;
+			Snippets          = false;
 			SponsoredTopSites = false;
-			Highlights = false;
-			Pocket = false;
-			Snippets = false;
-			Locked = true;
+			TopSites          = false;
 		};
 		FirefoxSuggest = {
-			WebSuggestions = false;
+			ImproveSuggest       = false;
+			Locked               = true;
 			SponsoredSuggestions = false;
-			ImproveSuggest = false;
-			Locked = true;
+			WebSuggestions       = false;
 		};
 		PDFjs = {
 			Enabled = false;
@@ -351,7 +355,7 @@ in
 		extensions = {
 			pdf = {
 				action = "useHelperApp";
-				ask = true;
+				ask    = true;
 				handlers = [
 					{
 						name = "GNOME Document Viewer";
@@ -388,27 +392,27 @@ in
 		};
 		PictureInPicture = {
 			Enabled = false;
-			Locked = false;
+			Locked  = false;
 		};
 		SanitizeOnShutdown = {
-			Cache = true;
-			Cookies = false;
-			Downloads = false;
-			FormData = true;
-			History = false;
-			Sessions = false;
+			Cache        = true;
+			Cookies      = false;
+			Downloads    = false;
+			FormData     = true;
+			History      = false;
+			Locked       = true;
+			OfflineApps  = true;
+			Sessions     = false;
 			SiteSettings = false;
-			OfflineApps = true;
-			Locked = true;
 		};
 		UserMessaging = {
 			ExtensionRecommendations = false;
-			FeatureRecommendations = false;
-			MoreFromMozilla = false;
-			SkipOnboarding = true;
-			UrlbarInterventions = false;
-			WhatsNew = false;
-			Locked = true;
+			FeatureRecommendations   = false;
+			Locked                   = true;
+			MoreFromMozilla          = false;
+			SkipOnboarding           = true;
+			UrlbarInterventions      = false;
+			WhatsNew                 = false;
 		};
 	};
 }
