@@ -16,6 +16,7 @@
 		(mkBookmark "WorkBoard" "https://support.fsight.ru")
 		(mkBookmark "Hass"      "https://iot.voronind.com")
 		(mkBookmark "Cloud"     "https://cloud.voronind.com")
+		(mkBookmark "GitHub"    "https://github.com/notifications")
 	];
 
 	searchEngines = [
