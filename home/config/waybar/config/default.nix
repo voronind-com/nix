@@ -75,7 +75,7 @@ in {
 			states = {
 				good = 60;
 				warning = 40;
-				critical = 2;
+				critical = 20;
 			};
 			format-icons = [
 				"󰂎"

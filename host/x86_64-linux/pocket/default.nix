@@ -1,4 +1,4 @@
-{ ... }: {
+{ lib, ... }: {
 	home.nixos.enable = true;
 	user = {
 		root.enable     = true;
@@ -6,7 +6,6 @@
 	};
 
 	module = {
-		autoupdate.enable     = true;
 		builder.client.enable = true;
 		keyd.enable           = true;
 		print.enable          = true;
@@ -14,6 +13,7 @@
 			enable = true;
 			extraConfig = ''
 				output DSI-1 transform 90
+				input * map_to_output DSI-1
 			'';
 		};
 		kernel = {
@@ -37,5 +37,15 @@
 			extra.enable    = true;
 			gaming.enable   = true;
 		};
+	};
+
+	boot.kernelParams = [
+		"fbcon=rotate:1"
+		"video=DSI-1:rotate=90"
+	];
+
+	services.logind = {
+		powerKey  = "ignore";
+		lidSwitch = "ignore";
 	};
 }
