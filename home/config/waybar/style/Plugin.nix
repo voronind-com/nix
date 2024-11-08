@@ -10,13 +10,11 @@ in {
 	# instead of the whole group.
 	text = ''
 		/* See the ISSUE above. */
-		#custom-tag1,
-		#battery {
+		#custom-tag1 {
 			padding-left: ${paddingH};
 		}
 
-		#custom-tag2,
-		#custom-powerlimit {
+		#custom-tag2 {
 			padding-right: ${paddingH};
 		}
 
