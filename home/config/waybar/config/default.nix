@@ -134,7 +134,7 @@ in {
 			interval        = refreshInterval;
 			on-click        = "foot -e bash -c btop";
 			on-click-right  = "powersave toggle";
-			states.critical = 80;
+			states.critical = 100;
 			tooltip         = false;
 		};
 		memory = {
