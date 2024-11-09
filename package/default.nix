@@ -126,7 +126,7 @@
 	creative = with pkgs; [
 		blender-hip # Blender with HiP support.
 		krita       # Draw!
-		libresprite # Pixel Art draw app.
+		aseprite    # Pixel Art draw app.
 	];
 
 	dev = with pkgs; [
