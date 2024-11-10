@@ -11,12 +11,12 @@ in {
 	text = ''
 		/* See the ISSUE above. */
 		#custom-tag1,
-		#custom-batteryinfo {
+		#batteryinfo {
 			padding-left: ${paddingH};
 		}
 
 		#custom-tag2,
-		#custom-batteryinfo {
+		#batteryinfo {
 			padding-right: ${paddingH};
 		}
 
