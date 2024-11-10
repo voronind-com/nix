@@ -94,10 +94,8 @@ in {
 		"group/batteryinfo" = {
 			orientation = "horizontal";
 			modules = [
-				"custom/tag1"
 				"battery"
 				"custom/powerlimit"
-				"custom/tag2"
 			];
 		};
 		pulseaudio = {
