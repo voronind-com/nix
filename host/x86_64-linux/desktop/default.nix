@@ -6,7 +6,6 @@
 	};
 
 	module = {
-		autoupdate.enable     = true;
 		builder.client.enable = true;
 		distrobox.enable      = true;
 		keyd.enable           = true;

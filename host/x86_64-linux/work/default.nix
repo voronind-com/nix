@@ -10,7 +10,6 @@
 	};
 
 	module = {
-		autoupdate.enable          = true;
 		builder.client.enable      = true;
 		sway.enable                = true;
 		kernel.enable              = true;

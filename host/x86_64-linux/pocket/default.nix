@@ -1,16 +1,4 @@
 { lib, ... }: {
-	boot.kernelParams = [
-		"fbcon=rotate:1"
-		"video=DSI-1:rotate=90"
-	];
-
-	services.logind = {
-		powerKey  = "ignore";
-		lidSwitch = "ignore";
-	};
-
-	services.tlp.enable = true;
-
 	home.nixos.enable = true;
 	user = {
 		root.enable     = true;
