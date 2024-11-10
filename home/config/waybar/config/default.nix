@@ -86,10 +86,11 @@ in {
 			];
 		};
 		"custom/powerlimit" = {
-			exec           = "powerlimit widget";
-			on-click-right = "powerlimit toggle";
-			signal         = 6;
-			tooltip        = false;
+			exec            = "powerlimit widget";
+			hide-empty-text = false;
+			on-click-right  = "powerlimit toggle";
+			signal          = 6;
+			tooltip         = false;
 		};
 		"group/batteryinfo" = {
 			orientation = "horizontal";
