@@ -28,6 +28,7 @@
 		(mkSearchEngine "hm"   "Home Manager"   "https://home-manager-options.extranix.com/?query={searchTerms}")
 		(mkSearchEngine "no"   "NixOS Options"  "https://search.nixos.org/options?query={searchTerms}")
 		(mkSearchEngine "np"   "NixOS Packages" "https://search.nixos.org/packages?query={searchTerms}")
+		(mkSearchEngine "oz"   "Ozon"           "https://www.ozon.ru/search?text={searchTerms}")
 		(mkSearchEngine "re"   "Reddit"         "https://www.reddit.com/search/?q={searchTerms}")
 		(mkSearchEngine "rt"   "RuTracker"      "https://rutracker.org/forum/tracker.php?nm={searchTerms}")
 		(mkSearchEngine "s"    "SearX"          "https://search.voronind.com/search?q={searchTerms}")
