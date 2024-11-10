@@ -22,6 +22,7 @@ in {
 	+ mkHost "laptop"     "192.168.1.9"    22143 "root"
 	+ mkHost "nixbuilder" "10.0.0.1"       22143 "nixbuilder"
 	+ mkHost "pi"         "192.168.1.6"    22143 "root"
+	+ mkHost "pocket"     "192.168.1.11"   22143 "root"
 	+ mkHost "vpn"        "194.113.233.38" 22143 "root"
 	+ mkHost "work"       "192.168.1.5"    22143 "root"
 	;
