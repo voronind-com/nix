@@ -24,6 +24,7 @@
 		(mkSearchEngine "aw"   "Arch Wiki"      "https://wiki.archlinux.org/index.php?search={searchTerms}")
 		(mkSearchEngine "gh"   "GitHub"         "https://github.com/search?q={searchTerms}")
 		(mkSearchEngine "ghc"  "GitHub Code"    "https://github.com/search?q={searchTerms}&type=code")
+		(mkSearchEngine "ghn"  "GitHub Notif"   "https://github.com/notifications?query={searchTerms}")
 		(mkSearchEngine "hm"   "Home Manager"   "https://home-manager-options.extranix.com/?query={searchTerms}")
 		(mkSearchEngine "no"   "NixOS Options"  "https://search.nixos.org/options?query={searchTerms}")
 		(mkSearchEngine "np"   "NixOS Packages" "https://search.nixos.org/packages?query={searchTerms}")
@@ -79,46 +80,14 @@
 		(mkLockedPref "browser.fullscreen.animateUp" 0)
 		(mkLockedPref "browser.fullscreen.autohide" true)
 
-		# Homepage.
-		(mkLockedPref "browser.newtabpage.enabled" false)
-		(mkLockedPref "browser.startup.homepage" "https://home.voronind.com/")
-		(mkLockedPref "browser.startup.page" 3)
-
-		# Passwords.
-		(mkLockedPref "signon.prefillForms" false)
-		(mkLockedPref "signon.rememberSignons" false)
-
 		# Formats.
 		(mkLockedPref "image.jxl.enabled" true)
 
-		# User agent.
-		# (mkLockedPref "general.useragent.override" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36")
-
 		# Disable HTTP3.
-		(mkLockedPref "network.http.http3.enable" false)
-
-		# Disable built-in DoH.
-		(mkLockedPref "doh-rollout.disable-heuristics" true)
-		(mkLockedPref "network.trr.mode" 5)
-
-		# HTTPS only mode.
-		(mkLockedPref "dom.security.https_only_mode" true)
-		(mkLockedPref "dom.security.https_only_mode_ever_enabled" true)
+		# (mkLockedPref "network.http.http3.enable" false)
 
 		# Style.
 		(mkLockedPref "toolkit.legacyUserProfileCustomizations.stylesheets" true)
-
-		# Disable auto gain for the mic.
-		# (mkLockedPref "media.getusermedia.audio.processing.aec" 0)
-		# (mkLockedPref "media.getusermedia.audio.processing.aec.enabled" false)
-		# (mkLockedPref "media.getusermedia.audio.processing.agc" 0)
-		# (mkLockedPref "media.getusermedia.audio.processing.agc.enabled" false)
-		# (mkLockedPref "media.getusermedia.audio.processing.agc2.forced" false
-		# (mkLockedPref "media.getusermedia.audio.processing.hpf.enabled" false)
-		# (mkLockedPref "media.getusermedia.audio.processing.noise" 0)
-		# (mkLockedPref "media.getusermedia.audio.processing.noise.enabled" false)
-		# (mkLockedPref "media.getusermedia.audio.processing.platform.enabled" false)
-		# (mkLockedPref "media.getusermedia.audio.processing.transient.enabled" false)
 	];
 
 	userChrome = ''
@@ -164,18 +133,15 @@
 	mkSearchEngine = Alias: Description: URLTemplate: {
 		inherit Alias Description URLTemplate;
 		Method = "GET";
-		Name = Description;
+		Name   = Description;
 	};
 
 	mkPref = Name: Value: Status: {
-		${Name} = {
-			inherit Value Status;
-		};
+		${Name} = { inherit Value Status; };
 	};
 	mkLockedPref = Name: Value: mkPref Name Value "locked";
-	mkUserPref = Name: Value: mkPref Name Value "user";
-in
-	{
+	mkUserPref   = Name: Value: mkPref Name Value "user";
+in {
 	enable = true;
 	package = pkgs.firefox-esr;
 	# languagePacks = [ "en-US" "ru" ];
@@ -184,30 +150,69 @@ in
 	};
 	# REF: https://mozilla.github.io/policy-templates/
 	policies = {
-		AppAutoUpdate                 = false;
-		BackgroundAppUpdate           = false;
-		DisableBuiltinPDFViewer       = true;
-		DisableFirefoxAccounts        = true;
-		DisableFirefoxStudies         = true;
-		DisableFormHistory            = true;
-		DisableMasterPasswordCreation = true;
-		DisablePasswordReveal         = true;
-		DisablePocket                 = true;
-		DisableProfileImport          = true;
-		DisableSetDesktopBackground   = true;
-		DisableTelemetry              = true;
-		DontCheckDefaultBrowser       = true;
-		ExtensionUpdate               = true;
-		ManagedBookmarks              = [ { toplevel_name = "Pin"; } ] ++ bookmarks;
-		NoDefaultBookmarks            = true;
-		OfferToSaveLogins             = false;
-		PasswordManagerEnabled        = false;
-		Preferences                   = builtins.foldl' (acc: pref: acc // pref) { } prefs;
-		PromptForDownloadLocation     = false;
-		SearchSuggestEnabled          = false;
-		ShowHomeButton                = false;
-		StartDownloadsInTempDirectory = false;
-		UseSystemPrintDialog          = true;
+		AppAutoUpdate                  = false;
+		AutofillAddressEnabled         = true;
+		AutofillCreditCardEnabled      = false;
+		BackgroundAppUpdate            = false;
+		CaptivePortal                  = true;
+		DisableBuiltinPDFViewer        = true;
+		DisableFirefoxAccounts         = true;
+		DisableFirefoxStudies          = true;
+		DisableFormHistory             = true;
+		DisableMasterPasswordCreation  = true;
+		DisablePasswordReveal          = true;
+		DisablePocket                  = true;
+		DisableProfileImport           = true;
+		DisableSafeMode                = true;
+		DisableSetDesktopBackground    = true;
+		DisableTelemetry               = true;
+		DontCheckDefaultBrowser        = false;
+		ExtensionUpdate                = true;
+		HttpsOnlyMode                  = "enabled";
+		ManagedBookmarks               = [ { toplevel_name = "Pin"; } ] ++ bookmarks;
+		NetworkPrediction              = false;
+		NoDefaultBookmarks             = true;
+		OfferToSaveLogins              = false;
+		PasswordManagerEnabled         = false;
+		PostQuantumKeyAgreementEnabled = true;
+		Preferences                    = builtins.foldl' (acc: pref: acc // pref) { } prefs;
+		PromptForDownloadLocation      = false;
+		SearchSuggestEnabled           = false;
+		ShowHomeButton                 = false;
+		StartDownloadsInTempDirectory  = false;
+		TranslateEnabled               = false;
+		UseSystemPrintDialog           = true;
+		WebsiteFilter = [ ];
+		PopupBlocking = {
+			Allow = [];
+			Default = true;
+			Locked  = true;
+		};
+		Homepage = {
+			Locked    = true;
+			StartPage = "previous-session";
+			URL       = "https://home.voronind.com";
+		};
+		DNSOverHTTPS = {
+			Enabled     = false;
+			# Fallback    = false;
+			Locked      = false;
+			ProviderURL = "https://dns.quad9.net/dns-query";
+		};
+		Cookies = {
+			Behavior = "reject-foreign";
+			AllowSession = [
+				"https://yandex.ru"
+			];
+			Block = [
+				"https://google.com"
+			];
+		};
+		# Containers = {}; # TODO: Use containers? https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/
+		Certificates = {
+			ImportEnterpriseRoots = false;
+			Install = [ ];
+		};
 		EnableTrackingProtection = {
 			Value          = true;
 			Locked         = false;
@@ -316,6 +321,9 @@ in
 					latitude  = null;
 					longitude = null;
 				};
+			};
+			"{446900e4-71c2-419f-a6a7-df9c091e268b}".environment = {
+				base = "https://pass.voronind.com";
 			};
 		};
 		# NOTE: `firefox-esr` edition is required to change search engines.
