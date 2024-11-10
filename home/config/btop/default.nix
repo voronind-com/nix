@@ -58,7 +58,7 @@
 		proc_per_core            = true;
 		proc_reversed            = false;
 		proc_sorting             = "memory";
-		proc_tree                = true;
+		proc_tree                = false;
 		rounded_corners          = true;
 		selected_battery         = "Auto";
 		show_battery             = true;
