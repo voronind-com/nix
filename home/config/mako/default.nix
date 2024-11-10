@@ -1,6 +1,7 @@
 {
-	pkgs,
+	__findFile,
 	config,
+	pkgs,
 	...
 }: let
 	alpha = config.module.style.opacity.hex;
@@ -16,6 +17,7 @@ in {
 			height           = 120;
 			icons            = 0;
 			margin           = 32;
+			on-notify        = "exec ${pkgs.pipewire}/bin/pw-cat -p ${<static/Notification.ogg>}";
 			text-color       = "#${config.module.style.color.bg.dark}";
 			width            = 480;
 		};

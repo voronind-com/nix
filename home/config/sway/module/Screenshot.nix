@@ -1,4 +1,5 @@
 {
+	__findFile,
 	config,
 	lib,
 	pkgs,
@@ -15,6 +16,8 @@
 	selection = "slurp -d -b ${color.bg.light}${opacity} -c ${color.fg.light} -w 0 -s 00000000";
 in {
 	text = let
+		notifyStart      = "${pkgs.pipewire}/bin/pw-cat -p ${<static/Screenrec.ogg>} &";
+		notifyEnd        = "${pkgs.pipewire}/bin/pw-cat -p ${<static/Screenshot.ogg>} &";
 		picEdit          = ''swappy -f - -o -'';
 		picFull          = ''-o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") -'';
 		picPrepFile      = prepFile "\${XDG_PICTURES_DIR[0]}" "png";
@@ -106,12 +109,14 @@ in {
 				${getSelection}
 				${getTransform}
 				${vidPrepFile}
+				${notifyStart}
 				${updateWaybar}
 				${vidStart} ${vidSelected}
+				${notifyEnd}
+				${updateWaybar}
 				${vidMuxAudio}
 				${vidTransform}
 				${vidRefLatestFile}
-				${updateWaybar}
 			};
 		'');
 
@@ -119,26 +124,32 @@ in {
 			${vidStop} || {
 				${getTransform}
 				${vidPrepFile}
+				${notifyStart}
 				${updateWaybar}
 				${vidStart} ${vidFull}
+				${notifyEnd}
+				${updateWaybar}
 				${vidMuxAudio}
 				${vidTransform}
 				${vidRefLatestFile}
-				${updateWaybar}
 			};
 		'');
 
 		FullscreenScreenshot = pkgs.writeShellScriptBin "FullscreenScreenshot" (util.trimTabs ''
+			${notifyEnd}
 			${picPrepFile}
 
-			${screenshot} ${picFull} | ${picToFile} | ${picToBuffer} && ${picRefLatestFile}
+			${screenshot} ${picFull} | ${picToFile} | ${picToBuffer} || exit
+			${picRefLatestFile}
 		'');
 
 		SelectScreenshot = pkgs.writeShellScriptBin "SelectScreenshot" (util.trimTabs ''
 			${getSelection}
+			${notifyEnd}
 			${picPrepFile}
 
-			${screenshot} ${picSelected} | ${picEdit} | ${picToFile} | ${picToBuffer} && ${picRefLatestFile}
+			${screenshot} ${picSelected} | ${picEdit} | ${picToFile} | ${picToBuffer} || exit
+			${picRefLatestFile}
 		'');
 	in ''
 		bindsym --to-code $mod+y       exec ${lib.getExe FullscreenScreenshot}
