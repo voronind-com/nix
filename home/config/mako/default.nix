@@ -24,6 +24,7 @@ in {
 		sections = {
 			"mode=dnd" = {
 				invisible = 1;
+				on-notify = "exec ${pkgs.coreutils}/bin/true";
 			};
 		};
 	};
