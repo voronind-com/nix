@@ -106,6 +106,7 @@
 		nautilus              # File manager.
 		obs-studio            # Streaming/recording app.
 		onlyoffice-bin        # Office documents app suite.
+		remmina               # RDP app.
 		upscayl               # Image upscaler.
 
 		(mpv.override { scripts = [ mpvScripts.mpris ]; }) # Media player.
