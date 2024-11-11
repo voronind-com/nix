@@ -25,6 +25,7 @@ in {
 	".Wallpaper".source                           = config.module.wallpaper.path;
 	".config/MangoHud/MangoHud.conf".source       = mangohud.config;
 	".config/MangoHud/presets.conf".source        = mangohud.presets;
+	".config/autostart".text                      = "";
 	".config/btop/btop.conf".source               = btop.file;
 	".config/chromium/Default/Preferences".source = chromium.preferences;
 	".config/chromium/Local State".source         = chromium.localState;
