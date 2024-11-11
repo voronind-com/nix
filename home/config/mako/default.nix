@@ -6,6 +6,7 @@
 }: let
 	alpha = config.module.style.opacity.hex;
 	color = config.module.style.color;
+	max   = 5;
 in {
 	file = (pkgs.formats.iniWithGlobalSection { }).generate "MakoConfig" {
 		globalSection = {
@@ -17,7 +18,8 @@ in {
 			height           = 120;
 			icons            = 0;
 			margin           = 32;
-			max-visible      = 1;
+			max-history      = max;
+			max-visible      = max;
 			on-notify        = "exec ${pkgs.pipewire}/bin/pw-cat -p ${<static/Notification.ogg>}";
 			text-color       = "#${config.module.style.color.bg.dark}";
 			width            = 480;
