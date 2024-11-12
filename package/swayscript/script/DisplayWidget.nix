@@ -1,6 +1,7 @@
 { ... }: {
 	text = ''
 		function monitor() {
+			_notify_short
 			toggle() {
 				local output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
 				local state=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .power')
@@ -22,6 +23,7 @@
 		}
 
 		function gaming() {
+			_notify_short
 			toggle() {
 				local output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
 				local state=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .adaptive_sync_status')
@@ -43,6 +45,7 @@
 		}
 
 		function dnd() {
+			_notify_short
 			toggle() {
 				local state=$(makoctl mode)
 
@@ -59,6 +62,7 @@
 
 		# Reset the state of everything.
 		function displayreset() {
+			_notify_long
 			[[ "''$(monitorstate)"   = "Y" ]] && monitorreset
 			[[ "''$(gamingstate)"    = "Y" ]] && gamingreset
 			[[ "''$(recordingstate)" = "Y" ]] && pkill wf-recorder

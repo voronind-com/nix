@@ -2,6 +2,7 @@
 	text = ''
 		# Reload.
 		function reload() {
+			# _notify_long
 			re() {
 				# Sway.
 				swaymsg reload

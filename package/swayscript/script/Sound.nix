@@ -1,6 +1,7 @@
 { ... }: {
 	text = ''
 		function sound_output_cycle() {
+			_notify_short
 			local IFS=$'\n'
 			local current=$(pactl get-default-sink)
 			local all=($(pactl list short sinks | cut -f2))

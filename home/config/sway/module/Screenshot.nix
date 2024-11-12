@@ -16,8 +16,8 @@
 	selection = "slurp -d -b ${color.bg.light}${opacity} -c ${color.fg.light} -w 0 -s 00000000";
 in {
 	text = let
-		notifyStart      = "${pkgs.pipewire}/bin/pw-cat -p ${<static/Screenrec.ogg>} &";
-		notifyEnd        = "${pkgs.pipewire}/bin/pw-cat -p ${<static/Screenshot.ogg>} &";
+		notifyStart      = "${pkgs.pipewire}/bin/pw-cat -p ${<static/Short.ogg>} &";
+		notifyEnd        = "${pkgs.pipewire}/bin/pw-cat -p ${<static/Long.ogg>} &";
 		picEdit          = ''swappy -f - -o -'';
 		picFull          = ''-o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") -'';
 		picPrepFile      = prepFile "\${XDG_PICTURES_DIR[0]}" "png";
