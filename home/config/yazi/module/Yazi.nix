@@ -44,6 +44,11 @@
 				orphan = true;
 				run    = openWith "mpv --no-video";
 			}];
+			audioShuffle = [{
+				desc   = "Audio Shuffle";
+				orphan = true;
+				run    = "mpv --no-video --shuffle \"$@\"/**";
+			}];
 			browser = [{
 				desc   = "Browser";
 				orphan = true;
@@ -132,6 +137,7 @@
 				(mkMime "video/*" [ "video" ])
 				(mkMime "text/html" [ "browser" ])
 				(mkMime "application/vnd.openxmlformats-officedocument.*" [ "document" ])
+				(mkMime "inode/directory" [ "audioShuffle" ])
 				(mkMime "*" [ ])
 			];
 		};
