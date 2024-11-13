@@ -6,8 +6,8 @@
 } @args: {
 	core = with pkgs; [
 		android-tools   # Android adb tool. Can be used to connect to itself via wireless debugging.
-		binwalk         # Can analyze files for other files inside them.
 		bat             # Pretty cat.
+		binwalk         # Can analyze files for other files inside them.
 		bridge-utils    # Network bridges.
 		btop            # System monitoring.
 		chafa           # CLI file manager.
@@ -43,9 +43,11 @@
 		man             # App to read manuals.
 		neovim          # Text editor.
 		nmap            # Network scanning.
+		nvtop           # Top for GPU.
 		openssh         # Ssh client.
 		parallel        # Run programs in parallel.
 		parted          # CLI disk partition tool.
+		powertop        # Monitor power usage.
 		pv              # IO progress bar.
 		radare2         # Hex editor.
 		ripgrep         # Better grep.
