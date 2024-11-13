@@ -285,6 +285,9 @@ in {
 				syncSettings            = true;
 				syncSitesFixes          = false;
 				disabledFor = [
+					"cloud.voronind.com"
+					"git.voronind.com"
+					"github.com"
 					"home.voronind.com"
 				];
 				theme = {
