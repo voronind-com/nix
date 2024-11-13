@@ -5,74 +5,74 @@
 	...
 } @args: {
 	core = with pkgs; [
-		android-tools   # Android adb tool. Can be used to connect to itself via wireless debugging.
-		bat             # Pretty cat.
-		binwalk         # Can analyze files for other files inside them.
-		bridge-utils    # Network bridges.
-		btop            # System monitoring.
-		chafa           # CLI file manager.
-		coreutils       # UNIX Core utilities.
-		cryptsetup      # Filesystem encryption (LUKS).
-		curl            # Http client.
-		ddrescue        # Data rescue extractor.
-		diffutils       # Diff tool.
-		dnsutils        # NS utilities.
-		exiftool        # Image info.
-		fastfetch       # Systeminfo summary.
-		ffmpeg          # Video/audio converter.
-		file            # Get general info about a file.
-		findutils       # Find tool.
-		gawk            # Awk.
-		gcc             # C compiler.
-		gdu             # TUI storage analyzer.
-		git             # Version control system.
-		gnugrep         # Grep.
-		gnumake         # Make.
-		gnused          # Sed.
-		gnutar          # Tar.
-		gzip            # Fast compression.
-		htop            # System monitors.
-		imagemagick     # Image converter and transformation tool.
-		inetutils       # Things like FTP.
-		iputils         # IP tools.
-		jq              # Json parser.
-		lm_sensors      # Hardware sensors, like temperature and fan speeds.
-		lshw            # Detailed hardware info tool.
-		lsof            # Find current file users.
-		ltex-ls         # Latex LSP for neovim spellcheck.
-		man             # App to read manuals.
-		neovim          # Text editor.
-		nmap            # Network scanning.
-		nvtop           # Top for GPU.
-		openssh         # Ssh client.
-		parallel        # Run programs in parallel.
-		parted          # CLI disk partition tool.
-		powertop        # Monitor power usage.
-		pv              # IO progress bar.
-		radare2         # Hex editor.
-		ripgrep         # Better grep.
-		rsync           # File copy tool.
-		smartmontools   # S.M.A.R.T. tools.
-		sqlite          # Serverless file-based database engine.
-		sshfs           # Ssh client.
-		testdisk        # Apps to recover data from drives.
-		tmux            # Terminal multiplexor.
-		tree            # Show directory stricture as a tree.
-		tree-sitter     # A parser generator tool and an incremental parsing library.
-		tun2socks       # Use proxy as a vpn.
-		unzip           # Zip archive/unarchive tools.
-		usbutils        # Usb utilities like udiskctl.
-		utillinux       # Common Linux utilities.
-		ventoy          # Boot multiple ISO/images from a single USB stick.
-		wcurl           # CLI http client.
-		wireguard-tools # Tools to work with Wireguard.
-		xray            # Proxy.
-		xz              # Archive and compression tools.
-		yazi            # File manager.
-		yt-dlp          # Video downloader.
-		zapret          # FRKN.
-		zip             # Zip utility.
-		zmap            # Network analyzer.
+		android-tools      # Android adb tool. Can be used to connect to itself via wireless debugging.
+		bat                # Pretty cat.
+		binwalk            # Can analyze files for other files inside them.
+		bridge-utils       # Network bridges.
+		btop               # System monitoring.
+		chafa              # CLI file manager.
+		coreutils          # UNIX Core utilities.
+		cryptsetup         # Filesystem encryption (LUKS).
+		curl               # Http client.
+		ddrescue           # Data rescue extractor.
+		diffutils          # Diff tool.
+		dnsutils           # NS utilities.
+		exiftool           # Image info.
+		fastfetch          # Systeminfo summary.
+		ffmpeg             # Video/audio converter.
+		file               # Get general info about a file.
+		findutils          # Find tool.
+		gawk               # Awk.
+		gcc                # C compiler.
+		gdu                # TUI storage analyzer.
+		git                # Version control system.
+		gnugrep            # Grep.
+		gnumake            # Make.
+		gnused             # Sed.
+		gnutar             # Tar.
+		gzip               # Fast compression.
+		htop               # System monitors.
+		imagemagick        # Image converter and transformation tool.
+		inetutils          # Things like FTP.
+		iputils            # IP tools.
+		jq                 # Json parser.
+		lm_sensors         # Hardware sensors, like temperature and fan speeds.
+		lshw               # Detailed hardware info tool.
+		lsof               # Find current file users.
+		ltex-ls            # Latex LSP for neovim spellcheck.
+		man                # App to read manuals.
+		neovim             # Text editor.
+		nmap               # Network scanning.
+		nvtopPackages.full # Top for GPU.
+		openssh            # Ssh client.
+		parallel           # Run programs in parallel.
+		parted             # CLI disk partition tool.
+		powertop           # Monitor power usage.
+		pv                 # IO progress bar.
+		radare2            # Hex editor.
+		ripgrep            # Better grep.
+		rsync              # File copy tool.
+		smartmontools      # S.M.A.R.T. tools.
+		sqlite             # Serverless file-based database engine.
+		sshfs              # Ssh client.
+		testdisk           # Apps to recover data from drives.
+		tmux               # Terminal multiplexor.
+		tree               # Show directory stricture as a tree.
+		tree-sitter        # A parser generator tool and an incremental parsing library.
+		tun2socks          # Use proxy as a vpn.
+		unzip              # Zip archive/unarchive tools.
+		usbutils           # Usb utilities like udiskctl.
+		utillinux          # Common Linux utilities.
+		ventoy             # Boot multiple ISO/images from a single USB stick.
+		wcurl              # CLI http client.
+		wireguard-tools    # Tools to work with Wireguard.
+		xray               # Proxy.
+		xz                 # Archive and compression tools.
+		yazi               # File manager.
+		yt-dlp             # Video downloader.
+		zapret             # FRKN.
+		zip                # Zip utility.
+		zmap               # Network analyzer.
 
 		# (pkgs.callPackage ./ytdlp {}) # Youtube downloader bin package.
 		(pkgs.callPackage ./yamusicdownload { }) # Yandex music downloader.

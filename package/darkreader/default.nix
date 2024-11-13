@@ -1,25 +1,24 @@
 {
 	buildNpmPackage,
 	fetchFromGitHub,
+	fetchpatch,
 	...
-}: buildNpmPackage {
+}: buildNpmPackage rec {
 	version     = "4.9.96";
 	pname       = "dark-reader";
-	npmDepsHash = "sha256-e41PXGgoQkVSHQj6kElqXPhzc6irnr09ltBAPmcUjik=";
+	npmDepsHash = "sha256-dSuCL8GZXiksqVQ+TypzOdAROn3q30ExaGCJu72GLyY=";
 	src = fetchFromGitHub {
-		hash = "sha256-mONoHe/Aphm6T5UcucxlzMLDaNnqIKd35uCAVoYlJ8s=";
-		# owner = "darkreader";
-		owner = "voronind-com";
+		hash  = "sha256-2AYIFVTTMns1u0jKk3XeFuYdC1MfG9aOCMjAfZtlXuI=";
+		owner = "darkreader";
 		repo  = "darkreader";
-		# rev = "v${version}";
-		rev  = "ddd532cb92594d2f4a73480dae6e6c024657dfe2";
+		rev   = "v${version}";
 	};
-	# patches = [
-	#   (fetchpatch {
-	#     url = "https://github.com/darkreader/darkreader/pull/12920.diff";
-	#     hash = "sha256-3r54SliCgxihGXzZDRklB0vB3bk9rc1H31PojAYn2Ic=";
-	#   })
-	# ];
+	patches = [
+		(fetchpatch {
+			url  = "https://github.com/darkreader/darkreader/compare/main...voronind-com:darkreader:main.diff";
+			hash = "sha256-OqS6aY7PHHZvj7a0x1RI+1IpZxYXsqSia2ZeVM3XRZk=";
+		})
+	];
 	installPhase = ''
 		mkdir -p $out
 		cp build/release/darkreader-firefox.xpi $out/latest.xpi
