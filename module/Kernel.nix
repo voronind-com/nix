@@ -2,6 +2,7 @@
 	config,
 	lib,
 	pkgs,
+	pkgsUnstable,
 	...
 }: let
 	cfg = config.module.kernel;
@@ -85,7 +86,7 @@ in {
 		})
 
 		(lib.mkIf cfg.latest {
-			boot.kernelPackages = pkgs.linuxPackages_latest;
+			boot.kernelPackages = pkgsUnstable.linuxPackages_latest;
 		})
 	]);
 }

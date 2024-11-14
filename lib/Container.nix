@@ -29,6 +29,7 @@
 		boot.isContainer = true;
 
 		# HACK: Do not evaluate nixpkgs inside the container. Use host's instead.
+		# nixpkgs.pkgs = lib.mkForce pkgs;
 		nixpkgs.pkgs = lib.mkForce pkgs;
 
 		# Release version.

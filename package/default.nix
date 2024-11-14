@@ -1,10 +1,10 @@
 {
 	pkgs,
 	pkgsMaster,
-	pkgsStable,
+	pkgsUnstable,
 	...
 } @args: {
-	core = with pkgs; [
+	core = (with pkgs; [
 		android-tools      # Android adb tool. Can be used to connect to itself via wireless debugging.
 		bat                # Pretty cat.
 		binwalk            # Can analyze files for other files inside them.
@@ -18,8 +18,6 @@
 		diffutils          # Diff tool.
 		dnsutils           # NS utilities.
 		exiftool           # Image info.
-		fastfetch          # Systeminfo summary.
-		ffmpeg             # Video/audio converter.
 		file               # Get general info about a file.
 		findutils          # Find tool.
 		gawk               # Awk.
@@ -65,17 +63,20 @@
 		ventoy             # Boot multiple ISO/images from a single USB stick.
 		wcurl              # CLI http client.
 		wireguard-tools    # Tools to work with Wireguard.
-		xray               # Proxy.
 		xz                 # Archive and compression tools.
 		yazi               # File manager.
-		yt-dlp             # Video downloader.
-		zapret             # FRKN.
 		zip                # Zip utility.
-		zmap               # Network analyzer.
 
 		# (pkgs.callPackage ./ytdlp {}) # Youtube downloader bin package.
 		(pkgs.callPackage ./yamusicdownload { }) # Yandex music downloader.
-	];
+	]) ++ (with pkgsUnstable; [
+		fastfetch # Systeminfo summary.
+		ffmpeg    # Video/audio converter.
+	]) ++ (with pkgsMaster; [
+		xray   # Proxy.
+		yt-dlp # Video downloader.
+		zapret # FRKN.
+	]);
 
 	desktop = with pkgs; [
 		adwaita-icon-theme   # GTK icons.
@@ -97,7 +98,7 @@
 		(pkgs.callPackage ./swayscript args)
 	];
 
-	common = with pkgs; [
+	common = (with pkgs; [
 		evince                # Document viewer.
 		gimp                  # Image manipulation program.
 		gnome-calculator      # Calculator.
@@ -111,7 +112,9 @@
 		upscayl               # Image upscaler.
 
 		(mpv.override { scripts = [ mpvScripts.mpris ]; }) # Media player.
-	];
+	]) ++ (with pkgsUnstable; [
+		tor-browser # Privacy browser.
+	]);
 
 	gaming = with pkgs; [
 		bottles   # GUI for Wine.
@@ -126,9 +129,9 @@
 	];
 
 	creative = with pkgs; [
+		aseprite    # Pixel Art draw app.
 		blender-hip # Blender with HiP support.
 		krita       # Draw!
-		aseprite    # Pixel Art draw app.
 	];
 
 	dev = with pkgs; [
@@ -136,19 +139,19 @@
 		jetbrains.idea-community
 	];
 
-	extra = with pkgs; [
-		anilibria-winmaclinux       # Anime!
-		appimage-run                # Tool to run .AppImage files in NixOS.
-		blanket                     # Sounds generator.
-		calibre                     # Book library manager.
-		cbonsai                     # Draw trees.
-		cmatrix                     # CLI Screensavers.
-		cowsay                      # Cow quotes.
-		gnome-font-viewer           # Font viewer.
-		jamesdsp                    # Active audio processing.
-		lolcat                      # CLI funni colors.
-		p7zip                       # Weird archive tool.
-		tor-browser                 # Privacy browser.
+	extra = (with pkgs; [
+		anilibria-winmaclinux # Anime!
+		appimage-run          # Tool to run .AppImage files in NixOS.
+		blanket               # Sounds generator.
+		calibre               # Book library manager.
+		cbonsai               # Draw trees.
+		cmatrix               # CLI Screensavers.
+		cowsay                # Cow quotes.
+		gnome-font-viewer     # Font viewer.
+		jamesdsp              # Active audio processing.
+		lolcat                # CLI funni colors.
+		p7zip                 # Weird archive tool.
+	]) ++ (with pkgsUnstable; [
 		universal-android-debloater # Debloat Android devices.
-	];
+	]);
 }

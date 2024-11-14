@@ -2,8 +2,10 @@
 	__findFile,
 	config,
 	container,
+	inputs,
 	lib,
 	pkgs,
+	pkgsMaster,
 	util,
 	...
 } @args: let
@@ -47,18 +49,23 @@ in {
 			};
 
 			config = { ... }: container.mkContainerConfig cfg {
-				imports = [
-					(import <module/Zapret.nix> args)
-				];
+				disabledModules = [ "services/networking/zapret.nix" ];
+				imports = [ "${inputs.nixpkgsMaster}/nixos/modules/services/networking/zapret.nix" ];
 
 				boot.kernel.sysctl = {
 					"net.ipv4.conf.all.src_valid_mark" = 1;
 					"net.ipv4.ip_forward" = 1;
 				};
 
-				module.zapret = {
+				# TODO: Single place.
+				services.zapret = {
 					enable = true;
-					params = config.module.zapret.params;
+					package = pkgsMaster.zapret;
+					params = [
+						"--dpi-desync=fake,disorder2"
+						"--dpi-desync-ttl=1"
+						"--dpi-desync-autottl=2"
+					];
 				};
 
 				services = {

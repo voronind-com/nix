@@ -1,8 +1,7 @@
 {
 	inputs = {
-		nixpkgs.url         = "github:nixos/nixpkgs/nixos-unstable";
+		nixpkgs.url         = "github:nixos/nixpkgs/release-24.11";
 		nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
-		nixpkgsStable.url   = "github:nixos/nixpkgs/nixos-24.05";
 		nixpkgsMaster.url   = "github:nixos/nixpkgs/master";
 
 		home-manager = {
@@ -16,9 +15,11 @@
 		poetry2nixJobber.url = "github:nix-community/poetry2nix/304f8235fb0729fd48567af34fcd1b58d18f9b95";
 
 		nix-on-droid = {
-			url = "github:t184256/nix-on-droid/release-23.11";
-			inputs.home-manager.follows = "home-manager";
-			inputs.nixpkgs.follows      = "nixpkgs";
+			url = "github:t184256/nix-on-droid/release-24.05";
+			inputs = {
+				home-manager.follows = "home-manager";
+				nixpkgs.follows      = "nixpkgs";
+			};
 		};
 
 		nvimAlign           = { flake = false; url = "github:echasnovski/mini.align"; };
@@ -47,7 +48,6 @@
 		nixpkgs,
 		nixpkgsJobber,
 		nixpkgsMaster,
-		nixpkgsStable,
 		nixpkgsUnstable,
 		poetry2nixJobber,
 		self,
@@ -55,8 +55,8 @@
 		...
 	} @inputs: {
 		const = {
-			droidStateVersion = "23.11";
-			stateVersion      = "24.05";
+			droidStateVersion = "24.05";
+			stateVersion      = "24.11";
 			timeZone = "Europe/Moscow";
 			url = "https://git.voronind.com/voronind/nix.git";
 		};
@@ -121,7 +121,6 @@
 					container    = import ./lib/Container.nix { inherit lib pkgs config util; inherit (self) const; };
 					pkgsJobber   = nixpkgsJobber.legacyPackages.${system}.pkgs;
 					pkgsMaster   = nixpkgsMaster.legacyPackages.${system}.pkgs;
-					pkgsStable   = nixpkgsStable.legacyPackages.${system}.pkgs;
 					pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
 					secret       = import ./secret { };
 				};
@@ -139,7 +138,6 @@
 			lib          = nixpkgs.lib;
 			pkgs         = nixpkgs.legacyPackages.${system}.pkgs;
 			pkgsMaster   = nixpkgsMaster.legacyPackages.${system}.pkgs;
-			pkgsStable   = nixpkgsStable.legacyPackages.${system}.pkgs;
 			pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
 			system       = "aarch64-linux";
 		in nix-on-droid.lib.nixOnDroidConfiguration {
@@ -147,13 +145,9 @@
 				(import ./module/Style.nix { inherit (config.home-manager) config; inherit (self) __findFile; inherit lib pkgs; })
 				./home/Android.nix
 				./module/Wallpaper.nix
-				{ home-manager.config.stylix.autoEnable = lib.mkForce false; }
-				{ home.android.enable = true; }
-				{ nix.extraOptions = "experimental-features = nix-command flakes"; }
-				{ system.stateVersion = self.const.droidStateVersion; }
 			];
 			extraSpecialArgs = {
-				inherit inputs self;
+				inherit inputs self pkgsMaster pkgsUnstable;
 				inherit (self) const __findFile;
 				secret = import ./secret { };
 				util   = import ./lib/Util.nix { inherit lib; };

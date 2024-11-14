@@ -1,9 +1,10 @@
 {
 	pkgs,
+	pkgsUnstable,
 	lib,
 	...
 }: let
-	package = pkgs.ungoogled-chromium;
+	package = pkgsUnstable.ungoogled-chromium;
 	browserVersion = lib.versions.major package.version;
 	extensions = let
 		fetchFromStore = { id, sha256, version, }: {
@@ -57,7 +58,7 @@
 in {
 	inherit extensions package;
 	enable = true;
-	dictionaries = with pkgs.hunspellDictsChromium; [
+	dictionaries = with pkgsUnstable.hunspellDictsChromium; [
 		en_US
 	];
 	commandLineArgs = [

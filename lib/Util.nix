@@ -1,5 +1,7 @@
 # Collection of common functions.
-{ lib }: rec {
+{
+	lib
+}: rec {
 	# Remove tabs indentation,
 	trimTabs = text: let
 		shouldStripTab = lines: builtins.all (line: (line == "") || (lib.strings.hasPrefix "	" line)) lines;

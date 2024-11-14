@@ -2,8 +2,10 @@
 	__findFile,
 	config,
 	container,
+	inputs,
 	lib,
 	pkgs,
+	pkgsMaster,
 	...
 }: let
 	cfg = config.container.module.yt;
@@ -31,10 +33,14 @@ in {
 	config = lib.mkIf cfg.enable {
 		containers.yt = container.mkContainer cfg {
 			config = { ... }: container.mkContainerConfig cfg {
+				disabledModules = [ "services/web-apps/invidious.nix" ];
+				imports = [ "${inputs.nixpkgsMaster}/nixos/modules/services/web-apps/invidious.nix" ];
+
 				services.invidious = {
-					enable = true;
-					domain = cfg.domain;
-					port   = cfg.port;
+					enable  = true;
+					domain  = cfg.domain;
+					package = pkgsMaster.invidious;
+					port    = cfg.port;
 					nginx.enable = false;
 					database = {
 						host = config.container.module.postgres.address;

@@ -7,7 +7,7 @@
 	lib,
 	pkgs,
 	pkgsMaster,
-	pkgsStable,
+	pkgsUnstable,
 	self,
 	...
 } @args: let
@@ -23,11 +23,15 @@ in {
 
 	config = lib.mkIf cfg.enable {
 		environment.packages = package.core;
-		time.timeZone = const.timeZone;
+		home.android.enable  = true;
+		nix.extraOptions     = "experimental-features = nix-command flakes";
+		system.stateVersion  = const.droidStateVersion;
+		time.timeZone        = const.timeZone;
 		terminal = {
 			inherit (android) font colors;
 		};
 		home-manager.config = stylix // {
+			stylix.autoEnable = lib.mkForce false;
 			programs = with programs; core;
 			imports = [
 				inputs.stylix.homeManagerModules.stylix

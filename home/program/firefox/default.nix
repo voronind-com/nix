@@ -2,6 +2,7 @@
 	__findFile,
 	config,
 	pkgs,
+	pkgsUnstable,
 	...
 }: let
 	bookmarks = [
@@ -144,7 +145,7 @@
 	mkUserPref   = Name: Value: mkPref Name Value "user";
 in {
 	enable = true;
-	package = pkgs.firefox-esr;
+	package = pkgsUnstable.firefox-esr;
 	# languagePacks = [ "en-US" "ru" ];
 	profiles.default = {
 		inherit userChrome userContent;
