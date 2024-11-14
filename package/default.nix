@@ -43,7 +43,6 @@
 		man                # App to read manuals.
 		neovim             # Text editor.
 		nmap               # Network scanning.
-		nvtopPackages.full # Top for GPU.
 		openssh            # Ssh client.
 		parallel           # Run programs in parallel.
 		parted             # CLI disk partition tool.
