@@ -141,8 +141,11 @@
 			pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
 			system       = "aarch64-linux";
 		in nix-on-droid.lib.nixOnDroidConfiguration {
+			inherit pkgs;
 			modules = [
 				(import ./module/Style.nix { inherit (config.home-manager) config; inherit (self) __findFile; inherit lib pkgs; })
+				{ home.android.enable = true; }
+				{ home-manager.config.stylix.autoEnable = lib.mkForce false; }
 				./home/Android.nix
 				./module/Wallpaper.nix
 			];
