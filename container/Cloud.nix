@@ -75,6 +75,29 @@ in {
 						];
 					};
 				};
+
+				# HACK: This is required for TCP postgres connection.
+				systemd = {
+					services = {
+						nextcloud-setup = {
+							serviceConfig.PrivateNetwork = lib.mkForce false;
+							wantedBy = lib.mkForce [ ];
+						};
+						nextcloud-update-db = {
+							serviceConfig.PrivateNetwork = lib.mkForce false;
+							wantedBy = lib.mkForce [ ];
+						};
+					};
+					timers.fixsystemd = {
+						timerConfig = {
+							OnBootSec = 5;
+							Unit = "nextcloud-setup.service";
+						};
+						wantedBy = [
+							"timers.target"
+						];
+					};
+				};
 			};
 		};
 	};
