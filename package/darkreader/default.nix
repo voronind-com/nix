@@ -15,7 +15,7 @@
 	};
 	patches = [
 		(fetchpatch {
-			url  = "https://github.com/darkreader/darkreader/compare/main...voronind-com:darkreader:main.diff";
+			url  = "https://github.com/darkreader/darkreader/compare/v${version}...voronind-com:darkreader:main.diff";
 			hash = "sha256-OqS6aY7PHHZvj7a0x1RI+1IpZxYXsqSia2ZeVM3XRZk=";
 		})
 	];
