@@ -2,12 +2,13 @@
 
 # Install nixos to specified drive. To be run from Live ISO.
 # Usage: ./Bootstrap.sh <DRIVE> [HOST]
+cfg="$(realpath .)"
 target="${1}"
 host="${2}"
 
 if [[ "${target}" = "" ]]; then
-	printf "Usage: ./Bootstrap.sh <DRIVE> [HOST]\n"
-	return 2
+	printf "Usage: ./.Bootstrap.sh <DRIVE> [HOST]\n"
+	exit 2
 fi
 
 # Create partitions.
@@ -37,5 +38,5 @@ if [[ "${host}" = "" ]]; then
 	nixos-install
 else
 	printf "Installing ${host}...\n"
-	nixos-install --no-root-password --no-channel-copy --flake "${_nix_system_config}#${host}"
+	nixos-install --no-root-password --no-channel-copy --flake "${cfg}#${host}"
 fi
