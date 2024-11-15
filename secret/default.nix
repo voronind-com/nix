@@ -17,7 +17,7 @@
 			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFgiYKFkMfiGOZCZIk+O7LtaoF6A3cHEFCqaPwXOM4rR root@work"
 			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGIf192IxsksM6u8UY+eqpHopebgV+NNq2G03ssdXIgz root@desktop"
 			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJSWdbkYsRiDlKu8iT/k+JN4KY08iX9qh4VyqxlpEZcE root@home"
-			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPnQ9axOX01pq4EANGOR+5+MMm+pV9GpAAKPc5+fnoBQ root@laptop"
+			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOaoyC/grc3SfO5blKWRUwW+dLlcfyvuvWjymprfIeqN root@laptop"
 		];
 	};
 
