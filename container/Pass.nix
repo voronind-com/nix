@@ -33,7 +33,7 @@ in {
 
 		containers.pass = container.mkContainer cfg {
 			bindMounts = {
-				"/var/lib/bitwarden_rs" = {
+				"/var/lib/vaultwarden" = {
 					hostPath   = "${cfg.storage}/data";
 					isReadOnly = false;
 				};
@@ -43,9 +43,9 @@ in {
 				services.vaultwarden = {
 					enable = true;
 					dbBackend       = "sqlite";
-					environmentFile = "/var/lib/bitwarden_rs/Env";
+					environmentFile = "/var/lib/vaultwarden/Env";
 					config = {
-						DATA_FOLDER       = "/var/lib/bitwarden_rs";
+						DATA_FOLDER       = "/var/lib/vaultwarden";
 						DOMAIN            = "http://${cfg.domain}";
 						ROCKET_ADDRESS    = cfg.address;
 						ROCKET_PORT       = cfg.port;
