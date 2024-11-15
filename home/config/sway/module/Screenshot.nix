@@ -139,16 +139,17 @@ in {
 			${notifyEnd}
 			${picPrepFile}
 
-			${screenshot} ${picFull} | ${picToFile} | ${picToBuffer} || exit
+			${screenshot} ${picFull} | ${picToFile} | ${picToBuffer}
 			${picRefLatestFile}
 		'');
 
 		SelectScreenshot = pkgs.writeShellScriptBin "SelectScreenshot" (util.trimTabs ''
 			${getSelection}
-			${notifyEnd}
+			${notifyStart}
 			${picPrepFile}
 
-			${screenshot} ${picSelected} | ${picEdit} | ${picToFile} | ${picToBuffer} || exit
+			${screenshot} ${picSelected} | ${picEdit} | ${picToFile} | ${picToBuffer}
+			${notifyEnd}
 			${picRefLatestFile}
 		'');
 	in ''
