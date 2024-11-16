@@ -4,7 +4,7 @@
 	pkgs,
 	pkgsUnstable,
 	...
-}: let
+} @args: let
 	bookmarks = [
 		(mkBookmark "Dashboard" "https://home.voronind.com")
 		(mkBookmark "Watch"     "https://watch.voronind.com")
@@ -41,7 +41,7 @@
 	extensions = [
 		# TODO: Use this after https://github.com/darkreader/darkreader/pull/12920 gets merged.
 		# (mkExtension "addon@darkreader.org" "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi")
-		(mkExtension "addon@darkreader.org"                   "file://${pkgs.callPackage <package/darkreader> { }}/latest.xpi")
+		(mkExtension "addon@darkreader.org"                   "file://${pkgs.callPackage <package/darkreader> args}/latest.xpi")
 		(mkExtension "cliget@zaidabdulla.com"                 "https://addons.mozilla.org/firefox/downloads/latest/cliget/latest.xpi")
 		(mkExtension "foxyproxy@eric.h.jung"                  "https://addons.mozilla.org/firefox/downloads/latest/foxyproxy-standard/latest.xpi")
 		(mkExtension "uBlock0@raymondhill.net"                "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi")

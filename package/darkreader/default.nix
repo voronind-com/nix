@@ -1,7 +1,7 @@
 {
+	__findFile,
 	buildNpmPackage,
 	fetchFromGitHub,
-	fetchpatch,
 	...
 }: buildNpmPackage rec {
 	version     = "4.9.96";
@@ -14,10 +14,7 @@
 		rev   = "v${version}";
 	};
 	patches = [
-		(fetchpatch {
-			url  = "https://github.com/darkreader/darkreader/compare/v${version}...voronind-com:darkreader:main.diff";
-			hash = "sha256-OqS6aY7PHHZvj7a0x1RI+1IpZxYXsqSia2ZeVM3XRZk=";
-		})
+		<patch/darkreader/Policy.patch>
 	];
 	installPhase = ''
 		mkdir -p $out

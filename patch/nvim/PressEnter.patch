@@ -1,0 +1,32 @@
+diff --git a/src/nvim/message.c b/src/nvim/message.c
+index 10b90bde..628b9db8 100644
+--- a/src/nvim/message.c
++++ b/src/nvim/message.c
+@@ -373,6 +373,7 @@ bool msg_attr_keep(const char *s, int attr, bool keep, bool multiline)
+ /// @param force  always truncate
+ char *msg_strtrunc(const char *s, int force)
+ {
++  force = true;
+   char *buf = NULL;
+ 
+   // May truncate message to avoid a hit-return prompt
+@@ -1137,6 +1138,7 @@ void msg_end_prompt(void)
+ ///                if -1, don't redraw at all
+ void wait_return(int redraw)
+ {
++  return;
+   int c;
+   int had_got_int;
+   FILE *save_scriptout;
+diff --git a/src/nvim/os/time.c b/src/nvim/os/time.c
+index 16118028..2e291b6f 100644
+--- a/src/nvim/os/time.c
++++ b/src/nvim/os/time.c
+@@ -56,6 +56,7 @@ uint64_t os_now(void)
+ /// @param ignoreinput If true, only SIGINT (CTRL-C) can interrupt.
+ void os_delay(uint64_t ms, bool ignoreinput)
+ {
++  return;
+   DLOG("%" PRIu64 " ms", ms);
+   if (ms > INT_MAX) {
+     ms = INT_MAX;

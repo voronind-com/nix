@@ -1,0 +1,443 @@
+diff --git a/src/background/user-storage.ts b/src/background/user-storage.ts
+index b582fb52e45f..344d21c2988f 100644
+--- a/src/background/user-storage.ts
++++ b/src/background/user-storage.ts
+@@ -2,7 +2,7 @@ import {DEFAULT_SETTINGS, DEFAULT_THEME} from '../defaults';
+ import {debounce} from '../utils/debounce';
+ import {isURLMatched} from '../utils/url';
+ import type {UserSettings} from '../definitions';
+-import {readSyncStorage, readLocalStorage, writeSyncStorage, writeLocalStorage, removeSyncStorage, removeLocalStorage} from './utils/extension-api';
++import {readManagedStorage, readSyncStorage, readLocalStorage, writeSyncStorage, writeLocalStorage, removeSyncStorage, removeLocalStorage} from './utils/extension-api';
+ import {logWarn} from './utils/log';
+ import {PromiseBarrier} from '../utils/promise-barrier';
+ import {validateSettings} from '../utils/validation';
+@@ -82,7 +82,11 @@ export default class UserStorage {
+         }
+         UserStorage.loadBarrier = new PromiseBarrier();
+ 
+-        let local = await readLocalStorage(DEFAULT_SETTINGS);
++        const managed = await readManagedStorage(DEFAULT_SETTINGS);
++        const {errors: managedCfgErrors} = validateSettings(managed);
++        managedCfgErrors.forEach((err) => logWarn(err));
++
++        let local = await readLocalStorage(managed);
+ 
+         if (local.schemeVersion < 2) {
+             const sync = await readSyncStorage({schemeVersion: 0});
+@@ -102,7 +106,7 @@ export default class UserStorage {
+                 await writeSyncStorage({schemeVersion: 2, ...syncTransformed});
+                 await removeSyncStorage(Object.keys(deprecatedDefaults));
+ 
+-                local = await readLocalStorage(DEFAULT_SETTINGS);
++                local = await readLocalStorage(managed);
+             }
+         }
+ 
+@@ -115,17 +119,17 @@ export default class UserStorage {
+             UserStorage.migrateAutomationSettings(local);
+             UserStorage.fillDefaults(local);
+             UserStorage.loadBarrier.resolve(local);
+-            return local;
++            return managed;
+         }
+ 
+-        const $sync = await readSyncStorage(DEFAULT_SETTINGS);
++        const $sync = await readSyncStorage(managed);
+         if (!$sync) {
+             logWarn('Sync settings are missing');
+             local.syncSettings = false;
+             UserStorage.set({syncSettings: false});
+             UserStorage.saveSyncSetting(false);
+             UserStorage.loadBarrier.resolve(local);
+-            return local;
++            return managed;
+         }
+ 
+         const {errors: syncCfgErrors} = validateSettings($sync);
+@@ -135,7 +139,7 @@ export default class UserStorage {
+         UserStorage.fillDefaults($sync);
+ 
+         UserStorage.loadBarrier.resolve($sync);
+-        return $sync;
++        return managed;
+     }
+ 
+     static async saveSettings(): Promise<void> {
+@@ -227,4 +231,4 @@ export default class UserStorage {
+ 
+         UserStorage.settings = updatedSettings;
+     }
+-}
++}
+\ No newline at end of file
+diff --git a/src/background/utils/extension-api.ts b/src/background/utils/extension-api.ts
+index ee54807b1f31..70a3cf24a39c 100644
+--- a/src/background/utils/extension-api.ts
++++ b/src/background/utils/extension-api.ts
+@@ -97,6 +97,19 @@ export async function readLocalStorage<T extends {[key: string]: any}>(defaults:
+     });
+ }
+ 
++export async function readManagedStorage<T extends {[key: string]: any}>(defaults: T): Promise<T> {
++    return new Promise<T>((resolve) => {
++        chrome.storage.managed.get(defaults, (managed: T) => {
++            if (chrome.runtime.lastError) {
++                console.error(chrome.runtime.lastError.message);
++                resolve(defaults);
++                return;
++            }
++            resolve(managed);
++        });
++    });
++}
++
+ function prepareSyncStorage<T extends {[key: string]: any}>(values: T): {[key: string]: any} {
+     for (const key in values) {
+         const value = values[key];
+diff --git a/src/managed-storage.json b/src/managed-storage.json
+new file mode 100644
+index 000000000000..55065e4ff842
+--- /dev/null
++++ b/src/managed-storage.json
+@@ -0,0 +1,298 @@
++{
++
++  "$schema": "http://json-schema.org/draft-07/schema#",
++  "type": "object",
++  "properties": {
++    "schemeVersion": {
++      "type": "integer"
++    },
++    "enabled": {
++      "type": "boolean"
++    },
++    "fetchNews": {
++      "type": "boolean"
++    },
++    "theme": {
++      "$ref": "Theme"
++    },
++    "presets": {
++      "type": "array",
++      "items": {
++        "$ref": "ThemePreset"
++      }
++    },
++    "customThemes": {
++      "type": "array",
++      "items": {
++        "$ref": "CustomSiteConfig"
++      }
++    },
++    "enabledByDefault": {
++      "type": "boolean"
++    },
++    "enabledFor": {
++      "type": "array",
++      "items": {
++        "type": "string",
++        "minLength": 1
++      }
++    },
++    "disabledFor": {
++      "type": "array",
++      "items": {
++        "type": "string",
++        "minLength": 1
++      }
++    },
++    "changeBrowserTheme": {
++      "type": "boolean"
++    },
++    "syncSettings": {
++      "type": "boolean"
++    },
++    "syncSitesFixes": {
++      "type": "boolean"
++    },
++    "automation": {
++      "$ref": "Automation"
++    },
++    "time": {
++      "$ref": "TimeSettings"
++    },
++    "location": {
++      "$ref": "LocationSettings"
++    },
++    "previewNewDesign": {
++      "type": "boolean"
++    },
++    "enableForPDF": {
++      "type": "boolean"
++    },
++    "enableForProtectedPages": {
++      "type": "boolean"
++    },
++    "enableContextMenus": {
++      "type": "boolean"
++    },
++    "detectDarkTheme": {
++      "type": "boolean"
++    },
++    // Chrome's JSON schema format is weird and doesn't support `definitions` property and thus `#/definitions` references
++    // https://datatracker.ietf.org/doc/html/draft-zyp-json-schema-03
++    // This "property" mimics it
++    "definitions": {
++      "type": "object",
++      "properties": {
++        "Theme": {
++          "id": "Theme",
++          "type": "object",
++          "properties": {
++            "mode": {
++              "$ref": "FilterMode"
++            },
++            "brightness": {
++              "type": "integer",
++              "minimum": 0,
++              "maximum": 200
++            },
++            "contrast": {
++              "type": "integer",
++              "minimum": 0,
++              "maximum": 200
++            },
++            "grayscale": {
++              "type": "integer",
++              "minimum": 0,
++              "maximum": 100
++            },
++            "sepia": {
++              "type": "integer",
++              "minimum": 0,
++              "maximum": 100
++            },
++            "useFont": {
++              "type": "boolean"
++            },
++            "fontFamily": {
++              "type": "string",
++              "minLength": 1
++            },
++            "textStroke": {
++              "type": "number"
++            },
++            "engine": {
++              "type": "string",
++              "enum": [
++                "cssFilter",
++                "svgFilter",
++                "staticTheme",
++                "dynamicTheme"
++              ]
++            },
++            "stylesheet": {
++              "type": "string"
++            },
++            "darkSchemeBackgroundColor": {
++              "$ref": "HexColor"
++            },
++            "darkSchemeTextColor": {
++              "$ref": "HexColor"
++            },
++            "lightSchemeBackgroundColor": {
++              "$ref": "HexColor"
++            },
++            "lightSchemeTextColor": {
++              "$ref": "HexColor"
++            },
++            "scrollbarColor": {
++              "$ref": "HexColorOrAuto"
++            },
++            "selectionColor": {
++              "$ref": "HexColorOrAuto"
++            },
++            "styleSystemControls": {
++              "type": "boolean"
++            },
++            "lightColorScheme": {
++              "type": "string",
++              "minLength": 1
++            },
++            "darkColorScheme": {
++              "type": "string",
++              "minLength": 1
++            },
++            "immediateModify": {
++              "type": "boolean"
++            }
++          }
++        },
++        "HexColor": {
++          "id": "HexColor",
++          "type": "string",
++          "pattern": "^[0-9a-f]{6}$"
++        },
++        "HexColorOrAuto": {
++          "id": "HexColorOrAuto",
++          "type": "string",
++          "pattern": "^([0-9a-f]{6}|auto)$"
++        },
++        "FilterMode": {
++          "id": "FilterMode",
++          "type": "integer",
++          "enum": [
++            0,
++            1
++          ]
++        },
++        "ThemePreset": {
++          "id": "ThemePreset",
++          "type": "object",
++          "properties": {
++            "id": {
++              "type": "string",
++              "minLength": 1
++            },
++            "name": {
++              "type": "string",
++              "minLength": 1
++            },
++            "urls": {
++              "type": "array",
++              "items": {
++                "type": "string",
++                "minLength": 1
++              }
++            },
++            "theme": {
++              "$ref": "Theme"
++            }
++          },
++          "required": [
++            "id",
++            "name",
++            "urls",
++            "theme"
++          ]
++        },
++        "CustomSiteConfig": {
++          "id": "CustomSiteConfig",
++          "type": "object",
++          "properties": {
++            "url": {
++              "type": "array",
++              "items": {
++                "type": "string",
++                "minLength": 1
++              }
++            },
++            "theme": {
++              "$ref": "Theme"
++            }
++          },
++          "required": [
++            "url",
++            "theme"
++          ]
++        },
++        "Automation": {
++          "id": "Automation",
++          "type": "object",
++          "properties": {
++            "enabled": {
++              "type": "boolean"
++            },
++            "mode": {
++              "$ref": "AutomationMode"
++            },
++            "behavior": {
++              "type": "string",
++              "enum": [
++                "OnOff",
++                "Scheme"
++              ]
++            }
++          }
++        },
++        "AutomationMode": {
++          "id": "AutomationMode",
++          "type": "string",
++          "enum": [
++            "",
++            "time",
++            "system",
++            "location"
++          ]
++        },
++        "TimeSettings": {
++          "id": "TimeSettings",
++          "type": "object",
++          "properties": {
++            "activation": {
++              "$ref": "Time"
++            },
++            "deactivation": {
++              "$ref": "Time"
++            }
++          }
++        },
++        "Time": {
++          "id": "Time",
++          "type": "string",
++          "pattern": "^((0?[0-9])|(1[0-9])|(2[0-3])):([0-5][0-9])$"
++        },
++        "LocationSettings": {
++          "id": "LocationSettings",
++          "type": "object",
++          "properties": {
++            "latitude": {
++              "type": "number"
++            },
++            "longitude": {
++              "type": "number"
++            }
++          }
++        }
++      }
++    }
++  }
++}
+diff --git a/tasks/bundle-manifest.js b/tasks/bundle-manifest.js
+index ae29531e67b7..f4058a129f52 100644
+--- a/tasks/bundle-manifest.js
++++ b/tasks/bundle-manifest.js
+@@ -4,6 +4,7 @@ import {PLATFORM} from './platform.js';
+ import * as reload from './reload.js';
+ import {createTask} from './task.js';
+ import {readJSON, writeJSON} from './utils.js';
++import {copyFile} from 'node:fs/promises';
+ 
+ async function patchManifest(platform, debug, watch, test) {
+     const manifest = await readJSON(absolutePath('src/manifest.json'));
+@@ -16,6 +17,11 @@ async function patchManifest(platform, debug, watch, test) {
+     if (platform === PLATFORM.CHROMIUM_MV3) {
+         patched.browser_action = undefined;
+     }
++    if (platform === PLATFORM.CHROMIUM_MV2 || platform === PLATFORM.CHROMIUM_MV3) {
++        patched.storage = {
++            managed_schema: 'managed-storage.json',
++        };
++    }
+     if (debug) {
+         patched.version = '1';
+         patched.description = `Debug build, platform: ${platform}, watch: ${watch ? 'yes' : 'no'}.`;
+@@ -42,6 +48,9 @@ async function manifests({platforms, debug, watch, test}) {
+         const manifest = await patchManifest(platform, debug, watch, test);
+         const destDir = getDestDir({debug, platform});
+         await writeJSON(`${destDir}/manifest.json`, manifest);
++        if (platform === PLATFORM.CHROMIUM_MV2 || platform === PLATFORM.CHROMIUM_MV3) {
++            await copyFile(absolutePath('src/managed-storage.json'), `${destDir}/managed-storage.json`);
++        }
+     }
+ }
+ 
+@@ -49,7 +58,7 @@ const bundleManifestTask = createTask(
+     'bundle-manifest',
+     manifests,
+ ).addWatcher(
+-    ['src/manifest*.json'],
++    ['src/manifest*.json', 'src/managed-storage.json'],
+     async (changedFiles, _, buildPlatforms) => {
+         const chrome = changedFiles.some((file) => file.endsWith('manifest.json'));
+         const platforms = {};

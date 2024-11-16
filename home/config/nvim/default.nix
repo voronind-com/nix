@@ -50,7 +50,6 @@ in {
 			./module/config/Search.nix
 			./module/config/Tab.nix
 			./module/config/Highlight.nix
-			./module/config/Notify.nix
 			./module/plugin/Filetree.nix
 			./module/plugin/Gruvbox.nix
 			./module/plugin/Bufferline.nix
