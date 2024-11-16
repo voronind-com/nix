@@ -1,10 +1,12 @@
-# Screen density configuration.
 {
 	lib,
 	...
 }: {
-	options.module.dpi.aware = lib.mkOption {
-		default = false;
-		type    = lib.types.bool;
+	options.module.dpi.bypass = {
+		enable = lib.mkEnableOption "the DPI bypass.";
+		params = lib.mkOption {
+			default = [ ];
+			type    = with lib.types; listOf str;
+		};
 	};
 }

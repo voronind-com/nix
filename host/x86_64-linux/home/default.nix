@@ -1,15 +1,25 @@
 { ... }: {
 	home.nixos.enable = true;
 	user = {
-		root.enable     = true;
-		voronind.enable = true;
+		root     = true;
+		voronind = true;
 	};
 
 	module = {
 		builder.server.enable = true;
-		sway.enable           = true;
-		kernel.enable         = true;
-		keyd.enable           = true;
+		purpose = {
+			desktop = true;
+			router  = true;
+			server  = true;
+		};
+		dpi.bypass = {
+			enable = true;
+			params = [
+				"--dpi-desync=fake,disorder2"
+				"--dpi-desync-ttl=1"
+				"--dpi-desync-autottl=2"
+			];
+		};
 		amd = {
 			cpu.enable = true;
 			gpu.enable = true;
@@ -21,11 +31,6 @@
 		hwmon = {
 			file = "temp1_input";
 			path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon";
-		};
-		package = {
-			common.enable  = true;
-			core.enable    = true;
-			desktop.enable = true;
 		};
 	};
 }

@@ -3,13 +3,11 @@
 	config,
 	...
 }: let
-	cfg = config.user.dasha;
+	cfg = config.user;
 in {
-	options.user.dasha = {
-		enable = lib.mkEnableOption "dasha";
-	};
+	options.user.dasha = lib.mkEnableOption "dasha.";
 
-	config = lib.mkIf cfg.enable {
+	config = lib.mkIf cfg.dasha {
 		home.nixos.users = [{
 			homeDirectory = "/home/dasha";
 			username      = "dasha";

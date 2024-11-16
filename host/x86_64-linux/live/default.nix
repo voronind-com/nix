@@ -18,5 +18,5 @@
 
 	# Root user setup.
 	home.nixos.enable = true;
-	user.root.enable  = true;
+	user.root = true;
 }

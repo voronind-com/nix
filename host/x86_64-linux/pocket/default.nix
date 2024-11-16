@@ -1,25 +1,23 @@
 { ... }: {
 	home.nixos.enable = true;
 	user = {
-		root.enable     = true;
-		voronind.enable = true;
+		root     = true;
+		voronind = true;
 	};
 
 	module = {
 		builder.client.enable = true;
-		keyd.enable           = true;
-		print.enable          = true;
-		sway = {
-			enable = true;
-			extraConfig = ''
-				output DSI-1 transform 90
-				input * map_to_output DSI-1
-			'';
+		package.extra = true;
+		print.enable  = true;
+		purpose = {
+			creativity = true;
+			laptop     = true;
+			work       = true;
 		};
-		kernel = {
-			enable = true;
-			latest = true;
-		};
+		sway.extraConfig = ''
+			output DSI-1 transform 90
+			input * map_to_output DSI-1
+		'';
 		hwmon = {
 			file = "temp1_input";
 			path = "/sys/devices/platform/coretemp.0/hwmon";
@@ -27,15 +25,6 @@
 		intel.cpu = {
 			enable    = true;
 			powersave = true;
-		};
-		package = {
-			common.enable   = true;
-			core.enable     = true;
-			creative.enable = true;
-			desktop.enable  = true;
-			dev.enable      = true;
-			extra.enable    = true;
-			gaming.enable   = true;
 		};
 	};
 }

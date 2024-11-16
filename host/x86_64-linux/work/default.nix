@@ -4,19 +4,23 @@
 
 	home.nixos.enable = true;
 	user = {
-		root.enable     = true;
-		dasha.enable    = true;
-		voronind.enable = true;
+		dasha    = true;
+		root     = true;
+		voronind = true;
 	};
 
 	module = {
-		autoupdate.enable          = true;
 		builder.client.enable      = true;
-		sway.enable                = true;
-		kernel.enable              = true;
-		keyd.enable                = true;
+		package.extra              = true;
 		powerlimit.thinkpad.enable = true;
 		print.enable               = true;
+		purpose = {
+			creativity = true;
+			disown     = true;
+			gaming     = true;
+			laptop     = true;
+			work       = true;
+		};
 		hwmon = {
 			file = "temp1_input";
 			path = "/sys/devices/platform/coretemp.0/hwmon";
@@ -24,14 +28,6 @@
 		intel.cpu = {
 			enable    = true;
 			powersave = true;
-		};
-		package = {
-			common.enable  = true;
-			core.enable    = true;
-			desktop.enable = true;
-			dev.enable     = true;
-			extra.enable   = true;
-			gaming.enable  = true;
 		};
 	};
 }

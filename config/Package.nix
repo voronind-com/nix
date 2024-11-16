@@ -10,7 +10,7 @@
 in {
 	config = lib.mkMerge [
 		# Core apps.
-		(lib.mkIf cfg.core.enable {
+		(lib.mkIf cfg.core {
 			environment.systemPackages = package.core;
 
 			programs = {
@@ -27,7 +27,7 @@ in {
 		})
 
 		# Common apps.
-		(lib.mkIf cfg.common.enable {
+		(lib.mkIf cfg.common {
 			environment.systemPackages = package.common;
 
 			xdg.mime.defaultApplications = {
@@ -53,12 +53,12 @@ in {
 		})
 
 		# Desktop apps.
-		(lib.mkIf cfg.desktop.enable {
+		(lib.mkIf cfg.desktop {
 			environment.systemPackages = package.desktop;
 		})
 
 		# Gaming.
-		(lib.mkIf cfg.gaming.enable {
+		(lib.mkIf cfg.gaming {
 			programs.steam.enable = true;
 			environment.systemPackages = package.gaming;
 			hardware.graphics = let
@@ -74,18 +74,18 @@ in {
 			};
 		})
 
-		# Creative.
-		(lib.mkIf cfg.creative.enable {
+		# Creativity.
+		(lib.mkIf cfg.creativity {
 			environment.systemPackages = package.creative;
 		})
 
 		# Development.
-		(lib.mkIf cfg.dev.enable {
+		(lib.mkIf cfg.dev {
 			environment.systemPackages = package.dev;
 		})
 
 		# Extras.
-		(lib.mkIf cfg.extra.enable {
+		(lib.mkIf cfg.extra {
 			environment.systemPackages = package.extra;
 		})
 	];

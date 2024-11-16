@@ -5,13 +5,11 @@
 	util,
 	...
 }: let
-	cfg = config.user.root;
+	cfg = config.user;
 in {
-	options.user.root = {
-		enable = lib.mkEnableOption "root";
-	};
+	options.user.root = lib.mkEnableOption "root.";
 
-	config = lib.mkIf cfg.enable {
+	config = lib.mkIf cfg.root {
 		users.users.root.hashedPassword = secret.hashedPassword;
 		home.nixos.users = [{
 			homeDirectory = "/root";

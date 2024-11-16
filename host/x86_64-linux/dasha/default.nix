@@ -1,19 +1,22 @@
 { ... }: {
 	home.nixos.enable = true;
 	user = {
-		dasha.enable = true;
-		root.enable  = true;
+		dasha = true;
+		root  = true;
 	};
 
 	module = {
-		amd.gpu.enable        = true;
-		autoupdate.enable     = true;
 		builder.client.enable = true;
-		sway.enable           = true;
-		kernel.enable         = true;
-		keyd.enable           = true;
-		print.enable          = true;
-		tablet.enable         = true;
+		amd.gpu.enable = true;
+		package.extra  = true;
+		print.enable   = true;
+		purpose = {
+			creativity = true;
+			desktop    = true;
+			disown     = true;
+			gaming     = true;
+			work       = true;
+		};
 		hwmon = {
 			file = "temp1_input";
 			path = "/sys/devices/platform/coretemp.0/hwmon";
@@ -21,15 +24,6 @@
 		intel.cpu = {
 			enable    = true;
 			powersave = true;
-		};
-		package = {
-			common.enable   = true;
-			core.enable     = true;
-			creative.enable = true;
-			desktop.enable  = true;
-			dev.enable      = true;
-			extra.enable    = true;
-			gaming.enable   = true;
 		};
 	};
 }

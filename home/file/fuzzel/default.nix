@@ -3,7 +3,7 @@
 	config,
 	...
 }: let
-	dpiAware = if config.module.dpi.aware then "yes" else "no";
+	dpiAware = if config.module.display.dpiAware then "yes" else "no";
 in {
 	file = (pkgs.formats.ini { }).generate "FuzzelConfig" {
 		main = {

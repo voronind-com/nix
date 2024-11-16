@@ -4,13 +4,11 @@
 	secret,
 	...
 }: let
-	cfg = config.user.voronind;
+	cfg = config.user;
 in {
-	options.user.voronind = {
-		enable = lib.mkEnableOption "voronind";
-	};
+	options.user.voronind = lib.mkEnableOption "voronind.";
 
-	config = lib.mkIf cfg.enable {
+	config = lib.mkIf cfg.voronind {
 		home.nixos.users = [{
 			homeDirectory = "/home/voronind";
 			username      = "voronind";

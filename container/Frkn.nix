@@ -57,15 +57,10 @@ in {
 					"net.ipv4.ip_forward" = 1;
 				};
 
-				# TODO: Single place.
 				services.zapret = {
-					enable = true;
+					inherit (config.services.zapret) params;
+					enable  = true;
 					package = pkgsMaster.zapret;
-					params = [
-						"--dpi-desync=fake,disorder2"
-						"--dpi-desync-ttl=1"
-						"--dpi-desync-autottl=2"
-					];
 				};
 
 				services = {

@@ -28,7 +28,7 @@ in {
 
 				# Packet forwarding.
 				"net.ipv4.ip_forward"          = 0;
-				"net.ipv6.conf.all.forwarding" = 1;
+				"net.ipv6.conf.all.forwarding" = 0;
 
 				# MITM protection.
 				"net.ipv4.conf.all.accept_redirects" = 0;
@@ -48,19 +48,6 @@ in {
 				# Lynis config.
 				"kernel.core_uses_pid" = 1;
 				"kernel.kptr_restrict" = 2;
-
-				# IP hardening.
-				"net.ipv4.conf.all.log_martians"            = 1;
-				"net.ipv4.conf.default.accept_redirects"    = 0;
-				"net.ipv4.conf.default.accept_source_route" = 0;
-				"net.ipv4.conf.default.log_martians"        = 0;
-				"net.ipv4.tcp_timestamps"                   = 0;
-				"net.ipv6.conf.default.accept_redirects"    = 0;
-
-				# Disable ipv6.
-				"net.ipv6.conf.all.disable_ipv6"     = 1;
-				"net.ipv6.conf.default.disable_ipv6" = 1;
-				"net.ipv6.conf.lo.disable_ipv6"      = 1;
 			};
 		})
 
