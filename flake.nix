@@ -70,7 +70,7 @@
 		);
 
 		devShells = let
-			lib    = nixpkgs.lib;
+			# lib    = nixpkgs.lib;
 			pkgs   = nixpkgs.legacyPackages.${system};
 			system = "x86_64-linux";
 		in {
@@ -106,7 +106,8 @@
 				]
 				++ (self.findFiles ./container)
 				++ (self.findFiles ./host/${system}/${hostname})
-				++ (self.findFiles ./module)
+				++ (self.findFiles ./option)
+				++ (self.findFiles ./config)
 				++ (self.findFiles ./overlay)
 				++ (self.findFiles ./system)
 				;
@@ -134,7 +135,7 @@
 		);
 
 		nixOnDroidConfigurations.default = let
-			config       = self.nixOnDroidConfigurations.default.config;
+			# config       = self.nixOnDroidConfigurations.default.config;
 			lib          = nixpkgs.lib;
 			pkgs         = nixpkgs.legacyPackages.${system}.pkgs;
 			pkgsMaster   = nixpkgsMaster.legacyPackages.${system}.pkgs;
@@ -143,12 +144,13 @@
 		in nix-on-droid.lib.nixOnDroidConfiguration {
 			inherit pkgs;
 			modules = [
-				(import ./module/Style.nix { inherit (config.home-manager) config; inherit (self) __findFile; inherit lib pkgs; })
 				{ home.android.enable = true; }
 				{ home-manager.config.stylix.autoEnable = lib.mkForce false; }
 				./home/Android.nix
-				./module/Wallpaper.nix
-			];
+			]
+			++ (self.findFiles ./option)
+			++ (self.findFiles ./overlay)
+			;
 			extraSpecialArgs = {
 				inherit inputs self pkgsMaster pkgsUnstable;
 				inherit (self) const __findFile;

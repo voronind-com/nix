@@ -32,6 +32,6 @@ in {
 		include /etc/sway/config.d/*
 	'')
 	+ swayRc
-	+ config.module.sway.extraConfig or ""
+	+ config.module.sway.extraConfig
 	;
 }

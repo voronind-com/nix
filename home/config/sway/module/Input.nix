@@ -36,8 +36,8 @@
 		}
 
 		input type:keyboard {
-			xkb_layout  ${config.module.keyboard.layouts or ""}
-			xkb_options ${config.module.keyboard.options or ""}
+			xkb_layout  ${config.module.keyboard.layouts}
+			xkb_options ${config.module.keyboard.options}
 		}
 
 		# Hide mouse cursor after a period of inactivity.
