@@ -9,6 +9,8 @@
 	...
 } @args: let
 	cfg = config.home.nixos;
+	env      = import ./env args;
+	file     = import ./file args;
 	programs = import ./program args;
 in {
 	imports = (util.ls <user>);
@@ -29,16 +31,16 @@ in {
 					${user.username} = {
 						home = {
 							inherit (const) stateVersion;
+							inherit (env) sessionVariables;
 							inherit (user) username homeDirectory;
-							file = import ./config args;
-							sessionVariables = import ./variable args;
+							inherit file;
 
 							# ISSUE: https://github.com/nix-community/home-manager/issues/5589
 							extraActivationPath = with pkgs; [ openssh ];
 						};
 						xdg = import ./xdg { inherit (user) homeDirectory; };
 						programs = with programs; core // desktop;
-						dconf.settings = util.catSet (util.ls ./config/dconf) args;
+						dconf.settings = util.catSet (util.ls ./file/dconf) args;
 					};
 				}
 			) { } cfg.users;

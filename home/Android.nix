@@ -13,6 +13,8 @@
 } @args: let
 	cfg = config.home.android;
 	android  = import ./android args;
+	env      = import ./env     args;
+	file     = import ./file    args;
 	package  = import <package> args;
 	programs = import ./program args;
 	stylix   = import <system/Stylix.nix> args;
@@ -35,9 +37,9 @@ in {
 				inputs.stylix.homeManagerModules.stylix
 			];
 			home = {
-				file = import ./config args;
-				sessionVariables = import ./variable args;
-				stateVersion     = const.droidStateVersion;
+				inherit (env) sessionVariables;
+				inherit file;
+				stateVersion = const.droidStateVersion;
 			};
 		};
 	};

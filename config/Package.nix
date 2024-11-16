@@ -45,7 +45,7 @@ in {
 
 			# Chromium config.
 			environment.etc = let
-				chromium = import <home/config/chromium> args;
+				chromium = import <home/file/chromium> args;
 			in {
 				"chromium/initial_preferences".source         = lib.mkForce chromium.preferences;
 				"chromium/policies/managed/extra.json".source = lib.mkForce chromium.policy;
