@@ -149,7 +149,6 @@
 				./home/Android.nix
 			]
 			++ (self.findFiles ./option)
-			++ (self.findFiles ./overlay)
 			;
 			extraSpecialArgs = {
 				inherit inputs self pkgsMaster pkgsUnstable;
