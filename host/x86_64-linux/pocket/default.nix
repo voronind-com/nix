@@ -17,7 +17,7 @@
 		};
 		sway.extraConfig = ''
 			output DSI-1 transform 90
-			input * map_to_output DSI-1
+			input type:touch map_to_output DSI-1
 		'';
 		hwmon = {
 			file = "temp1_input";
