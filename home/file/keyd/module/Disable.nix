@@ -6,6 +6,7 @@
 		"gimp"
 		"gimp-*"
 		"steam-proton"
+		"steam-app-*"
 	];
 
 	keys = [
