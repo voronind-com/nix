@@ -12,7 +12,7 @@
 				{ on = "E";         desc = "Move to next tab";  run = "tab_swap 1 --relative"; }
 				{ on = "O";         desc = "Open default";      run = "open"; }
 				{ on = "Q";         desc = "Move to prev tab";  run = "tab_swap -1 --relative"; }
-				{ on = "R";         desc = "Rename completely"; run = "rename --empty all"; }
+				{ on = "R";         desc = "Rename completely"; run = "rename --empty=all"; }
 				{ on = "Z";         desc = "Exit yazi w/o cwd"; run = "quit --no-cwd-file"; }
 				{ on = "c";         desc = "Close tab";         run = "close"; }
 				{ on = "d";         desc = "Delete";            run = "remove --permanently"; }
