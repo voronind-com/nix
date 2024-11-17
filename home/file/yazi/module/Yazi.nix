@@ -31,14 +31,6 @@
 				orphan = true;
 				run    = openWith "xdg-open";
 			}];
-			archive = [{
-				desc = "Archive";
-				run  = openWith "archive";
-			}];
-			archive_fast = [{
-				desc = "Archive Fast";
-				run  = openWith "archive_fast";
-			}];
 			audio = [{
 				desc   = "Audio";
 				orphan = true;
@@ -74,10 +66,6 @@
 				orphan = true;
 				run    = openWith "gimp";
 			}];
-			mount = [{
-				desc = "Mount";
-				run  = openWith "fmount";
-			}];
 			pdf = [{
 				desc   = "Pdf";
 				orphan = true;
@@ -93,11 +81,6 @@
 				orphan = true;
 				run    = openWith "mpv";
 			}];
-			unlock = [{
-				desc  = "Unlock";
-				block = true;
-				run   = openWith "funlock";
-			}];
 			unpack = [{
 				desc = "Unpack";
 				run  = openWith "unpack";
@@ -108,8 +91,6 @@
 			rules = let
 				defaultUse = [
 					"text"
-					"archive"
-					"archive_fast"
 					"hex"
 				];
 				mkMime = mime: use: {
@@ -128,8 +109,6 @@
 				(mkMime "application/x-xz" [ "unpack" ])
 				(mkMime "application/zip" [ "unpack" ])
 				(mkMime "application/x-7z-compressed" [ "unpack" ])
-				(mkMime "application/x-iso9660-image" [ "mount" ])
-				(mkMime "application/x-raw-disk-image" [ "unlock" ])
 				(mkMime "application/pdf" [ "pdf" ])
 				(mkMime "audio/*" [ "audio" ])
 				(mkName "*.mka" [ "audio" ])
