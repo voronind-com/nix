@@ -6,10 +6,11 @@
 	};
 
 	module = {
+		amd.gpu.enable        = true;
 		builder.client.enable = true;
-		amd.gpu.enable = true;
-		package.extra  = true;
-		print.enable   = true;
+		display.primary       = "DP-1";
+		package.extra         = true;
+		print.enable          = true;
 		purpose = {
 			creativity = true;
 			desktop    = true;

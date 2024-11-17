@@ -16,10 +16,7 @@ in {
 		spacing      = 4;
 		start_hidden = false;
 		output = [
-			"!AOC 24G2W1G4 ATNL61A129625" # Dasha monitor.
-			"!Huawei Technologies Co., Inc. ZQE-CBA 0xC080F622" # Desktop monitor.
-			"!UGD Artist15.6Pro 20200316" # XP-Pen Tablet.
-			"*"
+			config.module.display.primary
 		];
 		modules-left = [
 			"clock"

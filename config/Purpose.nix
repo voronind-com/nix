@@ -101,7 +101,6 @@ in {
 
 		(lib.mkIf cfg.server {
 			module = {
-				keyd.enable = true;
 				kernel = {
 					enable    = true;
 					hardening = true;

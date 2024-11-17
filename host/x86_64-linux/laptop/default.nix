@@ -8,6 +8,7 @@
 
 	module = {
 		builder.client.enable = true;
+		display.primary = "eDP-1";
 		print.enable = true;
 		purpose = {
 			creativity = true;

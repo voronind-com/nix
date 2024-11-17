@@ -14,6 +14,10 @@
 			gaming  = true;
 			work    = true;
 		};
+		display = {
+			primary = "HDMI-A-1";
+			rotate.HDMI-A-1 = 180;
+		};
 		amd = {
 			compute.enable = true;
 			gpu.enable     = true;
@@ -22,11 +26,11 @@
 				powersave = true;
 			};
 		};
-		sway.extraConfig = ''
-			output "ASUSTek COMPUTER INC ASUS VA24E R2LMTF127165" mode 1920x1080@74.986Hz transform 180 pos 780,0
-			output "Huawei Technologies Co., Inc. ZQE-CBA 0xC080F622" pos 0,1080
-			workspace 1 output "ASUSTek COMPUTER INC ASUS VA24E R2LMTF127165"
-		'';
+		sway.extraConfig = [
+			"output DP-3 pos 0,1080"
+			"output HDMI-A-1 mode 1920x1080@74.986Hz pos 780,0"
+			"workspace 1 output HDMI-A-1"
+		];
 		hwmon = {
 			file = "temp1_input";
 			path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon";

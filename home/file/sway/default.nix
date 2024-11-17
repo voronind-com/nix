@@ -1,6 +1,7 @@
 {
-	util,
 	config,
+	lib,
+	util,
 	...
 } @args: let
 	swayRc = util.catText [
@@ -32,6 +33,6 @@ in {
 		include /etc/sway/config.d/*
 	'')
 	+ swayRc
-	+ config.module.sway.extraConfig
+	+ lib.concatStringsSep "\n" config.module.sway.extraConfig
 	;
 }

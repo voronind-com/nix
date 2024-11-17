@@ -11,6 +11,7 @@
 
 	module = {
 		builder.client.enable      = true;
+		display.primary            = "DSI-1";
 		package.extra              = true;
 		powerlimit.thinkpad.enable = true;
 		print.enable               = true;
