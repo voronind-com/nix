@@ -11,6 +11,7 @@
 		print.enable  = true;
 		purpose = {
 			creativity = true;
+			gaming     = true;
 			laptop     = true;
 			work       = true;
 		};
