@@ -147,7 +147,7 @@
 		anilibria-winmaclinux # Anime!
 		appimage-run          # Tool to run .AppImage files in NixOS.
 		blanket               # Sounds generator.
-		# calibre               # Book library manager.
+		calibre               # Book library manager.
 		cbonsai               # Draw trees.
 		cmatrix               # CLI Screensavers.
 		cowsay                # Cow quotes.

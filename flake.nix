@@ -1,19 +1,17 @@
 {
 	inputs = {
+		# SOURCE: https://github.com/NixOS/nixpkgs
 		nixpkgs.url         = "github:nixos/nixpkgs/release-24.11";
 		nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
 		nixpkgsMaster.url   = "github:nixos/nixpkgs/master";
 
-		stylix.url = "github:danth/stylix";
-
-		nixpkgsJobber.url    = "github:nixos/nixpkgs/051f920625ab5aabe37c920346e3e69d7d34400e";
-		poetry2nixJobber.url = "github:nix-community/poetry2nix/304f8235fb0729fd48567af34fcd1b58d18f9b95";
-
+		# SOURCE: https://github.com/nix-community/home-manager
 		home-manager = {
-			url = "github:nix-community/home-manager";
+			url = "github:nix-community/home-manager/release-24.11";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
+		# SOURCE: https://github.com/nix-community/nix-on-droid
 		nix-on-droid = {
 			url = "github:t184256/nix-on-droid/release-24.05";
 			inputs = {
@@ -22,10 +20,23 @@
 			};
 		};
 
+		# SOURCE: https://github.com/LilleAila/nix-cursors
 		nix-cursors = {
 			url = "github:LilleAila/nix-cursors";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		# SOURCE: https://github.com/danth/stylix
+		stylix = {
+			url = "github:danth/stylix/release-24.05";
+			inputs = {
+				home-manager.follows = "home-manager";
+				nixpkgs.follows      = "nixpkgs";
+			};
+		};
+
+		nixpkgsJobber.url    = "github:nixos/nixpkgs/051f920625ab5aabe37c920346e3e69d7d34400e";
+		poetry2nixJobber.url = "github:nix-community/poetry2nix/304f8235fb0729fd48567af34fcd1b58d18f9b95";
 
 		nvimAlign           = { flake = false; url = "github:echasnovski/mini.align"; };
 		nvimAutoclose       = { flake = false; url = "github:m4xshen/autoclose.nvim"; };
