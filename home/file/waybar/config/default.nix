@@ -92,8 +92,10 @@ in {
 		"group/batteryinfo" = {
 			orientation = "horizontal";
 			modules = [
+				"custom/tagbat1"
 				"battery"
 				"custom/powerlimit"
+				"custom/tagbat2"
 			];
 		};
 		pulseaudio = {
@@ -125,12 +127,19 @@ in {
 				"paused" = "";
 			};
 		};
-		cpu = {
-			format          = "{usage}% ({load})";
+		"cpu#usage" = {
+			format          = "{usage}%";
 			interval        = refreshInterval;
 			on-click        = "foot -e bash -c btop";
 			on-click-right  = "powersave toggle";
 			states.critical = 100;
+			tooltip         = false;
+		};
+		"cpu#load" = {
+			format          = "({load})";
+			interval        = refreshInterval;
+			on-click        = "foot -e bash -c btop";
+			on-click-right  = "powersave toggle";
 			tooltip         = false;
 		};
 		memory = {
@@ -160,12 +169,13 @@ in {
 		"group/hardware" = {
 			orientation = "horizontal";
 			modules = [
-				"custom/tag1"
-				"cpu"
+				"custom/taghw1"
+				"cpu#usage"
+				"cpu#load"
 				"temperature"
 				"memory"
 				"custom/powersave"
-				"custom/tag2"
+				"custom/taghw2"
 			];
 		};
 		"custom/display" = {
@@ -176,10 +186,16 @@ in {
 			return-type     = "json";
 			signal          = 4;
 		};
-		"custom/tag1" = {
+		"custom/taghw1" = {
 			exec = "echo ​";
 		};
-		"custom/tag2" = {
+		"custom/taghw2" = {
+			exec = "echo ​";
+		};
+		"custom/tagbat1" = {
+			exec = "echo ​";
+		};
+		"custom/tagbat2" = {
 			exec = "echo ​";
 		};
 	};

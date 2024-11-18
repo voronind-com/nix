@@ -10,13 +10,13 @@ in {
 	# instead of the whole group.
 	text = ''
 		/* See the ISSUE above. */
-		#custom-tag1,
-		#battery {
+		#custom-taghw1,
+		#custom-tagbat1 {
 			padding-left: ${paddingH};
 		}
 
-		#custom-tag2,
-		#custom-powerlimit {
+		#custom-taghw2,
+		#custom-tagbat2 {
 			padding-right: ${paddingH};
 		}
 
@@ -32,6 +32,7 @@ in {
 		}
 
 		/* Padding for combined widgets. */
+		#cpu.load,
 		#custom-powerlimit,
 		#custom-powersave,
 		#memory,
@@ -55,7 +56,7 @@ in {
 
 		/* Critical state. */
 		#battery,
-		#cpu,
+		#cpu.usage,
 		#custom-display,
 		#memory,
 		#pulseaudio,
@@ -66,7 +67,7 @@ in {
 		}
 
 		#battery.critical,
-		#cpu.critical,
+		#cpu.usage.critical,
 		#custom-display.modified,
 		#memory.critical,
 		#pulseaudio.muted,
