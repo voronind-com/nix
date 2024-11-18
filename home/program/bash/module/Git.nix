@@ -61,9 +61,19 @@
 			git commit -m "''${@}"
 		}
 
-		# Git clone (lazy!).
+		# Git clone with tree filter.
+		function gct() {
+			git clone --filter tree:0 ''${@}
+		}
+
+		# Git clone full repo.
+		function gcf() {
+			git clone ''${@}
+		}
+
+		# Git clone latest commit only.
 		function gcl() {
-			git clone --filter tree:0 "''${@}"
+			git clone --depth=1 --single-branch ''${@}
 		}
 
 		# Git signed commit.
