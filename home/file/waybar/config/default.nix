@@ -193,10 +193,10 @@ in {
 			exec = "echo ​";
 		};
 		"custom/tagbat1" = {
-			exec = "echo ​";
+			exec = "[[ -e /sys/class/power_supply/BAT*/capacity ]] && echo ​";
 		};
 		"custom/tagbat2" = {
-			exec = "echo ​";
+			exec = "[[ -e /sys/class/power_supply/BAT*/capacity ]] && echo ​";
 		};
 	};
 }
