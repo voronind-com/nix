@@ -1,3 +1,4 @@
+# GPD pocket-like machine.
 { ... }: {
 	home.nixos.enable = true;
 	user = {
