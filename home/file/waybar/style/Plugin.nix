@@ -11,12 +11,12 @@ in {
 	text = ''
 		/* See the ISSUE above. */
 		#custom-taghw1,
-		#custom-tagbat1 {
+		#custom-tagbt1 {
 			padding-left: ${paddingH};
 		}
 
 		#custom-taghw2,
-		#custom-tagbat2 {
+		#custom-tagbt2 {
 			padding-right: ${paddingH};
 		}
 

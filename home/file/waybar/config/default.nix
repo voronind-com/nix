@@ -58,7 +58,7 @@ in {
 			spacing = 8;
 		};
 		clock = {
-			format-alt     = "{:%d %a %H:%M}";
+			format-alt     = "{:%H:%M %a %d %b}";
 			on-click-right = "xdg-open https://cloud.voronind.com/apps/calendar/";
 			tooltip-format = "<big><tt>{calendar}</tt></big>";
 		};
@@ -92,10 +92,10 @@ in {
 		"group/batteryinfo" = {
 			orientation = "horizontal";
 			modules = [
-				"custom/tagbat1"
+				"custom/tagbt1"
 				"battery"
 				"custom/powerlimit"
-				"custom/tagbat2"
+				"custom/tagbt2"
 			];
 		};
 		pulseaudio = {
@@ -192,11 +192,11 @@ in {
 		"custom/taghw2" = {
 			exec = "echo ​";
 		};
-		"custom/tagbat1" = {
-			exec = "[[ -e /sys/class/power_supply/BAT*/capacity ]] && echo ​";
+		"custom/tagbt1" = {
+			exec = "test -e /sys/class/power_supply/BAT*/capacity && echo ​";
 		};
-		"custom/tagbat2" = {
-			exec = "[[ -e /sys/class/power_supply/BAT*/capacity ]] && echo ​";
+		"custom/tagbt2" = {
+			exec = "test -e /sys/class/power_supply/BAT*/capacity && echo ​";
 		};
 	};
 }
