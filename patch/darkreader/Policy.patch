@@ -1,5 +1,5 @@
 diff --git a/src/background/user-storage.ts b/src/background/user-storage.ts
-index b582fb52e45f..344d21c2988f 100644
+index b582fb5..ca9c0dc 100644
 --- a/src/background/user-storage.ts
 +++ b/src/background/user-storage.ts
 @@ -2,7 +2,7 @@ import {DEFAULT_SETTINGS, DEFAULT_THEME} from '../defaults';
@@ -33,11 +33,17 @@ index b582fb52e45f..344d21c2988f 100644
              }
          }
  
-@@ -115,17 +119,17 @@ export default class UserStorage {
-             UserStorage.migrateAutomationSettings(local);
-             UserStorage.fillDefaults(local);
-             UserStorage.loadBarrier.resolve(local);
+@@ -112,30 +116,30 @@ export default class UserStorage {
+             local.syncSettings = DEFAULT_SETTINGS.syncSettings;
+         }
+         if (!local.syncSettings) {
+-            UserStorage.migrateAutomationSettings(local);
+-            UserStorage.fillDefaults(local);
+-            UserStorage.loadBarrier.resolve(local);
 -            return local;
++            UserStorage.migrateAutomationSettings(managed);
++            UserStorage.fillDefaults(managed);
++            UserStorage.loadBarrier.resolve(managed);
 +            return managed;
          }
  
@@ -48,17 +54,24 @@ index b582fb52e45f..344d21c2988f 100644
              local.syncSettings = false;
              UserStorage.set({syncSettings: false});
              UserStorage.saveSyncSetting(false);
-             UserStorage.loadBarrier.resolve(local);
+-            UserStorage.loadBarrier.resolve(local);
 -            return local;
++            UserStorage.loadBarrier.resolve(managed);
 +            return managed;
          }
  
-         const {errors: syncCfgErrors} = validateSettings($sync);
-@@ -135,7 +139,7 @@ export default class UserStorage {
-         UserStorage.fillDefaults($sync);
+-        const {errors: syncCfgErrors} = validateSettings($sync);
++        const {errors: syncCfgErrors} = validateSettings(managed);
+         syncCfgErrors.forEach((err) => logWarn(err));
  
-         UserStorage.loadBarrier.resolve($sync);
+-        UserStorage.migrateAutomationSettings($sync);
+-        UserStorage.fillDefaults($sync);
++        UserStorage.migrateAutomationSettings(managed);
++        UserStorage.fillDefaults(managed);
+ 
+-        UserStorage.loadBarrier.resolve($sync);
 -        return $sync;
++        UserStorage.loadBarrier.resolve(managed);
 +        return managed;
      }
  
@@ -71,7 +84,7 @@ index b582fb52e45f..344d21c2988f 100644
 +}
 \ No newline at end of file
 diff --git a/src/background/utils/extension-api.ts b/src/background/utils/extension-api.ts
-index ee54807b1f31..70a3cf24a39c 100644
+index ee54807..70a3cf2 100644
 --- a/src/background/utils/extension-api.ts
 +++ b/src/background/utils/extension-api.ts
 @@ -97,6 +97,19 @@ export async function readLocalStorage<T extends {[key: string]: any}>(defaults:
@@ -96,7 +109,7 @@ index ee54807b1f31..70a3cf24a39c 100644
          const value = values[key];
 diff --git a/src/managed-storage.json b/src/managed-storage.json
 new file mode 100644
-index 000000000000..55065e4ff842
+index 0000000..55065e4
 --- /dev/null
 +++ b/src/managed-storage.json
 @@ -0,0 +1,298 @@
@@ -399,7 +412,7 @@ index 000000000000..55065e4ff842
 +  }
 +}
 diff --git a/tasks/bundle-manifest.js b/tasks/bundle-manifest.js
-index ae29531e67b7..f4058a129f52 100644
+index ae29531..f4058a1 100644
 --- a/tasks/bundle-manifest.js
 +++ b/tasks/bundle-manifest.js
 @@ -4,6 +4,7 @@ import {PLATFORM} from './platform.js';
