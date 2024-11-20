@@ -63,7 +63,7 @@
 
 		__findFile = _: p: ./${p};
 
-		findFiles = path: map (f: "${path}/${f}") (
+		ls = path: map (f: "${path}/${f}") (
 			builtins.filter (i: builtins.readFileType "${path}/${i}" == "regular") (
 				builtins.attrNames (builtins.readDir path)
 			)
@@ -104,12 +104,12 @@
 					# HM config.
 					./home/NixOs.nix
 				]
-				++ (self.findFiles ./container)
-				++ (self.findFiles ./host/${system}/${hostname})
-				++ (self.findFiles ./option)
-				++ (self.findFiles ./config)
-				++ (self.findFiles ./overlay)
-				++ (self.findFiles ./system)
+				++ (self.ls ./container)
+				++ (self.ls ./host/${system}/${hostname})
+				++ (self.ls ./option)
+				++ (self.ls ./config)
+				++ (self.ls ./overlay)
+				++ (self.ls ./system)
 				;
 				specialArgs = let
 					pkgs   = nixpkgs.legacyPackages.${system}.pkgs;
@@ -148,7 +148,7 @@
 				{ home-manager.config.stylix.autoEnable = lib.mkForce false; }
 				./home/Android.nix
 			]
-			++ (self.findFiles ./option)
+			++ (self.ls ./option)
 			;
 			extraSpecialArgs = {
 				inherit inputs self pkgsMaster pkgsUnstable;
