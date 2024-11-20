@@ -101,11 +101,11 @@
 	common = (with pkgs; [
 		evince                # Document viewer.
 		gimp                  # Image manipulation program.
+		glib                  # Gnome lib for gvfs mtp usage with Nintendo Switch.
 		gnome-calculator      # Calculator.
 		gparted               # GUI disk utility just in case.
 		jellyfin-media-player # Jellyfin client (self-hosted Netflix).
 		loupe                 # Image viewer.
-		nautilus              # File manager.
 		obs-studio            # Streaming/recording app.
 		onlyoffice-bin        # Office documents app suite.
 		remmina               # RDP app.

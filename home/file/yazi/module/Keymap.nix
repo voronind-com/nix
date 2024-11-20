@@ -28,6 +28,7 @@
 				{ on = [ "g" "r" ]; desc = "Go to root";        run = "cd /"; }
 				{ on = [ "g" "s" ]; desc = "Go to storage";     run = "cd /storage"; }
 				{ on = [ "g" "t" ]; desc = "Go to tmp";         run = "cd ~/tmp"; }
+				{ on = [ "g" "u" ]; desc = "Go to user";        run = "cd /run/user/$UID"; }
 			];
 		};
 	};
