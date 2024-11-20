@@ -34,6 +34,7 @@
 		inetutils          # Things like FTP.
 		iputils            # IP tools.
 		jq                 # Json parser.
+		libjxl             # Jpeg XL.
 		lm_sensors         # Hardware sensors, like temperature and fan speeds.
 		lshw               # Detailed hardware info tool.
 		lsof               # Find current file users.
