@@ -57,7 +57,7 @@
 				return 2
 			fi
 
-			local result=$(nix hash to-sri --type sha256 $(nix-prefetch-url "''${url}"))
+			local result=$(nix hash convert to-sri --type sha256 $(nix-prefetch-url "''${url}"))
 			printf "%s" ''${result} | copy
 			printf "%s\n" ''${result}
 		}
