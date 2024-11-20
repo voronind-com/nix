@@ -64,15 +64,24 @@
 				block = true;
 				run   = openWith "radare2 -c V -w";
 			}];
-			image = [{
-				desc   = "Image";
+			picture = [{
+				desc   = "Picture";
 				orphan = true;
 				run    = openWith "loupe";
 			}];
-			image_edit = [{
-				desc   = "Image Edit";
+			picture_edit = [{
+				desc   = "Picture Edit";
 				orphan = true;
 				run    = openWith "gimp";
+			}];
+			picture_edit_quick = [{
+				desc   = "Picture Quick Edit";
+				orphan = true;
+				run    = openWith "pic_edit";
+			}];
+			picture_copy = [{
+				desc = "Picture Copy";
+				run  = openWith "pic_copy";
 			}];
 			mount = [{
 				desc = "Mount";
@@ -133,7 +142,7 @@
 				(mkMime "application/pdf" [ "pdf" ])
 				(mkMime "audio/*" [ "audio" ])
 				(mkName "*.mka" [ "audio" ])
-				(mkMime "image/*" [ "image" "image_edit" ])
+				(mkMime "image/*" [ "picture" "picture_copy" "picture_edit" "picture_edit_quick" ])
 				(mkMime "video/*" [ "video" ])
 				(mkMime "text/html" [ "browser" ])
 				(mkMime "application/vnd.openxmlformats-officedocument.*" [ "document" ])
