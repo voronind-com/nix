@@ -8,6 +8,7 @@
 			prepend_keymap = [
 				{ on = "<Enter>";   desc = "Spawn shell here";  run = ''shell "SHELL_NAME=yazi $SHELL" --block --confirm''; }
 				{ on = "<Tab>";     desc = "New tab";           run = "tab_create --current"; }
+				{ on = "?";         desc = "Show help";         run = "help"; }
 				{ on = "D";         desc = "Force delete";      run = "remove --permanently --force"; }
 				{ on = "E";         desc = "Move to next tab";  run = "tab_swap 1 --relative"; }
 				{ on = "O";         desc = "Open default";      run = "open"; }

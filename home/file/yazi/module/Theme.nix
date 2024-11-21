@@ -50,10 +50,15 @@ in {
 			tab_active      = mkCounter color.selection;
 		};
 		select = {
-			border = borderLight;
+			active   = select;
+			border   = borderLight;
+			inactive = text;
 		};
 		input = {
-			border = borderLight;
+			border   = borderLight; # ISSUE: Currently broken, stays blue.
+			selected = select;
+			title    = text;
+			value    = text;
 		};
 		completion = {
 			active   = hover;
@@ -61,7 +66,9 @@ in {
 			inactive = text;
 		};
 		tasks = {
-			border = borderLight;
+			border  = borderLight;
+			hovered = hover;
+			title   = text;
 		};
 		which = {
 			cand = text;
@@ -71,6 +78,13 @@ in {
 			rest = text;
 			separator       = " - ";
 			separator_style = text;
+		};
+		help = {
+			desc    = text;
+			footer  = text;
+			hovered = hover;
+			on      = text;
+			run     = text;
 		};
 		confirm = {
 			border = borderLight;
