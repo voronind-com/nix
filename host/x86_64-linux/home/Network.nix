@@ -72,7 +72,7 @@ in {
 			# Allow VPN connections from Wan.
 			# + (mkForward external cfg.vpn.port cfg.vpn.address cfg.vpn.port udp)
 
-			# Nginx HTTP access from Wan.
+			# Nginx HTTP.
 			+ (mkForward external cfg.proxy.port cfg.proxy.address cfg.proxy.port tcp)
 			+ (mkForward internal cfg.proxy.port cfg.proxy.address cfg.proxy.port tcp)
 
@@ -82,12 +82,15 @@ in {
 			+ (mkForward external 54630 cfg.download.address 54630 udp)
 			+ (mkForward external 54631 cfg.download.address 54631 udp)
 
-			# Git ssh connections.
-			+ (mkForward external cfg.git.portSsh cfg.git.address cfg.git.portSsh tcp)
+			# Git SSH connections.
+			# + (mkForward external cfg.git.portSsh cfg.git.address cfg.git.portSsh tcp)
 			+ (mkForward internal cfg.git.portSsh cfg.git.address cfg.git.portSsh tcp)
 
 			# Print serivce.
 			+ (mkForward internal cfg.print.port cfg.print.address cfg.print.port tcp);
+
+			# External SSH access.
+			# + (mkForward external 22143 config.container.host 22143 tcp)
 		};
 
 		# Create Lan bridge.
