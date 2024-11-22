@@ -3,8 +3,7 @@
 		# Convert between different formats.
 		# By default tries to convert all files.
 		# Usage: transcode <FORMAT> [FILES]
-		function transcode() {
-			local IFS=$'\n'
+		function transcode() { local IFS=$'\n'
 			local format=''${1}
 			local targets=(''${@:2})
 			[[ "''${targets}" = "" ]] && targets=($(_ls_file))
@@ -27,10 +26,11 @@
 				[[ -f "''${output}" ]] && { _iterate_skip "Already exists."; return 0; }
 
 				# Support multiple inputs.
-				[[ "''${to}" = "mp3" ]] && from=""
 				[[ "''${to}" = "flac" ]] && from=""
-				[[ "''${to}" = "mka" ]] && from=""
-				[[ "''${to}" = "mkv" ]] && from=""
+				[[ "''${to}" = "jxl"  ]] && from=""
+				[[ "''${to}" = "mka"  ]] && from=""
+				[[ "''${to}" = "mkv"  ]] && from=""
+				[[ "''${to}" = "mp3"  ]] && from=""
 
 				# Send convert.
 				case "''${from}-''${to}" in
@@ -51,6 +51,9 @@
 						;;
 					"-mkv")
 						_transcode_mkv "''${target}" "''${output}"
+						;;
+					"-jxl")
+						_transcode_jxl "''${target}" "''${output}"
 						;;
 					*)
 						_error "Conversion ''${target##*.}-''${to} not supported."
@@ -96,6 +99,10 @@
 
 			# ffmpeg -n -i "''${1}" -c:a libopus -b:a ''${braudio}k -c:v libsvtav1 -crf 30 -svtav1-params "fast-decode=1:tune=0" -preset 8 -pix_fmt yuv420p10le -g ''${keyint} -vf "scale=-2:min'(1080,ih)'" "''${2}"
 			ffmpeg -n -i "''${1}" -map 0 -map -v -map V -map -t -dn -c:s srt -ac 2 -c:a libopus -b:a ''${braudio}k -c:v libsvtav1 -crf 30 -svtav1-params "tune=0" -pix_fmt yuv420p10le -g ''${keyint} -vf "scale=-2:min'(1080,ih)' , fps=''${fps}" "''${2}"
+		}
+
+		function _transcode_jxl() {
+			cjxl -e 10 --lossless_jpeg=1 -- "''${1}" "''${2}"
 		}
 	'';
 }
