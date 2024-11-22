@@ -1,10 +1,4 @@
-{
-	config,
-	...
-}: let
-	accent = config.module.style.color.accent;
-	bg     = config.module.style.color.bg.regular;
-
+{ ... }: let
 	stepHorizontal = 1;
 	stepVertical   = 1;
 in {
@@ -33,8 +27,5 @@ in {
 
 		bind -n M-c kill-pane
 		bind -n M-C kill-pane -a
-
-		set -g pane-border-style        "fg=#${bg}"
-		set -g pane-active-border-style "fg=#${accent}"
 	'';
 }
