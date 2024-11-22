@@ -27,14 +27,14 @@ in {
 			pattern = "*",
 			callback = function ()
 				-- Background.
-				${mkHighlight "CursorLine" bg}
-				${mkHighlight "Pmenu"      bg}
-				${mkHighlight "PmenuExtra" bg}
+				${mkHighlight "CursorLine"         bg}
+				${mkHighlight "Pmenu"              bg}
+				${mkHighlight "PmenuExtra"         bg}
+				${mkHighlight "TelescopeSelection" bg}
 
 				-- Selection.
-				${mkHighlight "Visual"             selection}
-				${mkHighlight "PmenuSel"           selection}
-				${mkHighlight "TelescopeSelection" selection}
+				${mkHighlight "Visual"   selection}
+				${mkHighlight "PmenuSel" selection}
 
 				-- Transparent.
 				${mkHighlight "NormalFloat" transparent}
