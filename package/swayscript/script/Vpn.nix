@@ -2,7 +2,7 @@
 	text = ''
 		# Toggle vpn.
 		function vpn() {
-			_notify_short
+			notify_short
 			if [[ "$(_vpn)" = "on" ]]; then
 				nmcli connection down vpn
 			else

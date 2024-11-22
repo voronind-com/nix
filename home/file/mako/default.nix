@@ -20,7 +20,7 @@ in {
 			margin           = 32;
 			max-history      = max;
 			max-visible      = max;
-			on-notify        = "exec ${pkgs.pipewire}/bin/pw-cat -p ${<static/Notification.ogg>}";
+			on-notify        = "exec swayscript notify";
 			text-color       = "#${config.module.style.color.bg.dark}";
 			width            = 480;
 		};

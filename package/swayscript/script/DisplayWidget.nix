@@ -1,7 +1,7 @@
 { ... }: {
 	text = ''
 		function monitor() {
-			_notify_short
+			notify_short
 			toggle() {
 				local output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
 				local state=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .power')
@@ -23,7 +23,7 @@
 		}
 
 		function gaming() {
-			_notify_short
+			notify_short
 			toggle() {
 				local output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
 				local state=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .adaptive_sync_status')
@@ -45,13 +45,14 @@
 		}
 
 		function dnd() {
-			_notify_short
 			toggle() {
 				local state=$(makoctl mode)
 
 				if [[ "''${state}" = "dnd" ]]; then
 					makoctl mode -s default
+					notify_short
 				else
+					notify_short
 					makoctl mode -s dnd
 				fi
 
