@@ -5,7 +5,7 @@
 }: {
 	config = (pkgs.formats.ini { }).generate "SwappyConfig" {
 		Default = {
-			custom_color = with config.module.style.color; "rgba(${accent-r},${accent-g},${accent-b},1)";
+			custom_color = with config.module.style.color; "rgba(${accentR},${accentG},${accentB},1)";
 			early_exit   = true;
 			fill_shape   = false;
 			line_size    = 4;

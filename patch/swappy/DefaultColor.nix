@@ -4,9 +4,9 @@
 	...
 }: let
 	color = config.module.style.color;
-	accentR = color.accent-dec-r;
-	accentG = color.accent-dec-g;
-	accentB = color.accent-dec-b;
+	accentR = color.accentDecR;
+	accentG = color.accentDecG;
+	accentB = color.accentDecB;
 in {
 	file = pkgs.writeText "SwappyDefaultColorPatch" ''
 diff --git a/src/application.c b/src/application.c

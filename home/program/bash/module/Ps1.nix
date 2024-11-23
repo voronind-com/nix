@@ -2,10 +2,10 @@
 	config,
 	...
 }: let
-	accent   = "${config.module.style.color.accent-r};${config.module.style.color.accent-g};${config.module.style.color.accent-b}";
-	negative = "${config.module.style.color.negative-r};${config.module.style.color.negative-g};${config.module.style.color.negative-b}";
-	neutral  = "${config.module.style.color.neutral-r};${config.module.style.color.neutral-g};${config.module.style.color.neutral-b}";
-	positive = "${config.module.style.color.positive-r};${config.module.style.color.positive-g};${config.module.style.color.positive-b}";
+	accent   = "${config.module.style.color.accentR};${config.module.style.color.accentG};${config.module.style.color.accentB}";
+	negative = "${config.module.style.color.negativeR};${config.module.style.color.negativeG};${config.module.style.color.negativeB}";
+	neutral  = "${config.module.style.color.neutralR};${config.module.style.color.neutralG};${config.module.style.color.neutralB}";
+	positive = "${config.module.style.color.positiveR};${config.module.style.color.positiveG};${config.module.style.color.positiveB}";
 in {
 	text = ''
 		export PROMPT_COMMAND=(__prompt_command "''${PROMPT_COMMAND[@]}")

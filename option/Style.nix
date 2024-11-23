@@ -38,38 +38,34 @@ in {
 				regular = mkStrOption stylix.colors.base05;
 			};
 
-			accent-r = mkStrOption stylix.colors.base0A-rgb-r;
-			accent-g = mkStrOption stylix.colors.base0A-rgb-g;
-			accent-b = mkStrOption stylix.colors.base0A-rgb-b;
+			accentR = mkStrOption stylix.colors.base0A-rgb-r;
+			accentG = mkStrOption stylix.colors.base0A-rgb-g;
+			accentB = mkStrOption stylix.colors.base0A-rgb-b;
 
-			accent-dec-r = mkStrOption stylix.colors.base0A-dec-r;
-			accent-dec-g = mkStrOption stylix.colors.base0A-dec-g;
-			accent-dec-b = mkStrOption stylix.colors.base0A-dec-b;
+			accentDecR = mkStrOption stylix.colors.base0A-dec-r;
+			accentDecG = mkStrOption stylix.colors.base0A-dec-g;
+			accentDecB = mkStrOption stylix.colors.base0A-dec-b;
 
-			bg-r = mkStrOption stylix.colors.base00-rgb-r;
-			bg-g = mkStrOption stylix.colors.base00-rgb-g;
-			bg-b = mkStrOption stylix.colors.base00-rgb-b;
+			bgR = mkStrOption stylix.colors.base00-rgb-r;
+			bgG = mkStrOption stylix.colors.base00-rgb-g;
+			bgB = mkStrOption stylix.colors.base00-rgb-b;
 
 			border   = mkStrOption stylix.colors.base01;
-			border-r = mkStrOption stylix.colors.base01-rgb-r;
-			border-g = mkStrOption stylix.colors.base01-rgb-g;
-			border-b = mkStrOption stylix.colors.base01-rgb-b;
+			borderR = mkStrOption stylix.colors.base01-rgb-r;
+			borderG = mkStrOption stylix.colors.base01-rgb-g;
+			borderB = mkStrOption stylix.colors.base01-rgb-b;
 
-			fg-r = mkStrOption stylix.colors.base06-rgb-r;
-			fg-g = mkStrOption stylix.colors.base06-rgb-g;
-			fg-b = mkStrOption stylix.colors.base06-rgb-b;
+			negativeR = mkStrOption stylix.colors.base08-rgb-r;
+			negativeG = mkStrOption stylix.colors.base08-rgb-g;
+			negativeB = mkStrOption stylix.colors.base08-rgb-b;
 
-			negative-r = mkStrOption stylix.colors.base08-rgb-r;
-			negative-g = mkStrOption stylix.colors.base08-rgb-g;
-			negative-b = mkStrOption stylix.colors.base08-rgb-b;
+			neutralR = mkStrOption stylix.colors.base0C-rgb-r;
+			neutralG = mkStrOption stylix.colors.base0C-rgb-g;
+			neutralB = mkStrOption stylix.colors.base0C-rgb-b;
 
-			neutral-r = mkStrOption stylix.colors.base0C-rgb-r;
-			neutral-g = mkStrOption stylix.colors.base0C-rgb-g;
-			neutral-b = mkStrOption stylix.colors.base0C-rgb-b;
-
-			positive-r = mkStrOption stylix.colors.base0B-rgb-r;
-			positive-g = mkStrOption stylix.colors.base0B-rgb-g;
-			positive-b = mkStrOption stylix.colors.base0B-rgb-b;
+			positiveR = mkStrOption stylix.colors.base0B-rgb-r;
+			positiveG = mkStrOption stylix.colors.base0B-rgb-g;
+			positiveB = mkStrOption stylix.colors.base0B-rgb-b;
 
 			transparent = mkStrOption "ffffff00";
 		};

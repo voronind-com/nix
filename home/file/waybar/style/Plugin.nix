@@ -51,7 +51,7 @@ in {
 		#scratchpad:hover,
 		#tray:hover,
 		#workspaces button:hover {
-			background-color: rgba(${config.module.style.color.border-r},${config.module.style.color.border-g},${config.module.style.color.border-b},${toString config.module.style.opacity.desktop});
+			background-color: rgba(${config.module.style.color.borderR},${config.module.style.color.borderG},${config.module.style.color.borderB},${toString config.module.style.opacity.desktop});
 		}
 
 		/* Critical state. */
