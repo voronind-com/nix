@@ -79,7 +79,7 @@ in {
 			});
 			# name = mkStrOption "Fuchsia-Custom";
 			name = mkStrOption "GoogleDot-Custom";
-			size = mkIntOption 18;
+			size = mkIntOption 22;
 		};
 
 		font = {
