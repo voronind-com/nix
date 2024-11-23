@@ -42,6 +42,10 @@ in {
 			accent-g = mkStrOption stylix.colors.base0A-rgb-g;
 			accent-b = mkStrOption stylix.colors.base0A-rgb-b;
 
+			accent-dec-r = mkStrOption stylix.colors.base0A-dec-r;
+			accent-dec-g = mkStrOption stylix.colors.base0A-dec-g;
+			accent-dec-b = mkStrOption stylix.colors.base0A-dec-b;
+
 			bg-r = mkStrOption stylix.colors.base00-rgb-r;
 			bg-g = mkStrOption stylix.colors.base00-rgb-g;
 			bg-b = mkStrOption stylix.colors.base00-rgb-b;
