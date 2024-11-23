@@ -12,7 +12,7 @@
 			paint_mode   = "arrow";
 			show_panel   = false;
 			text_font    = config.module.style.font.serif.name;
-			text_size    = config.module.style.font.size.popup;
+			text_size    = config.module.style.font.size.popup * 3;
 		};
 	};
 }
