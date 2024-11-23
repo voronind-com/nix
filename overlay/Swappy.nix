@@ -2,7 +2,6 @@
 	__findFile,
 	config,
 	pkgs,
-	util,
 	...
 } @args: {
 	# SEE: https://github.com/jtheoof/swappy/issues/131
