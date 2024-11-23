@@ -4,12 +4,11 @@
 		# You can send windows there and get them back later.
 		# NOTE: Get id with `swaymsg -t get_tree`.
 
-		# Move the currently focused window to the scratchpad
-		bindsym $mod+shift+C move scratchpad
-
 		# Show the next scratchpad window or hide the focused scratchpad window.
 		# If there are multiple scratchpad windows, this command cycles through them.
-		bindsym $mod+c scratchpad show
+		bindsym --to-code $mod+c scratchpad show
+		bindsym --to-code $mod+shift+C move scratchpad
+		bindsym --to-code $mod+shift+X exec swayscript scratchpad_kill
 
 		# Fix for a goddamn Firefox WebRTC indicator.
 		for_window [app_id="firefox" title="Firefox — Sharing Indicator"] {
