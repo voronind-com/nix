@@ -11,7 +11,7 @@ in {
 	file = (pkgs.formats.iniWithGlobalSection { }).generate "MakoConfig" {
 		globalSection = {
 			anchor           = "top-center";
-			background-color = "#${color.hl}${alpha}";
+			background-color = "#${color.highlight}${alpha}";
 			border-color     = "#${color.border}${alpha}";
 			default-timeout  = 10000;
 			font             = "${config.module.style.font.serif.name} ${toString config.module.style.font.size.popup}";

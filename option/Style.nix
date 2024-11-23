@@ -19,7 +19,7 @@ in {
 		color = {
 			accent    = mkStrOption stylix.colors.base0A;
 			heading   = mkStrOption stylix.colors.base0D;
-			hl        = mkStrOption stylix.colors.base03;
+			highlight = mkStrOption stylix.colors.base03;
 			keyword   = mkStrOption stylix.colors.base0E;
 			link      = mkStrOption stylix.colors.base09;
 			misc      = mkStrOption stylix.colors.base0F;

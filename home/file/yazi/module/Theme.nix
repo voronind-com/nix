@@ -44,7 +44,7 @@ in {
 			hovered         = hover;
 			marker_copied   = mkMarker color.accent;
 			marker_cut      = mkMarker color.accent;
-			marker_marked   = mkMarker color.hl;
+			marker_marked   = mkMarker color.highlight;
 			marker_selected = mkMarker color.selection;
 			preview_hovered = hover;
 			tab_active      = mkCounter color.selection;
