@@ -73,7 +73,7 @@ in {
 
 		cursor = {
 			package = mkPkgOption (inputs.nix-cursors.packages.${pkgs.system}.google-cursor.override {
-				accent_color     = "#${cfg.color.accent}";
+				accent_color     = "#${cfg.color.fg.light}";
 				background_color = "#${cfg.color.fg.light}";
 				outline_color    = "#${cfg.color.border}";
 			});
