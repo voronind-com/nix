@@ -77,9 +77,20 @@ in {
 				background_color = "#${cfg.color.fg.light}";
 				outline_color    = "#${cfg.color.border}";
 			});
-			# name = mkStrOption "Fuchsia-Custom";
 			name = mkStrOption "GoogleDot-Custom";
 			size = mkIntOption 22;
+
+			# package = mkPkgOption (inputs.nix-cursors.packages.${pkgs.system}.fuchsia-cursor.override {
+			# 	accent_color     = "#${cfg.color.accent}";
+			# 	background_color = "#${cfg.color.fg.light}";
+			# 	outline_color    = "#${cfg.color.border}";
+			# });
+			# name = mkStrOption "Fuchsia-Custom";
+			# size = mkIntOption 16;
+
+			# name    = mkStrOption "phinger-cursors-light";
+			# package = mkPkgOption pkgs.phinger-cursors;
+			# size    = mkIntOption 24;
 		};
 
 		font = {
