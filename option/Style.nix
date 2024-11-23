@@ -2,6 +2,7 @@
 {
 	__findFile,
 	config,
+	inputs,
 	lib,
 	pkgs,
 	...
@@ -71,9 +72,14 @@ in {
 		};
 
 		cursor = {
-			name    = mkStrOption "phinger-cursors-light";
-			package = mkPkgOption pkgs.phinger-cursors;
-			size    = mkIntOption 24;
+			package = mkPkgOption (inputs.nix-cursors.packages.${pkgs.system}.google-cursor.override {
+				accent_color     = "#${cfg.color.accent}";
+				background_color = "#${cfg.color.fg.light}";
+				outline_color    = "#${cfg.color.border}";
+			});
+			# name = mkStrOption "Fuchsia-Custom";
+			name = mkStrOption "GoogleDot-Custom";
+			size = mkIntOption 18;
 		};
 
 		font = {

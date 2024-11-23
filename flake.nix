@@ -4,15 +4,15 @@
 		nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
 		nixpkgsMaster.url   = "github:nixos/nixpkgs/master";
 
-		home-manager = {
-			url = "github:nix-community/home-manager";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
 		stylix.url = "github:danth/stylix";
 
 		nixpkgsJobber.url    = "github:nixos/nixpkgs/051f920625ab5aabe37c920346e3e69d7d34400e";
 		poetry2nixJobber.url = "github:nix-community/poetry2nix/304f8235fb0729fd48567af34fcd1b58d18f9b95";
+
+		home-manager = {
+			url = "github:nix-community/home-manager";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 
 		nix-on-droid = {
 			url = "github:t184256/nix-on-droid/release-24.05";
@@ -20,6 +20,11 @@
 				home-manager.follows = "home-manager";
 				nixpkgs.follows      = "nixpkgs";
 			};
+		};
+
+		nix-cursors = {
+			url = "github:LilleAila/nix-cursors";
+			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
 		nvimAlign           = { flake = false; url = "github:echasnovski/mini.align"; };
