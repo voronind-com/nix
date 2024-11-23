@@ -57,7 +57,7 @@ in {
 		input = {
 			border   = borderLight; # ISSUE: Currently broken, stays blue.
 			selected = select;
-			title    = text;
+			title    = borderLight;
 			value    = text;
 		};
 		completion = {
@@ -68,7 +68,7 @@ in {
 		tasks = {
 			border  = borderLight;
 			hovered = hover;
-			title   = text;
+			title   = borderLight;
 		};
 		which = {
 			cand = text;
