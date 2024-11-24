@@ -35,6 +35,14 @@ in {
 
 		firewall = {
 			enable = true;
+			allowPing = true;
+			rejectPackets = false; # Drop.
+
+			logRefusedConnections  = false;
+			logReversePathDrops    = false;
+			logRefusedPackets      = false;
+			logRefusedUnicastsOnly = true;
+
 			extraCommands = let
 				# Container configs.
 				cfg = config.container.module;
