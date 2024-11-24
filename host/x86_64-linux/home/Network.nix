@@ -1,3 +1,8 @@
+# 10.0.0.0/24    - wired clients.
+# 10.1.0.0/24    - containers.
+# 10.1.1.0/24    - vpn clients.
+# 192.168.1.0/24 - 5G   wireless clients.
+# 192.168.2.0/24 - 2.4G wireless clients.
 {
 	config,
 	lib,
@@ -45,7 +50,8 @@ in {
 				iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -d 0/0 -o ${wan} -j MASQUERADE
 
 				# Full access from VPN clients.
-				iptables -I INPUT -j ACCEPT -s ${cfg.vpn.address} -d ${internal}
+				# iptables -I INPUT -j ACCEPT -s ${cfg.vpn.address} -d ${internal}
+				iptables -I INPUT -j ACCEPT -s 10.1.1.0/24 -d ${internal}
 				iptables -I INPUT -j ACCEPT -s ${cfg.frkn.address} -d ${internal}
 
 				# Full access from Lan.
@@ -69,8 +75,8 @@ in {
 			+ (mkForward internal cfg.frkn.torport  cfg.frkn.address cfg.frkn.torport  udp)
 			+ (mkForward internal cfg.frkn.xrayport cfg.frkn.address cfg.frkn.xrayport udp)
 
-			# Allow VPN connections from Wan.
-			# + (mkForward external cfg.vpn.port cfg.vpn.address cfg.vpn.port udp)
+			# VPN connections.
+			+ (mkForward external cfg.vpn.port cfg.vpn.address cfg.vpn.port udp)
 
 			# Nginx HTTP.
 			+ (mkForward external cfg.proxy.port cfg.proxy.address cfg.proxy.port tcp)
@@ -89,7 +95,7 @@ in {
 			# Print serivce.
 			+ (mkForward internal cfg.print.port cfg.print.address cfg.print.port tcp);
 
-			# External SSH access.
+			# SSH access.
 			# + (mkForward external 22143 config.container.host 22143 tcp)
 		};
 

@@ -43,10 +43,13 @@
 		neovim             # Text editor.
 		nmap               # Network scanning.
 		openssh            # Ssh client.
+		openssl            # Cryptography.
+		openvpn            # Vpn client.
 		parallel           # Run programs in parallel.
 		parted             # CLI disk partition tool.
 		powertop           # Monitor power usage.
 		pv                 # IO progress bar.
+		qrencode           # Generate QR codes.
 		radare2            # Hex editor.
 		ripgrep            # Better grep.
 		rsync              # File copy tool.

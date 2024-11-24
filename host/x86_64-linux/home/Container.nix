@@ -28,6 +28,7 @@
 			search.enable   = true;
 			status.enable   = true;
 			stock.enable    = true;
+			vpn.enable      = true;
 			watch.enable    = true;
 			yt.enable       = true;
 		};
