@@ -50,8 +50,7 @@ in {
 				iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -d 0/0 -o ${wan} -j MASQUERADE
 
 				# Full access from VPN clients.
-				# iptables -I INPUT -j ACCEPT -s ${cfg.vpn.address} -d ${internal}
-				iptables -I INPUT -j ACCEPT -s 10.1.1.0/24 -d ${internal}
+				iptables -I INPUT -j ACCEPT -s ${cfg.vpn.clients} -d ${internal}
 				iptables -I INPUT -j ACCEPT -s ${cfg.frkn.address} -d ${internal}
 
 				# Full access from Lan.
@@ -89,13 +88,13 @@ in {
 			+ (mkForward external 54631 cfg.download.address 54631 udp)
 
 			# Git SSH connections.
-			# + (mkForward external cfg.git.portSsh cfg.git.address cfg.git.portSsh tcp)
+			+ (mkForward external cfg.git.portSsh cfg.git.address cfg.git.portSsh tcp)
 			+ (mkForward internal cfg.git.portSsh cfg.git.address cfg.git.portSsh tcp)
 
 			# Print serivce.
 			+ (mkForward internal cfg.print.port cfg.print.address cfg.print.port tcp);
 
-			# SSH access.
+			# SSH access from WAN.
 			# + (mkForward external 22143 config.container.host 22143 tcp)
 		};
 

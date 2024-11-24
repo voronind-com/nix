@@ -17,7 +17,7 @@ in {
 			location / {
 				allow ${config.container.localAccess};
 				allow ${config.container.module.status.address};
-				allow ${config.container.module.vpn.address};
+				allow ${config.container.module.vpn.clients};
 				allow ${config.container.module.frkn.address};
 				deny all;
 				proxy_pass http://''$${name}$request_uri;

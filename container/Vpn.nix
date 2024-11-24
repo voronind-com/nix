@@ -30,6 +30,10 @@ in {
 			default = "${config.container.storage}/vpn";
 			type    = lib.types.str;
 		};
+		clients = lib.mkOption {
+			default = "10.1.1.0/24";
+			type    = lib.types.str;
+		};
 	};
 
 	config = lib.mkIf cfg.enable {
@@ -38,14 +42,14 @@ in {
 		];
 
 		# HACK: When using `networking.interfaces.*` it breaks. This works tho.
-		systemd.services.vpn-route = {
+		systemd.services.vpn-route = util.mkStaticSystemdService {
 			enable = true;
 			description = "Hack vpn routes on host";
 			after    = [ "container@vpn.service" ];
 			wants    = [ "container@vpn.service" ];
 			wantedBy = [ "multi-user.target" ];
 			serviceConfig = {
-				ExecStart = "${pkgs.iproute2}/bin/ip route add 10.1.1.0/24 via ${cfg.address} dev ve-vpn";
+				ExecStart = "${pkgs.iproute2}/bin/ip route add ${cfg.clients} via ${cfg.address} dev ve-vpn";
 				Type      = "oneshot";
 			};
 		};
