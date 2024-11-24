@@ -79,6 +79,7 @@ in {
 						uid = 1000;
 					};
 				};
+				# NOTE: Change the `server` to match `cfg.clients` or write a substring here.
 				services.openvpn.servers.vpn = {
 					autoStart = true;
 					config = util.trimTabs ''
