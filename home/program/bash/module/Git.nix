@@ -123,22 +123,34 @@
 			git ls-files -ci --exclude-standard -z | xargs -0 git rm --cached
 		}
 
-		# Git patch create.
-		# Usage: gpc > <FILE>
-		function gpc() {
-			git diff --staged --patch --binary
+		# Git patch from staged diff.
+		# Usage: gpd
+		function gpd() {
+			git diff --staged --patch --binary --minimal
 		}
 
-		# Git patch (apply).
-		# Usage: gp <FILE>
-		function gp() {
+		# Git patch from commit.
+		# Usage: gpc [REF] [COUNT]
+		function gpc() {
+			local ref="''${1}"
+			local count="''${2}"
+			[[ "''${ref}" = "" ]] && ref="HEAD"
+			[[ "''${count}" = "" ]] && count=1
+			git format-patch --stdout --minimal --patch --binary -''${count} "''${ref}"
+		}
+
+		# Git patch apply.
+		# Usage: gpa <FILE>
+		function gpa() {
 			git apply --index "''${@}"
 		}
 
 		# Unstage changes.
-		# Usage: grs <FILES>
+		# Usage: grs [FILES]
 		function grs() {
-			git restore --staged "''${@}"
+			local target=''${@}
+			[[ "''${target}" = "" ]] && target="."
+			git restore --staged "''${target}"
 		}
 
 		# Run git garbage collection.
@@ -155,10 +167,7 @@
 		# Usage: ga [FILES]
 		function ga() {
 			local target=''${@}
-
-			if [[ "''${target}" = "" ]]; then
-				target="."
-			fi
+			[[ "''${target}" = "" ]] && target="."
 
 			git diff ''${target}
 			git add ''${target}
