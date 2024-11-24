@@ -18,12 +18,12 @@ index 66013b3..9c88f84 100644
 
  .color-box .color-green image {
 -  background-color: rgb(0, 255, 0);
-+  background-color: rgb(0, 0, 0);
++  background-color: rgb(255, 255, 255);
  }
 
  .color-box .color-blue image {
 -  background-color: rgb(0, 0, 255);
-+  background-color: rgb(255, 255, 255);
++  background-color: rgb(0, 0, 0);
  }
 diff --git a/src/application.c b/src/application.c
 index 5b98590..5c7e99c 100644
