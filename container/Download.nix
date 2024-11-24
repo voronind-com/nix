@@ -55,7 +55,7 @@ in {
 					systemd.services.deluged.serviceConfig = {
 						MemoryLimit   = cfg.memLimit;
 						Restart       = lib.mkForce "always";
-						RuntimeMaxSec = "6h";
+						RuntimeMaxSec = "3h";
 					};
 				};
 		};
