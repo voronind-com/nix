@@ -17,6 +17,7 @@
 	select = {
 		bg = "#${color.selection}";
 		fg = "#${color.fg.dark}";
+		bold = true;
 	};
 	text = {
 		fg = "#${color.fg.light}";
