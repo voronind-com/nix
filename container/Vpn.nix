@@ -2,6 +2,7 @@
 # easyrsa --days=36500 build-ca
 # easyrsa --days=36500 build-server-full <SERVER_NAME> nopass
 # easyrsa --days=36500 build-client-full <CLIENT_NAME> nopass
+# easyrsa gen-crl
 # openssl dhparam -out dh2048.pem 2048
 # Don't forget to set tls hostname on the client to match SERVER_NAME *AND* disable ipv6 ?
 
@@ -91,6 +92,7 @@ in {
 						ca /data/pki/ca.crt
 						cert /data/pki/issued/home.crt
 						client-to-client
+						crl-verify /data/pki/crl.pem
 						dev tun
 						dh /data/dh2048.pem
 						explicit-exit-notify 1
