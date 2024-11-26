@@ -4,9 +4,9 @@
 	lib,
 	...
 }: let
-	url    = "https://i.imgur.com/4W9pdaz.jpeg";
-	sha256 = "sha256-p7GmF/0LN6LcilH6rgJh2/d/c+4FQ3tXhhb9S+LEVjA=";
-	forceContrastText = false;
+	url    = "https://i.imgur.com/LIfflTM.jpeg";
+	sha256 = "sha256-Clrk3x9oFBizYLcV7B2dWLD7BhsX2iuwH/8pk0lTJUI=";
+	forceContrastText = true;
 in {
 	options.module.wallpaper = {
 		forceContrastText = lib.mkOption {
