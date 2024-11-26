@@ -11,7 +11,7 @@ in {
 	# ISSUE: No way to specify `choose` mode style.
 	# SEE: https://github.com/tmux/tmux/issues/4264
 	text = ''
-		set -g mode-style "fg=#${selectionFg} bg=#${selectionBg} bold"
+		set -g mode-style "fg=#${fg} bg=#${bg} bold"
 
 		setw -g window-status-current-style "fg=#${accent} bold"
 		setw -g window-status-style ""
@@ -30,5 +30,8 @@ in {
 
 		set -g display-panes-colour        "#${bg}"
 		set -g display-panes-active-colour "#${accent}"
+
+		set -g copy-mode-position-style  "fg=#${selectionBg} bg=#${selectionFg} bold"
+		set -g copy-mode-selection-style "fg=#${selectionFg} bg=#${selectionBg} bold"
 	'';
 }
