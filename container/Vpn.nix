@@ -1,8 +1,7 @@
-# easyrsa init-pki
-# easyrsa build-ca
-# easyrsa build-server-full <SERVER_NAME> nopass
-# export EASYRSA_CERT_EXPIRE=36500
-# easyrsa build-client-full <CLIENT_NAME> nopass
+# easyrsa --days=36500 init-pki
+# easyrsa --days=36500 build-ca
+# easyrsa --days=36500 build-server-full <SERVER_NAME> nopass
+# easyrsa --days=36500 build-client-full <CLIENT_NAME> nopass
 # openssl dhparam -out dh2048.pem 2048
 # Don't forget to set tls hostname on the client to match SERVER_NAME *AND* disable ipv6 ?
 # SEE: https://github.com/OpenVPN/openvpn/blob/master/sample/sample-config-files/server.conf
