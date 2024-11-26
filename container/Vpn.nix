@@ -4,6 +4,11 @@
 # easyrsa --days=36500 build-client-full <CLIENT_NAME> nopass
 # openssl dhparam -out dh2048.pem 2048
 # Don't forget to set tls hostname on the client to match SERVER_NAME *AND* disable ipv6 ?
+
+# easyrsa revoke <CLIENT_NAME>
+# easyrsa gen-crl
+# restart container
+
 # SEE: https://github.com/OpenVPN/openvpn/blob/master/sample/sample-config-files/server.conf
 # SRC: https://github.com/TinCanTech/easy-tls
 {
