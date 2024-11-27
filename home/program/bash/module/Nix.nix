@@ -51,13 +51,15 @@
 		# Usage: prefetch <URL>
 		function prefetch() {
 			local url="''${1}"
+			local name="''${1##*/}"
+			name=$(parse_alnum "''${name%%\?*}")
 
 			if [[ "''${url}" = "" ]]; then
 				help prefetch
 				return 2
 			fi
 
-			local result=$(nix hash convert --to sri --hash-algo sha256 $(nix-prefetch-url "''${url}"))
+			local result=$(nix hash convert --to sri --hash-algo sha256 $(nix-prefetch-url --name "''${name}" "''${url}"))
 			printf "%s" ''${result} | copy
 			printf "%s\n" ''${result}
 		}
