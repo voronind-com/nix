@@ -20,7 +20,7 @@ in {
 	services.openssh.openFirewall = false;
 
 	# NOTE: Debugging.
-	systemd.services."systemd-networkd".environment.SYSTEMD_LOG_LEVEL = "debug";
+	# systemd.services."systemd-networkd".environment.SYSTEMD_LOG_LEVEL = "debug";
 
 	# Wan configuration.
 	systemd.network = {
