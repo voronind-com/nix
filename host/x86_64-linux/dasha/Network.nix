@@ -5,8 +5,7 @@
 				matchConfig.Name = "enp5s0";
 				linkConfig.RequiredForOnline = "routable";
 				networkConfig = {
-					DHCP = "ipv4";
-					DNS = "10.0.0.1";
+					DHCP = "yes";
 					IPv6AcceptRA = true;
 				};
 				address = [
