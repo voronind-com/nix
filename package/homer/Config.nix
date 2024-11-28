@@ -26,10 +26,9 @@
 			(mkLink "YouTube"  "fab fa-youtube"   "https://${config.container.module.yt.domain}")
 		])
 		(mkGroup "System" "fa-shield" [
-			(mkLink "Camera"       "fa-camera"    "https://camera.${config.container.domain}")
-			(mkLink "NixOS Search" "fa-snowflake" "https://search.nixos.org")
-			(mkLink "Printer"      "fa-print"     "https://printer.${config.container.domain}")
-			(mkLink "Router"       "fa-route"     "https://router.${config.container.domain}")
+			(mkLink "Camera"  "fa-camera" "https://camera.${config.container.domain}")
+			(mkLink "Printer" "fa-print"  "https://printer.${config.container.domain}")
+			(mkLink "Router"  "fa-route"  "https://router.${config.container.domain}")
 		])
 		(mkGroup "Bookmark" "fa-bookmark" [
 			(mkLink "2gis"        "fa-map-location-dot" "https://2gis.ru")
