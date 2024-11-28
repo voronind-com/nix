@@ -47,7 +47,7 @@ in {
 			"data"
 		];
 
-		# HACK: When using `networking.interfaces.*` it breaks. This works tho.
+		# HACK: I have no idea how to fully manage the container interface via networkd, so just add a route manually.
 		systemd.services.vpn-route = util.mkStaticSystemdService {
 			enable = true;
 			description = "Hack vpn routes on host";
@@ -55,9 +55,11 @@ in {
 			wants    = [ "container@vpn.service" ];
 			wantedBy = [ "multi-user.target" ];
 			serviceConfig = {
-				ExecStart = "${pkgs.iproute2}/bin/ip route add ${cfg.clients} via ${cfg.address} dev ve-vpn";
-				Type      = "oneshot";
+				Type = "oneshot";
 			};
+			script = ''
+				${pkgs.iproute2}/bin/ip route add ${cfg.clients} via ${cfg.address} dev ve-vpn || true
+			'';
 		};
 
 		containers.vpn = container.mkContainer cfg {

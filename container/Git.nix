@@ -105,6 +105,24 @@ in {
 						};
 					};
 				};
+
+				systemd = {
+					services = {
+						forgejo = {
+							serviceConfig.PrivateNetwork = lib.mkForce false;
+							wantedBy = lib.mkForce [ ];
+						};
+					};
+					timers.fixsystemd = {
+						timerConfig = {
+							OnBootSec = 5;
+							Unit = "forgejo.service";
+						};
+						wantedBy = [
+							"timers.target"
+						];
+					};
+				};
 			};
 		};
 	};

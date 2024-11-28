@@ -7,7 +7,15 @@
 	};
 
 	networking = {
-		networkmanager.enable = true;
 		dhcpcd.enable = false;
+		networkmanager = {
+			enable = true;
+			unmanaged = [
+				"bridge"
+				"ethernet"
+				"loopback"
+				"wireguard"
+			];
+		};
 	};
 }

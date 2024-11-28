@@ -1,4 +1,4 @@
-# 10.0.0.0/24    - wired clients.
+# 10.0.0.0/24    - wired clients (lan).
 # 10.1.0.0/24    - containers.
 # 10.1.1.0/24    - vpn clients.
 # 192.168.1.0/24 - 5G   wireless clients.
@@ -19,20 +19,82 @@ in {
 	# Disable SSH access from everywhere, configure access bellow.
 	services.openssh.openFirewall = false;
 
+	# NOTE: Debugging.
+	systemd.services."systemd-networkd".environment.SYSTEMD_LOG_LEVEL = "debug";
+
+	# Wan configuration.
+	systemd.network = {
+		networks = {
+			"10-${wan}" = {
+				matchConfig.Name = wan;
+				linkConfig.RequiredForOnline = "carrier";
+				dhcpV4Config = {
+					UseDNS = false;
+					UseRoutes = true;
+					ClientIdentifier = "mac";
+				};
+				dhcpV6Config = {
+					UseDNS = false;
+				};
+				networkConfig = {
+					DHCP = "yes";
+					DNS = "1.1.1.1";
+					IPv6AcceptRA = true;
+				};
+			};
+			"20-enp6s0f0" = {
+				matchConfig.Name = "enp6s0f0";
+				networkConfig.Bridge = lan;
+				linkConfig.RequiredForOnline = "enslaved";
+			};
+			"20-enp6s0f1" = {
+				matchConfig.Name = "enp6s0f1";
+				networkConfig.Bridge = lan;
+				linkConfig.RequiredForOnline = "enslaved";
+			};
+			"20-enp7s0f0" = {
+				matchConfig.Name = "enp7s0f0";
+				networkConfig.Bridge = lan;
+				linkConfig.RequiredForOnline = "enslaved";
+			};
+			"20-enp7s0f1" = {
+				matchConfig.Name = "enp7s0f1";
+				networkConfig.Bridge = lan;
+				linkConfig.RequiredForOnline = "enslaved";
+			};
+			"30-${lan}" = {
+				matchConfig.Name = lan;
+				bridgeConfig = {};
+				linkConfig.RequiredForOnline = "carrier";
+				address = [
+					"10.0.0.1/24"
+				];
+				routes = [
+					# Wifi 5G clients.
+					{ routeConfig = {
+						Gateway = wifi;
+						Destination = "192.168.1.0/24";
+					}; }
+					# Wifi 2G clients.
+					{ routeConfig = {
+						Gateway = wifi;
+						Destination = "192.168.2.0/24";
+					}; }
+				];
+			};
+		};
+
+		netdevs = {
+			"10-${lan}" = {
+				netdevConfig = {
+					Kind = "bridge";
+					Name = lan;
+				};
+			};
+		};
+	};
+
 	networking = {
-		# Use only external DNS.
-		networkmanager.insertNameservers = [
-			"1.1.1.1"
-			"8.8.8.8"
-		];
-
-		# Some extra hosts for local access.
-		extraHosts = with config.container.module; (util.trimTabs ''
-			${git.address} git.voronind.com
-			${proxy.address} iot.voronind.com
-			${proxy.address} pass.voronind.com
-		'');
-
 		firewall = {
 			enable = true;
 			allowPing = true;
@@ -104,42 +166,6 @@ in {
 
 			# SSH access from WAN.
 			# + (mkForward external 22143 config.container.host 22143 tcp)
-		};
-
-		# Create Lan bridge.
-		bridges.${lan}.interfaces = [
-			"enp6s0f0"
-			"enp6s0f1"
-			"enp7s0f0"
-			"enp7s0f1"
-		];
-
-		interfaces = {
-			${lan}.ipv4 = {
-				# Assign Lan address and subnet.
-				addresses = [
-					{
-						address = internal;
-						prefixLength = 24;
-					}
-				];
-
-				# Assign traffic routes.
-				routes = [
-					# Wifi 5G clients.
-					{
-						address      = "192.168.1.0";
-						prefixLength = 24;
-						via          = wifi;
-					}
-					# Wifi 2.4G clients.
-					{
-						address      = "192.168.2.0";
-						prefixLength = 24;
-						via          = wifi;
-					}
-				];
-			};
 		};
 	};
 }

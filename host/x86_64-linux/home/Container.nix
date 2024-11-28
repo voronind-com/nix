@@ -1,8 +1,12 @@
 { ... }: {
 	container = {
-		enable    = true;
-		autoStart = true;
-
+		enable      = true;
+		autoStart   = true;
+		domain      = "voronind.com";
+		host        = "188.242.247.132";
+		interface   = "enp8s0";
+		localAccess = "10.0.0.0/24";
+		storage     = "/storage/hot/container";
 		module = {
 			change.enable   = true;
 			cloud.enable    = true;
@@ -32,12 +36,6 @@
 			watch.enable    = true;
 			yt.enable       = true;
 		};
-
-		domain      = "voronind.com";
-		host        = "188.242.247.132";
-		interface   = "enp8s0";
-		localAccess = "10.0.0.0/24";
-		storage     = "/storage/hot/container";
 		media = {
 			anime = [
 				"/storage/cold_1/anime"
