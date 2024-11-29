@@ -40,7 +40,7 @@ in {
 				networkConfig = {
 					DHCP = "yes";
 					DNS  = "1.1.1.1";
-					IPv6AcceptRA = false;
+					IPv6AcceptRA = true;
 					IPv6SendRA   = false;
 					DHCPPrefixDelegation = true;
 				};
@@ -92,7 +92,7 @@ in {
 				networkConfig = {
 					DHCPPrefixDelegation = true;
 					IPv6AcceptRA = false;
-					IPv6SendRA = true;
+					IPv6SendRA   = true;
 				};
 				ipv6SendRAConfig = {
 					# EmitDNS = false;
