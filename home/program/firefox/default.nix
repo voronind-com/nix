@@ -91,6 +91,9 @@
 
 		# Style.
 		(mkLockedPref "toolkit.legacyUserProfileCustomizations.stylesheets" true)
+
+		# Prefer IPv6.
+		(mkLockedPref "network.dns.preferIPv6" true)
 	];
 
 	userChrome = ''

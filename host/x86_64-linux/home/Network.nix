@@ -20,7 +20,7 @@ in {
 	services.openssh.openFirewall = false;
 
 	# NOTE: Debugging.
-	# systemd.services."systemd-networkd".environment.SYSTEMD_LOG_LEVEL = "debug";
+	systemd.services."systemd-networkd".environment.SYSTEMD_LOG_LEVEL = "debug";
 
 	# Wan configuration.
 	systemd.network = {
@@ -29,38 +29,49 @@ in {
 				matchConfig.Name = wan;
 				linkConfig.RequiredForOnline = "carrier";
 				dhcpV4Config = {
-					UseDNS = false;
-					UseRoutes = true;
 					ClientIdentifier = "mac";
+					UseDNS    = false;
+					UseRoutes = true;
 				};
 				dhcpV6Config = {
-					UseDNS = false;
+					DUIDRawData = "00:03:00:01:a8:a1:59:47:fd:a2";
+					DUIDType    = "vendor";
+					UseDNS      = false;
+					WithoutRA   = "solicit";
+					# PrefixDelegationHint = "::/56";
 				};
 				networkConfig = {
 					DHCP = "yes";
-					DNS = "1.1.1.1";
-					IPv6AcceptRA = true;
+					DNS  = "1.1.1.1";
+					IPv6AcceptRA = false;
+					IPv6SendRA   = false;
+					DHCPPrefixDelegation = true;
+				};
+				dhcpPrefixDelegationConfig = {
+					UplinkInterface = ":self";
+					SubnetId = 0;
+					Announce = false;
 				};
 			};
 			"20-enp6s0f0" = {
-				matchConfig.Name = "enp6s0f0";
-				networkConfig.Bridge = lan;
 				linkConfig.RequiredForOnline = "enslaved";
+				matchConfig.Name             = "enp6s0f0";
+				networkConfig.Bridge         = lan;
 			};
 			"20-enp6s0f1" = {
-				matchConfig.Name = "enp6s0f1";
-				networkConfig.Bridge = lan;
 				linkConfig.RequiredForOnline = "enslaved";
+				matchConfig.Name             = "enp6s0f1";
+				networkConfig.Bridge         = lan;
 			};
 			"20-enp7s0f0" = {
-				matchConfig.Name = "enp7s0f0";
-				networkConfig.Bridge = lan;
 				linkConfig.RequiredForOnline = "enslaved";
+				matchConfig.Name             = "enp7s0f0";
+				networkConfig.Bridge         = lan;
 			};
 			"20-enp7s0f1" = {
-				matchConfig.Name = "enp7s0f1";
-				networkConfig.Bridge = lan;
 				linkConfig.RequiredForOnline = "enslaved";
+				matchConfig.Name             = "enp7s0f1";
+				networkConfig.Bridge         = lan;
 			};
 			"30-${lan}" = {
 				matchConfig.Name = lan;
@@ -71,16 +82,30 @@ in {
 				];
 				routes = [
 					# Wifi 5G clients.
-					{ routeConfig = {
-						Gateway = wifi;
+					{
 						Destination = "192.168.1.0/24";
-					}; }
+						Gateway     = wifi;
+					}
 					# Wifi 2G clients.
-					{ routeConfig = {
-						Gateway = wifi;
+					{
 						Destination = "192.168.2.0/24";
-					}; }
+						Gateway     = wifi;
+					}
 				];
+				networkConfig = {
+					DHCPPrefixDelegation = true;
+					IPv6AcceptRA = false;
+					IPv6SendRA = true;
+				};
+				ipv6SendRAConfig = {
+					# EmitDNS = false;
+					# DNS = "";
+				};
+				dhcpPrefixDelegationConfig = {
+					UplinkInterface = wan;
+					SubnetId = 1;
+					Announce = true;
+				};
 			};
 		};
 
