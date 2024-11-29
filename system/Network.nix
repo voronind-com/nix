@@ -8,14 +8,19 @@
 
 	networking = {
 		dhcpcd.enable = false;
+		useDHCP       = false;
+		useNetworkd   = true;
 		networkmanager = {
 			enable = true;
 			unmanaged = [
-				"bridge"
-				"ethernet"
-				"loopback"
-				"wireguard"
+				"type:bridge"
+				"type:ethernet"
+				"type:loopback"
+				# "type:wireguard"
 			];
 		};
 	};
+
+	# NOTE: Debugging.
+	# systemd.services."systemd-networkd".environment.SYSTEMD_LOG_LEVEL = "debug";
 }

@@ -19,9 +19,6 @@ in {
 	# Disable SSH access from everywhere, configure access bellow.
 	services.openssh.openFirewall = false;
 
-	# NOTE: Debugging.
-	systemd.services."systemd-networkd".environment.SYSTEMD_LOG_LEVEL = "debug";
-
 	# Wan configuration.
 	systemd.network = {
 		networks = {
