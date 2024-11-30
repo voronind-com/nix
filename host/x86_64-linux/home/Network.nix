@@ -23,11 +23,10 @@ in {
 
 	# Wan configuration.
 	# REF: https://nixos.wiki/wiki/Systemd-networkd
-	# SEE: man 5 systemd.network
+	# REF: man 5 systemd.network
 	# REF: Wifi config: https://openwrt.org/docs/guide-user/network/wifi/wifiextenders/bridgedap#wireless_access_point_-_dumb_access_point
 	systemd.network = {
 		enable = true;
-		wait-online.enable = false; # HACK: So we can use both NM and networkd.
 		networks = {
 			"10-${wan}" = {
 				matchConfig.Name = wan;
