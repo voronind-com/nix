@@ -106,7 +106,6 @@ in {
 					EmitRouter          = true;
 					EmitTimezone        = true;
 					MaxLeaseTimeSec     = "24h";
-					# PersistLeases       = false;
 					PoolOffset          = 100;
 					PoolSize            = 150;
 					ServerAddress       = "10.0.0.1/24";
@@ -117,7 +116,7 @@ in {
 					mkStatic = Address: MACAddress: { dhcpServerStaticLeaseConfig = { inherit Address MACAddress; }; };
 				in [
 					# TODO: Add pocket.
-					(mkStatic "10.0.0.2"  "9c:9d:7e:8e:3d:c8") # Wifi AP.
+					(mkStatic "10.0.0.2"  "9c:9d:7e:8e:3d:c7") # Wifi AP.
 					(mkStatic "10.0.0.3"  "d8:bb:c1:cc:da:30") # Desktop.
 					(mkStatic "10.0.0.4"  "2c:be:eb:52:53:2b") # Phone.
 					(mkStatic "10.0.0.5"  "14:85:7f:eb:6c:25") # Work.
