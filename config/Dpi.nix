@@ -15,6 +15,12 @@ in {
 			inherit (cfg.bypass) params;
 			enable  = true;
 			package = pkgsMaster.zapret;
+			httpMode    = "full";
+			httpSupport = true;
+			udpSupport  = true;
+			udpPorts = [
+				"50000:50099"
+			];
 			whitelist = [
 				"youtube.com"
 				"googlevideo.com"

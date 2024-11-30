@@ -17,8 +17,14 @@
 			enable = true;
 			params = [
 				"--dpi-desync=fake,disorder2"
+
 				"--dpi-desync-ttl=1"
 				"--dpi-desync-autottl=2"
+
+				"--dpi-desync-ttl6=1"
+				"--dpi-desync-autottl6=2"
+
+				"--dpi-desync-any-protocol"
 			];
 		};
 		amd = {
