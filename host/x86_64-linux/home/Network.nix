@@ -1,10 +1,9 @@
-# 10.0.0.0/24    - wired clients (lan).
-# 10.1.0.0/24    - containers.
-# 10.1.1.0/24    - vpn clients.
-# 192.168.1.0/24 - 5G   wireless clients.
-# 192.168.2.0/24 - 2.4G wireless clients.
+# 10.0.0.0/24 - phys clients (lan).
+# 10.1.0.0/24 - containers.
+# 10.1.1.0/24 - vpn clients.
 {
 	config,
+	const,
 	lib,
 	util,
 	...
@@ -19,8 +18,15 @@ in {
 	# Disable SSH access from everywhere, configure access bellow.
 	services.openssh.openFirewall = false;
 
+	# NOTE: Debugging.
+	# systemd.services."systemd-networkd".environment.SYSTEMD_LOG_LEVEL = "debug";
+
 	# Wan configuration.
+	# REF: https://nixos.wiki/wiki/Systemd-networkd
+	# SEE: man 5 systemd.network
 	systemd.network = {
+		enable = true;
+		wait-online.enable = false; # HACK: So we can use both NM and networkd.
 		networks = {
 			"10-${wan}" = {
 				matchConfig.Name = wan;
@@ -77,32 +83,52 @@ in {
 				address = [
 					"10.0.0.1/24"
 				];
-				routes = [
-					# Wifi 5G clients.
-					{
-						Destination = "192.168.1.0/24";
-						Gateway     = wifi;
-					}
-					# Wifi 2G clients.
-					{
-						Destination = "192.168.2.0/24";
-						Gateway     = wifi;
-					}
-				];
 				networkConfig = {
 					DHCPPrefixDelegation = true;
+					DHCPServer   = true;
 					IPv6AcceptRA = false;
 					IPv6SendRA   = true;
 				};
 				ipv6SendRAConfig = {
-					# EmitDNS = false;
-					# DNS = "";
+					# EmitDNS = true;
+					# DNS = ":self";
 				};
 				dhcpPrefixDelegationConfig = {
-					UplinkInterface = wan;
-					SubnetId = 1;
 					Announce = true;
+					SubnetId = 1;
+					UplinkInterface = wan;
 				};
+				dhcpServerConfig = {
+					DNS                 = "10.0.0.1";
+					DefaultLeaseTimeSec = "12h";
+					EmitDNS             = true;
+					EmitNTP             = true;
+					EmitRouter          = true;
+					EmitTimezone        = true;
+					MaxLeaseTimeSec     = "24h";
+					# PersistLeases       = false;
+					PoolOffset          = 100;
+					PoolSize            = 150;
+					ServerAddress       = "10.0.0.1/24";
+					Timezone            = const.timeZone;
+					UplinkInterface     = wan;
+				};
+				dhcpServerStaticLeases = let
+					mkStatic = Address: MACAddress: { dhcpServerStaticLeaseConfig = { inherit Address MACAddress; }; };
+				in [
+					# TODO: Add pocket.
+					(mkStatic "10.0.0.2"  "9c:9d:7e:8e:3d:c8") # Wifi AP.
+					(mkStatic "10.0.0.3"  "d8:bb:c1:cc:da:30") # Desktop.
+					(mkStatic "10.0.0.4"  "2c:be:eb:52:53:2b") # Phone.
+					(mkStatic "10.0.0.5"  "14:85:7f:eb:6c:25") # Work.
+					(mkStatic "10.0.0.6"  "08:38:e6:31:54:b6") # Tablet.
+					(mkStatic "10.0.0.7"  "2c:f0:5d:3b:07:78") # Dasha.
+					(mkStatic "10.0.0.8"  "ac:5f:ea:ef:b5:05") # Dasha phone.
+					(mkStatic "10.0.0.9"  "10:b1:df:ea:18:57") # Laptop.
+					(mkStatic "10.0.0.10" "9c:1c:37:62:3f:d5") # Printer.
+					(mkStatic "10.0.0.11" "dc:a6:32:f5:77:95") # RPi.
+					(mkStatic "10.0.0.12" "ec:9c:32:ad:bc:4a") # Camera.
+				];
 			};
 		};
 
@@ -117,6 +143,10 @@ in {
 	};
 
 	networking = {
+		dhcpcd.enable = false;
+		useDHCP       = false;
+		useNetworkd   = true;
+		networkmanager.enable = lib.mkForce false;
 		firewall = {
 			enable = true;
 			allowPing = true;
@@ -147,6 +177,9 @@ in {
 
 				# Full access from Lan.
 				iptables -I INPUT -j ACCEPT -i ${lan} -d ${internal}
+
+				# Allow DHCP.
+				iptables -I INPUT -j ACCEPT -i ${lan} -p udp --dport 67
 			'')
 			# Expose DNS server for internal network.
 			+ (mkForward internal cfg.dns.port cfg.dns.address cfg.dns.port tcp)
