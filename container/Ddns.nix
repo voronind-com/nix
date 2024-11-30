@@ -37,7 +37,7 @@ in {
 					apiTokenFile  = "/data/token";
 					deleteMissing = false;
 					ipv4          = true;
-					ipv6          = false;
+					ipv6          = true;
 					proxied       = false;
 					domains = let
 						domain = config.container.domain;
