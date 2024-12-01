@@ -8,7 +8,7 @@
 		min-free = 1 * 1000 * 1000 * 1000;
 		experimental-features = [
 			"flakes"
-			"nix-command "
+			"nix-command"
 		];
 	};
 }
