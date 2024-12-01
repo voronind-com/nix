@@ -30,6 +30,10 @@
 			SHELL_NAME="''${tag}" NIXPKGS_ALLOW_UNFREE=1 nix shell --impure ''${pkgs[@]}
 		}
 
+		function nix_depends() {
+			nix why-depends /run/current-system nixpkgs#''${1}
+		}
+
 		# Run stuff directrly from Nixpks.
 		# Usage: nixpkgs_run <REV> <PACKAGE> [COMMAND]
 		function nixpkgs_run() {
