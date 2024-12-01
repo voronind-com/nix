@@ -18,6 +18,11 @@
 			gaming     = true;
 			work       = true;
 		};
+		sway.extraConfig = [
+			"output DP-1 pos 0 0"
+			"output DP-2 pos 1920 0"
+			"workspace 1 output DP-1"
+		];
 		hwmon = {
 			file = "temp1_input";
 			path = "/sys/devices/platform/coretemp.0/hwmon";

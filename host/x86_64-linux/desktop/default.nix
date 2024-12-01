@@ -27,8 +27,8 @@
 			};
 		};
 		sway.extraConfig = [
-			"output DP-3 pos 0,1080"
-			"output HDMI-A-1 mode 1920x1080@74.986Hz pos 780,0"
+			"output DP-3 pos 0 1080"
+			"output HDMI-A-1 mode 1920x1080@74.986Hz pos 780 0"
 			"workspace 1 output HDMI-A-1"
 		];
 		hwmon = {
