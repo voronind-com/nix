@@ -216,10 +216,15 @@ in {
 			+ (mkForward internal cfg.git.portSsh cfg.git.address cfg.git.portSsh tcp)
 
 			# Print serivce.
-			+ (mkForward internal cfg.print.port cfg.print.address cfg.print.port tcp);
+			+ (mkForward internal cfg.print.port cfg.print.address cfg.print.port tcp)
+
+			# Terraria server.
+			+ (mkForward external cfg.terraria.port cfg.terraria.address cfg.terraria.port tcp)
+			+ (mkForward internal cfg.terraria.port cfg.terraria.address cfg.terraria.port tcp)
 
 			# SSH access from WAN.
 			# + (mkForward external 22143 config.container.host 22143 tcp)
+			;
 		};
 	};
 }

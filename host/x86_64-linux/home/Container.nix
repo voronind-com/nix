@@ -32,6 +32,7 @@
 			search.enable   = true;
 			status.enable   = true;
 			stock.enable    = true;
+			terraria.enable = true;
 			vpn.enable      = true;
 			watch.enable    = true;
 			yt.enable       = true;

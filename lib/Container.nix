@@ -2,7 +2,6 @@
 	config,
 	const,
 	lib,
-	pkgs,
 	util,
 	...
 }: {
@@ -28,12 +27,14 @@
 	mkContainerConfig = cfg: extra: lib.recursiveUpdate {
 		boot.isContainer = true;
 
-		# HACK: Do not evaluate nixpkgs inside the container. Use host's instead.
-		# nixpkgs.pkgs = lib.mkForce pkgs;
-		nixpkgs.pkgs = lib.mkForce pkgs;
-
 		# Release version.
 		system.stateVersion = const.stateVersion;
+
+		# Nix is fucking annoying.
+		nixpkgs.config = {
+			allowUnfree = true;
+			allowInsecurePredicate = x: true;
+		};
 
 		# Allow passwordless login as root.
 		users = {
