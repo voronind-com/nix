@@ -1,10 +1,6 @@
 { ... }: {
 	nixpkgs.config.allowUnfree = true;
-	nixpkgs.config.permittedInsecurePackages = [
-		"dotnet-runtime-6.0.36" # HACK: I hate Nix for this.
-		"dotnet-sdk-wrapped-6.0.428"
-		"dotnet-sdk-6.0.428"
-	];
+	nixpkgs.config.allowInsecurePredicate = x: true; # HACK: Nix is fucking annoying.
 	nix.settings = {
 		auto-optimise-store = true;
 		keep-derivations = true;
