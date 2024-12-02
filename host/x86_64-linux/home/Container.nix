@@ -10,7 +10,6 @@
 		module = {
 			change.enable   = true;
 			cloud.enable    = true;
-			ddns.enable     = true;
 			dns.enable      = true;
 			download.enable = true;
 			frkn.enable     = true;
