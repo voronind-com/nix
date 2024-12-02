@@ -120,7 +120,6 @@
 					# HM config.
 					./home/NixOs.nix
 				]
-				++ (self.ls ./container)
 				++ (self.ls ./host/${system}/${hostname})
 				++ (self.ls ./option)
 				++ (self.ls ./config)
@@ -128,14 +127,11 @@
 				++ (self.ls ./system)
 				;
 				specialArgs = let
-					pkgs   = nixpkgs.legacyPackages.${system}.pkgs;
-					lib    = nixpkgs.lib;
-					config = self.nixosConfigurations.${hostname}.config;
-					util   = import ./lib/Util.nix { inherit lib; };
+					lib  = nixpkgs.lib;
+					util = import ./lib/Util.nix { inherit lib; };
 				in {
 					inherit (self) const __findFile;
 					inherit inputs self poetry2nixJobber util;
-					container    = import ./lib/Container.nix { inherit lib pkgs config util; inherit (self) const; };
 					pkgsJobber   = nixpkgsJobber.legacyPackages.${system}.pkgs;
 					pkgsMaster   = nixpkgsMaster.legacyPackages.${system}.pkgs;
 					pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;

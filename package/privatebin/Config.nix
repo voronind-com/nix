@@ -39,7 +39,7 @@
 		};
 		model_options = {
 			"opt[12]" = true;
-			dsn = "pgsql:host=${config.container.module.postgres.address};dbname=privatebin";
+			dsn = "pgsql:dbname=privatebin";
 			pwd = "privatebin";
 			tbl = "privatebin_";
 			usr = "privatebin";

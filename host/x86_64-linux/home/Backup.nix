@@ -17,7 +17,7 @@
 		path_src="/storage/hot"
 		path_mount="/storage/cold_1"
 		path_backup="''${path_mount}/backup"
-		path_container="''${path_backup}/home"
+		path_data="''${path_backup}/home"
 		path_media="/storage/cold_1 /storage/cold_2"
 
 		# Check if backup drive is mounted.
@@ -41,10 +41,10 @@
 		archive ColdMedia.txt && rm ColdMedia.txt || report "Backup : Failed to archive media list!"
 		cd -
 
-		# Backup containers.
-		container=$(archive container/)
-		bupsize=$(tdu ''${container} | awk '{print $1}')
-		mv ''${container} ''${path_container}/ || report "Backup : Failed to save containers!"
+		# Backup data.
+		data=$(archive data/)
+		bupsize=$(tdu ''${data} | awk '{print $1}')
+		mv ''${data} ''${path_data}/ || report "Backup : Failed to save data!"
 
 		# Backup some media.
 		cd ''${path_src}
@@ -61,14 +61,9 @@
 		archive_prune ColdMediaTxt 30
 		cd -
 
-		# Prune old container copies.
-		cd ''${path_container}
-		archive_prune Container 7
-		cd -
-
-		# Prune game saves.
-		cd "''${path_backup}/save/"
-		archive_prune
+		# Prune old data copies.
+		cd ''${path_data}
+		archive_prune Data 7
 		cd -
 
 		# Sync writes.
@@ -90,6 +85,7 @@ in {
 			curl
 			gawk
 			gnutar
+			mount
 			procps
 			pv
 			xz

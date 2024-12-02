@@ -1,6 +1,7 @@
 {
-	lib,
 	config,
+	lib,
+	pkgs,
 	...
 }: let
 	cfg = config.user;
@@ -8,6 +9,7 @@ in {
 	options.user.dasha = lib.mkEnableOption "dasha.";
 
 	config = lib.mkIf cfg.dasha {
+		environment.systemPackages = with pkgs; [ nautilus ]; # NOTE: She wants it.
 		home.nixos.users = [{
 			homeDirectory = "/home/dasha";
 			username      = "dasha";

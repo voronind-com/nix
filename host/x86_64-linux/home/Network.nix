@@ -1,6 +1,5 @@
 # 10.0.0.0/24 & fd09:8d46:0b26::/48 - phys clients (lan).
-# 10.1.0.0/24 & fd76:c80a:8e86::/48 - containers.
-# 10.1.1.0/24 - vpn clients.
+# 10.0.1.0/24 - vpn clients.
 {
 	config,
 	const,
@@ -8,16 +7,17 @@
 	util,
 	...
 }: let
-	external  = "188.242.247.132"; # Wan host IP address.
-	internal  = "10.0.0.1";        # Lan host IP address.
-	external6 = "2a05:3580:f42c:c800:aaa1:59ff:fe47:fda2"; # Wan host IP6 address.
-	internal6 = "fd09:8d46:b26::1";                       # Lan host IP6 address.
+	internal  = "10.0.0.1"; # Lan host IP address.
+	internal6 = "fd09:8d46:b26:0:8079:82ff:fe1a:916a"; # Lan host IP6 address.
 
 	lan = "br0";    # Lan interface.
 	wan = "enp8s0"; # Wan interface.
 in {
 	# Disable SSH access from everywhere, configure access bellow.
 	services.openssh.openFirewall = false;
+
+	# Disable systemd-resolved for DNS server.
+	services.resolved.enable = false;
 
 	# NOTE: Debugging.
 	# systemd.services."systemd-networkd".environment.SYSTEMD_LOG_LEVEL = "debug";
@@ -82,7 +82,7 @@ in {
 				linkConfig.RequiredForOnline = "carrier";
 				address = [
 					"${internal}/24"
-					"${internal6}/48"
+					# "${internal6}/48"
 				];
 				networkConfig = {
 					DHCPPrefixDelegation = true;
@@ -96,7 +96,7 @@ in {
 				};
 				ipv6Prefixes = [
 					{
-						AddressAutoconfiguration = true;
+						Assign = true;
 						Prefix = "${internal6}/64";
 					}
 				];
@@ -120,7 +120,7 @@ in {
 					UplinkInterface     = wan;
 				};
 				dhcpServerStaticLeases = let
-					mkStatic = Address: MACAddress: { dhcpServerStaticLeaseConfig = { inherit Address MACAddress; }; };
+					mkStatic = Address: MACAddress: { inherit Address MACAddress; };
 				in [
 					# TODO: Add pocket.
 					(mkStatic "10.0.0.2"  "9c:9d:7e:8e:3d:c7") # Wifi AP.
@@ -163,23 +163,9 @@ in {
 			logRefusedPackets      = false;
 			logRefusedUnicastsOnly = true;
 
-			extraCommands = let
-				# Container configs.
-				cfg = config.container.module;
-
-				# Const.
-				tcp = "tcp";
-				udp = "udp";
-
-				# Create port forwarding rule.
-				mkForward = src: sport: dst: dport: proto: "iptables -t nat -I PREROUTING -d ${src} -p ${proto} --dport ${toString sport} -j DNAT --to-destination ${dst}:${toString dport}\n";
-			in (util.trimTabs ''
-				# Wan access for 10.0.0.0/24 subnet.
-				iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -d 0/0 -o ${wan} -j MASQUERADE
-
-				# Full access from VPN clients.
-				iptables -I INPUT -j ACCEPT -s ${cfg.vpn.clients} -d ${internal}
-				iptables -I INPUT -j ACCEPT -s ${cfg.frkn.address} -d ${internal}
+			extraCommands = util.trimTabs ''
+				# Wan access for 10.0.0.0/8 subnet.
+				iptables -t nat -A POSTROUTING -s 10.0.0.0/8 -d 0/0 -o ${wan} -j MASQUERADE
 
 				# Full access from Lan.
 				iptables -I INPUT -j ACCEPT -i ${lan} -d ${internal}
@@ -187,52 +173,29 @@ in {
 
 				# Allow DHCP.
 				iptables -I INPUT -j ACCEPT -i ${lan} -p udp --dport 67
-			'')
-			# Expose DNS server for internal network.
-			+ (mkForward internal cfg.dns.port cfg.dns.address cfg.dns.port tcp)
-			+ (mkForward internal cfg.dns.port cfg.dns.address cfg.dns.port udp)
 
-			# Email server.
-			+ (mkForward external 25  cfg.mail.address 25  tcp)
-			+ (mkForward internal 25  cfg.mail.address 25  tcp)
-			+ (mkForward internal 465 cfg.mail.address 465 tcp)
-			+ (mkForward internal 993 cfg.mail.address 993 tcp)
+				# Public email server.
+				ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 25
 
-			# FRKN internal proxy server.
-			+ (mkForward internal cfg.frkn.port     cfg.frkn.address cfg.frkn.port     tcp)
-			+ (mkForward internal cfg.frkn.torport  cfg.frkn.address cfg.frkn.torport  tcp)
-			+ (mkForward internal cfg.frkn.xrayport cfg.frkn.address cfg.frkn.xrayport tcp)
-			+ (mkForward internal cfg.frkn.port     cfg.frkn.address cfg.frkn.port     udp)
-			+ (mkForward internal cfg.frkn.torport  cfg.frkn.address cfg.frkn.torport  udp)
-			+ (mkForward internal cfg.frkn.xrayport cfg.frkn.address cfg.frkn.xrayport udp)
+				# Public VPN service.
+				ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 22145
+				iptables -I INPUT -j ACCEPT -s 10.0.1.0/24 -d ${internal}
 
-			# VPN connections.
-			+ (mkForward external cfg.vpn.port cfg.vpn.address cfg.vpn.port udp)
+				# Public Nginx.
+				ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 443
 
-			# Nginx HTTP.
-			+ (mkForward external cfg.proxy.port cfg.proxy.address cfg.proxy.port tcp)
-			+ (mkForward internal cfg.proxy.port cfg.proxy.address cfg.proxy.port tcp)
+				# Deluge torrenting ports.
+				ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 54630
+				ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 54630
+				ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 54631
+				ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 54631
 
-			# Download ports for torrents.
-			+ (mkForward external 54630 cfg.download.address 54630 tcp)
-			+ (mkForward external 54631 cfg.download.address 54631 tcp)
-			+ (mkForward external 54630 cfg.download.address 54630 udp)
-			+ (mkForward external 54631 cfg.download.address 54631 udp)
+				# Terraria server.
+				ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22777
 
-			# Git SSH connections.
-			+ (mkForward external cfg.git.portSsh cfg.git.address cfg.git.portSsh tcp)
-			+ (mkForward internal cfg.git.portSsh cfg.git.address cfg.git.portSsh tcp)
-
-			# Print serivce.
-			+ (mkForward internal cfg.print.port cfg.print.address cfg.print.port tcp)
-
-			# Terraria server.
-			+ (mkForward external cfg.terraria.port cfg.terraria.address cfg.terraria.port tcp)
-			+ (mkForward internal cfg.terraria.port cfg.terraria.address cfg.terraria.port tcp)
-
-			# SSH access from WAN.
-			# + (mkForward external 22143 config.container.host 22143 tcp)
-			;
+				# Public SSH access.
+				# ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22143
+			'';
 		};
 	};
 }
