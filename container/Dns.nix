@@ -112,7 +112,7 @@ in {
 							in {
 								# All subdomains to current host.
 								# ${config.container.domain} = config.container.host;
-								"voronind.com" = "10.0.0.1";
+								"voronind.com" = "10.0.0.1,fd09:8d46:b26::1";
 							}
 							// block "gosuslugi.ru"
 							// block "rutube.ru"

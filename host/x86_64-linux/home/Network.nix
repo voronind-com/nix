@@ -1,5 +1,5 @@
-# 10.0.0.0/24 - phys clients (lan).
-# 10.1.0.0/24 - containers.
+# 10.0.0.0/24 & fd09:8d46:0b26::/48 - phys clients (lan).
+# 10.1.0.0/24 & fd76:c80a:8e86::/48 - containers.
 # 10.1.1.0/24 - vpn clients.
 {
 	config,
@@ -8,9 +8,10 @@
 	util,
 	...
 }: let
-	external = "188.242.247.132"; # Wan host IP address.
-	internal = "10.0.0.1";        # Lan host IP address.
-	wifi     = "10.0.0.2";        # Wifi router IP address.
+	external  = "188.242.247.132"; # Wan host IP address.
+	internal  = "10.0.0.1";        # Lan host IP address.
+	external6 = "2a05:3580:f42c:c800:aaa1:59ff:fe47:fda2"; # Wan host IP6 address.
+	internal6 = "fd09:8d46:b26::1";                       # Lan host IP6 address.
 
 	lan = "br0";    # Lan interface.
 	wan = "enp8s0"; # Wan interface.
@@ -78,10 +79,10 @@ in {
 			};
 			"30-${lan}" = {
 				matchConfig.Name = lan;
-				bridgeConfig = {};
 				linkConfig.RequiredForOnline = "carrier";
 				address = [
-					"10.0.0.1/24"
+					"${internal}/24"
+					"${internal6}/48"
 				];
 				networkConfig = {
 					DHCPPrefixDelegation = true;
@@ -90,16 +91,22 @@ in {
 					IPv6SendRA   = true;
 				};
 				ipv6SendRAConfig = {
-					# EmitDNS = true;
-					# DNS = ":self";
+					EmitDNS = true;
+					DNS = internal6;
 				};
+				ipv6Prefixes = [
+					{
+						AddressAutoconfiguration = true;
+						Prefix = "${internal6}/64";
+					}
+				];
 				dhcpPrefixDelegationConfig = {
 					Announce = true;
 					SubnetId = 1;
 					UplinkInterface = wan;
 				};
 				dhcpServerConfig = {
-					DNS                 = "10.0.0.1";
+					DNS                 = internal;
 					DefaultLeaseTimeSec = "12h";
 					EmitDNS             = true;
 					EmitNTP             = true;
@@ -108,7 +115,7 @@ in {
 					MaxLeaseTimeSec     = "24h";
 					PoolOffset          = 100;
 					PoolSize            = 150;
-					ServerAddress       = "10.0.0.1/24";
+					ServerAddress       = "${internal}/24";
 					Timezone            = const.timeZone;
 					UplinkInterface     = wan;
 				};
@@ -176,6 +183,7 @@ in {
 
 				# Full access from Lan.
 				iptables -I INPUT -j ACCEPT -i ${lan} -d ${internal}
+				ip6tables -I INPUT -j ACCEPT -i ${lan} -d ${internal6}
 
 				# Allow DHCP.
 				iptables -I INPUT -j ACCEPT -i ${lan} -p udp --dport 67
