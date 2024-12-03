@@ -6,7 +6,7 @@
 	util,
 	...
 } @args: let
-	imgInput  = "/storage/hot/container/cloud/data/data/cakee/files/photo";
+	imgInput  = "/storage/hot/data/nextcloud/data/cakee/files/photo";
 	imgOutput = "/storage/cold_1/backup/tmp/photo";
 in {
 	systemd.services.photosprocess = let
