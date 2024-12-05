@@ -1,6 +1,10 @@
-{ ... }: {
+{
+	inputs,
+	...
+}: {
 	nixpkgs.config.allowUnfree = true;
 	nixpkgs.config.allowInsecurePredicate = x: true; # HACK: Nix is fucking annoying.
+	nix.registry.nixpkgs.flake = inputs.nixpkgs;
 	nix.settings = {
 		auto-optimise-store = true;
 		keep-derivations = true;
