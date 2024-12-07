@@ -11,6 +11,7 @@
 		in [
 			domain
 		] ++ map (sub: "${sub}.${domain}") [
+			"chat"
 			"cloud"
 			"git"
 			"mail"

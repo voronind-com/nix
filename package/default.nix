@@ -110,6 +110,7 @@
 		gparted               # GUI disk utility just in case.
 		jellyfin-media-player # Jellyfin client (self-hosted Netflix).
 		loupe                 # Image viewer.
+		mumble                # VoIP.
 		obs-studio            # Streaming/recording app.
 		onlyoffice-bin        # Office documents app suite.
 		remmina               # RDP app.

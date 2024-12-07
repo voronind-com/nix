@@ -193,6 +193,10 @@ in {
 				# Terraria server.
 				ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22777
 
+				# Mumble.
+				ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22666
+				ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 22666
+
 				# Public SSH access.
 				# ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22143
 			'';
