@@ -5,6 +5,7 @@
 }: let
 	cfg = config.module.syncthing;
 in {
+	# NOTE: Access at `http://localhost:8384`.
 	options.module.syncthing = {
 		enable = lib.mkEnableOption "the file sync.";
 		dataDir = lib.mkOption {
