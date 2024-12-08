@@ -7,10 +7,7 @@
 	cfg = config.module.syncthing;
 in {
 	config = lib.mkIf cfg.enable {
-		environment.systemPackages = with pkgs; [
-			syncthing
-			syncthingtray
-		];
+		environment.systemPackages = with pkgs; [ syncthing ];
 		services.syncthing = {
 			inherit (cfg) enable dataDir user group openDefaultPorts;
 			systemService = true;

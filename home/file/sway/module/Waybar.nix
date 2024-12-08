@@ -4,6 +4,5 @@
 		exec waybar
 		exec nm-applet
 		exec blueman-applet
-		exec syncthingtray
 	'';
 }
