@@ -29,6 +29,7 @@
 			(mkLink "Camera"  "fa-camera" "https://camera.voronind.com")
 			(mkLink "Printer" "fa-print"  "https://printer.voronind.com")
 			(mkLink "Router"  "fa-route"  "https://router.voronind.com")
+			(mkLink "Sync"    "fa-sync"   "https://sync.voronind.com")
 		])
 		(mkGroup "Bookmark" "fa-bookmark" [
 			(mkLink "2gis"        "fa-map-location-dot" "https://2gis.ru")
