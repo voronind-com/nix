@@ -36,6 +36,14 @@ in {
 							"phone"
 						];
 					};
+					"tmp" = {
+						path = "${cfg.dataDir}/tmp";
+						devices = [
+							"desktop"
+							"home"
+							"phone"
+						];
+					};
 				};
 			} cfg.settings;
 		};
