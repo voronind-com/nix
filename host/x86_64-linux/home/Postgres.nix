@@ -11,7 +11,6 @@
 			"invidious"
 			"mattermost"
 			"nextcloud"
-			"onlyoffice"
 			"paperless"
 			"privatebin"
 		];

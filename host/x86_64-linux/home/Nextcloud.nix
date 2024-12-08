@@ -23,7 +23,7 @@
 		};
 		extraApps = {
 			inherit (config.services.nextcloud.package.packages.apps)
-				contacts calendar onlyoffice;
+				contacts calendar;
 		};
 		settings = {
 			allow_local_remote_servers = true;
