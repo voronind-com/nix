@@ -182,11 +182,6 @@ in {
 				ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22666
 				ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 22666
 
-				# Syncthing.
-				ip6tables -I INPUT -j ACCEPT -i ${lan} -p tcp --dport 22000
-				ip6tables -I INPUT -j ACCEPT -i ${lan} -p udp --dport 22000
-				ip6tables -I INPUT -j ACCEPT -i ${lan} -p udp --dport 21027
-
 				# Public SSH access.
 				# ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22143
 			'';
