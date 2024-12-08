@@ -153,11 +153,12 @@ in {
 		firewall = {
 			enable = true;
 			extraCommands = util.trimTabs ''
-				# Wan access for 10.0.0.0/8 subnet.
-				iptables -t nat -A POSTROUTING -s 10.0.0.0/8 -d 0/0 -o ${wan} -j MASQUERADE
+				# Wan access for 10.0.0.0/24 subnet.
+				iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -d 0/0 -o ${wan} -j MASQUERADE
 
 				# Full access from Lan.
-				ip46tables -I INPUT -j ACCEPT -i ${lan}
+				iptables  -I INPUT -j ACCEPT -i ${lan} -d ${internal}
+				ip6tables -I INPUT -j ACCEPT -i ${lan} -d ${internal6}
 
 				# Public email server.
 				ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 25
