@@ -86,7 +86,7 @@
 			customDNS.mapping = let
 				block = host: { ${host} = "0.0.0.0"; };
 			in {
-				"voronind.com" = "10.0.0.1,fd09:8d46:b26::1";
+				"voronind.com" = "10.0.0.1,fd09:8d46:b26:0:8079:82ff:fe1a:916a";
 			}
 			// block "gosuslugi.ru"
 			// block "rutube.ru"
