@@ -26,9 +26,8 @@
 				# dns.enable = true;
 				socksListenAddress = {
 					IsolateDestAddr = true;
+					addr = "0.0.0.0";
 					port = 9050;
-					# addr = cfg.address;
-					# port = cfg.torport;
 				};
 			};
 		};
