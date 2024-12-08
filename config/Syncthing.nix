@@ -2,14 +2,29 @@
 	config,
 	lib,
 	pkgs,
+	util,
 	...
 }: let
 	cfg = config.module.syncthing;
 in {
 	config = lib.mkIf cfg.enable {
+		# CLI tools.
 		environment.systemPackages = with pkgs; [ syncthing ];
+
+		# Access at sync.lan.
+		networking.hosts = { "127.0.0.1" = [ "sync.local" ]; };
+		services.nginx.enable = true;
+		services.nginx.virtualHosts."sync.local".extraConfig = util.trimTabs ''
+			location / {
+				allow 127.0.0.1;
+				deny all;
+				proxy_pass http://127.0.0.1:8384;
+			}
+		'';
+
 		services.syncthing = {
-			inherit (cfg) enable dataDir user group openDefaultPorts;
+			inherit (cfg) enable dataDir user group;
+			openDefaultPorts = false;
 			systemService = true;
 			settings = lib.recursiveUpdate cfg.settings {
 				devices = {

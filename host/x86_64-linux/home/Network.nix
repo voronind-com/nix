@@ -13,9 +13,6 @@
 	lan = "br0";    # Lan interface.
 	wan = "enp8s0"; # Wan interface.
 in {
-	# Disable SSH access from everywhere, configure access bellow.
-	services.openssh.openFirewall = false;
-
 	# Disable systemd-resolved for DNS server.
 	services.resolved.enable = false;
 
@@ -155,21 +152,12 @@ in {
 		networkmanager.enable = lib.mkForce false;
 		firewall = {
 			enable = true;
-			allowPing = true;
-			rejectPackets = false; # Drop.
-
-			logRefusedConnections  = false;
-			logReversePathDrops    = false;
-			logRefusedPackets      = false;
-			logRefusedUnicastsOnly = true;
-
 			extraCommands = util.trimTabs ''
 				# Wan access for 10.0.0.0/8 subnet.
 				iptables -t nat -A POSTROUTING -s 10.0.0.0/8 -d 0/0 -o ${wan} -j MASQUERADE
 
 				# Full access from Lan.
-				iptables  -I INPUT -j ACCEPT -i ${lan}
-				ip6tables -I INPUT -j ACCEPT -i ${lan}
+				ip46tables -I INPUT -j ACCEPT -i ${lan}
 
 				# Public email server.
 				ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 25
@@ -193,6 +181,11 @@ in {
 				# Mumble.
 				ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22666
 				ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 22666
+
+				# Syncthing.
+				ip6tables -I INPUT -j ACCEPT -i ${lan} -p tcp --dport 22000
+				ip6tables -I INPUT -j ACCEPT -i ${lan} -p udp --dport 22000
+				ip6tables -I INPUT -j ACCEPT -i ${lan} -p udp --dport 21027
 
 				# Public SSH access.
 				# ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22143

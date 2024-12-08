@@ -16,7 +16,6 @@
 		syncthing = {
 			enable  = true;
 			dataDir = "/storage/hot/sync";
-			openDefaultPorts = false;
 			user  = "root";
 			group = "root";
 		};

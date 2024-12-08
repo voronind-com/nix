@@ -24,9 +24,5 @@ in {
 			default = "users";
 			type    = lib.types.str;
 		};
-		openDefaultPorts = lib.mkOption {
-			default = true;
-			type    = lib.types.bool;
-		};
 	};
 }
