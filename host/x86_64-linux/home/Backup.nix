@@ -22,13 +22,13 @@
 
 		# Check if backup drive is mounted.
 		if [ ! -f "''${path_mount}"/.mount ]; then
-			report "Backup : ''${path_mount} not mounted!"
+			report "Backup: ''${path_mount} not mounted!"
 			exit 1
 		fi
 
 		# Check if hot storage is mounted.
 		if [ ! -f "''${path_src}"/.mount ]; then
-			report "Backup : ''${path_src} not mounted!"
+			report "Backup: ''${path_src} not mounted!"
 			exit 1
 		fi
 
@@ -36,21 +36,24 @@
 		cd "''${path_src}"
 
 		# Save media list.
-		find ''${path_media} -type d > ''${path_backup}/cold/ColdMedia.txt || report "Backup : Failed to save media list!"
+		find ''${path_media} -type d > ''${path_backup}/cold/ColdMedia.txt || report "Backup: Failed to save media list!"
 		cd ''${path_backup}/cold/
-		archive ColdMedia.txt && rm ColdMedia.txt || report "Backup : Failed to archive media list!"
+		archive ColdMedia.txt && rm ColdMedia.txt || report "Backup: Failed to archive media list!"
 		cd -
 
 		# Backup data.
 		data=$(archive data/)
 		bupsize=$(tdu ''${data} | awk '{print $1}')
-		mv ''${data} ''${path_data}/ || report "Backup : Failed to save data!"
+		mv ''${data} ''${path_data}/ || report "Backup: Failed to save data!"
 
 		# Backup some media.
 		cd ''${path_src}
 		paper=$(archive paper/)
-		mv ''${paper} ''${path_backup}/paper/ || report "Backup : Failed to save paper!"
+		mv ''${paper} ''${path_backup}/paper/ || report "Backup: Failed to save paper!"
 		cd -
+
+		rcp_merge_fast ''${path_src}/sync/save/  ''${path_backup}/save/tmp/  || report "Backup: Failed to save game saves!"
+		rcp_merge_fast ''${path_src}/sync/photo/ ''${path_backup}/photo/tmp/ || report "Backup: Failed to save photos!"
 
 		# Prune media copies.
 		cd ''${path_backup}/paper/
@@ -70,8 +73,8 @@
 		sync
 
 		# Notify completion & size.
-		notify_silent "Backup : Complete ''${bupsize}."
-		echo "Backup : Complete ''${bupsize}."
+		notify_silent "Backup: Complete ''${bupsize}."
+		echo "Backup: Complete ''${bupsize}."
 	'');
 in {
 	systemd.services.backup = util.mkStaticSystemdService {
@@ -88,6 +91,7 @@ in {
 			mount
 			procps
 			pv
+			rsync
 			xz
 		];
 		script = ''
