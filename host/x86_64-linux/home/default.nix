@@ -13,6 +13,13 @@
 			router  = true;
 			server  = true;
 		};
+		syncthing = {
+			enable  = true;
+			dataDir = "/storage/hot/sync";
+			openDefaultPorts = false;
+			user  = "root";
+			group = "root";
+		};
 		dpi.bypass = {
 			enable = true;
 			params = [

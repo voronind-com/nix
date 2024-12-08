@@ -7,8 +7,9 @@
 
 	module = {
 		builder.client.enable = true;
-		package.extra = true;
-		print.enable  = true;
+		package.extra    = true;
+		print.enable     = true;
+		syncthing.enable = true;
 		purpose = {
 			desktop = true;
 			gaming  = true;

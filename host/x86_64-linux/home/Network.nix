@@ -168,11 +168,8 @@ in {
 				iptables -t nat -A POSTROUTING -s 10.0.0.0/8 -d 0/0 -o ${wan} -j MASQUERADE
 
 				# Full access from Lan.
-				iptables -I INPUT -j ACCEPT -i ${lan} -d ${internal}
-				ip6tables -I INPUT -j ACCEPT -i ${lan} -d ${internal6}
-
-				# Allow DHCP.
-				iptables -I INPUT -j ACCEPT -i ${lan} -p udp --dport 67
+				iptables  -I INPUT -j ACCEPT -i ${lan}
+				ip6tables -I INPUT -j ACCEPT -i ${lan}
 
 				# Public email server.
 				ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 25

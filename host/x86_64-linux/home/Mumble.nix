@@ -7,5 +7,6 @@
 		registerHostname = "chat.voronind.com";
 		sslCert = "/etc/letsencrypt/live/voronind.com/fullchain.pem";
 		sslKey  = "/etc/letsencrypt/live/voronind.com/privkey.pem";
+		extraConfig = '''';
 	};
 }

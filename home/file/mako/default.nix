@@ -6,7 +6,7 @@
 }: let
 	alpha = config.module.style.opacity.hex;
 	color = config.module.style.color;
-	max   = 5;
+	max   = 3;
 in {
 	file = (pkgs.formats.iniWithGlobalSection { }).generate "MakoConfig" {
 		globalSection = {
