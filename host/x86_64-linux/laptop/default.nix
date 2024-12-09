@@ -17,6 +17,10 @@
 			laptop     = true;
 			work       = true;
 		};
+		syncthing = {
+			enable = true;
+			user   = "dasha";
+		};
 		amd = {
 			compute.enable = true;
 			cpu = {
