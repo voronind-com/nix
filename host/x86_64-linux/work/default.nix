@@ -10,11 +10,12 @@
 	};
 
 	module = {
+		display.primary  = "eDP-1";
+		package.extra    = true;
+		print.enable     = true;
+		syncthing.enable = true;
 		builder.client.enable      = true;
-		display.primary            = "eDP-1";
-		package.extra              = true;
 		powerlimit.thinkpad.enable = true;
-		print.enable               = true;
 		purpose = {
 			creativity = true;
 			disown     = true;

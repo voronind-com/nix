@@ -31,6 +31,7 @@ in {
 					"desktop" = { id = "767Z675-SOCY4FL-JNYEBB6-5E2RG5O-XTZR6OP-BGOBZ7G-XVRLMD6-DQEB2AT"; };
 					"home"    = { id = "L5A5IPE-2FPJPHP-RJRV2PV-BLMLC3F-QPHSCUQ-4U3NM2I-AFPOE2A-HOPQZQF"; };
 					"phone"   = { id = "6RO5JXW-2XO4S3E-VCDAHPD-4ADK6LL-HQGMZHU-GD6DE2O-6KNHWXJ-BCSBGQ7"; };
+					"work"    = { id = "CMG6QMP-WCJJEUG-UQ3KDUI-AHRADRH-666JQ3Z-HYFEPDA-URMAMNP-Z4MSGQT"; };
 				};
 				dashaDevices = {
 					"dasha"      = { id = "VNRA5VH-LWNPVV4-Y2RF7FJ-446FHRQ-PET7Q4R-D3H5RT3-AUNARH5-5XYB3AT"; };
@@ -47,7 +48,7 @@ in {
 						devices = [
 							"desktop"
 							"home"
-							# "work"
+							"work"
 						];
 					};
 					"photo" = {
