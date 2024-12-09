@@ -18,6 +18,10 @@
 			gaming     = true;
 			work       = true;
 		};
+		syncthing = {
+			enable = true;
+			user   = "dasha";
+		};
 		sway.extraConfig = [
 			"output DP-1 pos 0 0"
 			"output DP-2 pos 1920 0"
