@@ -12,7 +12,7 @@ in {
 	text = (util.trimTabs ''
 		Host *
 			ControlMaster auto
-			ControlPath ~/.ssh/%r@%h:%p.socket
+			ControlPath ~/.ssh/%C.socket
 			ControlPersist yes
 	'')
 	+ mkHost "dasha"      "10.0.0.7"       22143 "root"
