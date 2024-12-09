@@ -1,7 +1,7 @@
 {
 	inputs = {
 		# SOURCE: https://github.com/NixOS/nixpkgs
-		nixpkgs.url         = "github:nixos/nixpkgs/release-24.11";
+		nixpkgs.url         = "github:nixos/nixpkgs/nixos-24.11";
 		nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
 		nixpkgsMaster.url   = "github:nixos/nixpkgs/master";
 
