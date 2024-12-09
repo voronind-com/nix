@@ -13,7 +13,6 @@ in {
 			bluetooth.enable  = true;
 			brightness.enable = true;
 			portal.enable     = true;
-			realtime.enable   = true;
 			sound.enable      = true;
 			waybar.enable     = true;
 			wayland.enable    = true;
