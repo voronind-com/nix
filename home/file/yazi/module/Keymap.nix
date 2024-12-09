@@ -20,15 +20,17 @@
 				{ on = "o";         desc = "Open interactively"; run = "open --interactive"; }
 				{ on = "q";         desc = "Prev tab";           run = "tab_switch -1 --relative"; }
 				{ on = "z";         desc = "Close tab";          run = "close"; }
+				{ on = [ "g" "M" ]; desc = "Go to mnt";          run = "cd /mnt"; }
+				{ on = [ "g" "R" ]; desc = "Go to root";         run = "cd /"; }
+				{ on = [ "g" "S" ]; desc = "Go to storage";      run = "cd /storage"; }
 				{ on = [ "g" "T" ]; desc = "Go to system tmp";   run = "cd /tmp"; }
+				{ on = [ "g" "U" ]; desc = "Go to user";         run = "cd /run/user/$UID"; }
 				{ on = [ "g" "c" ]; desc = "Go to configs";      run = "noop"; }
 				{ on = [ "g" "d" ]; desc = "Go to downloads";    run = "cd $XDG_DOWNLOAD_DIR"; }
-				{ on = [ "g" "m" ]; desc = "Go to mnt";          run = "cd /mnt"; }
 				{ on = [ "g" "p" ]; desc = "Go to projects";     run = "cd ~/project"; }
-				{ on = [ "g" "r" ]; desc = "Go to root";         run = "cd /"; }
-				{ on = [ "g" "s" ]; desc = "Go to storage";      run = "cd /storage"; }
+				{ on = [ "g" "s" ]; desc = "Go to sync";         run = "cd ~/sync"; }
 				{ on = [ "g" "t" ]; desc = "Go to tmp";          run = "cd ~/tmp"; }
-				{ on = [ "g" "u" ]; desc = "Go to user";         run = "cd /run/user/$UID"; }
+				{ on = [ "g" "n" ]; desc = "Go to nix";          run = "cd ~/nix"; }
 			];
 		};
 	};
