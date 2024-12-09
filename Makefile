@@ -13,10 +13,8 @@ android:
 boot: fix-ulimit fix-unlock
 	nixos-rebuild boot $(options) --flake $(flake)
 
-boot-no-nixconf: fix-ulimit fix-unlock
-	mv /etc/nix/nix.conf /etc/nix/nix.conf_; \
-	nixos-rebuild boot $(options) --flake $(flake); \
-	mv /etc/nix/nix.conf_ /etc/nix/nix.conf
+cached:
+	$(eval options := $(subst eval-cache false,eval-cache true,$(options)))
 
 check:
 	nix flake check --show-trace
@@ -29,6 +27,10 @@ fix-ulimit:
 # https://github.com/NixOS/nixpkgs/issues/347315
 fix-unlock:
 	pkill nixos-rebuild || true
+
+# HACK: Bring back the nix config.
+fix-nixconf:
+	mv /etc/nix/nix.conf_ /etc/nix/nix.conf
 
 gc:
 	nix-collect-garbage -d
@@ -59,6 +61,9 @@ install-hm:
 .PHONY: live
 live:
 	nix build -o live $(options) $(flake)#nixosConfigurations.live.config.system.build.isoImage
+
+no-nixconf:
+	mv /etc/nix/nix.conf /etc/nix/nix.conf_ || true
 
 reboot: boot
 	reboot
