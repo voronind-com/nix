@@ -152,6 +152,7 @@
 				(mkMime "video/*" [ "video" ])
 				(mkMime "text/html" [ "browser" ])
 				(mkMime "application/vnd.openxmlformats-officedocument.*" [ "document" ])
+				(mkName "*.xlsx" [ "document" ])
 				(mkMime "inode/directory" [ "audioShuffle" ])
 				(mkMime "*" [ ])
 			];
