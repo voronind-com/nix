@@ -44,7 +44,7 @@
 				orphan = true;
 				run    = openWith "mpv --no-video";
 			}];
-			audioShuffle = [{
+			audio_shuffle = [{
 				desc   = "Audio Shuffle";
 				orphan = true;
 				run    = "mpv --no-video --shuffle \"$@\"/**";
@@ -153,7 +153,7 @@
 				(mkMime "text/html" [ "browser" ])
 				(mkMime "application/vnd.openxmlformats-officedocument.*" [ "document" ])
 				(mkName "*.xlsx" [ "document" ])
-				(mkMime "inode/directory" [ "audioShuffle" ])
+				(mkMime "inode/directory" [ "audio_shuffle" ])
 				(mkMime "*" [ ])
 			];
 		};
