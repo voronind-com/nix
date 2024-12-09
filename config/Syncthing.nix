@@ -41,7 +41,7 @@ in {
 				folders = let
 					allMyDevices    = lib.mapAttrsToList (n: v: n) myDevices;
 					allDashaDevices = lib.mapAttrsToList (n: v: n) dashaDevices;
-				in {
+				in lib.filterAttrs (n: v: builtins.elem config.networking.hostName v.devices) {
 					"save" = {
 						path = "${cfg.dataDir}/save";
 						devices = [
