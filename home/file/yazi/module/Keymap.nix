@@ -13,7 +13,7 @@
 				{ on = "E";         desc = "Move to next tab";   run = "tab_swap 1 --relative"; }
 				{ on = "O";         desc = "Open default";       run = "open"; }
 				{ on = "Q";         desc = "Move to prev tab";   run = "tab_swap -1 --relative"; }
-				{ on = "R";         desc = "Rename completely";  run = "rename --empty=all"; }
+				{ on = "R";         desc = "Rename completely";  run = "rename --empty=stem --cursor=start"; }
 				{ on = "Z";         desc = "Exit yazi";          run = "quit"; }
 				{ on = "d";         desc = "Delete";             run = "remove --permanently"; }
 				{ on = "e";         desc = "Next tab";           run = "tab_switch 1 --relative"; }
