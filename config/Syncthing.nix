@@ -26,14 +26,21 @@ in {
 			inherit (cfg) enable dataDir user group;
 			openDefaultPorts = false;
 			systemService = true;
-			settings = lib.recursiveUpdate cfg.settings {
-				devices = {
+			settings = let
+				myDevices = {
 					"desktop" = { id = "767Z675-SOCY4FL-JNYEBB6-5E2RG5O-XTZR6OP-BGOBZ7G-XVRLMD6-DQEB2AT"; };
 					"home"    = { id = "L5A5IPE-2FPJPHP-RJRV2PV-BLMLC3F-QPHSCUQ-4U3NM2I-AFPOE2A-HOPQZQF"; };
 					"phone"   = { id = "6RO5JXW-2XO4S3E-VCDAHPD-4ADK6LL-HQGMZHU-GD6DE2O-6KNHWXJ-BCSBGQ7"; };
 				};
+				dashaDevices = {
+					"dasha"      = { id = "VNRA5VH-LWNPVV4-Y2RF7FJ-446FHRQ-PET7Q4R-D3H5RT3-AUNARH5-5XYB3AT"; };
+					"dashaphone" = { id = "QKGXSZC-HGAA6S5-RJJAT5Z-UPUGDAA-3GXEO6C-WHKMBUD-ESKQPZE-TZFNYA6"; };
+				};
+			in lib.recursiveUpdate cfg.settings {
+				devices = myDevices // dashaDevices;
 				folders = let
-					everyone = lib.mapAttrsToList (n: v: n) config.services.syncthing.settings.devices;
+					allMyDevices    = lib.mapAttrsToList (n: v: n) myDevices;
+					allDashaDevices = lib.mapAttrsToList (n: v: n) dashaDevices;
 				in {
 					"save" = {
 						path = "${cfg.dataDir}/save";
@@ -46,17 +53,26 @@ in {
 					"photo" = {
 						path = "${cfg.dataDir}/photo";
 						devices = [
+							"dashaphone"
 							"home"
 							"phone"
 						];
 					};
 					"tmp" = {
 						path = "${cfg.dataDir}/tmp";
-						devices = everyone;
+						devices = allMyDevices;
 					};
 					"document" = {
 						path = "${cfg.dataDir}/document";
-						devices = everyone;
+						devices = allMyDevices;
+					};
+					"dima" = {
+						path = "${cfg.dataDir}/dima";
+						devices = allMyDevices ++ allDashaDevices;
+					};
+					"dasha" = {
+						path = "${cfg.dataDir}/dasha";
+						devices = allDashaDevices;
 					};
 				};
 			};

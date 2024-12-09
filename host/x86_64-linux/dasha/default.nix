@@ -12,7 +12,7 @@
 		package.extra         = true;
 		print.enable          = true;
 		purpose = {
-			creativity = true;
+			# creativity = true;
 			desktop    = true;
 			disown     = true;
 			gaming     = true;
