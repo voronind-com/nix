@@ -92,6 +92,10 @@
 				orphan = true;
 				run    = openWith "evince";
 			}];
+			switch_install = [{
+				desc = "Switch Install";
+				run  = openWith "switch_install";
+			}];
 			unlock = [{
 				desc  = "Unlock";
 				block = true;
@@ -142,6 +146,8 @@
 				(mkMime "application/pdf" [ "pdf" ])
 				(mkMime "audio/*" [ "audio" ])
 				(mkName "*.mka" [ "audio" ])
+				(mkName "*.nsp" [ "switch_install" ])
+				(mkName "*.nsz" [ "switch_install" ])
 				(mkMime "image/*" [ "picture" "picture_copy" "picture_edit" "picture_edit_quick" ])
 				(mkMime "video/*" [ "video" ])
 				(mkMime "text/html" [ "browser" ])
