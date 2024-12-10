@@ -20,7 +20,7 @@
 			primary = "eDP-1";
 		};
 		sway.extraConfig = [
-			"output eDP-1 scale 2"
+			"output eDP-1 scale 1.75"
 		];
 		hwmon = {
 			file = "temp1_input";
