@@ -17,7 +17,7 @@
 			work       = true;
 		};
 		display = {
-			primary = "DSI-1";
+			primary = "eDP-1";
 			# rotate = {
 			# 	tty   = 90;
 			# 	DSI-1 = 90;
