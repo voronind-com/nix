@@ -30,6 +30,7 @@ in {
 				myDevices = {
 					"desktop" = { id = "767Z675-SOCY4FL-JNYEBB6-5E2RG5O-XTZR6OP-BGOBZ7G-XVRLMD6-DQEB2AT"; };
 					"home"    = { id = "L5A5IPE-2FPJPHP-RJRV2PV-BLMLC3F-QPHSCUQ-4U3NM2I-AFPOE2A-HOPQZQF"; };
+					"max"     = { id = "2PTBIFB-SEQCS5S-ZSAVFOL-OK3GF6A-4JIIHI5-LBDW33B-2HQKHI7-A52DDAD"; };
 					"phone"   = { id = "6RO5JXW-2XO4S3E-VCDAHPD-4ADK6LL-HQGMZHU-GD6DE2O-6KNHWXJ-BCSBGQ7"; };
 					"work"    = { id = "CMG6QMP-WCJJEUG-UQ3KDUI-AHRADRH-666JQ3Z-HYFEPDA-URMAMNP-Z4MSGQT"; };
 				};
@@ -48,6 +49,7 @@ in {
 						devices = [
 							"desktop"
 							"home"
+							"max"
 							"work"
 						];
 					};
