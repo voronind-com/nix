@@ -12,6 +12,7 @@
 		# Keys that are allowd to connect via SSH to nixbuild user for Nix remote builds.
 		builderKey = "nixbuilder-1:Skghjixd8lPzNe2ZEgYLM9Pu/wF9wiZtZGsdm3bo9h0=";
 		buildKeys = [
+			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICIRnJh4J0l8F+Q4ALMEcBYPdV9xxpheWVd58FOsiiCe root@max"
 			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEHkH1xq78T2H1/c/Ej2O46v16Cuivt8zW3kUd0K6hwL root@pocket"
 			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEuuw5ek5wGB9KdBhCTxjV+CBpPU6RIOynHkFYC4dau3 root@dasha"
 			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFgiYKFkMfiGOZCZIk+O7LtaoF6A3cHEFCqaPwXOM4rR root@work"

@@ -18,17 +18,13 @@
 		};
 		display = {
 			primary = "eDP-1";
-			# rotate = {
-			# 	tty   = 90;
-			# 	DSI-1 = 90;
-			# };
 		};
-		# sway.extraConfig = [
-		# 	"input type:touch map_to_output DSI-1"
-		# ];
+		sway.extraConfig = [
+			"output eDP-1 scale 2"
+		];
 		hwmon = {
-			# file = "temp1_input";
-			# path = "/sys/devices/platform/coretemp.0/hwmon";
+			file = "temp1_input";
+			path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon";
 		};
 		amd = {
 			gpu.enable = true;
