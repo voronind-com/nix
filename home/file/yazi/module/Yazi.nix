@@ -96,6 +96,10 @@
 				desc = "Switch Install";
 				run  = openWith "switch_install";
 			}];
+			steam_run = [{
+				desc = "Run";
+				run  = openWith "steam-run";
+			}];
 			unlock = [{
 				desc  = "Unlock";
 				block = true;
@@ -154,6 +158,7 @@
 				(mkMime "application/vnd.openxmlformats-officedocument.*" [ "document" ])
 				(mkName "*.xlsx" [ "document" ])
 				(mkMime "inode/directory" [ "audio_shuffle" ])
+				(mkMime "application/x-executable" [ "steam_run" ])
 				(mkMime "*" [ ])
 			];
 		};
