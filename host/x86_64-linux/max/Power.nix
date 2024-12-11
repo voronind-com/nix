@@ -2,6 +2,8 @@
 	pkgs,
 	...
 }: {
+	hardware.cpu.amd.ryzen-smu.enable = true;
+
 	environment.systemPackages = with pkgs; [
 		# SRC: https://github.com/FlyGoat/RyzenAdj
 		# ./ryzenadj --stapm-limit=45000 --fast-limit=45000 --slow-limit=45000 --tctl-temp=90
