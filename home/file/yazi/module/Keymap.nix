@@ -26,12 +26,14 @@
 				{ on = [ "g" "S" ]; desc = "Go to storage";      run = "cd /storage"; }
 				{ on = [ "g" "T" ]; desc = "Go to system tmp";   run = "cd /tmp"; }
 				{ on = [ "g" "U" ]; desc = "Go to user";         run = "cd /run/user/$UID"; }
-				{ on = [ "g" "c" ]; desc = "Go to configs";      run = "noop"; }
+				# { on = [ "g" "c" ]; desc = "Go to configs";      run = "noop"; }
 				{ on = [ "g" "d" ]; desc = "Go to downloads";    run = "cd $XDG_DOWNLOAD_DIR"; }
-				{ on = [ "g" "p" ]; desc = "Go to projects";     run = "cd ~/project"; }
+				{ on = [ "g" "l" ]; desc = "Go to locker";       run = "cd ~/locker"; }
+				{ on = [ "g" "n" ]; desc = "Go to nix";          run = "cd ~/nix"; }
+				{ on = [ "g" "p" ]; desc = "Go to project";      run = "cd ~/project"; }
 				{ on = [ "g" "s" ]; desc = "Go to sync";         run = "cd ~/sync"; }
 				{ on = [ "g" "t" ]; desc = "Go to tmp";          run = "cd ~/tmp"; }
-				{ on = [ "g" "n" ]; desc = "Go to nix";          run = "cd ~/nix"; }
+				{ on = [ "g" "w" ]; desc = "Go to game";         run = "cd ~/game"; }
 			];
 		};
 	};
