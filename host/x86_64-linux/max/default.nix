@@ -1,3 +1,4 @@
+# SEE: https://github.com/Sabrina-Fox/WM2-Help
 { ... }: {
 	home.nixos.enable = true;
 	user = {
