@@ -32,7 +32,7 @@
 		}
 
 		function _complete_own() {
-			_autocomplete_first_ls $(_get_users)
+			_autocomplete $(_get_users)
 		}
 
 		complete -F _complete_own own

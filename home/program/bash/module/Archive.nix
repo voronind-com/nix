@@ -357,7 +357,7 @@
 
 		# Autocomplete with names of all archives.
 		function _comp_archive_names() {
-			_autocomplete_first $(_archive_names)
+			_autocomplete $(_archive_names)
 		}
 
 		# Check if file is an archive.

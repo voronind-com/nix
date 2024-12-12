@@ -20,6 +20,7 @@ in {
 	+ mkHost "fmpmaven"   "10.30.22.10"    22    "root"
 	+ mkHost "home"       "10.0.0.1"       22143 "root"
 	+ mkHost "laptop"     "192.168.1.9"    22143 "root"
+	+ mkHost "max"        "10.0.0.13"      22143 "root"
 	+ mkHost "nixbuilder" "10.0.0.1"       22143 "nixbuilder"
 	+ mkHost "pi"         "192.168.1.6"    22143 "root"
 	+ mkHost "pocket"     "192.168.1.11"   22143 "root"

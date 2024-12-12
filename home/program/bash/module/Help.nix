@@ -21,7 +21,7 @@
 
 		# Autocomplete with available functions.
 		function _help_functions() {
-			_autocomplete_first $(find_function)
+			_autocomplete $(find_function)
 		}
 
 		complete -F _help_functions help h

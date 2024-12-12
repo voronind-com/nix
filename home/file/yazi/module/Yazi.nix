@@ -100,6 +100,10 @@
 				desc = "Run";
 				run  = openWith "steam-run";
 			}];
+			bottle_run = [{
+				desc = "Run bottle";
+				run  = openWith "btp";
+			}];
 			unlock = [{
 				desc  = "Unlock";
 				block = true;
@@ -125,7 +129,6 @@
 			rules = let
 				defaultUse = [
 					"text"
-					"archive"
 					"archive_fast"
 					"hex"
 				];
@@ -157,8 +160,8 @@
 				(mkMime "text/html" [ "browser" ])
 				(mkMime "application/vnd.openxmlformats-officedocument.*" [ "document" ])
 				(mkName "*.xlsx" [ "document" ])
-				(mkMime "inode/directory" [ "audio_shuffle" ])
 				(mkMime "application/x-executable" [ "steam_run" ])
+				{ mime = "inode/directory"; use = [ "archive" "bottle_run" "audio_shuffle" ]; }
 				(mkMime "*" [ ])
 			];
 		};

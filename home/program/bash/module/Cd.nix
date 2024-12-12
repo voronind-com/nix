@@ -65,7 +65,7 @@
 		function _comp_cdd() {
 			local IFS=$'\n'
 			local dirs=($(_cdd_directories))
-			_autocomplete_first ''${dirs[@]}
+			_autocomplete ''${dirs[@]}
 		}
 
 		complete -o nosort -o filenames -F _comp_cdd cdd

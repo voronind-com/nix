@@ -19,7 +19,7 @@
 		function _complete_ask_model() {
 			local IFS=$'\n'
 			local models=($(ollama list | sed -e "1d" | cut -f1))
-			_autocomplete_first ''${models[@]}
+			_autocomplete ''${models[@]}
 		}
 
 		complete -F _complete_ask_model ask_model

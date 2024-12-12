@@ -391,7 +391,7 @@
 		}
 
 		function _comp_name_parse() {
-			_autocomplete_first_ls $(find_function | grep ^parse)
+			_autocomplete $(find_function | grep ^parse)
 		}
 
 		complete -o filenames -F _comp_name_parse name_parse

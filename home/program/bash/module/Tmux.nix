@@ -78,7 +78,7 @@
 
 		# Autocomplete with running sessions once.
 		function _complete_tmux_session() {
-			_autocomplete_first "$(tmux list-sessions 2> /dev/null | sed -e 's/:.*//')"
+			_autocomplete "$(tmux list-sessions 2> /dev/null | sed -e 's/:.*//')"
 		}
 
 		# Autocomplete with running sessions.
@@ -88,7 +88,7 @@
 
 		# Autocomplete with current dir name and dirs inside this one.
 		function _complete_tmux_name() {
-			_autocomplete_first "''${PWD##*/}"$'\n'$(ls --classify | grep /$ | sed -e 's/\/$//')
+			_autocomplete "''${PWD##*/}"$'\n'$(ls --classify | grep /$ | sed -e 's/\/$//')
 		}
 
 		complete -F _complete_tmux_session ta

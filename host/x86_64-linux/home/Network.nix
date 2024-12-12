@@ -131,6 +131,7 @@ in {
 					(mkStatic "10.0.0.10" "9c:1c:37:62:3f:d5") # Printer.
 					(mkStatic "10.0.0.11" "dc:a6:32:f5:77:95") # RPi.
 					(mkStatic "10.0.0.12" "ec:9c:32:ad:bc:4a") # Camera.
+					(mkStatic "10.0.0.13" "c0:a5:e8:b5:d9:16") # Max.
 				];
 			};
 		};

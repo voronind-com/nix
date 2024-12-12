@@ -329,7 +329,7 @@
 
 		# Autocomplete with my git emails.
 		function _gu() {
-			_autocomplete_first hi@voronind.com dd.voronin@fsight.ru
+			_autocomplete hi@voronind.com dd.voronin@fsight.ru
 		}
 
 		complete -F _gu gu

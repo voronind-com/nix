@@ -25,7 +25,7 @@
 		}
 
 		function _complete_s() {
-			_autocomplete_first $(_get_users)
+			_autocomplete $(_get_users)
 		}
 
 		complete -F _complete_s s
