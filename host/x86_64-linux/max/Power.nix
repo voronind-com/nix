@@ -25,7 +25,7 @@
 		];
 		script = ''
 			while true; do
-				ryzenadj --tctl-temp=50
+				ryzenadj --tctl-temp=45
 				sleep 60
 			done
 		'';
