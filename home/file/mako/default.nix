@@ -3,7 +3,8 @@
 	config,
 	pkgs,
 	...
-}: let
+} @args: let
+	swayscript = pkgs.callPackage <package/swayscript> args;
 	alpha = config.module.style.opacity.hex;
 	color = config.module.style.color;
 	max   = 3;
@@ -20,7 +21,7 @@ in {
 			margin           = 32;
 			max-history      = max;
 			max-visible      = max;
-			on-notify        = "exec swayscript notify";
+			on-notify        = "exec ${swayscript}/bin/swayscript notify";
 			text-color       = "#${config.module.style.color.bg.dark}";
 			width            = 480;
 		};

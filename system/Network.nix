@@ -1,7 +1,16 @@
-{ ... }: {
+{
+	pkgs,
+	util,
+	...
+}: {
 	networking = {
 		networkmanager = {
 			enable = true;
+			dispatcherScripts = [{
+				source = pkgs.writeText "nm-wb-dispatcher" (util.trimTabs ''
+					${pkgs.procps}/bin/pkill -RTMIN+7 waybar
+				'');
+			}];
 			# unmanaged = [
 			# 	"type:bridge"
 			# 	"type:ethernet"

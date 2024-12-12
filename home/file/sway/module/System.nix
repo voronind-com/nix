@@ -4,6 +4,7 @@
 in {
 	text = ''
 		bindsym ${mod} input * xkb_switch_layout 0
+		bindsym --to-code ${mod}+a exec 'swayscript network'
 		bindsym --to-code ${mod}+c exec 'systemctl reboot -i'
 		bindsym --to-code ${mod}+g exec 'swayscript gaming'
 		bindsym --to-code ${mod}+l exec 'powerlimit toggle'

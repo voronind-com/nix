@@ -32,6 +32,7 @@ in {
 			"group/batteryinfo"
 			"group/hardware"
 			"custom/display"
+			"custom/network"
 			"tray"
 		];
 		"sway/workspaces" = {
@@ -185,6 +186,15 @@ in {
 			on-click-right  = "sleep 0.1 && swayscript monitor";
 			return-type     = "json";
 			signal          = 4;
+		};
+		"custom/network" = {
+			exec            = "swayscript networkwidget";
+			# interval        = refreshInterval;
+			on-click        = "blueman-manager";
+			on-click-middle = "swayscript network";
+			on-click-right  = "nm-connection-editor";
+			return-type     = "json";
+			signal          = 7;
 		};
 		"custom/taghw1" = {
 			exec = "echo ​";
