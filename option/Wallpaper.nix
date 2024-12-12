@@ -4,8 +4,8 @@
 	lib,
 	...
 }: let
-	url    = "https://i.imgur.com/SNEPYVe.jpeg";
-	sha256 = "sha256-cOddztn8w3lJrfMINWQnplacV8eubsatTz73oTMo2bk=";
+	url    = "https://i.imgur.com/3EL63Ur.jpeg";
+	sha256 = "sha256-4MHVZB35gUUK6aXaezrqfbGF+Az8VIpijbmWqZC2XUM=";
 	forceContrastText = false;
 in {
 	options.module.wallpaper = {
