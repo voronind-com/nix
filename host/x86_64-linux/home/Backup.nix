@@ -52,8 +52,8 @@
 		mv ''${paper} ''${path_backup}/paper/ || report "Backup: Failed to save paper!"
 		cd -
 
-		rcp_merge_fast ''${path_src}/sync/save/  ''${path_backup}/save/tmp/  || report "Backup: Failed to save game saves!"
-		rcp_merge_fast ''${path_src}/sync/photo/ ''${path_backup}/photo/tmp/ || report "Backup: Failed to save photos!"
+		rcp_merge ''${path_src}/sync/save/  ''${path_backup}/save/tmp/  || report "Backup: Failed to save game saves!"
+		rcp_merge ''${path_src}/sync/photo/ ''${path_backup}/photo/tmp/ || report "Backup: Failed to save photos!"
 
 		# Prune media copies.
 		cd ''${path_backup}/paper/
