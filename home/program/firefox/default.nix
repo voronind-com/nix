@@ -23,10 +23,13 @@
 	searchEngines = [
 		(mkSearchEngine "4p" "4pda"           "https://4pda.to/forum/index.php?act=search&forums[]=all&source=all&query={searchTerms}")
 		(mkSearchEngine "aw" "Arch Wiki"      "https://wiki.archlinux.org/index.php?search={searchTerms}")
+		(mkSearchEngine "fa" "Font Awesome"   "https://fontawesome.com/search?q={searchTerms}&o=r&m=free")
+		(mkSearchEngine "fb" "Flibusta"       "https://flibusta.is/booksearch?ask={searchTerms}")
 		(mkSearchEngine "gh" "GitHub"         "https://github.com/search?q={searchTerms}")
 		(mkSearchEngine "gc" "GitHub Code"    "https://github.com/search?q={searchTerms}&type=code")
 		(mkSearchEngine "gn" "GitHub Notif"   "https://github.com/notifications?query={searchTerms}")
 		(mkSearchEngine "hm" "Home Manager"   "https://home-manager-options.extranix.com/?query={searchTerms}")
+		(mkSearchEngine "nf" "Nerd Fonts"     "https://www.nerdfonts.com/cheat-sheet?q={searchTerms}")
 		(mkSearchEngine "no" "NixOS Options"  "https://search.nixos.org/options?query={searchTerms}")
 		(mkSearchEngine "np" "NixOS Packages" "https://search.nixos.org/packages?query={searchTerms}")
 		(mkSearchEngine "oz" "Ozon"           "https://www.ozon.ru/search?text={searchTerms}")
