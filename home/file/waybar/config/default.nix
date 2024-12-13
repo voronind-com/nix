@@ -20,6 +20,7 @@ in {
 		];
 		modules-left = [
 			"clock"
+			# "sway/language"
 			"sway/scratchpad"
 			"mpris"
 		];
@@ -27,13 +28,12 @@ in {
 			"sway/workspaces"
 		];
 		modules-right = [
-			"sway/language"
-			"pulseaudio"
-			"group/batteryinfo"
 			"group/hardware"
+			"group/batteryinfo"
+			"pulseaudio"
 			"custom/display"
 			"custom/network"
-			"tray"
+			# "tray"
 		];
 		"sway/workspaces" = {
 			all-outputs = true;
