@@ -10,7 +10,7 @@ android:
 	cp ~/.Wallpaper /sdcard/Download/Wallpaper.jpg
 	cp ~/.Wallpaper /sdcard/Download/Wallpaper.png
 
-boot: fix-ulimit fix-unlock
+boot:
 	nixos-rebuild boot $(options) --flake $(flake)
 
 cached:
@@ -20,17 +20,16 @@ check:
 	nix flake check --show-trace
 
 # HACK: Fix ulimit switch issue. Test sometime in the future again.
-fix-ulimit:
-	ulimit -n 999999999
+# fix-ulimit:
+# 	ulimit -n 999999999
 
 # HACK: They broke switching in systemd service ffs.
 # https://github.com/NixOS/nixpkgs/issues/347315
-fix-unlock:
-	pkill nixos-rebuild || true
+# fix-unlock:
+# 	pkill nixos-rebuild || true
 
-# HACK: Bring back the nix config.
-fix-nixconf:
-	mv /etc/nix/nix.conf_ /etc/nix/nix.conf
+nixconf:
+	mv /etc/nix/nix.conf_ /etc/nix/nix.conf || true
 
 gc:
 	nix-collect-garbage -d
@@ -72,7 +71,7 @@ reboot: boot
 show:
 	nix flake show
 
-switch: fix-ulimit fix-unlock
+switch:
 	nixos-rebuild switch $(options) --flake $(flake)
 
 update:
