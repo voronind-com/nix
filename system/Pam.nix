@@ -4,7 +4,7 @@
 			domain = "*";
 			item   = "nofile";
 			type   = "soft";
-			value  = "99999";
+			value  = "999999999";
 		}
 		{
 			domain = "@users";
