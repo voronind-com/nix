@@ -63,7 +63,7 @@
 
 		# Reset the state of everything.
 		function displayreset() {
-			_notify_long
+			notify_long
 			[[ "''$(monitorstate)"   = "Y" ]] && monitorreset
 			[[ "''$(gamingstate)"    = "Y" ]] && gamingreset
 			[[ "''$(recordingstate)" = "Y" ]] && pkill wf-recorder
