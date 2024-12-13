@@ -20,7 +20,6 @@ in {
 		];
 		modules-left = [
 			"clock"
-			# "sway/language"
 			"sway/scratchpad"
 			"mpris"
 		];
@@ -33,15 +32,9 @@ in {
 			"pulseaudio"
 			"custom/display"
 			"custom/network"
-			# "tray"
 		];
 		"sway/workspaces" = {
 			all-outputs = true;
-		};
-		"sway/language" = {
-			on-click       = "swaymsg 'input * xkb_switch_layout next'";
-			on-click-right = "xdg-open https://translate.yandex.ru/";
-			tooltip        = false;
 		};
 		"sway/scratchpad" = {
 			format          = "{icon}  {count}";
@@ -54,9 +47,6 @@ in {
 				""
 				""
 			];
-		};
-		tray = {
-			spacing = 8;
 		};
 		clock = {
 			format-alt     = "{:%H:%M %a %d %b}";
@@ -104,8 +94,8 @@ in {
 			format-muted        = "󰸈{format_source}";
 			format-source       = "";
 			format-source-muted = " 󰍭";
-			on-click            = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
-			on-click-middle     = "pavucontrol";
+			on-click            = "pavucontrol";
+			on-click-middle     = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
 			on-click-right      = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
 			scroll-step         = 5;
 		};

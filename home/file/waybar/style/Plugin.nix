@@ -24,11 +24,9 @@ in {
 		#clock,
 		#custom-display,
 		#custom-network,
-		#language,
 		#mpris,
 		#pulseaudio,
-		#scratchpad,
-		#tray {
+		#scratchpad {
 			padding: ${paddingV} ${paddingH};
 		}
 
@@ -47,11 +45,9 @@ in {
 		#custom-display:hover,
 		#custom-network:hover,
 		#hardware:hover,
-		#language:hover,
 		#mpris:hover,
 		#pulseaudio:hover,
 		#scratchpad:hover,
-		#tray:hover,
 		#workspaces button:hover {
 			background-color: rgba(${config.module.style.color.borderR},${config.module.style.color.borderG},${config.module.style.color.borderB},${toString config.module.style.opacity.desktop});
 		}
@@ -63,8 +59,7 @@ in {
 		#custom-network,
 		#memory,
 		#pulseaudio,
-		#temperature,
-		#tray {
+		#temperature {
 			border-top: ${toString config.module.style.window.border}px solid transparent;
 			border-bottom: ${toString config.module.style.window.border}px solid transparent;
 		}
@@ -77,8 +72,7 @@ in {
 		#memory.critical,
 		#pulseaudio.muted,
 		#pulseaudio.source-muted,
-		#temperature.critical,
-		#tray.needs-attention {
+		#temperature.critical {
 			border-top: ${toString config.module.style.window.border}px solid #${config.module.style.color.accent};
 		}
 
