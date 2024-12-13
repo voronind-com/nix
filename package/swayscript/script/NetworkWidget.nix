@@ -26,26 +26,23 @@
 			fi
 
 			for net in ''${_vpns[@]}; do
-				[[ "''${networks}" = "" ]] || networks+="\\\n"
-				networks+=" ''${net}"
+				networks+=" ''${net}\\\n"
 			done
 
 			for net in ''${_ethernets[@]}; do
-				[[ "''${networks}" = "" ]] || networks+="\\\n"
-				networks+=" ''${net}"
+				networks+=" ''${net}\\\n"
 			done
 
 			for net in ''${_wifis[@]}; do
-				[[ "''${networks}" = "" ]] || networks+="\\\n"
-				networks+="󰖩 ''${net}"
+				networks+="󰖩 ''${net}\\\n"
 			done
 
 			for bt in ''${_bts[@]}; do
-				[[ "''${networks}" = "" ]] || networks+="\\\n"
-				networks+="󰂯 ''${bt}"
+				networks+="󰂯 ''${bt}\\\n"
 			done
 
-			printf "{\"text\": \"''${icon}\", \"tooltip\": \"''${networks[@]}\", \"class\": \"''${class}\"}\n"
+			networks=''${networks%\\\n}
+			printf "{\"text\": \"''${icon}\", \"tooltip\": \"''${networks}\", \"class\": \"''${class}\"}\n"
 		}
 
 		# Toggle network.
