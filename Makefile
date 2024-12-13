@@ -34,7 +34,8 @@ fix-nixconf:
 
 gc:
 	nix-collect-garbage -d
-	# nix-store --gc
+	nix store gc
+	nix-store --gc
 
 .PHONY: home
 home:
