@@ -141,6 +141,11 @@
 					use = use ++ defaultUse;
 				};
 			in [
+				(mkName "*.xlsx" [ "document" ])
+				(mkName "*.mka" [ "audio" ])
+				(mkName "*.nsp" [ "switch_install" ])
+				(mkName "*.nsz" [ "switch_install" ])
+
 				# Use `file -i file.txt` to find file mime type.
 				# Use `xdg-mime query default "text/plain"` to find default app.
 				(mkMime "application/gzip" [ "unpack" ])
@@ -152,15 +157,12 @@
 				(mkMime "application/x-raw-disk-image" [ "unlock" ])
 				(mkMime "application/pdf" [ "pdf" ])
 				(mkMime "audio/*" [ "audio" ])
-				(mkName "*.mka" [ "audio" ])
-				(mkName "*.nsp" [ "switch_install" ])
-				(mkName "*.nsz" [ "switch_install" ])
 				(mkMime "image/*" [ "picture" "picture_copy" "picture_edit" "picture_edit_quick" ])
 				(mkMime "video/*" [ "video" ])
 				(mkMime "text/html" [ "browser" ])
 				(mkMime "application/vnd.openxmlformats-officedocument.*" [ "document" ])
-				(mkName "*.xlsx" [ "document" ])
 				(mkMime "application/x-executable" [ "steam_run" ])
+
 				{ mime = "inode/directory"; use = [ "archive" "bottle_run" "audio_shuffle" ]; }
 				(mkMime "*" [ ])
 			];
