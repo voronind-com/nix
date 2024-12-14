@@ -17,11 +17,11 @@
 		builder.client.enable      = true;
 		powerlimit.thinkpad.enable = true;
 		purpose = {
-			creativity = true;
-			disown     = true;
-			gaming     = true;
-			laptop     = true;
-			work       = true;
+			creative = true;
+			disown   = true;
+			gaming   = true;
+			laptop   = true;
+			work     = true;
 		};
 		hwmon = {
 			file = "temp1_input";

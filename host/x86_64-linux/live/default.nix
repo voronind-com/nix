@@ -18,5 +18,13 @@
 
 	# Root user setup.
 	home.nixos.enable = true;
-	user.root = true;
+	user = {
+		root     = true;
+		voronind = true;
+	};
+
+	module = {
+		builder.client.enable = true;
+		purpose.live = true;
+	};
 }

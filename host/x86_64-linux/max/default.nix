@@ -12,10 +12,10 @@
 		print.enable  = true;
 		syncthing.enable = true;
 		purpose = {
-			creativity = true;
-			gaming     = true;
-			laptop     = true;
-			work       = true;
+			creative = true;
+			gaming   = true;
+			laptop   = true;
+			work     = true;
 		};
 		display = {
 			primary = "eDP-1";

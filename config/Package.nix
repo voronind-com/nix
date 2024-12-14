@@ -75,7 +75,7 @@ in {
 		})
 
 		# Creativity.
-		(lib.mkIf cfg.creativity {
+		(lib.mkIf cfg.creative {
 			environment.systemPackages = package.creative;
 		})
 

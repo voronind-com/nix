@@ -10,10 +10,10 @@
 		package.extra = true;
 		print.enable  = true;
 		purpose = {
-			creativity = true;
-			gaming     = true;
-			laptop     = true;
-			work       = true;
+			creative = true;
+			gaming   = true;
+			laptop   = true;
+			work     = true;
 		};
 		display = {
 			primary = "DSI-1";

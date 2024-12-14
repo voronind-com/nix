@@ -11,11 +11,11 @@
 		display.primary = "eDP-1";
 		print.enable = true;
 		purpose = {
-			creativity = true;
-			disown     = true;
-			gaming     = true;
-			laptop     = true;
-			work       = true;
+			creative = true;
+			disown   = true;
+			gaming   = true;
+			laptop   = true;
+			work     = true;
 		};
 		syncthing = {
 			enable = true;

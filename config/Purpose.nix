@@ -6,10 +6,10 @@
 	cfg = config.module.purpose;
 in {
 	config = lib.mkMerge [
-		(lib.mkIf cfg.creativity {
+		(lib.mkIf cfg.creative {
 			module = {
 				tablet.enable = true;
-				package.creativity = true;
+				package.creative = true;
 			};
 		})
 
@@ -57,6 +57,23 @@ in {
 					common  = true;
 					core    = true;
 					desktop = true;
+				};
+			};
+		})
+
+		(lib.mkIf cfg.live {
+			module = {
+				keyd.enable   = true;
+				sway.enable   = true;
+				kernel.enable = true;
+				package = {
+					common   = true;
+					core     = true;
+					creative = true;
+					desktop  = true;
+					dev      = true;
+					extra    = true;
+					gaming   = true;
 				};
 			};
 		})
