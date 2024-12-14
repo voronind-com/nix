@@ -8,4 +8,12 @@
 			];
 		};
 	};
+
+	swapDevices = [{
+		device = "/dev/storage/swap";
+		randomEncryption.enable = true;
+		options = [
+			"nofail"
+		];
+	}];
 }
