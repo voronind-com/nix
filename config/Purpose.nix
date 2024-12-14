@@ -45,6 +45,7 @@ in {
 
 		(lib.mkIf cfg.laptop {
 			services.tlp.enable = true; # Automatic powersaving based on Pluged/AC states.
+			services.upower.enable = true;
 			module = {
 				keyd.enable = true;
 				sway.enable = true;
