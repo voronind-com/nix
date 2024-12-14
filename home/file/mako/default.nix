@@ -7,7 +7,7 @@
 	swayscript = pkgs.callPackage <package/swayscript> args;
 	alpha = config.module.style.opacity.hex;
 	color = config.module.style.color;
-	max   = 3;
+	max   = 2;
 in {
 	file = (pkgs.formats.iniWithGlobalSection { }).generate "MakoConfig" {
 		globalSection = {
