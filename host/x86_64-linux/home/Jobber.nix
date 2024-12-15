@@ -25,6 +25,13 @@ in {
 		hostAddress    = "188.242.247.132";
 		localAddress   = "10.1.0.2";
 
+		bindMounts = {
+				"/data" = {
+					hostPath   = "/storage/hot/data/jobber";
+					isReadOnly = true;
+				};
+			};
+
 		config = { ... }: let
 			packages = [
 				script
