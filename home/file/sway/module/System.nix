@@ -1,24 +1,23 @@
 { ... }: let
 	brstep = 5;
-	mod    = "print";
 in {
 	text = ''
-		bindsym ${mod} input * xkb_switch_layout 0
-		bindsym --to-code ${mod}+a exec 'swayscript network'
-		bindsym --to-code ${mod}+c exec 'systemctl reboot -i'
-		bindsym --to-code ${mod}+d exec 'swayscript dnd'
-		bindsym --to-code ${mod}+g exec 'swayscript gaming'
-		bindsym --to-code ${mod}+l exec 'powerlimit toggle'
-		bindsym --to-code ${mod}+m exec 'swayscript monitor'
-		bindsym --to-code ${mod}+p exec 'powersave toggle'
-		bindsym --to-code ${mod}+r exec 'swayscript reload'
-		bindsym --to-code ${mod}+v exec 'swayscript vpn'
-		bindsym --to-code ${mod}+x exec 'systemctl poweroff -i'
-		bindsym --to-code ${mod}+z exec 'systemctl suspend -i'
+		bindsym $sysmod input * xkb_switch_layout 0
+		bindsym --to-code $sysmod+a exec 'swayscript network'
+		bindsym --to-code $sysmod+c exec 'systemctl reboot -i'
+		bindsym --to-code $sysmod+d exec 'swayscript dnd'
+		bindsym --to-code $sysmod+g exec 'swayscript gaming'
+		bindsym --to-code $sysmod+l exec 'powerlimit toggle'
+		bindsym --to-code $sysmod+m exec 'swayscript monitor'
+		bindsym --to-code $sysmod+p exec 'powersave toggle'
+		bindsym --to-code $sysmod+r exec 'swayscript reload'
+		bindsym --to-code $sysmod+v exec 'swayscript vpn'
+		bindsym --to-code $sysmod+x exec 'systemctl poweroff -i'
+		bindsym --to-code $sysmod+z exec 'systemctl suspend -i'
 
-		bindsym --to-code ${mod}+w    exec light -A ${toString brstep}
+		bindsym --to-code $sysmod+w   exec light -A ${toString brstep}
 		bindsym XF86MonBrightnessUp   exec light -A ${toString brstep}
-		bindsym --to-code ${mod}+s    exec light -U ${toString brstep}
+		bindsym --to-code $sysmod+s   exec light -U ${toString brstep}
 		bindsym XF86MonBrightnessDown exec light -U ${toString brstep}
 	'';
 }
