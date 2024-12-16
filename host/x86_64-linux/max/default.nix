@@ -26,16 +26,6 @@
 		};
 		sway.extraConfig = [
 			"output eDP-1 scale 1.75"
-			"bindsym $sysmod+0 exec /run/wrappers/bin/wm2fc 0"
-			"bindsym $sysmod+9 exec /run/wrappers/bin/wm2fc a"
-			"bindsym $sysmod+1 exec /run/wrappers/bin/wm2fc 23"
-			"bindsym $sysmod+2 exec /run/wrappers/bin/wm2fc 46"
-			"bindsym $sysmod+3 exec /run/wrappers/bin/wm2fc 69"
-			"bindsym $sysmod+4 exec /run/wrappers/bin/wm2fc 92"
-			"bindsym $sysmod+5 exec /run/wrappers/bin/wm2fc 115"
-			"bindsym $sysmod+6 exec /run/wrappers/bin/wm2fc 138"
-			"bindsym $sysmod+7 exec /run/wrappers/bin/wm2fc 161"
-			"bindsym $sysmod+8 exec /run/wrappers/bin/wm2fc 184"
 		];
 		hwmon = {
 			file = "temp1_input";
