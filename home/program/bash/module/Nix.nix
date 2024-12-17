@@ -27,7 +27,7 @@
 				pkgs+=("nixpkgs#''${pkg}")
 			done
 
-			SHELL_NAME="''${tag}" NIXPKGS_ALLOW_UNFREE=1 nix shell --impure ''${pkgs[@]}
+			SHELL_NAME="''${tag}" NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nix shell --impure ''${pkgs[@]}
 		}
 
 		function nix_depends() {
@@ -48,7 +48,7 @@
 
 			[[ "''${cmd}" = "" ]] && cmd="''${pkg}"
 
-			SHELL_NAME="''${pkg}" NIXPKGS_ALLOW_UNFREE=1 nix shell --impure github:NixOS/nixpkgs/''${rev}#''${pkg} -c ''${cmd}
+			SHELL_NAME="''${pkg}" NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nix shell --impure github:NixOS/nixpkgs/''${rev}#''${pkg} -c ''${cmd}
 		}
 
 		# Prefetch to nix store.
@@ -83,7 +83,7 @@
 			fi
 
 			local name=''${*##*#}
-			SHELL_NAME="''${name}" NIXPKGS_ALLOW_UNFREE=1 nix --option max-jobs $(_core_count) --builders "" --substituters https://cache.nixos.org shell --impure ''${@}
+			SHELL_NAME="''${name}" NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nix --option max-jobs $(_core_count) --builders "" --substituters https://cache.nixos.org shell --impure ''${@}
 		}
 	'';
 }
