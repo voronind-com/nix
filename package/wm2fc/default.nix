@@ -1,4 +1,5 @@
 # SRC: https://github.com/matega/win-max-2-fan-control
+# NOTE: Speeds are from 0 to 184 (23 int). "a" for auto (disable).
 {
 	autoPatchelfHook,
 	fetchFromGitHub,

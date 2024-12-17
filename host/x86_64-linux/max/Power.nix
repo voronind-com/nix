@@ -30,10 +30,10 @@ in {
 			ryzenadj
 		];
 		script = ''
-			ryzenadj --tctl-temp=50
+			ryzenadj --tctl-temp=55
 			while true; do
 				sleep 60
-				ryzenadj --tctl-temp=50 &> /dev/null
+				ryzenadj --tctl-temp=55 &> /dev/null
 			done
 		'';
 	};
@@ -52,6 +52,7 @@ in {
 		];
 		script = ''
 			old=0
+			smooth=0
 			while true; do
 				temp=$(cat /sys/devices/pci0000\:00/0000\:00\:18.3/hwmon/*/temp1_input)
 				value=0
@@ -62,18 +63,28 @@ in {
 				then value=128
 				elif [ $temp -gt 60000 ]
 				then value=92
-				elif [ $temp -gt 50000 ]
-				then value=46
+				# elif [ $temp -gt 50000 ]
+				# then value=69
 				elif [ $temp -gt 45000 ]
+				then value=46
+				elif [ $temp -gt 40000 ]
 				then value=23
+				else value=0
 				fi
 
 				if [[ $old != $value ]]; then
-					old=$value
-					printf "%s: %d\n" "New fan speed" $value
+					# 30 = 60s smooth.
+					if [[ $value -lt $old ]] && [[ $smooth -lt 30 ]]; then
+						smooth=$((smooth+1))
+					else
+						old=$value
+						smooth=0
+						wm2fc $value
+					fi
+				else
+					smooth=0
 				fi
 
-				wm2fc $value &> /dev/null
 				sleep 2
 			done
 		'';

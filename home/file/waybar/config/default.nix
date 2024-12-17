@@ -187,16 +187,20 @@ in {
 			signal          = 7;
 		};
 		"custom/taghw1" = {
-			exec = "echo ​";
+			exec    = "echo ​";
+			tooltip = false;
 		};
 		"custom/taghw2" = {
-			exec = "echo ​";
+			exec    = "echo ​";
+			tooltip = false;
 		};
 		"custom/tagbt1" = {
-			exec = "test -e /sys/class/power_supply/BAT*/capacity && echo ​";
+			exec    = "test -e /sys/class/power_supply/BAT*/capacity && echo ​";
+			tooltip = false;
 		};
 		"custom/tagbt2" = {
-			exec = "test -e /sys/class/power_supply/BAT*/capacity && echo ​";
+			exec    = "test -e /sys/class/power_supply/BAT*/capacity && echo ​";
+			tooltip = false;
 		};
 	};
 }
