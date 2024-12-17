@@ -69,6 +69,7 @@ in {
 		#custom-display.modified,
 		#custom-network.issue,
 		#custom-network.vpn,
+		#custom-network.btlow,
 		#memory.critical,
 		#pulseaudio.muted,
 		#pulseaudio.source-muted,

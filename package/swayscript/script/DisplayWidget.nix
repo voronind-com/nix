@@ -83,29 +83,29 @@
 				class="modified"
 			fi
 
-			printf "{\"text\": \"󰍹\", \"tooltip\": \"DND: ''${_dndstate} / Monitor: ''${_monitorstate} / Gaming: ''${_gamingstate} / Recording: ''${_recordingstate}\", \"class\": \"''${class}\"}\n"
+			printf "%s" "{\"text\": \"󰍹\", \"tooltip\": \"DND: ''${_dndstate} / Monitor: ''${_monitorstate} / Gaming: ''${_gamingstate} / Recording: ''${_recordingstate}\", \"class\": \"''${class}\"}\n"
 		}
 
 		function monitorstate() {
 			local outputs=($(swaymsg -t get_outputs | jq -r '.[] | .power'))
 
 			for state in "''${outputs[@]}"; do
-		''${state} || {
-					printf Y
+				''${state} || {
+					printf "%s" Y
 					return 1
 				}
 			done
 
-			printf n
+			printf "%s" n
 			return 0
 		}
 
 		function recordingstate() {
-			[[ "$(ps cax | rg wf-recorder)" = "" ]] && printf n || printf Y
+			[[ "$(ps cax | rg wf-recorder)" = "" ]] && printf "%s" n || printf "%s" Y
 		}
 
 		function dndstate() {
-			[[ "$(makoctl mode)" = "dnd" ]] && printf Y || printf n
+			[[ "$(makoctl mode)" = "dnd" ]] && printf "%s" Y || printf "%s" n
 		}
 
 		function gamingstate() {
@@ -113,12 +113,12 @@
 
 			for state in "''${outputs[@]}"; do
 				[[ "''${state}" = "disabled" ]] || {
-					printf Y
+					printf "%s" Y
 					return 1
 				}
 			done
 
-			printf n
+			printf "%s" n
 			return 0
 		}
 	'';
