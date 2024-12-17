@@ -3,7 +3,6 @@
 	pkgs,
 	...
 }: let
-	tbase = 45;
 	wm2fc = pkgs.callPackage <package/wm2fc> {};
 in {
 	# hardware.cpu.amd.ryzen-smu.enable = true;
@@ -31,10 +30,10 @@ in {
 			ryzenadj
 		];
 		script = ''
-			ryzenadj --tctl-temp=${toString (tbase+5)}
+			ryzenadj --tctl-temp=50
 			while true; do
 				sleep 60
-				ryzenadj --tctl-temp=${toString (tbase+5)} &> /dev/null
+				ryzenadj --tctl-temp=50 &> /dev/null
 			done
 		'';
 	};
@@ -51,32 +50,21 @@ in {
 			coreutils
 			wm2fc
 		];
-		script = let
-			templimit = add: if (tbase+add) > 80 then
-				"80000"
-			else
-				"${toString (tbase+add)}000";
-		in ''
+		script = ''
 			old=0
 			while true; do
 				temp=$(cat /sys/devices/pci0000\:00/0000\:00\:18.3/hwmon/*/temp1_input)
 				value=0
 
-				if   [ $temp -gt ${templimit 35} ]
+				if   [ $temp -gt 80000 ]
 				then value=184
-				elif [ $temp -gt ${templimit 30} ]
-				then value=161
-				elif [ $temp -gt ${templimit 25} ]
-				then value=138
-				elif [ $temp -gt ${templimit 20} ]
-				then value=115
-				elif [ $temp -gt ${templimit 15} ]
+				elif [ $temp -gt 70000 ]
+				then value=128
+				elif [ $temp -gt 60000 ]
 				then value=92
-				elif [ $temp -gt ${templimit 10} ]
-				then value=69
-				elif [ $temp -gt ${templimit 5} ]
+				elif [ $temp -gt 49000 ]
 				then value=46
-				elif [ $temp -gt ${templimit 0} ]
+				elif [ $temp -gt 45000 ]
 				then value=23
 				fi
 
