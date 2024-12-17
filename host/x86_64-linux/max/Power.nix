@@ -31,9 +31,10 @@ in {
 			ryzenadj
 		];
 		script = ''
+			ryzenadj --tctl-temp=${toString (tbase+5)}
 			while true; do
-				ryzenadj --tctl-temp=${toString tbase}
 				sleep 60
+				ryzenadj --tctl-temp=${toString (tbase+5)} &> /dev/null
 			done
 		'';
 	};
@@ -50,30 +51,41 @@ in {
 			coreutils
 			wm2fc
 		];
-		script = ''
+		script = let
+			templimit = add: if (tbase+add) > 80 then
+				"80000"
+			else
+				"${toString (tbase+add)}000";
+		in ''
+			old=0
 			while true; do
 				temp=$(cat /sys/devices/pci0000\:00/0000\:00\:18.3/hwmon/*/temp1_input)
 				value=0
 
-				if   [ $temp -gt ${toString (tbase+35)}000 ]
+				if   [ $temp -gt ${templimit 35} ]
 				then value=184
-				elif [ $temp -gt ${toString (tbase+30)}000 ]
+				elif [ $temp -gt ${templimit 30} ]
 				then value=161
-				elif [ $temp -gt ${toString (tbase+25)}000 ]
+				elif [ $temp -gt ${templimit 25} ]
 				then value=138
-				elif [ $temp -gt ${toString (tbase+20)}000 ]
+				elif [ $temp -gt ${templimit 20} ]
 				then value=115
-				elif [ $temp -gt ${toString (tbase+15)}000 ]
+				elif [ $temp -gt ${templimit 15} ]
 				then value=92
-				elif [ $temp -gt ${toString (tbase+10)}000 ]
+				elif [ $temp -gt ${templimit 10} ]
 				then value=69
-				elif [ $temp -gt ${toString (tbase+5)}000 ]
+				elif [ $temp -gt ${templimit 5} ]
 				then value=46
-				elif [ $temp -gt ${toString tbase}000 ]
+				elif [ $temp -gt ${templimit 0} ]
 				then value=23
 				fi
 
-				wm2fc $value
+				if [[ $old != $value ]]; then
+					old=$value
+					printf "%s: %d\n" "New fan speed" $value
+				fi
+
+				wm2fc $value &> /dev/null
 				sleep 2
 			done
 		'';
