@@ -131,8 +131,14 @@
 		steam     # Gaming platform.
 		vkd3d     # Directx to Vulkan.
 		wine64    # Run Windows software on Linux.
+		(steam.override {
+			extraLibraries = _: with pkgs; [
+				(callPackage ./openssl100 {})
+				curlWithGnuTls
+			];
+		}).run
 
-		(import ./steamrun args).pkg # Steam env to run native games.
+		# (import ./steamrun args).pkg # Steam env to run native games.
 	];
 
 	creative = with pkgs; [
