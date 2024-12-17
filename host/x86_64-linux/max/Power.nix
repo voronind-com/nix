@@ -62,7 +62,7 @@ in {
 				then value=128
 				elif [ $temp -gt 60000 ]
 				then value=92
-				elif [ $temp -gt 49000 ]
+				elif [ $temp -gt 50000 ]
 				then value=46
 				elif [ $temp -gt 45000 ]
 				then value=23
