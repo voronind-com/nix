@@ -129,9 +129,10 @@
 		mangohud  # Realtime stats overlay.
 		scanmem   # Memory edit tool.
 		steam     # Gaming platform.
-		steam-run # Run games outside of Steam.
 		vkd3d     # Directx to Vulkan.
 		wine64    # Run Windows software on Linux.
+
+		(import ./steamrun args).pkg # Steam env to run native games.
 	];
 
 	creative = with pkgs; [

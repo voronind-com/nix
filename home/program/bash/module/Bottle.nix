@@ -11,7 +11,7 @@
 		function btc() {
 			local env="''${1}"
 			[[ "''${env}" = "" ]] && env="gaming"
-			bottles-cli new --bottle-name "''${SHELL_NAME}" --environment "''${env}" "''${@:2}" 2> /dev/null
+			bottles-cli new --bottle-name "''${SHELL_NAME}" --environment "''${env}" "''${@:2}"
 		}
 
 		# Run a file inside a bottle.
