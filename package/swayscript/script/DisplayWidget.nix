@@ -83,7 +83,7 @@
 				class="modified"
 			fi
 
-			printf "%s" "{\"text\": \"󰍹\", \"tooltip\": \"DND: ''${_dndstate} / Monitor: ''${_monitorstate} / Gaming: ''${_gamingstate} / Recording: ''${_recordingstate}\", \"class\": \"''${class}\"}\n"
+			printf "%s" "{\"text\": \"󰍹\", \"tooltip\": \"󰍶 ''${_dndstate}\\t󰶐 ''${_monitorstate}\\n󰡈 ''${_gamingstate}\\t󰻂 ''${_recordingstate}\", \"class\": \"''${class}\"}\n"
 		}
 
 		function monitorstate() {
