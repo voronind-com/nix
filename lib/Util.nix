@@ -14,18 +14,12 @@
   # List all files in a dir.
   ls = path: map (f: "${path}/${f}") (builtins.attrNames (builtins.readDir path));
 
-  # Concat all files by `text` key.
-  # TODO: REMOVE
-  catText = files: args: builtins.foldl' (acc: mod: acc + (import mod args).text) "" files;
-
-  # Concat all file paths by `file` key.
-  # TODO: REMOVE
+  # Concat all nix file content by `file` key.
   catFile =
     files: args:
     builtins.foldl' (acc: mod: acc + (builtins.readFile (import mod args).file) + "\n") "" files;
 
-  # Concat all files as a set.
-  # TODO: REMOVE
+  # Concat all nix files as a set.
   catSet =
     files: args: builtins.foldl' (acc: mod: acc // mod) { } (map (file: import file args) files);
 
