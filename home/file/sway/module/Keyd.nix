@@ -1,5 +1,6 @@
-{ ... }: {
-	text = ''
-		exec keyd-application-mapper -d
-	'';
+{ ... }:
+{
+  text = ''
+    exec keyd-application-mapper -d
+  '';
 }

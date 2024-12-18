@@ -1,6 +1,4 @@
+{ lib, ... }:
 {
-	lib,
-	...
-}: {
-	options.module.bluetooth.enable = lib.mkEnableOption "the bluetooth support.";
+  options.module.bluetooth.enable = lib.mkEnableOption "the bluetooth support.";
 }

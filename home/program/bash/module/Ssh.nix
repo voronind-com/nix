@@ -1,8 +1,9 @@
-{ ... }: {
-	text = ''
-		# Kill all ssh sockets.
-		function sshka() {
-			rm ~/.ssh/*.socket
-		}
-	'';
+{ ... }:
+{
+  text = ''
+    # Kill all ssh sockets.
+    function sshka() {
+      rm ~/.ssh/*.socket
+    }
+  '';
 }

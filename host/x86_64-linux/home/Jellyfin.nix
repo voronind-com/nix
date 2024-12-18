@@ -1,14 +1,15 @@
-{ ... }: {
-	# systemd.services.jellyfin.serviceConfig.MemoryMax = cfg.memLimit;
+{ ... }:
+{
+  # systemd.services.jellyfin.serviceConfig.MemoryMax = cfg.memLimit;
 
-	users.users.jellyfin.extraGroups = [
-		"video"
-		"render"
-	];
+  users.users.jellyfin.extraGroups = [
+    "video"
+    "render"
+  ];
 
-	services.jellyfin = {
-		enable   = true;
-		# cacheDir = "/var/cache/jellyfin";
-		# dataDir  = "/var/lib/jellyfin";
-	};
+  services.jellyfin = {
+    enable = true;
+    # cacheDir = "/var/cache/jellyfin";
+    # dataDir  = "/var/lib/jellyfin";
+  };
 }

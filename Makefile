@@ -1,4 +1,4 @@
-options  = --option eval-cache false --fallback --print-build-logs --verbose --extra-experimental-features pipe-operators
+options  = --option eval-cache false --fallback --print-build-logs --verbose --option extra-experimental-features pipe-operators
 flake    = .
 hostname = $(shell hostname)
 
@@ -16,7 +16,7 @@ boot:
 cached:
 	$(eval options := $(subst eval-cache false,eval-cache true,$(options)))
 
-check:
+check: format
 	nix flake check --show-trace
 
 # HACK: Fix ulimit switch issue. Test sometime in the future again.
@@ -27,6 +27,9 @@ check:
 # https://github.com/NixOS/nixpkgs/issues/347315
 # fix-unlock:
 # 	pkill nixos-rebuild || true
+
+format:
+	treefmt --no-cache --clear-cache
 
 nixconf:
 	mv /etc/nix/nix.conf_ /etc/nix/nix.conf || true

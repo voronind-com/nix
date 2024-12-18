@@ -1,6 +1,4 @@
+{ lib, ... }:
 {
-	lib,
-	...
-}: {
-	options.module.portal.enable = lib.mkEnableOption "the portals.";
+  options.module.portal.enable = lib.mkEnableOption "the portals.";
 }

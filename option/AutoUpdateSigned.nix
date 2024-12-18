@@ -1,6 +1,4 @@
+{ lib, ... }:
 {
-	lib,
-	...
-}: {
-	options.module.autoupdate.enable = lib.mkEnableOption "the system auto-updates.";
+  options.module.autoupdate.enable = lib.mkEnableOption "the system auto-updates.";
 }

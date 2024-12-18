@@ -1,30 +1,31 @@
-{ ... }: {
-	text = ''
-		# Reload.
-		function reload() {
-			# notify_long
-			re() {
-				# Sway.
-				swaymsg reload
+{ ... }:
+{
+  text = ''
+    # Reload.
+    function reload() {
+      # notify_long
+      re() {
+        # Sway.
+        swaymsg reload
 
-				# Waybar.
-				pkill waybar
-				swaymsg exec waybar
+        # Waybar.
+        pkill waybar
+        swaymsg exec waybar
 
-				# Tmux.
-				tmux source-file ~/.config/tmux/tmux.conf
+        # Tmux.
+        tmux source-file ~/.config/tmux/tmux.conf
 
-				# Bash.
-				pkill -SIGUSR1 bash
+        # Bash.
+        pkill -SIGUSR1 bash
 
-				# Notifications.
-				makoctl reload
+        # Notifications.
+        makoctl reload
 
-				# Reset displays.
-				displayreset
-			}
+        # Reset displays.
+        displayreset
+      }
 
-			_sway_iterate_sockets re
-		}
-	'';
+      _sway_iterate_sockets re
+    }
+  '';
 }

@@ -1,6 +1,4 @@
+{ lib, ... }:
 {
-	lib,
-	...
-}: {
-	options.module.waybar.enable = lib.mkEnableOption "the Waybar.";
+  options.module.waybar.enable = lib.mkEnableOption "the Waybar.";
 }

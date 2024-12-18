@@ -1,6 +1,4 @@
+{ lib, ... }:
 {
-	lib,
-	...
-}: {
-	options.module.polkit.enable = lib.mkEnableOption "the polkit.";
+  options.module.polkit.enable = lib.mkEnableOption "the polkit.";
 }

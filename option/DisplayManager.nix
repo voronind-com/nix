@@ -1,6 +1,4 @@
+{ lib, ... }:
 {
-	lib,
-	...
-}: {
-	options.module.dm.enable = lib.mkEnableOption "the display manager.";
+  options.module.dm.enable = lib.mkEnableOption "the display manager.";
 }

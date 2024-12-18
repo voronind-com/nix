@@ -1,8 +1,9 @@
-{ ... }: {
-	text = ''
-		# Neovim shortcut.
-		function v() {
-			nvim -- "''${@}"
-		}
-	'';
+{ ... }:
+{
+  text = ''
+    # Neovim shortcut.
+    function v() {
+      nvim -- "''${@}"
+    }
+  '';
 }

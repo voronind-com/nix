@@ -1,8 +1,9 @@
-{ ... }: {
-	services.rabbitmq = {
-		enable = true;
-		# configItems = {
-		# 	"loopback_users" = "none";
-		# };
-	};
+{ ... }:
+{
+  services.rabbitmq = {
+    enable = true;
+    # configItems = {
+    #   "loopback_users" = "none";
+    # };
+  };
 }

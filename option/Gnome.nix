@@ -1,6 +1,4 @@
+{ lib, ... }:
 {
-	lib,
-	...
-}: {
-	options.module.gnome.enable = lib.mkEnableOption "the Gnome DE.";
+  options.module.gnome.enable = lib.mkEnableOption "the Gnome DE.";
 }

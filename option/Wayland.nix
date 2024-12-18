@@ -1,6 +1,4 @@
+{ lib, ... }:
 {
-	lib,
-	...
-}: {
-	options.module.wayland.enable = lib.mkEnableOption "the wayland.";
+  options.module.wayland.enable = lib.mkEnableOption "the wayland.";
 }

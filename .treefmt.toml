@@ -1,0 +1,16 @@
+# SRC: https://github.com/numtide/treefmt
+# REF: https://treefmt.com/latest/getting-started/configure/#config-file
+
+walk = "git"
+excludes = [
+	"*.key",
+	"*.patch",
+	"*.ogg",
+	"*.lock",
+	"License"
+]
+
+[formatter.nixfmt-rfc-style]
+command  = "nixfmt"
+options  = [ "-s" ]
+includes = [ "*.nix" ]

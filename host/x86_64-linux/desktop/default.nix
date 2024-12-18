@@ -1,40 +1,41 @@
-{ ... }: {
-	home.nixos.enable = true;
-	user = {
-		root     = true;
-		voronind = true;
-	};
+{ ... }:
+{
+  home.nixos.enable = true;
+  user = {
+    root = true;
+    voronind = true;
+  };
 
-	module = {
-		builder.client.enable = true;
-		package.extra    = true;
-		print.enable     = true;
-		syncthing.enable = true;
-		purpose = {
-			desktop = true;
-			gaming  = true;
-			work    = true;
-		};
-		display = {
-			primary = "HDMI-A-1";
-			rotate.HDMI-A-1 = 180;
-		};
-		amd = {
-			compute.enable = true;
-			gpu.enable     = true;
-			cpu = {
-				enable    = true;
-				powersave = true;
-			};
-		};
-		sway.extraConfig = [
-			"output DP-3 pos 0 1080"
-			"output HDMI-A-1 mode 1920x1080@74.986Hz pos 780 0"
-			"workspace 1 output HDMI-A-1"
-		];
-		hwmon = {
-			file = "temp1_input";
-			path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon";
-		};
-	};
+  module = {
+    builder.client.enable = true;
+    package.extra = true;
+    print.enable = true;
+    syncthing.enable = true;
+    purpose = {
+      desktop = true;
+      gaming = true;
+      work = true;
+    };
+    display = {
+      primary = "HDMI-A-1";
+      rotate.HDMI-A-1 = 180;
+    };
+    amd = {
+      compute.enable = true;
+      gpu.enable = true;
+      cpu = {
+        enable = true;
+        powersave = true;
+      };
+    };
+    sway.extraConfig = [
+      "output DP-3 pos 0 1080"
+      "output HDMI-A-1 mode 1920x1080@74.986Hz pos 780 0"
+      "workspace 1 output HDMI-A-1"
+    ];
+    hwmon = {
+      file = "temp1_input";
+      path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon";
+    };
+  };
 }

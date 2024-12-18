@@ -1,6 +1,4 @@
+{ lib, ... }:
 {
-	lib,
-	...
-}: {
-	options.module.keyd.enable = lib.mkEnableOption "the keyboard remaps.";
+  options.module.keyd.enable = lib.mkEnableOption "the keyboard remaps.";
 }

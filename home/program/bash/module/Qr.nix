@@ -1,7 +1,8 @@
-{ ... }: {
-	text = ''
-		function qr() {
-			qrencode -t ansiutf8
-		}
-	'';
+{ ... }:
+{
+  text = ''
+    function qr() {
+      qrencode -t ansiutf8
+    }
+  '';
 }
