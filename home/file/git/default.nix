@@ -12,5 +12,6 @@
 		rebase.autoStash           = true;
 		safe.directory             = "*";
 		user.signingkey            = builtins.readFile secret.crypto.sign.git.key;
+		diff.algorithm             = "histogram";
 	};
 }
