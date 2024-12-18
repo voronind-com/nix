@@ -7,6 +7,7 @@ excludes = [
 	"*.patch",
 	"*.ogg",
 	"*.lock",
+	"*.conf",
 	"License"
 ]
 
