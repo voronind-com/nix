@@ -27,7 +27,7 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.packages = package.core;
-    nix.extraOptions = "experimental-features = nix-command flakes";
+    nix.extraOptions = "experimental-features = nix-command flakes pipe-operators";
     system.stateVersion = const.droidStateVersion;
     time.timeZone = const.timeZone;
     terminal = { inherit (android) font colors; };
