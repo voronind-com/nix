@@ -1,0 +1,7 @@
+* {
+	font-family: "@fontSerif@", "@fontPropo@";
+	/* prettier-ignore */
+	font-size: @fontSize@;
+	/* prettier-ignore */
+	color: @foreground@;
+}

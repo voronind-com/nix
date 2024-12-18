@@ -1,0 +1,16 @@
+window#waybar {
+	/* prettier-ignore */
+	background-color: @backgroundColor@;
+	/* prettier-ignore */
+	border: @border@;
+}
+
+.modules-left > widget:first-child > #workspaces {
+	/* prettier-ignore */
+	margin-left: @borderSize@;
+}
+
+.modules-right > widget:last-child > #workspaces {
+	/* prettier-ignore */
+	margin-right: @borderSize@;
+}

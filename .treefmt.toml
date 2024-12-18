@@ -19,3 +19,8 @@ includes = [ "*.nix" ]
 command  = "shfmt"
 options  = [ "-s", "-w" ]
 includes = [ "*.sh" ]
+
+[formatter.prettier]
+command  = "prettier"
+options  = [ "-w" ]
+includes = [ "*.css" ]

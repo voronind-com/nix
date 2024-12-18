@@ -1,0 +1,94 @@
+/* See the ISSUE. */
+#custom-taghw1,
+#custom-tagbt1 {
+	/* prettier-ignore */
+	padding-left: @paddingH@;
+}
+
+#custom-taghw2,
+#custom-tagbt2 {
+	/* prettier-ignore */
+	padding-right: @paddingH@;
+}
+
+/* Padding for global widgets. */
+#clock,
+#custom-display,
+#custom-network,
+#mpris,
+#pulseaudio,
+#scratchpad {
+	/* prettier-ignore */
+	padding: @paddingV@ @paddingH@;
+}
+
+/* Padding for combined widgets. */
+#cpu.load,
+#custom-powerlimit,
+#custom-powersave,
+#memory,
+#temperature {
+	padding-left: 4px;
+}
+
+/* Hover style. */
+#batteryinfo:hover,
+#clock:hover,
+#custom-display:hover,
+#custom-network:hover,
+#hardware:hover,
+#mpris:hover,
+#pulseaudio:hover,
+#scratchpad:hover,
+#workspaces button:hover {
+	/* prettier-ignore */
+	background-color: @borderColor@;
+}
+
+/* Critical state. */
+#battery,
+#cpu.usage,
+#custom-display,
+#custom-network,
+#memory,
+#pulseaudio,
+#temperature {
+	/* prettier-ignore */
+	border-top: @borderSize@ solid transparent;
+	/* prettier-ignore */
+	border-bottom: @borderSize@ solid transparent;
+}
+
+#battery.critical,
+#cpu.usage.critical,
+#custom-display.modified,
+#custom-network.issue,
+#custom-network.vpn,
+#custom-network.btlow,
+#memory.critical,
+#pulseaudio.muted,
+#pulseaudio.source-muted,
+#temperature.critical {
+	/* prettier-ignore */
+	border-top: @borderSize@ solid @accent@;
+}
+
+/* Widget-specific styling. */
+#workspaces button {
+	/* prettier-ignore */
+	padding: @paddingV@ 4px;
+	/* prettier-ignore */
+	border-top: @borderSize@ solid transparent;
+	/* prettier-ignore */
+	border-bottom: @borderSize@ solid transparent;
+	border-radius: 0;
+}
+
+#workspaces button.focused {
+	/* prettier-ignore */
+	border-top: @borderSize@ solid @accent@;
+}
+
+#clock {
+	font-weight: bold;
+}

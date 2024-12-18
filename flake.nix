@@ -156,6 +156,8 @@
             nativeBuildInputs = with pkgs; [
               nixd
               nixfmt-rfc-style
+              nodePackages.prettier
+              nodePackages.prettier-plugin-toml
               shfmt
               treefmt
             ];
