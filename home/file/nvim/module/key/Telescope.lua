@@ -1,0 +1,6 @@
+rekey_normal("<Leader>fa", "<cmd>Telescope<cr>")
+rekey_normal("<Leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>")
+rekey_normal("<Leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>")
+rekey_normal("<Leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
+rekey_normal("<Leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
+rekey_normal("<Leader>ft", "<cmd>Telescope treesitter<cr>")

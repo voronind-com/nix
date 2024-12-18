@@ -25,3 +25,7 @@ includes = [ "*.sh" ]
 command  = "prettier"
 options  = [ "-w" ]
 includes = [ "*.css" ]
+
+[formatter.stylua]
+command  = "stylua"
+includes = [ "*.lua" ]

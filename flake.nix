@@ -159,6 +159,7 @@
               nodePackages.prettier
               nodePackages.prettier-plugin-toml
               shfmt
+              stylua
               treefmt
             ];
             # buildInputs = with pkgs; [ ];

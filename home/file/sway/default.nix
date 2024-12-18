@@ -190,25 +190,27 @@ let
     ]
   );
 
-  swayRc = (pkgs.replaceVars swayRcRaw {
-    inherit
-      FullscreenRecording
-      FullscreenScreenshot
-      SelectRecording
-      SelectScreenshot
-      accent
-      border
-      borderSize
-      fg
-      fontName
-      keyboardLayouts
-      keyboardOptions
-      wallpaper
-      windowGap
-      ;
-  }).overrideAttrs (old: {
-    doCheck = false;
-  });
+  swayRc =
+    (pkgs.replaceVars swayRcRaw {
+      inherit
+        FullscreenRecording
+        FullscreenScreenshot
+        SelectRecording
+        SelectScreenshot
+        accent
+        border
+        borderSize
+        fg
+        fontName
+        keyboardLayouts
+        keyboardOptions
+        wallpaper
+        windowGap
+        ;
+    }).overrideAttrs
+      (old: {
+        doCheck = false;
+      });
 in
 {
   text =

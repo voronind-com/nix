@@ -1,21 +1,37 @@
 {
+  config,
   inputs,
   pkgs,
   util,
   ...
-}@args:
+}:
 let
   nvimRc =
     { runtimes, configs }:
     let
+      accent = config.module.style.color.accent;
+      bg = config.module.style.color.bg.regular;
+      fg = config.module.style.color.fg.dark;
+      ollamaModel = config.module.ollama.primaryModel;
+      selection = config.module.style.color.selection;
+
       # Plugin paths to install.
       runtimeRc = builtins.foldl' (acc: r: acc + "set runtimepath+=${r}\n") "" runtimes;
 
       # My configuration files combined into one big file.
-      config = pkgs.writeText "nvimRc" (util.catText configs args);
+      cfgRaw = pkgs.writeText "nvim-rc-raw" (util.readFiles configs);
+      cfg = pkgs.replaceVars cfgRaw {
+        inherit
+          accent
+          bg
+          fg
+          ollamaModel
+          selection
+          ;
+      };
 
       # Tell Neovim to load this file.
-      configRc = "lua dofile(\"${config}\")";
+      configRc = "lua dofile(\"${cfg}\")";
     in
     runtimeRc + configRc;
 in
@@ -45,49 +61,49 @@ in
     ];
 
     configs = [
-      ./module/key/Rekey.nix
-      ./module/key/Leader.nix
-      ./module/config/Autoread.nix
-      ./module/config/Etc.nix
-      ./module/config/Search.nix
-      ./module/config/Tab.nix
-      ./module/config/Highlight.nix
-      ./module/plugin/Filetree.nix
-      ./module/plugin/Gruvbox.nix
-      ./module/plugin/Bufferline.nix
-      ./module/plugin/Autoclose.nix
-      ./module/plugin/Gitsigns.nix
-      ./module/plugin/Trouble.nix
-      ./module/plugin/Closebuffers.nix
-      ./module/plugin/Telescope.nix
-      ./module/plugin/Todo.nix
-      ./module/plugin/Indent.nix
-      ./module/plugin/Align.nix
-      ./module/plugin/Treesitter.nix
-      ./module/plugin/Fold.nix
-      ./module/plugin/Gen.nix
-      ./module/plugin/Colorizer.nix
-      ./module/plugin/Dressing.nix
-      ./module/plugin/lsp/Go.nix
-      ./module/plugin/lsp/Haskell.nix
-      ./module/plugin/lsp/Lua.nix
-      ./module/plugin/lsp/Nix.nix
-      ./module/plugin/lsp/Rust.nix
-      ./module/plugin/lsp/Tex.nix
-      ./module/key/Autocomplete.nix
-      ./module/key/Buffer.nix
-      ./module/key/Cmd.nix
-      ./module/key/Colorscheme.nix
-      ./module/key/Filetree.nix
-      ./module/key/Gitsigns.nix
-      ./module/key/Navigation.nix
-      ./module/key/Prompt.nix
-      ./module/key/Save.nix
-      ./module/key/Sort.nix
-      ./module/key/TabWidth.nix
-      ./module/key/Telescope.nix
-      ./module/key/Terminal.nix
-      ./module/key/Trouble.nix
+      ./module/key/Rekey.lua
+      ./module/key/Leader.lua
+      ./module/config/Autoread.lua
+      ./module/config/Etc.lua
+      ./module/config/Search.lua
+      ./module/config/Tab.lua
+      ./module/config/Highlight.lua
+      ./module/plugin/Filetree.lua
+      ./module/plugin/Gruvbox.lua
+      ./module/plugin/Bufferline.lua
+      ./module/plugin/Autoclose.lua
+      ./module/plugin/Gitsigns.lua
+      ./module/plugin/Trouble.lua
+      ./module/plugin/Closebuffers.lua
+      ./module/plugin/Telescope.lua
+      ./module/plugin/Todo.lua
+      ./module/plugin/Indent.lua
+      ./module/plugin/Align.lua
+      ./module/plugin/Treesitter.lua
+      ./module/plugin/Fold.lua
+      ./module/plugin/Gen.lua
+      ./module/plugin/Colorizer.lua
+      ./module/plugin/Dressing.lua
+      ./module/plugin/lsp/Go.lua
+      ./module/plugin/lsp/Haskell.lua
+      ./module/plugin/lsp/Lua.lua
+      ./module/plugin/lsp/Nix.lua
+      ./module/plugin/lsp/Rust.lua
+      ./module/plugin/lsp/Tex.lua
+      ./module/key/Autocomplete.lua
+      ./module/key/Buffer.lua
+      ./module/key/Cmd.lua
+      ./module/key/Colorscheme.lua
+      ./module/key/Filetree.lua
+      ./module/key/Gitsigns.lua
+      ./module/key/Navigation.lua
+      ./module/key/Prompt.lua
+      ./module/key/Save.lua
+      ./module/key/Sort.lua
+      ./module/key/TabWidth.lua
+      ./module/key/Telescope.lua
+      ./module/key/Terminal.lua
+      ./module/key/Trouble.lua
     ];
   };
 }
