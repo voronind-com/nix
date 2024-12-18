@@ -8,7 +8,8 @@ excludes = [
 	"*.ogg",
 	"*.lock",
 	"*.conf",
-	"License"
+	"License",
+	"home/file/jetbrains/ideavimrc"
 ]
 
 [formatter.nixfmt-rfc-style]

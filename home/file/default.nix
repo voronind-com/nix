@@ -11,7 +11,6 @@ let
   foot = import ./foot args;
   fuzzel = import ./fuzzel args;
   git = import ./git args;
-  jetbrains = import ./jetbrains args;
   keyd = import ./keyd args;
   mako = import ./mako args;
   mangohud = import ./mangohud args;
@@ -47,7 +46,7 @@ in
   ".config/yazi/yazi.toml".source = yazi.yazi;
   ".editorconfig".source = editor.file;
   ".gitconfig".source = git.file;
-  ".ideavimrc".text = jetbrains.ideavimrc;
+  ".ideavimrc".source = ./jetbrains/ideavimrc;
   ".nix".source = self;
   ".nixpkgs".source = inputs.nixpkgs;
   ".parallel/will-cite".text = "";
