@@ -19,11 +19,15 @@
 
   # Concat all file paths by `file` key.
   catFile =
-    files: args: builtins.foldl' (acc: mod: acc + (builtins.readFile (import mod args).file)) "" files;
+    files: args:
+    builtins.foldl' (acc: mod: acc + (builtins.readFile (import mod args).file) + "\n") "" files;
 
   # Concat all files as a set.
   catSet =
     files: args: builtins.foldl' (acc: mod: acc // mod) { } (map (file: import file args) files);
+
+  # Concat all file contents.
+  catContent = files: builtins.foldl' (acc: mod: acc + (builtins.readFile mod) + "\n") "" files;
 
   # Systemd service that does not restart with system switch.
   mkStaticSystemdService =

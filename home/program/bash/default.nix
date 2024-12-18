@@ -1,13 +1,38 @@
-{ util, pkgs, ... }@args:
+{
+  util,
+  pkgs,
+  secret,
+  config,
+  ...
+}:
 let
-  modules = util.catText (util.ls ./module) args;
-  modulesFile = pkgs.writeText "BashModules" modules;
+  accent = "${config.module.style.color.accentR};${config.module.style.color.accentG};${config.module.style.color.accentB}";
+  negative = "${config.module.style.color.negativeR};${config.module.style.color.negativeG};${config.module.style.color.negativeB}";
+  neutral = "${config.module.style.color.neutralR};${config.module.style.color.neutralG};${config.module.style.color.neutralB}";
+  positive = "${config.module.style.color.positiveR};${config.module.style.color.positiveG};${config.module.style.color.positiveB}";
+
+  tgbot = secret.tg.bt;
+  tgdata = secret.tg.dt "false";
+  tgdatasilent = secret.tg.dt "true";
+
+  modulesRaw = pkgs.writeText "bash-user-modules-raw" (util.catContent (util.ls ./module));
+  modulesFile = pkgs.replaceVars modulesRaw {
+    inherit
+      accent
+      negative
+      neutral
+      positive
+      tgbot
+      tgdata
+      tgdatasilent
+      ;
+  };
 in
 {
-  inherit modules modulesFile;
+  inherit modulesFile;
 
   bashrc =
-    modules
+    (builtins.readFile modulesFile)
     + ''
       # Find all functions.
       function find_function() {
