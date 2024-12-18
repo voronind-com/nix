@@ -30,7 +30,7 @@
 			if [[ "''${_bts}" != "" ]]; then
 				icon="󱛃"
 
-				if [[ "''${_bt_lowest}" != "" ]] && [[ ''${_bt_lowest} -lt 20 ]]; then
+				if [[ "''${_bt_lowest}" != "" ]] && [[ ''${_bt_lowest} -lt 21 ]]; then
 					class="btlow"
 				fi
 			fi
