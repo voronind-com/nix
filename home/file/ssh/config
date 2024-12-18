@@ -1,0 +1,59 @@
+Host *
+	ControlMaster auto
+	ControlPath ~/.ssh/%C.socket
+	ControlPersist yes
+
+Host dasha
+	HostName 10.0.0.7
+	User root
+	Port 22143
+
+Host desktop
+	HostName 10.0.0.3
+	User root
+	Port 22143
+
+Host fmpmaven
+	HostName 10.30.22.10
+	User root
+	Port 22
+
+Host home
+	HostName 10.0.0.1
+	User root
+	Port 22143
+
+Host laptop
+	HostName 192.168.1.9
+	User root
+	Port 22143
+
+Host max
+	HostName 10.0.0.13
+	User root
+	Port 22143
+
+Host nixbuilder
+	HostName 10.0.0.1
+	User nixbuilder
+	Port 22143
+
+Host pi
+	HostName 192.168.1.6
+	User root
+	Port 22143
+
+Host pocket
+	HostName 192.168.1.11
+	User root
+	Port 22143
+
+Host vpn
+	HostName 194.113.233.38
+	User root
+	Port 22143
+
+Host work
+	HostName 192.168.1.5
+	User root
+	Port 22143

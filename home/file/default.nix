@@ -15,7 +15,6 @@ let
   mako = import ./mako args;
   mangohud = import ./mangohud args;
   nvim = import ./nvim args;
-  ssh = import ./ssh args;
   swappy = import ./swappy args;
   sway = import ./sway args;
   tmux = import ./tmux args;
@@ -50,7 +49,7 @@ in
   ".nix".source = self;
   ".nixpkgs".source = inputs.nixpkgs;
   ".parallel/will-cite".text = "";
-  ".ssh/config".text = ssh.text;
+  ".ssh/config".source = ./ssh/config;
   ".template".source = ./template;
   # ".nixpkgs_master".source = inputs.nixpkgs;
   # ".nixpkgs_unstable".source = inputs.nixpkgs;

@@ -3,13 +3,14 @@
 
 walk = "git"
 excludes = [
-	"*.key",
-	"*.patch",
-	"*.ogg",
-	"*.lock",
 	"*.conf",
+	"*.key",
+	"*.lock",
+	"*.ogg",
+	"*.patch",
 	"License",
-	"home/file/jetbrains/ideavimrc"
+	"home/file/jetbrains/ideavimrc",
+	"home/file/ssh/config",
 ]
 
 [formatter.nixfmt-rfc-style]
