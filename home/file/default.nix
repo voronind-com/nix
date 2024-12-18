@@ -38,7 +38,7 @@ in
   ".config/nvim/init.vim".text = nvim.text;
   ".config/swappy/config".source = swappy.config;
   ".config/sway/config".text = sway.text;
-  ".config/tmux/tmux.conf".text = tmux.text;
+  ".config/tmux/tmux.conf".source = tmux.config;
   ".config/waybar/config".source = waybar.config;
   ".config/waybar/style.css".source = waybar.style;
   ".config/yazi/init.lua".source = yazi.init;
