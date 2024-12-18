@@ -154,6 +154,7 @@
         {
           ${system}.default = pkgs.mkShell {
             nativeBuildInputs = with pkgs; [
+              cloc
               nixd
               nixfmt-rfc-style
               nodePackages.prettier
