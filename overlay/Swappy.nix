@@ -3,13 +3,21 @@
   config,
   pkgs,
   ...
-}@args:
+}:
+let
+  color = config.module.style.color;
+  accentR = color.accentDecR;
+  accentG = color.accentDecG;
+  accentB = color.accentDecB;
+in
 {
   # SEE: https://github.com/jtheoof/swappy/issues/131
   nixpkgs.overlays = [
     (final: prev: {
       swappy = prev.swappy.overrideAttrs (old: {
-        patches = (old.patches or [ ]) ++ [ (import <patch/swappy/DefaultColor.nix> args).file ];
+        patches = (old.patches or [ ]) ++ [
+          (pkgs.replaceVars <patch/swappy/DefaultColor.patch> { inherit accentR accentG accentB; })
+        ];
       });
     })
   ];
