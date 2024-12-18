@@ -15,19 +15,22 @@
   ls = path: map (f: "${path}/${f}") (builtins.attrNames (builtins.readDir path));
 
   # Concat all files by `text` key.
+  # TODO: REMOVE
   catText = files: args: builtins.foldl' (acc: mod: acc + (import mod args).text) "" files;
 
   # Concat all file paths by `file` key.
+  # TODO: REMOVE
   catFile =
     files: args:
     builtins.foldl' (acc: mod: acc + (builtins.readFile (import mod args).file) + "\n") "" files;
 
   # Concat all files as a set.
+  # TODO: REMOVE
   catSet =
     files: args: builtins.foldl' (acc: mod: acc // mod) { } (map (file: import file args) files);
 
   # Concat all file contents.
-  catContent = files: builtins.foldl' (acc: mod: acc + (builtins.readFile mod) + "\n") "" files;
+  readFiles = files: builtins.foldl' (acc: mod: acc + (builtins.readFile mod) + "\n") "" files;
 
   # Systemd service that does not restart with system switch.
   mkStaticSystemdService =

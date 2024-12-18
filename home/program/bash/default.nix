@@ -15,7 +15,7 @@ let
   tgdata = secret.tg.dt "false";
   tgdatasilent = secret.tg.dt "true";
 
-  modulesRaw = pkgs.writeText "bash-user-modules-raw" (util.catContent (util.ls ./module));
+  modulesRaw = pkgs.writeText "bash-user-modules-raw" (util.readFiles (util.ls ./module));
   modulesFile = pkgs.replaceVars modulesRaw {
     inherit
       accent
