@@ -6,7 +6,7 @@ cfg="$(realpath .)"
 target="${1}"
 host="${2}"
 
-if [[ "${target}" = "" ]]; then
+if [[ ${target} == "" ]]; then
 	printf "Usage: ./.Bootstrap.sh <DRIVE> [HOST]\n"
 	exit 2
 fi
@@ -33,7 +33,7 @@ nixos-generate-config --root /mnt
 
 # Install.
 cd /mnt
-if [[ "${host}" = "" ]]; then
+if [[ ${host} == "" ]]; then
 	printf "Warning: Installing basic system.\n"
 	nixos-install
 else

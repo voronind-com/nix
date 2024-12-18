@@ -156,6 +156,7 @@
             nativeBuildInputs = with pkgs; [
               nixd
               nixfmt-rfc-style
+              shfmt
               treefmt
             ];
             # buildInputs = with pkgs; [ ];
