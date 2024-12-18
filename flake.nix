@@ -69,7 +69,9 @@
 		self,
 		stylix,
 		...
-	} @inputs: {
+	} @inputs: let
+		lib = nixpkgs.lib;
+
 		const = {
 			droidStateVersion = "24.05";
 			stateVersion      = "24.11";
@@ -84,9 +86,8 @@
 				builtins.attrNames (builtins.readDir path)
 			)
 		);
-
+	in {
 		devShells = let
-			# lib    = nixpkgs.lib;
 			pkgs   = nixpkgs.legacyPackages.${system};
 			system = "x86_64-linux";
 		in {
@@ -102,14 +103,14 @@
 		};
 
 		nixosConfigurations = let
-			mkHost = { system, hostname }: nixpkgs.lib.nixosSystem {
+			mkHost = { system, hostname }: lib.nixosSystem {
 				inherit system;
 				modules = [
 					# Make a device hostname match the one from this config.
 					{ networking.hostName = hostname; }
 
 					# Specify current release version.
-					{ system.stateVersion = self.const.stateVersion; }
+					{ system.stateVersion = const.stateVersion; }
 
 					# Add Home Manager module.
 					home-manager.nixosModules.home-manager
@@ -120,18 +121,16 @@
 					# HM config.
 					./home/NixOs.nix
 				]
-				++ (self.ls ./host/${system}/${hostname})
-				++ (self.ls ./option)
-				++ (self.ls ./config)
-				++ (self.ls ./overlay)
-				++ (self.ls ./system)
+				++ (ls ./host/${system}/${hostname})
+				++ (ls ./option)
+				++ (ls ./config)
+				++ (ls ./overlay)
+				++ (ls ./system)
 				;
 				specialArgs = let
-					lib  = nixpkgs.lib;
 					util = import ./lib/Util.nix { inherit lib; };
 				in {
-					inherit (self) const __findFile;
-					inherit inputs self poetry2nixJobber util;
+					inherit const __findFile inputs self poetry2nixJobber util;
 					pkgsJobber   = nixpkgsJobber.legacyPackages.${system}.pkgs;
 					pkgsMaster   = nixpkgsMaster.legacyPackages.${system}.pkgs;
 					pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
@@ -140,15 +139,21 @@
 			};
 
 			mkSystem = system: hostname: { "${hostname}" = mkHost { inherit system hostname; }; };
-		in nixpkgs.lib.foldl' (acc: h: acc // h) { } (
-			map (system: nixpkgs.lib.foldl' (acc: h: acc // h) { } (
-				map (host: mkSystem system host) (builtins.attrNames (builtins.readDir ./host/${system}))
-			)) (builtins.attrNames (builtins.readDir ./host))
-		);
+
+			systems = builtins.attrNames (builtins.readDir ./host) |> map (system: {
+				inherit system;
+				hosts = builtins.attrNames (builtins.readDir ./host/${system});
+			});
+
+			hosts = map (system:
+				map (host: { inherit host; inherit (system) system; }) system.hosts
+			) systems |> lib.foldl' (acc: h: acc ++ h) [];
+
+			configurations = map (cfg: mkSystem cfg.system cfg.host) hosts;
+		in
+			lib.foldl' (result: cfg: result // cfg) {} configurations;
 
 		nixOnDroidConfigurations.default = let
-			# config       = self.nixOnDroidConfigurations.default.config;
-			lib          = nixpkgs.lib;
 			pkgs         = nixpkgs.legacyPackages.${system}.pkgs;
 			pkgsMaster   = nixpkgsMaster.legacyPackages.${system}.pkgs;
 			pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
@@ -160,11 +165,10 @@
 				{ home-manager.config.stylix.autoEnable = lib.mkForce false; }
 				./home/Android.nix
 			]
-			++ (self.ls ./option)
+			++ (ls ./option)
 			;
 			extraSpecialArgs = {
-				inherit inputs self pkgsMaster pkgsUnstable;
-				inherit (self) const __findFile;
+				inherit inputs self pkgsMaster pkgsUnstable const __findFile;
 				secret = import ./secret { };
 				util   = import ./lib/Util.nix { inherit lib; };
 			};

@@ -1,4 +1,4 @@
-options  = --option eval-cache false --fallback --print-build-logs --verbose
+options  = --option eval-cache false --fallback --print-build-logs --verbose --extra-experimental-features pipe-operators
 flake    = .
 hostname = $(shell hostname)
 
