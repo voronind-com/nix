@@ -1,11 +1,11 @@
+{ __findFile, pkgs, ... }:
 {
-  __findFile,
-  inputs,
-  pkgs,
-  ...
-}:
-{
-  pkg = pkgs.callPackage "${inputs.nixpkgs}/pkgs/by-name/st/steam/package.nix" {
-    extraLibraries = pkgs: [ (pkgs.callPackage <package/openssl100> { }) ];
-  };
+  pkg =
+    with pkgs;
+    (steam.override {
+      extraLibraries = _: [
+        (callPackage <package/openssl100> { })
+        curlWithGnuTls
+      ];
+    }).run;
 }
