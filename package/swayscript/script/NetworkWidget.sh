@@ -19,7 +19,7 @@ function networkwidget() {
 
 		if [[ ${bat} != "" ]]; then
 			btinfo+=" ${bat}%"
-			[[ ${bat} -lt ${_bt_lowest} ]] && _bt_lowest=bat
+			[[ ${bat} -lt ${_bt_lowest} ]] && _bt_lowest=${bat}
 		fi
 
 		_bts+=("${btinfo}")
@@ -28,7 +28,7 @@ function networkwidget() {
 	if [[ ${_bts} != "" ]]; then
 		icon="󱛃"
 
-		if [[ ${_bt_lowest} != "" ]] && [[ ${_bt_lowest} -lt 21 ]]; then
+		if [[ ${_bt_lowest} -lt 21 ]]; then
 			class="btlow"
 		fi
 	fi
