@@ -50,6 +50,7 @@ in
     ];
     script = ''
       old=0
+      oldtemp=0
       smooth=0
       while true; do
         temp=$(cat /sys/devices/pci0000\:00/0000\:00\:18.3/hwmon/*/temp1_input)
@@ -61,8 +62,8 @@ in
         then value=128
         elif [ $temp -gt 60000 ]
         then value=92
-        # elif [ $temp -gt 50000 ]
-        # then value=69
+        elif [ $temp -gt 55000 ]
+        then value=69
         elif [ $temp -gt 45000 ]
         then value=46
         elif [ $temp -gt 40000 ]
@@ -71,11 +72,14 @@ in
         fi
 
         if [[ $old != $value ]]; then
-          # 30 = 60s smooth.
+          # 30 = 60s smooth. -5 degrees smooth.
           if [[ $value -lt $old ]] && [[ $smooth -lt 30 ]]; then
-            smooth=$((smooth+1))
+            if [[ $temp -lt $((oldtemp - 5000)) ]]; then
+              smooth=$((smooth+1))
+            fi
           else
             old=$value
+            oldtemp=$temp
             smooth=0
             wm2fc $value
           fi
