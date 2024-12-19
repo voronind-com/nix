@@ -202,26 +202,6 @@
         "type": "github"
       }
     },
-    "nix-cursors": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1716041700,
-        "narHash": "sha256-4jDR/KQmtsDw/nCvpy9VvWQgtc+4R4eyrb8eJSz+KCw=",
-        "owner": "LilleAila",
-        "repo": "nix-cursors",
-        "rev": "d119b747e47a7a24660676f59c77272d664ec61e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "LilleAila",
-        "repo": "nix-cursors",
-        "type": "github"
-      }
-    },
     "nix-formatter-pack": {
       "inputs": {
         "nixpkgs": [
@@ -774,7 +754,6 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nix-cursors": "nix-cursors",
         "nix-on-droid": "nix-on-droid",
         "nixpkgs": "nixpkgs",
         "nixpkgsJobber": "nixpkgsJobber",
