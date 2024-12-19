@@ -20,12 +20,6 @@
       };
     };
 
-    # SOURCE: https://github.com/LilleAila/nix-cursors
-    nix-cursors = {
-      url = "github:LilleAila/nix-cursors";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # SOURCE: https://github.com/danth/stylix
     stylix = {
       url = "github:danth/stylix/release-24.05";
