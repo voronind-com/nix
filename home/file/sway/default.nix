@@ -23,7 +23,7 @@ let
   color = config.module.style.color;
   container = "mp4";
   format = "%Y-%m-%d_%H-%M-%S";
-  framerate = 10;
+  framerate = 30;
   opacity = "26";
   pixfmt = "yuv420p10le";
   selection = "slurp -d -b ${color.bg.light}${opacity} -c ${color.fg.light} -w 0 -s 00000000";
