@@ -11,10 +11,8 @@
       configurations = [
         "forgejo"
         "invidious"
-        "mattermost"
         "nextcloud"
         "paperless"
-        "privatebin"
       ];
 
       ensureDatabases = [ "root" ] ++ configurations;

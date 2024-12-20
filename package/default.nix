@@ -75,7 +75,6 @@
       zip # Zip utility.
 
       # (pkgs.callPackage ./ytdlp {}) # Youtube downloader bin package.
-      (pkgs.callPackage ./yamusicdownload { }) # Yandex music downloader.
     ])
     ++ (with pkgsUnstable; [
       fastfetch # Systeminfo summary.
