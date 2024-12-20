@@ -121,13 +121,13 @@ in
       ];
       plugins = [ "managesieve" ];
       extraConfig = util.trimTabs ''
-        				$config['smtp_server'] = "localhost:25";
-        				$config['smtp_auth_type'] = null;
-        				$config['smtp_user'] = "";
-        				$config['smtp_pass'] = "";
-        				# $config['smtp_user'] = "%u";
-        				# $config['smtp_pass'] = "%p";
-        			'';
+        $config['smtp_server'] = "localhost:25";
+        $config['smtp_auth_type'] = null;
+        $config['smtp_user'] = "";
+        $config['smtp_pass'] = "";
+        # $config['smtp_user'] = "%u";
+        # $config['smtp_pass'] = "%p";
+      '';
     };
   };
 
@@ -139,20 +139,20 @@ in
       };
       path = [ pkgs.dovecot ];
       script = util.trimTabs ''
-        				doveadm expunge -A mailbox Junk SENTBEFORE 7d
-        				doveadm expunge -A mailbox Trash SENTBEFORE 30d
-        				doveadm expunge -u trash@voronind.com mailbox Inbox SENTBEFORE 30d
-        				doveadm purge -A
-        			'';
+        doveadm expunge -A mailbox Junk SENTBEFORE 7d
+        doveadm expunge -A mailbox Trash SENTBEFORE 30d
+        doveadm expunge -u trash@voronind.com mailbox Inbox SENTBEFORE 30d
+        doveadm purge -A
+      '';
     };
 
     timers.autoexpunge = {
+      wantedBy = [ "timers.target" ];
       timerConfig = {
         OnCalendar = "daily";
         Persistent = true;
         Unit = "autoexpunge.service";
       };
-      wantedBy = [ "timers.target" ];
     };
   };
 }

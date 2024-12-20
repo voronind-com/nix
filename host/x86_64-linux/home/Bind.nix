@@ -20,6 +20,7 @@ let
     (mkBind "ovpn" "/var/lib/ovpn")
     (mkBind "paperless" "/var/lib/paperless")
     (mkBind "postgres" "/var/lib/postgresql")
+    (mkBind "privatebin" "/var/lib/privatebin")
     (mkBind "rabbitmq" "/var/lib/rabbitmq")
     (mkBind "sieve" "/var/sieve")
     (mkBind "terraria" "/var/lib/terraria")

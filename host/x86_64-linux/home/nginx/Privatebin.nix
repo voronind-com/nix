@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   "paste.voronind.com" = {
     extraConfig = ''
       listen 443 ssl;
