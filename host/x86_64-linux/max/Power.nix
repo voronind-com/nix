@@ -63,7 +63,7 @@ in
         elif [ $temp -gt 60000 ]
         then value=92
         elif [ $temp -gt 55000 ]
-        then value=69
+        then value=52
         elif [ $temp -gt 45000 ]
         then value=46
         elif [ $temp -gt 40000 ]
