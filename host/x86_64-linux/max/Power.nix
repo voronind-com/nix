@@ -49,8 +49,8 @@ in
       wm2fc
     ];
     script = ''
-      old=0
-      oldtemp=0
+      old=-1
+      oldtemp=-1
       smooth=0
       while true; do
         temp=$(cat /sys/devices/pci0000\:00/0000\:00\:18.3/hwmon/*/temp1_input)
