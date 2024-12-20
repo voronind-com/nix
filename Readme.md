@@ -10,18 +10,18 @@ Newest first.
 
 <details>
 <summary>Screenshot 1</summary>
-<img src="https://i.imgur.com/6Yfmhcj.png" />
-<img width=400px src="https://i.imgur.com/LE4OC55.png" />
-<img width=400px src="https://i.imgur.com/cV0EzEw.png" />
-<br><a href="https://i.imgur.com/3EL63Ur.jpeg">Wallpaper link</a>
+<img src="https://i.imgur.com/rVFRtST.png" />
+<img width=400px src="https://i.imgur.com/eVultId.png" />
+<img width=400px src="https://i.imgur.com/NeX9430.png" />
+<br><a href="https://i.imgur.com/XG8bA49.jpeg">Wallpaper link</a>
 </details>
 
 <details>
 <summary>Screenshot 2</summary>
-<img src="https://i.imgur.com/eX9W9Wf.png" />
-<img width=400px src="https://i.imgur.com/sTWAPIT.png" />
-<img width=400px src="https://i.imgur.com/jj1HlRv.png" />
-<br><a href="https://i.imgur.com/SNEPYVe.jpeg">Wallpaper link</a>
+<img src="https://i.imgur.com/6Yfmhcj.png" />
+<img width=400px src="https://i.imgur.com/LE4OC55.png" />
+<img width=400px src="https://i.imgur.com/cV0EzEw.png" />
+<br><a href="https://i.imgur.com/3EL63Ur.jpeg">Wallpaper link</a>
 </details>
 
 <details>
