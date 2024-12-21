@@ -25,5 +25,5 @@ in
         value = builtins.listToAttrs keySets;
       }) apps;
     in
-    (pkgs.formats.ini { }).generate "KeydDisableConfig" (builtins.listToAttrs appSets);
+    (pkgs.formats.ini { }).generate "keyd-disable-config" (builtins.listToAttrs appSets);
 }

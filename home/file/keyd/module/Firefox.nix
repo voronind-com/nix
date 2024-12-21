@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  file = (pkgs.formats.ini { }).generate "KeydFirefoxConfig" {
+  file = (pkgs.formats.ini { }).generate "keyd-firefox-config" {
     "firefox-esr" = {
       "alt.capslock" = "C-t"; # New tab.
       "alt.x" = "C-w"; # Close tab.

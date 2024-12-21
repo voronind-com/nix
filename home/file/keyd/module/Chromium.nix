@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  file = (pkgs.formats.ini { }).generate "KeydChromiumConfig" {
+  file = (pkgs.formats.ini { }).generate "keyd-chromium-config" {
     "chromium-browser" = {
       "alt.capslock" = "C-t"; # New tab.
       "alt.x" = "C-w"; # Close tab.
