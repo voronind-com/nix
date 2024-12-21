@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  file = (pkgs.formats.ini { }).generate "KeydJetbrainsConfig" {
+  file = (pkgs.formats.ini { }).generate "keyd-jetbrains-config" {
     "jetbrains-*" = {
       "alt.b" = "C-f8"; # Toggle line breakpoint.
       "alt.equal" = "C-A-l"; # Reformat.
