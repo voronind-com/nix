@@ -220,6 +220,7 @@
             mime = "inode/directory";
             use = [
               "archive"
+              "archive_fast"
               "bottle_run"
               "audio_shuffle"
             ];
