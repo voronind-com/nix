@@ -40,10 +40,9 @@ let
   picToFile = ''tee "''${scrFile}"'';
   screenshot = ''grim'';
   updateWaybar = ''{ pkill -RTMIN+4 waybar; } & disown''; # NOTE: Might need to add a delay here if it becomes inconsistent one day.
-  vidFull = ''-o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") -'';
   vidPrepFile = prepFile "\${XDG_VIDEOS_DIR[0]}" container;
   vidRefLatestFile = refLatestFile container;
-  vidSelected = ''--geometry "''${scrSelection}"'';
+  vidSelected = '''';
   vidStop = ''pkill -SIGINT wf-recorder'';
 
   prepFile = path: ext: ''
@@ -81,20 +80,30 @@ let
     [[ "''${scrTransform}" = "normal" ]] && scrTransform=""
   '';
 
-  vidStart = extra: ''
+  # NOTE: Use HW/fast encoder for intensive fullscreen rec and re-encode later.
+  vidStartFull = ''
     wf-recorder \
       --codec h264_vaapi \
       --device /dev/dri/renderD128 \
       --no-damage \
       --framerate ${toString framerate} \
       --file "''${scrFile}" \
-      ${extra} ||
+      -o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") - ||
     wf-recorder \
       --codec libx264 \
       --no-damage \
       --framerate ${toString framerate} \
       --file "''${scrFile}" \
-      ${extra}
+      -o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") -
+  '';
+
+  vidStartSelected = ''
+    wf-recorder \
+      --codec ${codec} \
+      --no-damage \
+      --framerate ${toString framerate} \
+      --file "''${scrFile}" \
+      --geometry "''${scrSelection}"
   '';
 
   # NOTE: Only fullscreen rec is re-encoded.
@@ -145,7 +154,7 @@ let
       ${vidPrepFile}
       ${notifyStart}
       ${updateWaybar}
-      ${vidStart vidSelected}
+      ${vidStartSelected}
       ${notifyEnd}
       ${updateWaybar}
       ${vidMuxAudio}
@@ -160,7 +169,7 @@ let
       ${vidPrepFile}
       ${notifyStart}
       ${updateWaybar}
-      ${vidStart vidFull}
+      ${vidStartFull}
       ${notifyEnd}
       ${updateWaybar}
       ${vidEncode}
