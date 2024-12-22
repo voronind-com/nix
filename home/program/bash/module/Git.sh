@@ -151,6 +151,14 @@ function grs() {
 	git restore --staged "${target}"
 }
 
+# Restore changes.
+# Usage: gre [FILES]
+function gre() {
+	local target=${@}
+	[[ ${target} == "" ]] && target="."
+	git restore "${target}"
+}
+
 # Run git garbage collection.
 function ggc() {
 	git gc --aggressive --no-cruft --prune=now
