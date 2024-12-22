@@ -106,7 +106,6 @@ let
       -pix_fmt ${pixfmt} \
       -g ${toString keyint} \
       -f ${container} \
-      -vf "fps=${toString framerate}" \
       "''${scrFile}_" \
     && mv "''${scrFile}_" "''${scrFile}" \
     || rm "''${scrFile}_"
