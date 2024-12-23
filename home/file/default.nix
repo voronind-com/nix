@@ -47,10 +47,9 @@ in
   ".ideavimrc".source = ./jetbrains/ideavimrc;
   ".nix".source = self;
   ".nixpkgs".source = inputs.nixpkgs;
+  ".nixpkgs_master".source = inputs.nixpkgsMaster;
+  ".nixpkgs_unstable".source = inputs.nixpkgsUnstable;
   ".parallel/will-cite".text = "";
   ".ssh/config".source = ./ssh/config;
   ".template".source = ./template;
-  # ".nixpkgs_master".source = inputs.nixpkgs;
-  # ".nixpkgs_unstable".source = inputs.nixpkgs;
-  # TODO: Add after migrating to stable.
 }
