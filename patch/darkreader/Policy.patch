@@ -1,90 +1,84 @@
 diff --git a/src/background/user-storage.ts b/src/background/user-storage.ts
-index b582fb5..ca9c0dc 100644
+index 54612fb3b1f6..298e5032fc94 100644
 --- a/src/background/user-storage.ts
 +++ b/src/background/user-storage.ts
-@@ -2,7 +2,7 @@ import {DEFAULT_SETTINGS, DEFAULT_THEME} from '../defaults';
- import {debounce} from '../utils/debounce';
+@@ -5,7 +5,7 @@ import {PromiseBarrier} from '../utils/promise-barrier';
  import {isURLMatched} from '../utils/url';
- import type {UserSettings} from '../definitions';
+ import {validateSettings} from '../utils/validation';
+ 
 -import {readSyncStorage, readLocalStorage, writeSyncStorage, writeLocalStorage, removeSyncStorage, removeLocalStorage} from './utils/extension-api';
 +import {readManagedStorage, readSyncStorage, readLocalStorage, writeSyncStorage, writeLocalStorage, removeSyncStorage, removeLocalStorage} from './utils/extension-api';
  import {logWarn} from './utils/log';
- import {PromiseBarrier} from '../utils/promise-barrier';
- import {validateSettings} from '../utils/validation';
-@@ -82,7 +82,11 @@ export default class UserStorage {
-         }
-         UserStorage.loadBarrier = new PromiseBarrier();
  
--        let local = await readLocalStorage(DEFAULT_SETTINGS);
-+        const managed = await readManagedStorage(DEFAULT_SETTINGS);
-+        const {errors: managedCfgErrors} = validateSettings(managed);
-+        managedCfgErrors.forEach((err) => logWarn(err));
-+
-+        let local = await readLocalStorage(managed);
+ 
+@@ -78,12 +78,7 @@ export default class UserStorage {
+         return settings;
+     }
+ 
+-    private static async loadSettingsFromStorage(): Promise<UserSettings> {
+-        if (UserStorage.loadBarrier) {
+-            return await UserStorage.loadBarrier.entry();
+-        }
+-        UserStorage.loadBarrier = new PromiseBarrier();
+-
++    private static async loadSettingsFromStorageWithoutManaged(): Promise<UserSettings> {
+         let local = await readLocalStorage(DEFAULT_SETTINGS);
  
          if (local.schemeVersion < 2) {
-             const sync = await readSyncStorage({schemeVersion: 0});
-@@ -102,7 +106,7 @@ export default class UserStorage {
-                 await writeSyncStorage({schemeVersion: 2, ...syncTransformed});
-                 await removeSyncStorage(Object.keys(deprecatedDefaults));
- 
--                local = await readLocalStorage(DEFAULT_SETTINGS);
-+                local = await readLocalStorage(managed);
-             }
-         }
- 
-@@ -112,30 +116,30 @@ export default class UserStorage {
+@@ -113,10 +108,8 @@ export default class UserStorage {
+         if (local.syncSettings == null) {
              local.syncSettings = DEFAULT_SETTINGS.syncSettings;
          }
++
          if (!local.syncSettings) {
 -            UserStorage.migrateAutomationSettings(local);
 -            UserStorage.fillDefaults(local);
 -            UserStorage.loadBarrier.resolve(local);
--            return local;
-+            UserStorage.migrateAutomationSettings(managed);
-+            UserStorage.fillDefaults(managed);
-+            UserStorage.loadBarrier.resolve(managed);
-+            return managed;
+             return local;
          }
  
--        const $sync = await readSyncStorage(DEFAULT_SETTINGS);
-+        const $sync = await readSyncStorage(managed);
-         if (!$sync) {
-             logWarn('Sync settings are missing');
+@@ -126,18 +119,34 @@ export default class UserStorage {
              local.syncSettings = false;
              UserStorage.set({syncSettings: false});
              UserStorage.saveSyncSetting(false);
 -            UserStorage.loadBarrier.resolve(local);
--            return local;
-+            UserStorage.loadBarrier.resolve(managed);
-+            return managed;
+             return local;
          }
  
--        const {errors: syncCfgErrors} = validateSettings($sync);
-+        const {errors: syncCfgErrors} = validateSettings(managed);
+         const {errors: syncCfgErrors} = validateSettings($sync);
          syncCfgErrors.forEach((err) => logWarn(err));
++        return $sync;
++    }
++
++    private static async loadSettingsFromStorage(): Promise<UserSettings> {
++        if (UserStorage.loadBarrier) {
++            return await UserStorage.loadBarrier.entry();
++        }
++        UserStorage.loadBarrier = new PromiseBarrier();
  
 -        UserStorage.migrateAutomationSettings($sync);
 -        UserStorage.fillDefaults($sync);
-+        UserStorage.migrateAutomationSettings(managed);
-+        UserStorage.fillDefaults(managed);
++        let settings = await UserStorage.loadSettingsFromStorageWithoutManaged();
  
 -        UserStorage.loadBarrier.resolve($sync);
 -        return $sync;
-+        UserStorage.loadBarrier.resolve(managed);
-+        return managed;
++        const managed = await readManagedStorage(settings);
++        const {errors: managedCfgErrors} = validateSettings(managed);
++        if (managedCfgErrors.length === 0) {
++            settings = managed;
++        } else {
++            managedCfgErrors.forEach((err) => logWarn(err));
++        }
++
++        UserStorage.migrateAutomationSettings(settings);
++        UserStorage.fillDefaults(settings);
++        UserStorage.loadBarrier.resolve(settings);
++        return settings;
      }
  
      static async saveSettings(): Promise<void> {
-@@ -227,4 +231,4 @@ export default class UserStorage {
- 
-         UserStorage.settings = updatedSettings;
-     }
--}
-+}
-\ No newline at end of file
 diff --git a/src/background/utils/extension-api.ts b/src/background/utils/extension-api.ts
-index ee54807..70a3cf2 100644
+index 6d18fc0919df..6812ac2e4224 100644
 --- a/src/background/utils/extension-api.ts
 +++ b/src/background/utils/extension-api.ts
 @@ -97,6 +97,19 @@ export async function readLocalStorage<T extends {[key: string]: any}>(defaults:
@@ -109,10 +103,10 @@ index ee54807..70a3cf2 100644
          const value = values[key];
 diff --git a/src/managed-storage.json b/src/managed-storage.json
 new file mode 100644
-index 0000000..55065e4
+index 000000000000..e394d0f1ff60
 --- /dev/null
 +++ b/src/managed-storage.json
-@@ -0,0 +1,298 @@
+@@ -0,0 +1,304 @@
 +{
 +
 +  "$schema": "http://json-schema.org/draft-07/schema#",
@@ -178,6 +172,9 @@ index 0000000..55065e4
 +      "$ref": "LocationSettings"
 +    },
 +    "previewNewDesign": {
++      "type": "boolean"
++    },
++    "previewNewestDesign": {
 +      "type": "boolean"
 +    },
 +    "enableForPDF": {
@@ -342,6 +339,9 @@ index 0000000..55065e4
 +            },
 +            "theme": {
 +              "$ref": "Theme"
++            },
++            "builtin": {
++              "type": "boolean"
 +            }
 +          },
 +          "required": [
@@ -412,7 +412,7 @@ index 0000000..55065e4
 +  }
 +}
 diff --git a/tasks/bundle-manifest.js b/tasks/bundle-manifest.js
-index ae29531..f4058a1 100644
+index ae29531e67b7..f4058a129f52 100644
 --- a/tasks/bundle-manifest.js
 +++ b/tasks/bundle-manifest.js
 @@ -4,6 +4,7 @@ import {PLATFORM} from './platform.js';
