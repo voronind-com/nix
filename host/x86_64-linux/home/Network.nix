@@ -31,6 +31,11 @@ in
       "10-${wan}" = {
         matchConfig.Name = wan;
         linkConfig.RequiredForOnline = "carrier";
+        dns = [
+          "::1"
+          "1.1.1.1"
+          "8.8.8.8"
+        ];
         dhcpV4Config = {
           ClientIdentifier = "mac";
           UseDNS = false;
@@ -45,7 +50,6 @@ in
         };
         networkConfig = {
           DHCP = "yes";
-          DNS = "1.1.1.1";
           IPv6AcceptRA = true;
           IPv6SendRA = false;
           DHCPPrefixDelegation = true;
