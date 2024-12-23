@@ -1,8 +1,8 @@
 # Download the wallpaper here.
 { pkgs, lib, ... }:
 let
-  url = "https://i.imgur.com/6fJxpYe.png";
-  sha256 = "sha256-c4pXpPSoIL4CVBLezEYNHVWtioVtgkg2w6bWsWZw+nc=";
+  url = "https://i.imgur.com/4ChfqFU.jpeg";
+  sha256 = "sha256-I6Vm975/H7NBpcYGQUh1Ed2KN1O1CK5jChwkzPcYWv8=";
   forceContrastText = false;
 in
 {
