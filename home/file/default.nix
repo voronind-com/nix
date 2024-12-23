@@ -33,7 +33,7 @@ in
   ".config/fuzzel/fuzzel.ini".source = fuzzel.file;
   ".config/keyd/app.conf".text = keyd.text;
   ".config/mako/config".source = mako.file;
-  ".config/nvim/init.vim".text = nvim.text;
+  ".config/nvim/init.vim".source = nvim.init;
   ".config/swappy/config".source = swappy.config;
   ".config/sway/config".text = sway.text;
   ".config/tmux/tmux.conf".source = tmux.config;
