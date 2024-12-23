@@ -26,6 +26,7 @@ let
       "https://4pda.to/forum/index.php?act=search&forums[]=all&source=all&query={searchTerms}"
     )
     (mkSearchEngine "aw" "Arch Wiki" "https://wiki.archlinux.org/index.php?search={searchTerms}")
+    (mkSearchEngine "dn" "DNS" "https://www.dns-shop.ru/search/?q={searchTerms}")
     (mkSearchEngine "fa" "Font Awesome" "https://fontawesome.com/search?q={searchTerms}&o=r&m=free")
     (mkSearchEngine "fb" "Flibusta" "https://flibusta.is/booksearch?ask={searchTerms}")
     (mkSearchEngine "gh" "GitHub" "https://github.com/search?q={searchTerms}")
