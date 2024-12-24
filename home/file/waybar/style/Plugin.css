@@ -12,9 +12,9 @@
 }
 
 /* Padding for global widgets. */
-#clock,
 #custom-display,
 #custom-network,
+#datetime,
 #mpris,
 #pulseaudio,
 #scratchpad {
@@ -23,6 +23,7 @@
 }
 
 /* Padding for combined widgets. */
+#clock.date,
 #cpu.load,
 #custom-powerlimit,
 #custom-powersave,
@@ -33,9 +34,9 @@
 
 /* Hover style. */
 #batteryinfo:hover,
-#clock:hover,
 #custom-display:hover,
 #custom-network:hover,
+#datetime:hover,
 #hardware:hover,
 #mpris:hover,
 #pulseaudio:hover,
@@ -89,6 +90,6 @@
 	border-top: @borderSize@ solid @accent@;
 }
 
-#clock {
+#clock.time {
 	font-weight: bold;
 }

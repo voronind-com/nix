@@ -15,7 +15,7 @@ in
     start_hidden = false;
     output = [ config.module.display.primary ];
     modules-left = [
-      "clock"
+      "group/datetime"
       "sway/scratchpad"
       "mpris"
     ];
@@ -42,8 +42,13 @@ in
         ""
       ];
     };
-    clock = {
-      format = "{:%H:%M %a %d}";
+    "clock#time" = {
+      format = "{:%H:%M}";
+      on-click = "xdg-open https://cloud.voronind.com/apps/calendar/";
+      tooltip-format = "<big><tt>{calendar}</tt></big>";
+    };
+    "clock#date" = {
+      format = "{:%a %d}";
       on-click = "xdg-open https://cloud.voronind.com/apps/calendar/";
       tooltip-format = "<big><tt>{calendar}</tt></big>";
     };
@@ -163,6 +168,13 @@ in
         "memory"
         "custom/powersave"
         "custom/taghw2"
+      ];
+    };
+    "group/datetime" = {
+      orientation = "horizontal";
+      modules = [
+        "clock#time"
+        "clock#date"
       ];
     };
     "custom/display" = {
