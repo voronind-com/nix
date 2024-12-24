@@ -25,6 +25,7 @@ in
             esc = "print"; # System controls.
             left = "layer(layer_number)"; # Number input layer.
             leftcontrol = "overload(layer_alternative, leftcontrol)"; # Alternative layer for home, end etc.
+            right = "compose";
             rightcontrol = "layer(layer_control)"; # Media and other controls.
             rightshift = "backspace"; # Backspace.
           };
