@@ -43,8 +43,8 @@ in
       ];
     };
     clock = {
-      format-alt = "{:%H:%M %a %d}";
-      on-click-right = "xdg-open https://cloud.voronind.com/apps/calendar/";
+      format = "{:%H:%M %a %d}";
+      on-click = "xdg-open https://cloud.voronind.com/apps/calendar/";
       tooltip-format = "<big><tt>{calendar}</tt></big>";
     };
     battery = {
