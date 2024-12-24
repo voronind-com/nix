@@ -102,6 +102,7 @@ let
       --framerate ${toString framerate} \
       --file "''${scrFile}" \
       --pixel-format "${pixfmt}" \
+      --codec-param "lp=$(($(cat /proc/cpuinfo | grep ^processor | wc -l) / 2))" \
       --geometry "''${scrSelection}"
   '';
 
@@ -112,6 +113,7 @@ let
       -c:v ${codec} \
       -pix_fmt ${pixfmt} \
       -f ${container} \
+      -svtav1-params "lp=$(($(cat /proc/cpuinfo | grep ^processor | wc -l) / 2))" \
       "''${scrFile}_" \
     && mv "''${scrFile}_" "''${scrFile}" \
     || rm "''${scrFile}_"
