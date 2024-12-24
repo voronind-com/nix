@@ -42,7 +42,6 @@ let
   updateWaybar = ''{ pkill -RTMIN+4 waybar; } & disown''; # NOTE: Might need to add a delay here if it becomes inconsistent one day.
   vidPrepFile = prepFile "\${XDG_VIDEOS_DIR[0]}" container;
   vidRefLatestFile = refLatestFile container;
-  vidSelected = '''';
   vidStop = ''pkill -SIGINT wf-recorder'';
 
   prepFile = path: ext: ''
@@ -103,6 +102,7 @@ let
       --no-damage \
       --framerate ${toString framerate} \
       --file "''${scrFile}" \
+      --pixel-format "${pixfmt}" \
       --geometry "''${scrSelection}"
   '';
 
