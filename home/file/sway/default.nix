@@ -24,7 +24,6 @@ let
   container = "mp4";
   format = "%Y-%m-%d_%H-%M-%S";
   framerate = 30;
-  keyint = framerate * 5;
   opacity = "26";
   pixfmt = "yuv420p10le";
   selection = "slurp -d -b ${color.bg.light}${opacity} -c ${color.fg.light} -w 0 -s 00000000";
@@ -111,9 +110,7 @@ let
     ffmpeg \
       -i "''${scrFile}" \
       -c:v ${codec} \
-      -svtav1-params "tune=0" \
       -pix_fmt ${pixfmt} \
-      -g ${toString keyint} \
       -f ${container} \
       "''${scrFile}_" \
     && mv "''${scrFile}_" "''${scrFile}" \
