@@ -2,6 +2,8 @@
 {
   file = (pkgs.formats.ini { }).generate "keyd-onlyoffice-config" {
     "onlyoffice-desktop-editors" = {
+      "alt.E" = "C-tab";
+      "alt.Q" = "C-S-tab";
       "alt.a" = "home";
       "alt.b" = "pageup";
       "alt.d" = "end";
