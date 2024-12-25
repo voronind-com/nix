@@ -21,7 +21,6 @@
   };
 
   module = {
-    builder.client.enable = true;
     purpose.live = true;
   };
 }
