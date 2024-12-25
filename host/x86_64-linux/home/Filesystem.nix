@@ -31,6 +31,7 @@
 
   # swapDevices = [{
   #   device  = "/storage/hot/.swapfile";
+  #   randomEncryption.enable = true;
   #   size    = 128 * 1024;
   #   options = [ "nofail" ];
   # }];
