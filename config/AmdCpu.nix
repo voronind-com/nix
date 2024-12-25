@@ -11,7 +11,7 @@ in
     lib.mkMerge [
       {
         boot.kernelModules = [ "kvm-amd" ];
-        hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+        hardware.cpu.amd.updateMicrocode = true;
       }
       (lib.mkIf cfg.powersave {
         module.powersave = {
