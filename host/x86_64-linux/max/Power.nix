@@ -41,7 +41,7 @@ in
     description = "The fan control";
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
-      # ExecStop = "${wm2fc}/bin/wm2fc a";
+      ExecStop = "${wm2fc}/bin/wm2fc a";
       Type = "simple";
     };
     path = with pkgs; [
