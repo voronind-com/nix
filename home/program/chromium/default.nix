@@ -80,5 +80,7 @@ in
     # Disable animations.
     "--wm-window-animations-disabled"
     "--animation-duration-scale=0"
+    "--enable-features=UseOzonePlatform"
+    "--ozone-platform=wayland"
   ];
 }
