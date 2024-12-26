@@ -11,22 +11,20 @@ let
   keyboardLayouts = config.module.keyboard.layouts;
   keyboardOptions = config.module.keyboard.options;
 
-  alpha = config.module.style.opacity.hex;
   accent = config.module.style.color.accent + alpha;
+  alpha = config.module.style.opacity.hex;
   border = config.module.style.color.border + alpha;
   borderSize = config.module.style.window.border;
   fg = config.module.style.color.fg.light;
+  opacity = "26";
+  selection = "slurp -d -b ${config.module.style.color.bg.light}${opacity} -c ${config.module.style.color.fg.light} -w 0 -s 00000000";
   wallpaper = config.module.wallpaper.path;
   windowGap = config.module.style.window.gap;
 
   codec = "libsvtav1";
-  color = config.module.style.color;
   container = "mp4";
   format = "%Y-%m-%d_%H-%M-%S";
   framerate = 30;
-  opacity = "26";
-  pixfmt = "yuv420p10le";
-  selection = "slurp -d -b ${color.bg.light}${opacity} -c ${color.fg.light} -w 0 -s 00000000";
 
   notifyStart = ''swayscript notify_short'';
   notifyEnd = ''swayscript notify_long'';
@@ -101,7 +99,6 @@ let
       --no-damage \
       --framerate ${toString framerate} \
       --file "''${scrFile}" \
-      --pixel-format "${pixfmt}" \
       --codec-param "lp=$(($(cat /proc/cpuinfo | grep ^processor | wc -l) / 2))" \
       --geometry "''${scrSelection}"
   '';
@@ -111,7 +108,6 @@ let
     ffmpeg \
       -i "''${scrFile}" \
       -c:v ${codec} \
-      -pix_fmt ${pixfmt} \
       -f ${container} \
       -svtav1-params "lp=$(($(cat /proc/cpuinfo | grep ^processor | wc -l) / 2))" \
       "''${scrFile}_" \
