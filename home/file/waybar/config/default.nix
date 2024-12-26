@@ -187,7 +187,7 @@ in
     };
     "custom/network" = {
       exec = "swayscript networkwidget";
-      # interval        = refreshInterval;
+      # interval = 60;
       on-click = "blueman-manager";
       on-click-middle = "swayscript network";
       on-click-right = "nm-connection-editor";
@@ -196,18 +196,22 @@ in
     };
     "custom/taghw1" = {
       exec = "echo ​";
+      interval = "once";
       tooltip = false;
     };
     "custom/taghw2" = {
       exec = "echo ​";
+      interval = "once";
       tooltip = false;
     };
     "custom/tagbt1" = {
       exec = "test -e /sys/class/power_supply/BAT*/capacity && echo ​";
+      interval = "once";
       tooltip = false;
     };
     "custom/tagbt2" = {
       exec = "test -e /sys/class/power_supply/BAT*/capacity && echo ​";
+      interval = "once";
       tooltip = false;
     };
   };
