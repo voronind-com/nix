@@ -78,7 +78,7 @@ function _transcode_xz-gz() {
 }
 
 function _transcode_mp3() {
-	ffmpeg -n -i "${1}" -c:a libmp3lame -b:a 320k -f mp3 "${2}"
+	ffmpeg -n -i "${1}" -c:a libmp3lame -f mp3 "${2}"
 }
 
 function _transcode_flac() {
@@ -86,21 +86,23 @@ function _transcode_flac() {
 }
 
 function _transcode_mka() {
-	local braudio=$(_ffprobe_ba "${1}")
-	[[ ${braudio} -gt 128 ]] && braudio=128
+	# local braudio=$(_ffprobe_ba "${1}")
+	# [[ ${braudio} -gt 128 ]] && braudio=128
 
-	ffmpeg -n -i "${1}" -ac 2 -c:a libopus -b:a ${braudio}k -vn "${2}"
+	# ffmpeg -n -i "${1}" -ac 2 -c:a libopus -b:a ${braudio}k -vn "${2}"
+	ffmpeg -n -i "${1}" -ac 2 -c:a libopus -vn "${2}"
 }
 
 function _transcode_mkv() {
-	local keyint=$(_ffprobe_keyint "${1}")
-	local braudio=$(_ffprobe_ba "${1}")
-	local fps=$(_ffprobe_fps "${1}")
-	[[ ${braudio} -gt 128 ]] && braudio=128
-	[[ ${fps} -gt 30 ]] && fps=30
+	# local keyint=$(_ffprobe_keyint "${1}")
+	# local braudio=$(_ffprobe_ba "${1}")
+	# local fps=$(_ffprobe_fps "${1}")
+	# [[ ${braudio} -gt 128 ]] && braudio=128
+	# [[ ${fps} -gt 30 ]] && fps=30
 
 	# ffmpeg -n -i "${1}" -c:a libopus -b:a ${braudio}k -c:v libsvtav1 -crf 30 -svtav1-params "fast-decode=1:tune=0" -preset 8 -pix_fmt yuv420p10le -g ${keyint} -vf "scale=-2:min'(1080,ih)'" "${2}"
-	ffmpeg -n -i "${1}" -map 0 -map -v -map V -map -t -dn -c:s srt -ac 2 -c:a libopus -b:a ${braudio}k -c:v libsvtav1 -crf 30 -svtav1-params "tune=0" -pix_fmt yuv420p10le -g ${keyint} -vf "scale=-2:min'(1080,ih)' , fps=${fps}" "${2}"
+	# ffmpeg -n -i "${1}" -map 0 -map -v -map V -map -t -dn -c:s srt -ac 2 -c:a libopus -b:a ${braudio}k -c:v libsvtav1 -crf 30 -svtav1-params "tune=0" -pix_fmt yuv420p10le -g ${keyint} -vf "scale=-2:min'(1080,ih)' , fps=${fps}" "${2}"
+	ffmpeg -n -i "${1}" -map 0 -map -v -map V -map -t -dn -c:s srt -ac 2 -c:a libopus -c:v libsvtav1 "${2}"
 }
 
 function _transcode_jxl() {
