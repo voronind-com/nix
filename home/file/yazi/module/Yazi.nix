@@ -215,6 +215,7 @@
           (mkMime "text/html" [ "browser" ])
           (mkMime "application/vnd.openxmlformats-officedocument.*" [ "document" ])
           (mkMime "application/x-executable" [ "steam_run" ])
+          (mkMime "application/x-pie-executable" [ "steam_run" ])
 
           {
             mime = "inode/directory";
