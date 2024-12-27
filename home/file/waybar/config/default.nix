@@ -187,7 +187,7 @@ in
     };
     "custom/network" = {
       exec = "swayscript networkwidget";
-      # interval = 60;
+      interval = 60;
       on-click = "blueman-manager";
       on-click-middle = "swayscript network";
       on-click-right = "nm-connection-editor";
