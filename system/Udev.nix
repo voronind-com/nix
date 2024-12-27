@@ -2,6 +2,8 @@
 let
   waybar_reload = pkgs.writeShellScriptBin "bt-wb-dispatcher" ''
     ${pkgs.procps}/bin/pkill -RTMIN+7 waybar
+    ${pkgs.coreutils}/bin/sleep 2
+    ${pkgs.procps}/bin/pkill -RTMIN+7 waybar
   '';
 in
 {
