@@ -11,7 +11,7 @@ function networkwidget() {
 	local icon="󰖩"
 	local class=""
 
-	[[ ${#_bts_raw[@]} -gt 0 ]] && sleep 1 # HACK: Darn bluetooth battery levels!
+	[[ ${#_bts_raw[@]} -gt 0 ]] && sleep 2 # HACK: Darn bluetooth battery levels!
 	for bt in ${_bts_raw[@]}; do
 		local name=$(printf "%s" ${bt} | cut -d\  -f3)
 		local mac=$(printf "%s" ${bt} | cut -d\  -f2 | sed -e "s/:/_/g")
