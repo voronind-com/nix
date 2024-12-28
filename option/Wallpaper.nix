@@ -30,7 +30,13 @@ in
     };
     style = lib.mkOption {
       default = style;
-      type = with lib.types; nullOr (oneOf [ path lines attrs ]);
+      type =
+        with lib.types;
+        nullOr (oneOf [
+          path
+          lines
+          attrs
+        ]);
     };
   };
 }
