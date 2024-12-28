@@ -6,7 +6,16 @@ let
   forceContrastText = false;
 
   # SEE: https://github.com/tinted-theming/schemes
-  # Warm: "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml"
+  # Blue:     "${pkgs.base16-schemes}/share/themes/moonlight.yaml"
+  # Brown:    "${pkgs.base16-schemes}/share/themes/sandcastle.yaml"
+  # Classy:   "${pkgs.base16-schemes}/share/themes/monokai.yaml"
+  # Cold:     "${pkgs.base16-schemes}/share/themes/nord.yaml"
+  # Cool:     "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml"
+  # Gray:     "${pkgs.base16-schemes}/share/themes/nova.yaml"
+  # Material: "${pkgs.base16-schemes}/share/themes/material.yaml"
+  # Purple:   "${pkgs.base16-schemes}/share/themes/shades-of-purple.yaml"
+  # Retro:    "${pkgs.base16-schemes}/share/themes/mocha.yaml"
+  # Warm:     "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml"
   style = null;
 in
 {
