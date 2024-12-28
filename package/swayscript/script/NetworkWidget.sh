@@ -2,9 +2,10 @@
 function networkwidget() {
 	local IFS=$'\n'
 	local internet=$(nmcli networking connectivity check)
-	local _ethernets=($(nmcli connection show --active | rg ethernet | sed "s/  .*//"))
-	local _vpns=($(nmcli connection show --active | rg vpn | sed "s/  .*//"))
-	local _wifis=($(nmcli connection show --active | rg wifi | sed "s/  .*//"))
+	local _connections=($(nmcli connection show --active))
+	local _ethernets=($(printf "%s\n" ${_connections[@]} | rg ethernet | sed "s/  .*//"))
+	local _vpns=($(printf "%s\n" ${_connections[@]} | rg vpn | sed "s/  .*//"))
+	local _wifis=($(printf "%s\n" ${_connections[@]} | rg wifi | sed "s/  .*//"))
 	local _bts_raw=($(bluetoothctl devices Connected))
 	local _bts=()
 	local _bt_lowest=100
