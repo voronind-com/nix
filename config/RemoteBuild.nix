@@ -56,7 +56,7 @@ in
         buildMachines = [
           {
             hostName = "nixbuilder";
-            maxJobs = 16;
+            maxJobs = 4;
             protocol = "ssh-ng";
             speedFactor = 2;
             mandatoryFeatures = [ ];
