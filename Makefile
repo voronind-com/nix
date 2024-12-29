@@ -19,15 +19,6 @@ cached:
 check: format
 	nix flake check --show-trace
 
-# HACK: Fix ulimit switch issue. Test sometime in the future again.
-# fix-ulimit:
-# 	ulimit -n 999999999
-
-# HACK: They broke switching in systemd service ffs.
-# https://github.com/NixOS/nixpkgs/issues/347315
-# fix-unlock:
-# 	pkill nixos-rebuild || true
-
 format:
 	treefmt --no-cache --clear-cache
 
