@@ -81,7 +81,7 @@ update:
 	nix flake update
 
 # NOTE: Run `housekeep` target to fix git fsck issues.
-verify:
+verify: housekeep
 	git verify-commit HEAD
 	git fsck
 
