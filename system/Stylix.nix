@@ -32,10 +32,9 @@ in
     }
     // (lib.optionalAttrs wallpaper.forceContrastText {
       override = {
-        base04 = lib.mkForce "000000";
-        base05 = lib.mkForce "ffffff";
-        base06 = lib.mkForce "ffffff";
+        base04 = "000000";
+        base05 = "ffffff";
+        base06 = "ffffff";
       };
-    })
-    // (lib.optionalAttrs (wallpaper.style != null) { base16Scheme = wallpaper.style; });
+    });
 }

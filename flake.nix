@@ -194,21 +194,25 @@
                 ++ (ls ./system);
               specialArgs =
                 let
-                  util = import ./lib/Util.nix { inherit lib; };
-                in
-                {
-                  inherit
-                    const
-                    __findFile
-                    inputs
-                    self
-                    poetry2nixJobber
-                    util
-                    ;
                   pkgsJobber = nixpkgsJobber.legacyPackages.${system}.pkgs;
                   pkgsMaster = nixpkgsMaster.legacyPackages.${system}.pkgs;
                   pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
                   secret = import ./secret { };
+                  util = import ./lib/Util.nix { inherit lib; };
+                in
+                {
+                  inherit
+                    __findFile
+                    const
+                    inputs
+                    pkgsJobber
+                    pkgsMaster
+                    pkgsUnstable
+                    poetry2nixJobber
+                    secret
+                    self
+                    util
+                    ;
                 };
             };
 
@@ -240,7 +244,9 @@
           pkgs = nixpkgs.legacyPackages.${system}.pkgs;
           pkgsMaster = nixpkgsMaster.legacyPackages.${system}.pkgs;
           pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
+          secret = import ./secret { };
           system = "aarch64-linux";
+          util = import ./lib/Util.nix { inherit lib; };
         in
         nix-on-droid.lib.nixOnDroidConfiguration {
           inherit pkgs;
@@ -251,15 +257,15 @@
           ] ++ (ls ./option);
           extraSpecialArgs = {
             inherit
+              __findFile
+              const
               inputs
-              self
               pkgsMaster
               pkgsUnstable
-              const
-              __findFile
+              secret
+              self
+              util
               ;
-            secret = import ./secret { };
-            util = import ./lib/Util.nix { inherit lib; };
           };
         };
     };
