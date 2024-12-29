@@ -1,8 +1,8 @@
 # Download the wallpaper here.
 { pkgs, lib, ... }:
 let
-  url = "https://i.imgur.com/AKsJ3Rl.jpeg";
-  sha256 = "sha256-DIgboGiIGJb2bKi7zqb17m7jctEgWyrSI/mSypeV7dQ=";
+  url = "https://i.imgur.com/KkZFMD3.png";
+  sha256 = "sha256-cTNUeamZTjQDx8gGZkU1mj4kKS3FEE0+EDzFb5bsyZE=";
   forceContrastText = false;
 
   # SEE: https://github.com/tinted-theming/schemes
