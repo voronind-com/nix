@@ -4,7 +4,7 @@ let
   wallpaper = config.module.wallpaper;
 in
 {
-  stylix =
+  stylix = lib.mkMerge [
     {
       inherit (config.module.style) cursor;
       enable = true;
@@ -30,11 +30,13 @@ in
         popups = popup;
       };
     }
-    // (lib.optionalAttrs wallpaper.forceContrastText {
+    (lib.mkIf wallpaper.forceContrastText {
       override = {
         base04 = "000000";
         base05 = "ffffff";
         base06 = "ffffff";
       };
-    });
+    })
+    (lib.mkIf (wallpaper.scheme != null) { base16Scheme = wallpaper.scheme; })
+  ];
 }
