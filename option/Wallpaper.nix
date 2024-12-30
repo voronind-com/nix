@@ -22,7 +22,7 @@ let
   # scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
 
   # Colors: #3C4C55 #556873 #6A7D89 #899BA6 #899BA6 #C5D4DD #899BA6 #556873 #83AFE5 #7FC1CA #A8CE93 #7FC1CA #F2C38F #83AFE5 #9A93E1 #F2C38F
-  # scheme = "${pkgs.base16-schemes}/share/themes/nova.yaml";
+  # scheme = "${pkgs.base16-schemes}/share/themes/nova.yaml"; # Needs text contrast.
 
   # Colors: #263238 #2E3C43 #314549 #546E7A #B2CCD6 #EEFFFF #EEFFFF #FFFFFF #F07178 #F78C6C #FFCB6B #C3E88D #89DDFF #82AAFF #C792EA #FF5370
   # scheme = "${pkgs.base16-schemes}/share/themes/material.yaml";

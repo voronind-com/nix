@@ -18,3 +18,8 @@ function fix_gradle_lock() {
 	cd "${HOME}/.gradle" && find -type f | grep \\.lock$ | xargs -- rm
 	cd -
 }
+
+# Fix pdfs when they don't want to be uploaded to Paperless.
+function fix_pdf() {
+	qpdf --replace-input "${@}"
+}
