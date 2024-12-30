@@ -27,7 +27,7 @@ in
       opacity = with style.opacity; {
         inherit desktop terminal;
         applications = application;
-        popups = popups;
+        popups = popup;
       };
     }
     // (lib.optionalAttrs wallpaper.forceContrastText {
