@@ -39,6 +39,7 @@ let
     (mkSearchEngine "no" "NixOS Options" "https://search.nixos.org/options?query={searchTerms}")
     (mkSearchEngine "np" "NixOS Packages" "https://search.nixos.org/packages?query={searchTerms}")
     (mkSearchEngine "oz" "Ozon" "https://www.ozon.ru/search?text={searchTerms}")
+    (mkSearchEngine "pa" "Pixel Art" "https://www.reddit.com/r/PixelArt/search/?q={searchTerms}")
     (mkSearchEngine "re" "Reddit" "https://www.reddit.com/search/?q={searchTerms}")
     (mkSearchEngine "rt" "RuTracker" "https://rutracker.org/forum/tracker.php?nm={searchTerms}")
     (mkSearchEngine "so" "Stack Overflow" "https://stackoverflow.com/search?tab=votes&q={searchTerms}")
