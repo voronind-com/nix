@@ -22,16 +22,17 @@
     };
     dpi.bypass = {
       enable = true;
+      udpSupport = true;
       params = [
         "--dpi-desync=fake,disorder2"
 
         "--dpi-desync-ttl=1"
         "--dpi-desync-autottl=2"
 
-        # "--dpi-desync-ttl6=1"
-        # "--dpi-desync-autottl6=2"
+        "--dpi-desync-ttl6=1"
+        "--dpi-desync-autottl6=2"
 
-        # "--dpi-desync-any-protocol"
+        "--dpi-desync-any-protocol"
       ];
       whitelist = [
         "youtube.com"
@@ -43,6 +44,9 @@
         "rutrk.org"
         "t-ru.org"
         "medium.com"
+      ];
+      udpPorts = [
+        "443"
       ];
     };
     amd = {
