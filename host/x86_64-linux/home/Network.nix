@@ -166,15 +166,15 @@ in
         iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -d 0/0 -o ${wan} -j MASQUERADE
 
         # Full access from Lan.
-        iptables  -I INPUT -j ACCEPT -i ${lan} -d ${internal}
-        ip6tables -I INPUT -j ACCEPT -i ${lan} -d ${internal6}
+        iptables  -I INPUT -j ACCEPT -i ${lan}
+        ip6tables -I INPUT -j ACCEPT -i ${lan}
 
         # Public email server.
         ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 25
 
         # Public VPN service.
         ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 22145
-        iptables -I INPUT -j ACCEPT -s 10.0.1.0/24 -d ${internal}
+        iptables -I INPUT -j ACCEPT -s 10.0.1.0/24
 
         # Public Nginx.
         ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 443
