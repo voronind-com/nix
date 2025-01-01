@@ -4,6 +4,8 @@ function reload() {
 	re() {
 		# Sway.
 		swaymsg reload
+		pkill mpvpaper
+		mpvpaper-sway
 
 		# Waybar.
 		pkill waybar
