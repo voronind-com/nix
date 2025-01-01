@@ -162,39 +162,39 @@ in
     firewall = {
       enable = true;
       extraCommands = util.trimTabs ''
-        				# Wan access for 10.0.0.0/24 subnet.
-        				iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -d 0/0 -o ${wan} -j MASQUERADE
+        # Wan access for 10.0.0.0/24 subnet.
+        iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -d 0/0 -o ${wan} -j MASQUERADE
 
-        				# Full access from Lan.
-        				iptables  -I INPUT -j ACCEPT -i ${lan} -d ${internal}
-        				ip6tables -I INPUT -j ACCEPT -i ${lan} -d ${internal6}
+        # Full access from Lan.
+        iptables  -I INPUT -j ACCEPT -i ${lan} -d ${internal}
+        ip6tables -I INPUT -j ACCEPT -i ${lan} -d ${internal6}
 
-        				# Public email server.
-        				ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 25
+        # Public email server.
+        ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 25
 
-        				# Public VPN service.
-        				ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 22145
-        				iptables -I INPUT -j ACCEPT -s 10.0.1.0/24 -d ${internal}
+        # Public VPN service.
+        ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 22145
+        iptables -I INPUT -j ACCEPT -s 10.0.1.0/24 -d ${internal}
 
-        				# Public Nginx.
-        				ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 443
+        # Public Nginx.
+        ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 443
 
-        				# Deluge torrenting ports.
-        				ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 54630
-        				ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 54630
-        				ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 54631
-        				ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 54631
+        # Deluge torrenting ports.
+        ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 54630
+        ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 54630
+        ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 54631
+        ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 54631
 
-        				# Terraria server.
-        				ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22777
+        # Terraria server.
+        ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22777
 
-        				# Mumble.
-        				ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22666
-        				ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 22666
+        # Mumble.
+        ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22666
+        ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 22666
 
-        				# Public SSH access.
-        				# ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22143
-        			'';
+        # Public SSH access.
+        # ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22143
+        '';
     };
   };
 }
