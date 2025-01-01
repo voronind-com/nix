@@ -8,8 +8,8 @@
 let
   cfg = config.module.wallpaper;
 
-  url = "https://preview.redd.it/snfs0gloct491.gif?width=640&format=mp4&s=7e50d8f89ad5724b7addd900fdd5045e03c0c612";
-  sha256 = "sha256-ECVd9juwzLGVtTVBKV+zs8EiqSg9DAcYqu2M+DwxWsQ=";
+  url = "https://preview.redd.it/d8oy5ye2vqyd1.gif?width=640&format=mp4&s=a00152d10d85859a688b8b4b12b9cf097f1cdb9b";
+  sha256 = "sha256-k1wS1v/dcXihJA9vk9LXALodAWaQgQxkqfLZY7yugmA=";
 
   # Use video.
   video = true;
@@ -27,7 +27,7 @@ let
   videoImage =
     if video then
       pkgs.runCommandNoCC "wallpaper-video-image" { } ''
-        ${pkgs.ffmpeg}/bin/ffmpeg -i ${cfg.videoPath} Image.jpg || true
+        ${pkgs.ffmpeg}/bin/ffmpeg -hide_banner -loglevel error -ss 00:00:00 -i ${cfg.videoPath} -frames:v 1 -q:v 1 Image.jpg
         cp Image.jpg $out
       ''
     else
