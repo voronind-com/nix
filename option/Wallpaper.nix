@@ -10,8 +10,6 @@ let
 
   url = "https://www.desktophut.com/files/Ob4WzyO9kcDtKft_Above%20the%20clouds_1_155846.mp4";
   sha256 = "sha256-3ginS0XeRl2qVOGPrxlJwWx8FnxuVGQRgo4Ha6+KbqM=";
-
-  # Use video.
   video = true;
 
   # Forse black and white for text.
