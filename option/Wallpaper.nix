@@ -8,8 +8,8 @@
 let
   cfg = config.module.wallpaper;
 
-  url = "https://www.desktophut.com/files/YodlHKEufG9PuGV_Cat%20Lofi%20Live%20Wallpaper.mp4";
-  sha256 = "sha256-l76+wlP0Jb/ULqN4bX8eqdwKnIlbOwO3HuCV1DPoXOE=";
+  url = "https://cloud.voronind.com/s/s4bEjPATjsBoANT/download/winter-night-tiny-glade-moewalls-com.mp4";
+  sha256 = "sha256-NQKchMNiKYExboo2owtg9pso4TtskQp0D/cyOYMG1uU=";
   video = true;
 
   # Forse black and white for text.

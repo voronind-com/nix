@@ -34,10 +34,11 @@ let
       (mkLink "Zigbee" "fa-satellite-dish" "https://zigbee.blakadder.com")
     ])
     (mkGroup "Wallpaper" "fa-panorama" [
-      (mkLink "DesktopHut" "fa-image" "https://www.desktophut.com")
-      (mkLink "Motion Backgrounds" "fa-image" "https://motionbgs.com")
+      (mkLink "DesktopHut" "fa-video" "https://www.desktophut.com")
+      (mkLink "MoeWalls" "fa-video" "https://moewalls.com")
+      (mkLink "Motion Backgrounds" "fa-video" "https://motionbgs.com")
       (mkLink "Unsplash" "fa-image" "https://unsplash.com")
-      (mkLink "Wallhaven" "fa-image" "https://wallhaven.cc/")
+      (mkLink "Wallhaven" "fa-image" "https://wallhaven.cc")
     ])
     (mkGroup "Pirate" "fa-skull-crossbones" [
       (mkLink "1337x" "fa-skull-crossbones" "https://1337x.to")
