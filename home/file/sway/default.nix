@@ -246,6 +246,6 @@ in
       include /etc/sway/config.d/*
     ''
     + builtins.readFile swayRc
-    + lib.optionalString config.module.wallpaper.video "exec mpvpaper-sway\n"
+    + lib.optionalString config.module.wallpaper.video "exec wallpaper-video\n"
     + lib.concatStringsSep "\n" config.module.sway.extraConfig;
 }

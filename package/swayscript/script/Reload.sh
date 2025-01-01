@@ -5,7 +5,7 @@ function reload() {
 		# Sway.
 		swaymsg reload
 		pkill mpvpaper
-		mpvpaper-sway
+		wallpaper-video
 
 		# Waybar.
 		pkill waybar

@@ -8,8 +8,8 @@
 let
   cfg = config.module.wallpaper;
 
-  url = "https://preview.redd.it/d8oy5ye2vqyd1.gif?width=640&format=mp4&s=a00152d10d85859a688b8b4b12b9cf097f1cdb9b";
-  sha256 = "sha256-k1wS1v/dcXihJA9vk9LXALodAWaQgQxkqfLZY7yugmA=";
+  url = "https://www.desktophut.com/files/Ob4WzyO9kcDtKft_Above%20the%20clouds_1_155846.mp4";
+  sha256 = "sha256-3ginS0XeRl2qVOGPrxlJwWx8FnxuVGQRgo4Ha6+KbqM=";
 
   # Use video.
   video = true;
