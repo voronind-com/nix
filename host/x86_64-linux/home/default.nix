@@ -45,9 +45,7 @@
         "t-ru.org"
         "medium.com"
       ];
-      udpPorts = [
-        "443"
-      ];
+      udpPorts = [ "443" ];
     };
     amd = {
       cpu.enable = true;

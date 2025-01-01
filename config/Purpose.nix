@@ -45,6 +45,7 @@ in
       module = {
         keyd.enable = true;
         sway.enable = true;
+        wallpaper.video = false;
         kernel = {
           enable = true;
           hardening = true;
@@ -63,6 +64,7 @@ in
         keyd.enable = true;
         sway.enable = true;
         kernel.enable = true;
+        wallpaper.video = false;
         package = {
           common = true;
           core = true;
@@ -114,6 +116,7 @@ in
 
     (lib.mkIf cfg.server {
       module = {
+        wallpaper.video = false;
         kernel = {
           enable = true;
           hardening = true;

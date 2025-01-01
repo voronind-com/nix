@@ -92,6 +92,7 @@
     fuzzel # Application launcher.
     grim # Screenshots.
     mako # Notification system.
+    mpvpaper # Video wallpapers.
     networkmanagerapplet # Internet configuration.
     pamixer # Sound controls.
     pavucontrol # Sound applet.
