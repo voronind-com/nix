@@ -8,8 +8,8 @@
 let
   cfg = config.module.wallpaper;
 
-  url = "https://www.desktophut.com/files/Ob4WzyO9kcDtKft_Above%20the%20clouds_1_155846.mp4";
-  sha256 = "sha256-3ginS0XeRl2qVOGPrxlJwWx8FnxuVGQRgo4Ha6+KbqM=";
+  url = "https://www.desktophut.com/files/YodlHKEufG9PuGV_Cat%20Lofi%20Live%20Wallpaper.mp4";
+  sha256 = "sha256-l76+wlP0Jb/ULqN4bX8eqdwKnIlbOwO3HuCV1DPoXOE=";
   video = true;
 
   # Forse black and white for text.
