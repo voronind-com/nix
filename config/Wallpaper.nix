@@ -1,13 +1,13 @@
-{ config, lib, pkgs, ... }: let
+{ config, pkgs, ... }:
+let
   cfg = config.module.wallpaper;
-in {
-  config = lib.mkMerge [
-    (lib.mkIf cfg.video {
-      environment.systemPackages = [
-        (pkgs.writeShellScriptBin "wallpaper-video" ''
-          mpvpaper -o 'no-audio --loop-file --panscan=1' '*' ${cfg.videoPath}
-        '')
-      ];
-    })
-  ];
+in
+{
+  config = {
+    environment.systemPackages = [
+      (pkgs.writeShellScriptBin "wallpaper-video" ''
+        mpvpaper -o 'no-audio --loop-file --panscan=1' '*' ${cfg.videoPath}
+      '')
+    ];
+  };
 }
