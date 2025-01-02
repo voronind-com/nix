@@ -8,8 +8,8 @@
 let
   cfg = config.module.wallpaper;
 
-  url = "https://cloud.voronind.com/s/s4bEjPATjsBoANT/download/winter-night-tiny-glade-moewalls-com.mp4";
-  sha256 = "sha256-NQKchMNiKYExboo2owtg9pso4TtskQp0D/cyOYMG1uU=";
+  url = "https://cloud.voronind.com/public.php/dav/files/dG9E9sCNaXyPToH/dark-winter-forest-road-moewalls-com.mp4";
+  sha256 = "sha256-jCa8bVspeOsAMcUne3DQS+g8rj0byHCA9WQWHXNLccI=";
   video = true;
 
   # Forse black and white for text.
