@@ -22,14 +22,15 @@ let
   scheme = null;
 
   # Extract image from video.
-  videoImage =
+  videoPath = if video then pkgs.fetchurl { inherit url sha256; } else null;
+  image =
     if video then
       pkgs.runCommandNoCC "wallpaper-video-image" { } ''
-        ${pkgs.ffmpeg}/bin/ffmpeg -hide_banner -loglevel error -ss 00:00:00 -i ${cfg.videoPath} -frames:v 1 -q:v 1 Image.jpg
+        ${pkgs.ffmpeg}/bin/ffmpeg -hide_banner -loglevel error -ss 00:00:00 -i ${videoPath} -frames:v 1 -q:v 1 Image.jpg
         cp Image.jpg $out
       ''
     else
-      null;
+      pkgs.fetchurl { inherit url sha256; };
 in
 {
   options.module.wallpaper = {
@@ -38,7 +39,7 @@ in
       type = lib.types.bool;
     };
     path = lib.mkOption {
-      default = if video then videoImage else pkgs.fetchurl { inherit url sha256; };
+      default = image;
       type = lib.types.path;
     };
     video = lib.mkOption {
@@ -46,7 +47,7 @@ in
       type = lib.types.bool;
     };
     videoPath = lib.mkOption {
-      default = if video then pkgs.fetchurl { inherit url sha256; } else null;
+      default = videoPath;
       type = with lib.types; nullOr path;
     };
     scheme = lib.mkOption {

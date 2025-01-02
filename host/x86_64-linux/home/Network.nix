@@ -194,7 +194,7 @@ in
 
         # Public SSH access.
         # ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22143
-        '';
+      '';
     };
   };
 }
