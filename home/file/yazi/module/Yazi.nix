@@ -130,6 +130,12 @@
             run = openWith "switch_install";
           }
         ];
+        shell_run = [
+          {
+            desc = "Run";
+            run = openWith "bash";
+          }
+        ];
         steam_run = [
           {
             desc = "Run";
@@ -189,10 +195,11 @@
           };
         in
         [
-          (mkName "*.xlsx" [ "document" ])
           (mkName "*.mka" [ "audio" ])
           (mkName "*.nsp" [ "switch_install" ])
           (mkName "*.nsz" [ "switch_install" ])
+          (mkName "*.sh" [ "shell_run" ])
+          (mkName "*.xlsx" [ "document" ])
 
           # Use `file -i file.txt` to find file mime type.
           # Use `xdg-mime query default "text/plain"` to find default app.
