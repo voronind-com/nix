@@ -40,6 +40,6 @@ Newest first.
 <br><a href="https://i.imgur.com/Q8ZTZCH.png">Wallpaper link</a>
 </details>
 
-[My current wallpaper](config/Wallpaper.nix#L11)
+[My current wallpaper](option/Wallpaper.nix#L12)
 
 Color theming based on wallpaper thanks to [Stylix](https://github.com/danth/stylix).
