@@ -21,6 +21,18 @@
   };
 
   module = {
-    purpose.live = true;
+    keyd.enable = true;
+    sway.enable = true;
+    kernel.enable = true;
+    wallpaper.video = false;
+    package = {
+      common = true;
+      core = true;
+      creative = true;
+      desktop = true;
+      dev = true;
+      extra = true;
+      gaming = true;
+    };
   };
 }

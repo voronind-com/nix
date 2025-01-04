@@ -35,6 +35,11 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
+    services = {
+      tlp.enable = true;
+      upower.enable = true;
+    };
+
     environment.systemPackages = [ script ];
     systemd = {
       services.powersave-cpu = {

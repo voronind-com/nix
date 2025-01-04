@@ -7,6 +7,7 @@
 }:
 let
   cfg = config.module.wallpaper;
+  purpose = config.module.purpose;
 
   url = "https://cloud.voronind.com/public.php/dav/files/dG9E9sCNaXyPToH/dark-winter-forest-road-moewalls-com.mp4";
   sha256 = "sha256-jCa8bVspeOsAMcUne3DQS+g8rj0byHCA9WQWHXNLccI=";
@@ -43,7 +44,7 @@ in
       type = lib.types.path;
     };
     video = lib.mkOption {
-      default = video;
+      default = video && purpose.desktop;
       type = lib.types.bool;
     };
     videoPath = lib.mkOption {

@@ -1,7 +1,10 @@
-{ lib, ... }:
+{ lib, config, ... }:
+let
+  purpose = config.module.purpose;
+in
 {
   options.module.docker = {
-    enable = lib.mkEnableOption "the docker.";
+    enable = lib.mkEnableOption "the docker." // { default = purpose.work; };
     rootless = lib.mkOption {
       default = false;
       type = lib.types.bool;

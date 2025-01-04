@@ -6,13 +6,15 @@ let
 in
 {
   options.module.ollama = {
-    enable = lib.mkEnableOption "the local LLM server." // { default = purpose.work && purpose.desktop; };
+    enable = lib.mkEnableOption "the local LLM server." // {
+      default = purpose.work;
+    };
     models = lib.mkOption {
       default = [ cfg.primaryModel ];
       type = with lib.types; listOf str;
     };
     primaryModel = lib.mkOption {
-      default = "llama3.3";
+      default = "llama3.2";
       type = lib.types.str;
     };
   };

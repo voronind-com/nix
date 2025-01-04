@@ -57,6 +57,30 @@ in
       (lib.mkIf cfg.hotspotTtlBypass { boot.kernel.sysctl."net.ipv4.ip_default_ttl" = 65; })
 
       (lib.mkIf cfg.latest { boot.kernelPackages = pkgsUnstable.linuxPackages_latest; })
+
+      (lib.mkIf cfg.router {
+        boot.kernel.sysctl = {
+          # Allow spoofing.
+          "net.ipv4.conf.all.rp_filter" = lib.mkForce 0;
+          "net.ipv4.conf.default.rp_filter" = lib.mkForce 0;
+
+          # Forward packets.
+          "net.ipv4.ip_forward" = lib.mkForce 1;
+          "net.ipv6.conf.all.forwarding" = lib.mkForce 1;
+          "net.ipv4.conf.all.src_valid_mark" = lib.mkForce 1;
+
+          # Allow redirects.
+          "net.ipv4.conf.all.accept_redirects" = lib.mkForce 1;
+          "net.ipv6.conf.all.accept_redirects" = lib.mkForce 1;
+
+          # Send ICMP.
+          "net.ipv4.conf.all.send_redirects" = lib.mkForce 1;
+
+          # Accept IP source route packets.
+          "net.ipv4.conf.all.accept_source_route" = lib.mkForce 1;
+          "net.ipv6.conf.all.accept_source_route" = lib.mkForce 1;
+        };
+      })
     ]
   );
 }
