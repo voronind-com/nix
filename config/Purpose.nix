@@ -131,7 +131,6 @@ in
     (lib.mkIf cfg.work {
       module = {
         distrobox.enable = true;
-        ollama.enable = true;
         package.dev = true;
         virtmanager.enable = true;
         docker = {
