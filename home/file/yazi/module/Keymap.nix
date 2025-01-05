@@ -80,6 +80,11 @@
           run = "close";
         }
         {
+          on = "<Space>";
+          desc = "Goto interactive";
+          run = "cd --interactive";
+        }
+        {
           on = [
             "g"
             "M"
