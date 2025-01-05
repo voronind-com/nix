@@ -1,4 +1,3 @@
-# Download the wallpaper here.
 {
   config,
   lib,
@@ -9,6 +8,7 @@ let
   cfg = config.module.wallpaper;
   purpose = config.module.purpose;
 
+  # Set the wallpaper here.
   url = "https://cloud.voronind.com/s/dG9E9sCNaXyPToH/download?path=%2Fvideo&files=ryo-yamada-in-the-snow-bocchi-the-rock-moewalls-com.mp4&downloadStartSecret=blbioqzgn1k";
   sha256 = "sha256-HLlNcbNxu/Aw1T/WZiCzEwVXN1uhzqQMtJ0tNxQtDw4=";
   video = true;
