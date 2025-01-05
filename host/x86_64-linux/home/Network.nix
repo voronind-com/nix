@@ -1,5 +1,6 @@
-# 10.0.0.0/24 & fd09:8d46:0b26::/48 - phys clients (lan).
+# 10.0.0.0/24 & fd09:8d46:b26::/48 - phys clients (lan).
 # 10.0.1.0/24 - vpn clients.
+# fd09:8d46:b26::/48 - ULA.
 {
   config,
   const,
@@ -122,25 +123,6 @@ in
           Timezone = const.timeZone;
           UplinkInterface = wan;
         };
-        dhcpServerStaticLeases =
-          let
-            mkStatic = Address: MACAddress: { inherit Address MACAddress; };
-          in
-          [
-            # TODO: Add pocket.
-            (mkStatic "10.0.0.2" "9c:9d:7e:8e:3d:c7") # Wifi AP.
-            (mkStatic "10.0.0.3" "d8:bb:c1:cc:da:30") # Desktop.
-            (mkStatic "10.0.0.4" "2c:be:eb:52:53:2b") # Phone.
-            (mkStatic "10.0.0.5" "14:85:7f:eb:6c:25") # Work.
-            (mkStatic "10.0.0.6" "08:38:e6:31:54:b6") # Tablet.
-            (mkStatic "10.0.0.7" "2c:f0:5d:3b:07:78") # Dasha.
-            (mkStatic "10.0.0.8" "ac:5f:ea:ef:b5:05") # Dasha phone.
-            (mkStatic "10.0.0.9" "10:b1:df:ea:18:57") # Laptop.
-            (mkStatic "10.0.0.10" "9c:1c:37:62:3f:d5") # Printer.
-            (mkStatic "10.0.0.11" "dc:a6:32:f5:77:95") # RPi.
-            (mkStatic "10.0.0.12" "ec:9c:32:ad:bc:4a") # Camera.
-            (mkStatic "10.0.0.13" "c0:a5:e8:b5:d9:16") # Max.
-          ];
       };
     };
 

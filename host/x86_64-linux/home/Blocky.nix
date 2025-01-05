@@ -88,6 +88,12 @@
         in
         {
           "voronind.com" = "10.0.0.1,fd09:8d46:b26:0:8079:82ff:fe1a:916a";
+          "desktop.local" = "fd09:8d46:b26:0:2ef8:c58a:c1ac:6cd8";
+          "home.local" = "fd09:8d46:b26:0:8079:82ff:fe1a:916a";
+          "max.local" = "fd09:8d46:b26:0:b19:f4fb:a99f:dbf1";
+          "phone.local" = "fd09:8d46:b26:0:f774:b83e:61f0:6ebe";
+          "printer.local" = "fd09:8d46:b26:0:9e1c:37ff:fe62:3fd5";
+          "router.local" = "fd09:8d46:b26:0:9e9d:7eff:fe8e:3dc7";
         }
         // block "gosuslugi.ru"
         // block "rutube.ru"

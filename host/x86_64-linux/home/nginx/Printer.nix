@@ -7,7 +7,7 @@
       allow 10.0.0.0/8;
       allow fd09:8d46:b26::/48;
       deny all;
-      proxy_pass http://10.0.0.10:80$request_uri;
+      proxy_pass http://[fd09:8d46:b26:0:9e1c:37ff:fe62:3fd5]:80$request_uri;
     }
 
     ssl_certificate /etc/letsencrypt/live/voronind.com/fullchain.pem;
