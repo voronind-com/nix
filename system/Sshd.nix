@@ -10,6 +10,10 @@
         addr = "0.0.0.0";
         port = 22143;
       }
+      {
+        addr = "[::]";
+        port = 22143;
+      }
     ];
     settings = {
       GSSAPIAuthentication = false;
