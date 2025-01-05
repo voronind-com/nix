@@ -8,7 +8,7 @@
       allow fd09:8d46:b26::/48;
       deny all;
 
-      proxy_pass http://127.0.0.1:5001$request_uri;
+      proxy_pass http://[::1]:5001$request_uri;
 
       add_header Referrer-Policy 'origin';
     }

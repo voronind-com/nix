@@ -8,7 +8,7 @@
       allow fd09:8d46:b26::/48;
       deny all;
 
-      proxy_pass http://127.0.0.1:3001$request_uri;
+      proxy_pass http://[::1]:3001$request_uri;
 
       proxy_set_header X-Forwarded-For $remote_addr;
       proxy_set_header Host $host;

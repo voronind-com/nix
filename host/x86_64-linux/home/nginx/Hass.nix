@@ -14,7 +14,7 @@
       proxy_set_header Upgrade $http_upgrade;
       proxy_set_header Connection "upgrade";
 
-      proxy_pass http://127.0.0.1:8123$request_uri;
+      proxy_pass http://[::1]:8123$request_uri;
     }
 
     ssl_certificate /etc/letsencrypt/live/voronind.com/fullchain.pem;

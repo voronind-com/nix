@@ -3,7 +3,7 @@
   "office.voronind.com" = {
     locations."/".extraConfig = lib.mkForce ''
       add_header X-Forwarded-Proto https;
-      proxy_pass http://127.0.0.1:8000$request_uri;
+      proxy_pass http://[::1]:8000$request_uri;
     '';
 
     extraConfig = ''

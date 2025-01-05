@@ -7,11 +7,11 @@
       allow 10.0.0.0/8;
       allow fd09:8d46:b26::/48;
       deny all;
-      proxy_pass http://127.0.0.1:3000$request_uri;
+      proxy_pass http://[::1]:3000$request_uri;
     }
 
     location / {
-      proxy_pass http://127.0.0.1:3000$request_uri;
+      proxy_pass http://[::1]:3000$request_uri;
     }
 
     ssl_certificate /etc/letsencrypt/live/voronind.com/fullchain.pem;

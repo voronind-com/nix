@@ -11,7 +11,7 @@
       proxy_set_header Host "localhost";
       proxy_set_header X-Forwarded-Host "localhost";
 
-      proxy_pass http://127.0.0.1:8384$request_uri;
+      proxy_pass http://[::1]:8384$request_uri;
     }
 
     ssl_certificate /etc/letsencrypt/live/voronind.com/fullchain.pem;
