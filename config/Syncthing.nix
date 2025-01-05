@@ -14,14 +14,14 @@ in
 
     # Access at sync.lan.
     networking.hosts = {
-      "127.0.0.1" = [ "sync.local" ];
+      "::1" = [ "sync.local" ];
     };
     services.nginx.enable = true;
     services.nginx.virtualHosts."sync.local".extraConfig = ''
       location / {
-        allow 127.0.0.1;
+        allow [::1];
         deny all;
-        proxy_pass http://127.0.0.1:8384;
+        proxy_pass http://[::1]:8384;
       }
     '';
 
