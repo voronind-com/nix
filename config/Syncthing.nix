@@ -19,7 +19,7 @@ in
     services.nginx.enable = true;
     services.nginx.virtualHosts."sync.local".extraConfig = ''
       location / {
-        allow [::1];
+        allow ::1;
         deny all;
         proxy_pass http://[::1]:8384;
       }
@@ -32,6 +32,7 @@ in
         user
         group
         ;
+      guiAddress = "[::1]:8384";
       openDefaultPorts = false;
       systemService = true;
       settings =
