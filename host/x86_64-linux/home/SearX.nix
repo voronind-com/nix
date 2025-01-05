@@ -11,7 +11,7 @@
         instance_name = "SearX";
       };
       server = {
-        # bind_address    = cfg.address;
+        bind_address = "::1";
         image_proxy = false;
         limiter = false;
         method = "GET";

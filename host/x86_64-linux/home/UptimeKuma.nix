@@ -5,7 +5,7 @@
     settings = {
       DATA_DIR = "/var/lib/uptime-kuma/";
       PORT = "64901";
-      # HOST = cfg.address;
+      HOST = "::1";
     };
   };
 

@@ -14,6 +14,7 @@
     enable = true;
     domain = "yt.voronind.com";
     package = pkgsMaster.invidious;
+    address = "::1";
     port = 3001;
     nginx.enable = false;
     database = {
