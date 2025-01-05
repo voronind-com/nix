@@ -6,7 +6,7 @@ function networkwidget() {
 	local _ethernets=($(printf "%s\n" ${_connections[@]} | rg ethernet | sed "s/  .*//"))
 	local _vpns=($(printf "%s\n" ${_connections[@]} | rg vpn | sed "s/  .*//"))
 	local _wifis=($(printf "%s\n" ${_connections[@]} | rg wifi | sed "s/  .*//"))
-	local _bts_raw=($(bluetoothctl devices Connected))
+	local _bts_raw=($(timeout 2 bluetoothctl devices Connected)) # HACK: Sometimes it hangs, thus a timeout.
 	local _bts=()
 	local _bt_lowest=100
 	local icon="󰖩"
@@ -27,11 +27,8 @@ function networkwidget() {
 	done
 
 	if [[ ${_bts} != "" ]]; then
+		class="bt"
 		icon="󱛃"
-
-		if [[ ${_bt_lowest} -lt 21 ]]; then
-			class="btlow"
-		fi
 	fi
 
 	if [[ ${_vpns} != "" ]]; then
@@ -39,9 +36,16 @@ function networkwidget() {
 		icon="󱚿"
 	fi
 
-	if [[ ${internet} != "full" ]]; then
+	if ! $(command -v nmcli); then
+		class="disabled"
+		icon="󱚼"
+	elif [[ ${internet} != "full" ]]; then
 		class="issue"
 		icon="󱚵"
+	fi
+
+	if [[ ${_bt_lowest} -lt 21 ]]; then
+		class="btlow"
 	fi
 
 	for net in ${_vpns[@]}; do
