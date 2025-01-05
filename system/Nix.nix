@@ -8,6 +8,7 @@
     keep-derivations = true;
     keep-outputs = true;
     min-free = 1 * 1000 * 1000 * 1000;
+    substituters = [ "https://nixos-cache-proxy.cofob.dev" ];
     experimental-features = [
       "flakes"
       "nix-command"
