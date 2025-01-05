@@ -9,7 +9,7 @@ Host dasha
 	Port 22143
 
 Host desktop
-	HostName desktop.local
+	HostName fd09:8d46:b26:0:2ef8:c58a:c1ac:6cd8
 	User root
 	Port 22143
 
@@ -29,7 +29,7 @@ Host laptop
 	Port 22143
 
 Host max
-	HostName max.local
+	HostName fd09:8d46:b26:0:b19:f4fb:a99f:dbf1
 	User root
 	Port 22143
 
@@ -49,7 +49,7 @@ Host pocket
 	Port 22143
 
 Host vpn
-	HostName vpn.local
+	HostName 194.113.233.38
 	User root
 	Port 22143
 
