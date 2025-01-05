@@ -9,8 +9,8 @@ let
   cfg = config.module.wallpaper;
   purpose = config.module.purpose;
 
-  url = "https://cloud.voronind.com/public.php/dav/files/dG9E9sCNaXyPToH/dark-winter-forest-road-moewalls-com.mp4";
-  sha256 = "sha256-jCa8bVspeOsAMcUne3DQS+g8rj0byHCA9WQWHXNLccI=";
+  url = "https://cloud.voronind.com/s/dG9E9sCNaXyPToH/download?path=%2Fvideo&files=ryo-yamada-in-the-snow-bocchi-the-rock-moewalls-com.mp4&downloadStartSecret=blbioqzgn1k";
+  sha256 = "sha256-HLlNcbNxu/Aw1T/WZiCzEwVXN1uhzqQMtJ0tNxQtDw4=";
   video = true;
 
   # Forse black and white for text.
