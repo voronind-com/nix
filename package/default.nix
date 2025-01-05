@@ -8,7 +8,6 @@
   core =
     (with pkgs; [
       android-tools # Android adb tool. Can be used to connect to itself via wireless debugging.
-      bat # Pretty cat.
       binwalk # Can analyze files for other files inside them.
       bridge-utils # Network bridges.
       btop # System monitoring.
