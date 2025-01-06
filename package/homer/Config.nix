@@ -16,7 +16,6 @@ let
       (mkLink "Print" "fa-print" "https://print.voronind.com")
       (mkLink "Read" "fa-book" "https://read.voronind.com")
       (mkLink "Search" "fa-search" "https://search.voronind.com")
-      (mkLink "Stock" "fa-boxes-stacked" "https://stock.voronind.com")
       (mkLink "Watch" "fa-film" "https://watch.voronind.com")
       (mkLink "YouTube" "fab fa-youtube" "https://yt.voronind.com")
     ])

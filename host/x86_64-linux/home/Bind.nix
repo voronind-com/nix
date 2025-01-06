@@ -9,7 +9,6 @@ let
     (mkBind "dkim" "/var/dkim")
     (mkBind "dovecot_index" "/var/lib/dovecot/indices")
     (mkBind "forgejo" "/var/lib/forgejo")
-    (mkBind "grocy" "/var/lib/grocy")
     (mkBind "hass" "/var/lib/hass")
     (mkBind "jellyfin" "/var/lib/jellyfin")
     (mkBind "jellyfin_cache" "/var/cache/jellyfin")
