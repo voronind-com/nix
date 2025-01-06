@@ -9,8 +9,8 @@ let
   purpose = config.module.purpose;
 
   # Set the wallpaper here.
-  url = "https://cloud.voronind.com/s/dG9E9sCNaXyPToH/download?path=%2Fvideo&files=ryo-yamada-in-the-snow-bocchi-the-rock-moewalls-com.mp4&downloadStartSecret=blbioqzgn1k";
-  sha256 = "sha256-HLlNcbNxu/Aw1T/WZiCzEwVXN1uhzqQMtJ0tNxQtDw4=";
+  url = "https://cloud.voronind.com/s/dwTkb5iTy2k7EST/download/arctic-spirit-moewalls-com.mp4";
+  sha256 = "sha256-wl8S4VOxxUQcjtfwgtkGsz1OkPNegXXfD/cjSFU6sog=";
   video = true;
 
   # Forse black and white for text.
