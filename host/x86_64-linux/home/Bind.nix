@@ -22,6 +22,7 @@ let
     (mkBind "privatebin" "/var/lib/privatebin")
     (mkBind "rabbitmq" "/var/lib/rabbitmq")
     (mkBind "sieve" "/var/sieve")
+    (mkBind "tandoor" "/var/lib/tandoor-recipes")
     (mkBind "terraria" "/var/lib/terraria")
     (mkBind "uptime_kuma" "/var/lib/uptime-kuma")
     (mkBind "vaultwarden" "/var/lib/vaultwarden")

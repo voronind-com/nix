@@ -6,6 +6,7 @@ let
     (mkGroup "App" "fa-server" [
       (mkLink "Change" "fa-user-secret" "https://change.voronind.com")
       (mkLink "Cloud" "fa-cloud" "https://cloud.voronind.com")
+      (mkLink "Craft" "fa-pen-ruler" "https://craft.voronind.com")
       (mkLink "Download" "fa-download" "https://download.voronind.com")
       (mkLink "Git" "fab fa-git-alt" "https://git.voronind.com")
       (mkLink "Iot" "fa-home" "https://iot.voronind.com")
