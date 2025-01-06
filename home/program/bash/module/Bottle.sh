@@ -15,7 +15,8 @@ function btc() {
 # Run a file inside a bottle.
 # Usage: btre <EXE> [EXTRA]
 function btre() {
-	bottles-cli run -b "${SHELL_NAME}" -e "${@}"
+	local exe=$(realpath "${1}")
+	bottles-cli run -b "${SHELL_NAME}" -e "${exe}" "${@:2}"
 }
 
 # Run a program inside a bottle.
