@@ -9,6 +9,10 @@
       deny all;
 
       proxy_pass http://[::1]:33122$request_uri;
+
+      proxy_set_header Host $host;
+      proxy_set_header X-Forwarded-Host $host;
+      proxy_set_header X-Forwarded-Proto https;
     }
 
     ssl_certificate /etc/letsencrypt/live/voronind.com/fullchain.pem;
