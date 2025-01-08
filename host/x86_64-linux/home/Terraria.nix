@@ -34,7 +34,7 @@
       TMOD_WORLDNAME = "CWorld";
       TMOD_WORLDSIZE = "3";
       # TMOD_WORLDSEED = "";
-      TMOD_DIFFICULTY = "2";
+      TMOD_DIFFICULTY = "1";
       TMOD_SECURE = "0";
     };
   };
