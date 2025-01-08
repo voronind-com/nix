@@ -21,4 +21,3 @@
     ssl_dhparam /etc/letsencrypt/conf/ssl-dhparams.pem;
   '';
 }
-

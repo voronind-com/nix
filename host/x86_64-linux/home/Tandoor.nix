@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   services.tandoor-recipes = {
     enable = true;
     address = "[::1]";

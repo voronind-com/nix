@@ -36,7 +36,7 @@ function networkwidget() {
 		icon="󱚿"
 	fi
 
-	if ! command -v nmcli &> /dev/null; then
+	if ! command -v nmcli &>/dev/null; then
 		class="disabled"
 		icon="󱚼"
 	elif [[ ${internet} != "full" ]]; then
