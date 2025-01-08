@@ -106,5 +106,5 @@ function _transcode_mkv() {
 }
 
 function _transcode_jxl() {
-	cjxl -e 10 --lossless_jpeg=1 -- "${1}" "${2}"
+	cjxl -e 9 --lossless_jpeg=1 -- "${1}" "${2}"
 }
