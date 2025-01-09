@@ -69,6 +69,14 @@ let
     # (mkExtension "queryamoid@kaply.com" "https://github.com/mkaply/queryamoid/releases/download/v0.1/query_amo_addon_id-0.1-fx.xpi")
   ];
 
+  darkModeIgnore = [
+    "cloud.voronind.com"
+    "git.voronind.com"
+    "github.com"
+    "home.voronind.com"
+    "dav.voronind.com"
+  ];
+
   prefs = [
     # WARN: Remove when Dark Reader policies gets merged.
     (mkLockedPref "xpinstall.signatures.required" false)
@@ -111,35 +119,35 @@ let
   ];
 
   userChrome = ''
-    		* {
-    			font-family: "${config.module.style.font.serif.name}" !important;
-    			font-size:   ${toString config.module.style.font.size.application}pt !important;
-    		}
-    	'';
+    * {
+      font-family: "${config.module.style.font.serif.name}" !important;
+      font-size:   ${toString config.module.style.font.size.application}pt !important;
+    }
+  '';
 
   userContent = ''
-    		@-moz-document url(about:home), url(about:newtab), url(about:privatebrowsing), url(about:blank) {
-    			.click-target-container *, .top-sites-list * {
-    				color: #fff !important ;
-    				text-shadow: 2px 2px 2px #222 !important ;
-    			}
-    			body::before {
-    				content: "" ;
-    				z-index: -1 ;
-    				position: fixed ;
-    				top: 0 ;
-    				left: 0 ;
-    				background: #f9a no-repeat url("${config.module.wallpaper.path}?raw=true") center ;
-    				background-color: #222;
-    				background-size: cover ;
-    				/* filter: blur(4px) ; */
-    				width: 100vw ;
-    				height: 100vh ;
-    			}
-    			/* .logo { background-image: url("{repo}/logo.png?raw=true") !important; } */
-    			/* .logo { background-image: none !important; } */
-    		}
-    	'';
+    @-moz-document url(about:home), url(about:newtab), url(about:privatebrowsing), url(about:blank) {
+      .click-target-container *, .top-sites-list * {
+        color: #fff !important ;
+        text-shadow: 2px 2px 2px #222 !important ;
+      }
+      body::before {
+        content: "" ;
+        z-index: -1 ;
+        position: fixed ;
+        top: 0 ;
+        left: 0 ;
+        background: #f9a no-repeat url("${config.module.wallpaper.path}?raw=true") center ;
+        background-color: #222;
+        background-size: cover ;
+        /* filter: blur(4px) ; */
+        width: 100vw ;
+        height: 100vh ;
+      }
+      /* .logo { background-image: url("{repo}/logo.png?raw=true") !important; } */
+      /* .logo { background-image: none !important; } */
+      }
+  '';
 
   mkExtension = id: install_url: {
     ${id} = {
@@ -294,12 +302,7 @@ in
         previewNewDesign = true;
         syncSettings = true;
         syncSitesFixes = false;
-        disabledFor = [
-          "cloud.voronind.com"
-          "git.voronind.com"
-          "github.com"
-          "home.voronind.com"
-        ];
+        disabledFor = darkModeIgnore;
         theme = {
           brightness = 100;
           contrast = 100;
