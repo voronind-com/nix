@@ -39,6 +39,7 @@
         "googlevideo.com"
         "ytimg.com"
         "youtu.be"
+        "m.youtube.com"
         "rutracker.org"
         "rutracker.cc"
         "rutrk.org"
