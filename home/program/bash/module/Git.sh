@@ -179,6 +179,16 @@ function ga() {
 	git add ${target}
 }
 
+# Preview diff while adding. Adds even ignored files.
+# Usage: gaa [FILES]
+function gaa() {
+	local target=${@}
+	[[ ${target} == "" ]] && target="."
+
+	git diff ${target}
+	git add -f ${target}
+}
+
 # Rebase by X commits or from root. When COUNT is 0 - rebase from root. Default is 2.
 # Usage: gr [COMMIT COUNT]
 function gr() {
