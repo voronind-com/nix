@@ -1,7 +1,6 @@
 # Use `nixos-container login jobber` as root and empty pw.
 {
   __findFile,
-  const,
   lib,
   pkgsJobber,
   poetry2nixJobber,
@@ -48,7 +47,7 @@ in
       in
       {
         boot.isContainer = true;
-        system.stateVersion = const.stateVersion;
+        system.stateVersion = "24.11";
         users = {
           users.root.password = "";
           mutableUsers = false;

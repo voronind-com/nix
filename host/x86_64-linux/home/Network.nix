@@ -3,7 +3,6 @@
 # fd09:8d46:b26::/48 - ULA.
 {
   config,
-  const,
   lib,
   util,
   ...
@@ -120,7 +119,7 @@ in
           PoolOffset = 100;
           PoolSize = 150;
           ServerAddress = "${internal}/24";
-          Timezone = const.timeZone;
+          Timezone = config.const.timeZone;
           UplinkInterface = wan;
         };
       };

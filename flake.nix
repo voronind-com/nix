@@ -122,13 +122,6 @@
     let
       lib = nixpkgs.lib;
 
-      const = {
-        droidStateVersion = "24.05";
-        stateVersion = "24.11";
-        timeZone = "Europe/Moscow";
-        url = "https://git.voronind.com/voronind/nix.git";
-      };
-
       __findFile = _: p: ./${p};
 
       ls =
@@ -175,9 +168,6 @@
                   # Make a device hostname match the one from this config.
                   { networking.hostName = hostname; }
 
-                  # Specify current release version.
-                  { system.stateVersion = const.stateVersion; }
-
                   # Add Home Manager module.
                   home-manager.nixosModules.home-manager
 
@@ -203,7 +193,6 @@
                 {
                   inherit
                     __findFile
-                    const
                     inputs
                     pkgsJobber
                     pkgsMaster
@@ -258,7 +247,6 @@
           extraSpecialArgs = {
             inherit
               __findFile
-              const
               inputs
               pkgsMaster
               pkgsUnstable

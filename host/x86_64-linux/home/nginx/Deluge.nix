@@ -1,6 +1,6 @@
-{ ... }:
+{ config, ... }:
 {
-  "download.voronind.com".extraConfig = ''
+  "download.${config.const.host.domain}".extraConfig = ''
     listen 443 ssl;
 
     location / {

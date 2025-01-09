@@ -2,7 +2,6 @@
 {
   __findFile,
   config,
-  const,
   lib,
   pkgs,
   util,
@@ -36,7 +35,7 @@ in
         // {
           ${user.username} = {
             home = {
-              inherit (const) stateVersion;
+              inherit (config.const) stateVersion;
               inherit (env) sessionVariables;
               inherit (user) username homeDirectory;
               inherit file;

@@ -4,7 +4,6 @@
 # to prevent unathorized changes to hosts.
 {
   config,
-  const,
   lib,
   pkgs,
   secret,
@@ -40,7 +39,7 @@ in
       script = ''
         pushd /tmp
         rm -rf ./nixos
-        git clone --depth=1 --single-branch --branch=main ${const.url} ./nixos
+        git clone --depth=1 --single-branch --branch=main ${config.const.url} ./nixos
         pushd ./nixos
         git verify-commit HEAD && git fsck || {
           echo "Verification failed."

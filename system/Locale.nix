@@ -1,6 +1,6 @@
-{ const, ... }:
+{ config, ... }:
 {
-  time.timeZone = const.timeZone;
+  time.timeZone = config.const.timeZone;
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {

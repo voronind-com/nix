@@ -8,10 +8,7 @@ in
     adminPasswordFile = "${storage}/Password";
     appSecretFile = "${storage}/Secret";
     hostname = "dav.voronind.com";
-    nginx = {
-      sslCertificate = "/etc/letsencrypt/live/voronind.com/fullchain.pem";
-      sslCertificateKey = "/etc/letsencrypt/live/voronind.com/privkey.pem";
-    };
+    nginx = { };
     mail = {
       dsnFile = "${storage}/Dsn";
       inviteFromAddress = "noreply@voronind.com";
