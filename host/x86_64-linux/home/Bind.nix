@@ -16,7 +16,6 @@ let
     (mkBind "kavita" "/var/lib/kavita")
     (mkBind "letsencrypt" "/etc/letsencrypt")
     (mkBind "murmur" "/var/lib/murmur")
-    (mkBind "nextcloud" "/var/lib/nextcloud")
     (mkBind "ovpn" "/var/lib/ovpn")
     (mkBind "paperless" "/var/lib/paperless")
     (mkBind "postgres" "/var/lib/postgresql")

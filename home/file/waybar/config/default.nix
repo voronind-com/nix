@@ -44,12 +44,12 @@ in
     };
     "clock#time" = {
       format = "{:%H:%M}";
-      on-click = "xdg-open https://cloud.voronind.com/apps/calendar/";
+      on-click = "thunderbird";
       tooltip-format = "<big><tt>{calendar}</tt></big>";
     };
     "clock#date" = {
       format = "{:%a %d}";
-      on-click = "xdg-open https://cloud.voronind.com/apps/calendar/";
+      on-click = "thunderbird";
       tooltip-format = "<big><tt>{calendar}</tt></big>";
     };
     battery = {

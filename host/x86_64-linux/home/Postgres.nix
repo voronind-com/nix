@@ -11,7 +11,6 @@
       configurations = [
         "forgejo"
         "invidious"
-        "nextcloud"
         "paperless"
       ];
 

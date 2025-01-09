@@ -17,7 +17,6 @@ let
     (mkBookmark "WorkGit" "https://git.fmp.fsight.world")
     (mkBookmark "WorkBoard" "https://support.fsight.ru")
     (mkBookmark "Hass" "https://iot.voronind.com")
-    (mkBookmark "Cloud" "https://cloud.voronind.com")
     (mkBookmark "GitHub" "https://github.com/notifications")
   ];
 
@@ -70,7 +69,6 @@ let
   ];
 
   darkModeIgnore = [
-    "cloud.voronind.com"
     "git.voronind.com"
     "github.com"
     "home.voronind.com"
