@@ -140,7 +140,7 @@ function gpc() {
 # Git patch apply.
 # Usage: gpa <FILE>
 function gpa() {
-	git apply --index "${@}"
+	git apply --reject --whitespace=fix --index "${@}"
 }
 
 # Unstage changes.
