@@ -5,6 +5,7 @@ let
   binds = [
     (mkBind "change" "/var/lib/changedetection-io")
     (mkBind "cups" "/var/lib/cups")
+    (mkBind "davis" "/var/lib/davis")
     (mkBind "deluge" "/var/lib/deluge/.config/deluge")
     (mkBind "dkim" "/var/dkim")
     (mkBind "dovecot_index" "/var/lib/dovecot/indices")
