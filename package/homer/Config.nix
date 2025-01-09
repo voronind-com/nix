@@ -34,25 +34,31 @@ let
       (mkLink "Toolbox" "fa-toolbox" "https://it-tools.tech")
       (mkLink "Zigbee" "fa-satellite-dish" "https://zigbee.blakadder.com")
     ])
-    (mkGroup "Wallpaper" "fa-panorama" [
-      (mkLink "DesktopHut" "fa-video" "https://www.desktophut.com")
-      (mkLink "MoeWalls" "fa-video" "https://moewalls.com")
-      (mkLink "Motion Backgrounds" "fa-video" "https://motionbgs.com")
-      (mkLink "Unsplash" "fa-image" "https://unsplash.com")
-      (mkLink "Wallhaven" "fa-image" "https://wallhaven.cc")
-    ])
+    (mkGroup "Wallpaper" "fa-panorama" (
+      let
+        mkVideoLink = name: url: mkLink name "fa-video" url;
+        mkImageLink = name: url: mkLink name "fa-image" url;
+      in
+      [
+        (mkImageLink "Unsplash" "https://unsplash.com")
+        (mkImageLink "Wallhaven" "https://wallhaven.cc")
+        (mkVideoLink "DesktopHut" "https://www.desktophut.com")
+        (mkVideoLink "MoeWalls" "https://moewalls.com")
+        (mkVideoLink "Motion Backgrounds" "https://motionbgs.com")
+      ]
+    ))
     (mkGroup "Pirate" "fa-skull-crossbones" [
-      (mkLink "1337x" "fa-skull-crossbones" "https://1337x.to")
-      (mkLink "Cs.rin.ru" "fa-skull-crossbones" "https://cs.rin.ru/forum/index.php")
-      (mkLink "DigitalCore" "fa-skull-crossbones" "https://digitalcore.club")
-      (mkLink "FitGirl" "fa-skull-crossbones" "https://fitgirl-repacks.site")
-      (mkLink "Hf" "fa-skull-crossbones" "https://happyfappy.org")
-      (mkLink "Lst" "fa-skull-crossbones" "https://lst.gg")
-      (mkLink "NnmClub" "fa-skull-crossbones" "https://nnmclub.to")
-      (mkLink "Rutor" "fa-skull-crossbones" "https://rutor.info")
-      (mkLink "Rutracker" "fa-skull-crossbones" "https://rutracker.org")
-      (mkLink "Switch Upd" "fa-skull-crossbones" "https://sigmapatches.su")
-      (mkLink "Tapochek.net" "fa-skull-crossbones" "https://tapochek.net/index.php")
+      (mkLink "1337x" "fa-link" "https://1337x.to")
+      (mkLink "Cs.rin.ru" "fa-link" "https://cs.rin.ru/forum/index.php")
+      (mkLink "DigitalCore" "fa-link" "https://digitalcore.club")
+      (mkLink "FitGirl" "fa-link" "https://fitgirl-repacks.site")
+      (mkLink "Hf" "fa-link" "https://happyfappy.org")
+      (mkLink "Lst" "fa-link" "https://lst.gg")
+      (mkLink "NnmClub" "fa-link" "https://nnmclub.to")
+      (mkLink "Rutor" "fa-link" "https://rutor.info")
+      (mkLink "Rutracker" "fa-link" "https://rutracker.org")
+      (mkLink "Switch Upd" "fa-link" "https://sigmapatches.su")
+      (mkLink "Tapochek.net" "fa-link" "https://tapochek.net/index.php")
     ])
   ];
 
