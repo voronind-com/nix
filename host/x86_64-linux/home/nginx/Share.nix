@@ -2,6 +2,10 @@
 let
   cfg = config.const.host.nginx;
   root = "/storage/hot/share";
+  index = ''
+    autoindex on;
+    charset UTF-8;
+  '';
 in
 {
   "share.${cfg.domain}" = {
@@ -10,17 +14,11 @@ in
       # "~* /$" = {
       "= /" = {
         inherit root;
-        extraConfig =
-          cfg.allowLocal
-          + ''
-            autoindex on;
-          '';
+        extraConfig = index + cfg.allowLocal;
       };
       "/" = {
         inherit root;
-        extraConfig = ''
-          autoindex on;
-        '';
+        extraConfig = index;
       };
     };
   };
