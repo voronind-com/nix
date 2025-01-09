@@ -13,13 +13,10 @@
       in
       [ domain ]
       ++ map (sub: "${sub}.${domain}") [
-        "chat"
-        "cloud"
         "git"
         "mail"
-        "office"
         "paste"
-        "play"
+        "share"
         "vpn"
       ];
   };
