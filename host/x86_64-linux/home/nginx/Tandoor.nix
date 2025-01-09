@@ -7,6 +7,7 @@ in
     inherit (cfg) sslCertificate sslCertificateKey extraConfig;
     locations."/" = {
       proxyPass = "http://[::1]:33122$request_uri";
+      recommendedProxySettings = false;
       extraConfig =
         cfg.allowLocal
         + ''
