@@ -1,22 +1,16 @@
-{ ... }:
+{ config, ... }:
+let
+  cfg = config.const.host.nginx;
+in
 {
-  "git.voronind.com".extraConfig = ''
-    listen 443 ssl;
-
-    location ~ ^/(admin|api|user) {
-      allow 10.0.0.0/8;
-      allow fd09:8d46:b26::/48;
-      deny all;
-      proxy_pass http://[::1]:3000$request_uri;
-    }
-
-    location / {
-      proxy_pass http://[::1]:3000$request_uri;
-    }
-
-    ssl_certificate /etc/letsencrypt/live/voronind.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/voronind.com/privkey.pem;
-    include /etc/letsencrypt/conf/options-ssl-nginx.conf;
-    ssl_dhparam /etc/letsencrypt/conf/ssl-dhparams.pem;
-  '';
+  "git.${cfg.domain}" = {
+    inherit (cfg) sslCertificate sslCertificateKey extraConfig;
+    locations = {
+      "~ ^/(admin|api|user)" = {
+        extraConfig = cfg.allowLocal;
+        proxyPass = "http://[::1]:3000$request_uri";
+      };
+      "/".proxyPass = "http://[::1]:3000$request_uri";
+    };
+  };
 }

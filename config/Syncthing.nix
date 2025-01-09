@@ -102,7 +102,7 @@ in
               };
               "dasha" = {
                 path = "${cfg.dataDir}/dasha";
-                devices = allDashaDevices;
+                devices = ["home"] ++ allDashaDevices;
               };
             };
         };
