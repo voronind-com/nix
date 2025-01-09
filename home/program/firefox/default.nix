@@ -69,10 +69,11 @@ let
   ];
 
   darkModeIgnore = [
+    "cloud.fsight.ru"
+    "dav.voronind.com"
     "git.voronind.com"
     "github.com"
     "home.voronind.com"
-    "dav.voronind.com"
   ];
 
   prefs = [
