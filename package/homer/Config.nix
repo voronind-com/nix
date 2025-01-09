@@ -34,9 +34,7 @@ let
       (mkLink "Toolbox" "fa-toolbox" "https://it-tools.tech")
       (mkLink "Zigbee" "fa-satellite-dish" "https://zigbee.blakadder.com")
     ])
-    (mkGroup "Work" "fa-briefcase" [
-      (mkLink "Cloud" "fa-cloud" "https://cloud.fsight.ru")
-    ])
+    (mkGroup "Work" "fa-briefcase" [ (mkLink "Cloud" "fa-cloud" "https://cloud.fsight.ru") ])
     (mkGroup "Wallpaper" "fa-panorama" (
       let
         mkVideoLink = name: url: mkLink name "fa-video" url;
