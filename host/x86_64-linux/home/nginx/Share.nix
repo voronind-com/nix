@@ -9,9 +9,11 @@ in
     locations = {
       "~* /$" = {
         inherit root;
-        extraConfig = cfg.allowLocal + ''
-          autoindex on;
-        '';
+        extraConfig =
+          cfg.allowLocal
+          + ''
+            autoindex on;
+          '';
       };
       "/" = {
         inherit root;

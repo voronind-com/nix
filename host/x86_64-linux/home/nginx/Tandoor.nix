@@ -7,11 +7,13 @@ in
     inherit (cfg) sslCertificate sslCertificateKey extraConfig;
     locations."/" = {
       proxyPass = "http://[::1]:33122$request_uri";
-      extraConfig = cfg.allowLocal + ''
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-Host $host;
-        proxy_set_header X-Forwarded-Proto https;
-      '';
+      extraConfig =
+        cfg.allowLocal
+        + ''
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-Host $host;
+          proxy_set_header X-Forwarded-Proto https;
+        '';
     };
   };
 }

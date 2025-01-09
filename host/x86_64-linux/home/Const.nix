@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   config.const.host = {
     nginx = {
       domain = "voronind.com";
