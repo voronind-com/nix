@@ -4,8 +4,8 @@ let
   links = [ (mkLink "Status" "fa-heartbeat" "https://status.voronind.com") ];
   services = [
     (mkGroup "App" "fa-server" [
+      (mkLink "Calendar" "fa-calendar" "https://dav.voronind.com")
       (mkLink "Change" "fa-user-secret" "https://change.voronind.com")
-      (mkLink "Cloud" "fa-cloud" "https://cloud.voronind.com")
       (mkLink "Craft" "fa-pen-ruler" "https://craft.voronind.com")
       (mkLink "Download" "fa-download" "https://download.voronind.com")
       (mkLink "Git" "fab fa-git-alt" "https://git.voronind.com")
@@ -17,6 +17,7 @@ let
       (mkLink "Print" "fa-print" "https://print.voronind.com")
       (mkLink "Read" "fa-book" "https://read.voronind.com")
       (mkLink "Search" "fa-search" "https://search.voronind.com")
+      (mkLink "Share" "fa-share-nodes" "https://share.voronind.com")
       (mkLink "Watch" "fa-film" "https://watch.voronind.com")
       (mkLink "YouTube" "fab fa-youtube" "https://yt.voronind.com")
     ])
