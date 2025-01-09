@@ -9,8 +9,8 @@ let
   purpose = config.module.purpose;
 
   # Set the wallpaper here.
-  url = "https://cloud.voronind.com/s/dwTkb5iTy2k7EST/download/arctic-spirit-moewalls-com.mp4";
-  sha256 = "sha256-wl8S4VOxxUQcjtfwgtkGsz1OkPNegXXfD/cjSFU6sog=";
+  url = "https://cloud.voronind.com/s/eTRzarX6gKCFyx5/download/lonely-anime-girl-in-the-snow-1-moewalls-com.mp4";
+  sha256 = "sha256-Y5wdwsxUWYV/PrStkduFoPAv6qQujABVpb0ozajSc7I=";
   video = true;
 
   # Forse black and white for text.
