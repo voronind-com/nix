@@ -7,7 +7,8 @@ in
   "share.${cfg.domain}" = {
     inherit (cfg) sslCertificate sslCertificateKey extraConfig;
     locations = {
-      "~* /$" = {
+      # "~* /$" = {
+      "= /" = {
         inherit root;
         extraConfig =
           cfg.allowLocal
