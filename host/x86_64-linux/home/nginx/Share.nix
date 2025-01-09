@@ -19,7 +19,7 @@ in
       "/" = {
         inherit root;
         extraConfig = ''
-          autoindex off;
+          autoindex on;
         '';
       };
     };
