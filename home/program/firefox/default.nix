@@ -46,6 +46,7 @@ let
     (mkSearchEngine "so" "Stack Overflow" "https://stackoverflow.com/search?tab=votes&q={searchTerms}")
     (mkSearchEngine "st" "Steam" "https://store.steampowered.com/search/?term={searchTerms}")
     (mkSearchEngine "sx" "SearX" "https://search.voronind.com/search?q={searchTerms}")
+    (mkSearchEngine "wa" "Watch" "https://watch.voronind.com/web/#/search.html?query={searchTerms}")
     (mkSearchEngine "wp" "Wallpaper"
       "https://unsplash.com/s/photos/{searchTerms}?license=free&orientation=landscape"
     )
