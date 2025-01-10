@@ -38,6 +38,7 @@ let
       (mkLink "2gis" "fa-map-location-dot" "https://2gis.ru")
       (mkLink "MonkeyType" "fa-keyboard" "https://monkeytype.com")
       (mkLink "Reddit" "fab fa-reddit" "https://reddit.com")
+      (mkLink "Telegram" "fab fa-telegram" "https://web.telegram.org/a")
       (mkLink "Toolbox" "fa-toolbox" "https://it-tools.tech")
       (mkLink "Zigbee" "fa-satellite-dish" "https://zigbee.blakadder.com")
     ])

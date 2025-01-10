@@ -6,15 +6,7 @@
   ...
 }@args:
 let
-  bookmarks = [
-    (mkBookmark "Dashboard" "https://home.voronind.com")
-    (mkBookmark "Watch" "https://watch.voronind.com")
-    (mkBookmark "Telegram" "https://web.telegram.org/a")
-    (mkBookmark "Mail" "https://mail.voronind.com")
-    (mkBookmark "Git" "https://git.voronind.com")
-    (mkBookmark "Hass" "https://iot.voronind.com")
-    (mkBookmark "GitHub" "https://github.com/notifications")
-  ];
+  bookmarks = [ (mkBookmark "Dashboard" "https://home.voronind.com") ];
 
   searchEngines = [
     (mkSearchEngine "4p" "4pda"
