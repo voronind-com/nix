@@ -11,8 +11,7 @@
       "alt.E" = "C-S-pagedown"; # Move tab right.
       "alt.a" = "A-left"; # Go back.
       "alt.d" = "A-right"; # Go forward.
-      "alt.s" = "down"; # Scroll down.
-      "alt.w" = "up"; # Scroll up.
+      "alt.w" = "p"; # Paste and go.
       "alt.f" = "C-f"; # Find text.
       "alt.N" = "S-f3"; # Find prev.
       "alt.n" = "f3"; # Find next.
@@ -21,6 +20,7 @@
       "alt.l" = "A-S-a"; # Toggle dark mode.
       "alt.m" = "C-m"; # Toggle tab mute.
       "alt.enter" = "C-S-l"; # Fill password.
+      "alt.s" = "A-p"; # Pin tab.
     };
   };
 }
