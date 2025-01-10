@@ -28,7 +28,7 @@ let
       (mkLink "Sync" "fa-sync" "https://sync.voronind.com")
     ])
     (mkGroup "Work" "fa-briefcase" [
-      (mkLink "Board" "fa-list-check" "https://support.fsight.ru")
+      (mkLink "Board" "fa-list-check" "https://support.fsight.ru/agiles")
       (mkLink "Chat" "fa-comments" "https://fsmm.fsight.ru/fmp")
       (mkLink "Cloud" "fa-cloud" "https://cloud.fsight.ru")
       (mkLink "Git" "fab fa-git-alt" "https://git.fmp.fsight.world")
