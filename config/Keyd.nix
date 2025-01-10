@@ -22,10 +22,11 @@ in
             capslock = "overload(control, esc)"; # Ctrl/esc combo.
             compose = "layer(layer_number)"; # Number input layer.
             delete = "backslash";
-            esc = "print"; # System controls.
+            esc = "timeout(grave, 150, print)"; # System controls.
             left = "layer(layer_number)"; # Number input layer.
             leftcontrol = "overload(layer_alternative, leftcontrol)"; # Alternative layer for home, end etc.
             right = "compose";
+            print = "compose";
             rightcontrol = "layer(layer_control)"; # Media and other controls.
             rightshift = "backspace"; # Backspace.
           };
