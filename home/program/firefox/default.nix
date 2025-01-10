@@ -59,6 +59,7 @@ let
   darkModeIgnore = [
     "cloud.fsight.ru"
     "dav.voronind.com"
+    "fsmm.fsight.ru"
     "git.voronind.com"
     "github.com"
     "home.voronind.com"
