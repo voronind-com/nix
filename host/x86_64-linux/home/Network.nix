@@ -110,6 +110,7 @@ in
         };
         dhcpServerConfig = {
           DNS = internal;
+          NTP = internal;
           DefaultLeaseTimeSec = "12h";
           EmitDNS = true;
           EmitNTP = true;
