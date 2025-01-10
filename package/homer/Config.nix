@@ -27,19 +27,19 @@ let
       (mkLink "Router" "fa-route" "https://router.voronind.com")
       (mkLink "Sync" "fa-sync" "https://sync.voronind.com")
     ])
-    (mkGroup "Bookmark" "fa-bookmark" [
-      (mkLink "2gis" "fa-map-location-dot" "https://2gis.ru")
-      (mkLink "MonkeyType" "fa-keyboard" "https://monkeytype.com")
-      (mkLink "Reddit" "fab fa-reddit" "https://reddit.com")
-      (mkLink "Toolbox" "fa-toolbox" "https://it-tools.tech")
-      (mkLink "Zigbee" "fa-satellite-dish" "https://zigbee.blakadder.com")
-    ])
     (mkGroup "Work" "fa-briefcase" [
       (mkLink "Board" "fa-list-check" "https://support.fsight.ru")
       (mkLink "Chat" "fa-comments" "https://fsmm.fsight.ru/fmp")
       (mkLink "Cloud" "fa-cloud" "https://cloud.fsight.ru")
       (mkLink "Git" "fab fa-git-alt" "https://git.fmp.fsight.world")
       (mkLink "Mail" "fa-envelope" "https://mail.fsight.ru")
+    ])
+    (mkGroup "Bookmark" "fa-bookmark" [
+      (mkLink "2gis" "fa-map-location-dot" "https://2gis.ru")
+      (mkLink "MonkeyType" "fa-keyboard" "https://monkeytype.com")
+      (mkLink "Reddit" "fab fa-reddit" "https://reddit.com")
+      (mkLink "Toolbox" "fa-toolbox" "https://it-tools.tech")
+      (mkLink "Zigbee" "fa-satellite-dish" "https://zigbee.blakadder.com")
     ])
     (mkGroup "Wallpaper" "fa-panorama" (
       let
