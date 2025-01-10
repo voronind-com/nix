@@ -10,12 +10,8 @@ let
     (mkBookmark "Dashboard" "https://home.voronind.com")
     (mkBookmark "Watch" "https://watch.voronind.com")
     (mkBookmark "Telegram" "https://web.telegram.org/a")
-    (mkBookmark "WorkChat" "https://fsmm.fsight.ru/fmp")
     (mkBookmark "Mail" "https://mail.voronind.com")
-    (mkBookmark "WorkMail" "https://mail.fsight.ru")
     (mkBookmark "Git" "https://git.voronind.com")
-    (mkBookmark "WorkGit" "https://git.fmp.fsight.world")
-    (mkBookmark "WorkBoard" "https://support.fsight.ru")
     (mkBookmark "Hass" "https://iot.voronind.com")
     (mkBookmark "GitHub" "https://github.com/notifications")
   ];
