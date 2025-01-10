@@ -20,10 +20,36 @@ let
       }
     );
 
+  mkWorkMail =
+    cfg:
+    mkMail (
+      cfg
+      // {
+        imap = {
+          host = "home.local";
+          port = 55143;
+          tls.enable = false;
+        };
+        smtp = {
+          host = "home.local";
+          port = 55025;
+          tls.enable = false;
+        };
+      }
+    );
+
   mkHomeCalendar = {
     remote = {
       type = "caldav";
       url = "https://dav.voronind.com";
+      userName = "voronind";
+    };
+  };
+
+  mkWorkCalendar = {
+    remote = {
+      type = "caldav";
+      url = "http://home.local:55080";
       userName = "voronind";
     };
   };
@@ -58,6 +84,11 @@ in
       address = "trash@voronind.com";
       userName = "trash@voronind.com";
     };
+    Work = mkWorkMail {
+      inherit realName;
+      address = "dd.voronin@fsight.ru";
+      userName = "fs\\dd.voronin";
+    };
   };
 
   # ISSUE: https://github.com/nix-community/home-manager/issues/5775
@@ -73,6 +104,7 @@ in
     medium = mkHomeCalendar;
     payment = mkHomeCalendar;
     work = mkHomeCalendar;
+    fsight = mkWorkCalendar;
   };
 
   # ISSUE: https://github.com/nix-community/home-manager/issues/5933
