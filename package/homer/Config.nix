@@ -36,8 +36,10 @@ let
     ])
     (mkGroup "Bookmark" "fa-bookmark" [
       (mkLink "2gis" "fa-map-location-dot" "https://2gis.ru")
+      (mkLink "GitHub" "fab fa-github" "https://github.com/notifications")
       (mkLink "MonkeyType" "fa-keyboard" "https://monkeytype.com")
       (mkLink "Reddit" "fab fa-reddit" "https://reddit.com")
+      (mkLink "Switch Releases" "fa-gamepad" "https://www.switchscores.com/games/by-date")
       (mkLink "Telegram" "fab fa-telegram" "https://web.telegram.org/a")
       (mkLink "Toolbox" "fa-toolbox" "https://it-tools.tech")
       (mkLink "Zigbee" "fa-satellite-dish" "https://zigbee.blakadder.com")
