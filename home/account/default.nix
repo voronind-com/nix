@@ -26,12 +26,12 @@ let
       cfg
       // {
         imap = {
-          host = "home.local";
+          host = "localhost";
           port = 55143;
           tls.enable = false;
         };
         smtp = {
-          host = "home.local";
+          host = "localhost";
           port = 55025;
           tls.enable = false;
         };
