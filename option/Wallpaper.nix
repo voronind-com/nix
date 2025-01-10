@@ -9,8 +9,8 @@ let
   purpose = config.module.purpose;
 
   # Set the wallpaper here.
-  url = "https://cloud.voronind.com/s/eTRzarX6gKCFyx5/download/lonely-anime-girl-in-the-snow-1-moewalls-com.mp4";
-  sha256 = "sha256-Y5wdwsxUWYV/PrStkduFoPAv6qQujABVpb0ozajSc7I=";
+  url = "https://share.voronind.com/wallpaper/WN3OfKyCbhrsyeeLuffyInWinter3840X21602Prob4Hyp1.mp4";
+  sha256 = "sha256-9jP8E1fhkelyHZeABYxKiyw2hBqKHHPeBLh/XmrtshI=";
   video = true;
 
   # Forse black and white for text.
