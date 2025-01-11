@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  pkgs,
   self,
   ...
 }@args:
@@ -45,6 +46,8 @@ in
   ".editorconfig".source = editor.file;
   ".gitconfig".source = git.file;
   ".ideavimrc".source = ./jetbrains/ideavimrc;
+  ".local/share/jellyfinmediaplayer/scripts/mpris.so".source =
+    "${pkgs.mpvScripts.mpris}/share/mpv/scripts/mpris.so";
   ".nix".source = self;
   ".nixpkgs".source = inputs.nixpkgs;
   ".nixpkgs_master".source = inputs.nixpkgsMaster;
