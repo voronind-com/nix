@@ -1,9 +1,26 @@
-{ config, lib, ... }:
+{ __findFile, config, lib, ... }:
 {
   enable = true;
   profiles.default = {
     isDefault = true;
     withExternalGnupg = true;
+  };
+  settings = {
+    "calendar.alarms.show" = true;
+    "calendar.alarms.soundType" = 1;
+    "calendar.alarms.soundURL" = "file://${<static/Notification.ogg>}";
+    "calendar.item.editInTab" = true;
+    "calendar.view.dayendhour" = 19;
+    "calendar.view.daystarthour" = 10;
+    "mailnews.start_page.enabled" = false;
+    "font.size.variable.x-western" = 16;
+    "font.minimum-size.x-western" = 16;
+    "font.size.monospace.x-western" = 16;
+    "mail.biff.use_system_alert" = true;
+    "pdfjs.enabledCache.state" = false;
+    "browser.download.useDownloadDir" = true;
+    "calendar.view-minimonth.showWeekNumber" = false;
+    "calendar.notifications.times" = "-PT2M,-PT15M,-PT60M";
   };
 
   # ISSUE: https://github.com/nix-community/home-manager/issues/5775
