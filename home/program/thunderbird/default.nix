@@ -1,6 +1,7 @@
-{ __findFile, config, lib, ... }:
+{ __findFile, config, lib, pkgs, ... }:
 {
   enable = true;
+  package = pkgs.thunderbird-esr;
   profiles.default = {
     isDefault = true;
     withExternalGnupg = true;
