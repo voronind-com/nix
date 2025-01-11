@@ -120,7 +120,7 @@ in
         ru
       ];
       plugins = [ "managesieve" ];
-      extraConfig = util.trimTabs ''
+      extraConfig = ''
         $config['smtp_server'] = "localhost:25";
         $config['smtp_auth_type'] = null;
         $config['smtp_user'] = "";
@@ -138,7 +138,7 @@ in
         Type = "oneshot";
       };
       path = [ pkgs.dovecot ];
-      script = util.trimTabs ''
+      script = ''
         doveadm expunge -A mailbox Junk SENTBEFORE 7d
         doveadm expunge -A mailbox Trash SENTBEFORE 30d
         doveadm expunge -u trash@voronind.com mailbox Inbox SENTBEFORE 30d

@@ -143,7 +143,7 @@ in
     networkmanager.enable = lib.mkForce false;
     firewall = {
       enable = true;
-      extraCommands = util.trimTabs ''
+      extraCommands = ''
         # Wan access for 10.0.0.0/24 subnet.
         iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -d 0/0 -o ${wan} -j MASQUERADE
 
