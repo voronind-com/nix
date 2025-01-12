@@ -88,6 +88,7 @@
         in
         {
           "voronind.com" = "10.0.0.1,fd09:8d46:b26:0:8079:82ff:fe1a:916a";
+          "dasha.local" = "fd09:8d46:b26:0:29b3:d9b5:d1e9:220f";
           "desktop.local" = "fd09:8d46:b26:0:2ef8:c58a:c1ac:6cd8";
           "home.local" = "fd09:8d46:b26:0:8079:82ff:fe1a:916a";
           "max.local" = "fd09:8d46:b26:0:b19:f4fb:a99f:dbf1";
