@@ -37,6 +37,7 @@ Host nixbuilder
 	HostName fd09:8d46:b26:0:8079:82ff:fe1a:916a
 	User nixbuilder
 	Port 22143
+	StrictHostKeyChecking=accept-new
 
 Host pi
 	HostName pi.local
