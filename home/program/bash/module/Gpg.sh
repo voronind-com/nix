@@ -5,22 +5,21 @@ function scunlock() {
 	echo verify | gpg --card-edit --no-tty --command-fd=0
 }
 
-# Encrypt files to myself.
-# Usage: encrypt <FILES>
+# Encrypt files to myself from a file or stdin.
+# Usage: encrypt [FILES]
 function encrypt() {
 	local IFS=$'\n'
 	local targets=(${@})
 
 	if [[ ${targets} == "" ]]; then
-		help encrypt
-		return 2
+		gpg --encrypt --armor --recipient hi@voronind.com
+	else
+		process() {
+			pv "${target}" | gpg --encrypt --recipient hi@voronind.com --output "${target}.gpg"
+		}
+
+		_iterate_targets process ${targets[@]}
 	fi
-
-	process() {
-		gpg --encrypt --armor --recipient hi@voronind.com --output "${target}.gpg" "${target}"
-	}
-
-	_iterate_targets process ${targets[@]}
 }
 
 # Decrypt files to myself.
@@ -29,13 +28,15 @@ function decrypt() {
 	local IFS=$'\n'
 	local targets=(${@})
 
-	[[ ${targets} == "" ]] && targets=(*.gpg)
+	if [[ ${targets} == "" ]]; then
+		gpg --decrypt
+	else
+		process() {
+			pv "${target}" | gpg --decrypt --output "${target%.gpg}"
+		}
 
-	process() {
-		gpg --decrypt --output "${target%.gpg}" "${target}"
-	}
-
-	_iterate_targets process ${targets[@]}
+		_iterate_targets process ${targets[@]}
+	fi
 }
 
 # Sign a file.
