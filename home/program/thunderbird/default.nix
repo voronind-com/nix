@@ -1,4 +1,10 @@
-{ __findFile, config, lib, pkgs, ... }:
+{
+  __findFile,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   enable = true;
   package = pkgs.thunderbird-esr;

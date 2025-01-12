@@ -34,28 +34,34 @@ let
   '';
 in
 {
-  config = lib.mkIf cfg.enable {
-    services = {
-      tlp.enable = true;
-      upower.enable = true;
-    };
+  config = lib.mkIf cfg.enable (
+    lib.mkMerge [
+      {
+        environment.systemPackages = [ script ];
+        systemd = {
+          services.powersave-cpu = {
+            enable = true;
+            description = "disable CPU Boost";
+            wantedBy = [ "multi-user.target" ];
+            serviceConfig = {
+              Type = "simple";
+              RemainAfterExit = "yes";
+              ExecStart = "${lib.getExe pkgs.bash} -c 'echo ${cfg.cpu.boost.enableCmd} > ${cfg.cpu.boost.controlFile}'";
+              ExecStop = "${lib.getExe pkgs.bash} -c 'echo ${cfg.cpu.boost.disableCmd} > ${cfg.cpu.boost.controlFile}'";
+            };
+          };
 
-    environment.systemPackages = [ script ];
-    systemd = {
-      services.powersave-cpu = {
-        enable = true;
-        description = "disable CPU Boost";
-        wantedBy = [ "multi-user.target" ];
-        serviceConfig = {
-          Type = "simple";
-          RemainAfterExit = "yes";
-          ExecStart = "${lib.getExe pkgs.bash} -c 'echo ${cfg.cpu.boost.enableCmd} > ${cfg.cpu.boost.controlFile}'";
-          ExecStop = "${lib.getExe pkgs.bash} -c 'echo ${cfg.cpu.boost.disableCmd} > ${cfg.cpu.boost.controlFile}'";
+          # HACK: Allow user access.
+          tmpfiles.rules = [ "z ${cfg.cpu.boost.controlFile} 0777 - - - -" ];
         };
-      };
+      }
 
-      # HACK: Allow user access.
-      tmpfiles.rules = [ "z ${cfg.cpu.boost.controlFile} 0777 - - - -" ];
-    };
-  };
+      (lib.mkIf cfg.laptop {
+        services = {
+          tlp.enable = true;
+          upower.enable = true;
+        };
+      })
+    ]
+  );
 }
