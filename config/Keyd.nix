@@ -20,33 +20,20 @@ in
           main = {
             backspace = "delete"; # Delete key on backspace.
             capslock = "overload(control, esc)"; # Ctrl/esc combo.
-            compose = "layer(layer_number)"; # Number input layer.
+            compose = "overload(layer_number, compose)"; # Number input layer.
             delete = "backslash";
             esc = "timeout(grave, 150, print)"; # System controls.
-            left = "layer(layer_number)"; # Number input layer.
+            left = "overload(layer_number, left)"; # Number input layer.
             leftcontrol = "overload(layer_alternative, leftcontrol)"; # Alternative layer for home, end etc.
-            right = "compose";
-            print = "compose";
-            rightcontrol = "layer(layer_control)"; # Media and other controls.
+            right = "overload(layer_number, right)";
+            print = "overload(layer_number, print)";
+            rightcontrol = "overload(layer_control, rightcontrol)"; # Media and other controls.
             rightshift = "backspace"; # Backspace.
           };
 
           # Alternative navigation.
           layer_alternative = {
-            a = "home";
-            c = "copy";
-            d = "end";
-            h = "left";
-            j = "down";
-            k = "up";
-            l = "right";
-            s = "pagedown";
-            v = "paste";
-            w = "pageup";
-            x = "cut";
-            esc = "esc";
-            rightcontrol = "leftcontrol";
-            capslock = "capslock";
+            "0" = "f10";
             "1" = "f1";
             "2" = "f2";
             "3" = "f3";
@@ -56,9 +43,31 @@ in
             "7" = "f7";
             "8" = "f8";
             "9" = "f9";
-            "0" = "f10";
-            minus = "f11";
+            a = "home";
+            backspace = "backspace";
+            c = "copy";
+            capslock = "capslock";
+            compose = "compose";
+            d = "end";
+            delete = "delete";
+            down = "down";
             equal = "f12";
+            esc = "esc";
+            h = "left";
+            j = "down";
+            k = "up";
+            l = "right";
+            left = "left";
+            minus = "f11";
+            print = "print";
+            right = "right";
+            rightcontrol = "leftcontrol";
+            rightshift = "rightshift";
+            s = "pagedown";
+            up = "up";
+            v = "paste";
+            w = "pageup";
+            x = "cut";
           };
 
           # Media controls.
