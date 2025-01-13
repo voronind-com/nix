@@ -27,7 +27,8 @@
     "pdfjs.enabledCache.state" = false;
     "browser.download.useDownloadDir" = true;
     "calendar.view-minimonth.showWeekNumber" = false;
-    "calendar.notifications.times" = "-PT2M,-PT15M,-PT60M";
+    # "calendar.notifications.times" = "-PT2M,-PT15M,-PT60M";
+    "calendar.notifications.times" = "-PT5M";
   };
 
   # ISSUE: https://github.com/nix-community/home-manager/issues/5775
