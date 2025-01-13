@@ -20,6 +20,15 @@ function fix_gradle_lock() {
 }
 
 # Fix pdfs when they don't want to be uploaded to Paperless.
+# Usage: fix_pdf [FILES]
 function fix_pdf() {
-	qpdf --replace-input "${@}"
+	local IFS=$'\n'
+	local targets=(${@})
+	[[ ${targets} == "" ]] && targets=("*.pdf")
+
+	process() {
+		qpdf --replace-input "${target}"
+	}
+
+	_iterate_targets process ${targets[@]}
 }
