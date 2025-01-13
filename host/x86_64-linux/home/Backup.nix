@@ -54,7 +54,7 @@ let
     cd -
 
     rcp_merge ''${path_src}/sync/save/  ''${path_backup}/save/tmp/  || report "Backup: Failed to save game saves!"
-    rcp_merge ''${path_src}/sync/photo/ ''${path_backup}/photo/tmp/ || report "Backup: Failed to save photos!"
+    rcp ''${path_src}/sync/photo/ ''${path_backup}/photo/tmp/ || report "Backup: Failed to save photos!"
 
     # Prune media copies.
     cd ''${path_backup}/paper/
