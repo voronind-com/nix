@@ -13,22 +13,23 @@
     withExternalGnupg = true;
   };
   settings = {
+    "browser.download.useDownloadDir" = true;
+    "calendar.alarms.onforevents" = 0;
+    "calendar.alarms.onfortodos" = 0;
     "calendar.alarms.show" = true;
     "calendar.alarms.soundType" = 1;
     "calendar.alarms.soundURL" = "file://${<static/Notification.ogg>}";
     "calendar.item.editInTab" = true;
+    "calendar.notifications.times" = "-PT5M";
+    "calendar.view-minimonth.showWeekNumber" = false;
     "calendar.view.dayendhour" = 19;
     "calendar.view.daystarthour" = 10;
-    "mailnews.start_page.enabled" = false;
-    "font.size.variable.x-western" = 16;
     "font.minimum-size.x-western" = 16;
     "font.size.monospace.x-western" = 16;
+    "font.size.variable.x-western" = 16;
     "mail.biff.use_system_alert" = true;
+    "mailnews.start_page.enabled" = false;
     "pdfjs.enabledCache.state" = false;
-    "browser.download.useDownloadDir" = true;
-    "calendar.view-minimonth.showWeekNumber" = false;
-    # "calendar.notifications.times" = "-PT2M,-PT15M,-PT60M";
-    "calendar.notifications.times" = "-PT5M";
   };
 
   # ISSUE: https://github.com/nix-community/home-manager/issues/5775
