@@ -116,6 +116,11 @@ function gt() {
 	git tag "${@}"
 }
 
+# Git tag delete.
+function gtd() {
+	git tag -d "${@}"
+}
+
 # Git ignore files.
 function gi() {
 	git ls-files -ci --exclude-standard -z | xargs -0 git rm --cached
