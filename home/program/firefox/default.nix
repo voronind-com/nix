@@ -12,6 +12,7 @@ let
     (mkSearchEngine "4p" "4pda"
       "https://4pda.to/forum/index.php?act=search&forums[]=all&source=all&query={searchTerms}"
     )
+    (mkSearchEngine "ap" "Apteka" "https://apteka.ru/search/?q={searchTerms}")
     (mkSearchEngine "aw" "Arch Wiki" "https://wiki.archlinux.org/index.php?search={searchTerms}")
     (mkSearchEngine "dn" "DNS" "https://www.dns-shop.ru/search/?q={searchTerms}")
     (mkSearchEngine "fa" "Font Awesome" "https://fontawesome.com/search?q={searchTerms}&o=r&m=free")
@@ -28,8 +29,10 @@ let
     (mkSearchEngine "np" "NixOS Packages" "https://search.nixos.org/packages?query={searchTerms}")
     (mkSearchEngine "oz" "Ozon" "https://www.ozon.ru/search?text={searchTerms}")
     (mkSearchEngine "pa" "Pixel Art" "https://www.reddit.com/r/PixelArt/search/?q={searchTerms}")
+    (mkSearchEngine "pk" "Perekrestok" "https://www.perekrestok.ru/cat/search?search={searchTerms}")
     (mkSearchEngine "re" "Reddit" "https://www.reddit.com/search/?q={searchTerms}")
     (mkSearchEngine "rt" "RuTracker" "https://rutracker.org/forum/tracker.php?nm={searchTerms}")
+    (mkSearchEngine "sa" "Samokat" "https://samokat.ru/search?value={searchTerms}")
     (mkSearchEngine "so" "Stack Overflow" "https://stackoverflow.com/search?tab=votes&q={searchTerms}")
     (mkSearchEngine "st" "Steam" "https://store.steampowered.com/search/?term={searchTerms}")
     (mkSearchEngine "sx" "SearX" "https://search.voronind.com/search?q={searchTerms}")
