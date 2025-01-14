@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 let
@@ -21,7 +20,7 @@ in
     };
     programs.sway = {
       enable = true;
-      extraPackages = with pkgs; [ swaykbdd ];
+      xwayland.enable = true;
       wrapperFeatures = {
         base = true;
         gtk = true;

@@ -100,6 +100,7 @@
     slurp # Screen selection.
     swappy # Screenshot editing.
     sway # Sway WM.
+    swaykbdd # Keyboard layout per-window.
     waybar # Sway bar.
     wf-recorder # Screen recording.
 
