@@ -27,6 +27,15 @@ let
       (mkLink "Router" "fa-route" "https://router.voronind.com")
       (mkLink "Sync" "fa-sync" "https://sync.voronind.com")
     ])
+    (mkGroup "Service" "fa-bell-concierge" [
+      (mkLink "2gis" "fa-map-location-dot" "https://2gis.ru")
+      (mkLink "Apteka" "fa-tablets" "https://apteka.ru")
+      (mkLink "DNS Shop" "fa-blender" "https://www.dns-shop.ru")
+      (mkLink "Ozon" "fa-truck" "https://www.ozon.ru")
+      (mkLink "Perekrestok" "fa-fish" "https://www.perekrestok.ru")
+      (mkLink "Samokat" "fa-bicycle" "https://samokat.ru")
+      (mkLink "Taxi 068" "fa-taxi" "https://www.taxi068.ru")
+    ])
     (mkGroup "Work" "fa-briefcase" [
       (mkLink "Board" "fa-list-check" "https://support.fsight.ru/agiles")
       (mkLink "Chat" "fa-comments" "https://fsmm.fsight.ru/fmp")
@@ -35,7 +44,6 @@ let
       (mkLink "Mail" "fa-envelope" "https://mail.fsight.ru")
     ])
     (mkGroup "Bookmark" "fa-bookmark" [
-      (mkLink "2gis" "fa-map-location-dot" "https://2gis.ru")
       (mkLink "GitHub" "fab fa-github" "https://github.com/notifications")
       (mkLink "MonkeyType" "fa-keyboard" "https://monkeytype.com")
       (mkLink "Reddit" "fab fa-reddit" "https://reddit.com")
