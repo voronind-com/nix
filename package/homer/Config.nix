@@ -50,11 +50,13 @@ let
         mkImageLink = name: url: mkLink name "fa-image" url;
       in
       [
-        (mkImageLink "Unsplash" "https://unsplash.com")
-        (mkImageLink "Wallhaven" "https://wallhaven.cc")
         (mkVideoLink "DesktopHut" "https://www.desktophut.com")
+        (mkVideoLink "LiveWallpaperPc" "https://livewallpaperpc.com")
         (mkVideoLink "MoeWalls" "https://moewalls.com")
         (mkVideoLink "Motion Backgrounds" "https://motionbgs.com")
+      ] ++ [
+        (mkImageLink "Unsplash" "https://unsplash.com")
+        (mkImageLink "Wallhaven" "https://wallhaven.cc")
       ]
     ))
     (mkGroup "Pirate" "fa-skull-crossbones" [
