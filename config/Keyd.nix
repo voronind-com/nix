@@ -20,13 +20,13 @@ in
           main = {
             backspace = "delete"; # Delete key on backspace.
             capslock = "overload(control, esc)"; # Ctrl/esc combo.
-            compose = "overload(layer_number, compose)"; # Number input layer.
+            compose = "layer(layer_number)"; # Number input layer.
             delete = "backslash";
             esc = "timeout(grave, 150, print)"; # System controls.
-            left = "overload(layer_number, left)"; # Number input layer.
+            left = "layer(layer_number)"; # Number input layer.
             leftcontrol = "overload(layer_alternative, leftcontrol)"; # Alternative layer for home, end etc.
-            right = "overload(layer_number, right)";
-            print = "overload(layer_number, print)";
+            print = "compose";
+            right = "compose";
             rightcontrol = "overload(layer_control, rightcontrol)"; # Media and other controls.
             rightshift = "backspace"; # Backspace.
           };
