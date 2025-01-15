@@ -6,6 +6,7 @@
 }@args:
 let
   cfg = (import ./Config.nix args).file;
+  css = ./Custom.css;
 in
 stdenv.mkDerivation (finalAttrs: {
   dontUnpack = true;
@@ -23,6 +24,7 @@ stdenv.mkDerivation (finalAttrs: {
     pushd $out
     unzip $src
     cp ${cfg} $out/assets/config.yml
+    cp ${css} $out/assets/custom.css
 
     runHook postInstall
   '';

@@ -62,7 +62,8 @@ let
         (mkVideoLink "LiveWallpaperPc" "https://livewallpaperpc.com")
         (mkVideoLink "MoeWalls" "https://moewalls.com")
         (mkVideoLink "Motion Backgrounds" "https://motionbgs.com")
-      ] ++ [
+      ]
+      ++ [
         (mkImageLink "Unsplash" "https://unsplash.com")
         (mkImageLink "Wallhaven" "https://wallhaven.cc")
       ]
@@ -102,6 +103,7 @@ let
     theme = "default";
     title = "Dashboard";
     columns = "auto"; # 1, 2, 3, 4, 6, 12 or auto.
+    stylesheet = [ "assets/custom.css" ];
     defaults = {
       colorTheme = "dark";
       layout = "columns"; # columns or list.
