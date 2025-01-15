@@ -20,7 +20,7 @@
     "calendar.alarms.soundType" = 1;
     "calendar.alarms.soundURL" = "file://${<static/Notification.ogg>}";
     "calendar.item.editInTab" = true;
-    "calendar.notifications.times" = "-PT5M";
+    "calendar.notifications.times" = "-PT10M";
     "calendar.view-minimonth.showWeekNumber" = false;
     "calendar.view.dayendhour" = 19;
     "calendar.view.daystarthour" = 10;
