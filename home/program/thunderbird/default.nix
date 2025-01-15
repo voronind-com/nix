@@ -16,7 +16,7 @@
     let
       dayEnd = 19;
       dayStart = 10;
-      fontSize = config.module.style.font.size.application;
+      fontSize = 16;
       reminderMinutes = 10;
       snoozeMinutes = 10;
     in
