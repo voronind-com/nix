@@ -97,9 +97,9 @@ in
         package = mkPkgOption (pkgs.callPackage <package/applefont> { });
       };
       size = {
-        application = mkIntOption 14;
+        application = mkIntOption 12;
         desktop = mkIntOption 14;
-        popup = mkIntOption 14;
+        popup = mkIntOption 12;
         terminal = mkIntOption 14;
       };
     };
