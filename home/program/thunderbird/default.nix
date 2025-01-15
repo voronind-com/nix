@@ -14,6 +14,7 @@
   };
   settings = {
     "browser.download.useDownloadDir" = true;
+    "calendar.alarms.defaultsnoozelength" = 10;
     "calendar.alarms.onforevents" = 0;
     "calendar.alarms.onfortodos" = 0;
     "calendar.alarms.show" = true;
