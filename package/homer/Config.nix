@@ -9,13 +9,13 @@ let
       (mkLink "Dav" "fa-calendar" "https://dav.voronind.com")
       (mkLink "Download" "fa-cloud-arrow-down" "https://download.voronind.com")
       (mkLink "Git" "fab fa-git-alt" "https://git.voronind.com")
-      (mkLink "Iot" "fa-home-chimney" "https://iot.voronind.com")
+      (mkLink "Iot" "fa-house-chimney" "https://iot.voronind.com")
       (mkLink "Mail" "fa-envelope" "https://mail.voronind.com")
       (mkLink "Paper" "fa-paperclip" "https://paper.voronind.com")
       (mkLink "Pass" "fa-key" "https://pass.voronind.com")
       (mkLink "Paste" "fa-paste" "https://paste.voronind.com")
       (mkLink "Print" "fa-fill-drip" "https://print.voronind.com")
-      (mkLink "Read" "fa-readme" "https://read.voronind.com")
+      (mkLink "Read" "fab fa-readme" "https://read.voronind.com")
       (mkLink "Search" "fa-eye" "https://search.voronind.com")
       (mkLink "Share" "fa-share-nodes" "https://share.voronind.com")
       (mkLink "Watch" "fa-play" "https://watch.voronind.com")
@@ -101,6 +101,11 @@ let
     subtitle = "Home";
     theme = "default";
     title = "Dashboard";
+    columns = "auto"; # 1, 2, 3, 4, 6, 12 or auto.
+    defaults = {
+      colorTheme = "dark";
+      layout = "columns"; # columns or list.
+    };
     colors =
       let
         style = with config.module.style.color; {
