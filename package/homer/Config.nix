@@ -106,7 +106,7 @@ let
     stylesheet = [ "assets/custom.css" ];
     defaults = {
       colorTheme = "dark";
-      layout = "columns"; # columns or list.
+      layout = "list"; # columns or list.
     };
     colors =
       let
