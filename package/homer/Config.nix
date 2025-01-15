@@ -21,12 +21,6 @@ let
       (mkLink "Watch" "fa-play" "https://watch.voronind.com")
       (mkLink "YouTube" "fab fa-youtube" "https://yt.voronind.com")
     ])
-    (mkGroup "System" "fa-shield" [
-      (mkLink "Camera" "fa-camera-retro" "https://camera.voronind.com")
-      (mkLink "Printer" "fa-fill-drip" "https://printer.voronind.com")
-      (mkLink "Router" "fa-route" "https://router.voronind.com")
-      (mkLink "Sync" "fa-rotate" "https://sync.voronind.com")
-    ])
     (mkGroup "Service" "fa-bell-concierge" [
       (mkLink "2gis" "fa-map-location-dot" "https://2gis.ru")
       (mkLink "Apteka" "fa-tablets" "https://apteka.ru")
@@ -80,6 +74,12 @@ let
       (mkLink "Rutracker" "fa-link" "https://rutracker.org")
       (mkLink "Switch Upd" "fa-link" "https://sigmapatches.su")
       (mkLink "Tapochek.net" "fa-link" "https://tapochek.net/index.php")
+    ])
+    (mkGroup "System" "fa-shield" [
+      (mkLink "Camera" "fa-camera-retro" "https://camera.voronind.com")
+      (mkLink "Printer" "fa-fill-drip" "https://printer.voronind.com")
+      (mkLink "Router" "fa-route" "https://router.voronind.com")
+      (mkLink "Sync" "fa-rotate" "https://sync.voronind.com")
     ])
   ];
 
