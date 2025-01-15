@@ -6,9 +6,10 @@ in
   config = lib.mkIf cfg.enable {
     services.printing = {
       enable = true;
+      # NOTE: Cups server - Share/Allow remote printing on main page.
       clientConf = ''
         DigestOptions DenyMD5
-        ServerName 10.0.0.1
+        ServerName home.local
       '';
     };
   };
