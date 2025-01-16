@@ -1,5 +1,5 @@
 { config, ... }:
 {
   # Specify current release version.
-  system.stateVersion = config.const.stateVersion;
+  system.stateVersion = config.module.const.stateVersion;
 }

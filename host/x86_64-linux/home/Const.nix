@@ -1,6 +1,6 @@
 { ... }:
 {
-  config.const.host = {
+  config.module.const.host = {
     nginx = {
       domain = "voronind.com";
       sslCertificate = "/etc/letsencrypt/live/voronind.com/fullchain.pem";

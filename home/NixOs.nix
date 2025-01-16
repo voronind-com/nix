@@ -39,7 +39,7 @@ in
             programs = with program; core // desktop;
             xdg = import ./xdg { inherit (user) homeDirectory; };
             home = {
-              inherit (config.const) stateVersion;
+              inherit (config.module.const) stateVersion;
               inherit (env) sessionVariables;
               inherit (user) username homeDirectory;
               inherit file;

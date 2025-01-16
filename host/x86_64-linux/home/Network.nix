@@ -120,7 +120,7 @@ in
           PoolOffset = 100;
           PoolSize = 150;
           ServerAddress = "${internal}/24";
-          Timezone = config.const.timeZone;
+          Timezone = config.module.const.timeZone;
           UplinkInterface = wan;
         };
       };

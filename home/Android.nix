@@ -27,8 +27,8 @@ in
   config = lib.mkIf cfg.enable {
     environment.packages = package.core;
     nix.extraOptions = "experimental-features = nix-command flakes pipe-operators";
-    system.stateVersion = config.const.droidStateVersion;
-    time.timeZone = config.const.timeZone;
+    system.stateVersion = config.module.const.droidStateVersion;
+    time.timeZone = config.module.const.timeZone;
     terminal = { inherit (android) font colors; };
     home-manager.config = stylix // {
       programs = with programs; core;
@@ -36,7 +36,7 @@ in
       home = {
         inherit (env) sessionVariables;
         inherit file;
-        stateVersion = config.const.droidStateVersion;
+        stateVersion = config.module.const.droidStateVersion;
       };
     };
   };

@@ -1,6 +1,6 @@
 { config, ... }:
 {
-  time.timeZone = config.const.timeZone;
+  time.timeZone = config.module.const.timeZone;
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {

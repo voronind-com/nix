@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  cfg = config.const.host.nginx;
+  cfg = config.module.const.host.nginx;
 in
 {
   "mail.${cfg.domain}" = {

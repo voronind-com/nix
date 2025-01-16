@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  cfg = config.const.host.nginx;
+  cfg = config.module.const.host.nginx;
   root = "/storage/hot/share";
   index = ''
     autoindex on;

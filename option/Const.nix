@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  options.const = {
+  options.module.const = {
     droidStateVersion = lib.mkOption {
       default = "24.05";
       type = lib.types.str;
