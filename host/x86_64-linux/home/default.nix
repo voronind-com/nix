@@ -9,7 +9,6 @@
   module = {
     builder.server.enable = true;
     display.primary = "HDMI-A-1";
-    davmail.enable = true;
     purpose = {
       desktop = true;
       router = true;
