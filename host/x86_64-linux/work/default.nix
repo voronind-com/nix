@@ -1,8 +1,5 @@
 { ... }:
 {
-  # Keyd Print to Macro remap.
-  services.keyd.keyboards.default.settings.main.print = "layer(layer_number)";
-
   home.nixos.enable = true;
   user = {
     dasha = true;
