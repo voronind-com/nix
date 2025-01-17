@@ -165,6 +165,7 @@
       jamesdsp # Active audio processing.
       lolcat # CLI funni colors.
       p7zip # Weird archive tool.
+      qpdf # Fix pdfs.
     ])
     ++ (with pkgsUnstable; [
       universal-android-debloater # Debloat Android devices.
