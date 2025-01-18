@@ -1,4 +1,4 @@
-{ inputs, lib, ... }:
+{ inputs, lib, pkgs, ... }:
 {
   imports = [
     "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
@@ -12,6 +12,11 @@
     PasswordAuthentication = lib.mkForce true;
     PermitRootLogin = lib.mkForce "yes";
   };
+
+  # Needed by installer smh.
+  environment.systemPackages = with pkgs; [
+    ghc
+  ];
 
   # Root user setup.
   home.nixos.enable = true;

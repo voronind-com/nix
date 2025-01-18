@@ -76,11 +76,13 @@ in
     cursor = {
       name = mkStrOption "Bibata-Modern-Custom";
       size = mkIntOption 24;
-      package = mkPkgOption (inputs.nix-cursors.packages.${pkgs.system}.bibata-modern-cursor.override {
-        accent_color = "#${cfg.color.accent}";
-        background_color = "#${cfg.color.bg.light}";
-        outline_color = "#${cfg.color.border}";
-      });
+      package = mkPkgOption (
+        inputs.nix-cursors.packages.${pkgs.system}.bibata-modern-cursor.override {
+          accent_color = "#${cfg.color.accent}";
+          background_color = "#${cfg.color.bg.light}";
+          outline_color = "#${cfg.color.border}";
+        }
+      );
     };
     # cursor = {
     #   name = mkStrOption "phinger-cursors-light";
