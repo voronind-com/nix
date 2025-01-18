@@ -9,11 +9,14 @@
   module = {
     builder.client.enable = true;
     display.primary = "eDP-1";
-    intel.cpu.enable = true;
     print.enable = true;
     wallpaper.video = false;
     purpose = {
       desktop = true;
+    };
+    intel.cpu = {
+      enable = true;
+      powersave = true;
     };
     hwmon = {
       file = "temp1_input";
