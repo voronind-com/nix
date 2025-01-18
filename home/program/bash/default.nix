@@ -1,8 +1,9 @@
 {
-  util,
+  config,
+  lib,
   pkgs,
   secret,
-  config,
+  util,
   ...
 }:
 let
@@ -42,7 +43,8 @@ in
       # Export all functions.
       export -f $(find_function | tr '\n' ' ')
       export -f find_function
-
+    ''
+    + lib.optionalString config.module.sway.enable ''
       # Autostart Sway.
       if [[ -z $DISPLAY ]] && [[ "$(tty)" = "/dev/tty1" ]]; then
         exec sway
