@@ -21,9 +21,12 @@
         "mptspi"
         "nvme"
         "sd_mod"
+        "sdhci_pci"
         "sr_mod"
+        "thunderbolt"
         "usb_storage"
         "usbhid"
+        "vmd"
         "xhci_pci"
       ];
     };
