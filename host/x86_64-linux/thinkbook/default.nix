@@ -7,10 +7,11 @@
   };
 
   module = {
-    display.primary = "eDP-1";
-    print.enable = true;
     builder.client.enable = true;
+    display.primary = "eDP-1";
     intel.cpu.enable = true;
+    print.enable = true;
+    wallpaper.video = false;
     purpose = {
       desktop = true;
     };
