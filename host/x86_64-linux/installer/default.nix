@@ -15,6 +15,7 @@
 
   # Needed by installer smh.
   environment.systemPackages = with pkgs; [
+    # tor-browser # NOTE: ???
     ghc
   ];
 
