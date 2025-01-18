@@ -9,11 +9,6 @@
     purpose = {
       live = true;
     };
-    package = {
-      common = true;
-      core = true;
-      desktop = true;
-    };
   };
 }
 
