@@ -29,6 +29,12 @@
       };
     };
 
+    # SOURCE: https://github.com/LilleAila/nix-cursors
+    nix-cursors = {
+      url = "github:LilleAila/nix-cursors";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixpkgsJobber.url = "github:nixos/nixpkgs/051f920625ab5aabe37c920346e3e69d7d34400e";
     poetry2nixJobber.url = "github:nix-community/poetry2nix/304f8235fb0729fd48567af34fcd1b58d18f9b95";
 
