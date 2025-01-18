@@ -52,9 +52,17 @@ install-hm:
 	nix-channel --update
 	nix-shell '<home-manager>' -A install
 
+.PHONY: installer
+installer:
+	nix build -o installer $(options) $(flake)#nixosConfigurations.installer.config.system.build.isoImage
+
 .PHONY: live
 live:
-	nix build -o live $(options) $(flake)#nixosConfigurations.live.config.system.build.isoImage
+	nix build -o installer $(options) $(flake)#nixosConfigurations.live.config.system.build.isoImage
+
+.PHONY: recovery
+recovery:
+	nix build -o installer $(options) $(flake)#nixosConfigurations.recovery.config.system.build.isoImage
 
 no-nixconf:
 	mv /etc/nix/nix.conf /etc/nix/nix.conf_ || true
