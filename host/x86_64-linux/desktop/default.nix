@@ -8,7 +8,7 @@
 
   module = {
     builder.client.enable = true;
-    package.extra = true;
+    package.all = true;
     print.enable = true;
     syncthing.enable = true;
     purpose = {

@@ -10,7 +10,7 @@
     amd.gpu.enable = true;
     builder.client.enable = true;
     display.primary = "DP-1";
-    package.extra = true;
+    package.all = true;
     print.enable = true;
     purpose = {
       creative = true;

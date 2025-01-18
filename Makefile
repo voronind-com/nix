@@ -59,16 +59,16 @@ installer:
 .PHONY: live
 live:
 	nix build -o installer $(options) $(flake)#nixosConfigurations.live.config.system.build.isoImage
-
-.PHONY: recovery
-recovery:
-	nix build -o installer $(options) $(flake)#nixosConfigurations.recovery.config.system.build.isoImage
-
 no-nixconf:
 	mv /etc/nix/nix.conf /etc/nix/nix.conf_ || true
 
 reboot: boot
 	reboot
+
+.PHONY: recovery
+recovery:
+	nix build -o installer $(options) $(flake)#nixosConfigurations.recovery.config.system.build.isoImage
+
 
 show:
 	nix flake show
