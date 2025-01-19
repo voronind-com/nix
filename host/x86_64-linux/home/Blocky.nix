@@ -25,7 +25,7 @@
         blockType = "zeroIP";
         loading = {
           refreshPeriod = "24h";
-          strategy = "blocking";
+          strategy = "fast";
           downloads = {
             attempts = 3;
             cooldown = "10s";
