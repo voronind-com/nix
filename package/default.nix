@@ -102,6 +102,7 @@
     swappy # Screenshot editing.
     sway # Sway WM.
     swaykbdd # Keyboard layout per-window.
+    transmission_4 # Torrent client.
     waybar # Sway bar.
     wf-recorder # Screen recording.
 

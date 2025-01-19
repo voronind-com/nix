@@ -161,10 +161,8 @@ in
         ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 443
 
         # Deluge torrenting ports.
-        ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 54630
-        ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 54630
-        ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 54631
-        ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 54631
+        ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 51413
+        ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 51413
 
         # Terraria server.
         ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22777

@@ -6,7 +6,7 @@ in
   "download.${cfg.domain}" = {
     inherit (cfg) sslCertificate sslCertificateKey extraConfig;
     locations."/" = {
-      proxyPass = "http://127.0.0.1:8112$request_uri";
+      proxyPass = "http://[::1]:9091$request_uri";
       extraConfig = cfg.allowLocal;
     };
   };
