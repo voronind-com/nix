@@ -4,7 +4,7 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    services.rogue.enable = true;
+    # services.rogue.enable = true; # NOTE: Not available smh.
     services.mingetty = {
       autologinUser = "live";
       helpLine = ''

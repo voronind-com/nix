@@ -4,11 +4,8 @@
 
   module = {
     purpose = {
-      live = true;
-    };
-    package = {
-      common = true;
       desktop = true;
+      live = true;
     };
   };
 }

@@ -3,7 +3,7 @@ let
   dpiAware = if config.module.display.dpiAware then "yes" else "no";
 in
 {
-  file = (pkgs.formats.ini { }).generate "FuzzelConfig" {
+  file = (pkgs.formats.ini { }).generate "fuzzel-config" {
     main = {
       dpi-aware = dpiAware;
       font = "Minecraftia:size=${toString config.module.style.font.size.popup}";
