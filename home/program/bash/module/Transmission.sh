@@ -1,6 +1,6 @@
 # Torrent download alias.
 function tdl() {
-	transmission-remote home.local ${@}
+	transmission-remote home.local "${@}"
 }
 
 # Download torrent files to home.
