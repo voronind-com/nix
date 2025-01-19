@@ -4,7 +4,7 @@ function reload() {
 	re() {
 		# Sway.
 		swaymsg reload
-		swaymsg seat seat0 xcursor_theme $XCURSOR_THEME $XCURSOR_SIZE
+		swaymsg seat \* xcursor_theme $XCURSOR_THEME $XCURSOR_SIZE
 		pkill mpvpaper && wallpaper-video
 
 		# Waybar.
