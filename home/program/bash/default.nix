@@ -46,7 +46,7 @@ in
     ''
     + lib.optionalString config.module.sway.enable ''
       # Autostart Sway.
-      if [[ -z $DISPLAY ]] && [[ "$(tty)" = "/dev/tty1" ]]; then
+      if [[ -z $DISPLAY ]] && [[ "$(tty)" = "/dev/tty1" ]] && [[ $UID != 0 ]]; then
         exec sway
       fi
     '';
