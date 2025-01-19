@@ -5,6 +5,7 @@
   module = {
     builder.server.enable = true;
     display.primary = "HDMI-A-1";
+    wallpaper.video = false;
     purpose = {
       desktop = true;
       router = true;
