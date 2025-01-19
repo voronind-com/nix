@@ -61,6 +61,7 @@
       tcpdump # Sniff tool.
       testdisk # Apps to recover data from drives.
       tmux # Terminal multiplexor.
+      transmission_4 # Torrent client.
       tree # Show directory stricture as a tree.
       tree-sitter # A parser generator tool and an incremental parsing library.
       tun2socks # Use proxy as a vpn.
@@ -102,7 +103,6 @@
     swappy # Screenshot editing.
     sway # Sway WM.
     swaykbdd # Keyboard layout per-window.
-    transmission_4 # Torrent client.
     waybar # Sway bar.
     wf-recorder # Screen recording.
 
