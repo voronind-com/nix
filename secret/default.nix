@@ -4,7 +4,8 @@
   # Use `mkpasswd -s`.
   password = {
     dasha = "$y$j9T$WGMPv/bRhGBUidcZLZ7CE/$raZhwFFdI/XvegVZVHLILJLMiBkOxSErc6gao/Cxt33";
-    live = "$y$j9T$nPMHO52xsFp6ZShidRwVC1$2w9BWmGsCkopKx3L3QLXOnJNCNwtwTOlQ/BzQJEerp0"; # "live".
+    # live = "$y$j9T$nPMHO52xsFp6ZShidRwVC1$2w9BWmGsCkopKx3L3QLXOnJNCNwtwTOlQ/BzQJEerp0"; # "live".
+    live = "$y$j9T$3Om9CAox3MjyIFLmG3FXj1$uVdNjo1Pe/9vzAPwy0wTeoyHWF8i2ydK8Prx5uJYr4D"; # Empty password.
     root = "$y$j9T$oqCB16i5E2t1t/HAWaFd5.$tTaHtAcifXaDVpTcRv.yH2/eWKxKE9xM8KcqXHfHrD7";
     voronind = "$y$j9T$e/mHHkIIAXc0HuQdR3PE6/$Jbh6gJgd0M/s6zCqnsB284a9tlRdLclZSaaSKurIJjB";
   };

@@ -6,9 +6,12 @@
 }:
 let
   cfg = config.user;
+  purpose = config.module.purpose;
 in
 {
-  options.user.live = lib.mkEnableOption "live user.";
+  options.user.live = lib.mkEnableOption "live user." // {
+    default = purpose.live;
+  };
 
   config = lib.mkIf cfg.live {
     home.nixos.users = [
