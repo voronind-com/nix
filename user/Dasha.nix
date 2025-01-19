@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  secret,
   ...
 }:
 let
@@ -21,7 +22,7 @@ in
     users.users.dasha = {
       createHome = true;
       description = "Daria Dranchak";
-      hashedPassword = "$y$j9T$WGMPv/bRhGBUidcZLZ7CE/$raZhwFFdI/XvegVZVHLILJLMiBkOxSErc6gao/Cxt33";
+      hashedPassword = secret.password.dasha;
       isNormalUser = true;
       uid = 1001;
       extraGroups = [

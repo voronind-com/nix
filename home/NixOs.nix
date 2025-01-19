@@ -12,12 +12,15 @@ let
   env = import ./env args;
   file = import ./file args;
   program = import ./program args;
+  purpose = config.module.purpose;
 in
 {
   imports = (util.ls <user>);
 
   options.home.nixos = {
-    enable = lib.mkEnableOption "the NixOS user setup.";
+    enable = lib.mkEnableOption "the NixOS user setup." // {
+      default = with purpose; desktop || laptop || live || server;
+    };
     users = lib.mkOption {
       default = [ ];
       type = with lib.types; listOf attrs;

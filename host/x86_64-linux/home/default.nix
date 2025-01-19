@@ -1,10 +1,6 @@
 { ... }:
 {
-  home.nixos.enable = true;
-  user = {
-    root = true;
-    voronind = true;
-  };
+  user.voronind = true;
 
   module = {
     builder.server.enable = true;

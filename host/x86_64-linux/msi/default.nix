@@ -1,9 +1,7 @@
 { ... }:
 {
-  home.nixos.enable = true;
   user = {
     dasha = true;
-    root = true;
     voronind = true;
   };
 
@@ -24,11 +22,11 @@
     };
     amd = {
       compute.enable = true;
+      gpu.enable = true;
       cpu = {
         enable = true;
         powersave = true;
       };
-      gpu.enable = true;
     };
   };
 }

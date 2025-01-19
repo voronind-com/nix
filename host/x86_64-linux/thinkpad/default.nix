@@ -1,19 +1,17 @@
 { ... }:
 {
-  home.nixos.enable = true;
   user = {
     dasha = true;
-    root = true;
     voronind = true;
   };
 
   module = {
+    builder.client.enable = true;
     display.primary = "eDP-1";
-    package.extra = true;
+    package.all = true;
+    powerlimit.thinkpad.enable = true;
     print.enable = true;
     syncthing.enable = true;
-    builder.client.enable = true;
-    powerlimit.thinkpad.enable = true;
     purpose = {
       creative = true;
       disown = true;

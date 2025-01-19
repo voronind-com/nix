@@ -1,10 +1,6 @@
 { ... }:
 {
-  home.nixos.enable = true;
-  user = {
-    dasha = true;
-    root = true;
-  };
+  user.dasha = true;
 
   module = {
     amd.gpu.enable = true;

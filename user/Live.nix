@@ -8,21 +8,21 @@ let
   cfg = config.user;
 in
 {
-  options.user.voronind = lib.mkEnableOption "voronind.";
+  options.user.live = lib.mkEnableOption "live user.";
 
-  config = lib.mkIf cfg.voronind {
+  config = lib.mkIf cfg.live {
     home.nixos.users = [
       {
-        homeDirectory = "/home/voronind";
-        username = "voronind";
+        homeDirectory = "/home/live";
+        username = "live";
       }
     ];
-    users.users.voronind = {
+    users.users.live = {
       createHome = true;
-      description = "Dmitry Voronin";
-      hashedPassword = secret.password.voronind;
+      description = "Live User";
+      hashedPassword = secret.password.live;
       isNormalUser = true;
-      uid = 1000;
+      uid = 1022;
       extraGroups = [
         "input"
         "keyd"

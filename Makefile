@@ -56,9 +56,14 @@ install-hm:
 installer:
 	nix build -o installer $(options) $(flake)#nixosConfigurations.installer.config.system.build.isoImage
 
+.PHONY: isolation
+isolation:
+	nix build -o isolation $(options) $(flake)#nixosConfigurations.isolation.config.system.build.isoImage
+
 .PHONY: live
 live:
-	nix build -o installer $(options) $(flake)#nixosConfigurations.live.config.system.build.isoImage
+	nix build -o iso/live $(options) $(flake)#nixosConfigurations.live.config.system.build.isoImage
+
 no-nixconf:
 	mv /etc/nix/nix.conf /etc/nix/nix.conf_ || true
 
@@ -67,8 +72,7 @@ reboot: boot
 
 .PHONY: recovery
 recovery:
-	nix build -o installer $(options) $(flake)#nixosConfigurations.recovery.config.system.build.isoImage
-
+	nix build -o recovery $(options) $(flake)#nixosConfigurations.recovery.config.system.build.isoImage
 
 show:
 	nix flake show
@@ -79,7 +83,6 @@ switch:
 update:
 	nix flake update
 
-# NOTE: Run `housekeep` target to fix git fsck issues.
 verify: housekeep
 	git verify-commit HEAD
 	git fsck
