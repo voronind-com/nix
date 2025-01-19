@@ -75,12 +75,12 @@ in
 
     cursor = {
       name = mkStrOption "Bibata-Modern-Custom";
-      size = mkIntOption 24;
+      size = mkIntOption 16;
       package = mkPkgOption (
         inputs.nix-cursors.packages.${pkgs.system}.bibata-modern-cursor.override {
           accent_color = "#${cfg.color.accent}";
-          background_color = "#${cfg.color.bg.light}";
-          outline_color = "#${cfg.color.border}";
+          background_color = "#${cfg.color.fg.light}";
+          outline_color = "#${cfg.color.bg.dark}";
         }
       );
     };

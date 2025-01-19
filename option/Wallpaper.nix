@@ -9,8 +9,8 @@ let
   purpose = config.module.purpose;
 
   # Set the wallpaper here.
-  url = "https://share.voronind.com/wallpaper/video/SnowMountainHouseMoewallsCom.mp4";
-  sha256 = "sha256-IdM1ErINTxP1rx/8GhTZzto0jCRQDZ1y9VnZXAwok7s=";
+  url = "https://share.voronind.com/wallpaper/video/SnowyAfternoonCozyBedroomMoewallsCom.mp4";
+  sha256 = "sha256-nfBQsI4YiNa1N3xroBcsLCkJQJ5ZvOUpOaaBhmMF/3Q=";
   video = true;
 
   # Forse black and white for text.
