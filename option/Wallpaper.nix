@@ -9,7 +9,7 @@ let
   purpose = config.module.purpose;
 
   # Set the wallpaper here.
-  url = "https://share.voronind.com/wallpaper/video/GardenLakeMinecraftMoewallsCom.mp4";
+  url = "https://share.voronind.com/wallpaper/GardenLakeMinecraftMoewallsCom.mp4";
   sha256 = "sha256-i4EyTg6OwR+ITAstof4Rh9NUgrK1EPB0+3uD1zVGbpk=";
   video = true;
 
