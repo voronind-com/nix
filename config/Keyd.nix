@@ -22,13 +22,15 @@ in
             capslock = "overload(control, esc)"; # Ctrl/esc combo.
             compose = "layer(layer_number)"; # Number input layer.
             delete = "backslash";
+            # down = "micmute";
             esc = "timeout(grave, 150, print)"; # System controls.
-            left = "layer(layer_number)"; # Number input layer.
+            left = "compose"; # Number input layer.
             leftcontrol = "overload(layer_alternative, leftcontrol)"; # Alternative layer for home, end etc.
             print = "compose";
-            right = "compose";
+            # right = "compose";
             rightcontrol = "overload(layer_control, rightcontrol)"; # Media and other controls.
             rightshift = "backspace"; # Backspace.
+            # up = "mute";
           };
 
           # Alternative navigation.
@@ -68,6 +70,7 @@ in
             v = "paste";
             w = "pageup";
             x = "cut";
+            z = "micmute";
           };
 
           # Media controls.
