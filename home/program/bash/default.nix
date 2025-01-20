@@ -28,9 +28,6 @@ let
       tgdatasilent
       ;
   };
-in
-{
-  inherit modulesFile;
 
   bashrc =
     (builtins.readFile modulesFile)
@@ -50,7 +47,9 @@ in
         exec sway
       fi
     '';
-
+in
+{
+  inherit modulesFile bashrc;
   # bash_profile = ''
   #   # Home manager.
   #   [ -e ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
