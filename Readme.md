@@ -10,13 +10,11 @@ Newest first.
 
 <details>
 <summary>Screenshot 1</summary>
-<!--<video controls><source src="https://share.voronind.com/readme/01_Video.mp4" type="video/mp4"></video>-->
 <img src="https://share.voronind.com/readme/01_Video.gif" />
-<!--<img src="https://share.voronind.com/readme/01_Picture.png" />-->
 <img width=400px src="https://share.voronind.com/readme/01_AndroidLock.png" />
 <img width=400px src="https://share.voronind.com/readme/01_AndroidNod.png" />
-<br><a href="https://moewalls.com/games/garden-lake-minecraft-live-wallpaper/">Wallpaper link</a>
-<br><a href="https://share.voronind.com/wallpaper/GardenLakeMinecraftMoewallsCom.mp4">Mirror</a>
+<br><a href="https://moewalls.com/games/garden-lake-minecraft-live-wallpaper/">Wallpaper Source</a>
+<br><a href="https://share.voronind.com/wallpaper/GardenLakeMinecraftMoewallsCom.mp4">Wallpaper Mirror</a>
 </details>
 
 <details>
