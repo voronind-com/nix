@@ -18,23 +18,19 @@ in
         settings = {
           # NOTE: Use `wev` to find key names.
           main = {
-            # down = "micmute";
-            # right = "compose";
-            # up = "mute";
             backspace = "delete"; # Delete key on backspace.
             capslock = "overload(control, esc)"; # Ctrl/esc combo.
-            compose = "layer(layer_number)"; # Number input layer.
+            compose = "layer(layer_compose)";
             delete = "backslash";
             esc = "timeout(grave, 150, print)"; # System controls.
-            left = "compose"; # Number input layer.
             leftcontrol = "overload(layer_alternative, leftcontrol)"; # Alternative layer for home, end etc.
-            print = "compose";
-            rightcontrol = "layer(layer_control)"; # Media and other controls.
+            rightcontrol = "layer(layer_number)"; # Media and other controls.
             rightshift = "backspace"; # Backspace.
           };
 
           # Alternative navigation.
           layer_alternative = {
+            # Fx keys.
             "0" = "f10";
             "1" = "f1";
             "2" = "f2";
@@ -45,47 +41,43 @@ in
             "7" = "f7";
             "8" = "f8";
             "9" = "f9";
-            a = "home";
-            backspace = "backspace";
-            c = "copy";
-            capslock = "capslock";
-            compose = "compose";
-            d = "end";
-            delete = "delete";
-            down = "down";
+            minus = "f11";
             equal = "f12";
-            esc = "esc";
+
+            # Legacy navigation.
+            a = "home";
+            d = "end";
+            p = "pageup";
+            n = "pagedown";
             h = "left";
             j = "down";
             k = "up";
             l = "right";
-            left = "left";
-            minus = "f11";
-            print = "print";
-            right = "right";
-            rightcontrol = "leftcontrol";
-            rightshift = "rightshift";
-            s = "pagedown";
-            up = "up";
-            v = "paste";
-            w = "pageup";
-            x = "cut";
+
+            # Media controls.
+            s = "volumedown";
+            w = "volumeup";
+            q = "previoussong";
+            e = "nextsong";
+            space = "playpause";
             z = "micmute";
+            x = "stopcd";
+            c = "ejectcd"; # Toggle audio output.
+            v = "mute";
+
+            # Reset keys.
+            backspace = "backspace";
+            capslock = "capslock";
+            compose = "compose";
+            delete = "delete";
+            esc = "esc";
+            rightcontrol = "rightcontrol";
+            rightshift = "rightshift";
           };
 
-          # Media controls.
-          layer_control = {
-            a = "back";
-            c = "ejectcd";
-            d = "forward";
-            e = "nextsong";
-            q = "previoussong";
-            s = "volumedown";
-            v = "micmute";
-            w = "volumeup";
-            x = "stopcd";
-            z = "mute";
-            space = "playpause";
+          # Vacant compose key layer.
+          layer_compose = {
+            a = "a";
           };
 
           # Number inputs.
