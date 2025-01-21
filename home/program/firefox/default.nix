@@ -29,7 +29,7 @@ let
     (mkSearchEngine "np" "NixOS Packages" "https://search.nixos.org/packages?query={searchTerms}")
     (mkSearchEngine "oz" "Ozon" "https://www.ozon.ru/search?text={searchTerms}")
     (mkSearchEngine "pa" "Pixel Art" "https://www.reddit.com/r/PixelArt/search/?q={searchTerms}")
-    (mkSearchEngine "pk" "Perekrestok" "https://www.perekrestok.ru/cat/search?search={searchTerms}")
+    (mkSearchEngine "pe" "Perekrestok" "https://www.perekrestok.ru/cat/search?search={searchTerms}")
     (mkSearchEngine "re" "Reddit" "https://www.reddit.com/search/?q={searchTerms}")
     (mkSearchEngine "rt" "RuTracker" "https://rutracker.org/forum/tracker.php?nm={searchTerms}")
     (mkSearchEngine "sa" "Samokat" "https://samokat.ru/search?value={searchTerms}")
