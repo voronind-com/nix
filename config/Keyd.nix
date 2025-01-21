@@ -20,7 +20,6 @@ in
           # NOTE: Use `wev` to find key names.
           main = {
             # down = "micmute";
-            # leftcontrol = "overload(layer_alternative, micmute)"; # Alternative layer for home, end etc.
             # right = "compose";
             # rightcontrol = "overload(layer_control, mute)"; # Media and other controls.
             # up = "mute";
@@ -30,9 +29,9 @@ in
             delete = "backslash";
             esc = "timeout(grave, ${toString timeout}, print)"; # System controls.
             left = "compose"; # Number input layer.
-            leftcontrol = "timeout(micmute, ${toString timeout}, layer(layer_alternative))"; # Alternative layer for home, end etc.
+            leftcontrol = "overload(layer_alternative, leftcontrol)"; # Alternative layer for home, end etc.
             print = "compose";
-            rightcontrol = "timeout(mute, ${toString timeout}, layer(layer_control))"; # Media and other controls.
+            rightcontrol = "timeout(micmute, ${toString timeout}, layer(layer_control))"; # Media and other controls.
             rightshift = "backspace"; # Backspace.
           };
 
