@@ -20,7 +20,7 @@ in
           main = {
             backspace = "delete"; # Delete key on backspace.
             capslock = "overload(control, esc)"; # Ctrl/esc combo.
-            compose = "layer(layer_compose)";
+            compose = "layer(layer_alternative)";
             delete = "backslash";
             esc = "timeout(grave, 150, print)"; # System controls.
             leftcontrol = "overload(layer_alternative, leftcontrol)"; # Alternative layer for home, end etc.
@@ -75,10 +75,8 @@ in
             rightshift = "rightshift";
           };
 
-          # Vacant compose key layer.
-          layer_compose = {
-            a = "a";
-          };
+          # NOTE: Vacant compose key layer.
+          # layer_compose = { };
 
           # Number inputs.
           layer_number = {

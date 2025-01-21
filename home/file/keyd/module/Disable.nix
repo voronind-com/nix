@@ -8,12 +8,8 @@ let
   ];
 
   keys = [
-    "down"
     "escape"
-    "left"
     "leftcontrol"
-    "right"
-    "up"
   ];
 in
 {
