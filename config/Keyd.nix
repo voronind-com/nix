@@ -6,6 +6,7 @@
 }:
 let
   cfg = config.module.keyd;
+  timeout = 150;
 in
 {
   config = lib.mkIf cfg.enable {
@@ -18,19 +19,19 @@ in
         settings = {
           # NOTE: Use `wev` to find key names.
           main = {
+            # down = "micmute";
+            # right = "compose";
+            # up = "mute";
             backspace = "delete"; # Delete key on backspace.
             capslock = "overload(control, esc)"; # Ctrl/esc combo.
             compose = "layer(layer_number)"; # Number input layer.
             delete = "backslash";
-            # down = "micmute";
-            esc = "timeout(grave, 150, print)"; # System controls.
+            esc = "timeout(grave, ${toString timeout}, print)"; # System controls.
             left = "compose"; # Number input layer.
-            leftcontrol = "overload(layer_alternative, leftcontrol)"; # Alternative layer for home, end etc.
+            leftcontrol = "overload(layer_alternative, micmute)"; # Alternative layer for home, end etc.
             print = "compose";
-            # right = "compose";
-            rightcontrol = "overload(layer_control, rightcontrol)"; # Media and other controls.
+            rightcontrol = "overload(layer_control, mute)"; # Media and other controls.
             rightshift = "backspace"; # Backspace.
-            # up = "mute";
           };
 
           # Alternative navigation.
@@ -70,7 +71,7 @@ in
             v = "paste";
             w = "pageup";
             x = "cut";
-            z = "micmute";
+            # z = "micmute";
           };
 
           # Media controls.
