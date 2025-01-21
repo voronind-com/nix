@@ -62,8 +62,8 @@ in
             space = "playpause";
             z = "micmute";
             x = "stopcd";
-            c = "ejectcd"; # Toggle audio output.
-            v = "mute";
+            c = "mute";
+            v = "ejectcd"; # Toggle audio output.
 
             # Reset keys.
             backspace = "backspace";
