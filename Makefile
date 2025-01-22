@@ -79,6 +79,12 @@ switch:
 update:
 	nix flake update
 
+updateMaster:
+	nix flake update nixpkgsMaster
+
+updateUnstable:
+	nix flake update nixpkgsUnstable
+
 verify: housekeep
 	git verify-commit HEAD
 	git fsck
