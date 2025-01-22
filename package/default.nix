@@ -22,6 +22,7 @@
       exiftool # Image info.
       file # Get general info about a file.
       findutils # Find tool.
+      fzf # Find tool.
       gawk # Awk.
       gcc # C compiler.
       gdu # TUI storage analyzer.
