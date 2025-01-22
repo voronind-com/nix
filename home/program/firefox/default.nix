@@ -6,7 +6,15 @@
   ...
 }@args:
 let
-  bookmarks = [ (mkBookmark "Dashboard" "https://home.voronind.com") ];
+  darkModeIgnore = [
+    "cloud.fsight.ru"
+    "codeberg.org"
+    "dav.voronind.com"
+    "fsmm.fsight.ru"
+    "git.voronind.com"
+    "github.com"
+    "home.voronind.com"
+  ];
 
   searchEngines = [
     (mkSearchEngine "4p" "4pda"
@@ -43,6 +51,8 @@ let
     (mkSearchEngine "yt" "YouTube" "https://yt.voronind.com/search?q={searchTerms}")
   ];
 
+  bookmarks = [ (mkBookmark "Dashboard" "https://home.voronind.com") ];
+
   extensions = [
     # TODO: Use this after https://github.com/darkreader/darkreader/pull/12920 gets merged.
     # (mkExtension "addon@darkreader.org" "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi")
@@ -57,15 +67,6 @@ let
     # NOTE: This extension is helpful to find the required parameters for this config.
     # Or find them yourself inside the `about:support`.
     # (mkExtension "queryamoid@kaply.com" "https://github.com/mkaply/queryamoid/releases/download/v0.1/query_amo_addon_id-0.1-fx.xpi")
-  ];
-
-  darkModeIgnore = [
-    "cloud.fsight.ru"
-    "dav.voronind.com"
-    "fsmm.fsight.ru"
-    "git.voronind.com"
-    "github.com"
-    "home.voronind.com"
   ];
 
   prefs = [
