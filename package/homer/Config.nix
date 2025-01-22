@@ -41,6 +41,7 @@ let
       (mkLink "GitHub" "fab fa-github" "https://github.com/notifications")
       (mkLink "MonkeyType" "fa-keyboard" "https://monkeytype.com")
       (mkLink "Reddit" "fab fa-reddit" "https://reddit.com")
+      (mkLink "Roadmap" "fa-road-circle-check" "https://roadmap.sh")
       (mkLink "Switch Releases" "fa-gamepad" "https://www.switchscores.com/games/by-date")
       (mkLink "Telegram" "fab fa-telegram" "https://web.telegram.org/a")
       (mkLink "Toolbox" "fa-toolbox" "https://it-tools.tech")
