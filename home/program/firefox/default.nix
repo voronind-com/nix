@@ -14,6 +14,7 @@ let
     "git.voronind.com"
     "github.com"
     "home.voronind.com"
+    "nixhub.io"
   ];
 
   searchEngines = [
@@ -34,6 +35,7 @@ let
     (mkSearchEngine "im" "IMDB" "https://www.imdb.com/find/?q={searchTerms}")
     (mkSearchEngine "nf" "Nerd Fonts" "https://www.nerdfonts.com/cheat-sheet?q={searchTerms}")
     (mkSearchEngine "no" "NixOS Options" "https://search.nixos.org/options?query={searchTerms}")
+    (mkSearchEngine "nh" "NixHub" "https://www.nixhub.io/search?q={searchTerms}")
     (mkSearchEngine "np" "NixOS Packages" "https://search.nixos.org/packages?query={searchTerms}")
     (mkSearchEngine "oz" "Ozon" "https://www.ozon.ru/search?text={searchTerms}")
     (mkSearchEngine "pa" "Pixel Art" "https://www.reddit.com/r/PixelArt/search/?q={searchTerms}")
