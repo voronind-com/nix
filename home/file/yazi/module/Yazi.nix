@@ -63,6 +63,12 @@
             run = "mpv --no-video --shuffle \"$@\"/**";
           }
         ];
+        bottle_run = [
+          {
+            desc = "Run bottle";
+            run = openWith "btp";
+          }
+        ];
         browser = [
           {
             desc = "Browser";
@@ -142,12 +148,6 @@
             run = openWith "steam-run";
           }
         ];
-        bottle_run = [
-          {
-            desc = "Run bottle";
-            run = openWith "btp";
-          }
-        ];
         unlock = [
           {
             desc = "Unlock";
@@ -160,6 +160,13 @@
             desc = "Text";
             block = true;
             run = openWith "nvim";
+          }
+        ];
+        torrent = [
+          {
+            desc = "Download";
+            orphan = true;
+            run = openWith "tdla";
           }
         ];
         video = [
@@ -223,6 +230,7 @@
           (mkMime "application/vnd.openxmlformats-officedocument.*" [ "document" ])
           (mkMime "application/x-executable" [ "steam_run" ])
           (mkMime "application/x-pie-executable" [ "steam_run" ])
+          (mkMime "application/x-bittorrent" [ "torrent" ])
 
           {
             mime = "inode/directory";
