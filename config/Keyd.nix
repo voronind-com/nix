@@ -6,6 +6,15 @@
 }:
 let
   cfg = config.module.keyd;
+  mkAllLetterKeysSet =
+    mkValue:
+    "abcdefghijklmnopqrstuvwxyz"
+    |> lib.strings.stringToCharacters
+    |> map (key: {
+      name = key;
+      value = mkValue key;
+    })
+    |> lib.listToAttrs;
 in
 {
   config = lib.mkIf cfg.enable {
@@ -22,7 +31,7 @@ in
             capslock = "overload(control, esc)"; # Ctrl/esc combo.
             compose = "layer(layer_alternative)";
             delete = "backslash";
-            esc = "timeout(grave, 150, print)"; # System controls.
+            esc = "overload(layer_print, grave)"; # System controls.
             leftcontrol = "overload(layer_alternative, leftcontrol)"; # Alternative layer for home, end etc.
             rightcontrol = "layer(layer_number)"; # Media and other controls.
             rightshift = "backspace"; # Backspace.
@@ -99,6 +108,8 @@ in
             shift = "backspace";
             space = "0";
           };
+
+          layer_print = mkAllLetterKeysSet (key: "macro(print+${key})");
         };
       };
     };
