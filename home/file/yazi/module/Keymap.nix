@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   # REF: https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml
-  file = (pkgs.formats.toml { }).generate "YaziKeymapConfig" {
+  file = (pkgs.formats.toml { }).generate "yazi-keymap-config" {
     manager = {
       prepend_keymap = [
         {
@@ -82,7 +82,7 @@
         {
           on = "<Space>";
           desc = "Goto interactive";
-          run = "cd --interactive";
+          run = "plugin fzf --args='--no-mouse'";
         }
         {
           on = [
