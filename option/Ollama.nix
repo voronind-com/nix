@@ -13,8 +13,9 @@ in
       default = [ cfg.primaryModel ];
       type = with lib.types; listOf str;
     };
+    # REF: https://ollama.com/library
     primaryModel = lib.mkOption {
-      default = "llama3.2";
+      default = "deepseek-r1";
       type = lib.types.str;
     };
   };
