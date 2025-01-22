@@ -14,7 +14,18 @@ in
   config = lib.mkIf cfg.enable {
     services.zapret = {
       enable = true;
-      inherit (cfg) package params whitelist blacklist qnum configureFirewall httpSupport httpMode udpSupport udpPorts;
+      inherit (cfg)
+        package
+        params
+        whitelist
+        blacklist
+        qnum
+        configureFirewall
+        httpSupport
+        httpMode
+        udpSupport
+        udpPorts
+        ;
     };
   };
 }
