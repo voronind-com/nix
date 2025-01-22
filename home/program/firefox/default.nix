@@ -34,6 +34,7 @@ let
     )
     (mkSearchEngine "im" "IMDB" "https://www.imdb.com/find/?q={searchTerms}")
     (mkSearchEngine "nf" "Nerd Fonts" "https://www.nerdfonts.com/cheat-sheet?q={searchTerms}")
+    (mkSearchEngine "na" "Nix API" "https://noogle.dev/q?term={searchTerms}")
     (mkSearchEngine "nh" "NixHub" "https://www.nixhub.io/search?q={searchTerms}")
     (mkSearchEngine "no" "NixOS Options" "https://search.nixos.org/options?query={searchTerms}")
     (mkSearchEngine "np" "NixOS Packages" "https://search.nixos.org/packages?query={searchTerms}")
