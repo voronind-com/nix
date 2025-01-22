@@ -22,19 +22,16 @@
       enable = true;
       udpSupport = true;
       params = [
-        "--dpi-desync=fake,disorder2"
-
-        "--dpi-desync-ttl=1"
-        "--dpi-desync-autottl=2"
-
-        "--dpi-desync-ttl6=1"
-        "--dpi-desync-autottl6=2"
+        "--dpi-desync=multisplit"
+        "--dpi-desync-split-pos=10,midsld"
+        "--dpi-desync-split-seqovl=1"
 
         "--dpi-desync-any-protocol"
       ];
       whitelist = [
         "youtube.com"
         "googlevideo.com"
+        "google.com"
         "ytimg.com"
         "youtu.be"
         "m.youtube.com"
