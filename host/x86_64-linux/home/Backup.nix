@@ -6,7 +6,7 @@
 }@args:
 let
   bash = import <home/program/bash> args;
-  script = pkgs.writeText "backupScript" ''
+  script = pkgs.writeText "backup-script" ''
     source ${bash.modulesFile}
 
     function report() {
@@ -81,7 +81,7 @@ in
 {
   systemd.services.backup = util.mkStaticSystemdService {
     enable = true;
-    description = "Home system backup.";
+    description = "Home system backup";
     serviceConfig.Type = "oneshot";
     path = with pkgs; [
       bashInteractive
