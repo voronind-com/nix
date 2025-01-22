@@ -21,9 +21,14 @@ in
         background = config.module.style.color.bg.dark;
         foreground = config.module.style.color.fg.light;
       };
-      key-bindings = {
-        show-urls-launch = "Mod1+o";
-      };
+      key-bindings =
+        let
+          mod = "Mod1";
+        in
+        {
+          show-urls-launch = "${mod}+o";
+          clipboard-paste = "Control+Shift+v XF86Paste ${mod}+i";
+        };
     };
   };
 }
