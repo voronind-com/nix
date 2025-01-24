@@ -80,8 +80,11 @@
           run = "close";
         }
         {
-          on = "<Space>";
-          desc = "Goto interactive";
+          on = [
+            "g"
+            "f"
+          ];
+          desc = "Fzf search";
           run = "plugin fzf --args='--no-mouse'";
         }
         {
