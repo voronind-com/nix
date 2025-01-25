@@ -3,8 +3,8 @@ let
   apps = [
     "gimp"
     "gimp-*"
-    "steam-proton"
-    "steam-app-*"
+    # "steam-proton"
+    # "steam-app-*"
   ];
 
   keys = [
