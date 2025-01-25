@@ -10,6 +10,11 @@
           run = ''shell "SHELL_NAME=yazi $SHELL" --block --confirm'';
         }
         {
+          on = "<Space>";
+          desc = "Cd";
+          run = "cd --interactive";
+        }
+        {
           on = "<Tab>";
           desc = "New tab";
           run = "tab_create --current";
