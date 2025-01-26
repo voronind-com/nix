@@ -21,7 +21,6 @@ let
   borderSize = "${toString config.module.style.window.border}px";
 
   styleRaw = pkgs.writeText "waybar-style-raw" (util.readFiles (util.ls ./style));
-  # NOTE: Another option is to use var() like this: https://git.azahi.cc/nixfiles/tree/modules/firefox/default.nix#n41 https://git.azahi.cc/nixfiles/tree/modules/firefox/userContent.css
   style = pkgs.replaceVars styleRaw {
     inherit
       accent

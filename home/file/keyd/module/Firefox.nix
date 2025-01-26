@@ -20,7 +20,7 @@
       "alt.space" = "f6"; # Focus address bar.
       "alt.u" = "C-S-t"; # Restore closed tab.
       "alt.w" = "macro(y t)"; # Duplicate tab.
-      # "alt.W" = "macro(y t W)"; # Duplicate tab on new window. # ISSUE: Use S-w to manually detach.
+      # "alt.W" = "macro(y t W)"; # Duplicate tab on new window. # NOTE: Use S-w to manually detach.
       "alt.x" = "C-w"; # Close tab.
     };
   };

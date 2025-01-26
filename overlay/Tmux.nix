@@ -1,7 +1,7 @@
 { __findFile, ... }:
 {
   # SEE: https://github.com/tmux/tmux/issues/4264
-  # FIXME: Later.
+  # FIXME: Later. When you get no error on start on Android.
   nixpkgs.overlays = [
     (final: prev: {
       tmux = prev.tmux.overrideAttrs (old: {

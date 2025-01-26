@@ -15,7 +15,7 @@
     default-sort-in-reverse-order = false;
     default-sort-order = "name";
     migrated-gtk-settings = true;
-    search-filter-time-type = "last_modified";
+    search-filter-time-type = "name";
     search-view = "list-view";
     show-image-thumbnails = "local-only";
   };

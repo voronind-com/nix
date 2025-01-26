@@ -341,57 +341,52 @@ in
       "{446900e4-71c2-419f-a6a7-df9c091e268b}".environment = {
         base = "https://pass.voronind.com";
       };
-      # ISSUE: Fork or https://github.com/foxyproxy/browser-extension/issues/132
-      # "foxyproxy@eric.h.jung" = {
-      # 	mode = "enable";
-      # 	sync = false;
-      # 	data = [
-      # 		{
-      # 			active   = true;
-      # 			title    = "Local";
-      # 			type     = "socks5";
-      # 			hostname = "localhost";
-      # 			port     = 1080;
-      # 			color    = "#ffffff";
-      # 			proxyDNS = true;
-      # 			include  = [ ];
-      # 			exclude  = [ ];
-      # 		}
-      # 		{
-      # 			active   = true;
-      # 			title    = "Zapret";
-      # 			type     = "socks5";
-      # 			hostname = "10.0.0.1";
-      # 			port     = 1080;
-      # 			color    = "#ff0000";
-      # 			proxyDNS = false;
-      # 			include  = [ ];
-      # 			exclude  = [ ];
-      # 		}
-      # 		{
-      # 			active   = true;
-      # 			title    = "Xray";
-      # 			type     = "socks5";
-      # 			hostname = "10.0.0.1";
-      # 			port     = 1081;
-      # 			color    = "#ffff00";
-      # 			proxyDNS = false;
-      # 			include  = [ ];
-      # 			exclude  = [ ];
-      # 		}
-      # 		{
-      # 			active   = true;
-      # 			title    = "Tor";
-      # 			type     = "socks5";
-      # 			hostname = "10.0.0.1";
-      # 			port     = 9150;
-      # 			color    = "#0000ff";
-      # 			proxyDNS = true;
-      # 			include  = [ "*.onion" ];
-      # 			exclude  = [ ];
-      # 		}
-      # 	];
-      # };
+      "foxyproxy@eric.h.jung" = {
+        mode = "enable";
+        sync = false;
+        data = [
+          {
+            active = true;
+            title = "Local";
+            type = "socks5";
+            hostname = "localhost";
+            port = 1080;
+            color = "#ffffff";
+            proxyDNS = true;
+            include = [ ];
+            exclude = [ ];
+          }
+          {
+            active = true;
+            title = "Xray";
+            type = "socks5";
+            hostname = "home.local";
+            port = 1080;
+            color = "#ffff00";
+            proxyDNS = false;
+            include = [
+              {
+                active = true;
+                pattern = "https://www.youtube.com/*";
+                title = "YouTube";
+                type = "wildcard";
+              }
+            ];
+            exclude = [ ];
+          }
+          {
+            active = true;
+            title = "Tor";
+            type = "socks5";
+            hostname = "home.local";
+            port = 9150;
+            color = "#0000ff";
+            proxyDNS = true;
+            include = [ "*.onion" ];
+            exclude = [ ];
+          }
+        ];
+      };
     };
     # NOTE: `firefox-esr` edition is required to change search engines.
     SearchEngines = {
