@@ -28,7 +28,7 @@ in
         {
           show-urls-launch = "${mod}+o";
           clipboard-paste = "Control+Shift+v XF86Paste ${mod}+P";
-          clipboard-copy = "Control+Shift+v XF86Paste ${mod}+Y";
+          clipboard-copy = "Control+Shift+c XF86Copy ${mod}+Y";
         };
     };
   };
