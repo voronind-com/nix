@@ -33,9 +33,12 @@ let
       "https://home-manager-options.extranix.com/?query={searchTerms}"
     )
     (mkSearchEngine "im" "IMDB" "https://www.imdb.com/find/?q={searchTerms}")
-    (mkSearchEngine "nf" "Nerd Fonts" "https://www.nerdfonts.com/cheat-sheet?q={searchTerms}")
     (mkSearchEngine "na" "Nix API" "https://noogle.dev/q?term={searchTerms}")
+    (mkSearchEngine "nf" "Nerd Fonts" "https://www.nerdfonts.com/cheat-sheet?q={searchTerms}")
     (mkSearchEngine "nh" "NixHub" "https://www.nixhub.io/search?q={searchTerms}")
+    (mkSearchEngine "ni" "Nixpkgs Issues"
+      "https://github.com/NixOS/nixpkgs/issues?q=is%3Aissue%20{searchTerms}"
+    )
     (mkSearchEngine "no" "NixOS Options" "https://search.nixos.org/options?query={searchTerms}")
     (mkSearchEngine "np" "NixOS Packages" "https://search.nixos.org/packages?query={searchTerms}")
     (mkSearchEngine "nt" "NixOS PR Tracker" "https://nixpk.gs/pr-tracker.html?pr={searchTerms}")
