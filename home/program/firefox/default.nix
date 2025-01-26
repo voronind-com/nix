@@ -367,9 +367,9 @@ in
             include = [
               {
                 active = true;
-                pattern = "https://www.youtube.com/*";
+                pattern = "*://www.youtube.com/*";
                 title = "YouTube";
-                type = "wildcard";
+                type = "wildcard"; # wildcard or regex.
               }
             ];
             exclude = [ ];

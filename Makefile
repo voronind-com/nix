@@ -2,8 +2,8 @@ options  = --option eval-cache false --fallback --print-build-logs --verbose --o
 flake    = .
 hostname = $(shell hostname)
 
-help:
-	@printf "Please specify a target.\n"
+build:
+	nix flake check --show-trace
 
 android:
 	nix-on-droid switch --flake $(flake)
