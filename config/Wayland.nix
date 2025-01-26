@@ -14,6 +14,7 @@ in
         ECORE_EVAS_ENGINE = "wayland_egl";
         ELM_ENGINE = "wayland_egl";
         GDK_BACKEND = "wayland";
+        GSK_RENDERER = "cairo"; # FIX: https://github.com/NixOS/nixpkgs/issues/353990
         MOZ_ENABLE_WAYLAND = "1";
         QT_QPA_PLATFORM = "wayland-egl;wayland;xcb";
         QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
