@@ -26,7 +26,7 @@ in
           mod = "Mod1";
         in
         {
-          show-urls-launch = "${mod}+O";
+          show-urls-launch = "${mod}+o";
           clipboard-paste = "Control+Shift+v XF86Paste ${mod}+P";
           clipboard-copy = "Control+Shift+c XF86Copy ${mod}+Y";
         };
