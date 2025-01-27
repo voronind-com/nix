@@ -144,8 +144,8 @@ in
     firewall = {
       enable = true;
       extraCommands = ''
-        # Wan access for 10.0.0.0/24 subnet.
-        iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -d 0/0 -o ${wan} -j MASQUERADE
+        # Wan access for 10.0.0.0/8 subnet.
+        iptables -t nat -A POSTROUTING -s 10.0.0.0/8 -d 0/0 -o ${wan} -j MASQUERADE
 
         # Full access from Lan.
         ip46tables  -I INPUT -j ACCEPT -i ${lan}
@@ -165,7 +165,7 @@ in
         ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 51413
 
         # Terraria server.
-        ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22777
+        # ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22777
 
         # Mumble.
         ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22666
