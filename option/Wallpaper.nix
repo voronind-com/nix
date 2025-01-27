@@ -9,8 +9,8 @@ let
   purpose = config.module.purpose;
 
   # Set the wallpaper here.
-  url = "https://share.voronind.com/wallpaper/LiveWallpaperPcComOppositeRoomInTheRain1920X1080.mp4";
-  sha256 = "sha256-qamjLi9GCON0Xz6FtOuugUzac8ekXMJOdx2VDK1FA3g=";
+  url = "https://share.voronind.com/wallpaper/LiveWallpaperPcComLethalCompany1920X1080.mp4";
+  sha256 = "sha256-RM0RGXIMHih6ioqqdSKs0v0PhEd13inVC1+0xHd1fyA=";
   video = true;
 
   # Forse black and white for text.
