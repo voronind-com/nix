@@ -43,6 +43,7 @@
       lsof # Find current file users.
       ltex-ls # Latex LSP for neovim spellcheck.
       man # App to read manuals.
+      mtr # Traceroute tool.
       neovim # Text editor.
       nmap # Network scanning.
       openssh # Ssh client.
