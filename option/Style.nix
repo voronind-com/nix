@@ -84,11 +84,6 @@ in
         }
       );
     };
-    # cursor = {
-    #   name = mkStrOption "phinger-cursors-light";
-    #   package = mkPkgOption pkgs.phinger-cursors;
-    #   size = mkIntOption 24;
-    # };
 
     font = {
       emoji = {
