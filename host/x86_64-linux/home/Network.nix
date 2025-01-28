@@ -9,7 +9,7 @@
 }:
 let
   internal = "10.0.0.1"; # Lan host IP address.
-  internal6 = "fd09:8d46:b26:0:8079:82ff:fe1a:916a"; # Lan host IP6 address.
+  internal6 = config.module.const.home; # Lan host IP6 address.
 
   lan = "br0"; # Lan interface.
   wan = "enp8s0"; # Wan interface.

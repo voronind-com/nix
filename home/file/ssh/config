@@ -4,7 +4,7 @@ Host *
 	ControlPersist yes
 
 Host dasha
-	HostName dasha.local
+	HostName fd09:8d46:b26:0:29b3:d9b5:d1e9:220f
 	User root
 	Port 22143
 

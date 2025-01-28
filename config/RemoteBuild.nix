@@ -89,7 +89,7 @@ in
       };
       services.openssh.knownHosts.nixbuilder = {
         publicKey = serverSshPublicKey;
-        extraHostNames = [ "[fd09:8d46:b26:0:8079:82ff:fe1a:916a]:22143" ];
+        extraHostNames = [ "[${config.module.const.home}]:22143" ];
       };
     })
   ];

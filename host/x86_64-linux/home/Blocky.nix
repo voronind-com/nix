@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   services.blocky = {
     enable = true;
@@ -84,10 +84,10 @@
       };
       customDNS.mapping =
         let
-          block = host: { ${host} = "0.0.0.0"; };
+          block = host: { ${host} = "0.0.0.0,::"; };
         in
         {
-          "voronind.com" = "10.0.0.1,fd09:8d46:b26:0:8079:82ff:fe1a:916a";
+          "voronind.com" = "10.0.0.1,${config.module.const.home}";
           "dasha.local" = "fd09:8d46:b26:0:29b3:d9b5:d1e9:220f";
           "desktop.local" = "fd09:8d46:b26:0:2ef8:c58a:c1ac:6cd8";
           "home.local" = "fd09:8d46:b26:0:8079:82ff:fe1a:916a";

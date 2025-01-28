@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   config.module.const.host = {
     data = "/storage/hot_2/data";
@@ -12,7 +12,7 @@
       sslCertificateKey = "/etc/letsencrypt/live/voronind.com/privkey.pem";
       allowLocal = ''
         allow 10.0.0.0/8;
-        allow fd09:8d46:b26::/48;
+        allow ${config.module.const.ula};
         allow 127.0.0.1/32;
         allow ::1/128;
         deny all;
