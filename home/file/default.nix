@@ -46,6 +46,7 @@ in
   ".editorconfig".source = editor.file;
   ".gitconfig".source = git.file;
   ".ideavimrc".source = ./jetbrains/ideavimrc;
+  ".local/share/applications".text = "";
   ".local/share/jellyfinmediaplayer/scripts/mpris.so".source =
     "${pkgs.mpvScripts.mpris}/share/mpv/scripts/mpris.so";
   ".nix".source = self;
