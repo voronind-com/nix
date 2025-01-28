@@ -3,7 +3,7 @@
   config = (pkgs.formats.iniWithGlobalSection { }).generate "MangoConfig" {
     globalSection = {
       blacklist = "example";
-      fps_limit = "165,60,55,30,0";
+      fps_limit = "165,60,55,33,30,0";
       fps_limit_method = "early";
       fps_sampling_period = 1000;
       frame_timing = 0;
