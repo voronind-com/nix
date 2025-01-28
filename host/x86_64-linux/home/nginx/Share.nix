@@ -12,7 +12,7 @@ in
     inherit (cfg) sslCertificate sslCertificateKey extraConfig;
     locations = {
       "~* /$" = {
-      # "= /" = {
+        # "= /" = {
         inherit root;
         extraConfig = index + cfg.allowLocal;
       };
