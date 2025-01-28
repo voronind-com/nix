@@ -3,7 +3,7 @@
   config.module.const.host = {
     data = "/storage/hot_2/data";
     download = "/storage/hot_1/download";
-    ftp = "/storage/hot_2/ftp";
+    ftp = "/storage/hot_1/ftp";
     share = "/storage/hot_1/share";
     sync = "/storage/hot_2/sync";
     nginx = {
