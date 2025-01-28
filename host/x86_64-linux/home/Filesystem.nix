@@ -19,8 +19,17 @@
       ];
     };
 
-    "/storage/hot" = {
-      device = "/dev/storage/hot";
+    "/storage/hot_1" = {
+      device = "/dev/storage/hot_1";
+      fsType = "ext4";
+      options = [
+        "noatime"
+        "nofail"
+      ];
+    };
+
+    "/storage/hot_2" = {
+      device = "/dev/storage/hot_2";
       fsType = "ext4";
       options = [
         "noatime"
@@ -30,7 +39,7 @@
   };
 
   # swapDevices = [{
-  #   device  = "/storage/hot/.swapfile";
+  #   device  = "/storage/hot_1/.swapfile";
   #   randomEncryption.enable = true;
   #   size    = 128 * 1024;
   #   options = [ "nofail" ];

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   services.transmission = {
     enable = true;
@@ -6,7 +6,7 @@
     # REF: https://github.com/transmission/transmission/blob/main/docs/Editing-Configuration-Files.md
     settings =
       let
-        downloadDir = "/storage/hot/download";
+        downloadDir = config.module.const.host.download;
       in
       {
         bind-address-ipv4 = "0.0.0.0";

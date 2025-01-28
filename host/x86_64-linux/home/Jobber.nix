@@ -1,6 +1,7 @@
 # Use `nixos-container login jobber` as root and empty pw.
 {
   __findFile,
+  config,
   lib,
   pkgsJobber,
   poetry2nixJobber,
@@ -28,7 +29,7 @@ in
 
     bindMounts = {
       "/data" = {
-        hostPath = "/storage/hot/data/jobber";
+        hostPath = "${config.module.const.host.data}/jobber";
         isReadOnly = true;
       };
     };

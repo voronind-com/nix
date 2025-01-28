@@ -1,8 +1,8 @@
-{ ... }:
+{ config, ... }:
 {
   services.cloudflare-dyndns = {
     enable = true;
-    apiTokenFile = "/storage/hot/data/CfToken";
+    apiTokenFile = "${config.module.const.host.data}/CfToken";
     deleteMissing = false;
     ipv4 = true;
     ipv6 = true;

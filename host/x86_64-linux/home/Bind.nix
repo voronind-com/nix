@@ -1,6 +1,6 @@
-{ lib, ... }:
+{ config, lib, ... }:
 let
-  storage = "/storage/hot/data";
+  storage = config.module.const.host.data;
 
   binds = [
     (mkBind "change" "/var/lib/changedetection-io")

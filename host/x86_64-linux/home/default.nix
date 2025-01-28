@@ -1,4 +1,7 @@
-{ ... }:
+{ config, ... }:
+let
+  host = config.module.const.host;
+in
 {
   user.voronind = true;
 
@@ -14,7 +17,7 @@
     };
     syncthing = {
       enable = true;
-      dataDir = "/storage/hot/sync";
+      dataDir = host.sync;
       user = "root";
       group = "root";
     };
@@ -49,7 +52,7 @@
     };
     ftpd = {
       enable = true;
-      storage = "/storage/hot/ftp";
+      storage = host.ftp;
     };
     hwmon = {
       file = "temp1_input";

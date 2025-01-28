@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   # Vanilla.
   # NOTE: tmux -S /var/lib/terraria/terraria.sock attach-session -t 0
@@ -21,7 +21,7 @@
   # NOTE: docker exec tmodloader inject "say Hello World!"
   virtualisation.oci-containers.containers.terraria = {
     image = "jacobsmile/tmodloader1.4:latest";
-    volumes = [ "/storage/hot/data/terraria_calamity:/data" ];
+    volumes = [ "${config.module.const.host.data}/terraria_calamity:/data" ];
     ports = [ "0.0.0.0:22777:7777" ];
     environment = {
       TMOD_SHUTDOWN_MESSAGE = "Goodbye! <3";

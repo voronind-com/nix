@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   services = {
     tor = {
@@ -34,7 +34,7 @@
 
     xray = {
       enable = true;
-      settingsFile = "/storage/hot/data/XrayClient.json";
+      settingsFile = "${config.module.const.host.data}/XrayClient.json";
     };
   };
 }

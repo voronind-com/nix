@@ -1,7 +1,7 @@
 { config, ... }:
 let
   cfg = config.module.const.host.nginx;
-  root = "/storage/hot/share";
+  root = config.module.const.host.share;
   index = ''
     autoindex on;
     charset UTF-8;
