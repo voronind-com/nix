@@ -19,6 +19,7 @@
       ddrescue # Data rescue extractor.
       diffutils # Diff tool.
       dnsutils # NS utilities.
+      ethtool # Ethernet utility.
       exiftool # Image info.
       file # Get general info about a file.
       findutils # Find tool.
