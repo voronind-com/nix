@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   lib,
   pkgs,
@@ -28,12 +29,5 @@
 
   module = {
     package.all = true;
-  };
-
-  services.mingetty = {
-    autologinUser = "live";
-    helpLine = ''
-      Welcome! Both live and root users have password "live". Enjoy!
-    '';
   };
 }
