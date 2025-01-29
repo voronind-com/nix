@@ -52,6 +52,55 @@ install-hm:
 	nix-channel --update
 	nix-shell '<home-manager>' -A install
 
+# Required env variables set:
+# INSTALL_HOST   - Host name to install.
+# INSTALL_TARGET - Drive to install to.
+# Must have Internet connection and running from the live iso.
+install-nixos:
+	@[ "${HOSTNAME}" = "live" ] || { \
+		_error "Not running from the live iso!"; \
+		exit 2; \
+	};
+	@test -f host/*/"${INSTALL_HOST}"/default.nix || { \
+		_error "\$$INSTALL_HOST not found or not specified."; \
+		exit 2; \
+	};
+	@test -f "${INSTALL_TARGET}" || { \
+		_error "\$$INSTALL_TARGET not found or not specified."; \
+		exit 2; \
+	};
+	@[ $$(nmcli networking connectivity check) = "full" ] || { \
+		_error "No internet connection!"; \
+		exit 2; \
+	};
+	@printf "%s\n%s: %s\n%s: %s\n" \
+		"Summary" \
+		"Target" "${INSTALL_TARGET}" \
+		"Host" "${INSTALL_HOST}"
+	@printf "%s" "Press Enter to continue, <C-c> to cancel."
+	@read
+	# Partition.
+	parted -s "${INSTALL_TARGET}" mktable gpt
+	parted -s "${INSTALL_TARGET}" mkpart primary 0% 512MB
+	parted -s "${INSTALL_TARGET}" mkpart primary 512MB 100%
+	parted -s "${INSTALL_TARGET}" name 1 NIXBOOT
+	parted -s "${INSTALL_TARGET}" name 2 NIXROOT
+	parted -s "${INSTALL_TARGET}" set 1 esp on
+	# Format
+	mkfs.fat -F 32 /dev/disk/by-partlabel/NIXBOOT
+	mkfs.ext4 -F /dev/disk/by-partlabel/NIXROOT
+	# Mount
+	mount /dev/disk/by-partlabel/NIXROOT /mnt
+	mkdir /mnt/boot
+	mount /dev/disk/by-partlabel/NIXBOOT /mnt/boot
+	# Install
+	cd /mnt && nixos-install --no-root-password --no-channel-copy --flake ".#${INSTALL_HOST}" || { \
+		# Rollback.
+		umount /mnt/boot
+		umount /mnt
+	};
+
+
 installer:
 	nix build -o iso/installer $(options) $(flake)#nixosConfigurations.installer.config.system.build.isoImage
 

@@ -11,6 +11,10 @@
     "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
   ];
 
+  # Root user config.
+  home.nixos = true;
+  user.root = true;
+
   # Required for live iso.
   networking.wireless.enable = lib.mkForce false;
 
