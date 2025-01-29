@@ -21,8 +21,8 @@ in
     ];
     modules-center = [ "sway/workspaces" ];
     modules-right = [
-      "group/hardware"
       "group/batteryinfo"
+      "group/hardware"
       "pulseaudio"
       "custom/display"
       "custom/network"
