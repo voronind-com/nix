@@ -148,6 +148,12 @@
             run = openWith "steam-run";
           }
         ];
+        sqlite = [
+          {
+            desc = "Sqlite";
+            run = openWith "sqlite3";
+          }
+        ];
         unlock = [
           {
             desc = "Unlock";
@@ -231,6 +237,7 @@
           (mkMime "application/x-executable" [ "steam_run" ])
           (mkMime "application/x-pie-executable" [ "steam_run" ])
           (mkMime "application/x-bittorrent" [ "torrent" ])
+          (mkMime "application/vnd.sqlite3" [ "sqlite" ])
 
           {
             mime = "inode/directory";
