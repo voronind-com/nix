@@ -15,6 +15,7 @@ let
     "${inputs.nvimBufferline}"
     "${inputs.nvimCloseBuffers}"
     "${inputs.nvimColorizer}"
+    "${inputs.nvimCtags}"
     "${inputs.nvimDevicons}"
     "${inputs.nvimDressing}"
     "${inputs.nvimGen}"
@@ -61,6 +62,7 @@ let
     ./module/plugin/lsp/Nix.lua
     ./module/plugin/lsp/Rust.lua
     ./module/plugin/lsp/Tex.lua
+    ./module/plugin/lsp/Ctags.lua
     ./module/key/Autocomplete.lua
     ./module/key/Buffer.lua
     ./module/key/Cmd.lua

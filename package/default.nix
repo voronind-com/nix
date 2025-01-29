@@ -69,6 +69,7 @@
       tree-sitter # A parser generator tool and an incremental parsing library.
       tun2socks # Use proxy as a vpn.
       ueberzugpp # # Cli draw tool used by Yazi.
+      universal-ctags # Generate ctags.
       unzip # Zip archive/unarchive tools.
       usbutils # Usb utilities like udiskctl.
       utillinux # Common Linux utilities.
@@ -80,6 +81,7 @@
       zip # Zip utility.
 
       # (pkgs.callPackage ./ytdlp {}) # Youtube downloader bin package.
+      (pkgs.callPackage ./ctagslsp { }) # Ctags LSP.
     ])
     ++ (with pkgsUnstable; [
       fastfetch # Systeminfo summary.
