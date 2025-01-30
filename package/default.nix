@@ -151,6 +151,7 @@
   creative = with pkgs; [
     # aseprite # Pixel Art draw app. # WARN: Always builds from source.
     blender-hip # Blender with HiP support.
+    davinci-resolve # Video editing tool.
     krita # Draw!
   ];
 
