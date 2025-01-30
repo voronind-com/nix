@@ -8,6 +8,7 @@
     print.enable = true;
     syncthing.enable = true;
     purpose = {
+      creative = true;
       desktop = true;
       gaming = true;
       work = true;
