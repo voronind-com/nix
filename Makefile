@@ -2,8 +2,7 @@ options  = --option eval-cache false --fallback --print-build-logs --verbose --o
 flake    = .
 hostname = $(shell hostname)
 
-build:
-	nix flake check --show-trace
+build: verify check
 
 android:
 	nix-on-droid switch --flake $(flake)
@@ -131,7 +130,6 @@ update:
 
 verify: housekeep
 	git verify-commit HEAD
-	git fsck
 
 vm:
 	nix run $(options) $(flake)#nixosConfigurations.$(hostname).config.system.build.vm
