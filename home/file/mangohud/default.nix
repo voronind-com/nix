@@ -33,11 +33,11 @@
       gpu_mem_temp = 1;
       gpu_temp = 1;
       hud_no_margin = 1;
-      ram = 1;
+      ram = 0;
       swap = 1;
       throttling_status = 1;
       time = 1;
-      vram = 1;
+      vram = 0;
     };
     "preset 2" = {
       full = 1;
