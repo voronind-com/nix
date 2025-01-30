@@ -36,7 +36,7 @@
       ram = 0;
       swap = 1;
       throttling_status = 1;
-      time = 1;
+      time = 0;
       vram = 0;
     };
     "preset 2" = {
