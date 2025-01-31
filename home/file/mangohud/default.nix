@@ -6,7 +6,7 @@
       blacklist = "example";
       fps_limit = "165,60,55,33,30,0";
       fps_limit_method = "early";
-      fps_sampling_period = 2000;
+      fps_sampling_period = 1000;
       frame_timing = 0;
       gl_vsync = 0;
       preset = "0,1,2";
@@ -31,7 +31,7 @@
       cpu_temp = 1;
       # device_battery = "gamepad,mouse";
       font_size = 12;
-      fps_sampling_period = 2000;
+      fps_sampling_period = 1000;
       gpu_junction_temp = 0;
       gpu_mem_temp = 1;
       gpu_temp = 1;
