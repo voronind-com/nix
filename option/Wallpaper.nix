@@ -7,6 +7,7 @@
 let
   cfg = config.module.wallpaper;
   purpose = config.module.purpose;
+  hasGpu = config.module.amd.gpu.enable;
 
   # Set the wallpaper here.
   url = "https://share.voronind.com/wallpaper/MitaShyMisideMoewallsCom.mp4";
@@ -44,7 +45,7 @@ in
       type = lib.types.path;
     };
     video = lib.mkOption {
-      default = video && purpose.desktop;
+      default = video && hasGpu && purpose.desktop;
       type = lib.types.bool;
     };
     videoPath = lib.mkOption {

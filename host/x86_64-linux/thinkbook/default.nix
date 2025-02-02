@@ -6,7 +6,6 @@
     builder.client.enable = true;
     display.primary = "eDP-1";
     print.enable = true;
-    wallpaper.video = false;
     purpose = {
       desktop = true;
     };
