@@ -99,7 +99,6 @@ let
       --no-damage \
       --framerate ${toString framerate} \
       --file "''${scrFile}" \
-      --codec-param "lp=$(($(cat /proc/cpuinfo | grep ^processor | wc -l) / 2))" \
       --geometry "''${scrSelection}"
   '';
 
@@ -109,7 +108,7 @@ let
       -i "''${scrFile}" \
       -c:v ${codec} \
       -f ${container} \
-      -svtav1-params "lp=$(($(cat /proc/cpuinfo | grep ^processor | wc -l) / 2))" \
+      -svtav1-params "lp=1" \
       "''${scrFile}_" \
     && mv "''${scrFile}_" "''${scrFile}" \
     || rm "''${scrFile}_"
