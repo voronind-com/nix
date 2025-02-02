@@ -225,8 +225,8 @@ in
     };
     Cookies = {
       Behavior = "reject-foreign";
-      AllowSession = [ "https://yandex.ru" ];
-      Block = [ "https://google.com" ];
+      AllowSession = [ "https://example.com" ];
+      Block = [ ];
     };
     # Containers = {}; # TODO: Use containers? https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/
     Certificates = {
