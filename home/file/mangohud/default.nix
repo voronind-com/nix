@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  # REF: https://github.com/flightlessmango/MangoHud#hud-configuration
   config = (pkgs.formats.iniWithGlobalSection { }).generate "MangoConfig" {
     globalSection = {
       af = 16;
