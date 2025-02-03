@@ -45,3 +45,8 @@ Newest first.
 [My current wallpaper](option/Wallpaper.nix#L12)
 
 Color theming based on wallpaper thanks to [Stylix](https://github.com/danth/stylix).
+
+## Links.
+
+[Original repo](https://git.voronind.com/voronind/nix).
+Mirrors: [GitHub](https://github.com/voronind-com/nix) and [Codeberg](https://codeberg.org/voronind/nix).
