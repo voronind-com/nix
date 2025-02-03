@@ -10,6 +10,15 @@ Newest first.
 
 <details>
 <summary>Screenshot 1</summary>
+<img src="https://share.voronind.com/readme/02_Video.gif" />
+<img width=400px src="https://share.voronind.com/readme/02_AndroidLock.png" />
+<img width=400px src="https://share.voronind.com/readme/02_AndroidNod.png" />
+<br><a href="https://moewalls.com/games/mita-shy-miside-live-wallpaper/">Wallpaper Source</a>
+<br><a href="https://share.voronind.com/wallpaper/MitaShyMisideMoewallsCom.mp4">Wallpaper Mirror</a>
+</details>
+<details>
+
+<summary>Screenshot 2</summary>
 <img src="https://share.voronind.com/readme/01_Video.gif" />
 <img width=400px src="https://share.voronind.com/readme/01_AndroidLock.png" />
 <img width=400px src="https://share.voronind.com/readme/01_AndroidNod.png" />
@@ -18,7 +27,7 @@ Newest first.
 </details>
 
 <details>
-<summary>Screenshot 2</summary>
+<summary>Screenshot 3</summary>
 <img src="https://i.imgur.com/rVFRtST.png" />
 <img width=400px src="https://i.imgur.com/eVultId.png" />
 <img width=400px src="https://i.imgur.com/NeX9430.png" />
@@ -26,19 +35,11 @@ Newest first.
 </details>
 
 <details>
-<summary>Screenshot 3</summary>
+<summary>Screenshot 4</summary>
 <img src="https://i.imgur.com/6Yfmhcj.png" />
 <img width=400px src="https://i.imgur.com/LE4OC55.png" />
 <img width=400px src="https://i.imgur.com/cV0EzEw.png" />
 <br><a href="https://i.imgur.com/3EL63Ur.jpeg">Wallpaper link</a>
-</details>
-
-<details>
-<summary>Screenshot 4</summary>
-<img src="https://i.imgur.com/00BTwv7.png" />
-<img width=400px src="https://i.imgur.com/51M56xK.png" />
-<img width=400px src="https://i.imgur.com/TbW3MGS.png" />
-<br><a href="https://i.imgur.com/Q8ZTZCH.png">Wallpaper link</a>
 </details>
 
 [My current wallpaper](option/Wallpaper.nix#L12)
