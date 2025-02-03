@@ -87,7 +87,6 @@
           block = host: { ${host} = "0.0.0.0,::"; };
         in
         {
-          "voronind.com" = "10.0.0.1,${config.module.const.home}";
           "dasha.local" = "fd09:8d46:b26:0:29b3:d9b5:d1e9:220f";
           "desktop.local" = "fd09:8d46:b26:0:2ef8:c58a:c1ac:6cd8";
           "home.local" = "fd09:8d46:b26:0:8079:82ff:fe1a:916a";
@@ -95,11 +94,11 @@
           "phone.local" = "fd09:8d46:b26:0:f774:b83e:61f0:6ebe";
           "printer.local" = "fd09:8d46:b26:0:9e1c:37ff:fe62:3fd5";
           "router.local" = "fd09:8d46:b26:0:9e9d:7eff:fe8e:3dc7";
+          "voronind.com" = "10.0.0.1,${config.module.const.home}";
         }
         // block "gosuslugi.ru"
         // block "rutube.ru"
-      # // block "vk.com"
-      ;
+        // block "vk.com";
     };
   };
 }
