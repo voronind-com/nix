@@ -69,7 +69,6 @@ let
       (mkLink "DigitalCore" "fa-link" "https://digitalcore.club")
       (mkLink "FitGirl" "fa-link" "https://fitgirl-repacks.site")
       (mkLink "Hf" "fa-link" "https://happyfappy.org")
-      (mkLink "Lst" "fa-link" "https://lst.gg")
       (mkLink "NnmClub" "fa-link" "https://nnmclub.to")
       (mkLink "Rutor" "fa-link" "https://rutor.info")
       (mkLink "Rutracker" "fa-link" "https://rutracker.org")
