@@ -37,7 +37,7 @@ function ffmpeg_mux_cover() {
 	esac
 
 	mv out/* .
-	rm -d out/ && rm "${2}"
+	rm -d out/ # && rm "${2}"
 }
 
 # Generate music metadata from directory structure.
