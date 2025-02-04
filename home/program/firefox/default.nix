@@ -44,6 +44,7 @@ let
     (mkSearchEngine "nt" "NixOS PR Tracker" "https://nixpk.gs/pr-tracker.html?pr={searchTerms}")
     (mkSearchEngine "oz" "Ozon" "https://www.ozon.ru/search?text={searchTerms}")
     (mkSearchEngine "pa" "Pixel Art" "https://www.reddit.com/r/PixelArt/search/?q={searchTerms}")
+    (mkSearchEngine "pd" "ProtonDB" "https://www.protondb.com/search?q={searchTerms}")
     (mkSearchEngine "pe" "Perekrestok" "https://www.perekrestok.ru/cat/search?search={searchTerms}")
     (mkSearchEngine "re" "Reddit" "https://www.reddit.com/search/?q={searchTerms}")
     (mkSearchEngine "rt" "RuTracker" "https://rutracker.org/forum/tracker.php?nm={searchTerms}")
