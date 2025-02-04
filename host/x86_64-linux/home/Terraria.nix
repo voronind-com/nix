@@ -19,23 +19,23 @@
 
   # Modded.
   # NOTE: docker exec tmodloader inject "say Hello World!"
-  virtualisation.oci-containers.containers.terraria = {
-    image = "jacobsmile/tmodloader1.4:latest";
-    volumes = [ "${config.module.const.host.data}/terraria_calamity:/data" ];
-    ports = [ "0.0.0.0:22777:7777" ];
-    environment = {
-      TMOD_SHUTDOWN_MESSAGE = "Goodbye! <3";
-      TMOD_AUTOSAVE_INTERVAL = "5";
-      # TMOD_AUTODOWNLOAD = "3015412343,2824688072,2824688266,2785100219,3222493606"; # NOTE: Comment after loading once.
-      TMOD_ENABLEDMODS = "3015412343,2824688072,2824688266,2785100219,3222493606";
-      TMOD_MOTD = "<3";
-      TMOD_PASS = "mishadima143";
-      TMOD_MAXPLAYERS = "15";
-      TMOD_WORLDNAME = "CWorld";
-      TMOD_WORLDSIZE = "3";
-      # TMOD_WORLDSEED = "";
-      TMOD_DIFFICULTY = "1";
-      TMOD_SECURE = "0";
-    };
-  };
+  # virtualisation.oci-containers.containers.terraria = {
+  #   image = "jacobsmile/tmodloader1.4:latest";
+  #   volumes = [ "${config.module.const.host.data}/terraria_calamity:/data" ];
+  #   ports = [ "0.0.0.0:22777:7777" ];
+  #   environment = {
+  #     TMOD_SHUTDOWN_MESSAGE = "Goodbye! <3";
+  #     TMOD_AUTOSAVE_INTERVAL = "5";
+  #     # TMOD_AUTODOWNLOAD = "3015412343,2824688072,2824688266,2785100219,3222493606"; # NOTE: Comment after loading once.
+  #     TMOD_ENABLEDMODS = "3015412343,2824688072,2824688266,2785100219,3222493606";
+  #     TMOD_MOTD = "<3";
+  #     TMOD_PASS = "mishadima143";
+  #     TMOD_MAXPLAYERS = "15";
+  #     TMOD_WORLDNAME = "CWorld";
+  #     TMOD_WORLDSIZE = "3";
+  #     # TMOD_WORLDSEED = "";
+  #     TMOD_DIFFICULTY = "1";
+  #     TMOD_SECURE = "0";
+  #   };
+  # };
 }
