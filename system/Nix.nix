@@ -5,9 +5,9 @@
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
   nix.settings = {
     auto-optimise-store = true;
-    keep-derivations = true;
-    keep-outputs = true;
-    min-free = 1 * 1000 * 1000 * 1000;
+    keep-derivations = false;
+    keep-outputs = false;
+    min-free = 10 * 1000 * 1000 * 1000;
     substituters = [ "https://nixos-cache-proxy.cofob.dev" ];
     experimental-features = [
       "flakes"
