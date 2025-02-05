@@ -389,6 +389,45 @@ function name_fix_numbering() {
 	_iterate_targets process ${targets[@]}
 }
 
+# Create numbering for unnumbered files.
+# Usage: name_make_numbering [FILES]
+function name_make_numbering() {
+	local IFS=$'\n'
+	local power=0
+	local targets=(${@})
+	[[ ${targets} == "" ]] && targets=(*)
+
+	# Count leading zeroes.
+	count=${#targets[@]}
+	while [ ${count} -gt 0 ]; do
+		((power++))
+		count=$((count / 10))
+	done
+
+	local iter=0
+	process() {
+		((iter++))
+
+		# Prepare new name.
+		local digits=($(parse_ints "${target}"))
+		local digit="${digits[0]}"
+		local new_name=$(printf "%0${power}d" "${iter}")"_${target#${digit}_}"
+
+		# Skip if the same name.
+		[[ ${target} == "${new_name}" ]] && return 0
+
+		# Check that file does not exist.
+		if [[ -e ${new_name} ]]; then
+			_error "${new_name}: File exists!"
+			return 1
+		fi
+
+		mv -- ${target} ${new_name} && echo ${new_name}
+	}
+
+	_iterate_targets process ${targets[@]}
+}
+
 function _comp_name_parse() {
 	_autocomplete $(find_function | grep ^parse)
 }
