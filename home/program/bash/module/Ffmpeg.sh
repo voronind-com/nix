@@ -65,15 +65,37 @@ function ffmpeg_music_meta() {
 	year="${year%%_*}"
 	# local total=$(ls *.${format} | wc -l)
 
+	# Check.
+	if [[ ${album} == "" ]]; then
+		_error "Failed to get the album name!"
+		return 1
+	fi
+	if [[ ${artist} == "" ]]; then
+		_error "Failed to get the artist name!"
+		return 1
+	fi
+	if [[ ${year} == "" ]]; then
+		_error "Failed to get the year!"
+		return 1
+	fi
+
 	mkdir out
 
 	for file in *.${format}; do
 		local track="${file%%_*}"
 		track=$((10#${track}))
-		[[ ${track} == "" ]] && track=0
 		local title="${file#*_}"
 		title="${title%.*}"
 		title="${title//_/ }"
+
+		if [[ ${track} == "" ]]; then
+			_error "Failed to get the track number!"
+			return 1
+		fi
+		if [[ ${title} == "" ]]; then
+			_error "Failed to get the title name!"
+			return 1
+		fi
 
 		# echo "${artist}; ${album}; ${year}; ${track}; ${title}"
 		# TODO: make it format-specific.
