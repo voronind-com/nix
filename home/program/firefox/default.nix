@@ -18,6 +18,7 @@ let
   ];
 
   searchEngines = [
+    (mkSearchEngine "2g" "2gis" "https://2gis.ru/spb/search/{searchTerms}")
     (mkSearchEngine "4p" "4pda"
       "https://4pda.to/forum/index.php?act=search&forums[]=all&source=all&query={searchTerms}"
     )
