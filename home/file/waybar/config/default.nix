@@ -108,6 +108,8 @@ in
         format = "{player_icon}  {title} - {artist}";
         format-paused = "{status_icon}  {title} - {artist}";
         on-click-middle = "playerctl stop";
+        on-scroll-up = "playerctl position 5+";
+        on-scroll-down = "playerctl position 5-";
         title-len = maxLength;
         tooltip-format = "{player}: {dynamic}";
         player-icons = {
