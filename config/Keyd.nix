@@ -80,8 +80,8 @@ in
             compose = "compose";
             delete = "delete";
             esc = "esc";
-            rightcontrol = "rightcontrol";
-            rightshift = "rightshift";
+            rightcontrol = "leftcontrol";
+            rightshift = "delete";
           };
 
           # NOTE: Vacant compose key layer.
