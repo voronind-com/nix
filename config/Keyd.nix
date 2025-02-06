@@ -50,29 +50,31 @@ in
             "7" = "f7";
             "8" = "f8";
             "9" = "f9";
-            minus = "f11";
             equal = "f12";
+            minus = "f11";
 
             # Legacy navigation.
             a = "home";
             d = "end";
-            p = "pageup";
-            n = "pagedown";
             h = "left";
             j = "down";
             k = "up";
             l = "right";
+            n = "pagedown";
+            p = "pageup";
 
             # Media controls.
-            s = "volumedown";
-            w = "volumeup";
-            q = "previoussong";
-            e = "nextsong";
-            space = "playpause";
-            z = "micmute";
-            x = "stopcd";
             c = "mute";
+            comma = "back";
+            dot = "forward";
+            e = "nextsong";
+            q = "previoussong";
+            s = "volumedown";
+            space = "playpause";
             v = "ejectcd"; # Toggle audio output.
+            w = "volumeup";
+            x = "stopcd";
+            z = "micmute";
 
             # Reset keys.
             backspace = "backspace";
