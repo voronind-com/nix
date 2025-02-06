@@ -50,7 +50,7 @@ in
         version_new=$(git rev-list HEAD --count)
         version_old=$(cat /etc/os-build || echo 0)
         echo "OLD=$version_old NEW=$version_new"
-        [[ $version_old = "" ]] && echo "Warning: No old build number!"
+        [[ $version_old -eq 0 ]] && echo "Warning: No old build number!"
         [[ $version_new = $version_old ]] && {
           echo "No updates."
           exit 0
