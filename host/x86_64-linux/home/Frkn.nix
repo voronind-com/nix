@@ -1,5 +1,31 @@
 { config, pkgs, ... }:
 {
+  module.dpi.bypass = {
+    enable = true;
+    udpSupport = true;
+    params = [
+      "--dpi-desync=multisplit"
+      "--dpi-desync-split-pos=10,midsld"
+      "--dpi-desync-split-seqovl=1"
+
+      "--dpi-desync-any-protocol"
+    ];
+    whitelist = [
+      "youtube.com"
+      "googlevideo.com"
+      "google.com"
+      "ytimg.com"
+      "youtu.be"
+      "m.youtube.com"
+      "rutracker.org"
+      "rutracker.cc"
+      "rutrk.org"
+      "t-ru.org"
+      "medium.com"
+    ];
+    udpPorts = [ "443" ];
+  };
+
   services = {
     tor = {
       enable = true;
