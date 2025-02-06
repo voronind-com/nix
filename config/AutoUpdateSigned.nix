@@ -33,6 +33,8 @@ in
         coreutils
         git
         gnumake
+        jq
+        nix
         nixos-rebuild
         openssh
         procps
@@ -47,7 +49,7 @@ in
           echo "Verification failed."
           exit 1
         };
-        version_new=$(git rev-list HEAD --count)
+        version_new=$(nix flake metadata --json | jq .lastModified)
         version_old=$(cat /etc/os-build || echo 0)
         echo "OLD=$version_old NEW=$version_new"
         [[ $version_old -eq 0 ]] && echo "Warning: No old build number!"

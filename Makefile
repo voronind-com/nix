@@ -10,7 +10,7 @@ android:
 	cp ~/.Wallpaper /sdcard/Download/Wallpaper.jpg
 	cp ~/.Wallpaper /sdcard/Download/Wallpaper.png
 
-boot: os-build
+boot:
 	nixos-rebuild boot $(options) --flake $(flake)
 
 cached:
@@ -112,9 +112,6 @@ live:
 no-nixconf:
 	mv /etc/nix/nix.conf /etc/nix/nix.conf_ || true
 
-os-build:
-	printf "%s" $(build) > /etc/os-build
-
 reboot: boot
 	reboot
 
@@ -124,7 +121,7 @@ recovery:
 show:
 	nix flake show
 
-switch: os-build
+switch:
 	nixos-rebuild switch $(options) --flake $(flake)
 
 # NOTE: Use `nix flake update <INPUT>` for selective update.
