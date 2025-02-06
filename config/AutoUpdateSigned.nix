@@ -35,6 +35,7 @@ in
         gnumake
         nixos-rebuild
         openssh
+        procps
       ];
       script = ''
         cd /tmp
