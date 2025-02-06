@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgsUnstable,
-  ...
-}:
+{ config, lib, ... }:
 let
   cfg = config.module.kernel;
 in
@@ -55,8 +50,6 @@ in
       })
 
       (lib.mkIf cfg.hotspotTtlBypass { boot.kernel.sysctl."net.ipv4.ip_default_ttl" = 65; })
-
-      (lib.mkIf cfg.latest { boot.kernelPackages = pkgsUnstable.linuxPackages_latest; })
 
       (lib.mkIf cfg.router {
         boot.kernel.sysctl = {

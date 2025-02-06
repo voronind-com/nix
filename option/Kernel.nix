@@ -15,10 +15,6 @@ in
       default = false;
       type = lib.types.bool;
     };
-    latest = lib.mkOption {
-      default = with purpose; desktop || laptop || gaming;
-      type = lib.types.bool;
-    };
     router = lib.mkOption {
       default = purpose.router;
       type = lib.types.bool;

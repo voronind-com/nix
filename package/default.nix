@@ -43,6 +43,7 @@
       lshw # Detailed hardware info tool.
       lsof # Find current file users.
       ltex-ls # Latex LSP for neovim spellcheck.
+      lz4 # Compression algo.
       man # App to read manuals.
       mtr # Traceroute tool.
       neovim # Text editor.
@@ -77,6 +78,7 @@
       wireguard-tools # Tools to work with Wireguard.
       xz # Archive and compression tools.
       yazi # File manager.
+      zfs # Filesystem utils.
       zip # Zip utility.
 
       # (pkgs.callPackage ./ytdlp {}) # Youtube downloader bin package.
