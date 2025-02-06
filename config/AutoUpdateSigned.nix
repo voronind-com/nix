@@ -37,14 +37,28 @@ in
         openssh
       ];
       script = ''
-        pushd /tmp
+        cd /tmp
         rm -rf ./nixos
-        git clone --depth=1 --single-branch --branch=main ${config.module.const.url} ./nixos
-        pushd ./nixos
+        git clone --single-branch --branch=main ${config.module.const.url} ./nixos
+        cd ./nixos
+
         git verify-commit HEAD && git fsck || {
           echo "Verification failed."
           exit 1
         };
+        version_new=$(git rev-list HEAD --count)
+        version_old=$(cat /etc/os-build || echo 0)
+        echo "OLD=$version_old NEW=$version_new"
+        [[ $version_old = "" ]] && echo "Warning: No old build number!"
+        [[ $version_new = $version_old ]] && {
+          echo "No updates."
+          exit 0
+        };
+        [[ $version_new -gt $version_old ]] || {
+          echo "Downgrade not possible!"
+          exit 1
+        };
+
         timeout 55m make switch
       '';
     };

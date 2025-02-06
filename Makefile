@@ -1,6 +1,7 @@
-options  = --option eval-cache false --fallback --print-build-logs --verbose --option extra-experimental-features pipe-operators
+build    = $(shell git rev-list HEAD --count)
 flake    = .
 hostname = $(shell hostname)
+options  = --option eval-cache false --fallback --print-build-logs --verbose --option extra-experimental-features pipe-operators
 
 build: verify check
 
@@ -9,7 +10,7 @@ android:
 	cp ~/.Wallpaper /sdcard/Download/Wallpaper.jpg
 	cp ~/.Wallpaper /sdcard/Download/Wallpaper.png
 
-boot:
+boot: os-build
 	nixos-rebuild boot $(options) --flake $(flake)
 
 cached:
@@ -99,7 +100,6 @@ install-nixos:
 		umount /mnt
 	};
 
-
 installer:
 	nix build -o iso/installer $(options) $(flake)#nixosConfigurations.installer.config.system.build.isoImage
 
@@ -112,6 +112,9 @@ live:
 no-nixconf:
 	mv /etc/nix/nix.conf /etc/nix/nix.conf_ || true
 
+os-build:
+	printf "%s" $(build) > /etc/os-build
+
 reboot: boot
 	reboot
 
@@ -121,7 +124,7 @@ recovery:
 show:
 	nix flake show
 
-switch:
+switch: os-build
 	nixos-rebuild switch $(options) --flake $(flake)
 
 # NOTE: Use `nix flake update <INPUT>` for selective update.
