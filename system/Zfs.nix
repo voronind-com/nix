@@ -1,6 +1,4 @@
 { config, ... }:
-let
-in
 {
   networking.hostId =
     config.networking.hostName |> builtins.hashString "sha1" |> builtins.substring 0 8;
@@ -12,21 +10,21 @@ in
   services.zfs = {
     trim = {
       enable = true;
-      interval = "weekly";
+      interval = "daily";
     };
     autoScrub = {
       enable = true;
       interval = "quarterly";
-      pools = [ ];
+      pools = [ "system" ];
     };
     autoSnapshot = {
       enable = true;
       flags = "-k -p --utc";
-      frequent = 0;
-      hourly = 24;
-      daily = 7;
-      weekly = 4;
-      monthly = 0;
+      # frequent = 0;
+      # hourly = 24;
+      # daily = 7;
+      # weekly = 0;
+      # monthly = 0;
     };
 
     # TODO: Add to home.
