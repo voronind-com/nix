@@ -344,7 +344,7 @@ in
         base = "https://pass.voronind.com";
       };
       "foxyproxy@eric.h.jung" = {
-        mode = "enable";
+        mode = "pattern";
         sync = false;
         data = [
           {
@@ -367,12 +367,12 @@ in
             color = "#ffff00";
             proxyDNS = false;
             include = [
-              {
-                active = true;
-                pattern = "*://www.youtube.com/*";
-                title = "YouTube";
-                type = "wildcard"; # wildcard or regex.
-              }
+              # {
+              #   active = true;
+              #   pattern = "*://www.youtube.com/*";
+              #   title = "YouTube";
+              #   type = "wildcard"; # wildcard or regex.
+              # }
             ];
             exclude = [ ];
           }
@@ -381,10 +381,17 @@ in
             title = "Tor";
             type = "socks5";
             hostname = "home.local";
-            port = 9150;
+            port = 9050;
             color = "#0000ff";
             proxyDNS = true;
-            include = [ "*.onion" ];
+            include = [
+              {
+                active = true;
+                pattern = "*.onion";
+                title = "Onion";
+                type = "wildcard"; # wildcard or regex.
+              }
+            ];
             exclude = [ ];
           }
         ];

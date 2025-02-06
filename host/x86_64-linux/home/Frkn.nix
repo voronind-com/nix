@@ -15,10 +15,10 @@
           UseBridges = true;
           ClientTransportPlugin = "obfs4 exec ${pkgs.obfs4}/bin/lyrebird";
           Bridge = [
-            "obfs4 121.45.140.249:12123 0922E212E33B04F0B7C1E398161E8EDE06734F26 cert=3AQ4iJFAzxzt7a/zgXIiFEs6fvrXInXt1Dtr09DgnpvUzG/iiyRTdXYZKSYpI124Zt3ZUA iat-mode=0"
-            "obfs4 145.239.31.71:10161 882125D15B59BB82BE66F999056CB676D3F061F8 cert=AnD+EvcBMuQDVM7PwW7NgFAzW1M5jDm7DjQtIIcBSjoyAf1FJ2p535rrYL2Kk8POAd0+aw iat-mode=0"
-            "obfs4 79.137.11.45:45072 ECA3197D49A29DDECD4ACBF9BCF15E4987B78137 cert=2FKyLWkPgMNCWxBD3cNOTRxJH3XP+HdStPGKMjJfw2YbvVjihIp3X2BCrtxQya9m5II5XA iat-mode=0"
-            "obfs4 94.103.89.153:4443 5617848964FD6546968B5BF3FFA6C11BCCABE58B cert=tYsmuuTe9phJS0Gh8NKIpkVZP/XKs7gJCqi31o8LClwYetxzFz0fQZgsMwhNcIlZ0HG5LA iat-mode=0"
+            "obfs4 89.58.2.217:9292 B72A7169C09F78E9F65020BEFA1F7ECD1BD838F7 cert=9pkzE06rv53gTCAofw1jIOymJkm1D7aMT+gAm+OAcowHLkjwJvnIUpNYDldlJu4dstxiHg iat-mode=0"
+            "obfs4 107.189.3.186:32363 5ABFC5405EAFD091BCAF4D9E4318D1FC52D531B9 cert=7p2ynsYB7whyjW6m/zF2kSl/X5veyfHZsFQWGyYr+zTvu+g3IhvbW7OUhG1EOgmBa3dbfA iat-mode=0"
+            "obfs4 51.91.210.40:50499 02EBBFE93E096DE4A951A7490BA6F627D19E17D6 cert=zi18veVS2T3yEXzOc2k238UAUZjCQk0AZYpdP0TjlzDpQzH3N7S1vYF2xpjtcV5SjyhZXA iat-mode=0"
+            "obfs4 91.134.80.21:2755 7AEA25E46D7BE4E1F86021DC76AEA5E196179D21 cert=loKrRJYnD9H1TOPx+axdQgjbz8At5B6cgUWzAxiG/HNLQLytxvwCmZ/7YB8vwSFNmGslYA iat-mode=0"
           ];
         };
       client = {
@@ -26,7 +26,7 @@
         # dns.enable = true;
         socksListenAddress = {
           IsolateDestAddr = true;
-          addr = "0.0.0.0";
+          addr = "::";
           port = 9050;
         };
       };
