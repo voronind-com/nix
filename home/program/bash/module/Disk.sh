@@ -1,6 +1,6 @@
 # Show only physical drives info.
 function pdf() {
-	df --si | sed -e '1p' -e '/^\/dev\//!d'
+	df --si | sed -e '/^tmpfs/d' -e '/^devtmpfs/d' -e '/^efivarfs/d'
 }
 
 # Show total size in SI.
