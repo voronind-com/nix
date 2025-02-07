@@ -3,7 +3,8 @@
 # Pantum M6500W-Series
 { __findFile, pkgs, ... }@args:
 let
-  package = pkgs.callPackage <package/print> args;
+  # package = pkgs.callPackage <package/print> args;
+  package = pkgs.pantum-driver;
 in
 {
   services.printing = {
