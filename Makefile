@@ -98,6 +98,8 @@ install-nixos:
 	# Configure zfs.
 	zfs set com.sun:auto-snapshot=false system
 	zfs set com.sun:auto-snapshot:daily=true system
+	zfs set com.sun:auto-snapshot:hourly=true system/home
+	zfs set com.sun:auto-snapshot:frequent=true system/home
 	# Mount.
 	mkdir -p /mnt/root
 	mount -t zfs system/root /mnt
