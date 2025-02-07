@@ -7,7 +7,7 @@
       home = "/var/lib/tandoor_recipes";
       isSystemUser = true;
     };
-    groups.tandoor_recipes = {};
+    groups.tandoor_recipes = { };
   };
   services.tandoor-recipes = {
     enable = true;
