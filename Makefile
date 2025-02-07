@@ -115,23 +115,23 @@ install-nixos:
 		umount /mnt
 	};
 
-installer:
+iso-installer:
 	nix build -o iso/installer $(options) $(flake)#nixosConfigurations.installer.config.system.build.isoImage
 
-isolation:
+iso-isolation:
 	nix build -o iso/isolation $(options) $(flake)#nixosConfigurations.isolation.config.system.build.isoImage
 
-live:
+iso-live:
 	nix build -o iso/live $(options) $(flake)#nixosConfigurations.live.config.system.build.isoImage
+
+iso-recovery:
+	nix build -o iso/recovery $(options) $(flake)#nixosConfigurations.recovery.config.system.build.isoImage
 
 no-nixconf:
 	mv /etc/nix/nix.conf /etc/nix/nix.conf_ || true
 
 reboot: boot
 	reboot
-
-recovery:
-	nix build -o iso/recovery $(options) $(flake)#nixosConfigurations.recovery.config.system.build.isoImage
 
 show:
 	nix flake show
