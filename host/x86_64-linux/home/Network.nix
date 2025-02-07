@@ -97,6 +97,9 @@ in
           EmitDNS = true;
           DNS = internal6;
         };
+        ipv6AcceptRAConfig = {
+          Token = "eui64";
+        };
         ipv6Prefixes = [
           {
             Assign = true;
@@ -131,6 +134,7 @@ in
         netdevConfig = {
           Kind = "bridge";
           Name = lan;
+          MACAddress = "1a:0c:8b:13:29:10";
         };
       };
     };

@@ -18,7 +18,7 @@
       type = lib.types.str;
     };
     home = lib.mkOption {
-      default = "fd09:8d46:b26:0:8079:82ff:fe1a:916a";
+      default = "fd09:8d46:b26:0:180c:8bff:fe13:2910";
       type = lib.types.str;
     };
     ula = lib.mkOption {
