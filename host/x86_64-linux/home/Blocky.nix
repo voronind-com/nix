@@ -87,10 +87,10 @@
           block = host: { ${host} = "0.0.0.0,::"; };
         in
         {
-          "dasha.local" = "";
+          # "dasha.local" = "";
           "desktop.local" = "fd09:8d46:b26:0:dabb:c1ff:fecc:da30";
           "home.local" = config.module.const.home;
-          "max.local" = "";
+          # "max.local" = "";
           "phone.local" = "fd09:8d46:b26:0:f774:b83e:61f0:6ebe";
           "printer.local" = "fd09:8d46:b26:0:9e1c:37ff:fe62:3fd5";
           "router.local" = "fd09:8d46:b26:0:9e9d:7eff:fe8e:3dc7";
