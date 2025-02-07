@@ -8,7 +8,7 @@
 let
   cfg = config.module.builder;
   serverKeyPath = "/root/.nixbuilder";
-  serverSshPublicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFqr7zKGOy/2bbAQCD85Ol+NoGGtvdMbSy3jGb98jM+f"; # Use ssh-keyscan.
+  serverSshPublicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE6gR8b+X20ndJZCM2+Wqxl8vHHWtQZMKFEh0zM62m31"; # Use ssh-keyscan.
 in
 {
   config = lib.mkMerge [
