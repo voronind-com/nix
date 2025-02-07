@@ -92,7 +92,7 @@ install-nixos:
 	parted -s "${INSTALL_TARGET}" set 1 esp on
 	# Format.
 	mkfs.fat -F 32 /dev/disk/by-partlabel/NIXBOOT
-	zpool create ${zfs_encryption} -O compression=on -O mountpoint=none -O xattr=sa -O acltype=posixacl -O atime=off system /dev/disk/by-partlabel/NIXROOT
+	zpool create ${zfs_encryption} -O compression=lz4 -O mountpoint=none -O xattr=sa -O acltype=posixacl -O atime=off system /dev/disk/by-partlabel/NIXROOT
 	zfs create -o canmount=on -o mountpoint=/nix system/nix
 	zfs create -o canmount=on -o mountpoint=/var system/var
 	zfs create -o canmount=on -o mountpoint=/home system/home
