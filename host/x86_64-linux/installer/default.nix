@@ -12,7 +12,7 @@
   ];
 
   # Root user config.
-  home.nixos = true;
+  home.nixos.enable = true;
   user.root = true;
 
   # Required for live iso.

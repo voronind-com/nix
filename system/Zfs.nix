@@ -5,6 +5,7 @@
   boot = {
     initrd.supportedFilesystems.zfs = true;
     supportedFilesystems.zfs = true;
+    zfs.extraPools = [ "system" ];
     # zfs.enabled = true; # NOTE: Auto-enabled by above variables.
   };
   services.zfs = {
@@ -19,7 +20,7 @@
     };
     autoSnapshot = {
       enable = true;
-      flags = "-k -p --utc";
+      # flags = "-k -p --utc";
       # frequent = 0;
       # hourly = 24;
       # daily = 7;

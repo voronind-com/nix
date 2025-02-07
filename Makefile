@@ -53,8 +53,9 @@ install-hm:
 	nix-shell '<home-manager>' -A install
 
 # Required env variables set:
-# INSTALL_HOST   - Host name to install.
-# INSTALL_TARGET - Drive to install to.
+# INSTALL_HOST       - Host name to install.
+# INSTALL_TARGET     - Drive to install to.
+# INSTALL_ENCRYPTION - Set any value to enable encryption.
 # Must have Internet connection and running from the live iso.
 install-nixos:
 	@[ "${HOSTNAME}" = "live" ] || { \
@@ -76,27 +77,41 @@ install-nixos:
 	@printf "%s\n%s: %s\n%s: %s\n" \
 		"Summary" \
 		"Target" "${INSTALL_TARGET}" \
-		"Host" "${INSTALL_HOST}"
+		"Host" "${INSTALL_HOST}" \
+		"Encryption" "$([ -z ${INSTALL_ENCRYPTION} ] && printf '%s' 'No' || printf '%s' 'Yes')"
 	@printf "%s" "Press Enter to continue, <C-c> to cancel."
 	@read
+	# Pre-configure.
+	[ -z ${INSTALL_ENCRYPTION} ] || zfs_encryption="-O encryption=on -O keyformat=passphrase -O keylocation=prompt"
 	# Partition.
 	parted -s "${INSTALL_TARGET}" mktable gpt
-	parted -s "${INSTALL_TARGET}" mkpart primary 0% 512MB
-	parted -s "${INSTALL_TARGET}" mkpart primary 512MB 100%
+	parted -s "${INSTALL_TARGET}" mkpart primary 0% 1GB
+	parted -s "${INSTALL_TARGET}" mkpart primary 1GB 100%
 	parted -s "${INSTALL_TARGET}" name 1 NIXBOOT
 	parted -s "${INSTALL_TARGET}" name 2 NIXROOT
 	parted -s "${INSTALL_TARGET}" set 1 esp on
-	# Format
+	# Format.
 	mkfs.fat -F 32 /dev/disk/by-partlabel/NIXBOOT
-	mkfs.ext4 -F /dev/disk/by-partlabel/NIXROOT
-	# Mount
-	mount /dev/disk/by-partlabel/NIXROOT /mnt
-	mkdir /mnt/boot
+	zpool create ${zfs_encryption} -O compression=on -O mountpoint=none -O xattr=sa -O acltype=posixacl -O atime=off system /dev/disk/by-partlabel/NIXROOT
+	zfs create -o canmount=on -o mountpoint=/nix system/nix
+	zfs create -o canmount=on -o mountpoint=/var system/var
+	zfs create -o canmount=on -o mountpoint=/home system/home
+	zfs create -o refreservation=10G -o mountpoint=none system/reserved
+	# Mount.
+	mkdir -p /mnt
+	mount -t zfs system/root /mnt
+	mkdir -p /mnt/boot /mnt/nix /mnt/var /mnt/home
+	mount -t zfs system/nix /mnt/nix
+	mount -t zfs system/var /mnt/var
+	mount -t zfs system/home /mnt/home
 	mount /dev/disk/by-partlabel/NIXBOOT /mnt/boot
-	# Install
+	# Install.
 	cd /mnt && nixos-install --no-root-password --no-channel-copy --flake ".#${INSTALL_HOST}" || { \
 		# Rollback.
 		umount /mnt/boot
+		umount /mnt/nix
+		umount /mnt/var
+		umount /mnt/home
 		umount /mnt
 	};
 

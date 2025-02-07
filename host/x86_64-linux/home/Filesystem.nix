@@ -1,6 +1,15 @@
 { ... }:
 {
   fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-partlabel/NIXROOT";
+      fsType = "ext4";
+      options = [ "noatime" ];
+    };
+    "/boot" = {
+      device = "/dev/disk/by-partlabel/NIXBOOT";
+      fsType = "vfat";
+    };
     "/storage/cold_1" = {
       device = "/dev/storage/cold_1";
       fsType = "ext4";
