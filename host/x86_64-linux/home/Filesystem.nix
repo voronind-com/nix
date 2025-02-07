@@ -1,5 +1,9 @@
 { ... }:
 {
+  boot.zfs.extraPools = [
+    "data"
+  ];
+
   # TODO: Move to <system>.
   fileSystems = {
     "/" = {
@@ -43,15 +47,6 @@
 
     "/storage/hot_1" = {
       device = "/dev/storage/hot_1";
-      fsType = "ext4";
-      options = [
-        "noatime"
-        "nofail"
-      ];
-    };
-
-    "/storage/hot_2" = {
-      device = "/dev/storage/hot_2";
       fsType = "ext4";
       options = [
         "noatime"

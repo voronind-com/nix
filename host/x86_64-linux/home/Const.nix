@@ -1,11 +1,10 @@
 { config, ... }:
 {
   config.module.const.host = {
-    data = "/storage/hot_2/data";
     download = "/storage/hot_1/download";
     ftp = "/storage/hot_1/ftp";
     share = "/storage/hot_1/share";
-    sync = "/storage/hot_2/sync";
+    sync = "/data/sync";
     nginx = {
       domain = "voronind.com";
       sslCertificate = "/etc/letsencrypt/live/voronind.com/fullchain.pem";

@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  storage = "${config.module.const.host.data}/davis";
+  storage = "/data/secret/davis";
 in
 {
   services.davis = {

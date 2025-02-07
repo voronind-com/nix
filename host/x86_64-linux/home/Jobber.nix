@@ -29,7 +29,7 @@ in
 
     bindMounts = {
       "/data" = {
-        hostPath = "${config.module.const.host.data}/jobber";
+        hostPath = "/data/secret/jobber";
         isReadOnly = true;
       };
     };

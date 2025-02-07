@@ -60,7 +60,7 @@
 
     xray = {
       enable = true;
-      settingsFile = "${config.module.const.host.data}/XrayClient.json";
+      settingsFile = "/data/secret/XrayClient.json";
     };
   };
 }

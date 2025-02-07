@@ -91,12 +91,12 @@ in
     '';
   };
 
-  systemd.timers.backup = {
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnCalendar = "*-*-* 06:00:00";
-      Persistent = true;
-      Unit = "backup.service";
-    };
-  };
+  # systemd.timers.backup = {
+  #   wantedBy = [ "timers.target" ];
+  #   timerConfig = {
+  #     OnCalendar = "*-*-* 06:00:00";
+  #     Persistent = true;
+  #     Unit = "backup.service";
+  #   };
+  # };
 }
