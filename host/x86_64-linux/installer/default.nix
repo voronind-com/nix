@@ -17,6 +17,7 @@
 
   # Required for live iso.
   networking.wireless.enable = lib.mkForce false;
+  boot.zfs.extraPools = lib.mkForce [ ];
 
   # Override my settings to allow SSH logins using root password.
   services.openssh.settings = {

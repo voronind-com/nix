@@ -6,6 +6,7 @@ in
   config = lib.mkIf cfg.enable {
     # services.rogue.enable = true; # NOTE: Not available smh.
     fileSystems = lib.mkForce config.lib.isoFileSystems;
+    boot.zfs.extraPools = lib.mkForce false;
     services = {
       getty = {
         autologinUser = lib.mkForce "live";

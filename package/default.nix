@@ -80,6 +80,7 @@
       yazi # File manager.
       zfs # Filesystem utils.
       zip # Zip utility.
+      zstd # Good compression.
 
       # (pkgs.callPackage ./ytdlp {}) # Youtube downloader bin package.
       (pkgs.callPackage ./ctagslsp { }) # Ctags LSP.
