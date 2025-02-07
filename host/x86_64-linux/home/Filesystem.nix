@@ -1,15 +1,28 @@
 { ... }:
 {
+  # TODO: Move to <system>.
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-partlabel/NIXROOT";
-      fsType = "ext4";
-      options = [ "noatime" ];
+      device = "system/root";
+      fsType = "zfs";
+    };
+    "/nix" = {
+      device = "system/nix";
+      fsType = "zfs";
+    };
+    "/var" = {
+      device = "system/var";
+      fsType = "zfs";
+    };
+    "/home" = {
+      device = "system/home";
+      fsType = "zfs";
     };
     "/boot" = {
       device = "/dev/disk/by-partlabel/NIXBOOT";
       fsType = "vfat";
     };
+
     "/storage/cold_1" = {
       device = "/dev/storage/cold_1";
       fsType = "ext4";
