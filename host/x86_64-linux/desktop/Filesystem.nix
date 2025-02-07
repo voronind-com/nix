@@ -1,6 +1,6 @@
 { ... }:
 {
-  boot.zfs.extraPools = [ "game" ];
+  # boot.zfs.extraPools = [ "game" ];
 
   # TODO: Move to <system>.
   fileSystems = {
