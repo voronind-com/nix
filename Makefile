@@ -70,16 +70,16 @@ install-nixos:
 		_error "No internet connection!"; \
 		exit 2; \
 	};
-	@printf "%s\n%s: %s\n%s: %s\n%s: %s" \
+	@printf "%s\n%s: %s\n%s: %s\n%s: %s\n" \
 		"Summary" \
 		"Target" "${INSTALL_TARGET}" \
 		"Host" "${INSTALL_HOST}" \
-		"Encryption" "$([ -z ${INSTALL_ENCRYPTION} ] && printf '%s' 'No' || printf '%s' 'Yes')"
+		"Encryption" $$([ -z ${INSTALL_ENCRYPTION} ] && echo No || echo Yes)
 	@printf "%s" "Press Enter to continue, <C-c> to cancel."
 	@read
 	# Pre-configure.
-	[ -z ${INSTALL_ENCRYPTION} ] || zfs_encryption="-O encryption=on -O keyformat=passphrase -O keylocation=prompt"
-	install_flake="$(realpath .)"
+	@$(eval zfs_encryption := $(shell [ -z ${INSTALL_ENCRYPTION} ] || echo "-O encryption=on -O keyformat=passphrase -O keylocation=prompt"))
+	@$(eval install_flake := $(shell realpath .))
 	# Partition.
 	parted -s "${INSTALL_TARGET}" mktable gpt
 	parted -s "${INSTALL_TARGET}" mkpart primary 0% 1GB
@@ -95,6 +95,9 @@ install-nixos:
 	zfs create -o mountpoint=legacy system/var
 	zfs create -o mountpoint=legacy system/home
 	zfs create -o refreservation=10G -o mountpoint=none system/reserved
+	# Configure zfs.
+	zfs set com.sun:auto-snapshot=false system
+	zfs set com.sun:auto-snapshot:daily=true system
 	# Mount.
 	mkdir -p /mnt/root
 	mount -t zfs system/root /mnt
@@ -105,12 +108,12 @@ install-nixos:
 	mount /dev/disk/by-partlabel/NIXBOOT /mnt/boot
 	# Install.
 	cd /mnt && nixos-install --no-root-password --no-channel-copy --flake "${install_flake}#${INSTALL_HOST}" || { \
-		# Rollback.
-		umount /mnt/boot \
-		umount /mnt/nix \
-		umount /mnt/var \
-		umount /mnt/home \
-		umount /mnt \
+		umount /mnt/boot; \
+		umount /mnt/nix; \
+		umount /mnt/var; \
+		umount /mnt/home; \
+		umount /mnt; \
+		zpool export system; \
 	};
 
 iso-installer:
