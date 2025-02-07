@@ -5,7 +5,6 @@
   boot = {
     initrd.supportedFilesystems.zfs = true;
     supportedFilesystems.zfs = true;
-    zfs.extraPools = [ "system" ];
     # zfs.enabled = true; # NOTE: Auto-enabled by above variables.
   };
   services.zfs = {

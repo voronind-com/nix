@@ -34,5 +34,6 @@
 
   module = {
     package.all = true;
+    keyd.enable = true;
   };
 }
