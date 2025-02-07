@@ -19,7 +19,7 @@ Host fmpmaven
 	Port 22
 
 Host home
-	HostName fd09:8d46:b26:0:8079:82ff:fe1a:916a
+	HostName fd09:8d46:b26:0:180c:8bff:fe13:2910
 	User root
 	Port 22143
 
