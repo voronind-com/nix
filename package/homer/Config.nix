@@ -25,6 +25,7 @@ let
       (mkLink "2gis" "fa-map-location-dot" "https://2gis.ru")
       (mkLink "Apteka" "fa-tablets" "https://apteka.ru")
       (mkLink "DNS Shop" "fa-blender" "https://www.dns-shop.ru")
+      (mkLink "Na Parah" "fa-fish" "https://заказ.напарах.рф")
       (mkLink "Ozon" "fa-truck" "https://www.ozon.ru")
       (mkLink "Perekrestok" "fa-fish" "https://www.perekrestok.ru")
       (mkLink "Samokat" "fa-bicycle" "https://samokat.ru")
