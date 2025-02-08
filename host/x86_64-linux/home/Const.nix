@@ -1,9 +1,9 @@
 { config, ... }:
 {
   config.module.const.host = {
-    download = "/storage/hot_1/download";
-    ftp = "/storage/hot_1/ftp";
-    share = "/storage/hot_1/share";
+    download = "/hot/download";
+    ftp = "/hot/ftp";
+    share = "/hot/share";
     sync = "/data/sync";
     nginx = {
       domain = "voronind.com";

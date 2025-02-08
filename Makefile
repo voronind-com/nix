@@ -96,7 +96,6 @@ install-nixos:
 	zfs create -o mountpoint=legacy system/home
 	zfs create -o refreservation=10G -o mountpoint=none system/reserved
 	# Configure zfs.
-	zfs set com.sun:auto-snapshot=false system
 	zfs set com.sun:auto-snapshot:daily=true system
 	zfs set com.sun:auto-snapshot:hourly=true system/home
 	zfs set com.sun:auto-snapshot:frequent=true system/home

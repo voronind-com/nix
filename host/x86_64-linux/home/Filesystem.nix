@@ -2,6 +2,7 @@
 {
   boot.zfs.extraPools = [
     "data"
+    "hot"
   ];
 
   services.zfs.autoScrub.pools = [ "data" ];
