@@ -148,5 +148,8 @@ update:
 verify: housekeep
 	git verify-commit HEAD
 
+version:
+	nix flake metadata --json | jq .lastModified
+
 vm:
 	nix run $(options) $(flake)#nixosConfigurations.$(hostname).config.system.build.vm
