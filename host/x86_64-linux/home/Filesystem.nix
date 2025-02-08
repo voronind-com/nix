@@ -4,6 +4,8 @@
     "data"
   ];
 
+  services.zfs.autoScrub.pools = [ "data" ];
+
   # TODO: Move to <system>.
   fileSystems = {
     "/" = {
