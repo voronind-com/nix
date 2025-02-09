@@ -81,7 +81,6 @@
       yazi # File manager.
       zfs # Filesystem utils.
       zip # Zip utility.
-      zrepl # ZFS replication tool.
       zstd # Good compression.
 
       # (pkgs.callPackage ./ytdlp {}) # Youtube downloader bin package.
