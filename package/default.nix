@@ -62,6 +62,7 @@
       smartmontools # S.M.A.R.T. tools.
       sqlite # Serverless file-based database engine.
       sshfs # Ssh client.
+      sysstat # System monitoring.
       tcpdump # Sniff tool.
       testdisk # Apps to recover data from drives.
       tmux # Terminal multiplexor.
