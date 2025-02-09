@@ -24,7 +24,7 @@
         peer-port = 51413;
         pex-enabled = true;
         port-forwarding-enabled = false;
-        preallocation = 1;
+        preallocation = 0;
         preferred-transport = "utp";
         rename-partial-files = true;
         rpc-bind-address = "::";
