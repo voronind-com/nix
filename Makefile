@@ -108,7 +108,7 @@ install-nixos:
 	mount -t zfs system/home /mnt/home
 	mount /dev/disk/by-partlabel/NIXBOOT /mnt/boot
 	# Install.
-	cd /mnt && nixos-install --no-root-password --no-channel-copy --flake "${install_flake}#${INSTALL_HOST}" || { \
+	nixos-install --root /mnt --no-root-password --no-channel-copy --flake "${install_flake}#${INSTALL_HOST}" || { \
 		umount /mnt/boot; \
 		umount /mnt/nix; \
 		umount /mnt/var; \
