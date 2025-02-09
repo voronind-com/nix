@@ -24,7 +24,7 @@
       gpu.enable = true;
       cpu = {
         enable = true;
-        powersave = true;
+        # powersave = true; # ISSUE: Broken for some reason, no boost file.
       };
     };
   };
