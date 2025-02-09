@@ -9,7 +9,7 @@ Host dasha
 	Port 22143
 
 Host desktop
-	HostName fd09:8d46:b26:0:2ef8:c58a:c1ac:6cd8
+	HostName fd09:8d46:b26:0:dabb:c1ff:fecc:da30
 	User root
 	Port 22143
 
