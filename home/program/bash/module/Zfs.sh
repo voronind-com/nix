@@ -7,6 +7,10 @@ function zls() {
 	eval "zfs list -t snapshot" "${@}"
 }
 
+function zlb() {
+	eval "zfs list -t bookmark" "${@}"
+}
+
 # Zfs get.
 function zg() {
 	eval "zfs get" "${@}"
