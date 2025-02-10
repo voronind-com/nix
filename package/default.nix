@@ -12,9 +12,9 @@
       binwalk # Can analyze files for other files inside them.
       bridge-utils # Network bridges.
       btop # System monitoring.
-      chafa # CLI file manager.
+      chafa # CLI image preview.
       coreutils # UNIX Core utilities.
-      cryptsetup # Filesystem encryption (LUKS).
+      cryptsetup # Legacy filesystem encryption (LUKS).
       curl # Http client.
       ddrescue # Data rescue extractor.
       diffutils # Diff tool.
@@ -32,18 +32,17 @@
       gnumake # Make.
       gnused # Sed.
       gnutar # Tar.
-      gzip # Fast compression.
       htop # System monitors.
       imagemagick # Image converter and transformation tool.
       inetutils # Things like FTP.
       iputils # IP tools.
       jq # Json parser.
-      libjxl # Jpeg XL.
+      libjxl # Jpeg XL FTW.
       lm_sensors # Hardware sensors, like temperature and fan speeds.
       lshw # Detailed hardware info tool.
       lsof # Find current file users.
       ltex-ls # Latex LSP for neovim spellcheck.
-      lz4 # Compression algo.
+      lz4 # Fast af compression.
       man # App to read manuals.
       mtr # Traceroute tool.
       neovim # Text editor.
@@ -71,17 +70,16 @@
       tree-sitter # A parser generator tool and an incremental parsing library.
       tun2socks # Use proxy as a vpn.
       ueberzugpp # # Cli draw tool used by Yazi.
-      unzip # Zip archive/unarchive tools.
+      unzip # Zip unarchive utility.
       usbutils # Usb utilities like udiskctl.
       utillinux # Common Linux utilities.
       ventoy # Boot multiple ISO/images from a single USB stick.
-      wcurl # CLI http client.
-      wireguard-tools # Tools to work with Wireguard.
+      wcurl # CLI HTTP downloader.
       xz # Archive and compression tools.
       yazi # File manager.
       zfs # Filesystem utils.
-      zip # Zip utility.
-      zstd # Good compression.
+      zip # Zip archive utility.
+      zstd # Great compression.
 
       # (pkgs.callPackage ./ytdlp {}) # Youtube downloader bin package.
       (pkgs.callPackage ./ctagslsp { }) # Ctags LSP.
@@ -161,7 +159,11 @@
 
   dev = with pkgs; [
     android-studio
+    cloc # Count Lines If Code.
     jetbrains.idea-community
+    nixd # Nix LSP.
+    nixfmt-rfc-style # Nix formatter.
+    treefmt # Recursive formatter.
   ];
 
   extra =
