@@ -124,6 +124,7 @@
       gnome-calculator # Calculator.
       gparted # GUI disk utility just in case.
       jellyfin-media-player # Jellyfin client (self-hosted Netflix).
+      libreoffice # Office documents app suite.
       loupe # Image viewer.
       mumble # VoIP.
       obs-studio # Streaming/recording app.
