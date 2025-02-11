@@ -15,6 +15,23 @@ function monitor() {
 	_sway_iterate_sockets toggle
 }
 
+function monitors() {
+	notify_short
+	toggle() {
+		local output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
+		local state=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .power')
+
+		if ${state}; then
+			swaymsg "output * power off"
+		else
+			swaymsg "output * power on"
+		fi
+
+		pkill -RTMIN+4 waybar
+	}
+	_sway_iterate_sockets toggle
+}
+
 function monitorreset() {
 	swaymsg 'output * power on'
 	pkill -RTMIN+4 waybar
