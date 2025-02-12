@@ -111,6 +111,7 @@
     swappy # Screenshot editing.
     sway # Sway WM.
     swaykbdd # Keyboard layout per-window.
+    upower # Power management.
     waybar # Sway bar.
     wf-recorder # Screen recording.
 
