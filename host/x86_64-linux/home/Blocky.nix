@@ -87,7 +87,7 @@
           block = host: { ${host} = "0.0.0.0,::"; };
         in
         {
-          # "dasha.local" = "";
+          "dasha.local" = "fd09:8d46:b26:0:2ef0:5dff:fe3b:778";
           "desktop.local" = "fd09:8d46:b26:0:dabb:c1ff:fecc:da30";
           "home.local" = config.module.const.home;
           # "max.local" = "";
