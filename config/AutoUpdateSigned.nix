@@ -42,7 +42,7 @@ in
       script = ''
         cd /tmp
         rm -rf ./nixos
-        git clone --single-branch --branch=main ${config.module.const.url} ./nixos
+        git clone --depth=1 --single-branch --branch=main ${config.module.const.url} ./nixos
         cd ./nixos
 
         git verify-commit HEAD && git fsck || {
