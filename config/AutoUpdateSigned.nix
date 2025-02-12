@@ -17,17 +17,18 @@ in
   config = lib.mkIf cfg.enable {
     programs.git = {
       enable = true;
-      config = {
-        gpg.ssh.allowedSignersFile = toString secret.crypto.sign.git.allowed;
-      };
+      config.gpg.ssh.allowedSignersFile = toString secret.crypto.sign.git.allowed;
     };
 
     systemd.services.autoupdate = util.mkStaticSystemdService {
       enable = true;
       after = [ "network-online.target" ];
       description = "Signed system auto-update.";
-      serviceConfig.Type = "oneshot";
       wants = [ "network-online.target" ];
+      serviceConfig = {
+        RuntimeMaxSec = "55m";
+        Type = "oneshot";
+      };
       path = with pkgs; [
         bash
         coreutils
@@ -62,7 +63,7 @@ in
           exit 1
         };
 
-        timeout 55m make switch
+        make switch
       '';
     };
 
