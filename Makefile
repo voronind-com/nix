@@ -87,8 +87,8 @@ install-nixos:
 	# Pre-configure.
 	@$(eval zfs_encryption := $(shell [ -z ${INSTALL_ENCRYPTION} ] || echo "-O encryption=on -O keyformat=passphrase -O keylocation=prompt"))
 	@$(eval install_flake := $(shell realpath .))
-	@echo 0 > /sys/devices/system/cpu/cpufreq/boost 2> /dev/null && printf "Boost disabled." || true
-	@echo 1 > /sys/devices/system/cpu/intel_pstate/no_turbo 2> /dev/null && printf "Boost disabled." || true
+	@echo 0 > /sys/devices/system/cpu/cpufreq/boost 2> /dev/null && printf "Boost disabled.\n" || true
+	@echo 1 > /sys/devices/system/cpu/intel_pstate/no_turbo 2> /dev/null && printf "Boost disabled.\n" || true
 	# Partition.
 	parted -s "${INSTALL_TARGET}" mktable gpt
 	parted -s "${INSTALL_TARGET}" mkpart primary 0% 1GB
