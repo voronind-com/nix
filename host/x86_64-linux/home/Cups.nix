@@ -13,9 +13,12 @@ in
     browsing = true;
     defaultShared = true;
     drivers = [ package ];
-    listenAddresses = [ "[::]:631" ];
     startWhenNeeded = true;
     stateless = false;
     webInterface = true;
+    listenAddresses = [
+      "10.0.0.1:631"
+      "[::]:631"
+    ];
   };
 }

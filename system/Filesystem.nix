@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   fileSystems = {
     "/" = {
       device = "system/root";

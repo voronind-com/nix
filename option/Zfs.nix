@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   options.module.zfs = {
     pools = lib.mkOption {
       default = [ ];

@@ -18,7 +18,7 @@ function zlb() {
 function zbr() {
 	local target="${1}"
 
-	if [[ "${target}" = "" ]]; then
+	if [[ ${target} == "" ]]; then
 		help zbr
 		return 2
 	fi
@@ -38,7 +38,7 @@ function zbr() {
 function zbrd() {
 	local target="${1}"
 
-	if [[ "${target}" = "" ]]; then
+	if [[ ${target} == "" ]]; then
 		help zbr
 		return 2
 	fi
