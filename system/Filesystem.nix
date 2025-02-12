@@ -1,8 +1,4 @@
-{ ... }:
-{
-  boot.zfs.extraPools = [ "game" ];
-
-  # TODO: Move to <system>.
+{ ... }: {
   fileSystems = {
     "/" = {
       device = "system/root";

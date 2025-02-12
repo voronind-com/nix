@@ -15,6 +15,10 @@
       gaming = true;
       work = true;
     };
+    zfs.pools = [
+      "cold"
+      "hot"
+    ];
     syncthing = {
       enable = true;
       user = "dasha";

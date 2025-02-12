@@ -15,6 +15,17 @@ in
       router = true;
       server = true;
     };
+    zfs = {
+      pools = [
+        "alpha"
+        "data"
+        "hot"
+        "omega"
+      ];
+      scrub = [
+        "data"
+      ];
+    };
     syncthing = {
       enable = true;
       dataDir = host.sync;
