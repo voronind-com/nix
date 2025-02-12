@@ -38,29 +38,15 @@ in
       settings =
         let
           myDevices = {
-            "desktop" = {
-              id = "767Z675-SOCY4FL-JNYEBB6-5E2RG5O-XTZR6OP-BGOBZ7G-XVRLMD6-DQEB2AT";
-            };
-            "home" = {
-              id = "L5A5IPE-2FPJPHP-RJRV2PV-BLMLC3F-QPHSCUQ-4U3NM2I-AFPOE2A-HOPQZQF";
-            };
-            "max" = {
-              id = "3E3N4G4-SZ7LQXE-WQQZX7N-KFXEQKM-7VVN6QP-OMB5356-ICNXUZY-TTLEKAR";
-            };
-            "phone" = {
-              id = "6RO5JXW-2XO4S3E-VCDAHPD-4ADK6LL-HQGMZHU-GD6DE2O-6KNHWXJ-BCSBGQ7";
-            };
-            "work" = {
-              id = "CMG6QMP-WCJJEUG-UQ3KDUI-AHRADRH-666JQ3Z-HYFEPDA-URMAMNP-Z4MSGQT";
-            };
+            "desktop".id = "767Z675-SOCY4FL-JNYEBB6-5E2RG5O-XTZR6OP-BGOBZ7G-XVRLMD6-DQEB2AT";
+            "home".id = "L5A5IPE-2FPJPHP-RJRV2PV-BLMLC3F-QPHSCUQ-4U3NM2I-AFPOE2A-HOPQZQF";
+            "max".id = "3E3N4G4-SZ7LQXE-WQQZX7N-KFXEQKM-7VVN6QP-OMB5356-ICNXUZY-TTLEKAR";
+            "phone".id = "6RO5JXW-2XO4S3E-VCDAHPD-4ADK6LL-HQGMZHU-GD6DE2O-6KNHWXJ-BCSBGQ7";
           };
           dashaDevices = {
-            "dasha" = {
-              id = "VNRA5VH-LWNPVV4-Y2RF7FJ-446FHRQ-PET7Q4R-D3H5RT3-AUNARH5-5XYB3AT";
-            };
-            "dashaphone" = {
-              id = "QKGXSZC-HGAA6S5-RJJAT5Z-UPUGDAA-3GXEO6C-WHKMBUD-ESKQPZE-TZFNYA6";
-            };
+            "dasha".id = "VNRA5VH-LWNPVV4-Y2RF7FJ-446FHRQ-PET7Q4R-D3H5RT3-AUNARH5-5XYB3AT";
+            "dashaphone".id = "QKGXSZC-HGAA6S5-RJJAT5Z-UPUGDAA-3GXEO6C-WHKMBUD-ESKQPZE-TZFNYA6";
+            "thinkpad".id = "Y6YY3ZH-YXQ2RM3-Q642WN6-N6WO3VV-S65NVTR-RF3GHXD-DR3VMRU-XHE3KQU";
           };
         in
         lib.recursiveUpdate cfg.settings {
@@ -77,7 +63,6 @@ in
                   "desktop"
                   "home"
                   "max"
-                  "work"
                 ];
               };
               "photo" = {
