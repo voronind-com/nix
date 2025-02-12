@@ -19,6 +19,13 @@ cached:
 check: format
 	nix flake check --show-trace
 
+# Fix Home Manager after restoring from backup post-install.
+fix-hm-post-install:
+	rm /home/*/.local/state/nix/profiles/home-manager* || true
+	rm /home/*/.local/state/home-manager/gcroots/current-home || true
+	rm /root/.local/state/nix/profiles/home-manager* || true
+	rm /root/.local/state/home-manager/gcroots/current-home || true
+
 format:
 	treefmt --no-cache --clear-cache
 
@@ -80,6 +87,8 @@ install-nixos:
 	# Pre-configure.
 	@$(eval zfs_encryption := $(shell [ -z ${INSTALL_ENCRYPTION} ] || echo "-O encryption=on -O keyformat=passphrase -O keylocation=prompt"))
 	@$(eval install_flake := $(shell realpath .))
+	@echo 0 > /sys/devices/system/cpu/cpufreq/boost 2> /dev/null && printf "Boost disabled." || true
+	@echo 1 > /sys/devices/system/cpu/intel_pstate/no_turbo 2> /dev/null && printf "Boost disabled." || true
 	# Partition.
 	parted -s "${INSTALL_TARGET}" mktable gpt
 	parted -s "${INSTALL_TARGET}" mkpart primary 0% 1GB
