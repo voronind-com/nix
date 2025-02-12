@@ -60,29 +60,31 @@ install-hm:
 	nix-shell '<home-manager>' -A install
 
 # Required env variables set:
-# INSTALL_HOST       - Host name to install.
-# INSTALL_TARGET     - Drive to install to.
-# INSTALL_ENCRYPTION - Set any value to enable encryption.
+# INSTALL_ENCRYPT - Set any value to enable encryption.
+# INSTALL_HOST    - Host name to install.
+# INSTALL_MOUNT   - Set mount point for installation.
+# INSTALL_TARGET  - Drive to install to.
 # Must have Internet connection and running from the live iso.
+export INSTALL_MOUNT := /mnt
 install-nixos:
 	@test -f host/*/"${INSTALL_HOST}"/default.nix || { \
-		_error "\$$INSTALL_HOST not found or not specified."; \
+		printf "\$$INSTALL_HOST not found or not specified."; \
 		exit 2; \
 	};
 	@test -e "${INSTALL_TARGET}" || { \
-		_error "\$$INSTALL_TARGET not found or not specified."; \
+		printf "\$$INSTALL_TARGET not found or not specified."; \
 		exit 2; \
 	};
 	@[ $$(nmcli networking connectivity check) = "full" ] || { \
-		_error "No internet connection!"; \
+		printf "No internet connection!"; \
 		exit 2; \
 	};
-	@printf "%s\n%s: %s\n%s: %s\n%s: %s\n" \
-		"Summary" \
-		"Target" "${INSTALL_TARGET}" \
-		"Host" "${INSTALL_HOST}" \
-		"Encryption" $$([ -z ${INSTALL_ENCRYPTION} ] && echo No || echo Yes)
-	@printf "%s" "Press Enter to continue, <C-c> to cancel."
+	@printf "Summary\n\n"
+	@printf "Target: ${INSTALL_TARGET}\n"
+	@printf "Host: ${INSTALL_HOST}\n"
+	@printf "Mount: ${INETALL_MOUNT}\n"
+	@printf "Encryption: $([ -z ${INSTALL_ENCRYPT} ] && echo No || echo Yes)\n"
+	@printf "\nPress Enter to continue, <C-c> to cancel."
 	@read
 	# Pre-configure.
 	@$(eval zfs_encryption := $(shell [ -z ${INSTALL_ENCRYPTION} ] || echo "-O encryption=on -O keyformat=passphrase -O keylocation=prompt"))
@@ -109,20 +111,20 @@ install-nixos:
 	zfs set com.sun:auto-snapshot:hourly=true system/home
 	zfs set com.sun:auto-snapshot:frequent=true system/home
 	# Mount.
-	mkdir -p /mnt/root
-	mount -t zfs system/root /mnt
-	mkdir -p /mnt/boot /mnt/nix /mnt/var /mnt/home
-	mount -t zfs system/nix /mnt/nix
-	mount -t zfs system/var /mnt/var
-	mount -t zfs system/home /mnt/home
-	mount /dev/disk/by-partlabel/NIXBOOT /mnt/boot
+	mkdir -p ${INSTALL_MOUNT}
+	mount -t zfs system/root ${INSTALL_MOUNT}
+	mkdir -p ${INSTALL_MOUNT}/boot ${INSTALL_MOUNT}/nix ${INSTALL_MOUNT}/var ${INSTALL_MOUNT}/home
+	mount -t zfs system/nix ${INSTALL_MOUNT}/nix
+	mount -t zfs system/var ${INSTALL_MOUNT}/var
+	mount -t zfs system/home ${INSTALL_MOUNT}/home
+	mount /dev/disk/by-partlabel/NIXBOOT ${INSTALL_MOUNT}/boot
 	# Install.
-	nixos-install --root /mnt --no-root-password --no-channel-copy --flake "${install_flake}#${INSTALL_HOST}" || { \
-		umount /mnt/boot; \
-		umount /mnt/nix; \
-		umount /mnt/var; \
-		umount /mnt/home; \
-		umount /mnt; \
+	@nixos-install --root ${INSTALL_MOUNT} --no-root-password --no-channel-copy --flake "${install_flake}#${INSTALL_HOST}" && printf "\nDon't forget to switch after install!\n" || { \
+		umount ${INSTALL_MOUNT}/boot; \
+		umount ${INSTALL_MOUNT}/nix; \
+		umount ${INSTALL_MOUNT}/var; \
+		umount ${INSTALL_MOUNT}/home; \
+		umount ${INSTALL_MOUNT}; \
 		zpool export system; \
 	};
 
