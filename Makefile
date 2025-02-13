@@ -113,7 +113,7 @@ install-nixos:
 	zfs set com.sun:auto-snapshot:frequent=false system/reserved
 	# Mount.
 	mkdir -p ${INSTALL_MOUNT}
-	mount -t zfs system/root ${INSTALL_MOUNT}
+	mount -t zfs system ${INSTALL_MOUNT}
 	mkdir -p ${INSTALL_MOUNT}/boot
 	mount /dev/disk/by-partlabel/NIXBOOT ${INSTALL_MOUNT}/boot
 	# Install.
