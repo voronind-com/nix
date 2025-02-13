@@ -8,7 +8,6 @@
 let
   cfg = config.module.builder;
   serverKeyPath = "/root/.nixbuilder";
-  serverSshPublicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE6gR8b+X20ndJZCM2+Wqxl8vHHWtQZMKFEh0zM62m31"; # Use ssh-keyscan.
 in
 {
   config = lib.mkMerge [
@@ -86,10 +85,6 @@ in
             # require-sigs = false;
             # substitute = false;
           };
-      };
-      services.openssh.knownHosts.nixbuilder = {
-        publicKey = serverSshPublicKey;
-        extraHostNames = [ "[${config.module.const.home}]:22143" ];
       };
     })
   ];
