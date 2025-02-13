@@ -87,7 +87,7 @@ install-nixos:
 	@printf "\nPress Enter to continue, <C-c> to cancel."
 	@read
 	# Pre-configure.
-	@$(eval zfs_encryption := $(shell [ -z ${INSTALL_ENCRYPTION} ] || echo "-O encryption=on -O keyformat=passphrase -O keylocation=prompt"))
+	@$(eval zfs_encryption := $(shell [ -z ${INSTALL_ENCRYPT} ] || echo "-O encryption=on -O keyformat=passphrase -O keylocation=prompt"))
 	@$(eval install_flake := $(shell realpath .))
 	@echo 0 > /sys/devices/system/cpu/cpufreq/boost 2> /dev/null && printf "Boost disabled.\n" || true
 	@echo 1 > /sys/devices/system/cpu/intel_pstate/no_turbo 2> /dev/null && printf "Boost disabled.\n" || true
