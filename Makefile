@@ -82,8 +82,8 @@ install-nixos:
 	@printf "Summary\n\n"
 	@printf "Target: ${INSTALL_TARGET}\n"
 	@printf "Host: ${INSTALL_HOST}\n"
-	@printf "Mount: ${INETALL_MOUNT}\n"
-	@printf "Encryption: $([ -z ${INSTALL_ENCRYPT} ] && echo No || echo Yes)\n"
+	@printf "Mount: ${INSTALL_MOUNT}\n"
+	@printf "Encryption: $$([ -z ${INSTALL_ENCRYPT} ] && echo No || echo Yes)\n"
 	@printf "\nPress Enter to continue, <C-c> to cancel."
 	@read
 	# Pre-configure.
