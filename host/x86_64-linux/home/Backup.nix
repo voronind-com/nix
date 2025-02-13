@@ -26,8 +26,8 @@ let
     cd /omega && find anime movie show study video -type d > "/''${list}/Omega-''${today}.txt"
 
     # Get current snapshot.
-    source_current=$(zfs list -t snapshot ''${source} | rg daily | cut -d\  -f1 | tail --lines=1 | cut -d@ -f2)
-    target_current=$(zfs list -t snapshot ''${target} | rg daily | cut -d\  -f1 | tail --lines=1 | cut -d@ -f2)
+    source_current=$(zfs list -H -o name -t snapshot ''${source} | rg daily | tail --lines=1 | cut -d@ -f2)
+    target_current=$(zfs list -H -o name -t snapshot ''${target} | rg daily | tail --lines=1 | cut -d@ -f2)
 
     printf "SC=$source_current\n"
     printf "TC=$target_current\n"
