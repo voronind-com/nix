@@ -16,9 +16,6 @@ in
     startWhenNeeded = true;
     stateless = false;
     webInterface = true;
-    listenAddresses = [
-      "10.0.0.1:631"
-      "[::]:631"
-    ];
+    listenAddresses = [ "[::]:631" ];
   };
 }
