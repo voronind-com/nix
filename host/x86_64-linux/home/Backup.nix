@@ -11,63 +11,40 @@ let
     source ${bash.modulesFile}
 
     function report() {
-      echo "''${*}"
+      printf "''${*}\n"
       notify "''${*}"
     }
 
-    # Define constants.
-    path_src="/storage/hot_2"
-    path_mount="/storage/cold_1"
-    path_backup="''${path_mount}/backup"
-    path_data="''${path_backup}/home"
-    path_media="/storage/cold_1 /storage/cold_2"
-
-    # Check if backup drive is mounted.
-    if [ ! -f "''${path_mount}"/.mount ]; then
-      report "Backup: ''${path_mount} not mounted!"
-      exit 1
-    fi
-
-    # Check if hot storage is mounted.
-    if [ ! -f "''${path_src}"/.mount ]; then
-      report "Backup: ''${path_src} not mounted!"
-      exit 1
-    fi
-
-    # Cd to src storage.
-    cd "''${path_src}"
+    source="data"
+    target="alpha/backup/data"
+    list="alpha/backup/list"
+    delta=true
 
     # Save media list.
-    find ''${path_media} -type d > ''${path_backup}/cold/ColdMedia.txt || report "Backup: Failed to save media list!"
-    cd ''${path_backup}/cold/
-    archive ColdMedia.txt && rm ColdMedia.txt || report "Backup: Failed to archive media list!"
-    cd -
+    today=$(date +%Y%m%d)
+    cd /alpha && find anime game manga movie show study video -type d > "/''${list}/Alpha-''${today}.txt"
+    cd /omega && find anime movie show study video -type d > "/''${list}/Omega-''${today}.txt"
 
-    # Backup data.
-    data=$(archive data/)
-    bupsize=$(tdu ''${data} | awk '{print $1}')
-    mv ''${data} ''${path_data}/ || report "Backup: Failed to save data!"
+    # Get current snapshot.
+    source_current=$(zfs list -t snapshot ''${source} | rg daily | cut -d\  -f1 | tail --lines=1 | cut -d@ -f2)
+    target_current=$(zfs list -t snapshot ''${target} | rg daily | cut -d\  -f1 | tail --lines=1 | cut -d@ -f2)
 
-    # Backup tmp media.
-    rcp_merge ''${path_src}/sync/save/  ''${path_backup}/save/tmp/  || report "Backup: Failed to save game saves!"
-    rcp ''${path_src}/sync/photo/ ''${path_backup}/photo/tmp/ || report "Backup: Failed to save photos!"
+    printf "SC=$source_current\n"
+    printf "TC=$target_current\n"
 
-    # Prune copies.
-    cd ''${path_backup}/cold/
-    archive_prune ColdMediaTxt 30
-    cd -
-
-    # Prune old data copies.
-    cd ''${path_data}
-    archive_prune Data 7
-    cd -
+    # Replicate.
+    if [[ "''${source_current}" = "''${target_current}" ]]; then
+      report "💾 Backup snapshots are the same: ''${source_current}"
+    else
+      zfs send -Ri ''${source}@''${target_current} ''${source}@''${source_current} | zfs receive -o com.sun:auto-snapshot:daily=false -F ''${target} || {
+        delta=false
+        zfs send -R ''${source}@''${source_current} | zfs receive -o com.sun:auto-snapshot:daily=false -F ''${target}
+      }
+      report "💾 Backup complete with ''$(''${delta} || printf NO )delta, version ''${source_current}."
+    fi
 
     # Sync writes.
-    sync
-
-    # Notify completion & size.
-    notify_silent "Backup: Complete ''${bupsize}."
-    echo "Backup: Complete ''${bupsize}."
+    zpool sync alpha
   '';
 in
 {
@@ -77,14 +54,10 @@ in
     serviceConfig.Type = "oneshot";
     path = with pkgs; [
       bashInteractive
+      coreutils
       curl
-      gawk
-      gnutar
-      mount
-      procps
-      pv
-      rsync
-      xz
+      ripgrep
+      zfs
     ];
     script = ''
       ${pkgs.bashInteractive}/bin/bash ${script}
