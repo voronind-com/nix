@@ -100,30 +100,25 @@ install-nixos:
 	parted -s "${INSTALL_TARGET}" set 1 esp on
 	# Format.
 	mkfs.fat -F 32 /dev/disk/by-partlabel/NIXBOOT
-	zpool create -f ${zfs_encryption} -O compression=lz4 -O mountpoint=none -O xattr=sa -O acltype=posixacl -O atime=off system /dev/disk/by-partlabel/NIXROOT
-	zfs create -o mountpoint=legacy system/root
-	zfs create -o mountpoint=legacy system/nix
-	zfs create -o mountpoint=legacy system/var
-	zfs create -o mountpoint=legacy system/home
+	zpool create -f ${zfs_encryption} -O compression=lz4 -O mountpoint=legacy -O xattr=sa -O acltype=posixacl -O atime=off system /dev/disk/by-partlabel/NIXROOT
 	zfs create -o refreservation=10G -o mountpoint=none system/reserved
 	# Configure zfs.
 	zfs set com.sun:auto-snapshot:daily=true system
-	zfs set com.sun:auto-snapshot:hourly=true system/home
-	zfs set com.sun:auto-snapshot:frequent=true system/home
+	zfs set com.sun:auto-snapshot:hourly=true system
+	zfs set com.sun:auto-snapshot:frequent=true system
+	zfs set com.sun:auto-snapshot:monthly=false system/reserved
+	zfs set com.sun:auto-snapshot:weekly=false system/reserved
+	zfs set com.sun:auto-snapshot:daily=false system/reserved
+	zfs set com.sun:auto-snapshot:hourly=false system/reserved
+	zfs set com.sun:auto-snapshot:frequent=false system/reserved
 	# Mount.
 	mkdir -p ${INSTALL_MOUNT}
 	mount -t zfs system/root ${INSTALL_MOUNT}
-	mkdir -p ${INSTALL_MOUNT}/boot ${INSTALL_MOUNT}/nix ${INSTALL_MOUNT}/var ${INSTALL_MOUNT}/home
-	mount -t zfs system/nix ${INSTALL_MOUNT}/nix
-	mount -t zfs system/var ${INSTALL_MOUNT}/var
-	mount -t zfs system/home ${INSTALL_MOUNT}/home
+	mkdir -p ${INSTALL_MOUNT}/boot
 	mount /dev/disk/by-partlabel/NIXBOOT ${INSTALL_MOUNT}/boot
 	# Install.
 	@nixos-install --root ${INSTALL_MOUNT} --no-root-password --no-channel-copy --flake "${install_flake}#${INSTALL_HOST}" && printf "\nDon't forget to switch after install!\n" || { \
 		umount ${INSTALL_MOUNT}/boot; \
-		umount ${INSTALL_MOUNT}/nix; \
-		umount ${INSTALL_MOUNT}/var; \
-		umount ${INSTALL_MOUNT}/home; \
 		umount ${INSTALL_MOUNT}; \
 		zpool export system; \
 	};

@@ -2,19 +2,7 @@
 {
   fileSystems = {
     "/" = {
-      device = "system/root";
-      fsType = "zfs";
-    };
-    "/nix" = {
-      device = "system/nix";
-      fsType = "zfs";
-    };
-    "/var" = {
-      device = "system/var";
-      fsType = "zfs";
-    };
-    "/home" = {
-      device = "system/home";
+      device = "system";
       fsType = "zfs";
     };
     "/boot" = {
