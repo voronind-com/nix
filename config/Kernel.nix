@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgsUnstable, ... }:
 let
   cfg = config.module.kernel;
 in
@@ -6,6 +6,8 @@ in
   config = lib.mkIf cfg.enable (
     lib.mkMerge [
       {
+        boot.kernelPackages = pkgsUnstable.linuxPackages;
+
         boot.kernel.sysctl = {
           # Allow sysrq.
           "kernel.sysrq" = 1;
