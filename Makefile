@@ -100,7 +100,7 @@ install-nixos:
 	parted -s "${INSTALL_TARGET}" set 1 esp on
 	# Format.
 	mkfs.fat -F 32 /dev/disk/by-partlabel/NIXBOOT
-	zpool create -f ${zfs_encryption} -O compression=on -O mountpoint=legacy -O xattr=sa -O acltype=posixacl -O atime=off system /dev/disk/by-partlabel/NIXROOT
+	zpool create -f ${zfs_encryption} -O compression=lz4 -O mountpoint=legacy -O xattr=sa -O acltype=posixacl -O atime=off system /dev/disk/by-partlabel/NIXROOT
 	zfs create -o refreservation=10G -o mountpoint=none system/reserved
 	# Configure zfs.
 	zfs set com.sun:auto-snapshot:daily=true system
