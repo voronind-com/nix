@@ -16,32 +16,20 @@ let
     }
 
     source="data"
-    target="alpha/backup/data"
-    list="alpha/backup/list"
-    delta=true
+    target="/alpha/backup/home/data"
 
     # Save media list.
-    today=$(date +%Y%m%d)
-    cd /alpha && find anime game manga movie show study video -type d > "/''${list}/Alpha-''${today}.txt"
-    cd /omega && find anime movie show study video -type d > "/''${list}/Omega-''${today}.txt"
+    cd /alpha && find anime game manga movie show study video -type d > "''${target}/Alpha.txt"
+    cd /omega && find anime movie show study video -type d > "''${target}/Omega.txt"
 
     # Get current snapshot.
-    source_current=$(zfs list -H -o name -t snapshot ''${source} | rg daily | tail --lines=1 | cut -d@ -f2)
-    target_current=$(zfs list -H -o name -t snapshot ''${target} | rg daily | tail --lines=1 | cut -d@ -f2)
+    source_current=$(zfs list -H -o name -t snapshot ''${source} | tail --lines=1)
 
     printf "SC=$source_current\n"
-    printf "TC=$target_current\n"
 
     # Replicate.
-    if [[ "''${source_current}" = "''${target_current}" ]]; then
-      report "💾 Backup snapshots are the same: ''${source_current}"
-    else
-      zfs send -Ri ''${source}@''${target_current} ''${source}@''${source_current} | zfs receive -o com.sun:auto-snapshot:daily=false -F ''${target} || {
-        delta=false
-        zfs send -R ''${source}@''${source_current} | zfs receive -o com.sun:auto-snapshot:daily=false -F ''${target}
-      }
-      report "💾 Backup complete with ''$(''${delta} || printf NO )delta, version ''${source_current}."
-    fi
+    zfs send -R ''${source_current} > "''${target}/Data.zfs"
+    report "💾 Backup complete with version ''${source_current}."
 
     # Sync writes.
     zpool sync alpha
@@ -65,12 +53,12 @@ in
     '';
   };
 
-  # systemd.timers.backup = {
-  #   wantedBy = [ "timers.target" ];
-  #   timerConfig = {
-  #     OnCalendar = "*-*-* 06:00:00";
-  #     Persistent = true;
-  #     Unit = "backup.service";
-  #   };
-  # };
+  systemd.timers.backup = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "*-*-* 05:00:00";
+      Persistent = true;
+      Unit = "backup.service";
+    };
+  };
 }
