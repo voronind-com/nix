@@ -1,4 +1,9 @@
-{ config, lib, pkgsUnstable, ... }:
+{
+  config,
+  lib,
+  pkgsUnstable,
+  ...
+}:
 let
   cfg = config.module.kernel;
 in
