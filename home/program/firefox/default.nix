@@ -14,7 +14,9 @@ let
     "git.voronind.com"
     "github.com"
     "home.voronind.com"
+    "iot.voronind.com"
     "nixhub.io"
+    "portal.fsight.ru"
   ];
 
   searchEngines = [
