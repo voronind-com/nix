@@ -29,7 +29,8 @@ let
 
     # Replicate.
     zfs send -R ''${source_current} > "''${target}/Data.zfs"
-    report "💾 Backup complete with version ''${source_current}."
+    local size=$(du --si -h "''${target}/Data.zfs")
+    report "💾 Backup complete ''${size} with version ''${source_current}."
 
     # Sync writes.
     zpool sync alpha
