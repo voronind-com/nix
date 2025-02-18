@@ -29,7 +29,7 @@ let
 
     # Replicate.
     zfs send -R ''${source_current} > "''${target}/Data.zfs"
-    local size=$(du --si -h "''${target}/Data.zfs")
+    size=$(du --si -h "''${target}/Data.zfs")
     report "💾 Backup complete ''${size} with version ''${source_current}."
 
     # Sync writes.
