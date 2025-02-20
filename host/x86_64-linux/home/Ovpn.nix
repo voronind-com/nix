@@ -57,10 +57,13 @@
         persist-tun
         port 22145
         proto udp
+        proto udp6
         push "dhcp-option DNS 10.0.0.1"
-        push "dhcp-option DNS 10.0.0.1"
+        push "dhcp-option DNS fd09:8d46:b26:0:180c:8bff:fe13:2910"
         push "route 10.0.0.0 255.0.0.0"
+        push "route-ipv6 fd09:8d46:b26::/48"
         server 10.0.1.0 255.255.255.0
+        server-ipv6 fd09:8d46:b27::/64
         status openvpn-status.log
         topology subnet
         user openvpn

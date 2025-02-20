@@ -1,6 +1,5 @@
 # 10.0.0.0/24 & fd09:8d46:b26::/48 - phys clients (lan).
-# 10.0.1.0/24 - vpn clients.
-# fd09:8d46:b26::/48 - ULA.
+# 10.0.1.0/24 & fd09:8d46:b27::/64 - vpn clients.
 {
   config,
   lib,
