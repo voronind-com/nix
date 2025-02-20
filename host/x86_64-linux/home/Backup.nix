@@ -57,7 +57,7 @@ in
   systemd.timers.backup = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar = "*-*-* 05:00:00";
+      OnCalendar = "*-*-* 05:05:00";
       Persistent = true;
       Unit = "backup.service";
     };
