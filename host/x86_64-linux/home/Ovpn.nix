@@ -28,6 +28,9 @@
     };
   };
 
+  # Wait for ovpn so we can bind to 10.0.1.1
+  systemd.services.sshd.after = [ "openvpn-vpn.service" ];
+
   # NOTE: Change the `server` to match `cfg.clients` or write a substring here.
   services = {
     openssh.listenAddresses = [

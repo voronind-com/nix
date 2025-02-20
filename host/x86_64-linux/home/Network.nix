@@ -152,7 +152,7 @@ in
         iptables -t nat -A POSTROUTING -s 10.0.0.0/8 -d 0/0 -o ${wan} -j MASQUERADE
 
         # Full access from Lan.
-        ip46tables  -I INPUT -j ACCEPT -i ${lan}
+        ip46tables -I INPUT -j ACCEPT -i ${lan}
 
         # Public email server.
         ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 25
@@ -175,7 +175,7 @@ in
         ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22666
         ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 22666
 
-        # Public SSH access.
+        # SSH access.
         # ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 22143
       '';
     };

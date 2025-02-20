@@ -12,10 +12,10 @@
       }
     ];
     settings = {
-      GSSAPIAuthentication = false;
+      # GSSAPIAuthentication = false;
       HostbasedAuthentication = false;
       KbdInteractiveAuthentication = false;
-      KerberosAuthentication = false;
+      # KerberosAuthentication = false;
       LoginGraceTime = "1m";
       MaxSessions = 10;
       PasswordAuthentication = false;
