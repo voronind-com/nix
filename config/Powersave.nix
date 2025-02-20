@@ -36,7 +36,7 @@ in
 {
   config = lib.mkIf cfg.enable (
     lib.mkMerge [
-      {
+      (lib.mkIf (cfg.cpu.boost.controlFile != null) {
         environment.systemPackages = [ script ];
         systemd = {
           services.powersave-cpu = {
@@ -54,7 +54,7 @@ in
           # HACK: Allow user access.
           tmpfiles.rules = [ "z ${cfg.cpu.boost.controlFile} 0777 - - - -" ];
         };
-      }
+      })
 
       (lib.mkIf cfg.laptop {
         services = {
