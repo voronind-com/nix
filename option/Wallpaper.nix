@@ -28,7 +28,7 @@ let
   image =
     if video then
       pkgs.runCommandNoCC "wallpaper-video-image" { } ''
-        ${pkgs.ffmpeg}/bin/ffmpeg -hide_banner -loglevel error -ss 00:00:00 -i ${videoPath} -frames:v 1 -q:v 1 Image.png
+        ${pkgs.ffmpeg}/bin/ffmpeg -hide_banner -loglevel error -ss 00:00:00 -i ${videoPath} -frames:v 1 -q:v 1 -vf "scale=sws_flags=lanczos:in_color_matrix=bt709,format=yuv444p" Image.png
         mv Image.png $out
       ''
     else
