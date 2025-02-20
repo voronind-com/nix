@@ -159,6 +159,7 @@ in
         # Public VPN service.
         ip46tables -I INPUT -j ACCEPT -i ${wan} -p udp --dport 22145
         iptables -I INPUT -j ACCEPT -s 10.0.1.0/24
+        ip6tables -I INPUT -j ACCEPT -s fd09:8d46:b27::/64
 
         # Public Nginx.
         ip46tables -I INPUT -j ACCEPT -i ${wan} -p tcp --dport 443
