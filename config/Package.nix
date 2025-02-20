@@ -67,7 +67,6 @@ in
         let
           packages = with pkgs; [
             dxvk
-            gamescope
             pkgs.mangohud
             vkd3d
           ];

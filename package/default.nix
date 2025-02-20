@@ -142,7 +142,6 @@
   gaming = with pkgs; [
     bottles # GUI for Wine.
     dxvk # Directx to Vulkan.
-    gamescope # Compositor for Steam.
     mangohud # Realtime stats overlay.
     scanmem # Memory edit tool.
     steam # Gaming platform.
