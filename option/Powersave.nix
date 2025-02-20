@@ -20,7 +20,7 @@ in
       };
       controlFile = lib.mkOption {
         default = null;
-        type = lib.types.str;
+        type = with lib.types; nullOr str;
       };
     };
   };
