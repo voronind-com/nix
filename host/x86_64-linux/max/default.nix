@@ -7,6 +7,7 @@
     builder.client.enable = true;
     display.primary = "eDP-1";
     package.all = true;
+    powersave.enable = true;
     print.enable = true;
     sway.extraConfig = [ "output eDP-1 scale 1.75" ];
     syncthing.enable = true;
@@ -24,7 +25,7 @@
       gpu.enable = true;
       cpu = {
         enable = true;
-        powersave = true;
+        # powersave = true; # ISSUE: No boost control file for some reason, disabled in UEFI.
       };
     };
   };
