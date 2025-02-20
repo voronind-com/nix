@@ -28,8 +28,8 @@ let
   image =
     if video then
       pkgs.runCommandNoCC "wallpaper-video-image" { } ''
-        ${pkgs.ffmpeg}/bin/ffmpeg -hide_banner -loglevel error -ss 00:00:00 -i ${videoPath} -frames:v 1 -q:v 1 Image.jpg
-        mv Image.jpg $out
+        ${pkgs.ffmpeg}/bin/ffmpeg -hide_banner -loglevel error -ss 00:00:00 -i ${videoPath} -frames:v 1 -q:v 1 Image.png
+        mv Image.png $out
       ''
     else
       pkgs.fetchurl { inherit url sha256; };
