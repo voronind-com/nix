@@ -9,3 +9,16 @@ function _sway_iterate_sockets() {
 		SWAYSOCK="${socket}" ${1}
 	done
 }
+
+function _index_of() {
+	local element="${1}"
+	local array="${@:2}"
+	local index=0
+
+	for item in ${array[@]}; do
+		[[ ${item} == "${element}" ]] && break
+		((index++))
+	done
+
+	echo "${index}"
+}

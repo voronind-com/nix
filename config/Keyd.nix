@@ -69,12 +69,13 @@ in
             dot = "forward";
             e = "nextsong";
             q = "previoussong";
+            r = "media"; # Toggle audio output.
             s = "volumedown";
             space = "playpause";
-            v = "ejectcd"; # Toggle audio output.
+            t = "record"; # Toggle audio input.
+            v = "micmute";
             w = "volumeup";
             x = "stopcd";
-            z = "micmute";
 
             # Reset keys.
             backspace = "backspace";
