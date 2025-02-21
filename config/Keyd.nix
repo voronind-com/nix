@@ -71,11 +71,11 @@ in
             q = "previoussong";
             r = "media"; # Toggle audio output.
             s = "volumedown";
-            space = "playpause";
             t = "record"; # Toggle audio input.
             v = "micmute";
             w = "volumeup";
             x = "stopcd";
+            z = "playpause";
 
             # Reset keys.
             backspace = "backspace";
