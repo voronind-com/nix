@@ -1,13 +1,14 @@
 function monitor() {
-	notify_short
 	toggle() {
 		local output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
 		local state=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .power')
 
 		if ${state}; then
 			swaymsg "output \"${output}\" power off"
+			notify_long
 		else
 			swaymsg "output \"${output}\" power on"
+			notify_short
 		fi
 
 		pkill -RTMIN+4 waybar
@@ -16,15 +17,16 @@ function monitor() {
 }
 
 function monitors() {
-	notify_short
 	toggle() {
 		local output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
 		local state=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .power')
 
 		if ${state}; then
 			swaymsg "output * power off"
+			notify_long
 		else
 			swaymsg "output * power on"
+			notify_short
 		fi
 
 		pkill -RTMIN+4 waybar
@@ -38,15 +40,16 @@ function monitorreset() {
 }
 
 function gaming() {
-	notify_short
 	toggle() {
 		local output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
 		local state=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .adaptive_sync_status')
 
 		if [[ ${state} == "disabled" ]]; then
 			swaymsg "output \"${output}\" adaptive_sync on"
+			notify_short
 		else
 			swaymsg "output \"${output}\" adaptive_sync off"
+			notify_long
 		fi
 
 		pkill -RTMIN+4 waybar
@@ -65,7 +68,7 @@ function dnd() {
 
 		if [[ ${state} == "dnd" ]]; then
 			makoctl mode -s default
-			notify_short
+			notify_long
 		else
 			notify_short
 			makoctl mode -s dnd

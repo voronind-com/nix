@@ -27,3 +27,25 @@ function sound_input_cycle() {
 
 	pactl set-default-source ${all[${i_target}]}
 }
+
+function sound_output_toggle() {
+	local state=$(pactl get-sink-mute @DEFAULT_SINK@ | cut -d\  -f2)
+	if [ "${state}" = "yes" ]; then
+		pactl set-sink-mute @DEFAULT_SINK@ 0
+		notify_short
+	else
+		notify_long
+		pactl set-sink-mute @DEFAULT_SINK@ 1
+	fi
+}
+
+function sound_input_toggle() {
+	local state=$(pactl get-source-mute @DEFAULT_SOURCE@ | cut -d\  -f2)
+	if [ "${state}" = "yes" ]; then
+		notify_short
+		pactl set-source-mute @DEFAULT_SOURCE@ 0
+	else
+		notify_long
+		pactl set-source-mute @DEFAULT_SOURCE@ 1
+	fi
+}

@@ -11,13 +11,17 @@ let
   shortogg = <static/Short.ogg>;
 
   raw = pkgs.writeText "swayscript-raw" (util.readFiles (util.ls ./script));
-  script = pkgs.replaceVars raw {
-    inherit
-      pipewire
-      longogg
-      notificationogg
-      shortogg
-      ;
-  };
+  script =
+    (pkgs.replaceVars raw {
+      inherit
+        pipewire
+        longogg
+        notificationogg
+        shortogg
+        ;
+    }).overrideAttrs
+      (old: {
+        doCheck = false;
+      });
 in
 pkgs.writeShellScriptBin "swayscript" (builtins.readFile script + "\n\${@}")
