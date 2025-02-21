@@ -38,7 +38,6 @@
         torrent-added-verify-mode = "fast";
         trash-can-enabled = false;
         trash-original-torrent-files = true;
-        umask = 22;
         utp-enabled = true;
         watch-dir = "/var/lib/transmission/watchdir/";
         watch-dir-enabled = true;
