@@ -180,7 +180,7 @@ function ga() {
 	local target=${@}
 	[[ ${target} == "" ]] && target="."
 
-	git diff ${target}
+	gd ${target}
 	git add ${target}
 }
 
@@ -190,7 +190,7 @@ function gaa() {
 	local target=${@}
 	[[ ${target} == "" ]] && target="."
 
-	git diff ${target}
+	gd ${target}
 	git add -f ${target}
 }
 
@@ -245,7 +245,7 @@ function gg() {
 function gdc() {
 	local hash="${1}"
 	[[ ${hash} == "" ]] && hash="HEAD"
-	git diff "${hash}^!"
+	gd "${hash}^!"
 }
 
 # Get version number based on commit count.
