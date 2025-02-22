@@ -246,5 +246,9 @@ in
     ''
     + builtins.readFile swayRc
     + lib.optionalString config.module.wallpaper.video "exec wallpaper-video\n"
-    + lib.concatStringsSep "\n" config.module.sway.extraConfig;
+    + lib.concatStringsSep "\n" config.module.sway.extraConfig
+    + "\n"
+    + ''
+      exec 'systemctl restart --user gui-session.target'
+    '';
 }
