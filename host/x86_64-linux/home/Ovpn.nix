@@ -28,47 +28,35 @@
     };
   };
 
-  # Wait for ovpn so we can bind to 10.0.1.1
-  systemd.services.sshd.after = [ "openvpn-vpn.service" ];
-
   # NOTE: Change the `server` to match `cfg.clients` or write a substring here.
-  services = {
-    openssh.listenAddresses = [
-      {
-        addr = "10.0.1.1";
-        port = 22143;
-      }
-    ];
-
-    openvpn.servers.vpn = {
-      autoStart = true;
-      config = ''
-        ca /var/lib/ovpn/pki/ca.crt
-        cert /var/lib/ovpn/pki/issued/home.crt
-        client-to-client
-        crl-verify /var/lib/ovpn/pki/crl.pem
-        dev tun
-        dh /var/lib/ovpn/dh2048.pem
-        explicit-exit-notify 1
-        group openvpn
-        ifconfig-pool-persist ipp.txt
-        keepalive 10 120
-        key /var/lib/ovpn/pki/private/home.key
-        persist-tun
-        port 22145
-        proto udp
-        proto udp6
-        push "dhcp-option DNS 10.0.0.1"
-        push "dhcp-option DNS fd09:8d46:b26:0:180c:8bff:fe13:2910"
-        push "route 10.0.0.0 255.0.0.0"
-        push "route-ipv6 fd09:8d46:b26::/48"
-        server 10.0.1.0 255.255.255.0
-        server-ipv6 fd09:8d46:b27::/64
-        status openvpn-status.log
-        topology subnet
-        user openvpn
-        verb 4
-      '';
-    };
+  services.openvpn.servers.vpn = {
+    autoStart = true;
+    config = ''
+      ca /var/lib/ovpn/pki/ca.crt
+      cert /var/lib/ovpn/pki/issued/home.crt
+      client-to-client
+      crl-verify /var/lib/ovpn/pki/crl.pem
+      dev tun
+      dh /var/lib/ovpn/dh2048.pem
+      explicit-exit-notify 1
+      group openvpn
+      ifconfig-pool-persist ipp.txt
+      keepalive 10 120
+      key /var/lib/ovpn/pki/private/home.key
+      persist-tun
+      port 22145
+      proto udp
+      proto udp6
+      push "dhcp-option DNS 10.0.0.1"
+      push "dhcp-option DNS fd09:8d46:b26:0:180c:8bff:fe13:2910"
+      push "route 10.0.0.0 255.0.0.0"
+      push "route-ipv6 fd09:8d46:b26::/48"
+      server 10.0.1.0 255.255.255.0
+      server-ipv6 fd09:8d46:b27::/64
+      status openvpn-status.log
+      topology subnet
+      user openvpn
+      verb 4
+    '';
   };
 }
