@@ -3,12 +3,11 @@
   config = (pkgs.formats.gitIni { listsAsDuplicateKeys = true; }).generate "git-config" {
     branch.sort = "-committerdate"; # Sort branches by recent commits.
     column.ui = "auto"; # Make multicolumn.
-    commit.verbose = true; # Show diffs in commits.
     core.excludesfile = "~/.gitignore"; # Global excludes file.
     init.defaultBranch = "main";
     merge.conflictstyle = "zdiff3"; # Show the original line value with conflicts.
     pull.rebase = true; # Rebase when pulling.
-    safe.directory = "*";
+    safe.directory = "*"; # Allow all users to work with all local repos.
     tag.sort = "version:refname"; # Sort tags by time.
     user.signingkey = builtins.readFile secret.crypto.sign.git.key;
     diff = {
