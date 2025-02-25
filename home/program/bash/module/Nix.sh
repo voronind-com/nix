@@ -6,7 +6,7 @@ function shell() {
 	[[ ${target} == "" ]] && target="default"
 
 	# Create Nix GC root in .NixRoot{NAME}.
-	nix build ".#devShells.${NIX_CURRENT_SYSTEM}.${target}" -o ".gc-roots-${target^}"
+	nix build ".#devShells.${NIX_CURRENT_SYSTEM}.${target}" -o ".gc-roots-nix-${target^}"
 
 	SHELL_NAME="${target}" nix develop ".#devShells.${NIX_CURRENT_SYSTEM}.${target}"
 }
