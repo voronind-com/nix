@@ -56,7 +56,11 @@ function gda() {
 
 # Git commit.
 function gc() {
-	git commit "${@}"
+	if [ "${1}" = "" ]; then
+		git commit
+	else
+		git commit -m "${@}"
+	fi
 }
 
 # Git clone with tree filter.
@@ -76,7 +80,11 @@ function gcl() {
 
 # Git signed commit.
 function gcs() {
-	git commit -S "${@}"
+	if [ "${1}" = "" ]; then
+		git commit -S
+	else
+		git commit -S -m "${@}"
+	fi
 }
 
 # Git checkout.
