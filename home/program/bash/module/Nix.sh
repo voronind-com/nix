@@ -5,7 +5,10 @@ function shell() {
 	local target="${1}"
 	[[ ${target} == "" ]] && target="default"
 
-	SHELL_NAME="${target}" nix develop ".#${target}"
+	# Create Nix GC root in .NixRoot{NAME}.
+	nix build ".#devShells.${NIX_CURRENT_SYSTEM}.${target}" -o ".gc-roots-${target^}"
+
+	SHELL_NAME="${target}" nix develop ".#devShells.${NIX_CURRENT_SYSTEM}.${target}"
 }
 
 # Spawn temporary nix-shell with specified packages.

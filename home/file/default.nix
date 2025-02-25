@@ -44,7 +44,8 @@ in
   ".config/yazi/theme.toml".source = yazi.theme;
   ".config/yazi/yazi.toml".source = yazi.yazi;
   ".editorconfig".source = editor.file;
-  ".gitconfig".source = git.file;
+  ".gitconfig".source = git.config;
+  ".gitignore".source = git.ignore;
   ".ideavimrc".source = ./jetbrains/ideavimrc;
   ".local/share/applications".text = "";
   ".local/share/jellyfinmediaplayer/scripts/mpris.so".source =
