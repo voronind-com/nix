@@ -1,5 +1,6 @@
 local lspconfig = require("lspconfig")
 local config = {
+	-- TODO: Add for all filetypes.
 	filetypes = {
 		"bib",
 		"gitcommit",
@@ -19,7 +20,7 @@ local config = {
 	},
 }
 
-lspconfig.ltex.setup(config)
+lspconfig.ltex_plus.setup(config)
 
 -- Use TeX LSP for spellcheck.
 vim.api.nvim_create_user_command("SCOn", function(args)

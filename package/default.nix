@@ -41,7 +41,6 @@
       lm_sensors # Hardware sensors, like temperature and fan speeds.
       lshw # Detailed hardware info tool.
       lsof # Find current file users.
-      ltex-ls # Latex LSP for neovim spellcheck.
       lz4 # Fast af compression.
       man # App to read manuals.
       mtr # Traceroute tool.
@@ -87,6 +86,9 @@
     ++ (with pkgsUnstable; [
       fastfetch # Systeminfo summary.
       ffmpeg # Video/audio converter.
+
+      # TODO: Move to stable.
+      ltex-ls-plus # Latex LSP for neovim spellcheck.
     ])
     ++ (with pkgsMaster; [
       xray # Proxy.
