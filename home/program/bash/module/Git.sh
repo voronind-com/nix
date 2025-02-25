@@ -46,12 +46,12 @@ function gcd() {
 
 # Git diff.
 function gd() {
-	git diff --patience "${@}"
+	git diff --histogram "${@}"
 }
 
 # Git diff added.
 function gda() {
-	git diff --cached --patience "${@}"
+	git diff --cached --histogram "${@}"
 }
 
 # Git commit.
