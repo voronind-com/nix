@@ -2,7 +2,6 @@
 {
   config = (pkgs.formats.gitIni { listsAsDuplicateKeys = true; }).generate "git-config" {
     branch.sort = "-committerdate"; # Sort branches by recent commits.
-    column.ui = "auto"; # Make multicolumn.
     core.excludesfile = "~/.gitignore"; # Global excludes file.
     init.defaultBranch = "main";
     merge.conflictstyle = "zdiff3"; # Show the original line value with conflicts.
