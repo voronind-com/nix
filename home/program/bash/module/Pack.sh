@@ -1,4 +1,4 @@
-export _unpack_supported=".tar$|.tgz$|.txz$|.tar.gz$|.tar.xz$|.zip$|.iso$|.rar$"
+export _unpack_supported=".tar$|.tgz$|.txz$|.tar.gz$|.tar.xz$|.zip$|.iso$|.rar$|.tar.lz4$|.tar.zst$|.lz4$|.zst$"
 
 # Pack files into desired format.
 # All files and directories by default.
@@ -10,13 +10,13 @@ function pack() {
 	local format="${output##*.}"
 	local name="${output%.*}"
 
-	# report no output.
+	# Report no output.
 	if [[ ${output} == "" ]]; then
 		help pack
 		return 2
 	fi
 
-	# report no format.
+	# Report no format.
 	if [[ ${format} == "" ]]; then
 		_error "Could not determine output format."
 		help pack
@@ -47,6 +47,18 @@ function pack() {
 		;;
 	"iso")
 		_pack_iso "${output}" "${targets[@]}"
+		;;
+	"lz4")
+		_pack_lz4 "${output}" "${targets[@]}"
+		;;
+	"zst")
+		_pack_zstd "${output}" "${targets[@]}"
+		;;
+	"tar.lz4")
+		_pack_tar_lz4 "${output}" "${targets[@]}"
+		;;
+	"tar.zst")
+		_pack_tar_zstd "${output}" "${targets[@]}"
 		;;
 	*)
 		_error "${target}: Format not supported."
@@ -151,6 +163,22 @@ function _pack_xz() {
 	pv "${2}" | xz -9e >"${1}"
 }
 
+function _pack_lz4() {
+	pv "${2}" | lz4 >"${1}"
+}
+
+function _pack_zstd() {
+	pv "${2}" | zstd -19 >"${1}"
+}
+
+function _pack_tar_lz4() {
+	tar -c "${@:2}" | pv -s $(/usr/bin/env du -csb "${@:2}" | sed -n -e '$p' | awk '{print $1}') | lz4 >"${1}"
+}
+
+function _pack_tar_zstd() {
+	tar -c "${@:2}" | pv -s $(/usr/bin/env du -csb "${@:2}" | sed -n -e '$p' | awk '{print $1}') | zstd -19 >"${1}"
+}
+
 function _pack_iso() {
 	local input=("${@:2}")
 	local output="${1}"
@@ -186,6 +214,22 @@ function _unpack_txz() {
 
 function _unpack_tar() {
 	pv "${1}" | tar -xf -
+}
+
+function _unpack_lz4() {
+	pv "${1}" | lz4 -d >"${1%.lz4}"
+}
+
+function _unpack_zstd() {
+	pv "${1}" | lz4 -d >"${1%.zst}"
+}
+
+function _unpack_tar_lz4() {
+	pv "${1}" | lz4 -d | tar -xf -
+}
+
+function _unpack_tar_zstd() {
+	pv "${1}" | zstd -d | tar -xf -
 }
 
 function _unpack_iso() {
