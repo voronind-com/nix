@@ -105,12 +105,6 @@
             run = openWith "pic_copy";
           }
         ];
-        mount = [
-          {
-            desc = "Mount";
-            run = openWith "fmount";
-          }
-        ];
         pdf = [
           {
             desc = "Pdf";
@@ -124,12 +118,6 @@
             run = openWith "switch_install";
           }
         ];
-        shell_run = [
-          {
-            desc = "Run";
-            run = openWith "bash";
-          }
-        ];
         steam_run = [
           {
             desc = "Run";
@@ -140,13 +128,6 @@
           {
             desc = "Sqlite";
             run = openWith "sqlite3";
-          }
-        ];
-        unlock = [
-          {
-            desc = "Unlock";
-            block = true;
-            run = openWith "funlock";
           }
         ];
         text = [
@@ -168,12 +149,6 @@
             desc = "Video";
             orphan = true;
             run = openWith "mpv";
-          }
-        ];
-        unpack = [
-          {
-            desc = "Unpack";
-            run = openWith "unpack";
           }
         ];
       };
@@ -198,18 +173,10 @@
           (mkName "*.mka" [ "audio" ])
           (mkName "*.nsp" [ "switch_install" ])
           (mkName "*.nsz" [ "switch_install" ])
-          (mkName "*.sh" [ "shell_run" ])
           (mkName "*.xlsx" [ "document" ])
 
           # Use `file -i file.txt` to find file mime type.
           # Use `xdg-mime query default "text/plain"` to find default app.
-          (mkMime "application/gzip" [ "unpack" ])
-          (mkMime "application/x-tar" [ "unpack" ])
-          (mkMime "application/x-xz" [ "unpack" ])
-          (mkMime "application/zip" [ "unpack" ])
-          (mkMime "application/x-7z-compressed" [ "unpack" ])
-          (mkMime "application/x-iso9660-image" [ "mount" ])
-          (mkMime "application/x-raw-disk-image" [ "unlock" ])
           (mkMime "application/pdf" [ "pdf" ])
           (mkMime "audio/*" [ "audio" ])
           (mkMime "image/*" [
