@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
+let
+  timeout = config.module.style.timeout.key;
+in
 {
   file = (pkgs.formats.ini { }).generate "keyd-drg-config" {
     "steam-app-548430" = {
@@ -31,7 +34,7 @@
       "alt.w" = "macro(enter 10ms r enter)";
       "alt.x" = "macro(enter 10ms > space H e r e space < enter)";
       "alt.z" = "macro(enter 10ms < space L e f t enter)";
-      leftshift = "timeout(leftcontrol, 150, leftshift)";
+      leftshift = "timeout(leftcontrol, ${toString timeout}, leftshift)";
     };
   };
 }

@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
+let
+  timeout = config.module.style.timeout.key;
+in
 {
   file = (pkgs.formats.ini { }).generate "keyd-jetbrains-config" {
     "jetbrains-*" = {
@@ -22,7 +25,7 @@
       "alt.v" = "C-q"; # Show doc under cursor.
       "alt.s" = "C-S-A-t"; # Refactor selection.
 
-      "alt.tab" = "timeout(f8, 150, macro2(0, 0, f7))"; # Tap to step over, hold to step into.
+      "alt.tab" = "timeout(f8, ${toString timeout}, macro2(0, 0, f7))"; # Tap to step over, hold to step into.
     };
   };
 }

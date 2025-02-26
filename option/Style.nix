@@ -122,5 +122,11 @@ in
       border = mkIntOption 4;
       gap = mkIntOption 8;
     };
+
+    timeout = {
+      key = mkIntOption 150;
+      cursor = mkIntOption 10000;
+      popup = mkIntOption 10000;
+    };
   };
 }

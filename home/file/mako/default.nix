@@ -5,10 +5,11 @@
   ...
 }@args:
 let
-  swayscript = pkgs.callPackage <package/swayscript> args;
   alpha = config.module.style.opacity.hex;
   color = config.module.style.color;
   max = 1;
+  swayscript = pkgs.callPackage <package/swayscript> args;
+  timeout = config.module.style.timeout.popup;
 in
 {
   file = (pkgs.formats.iniWithGlobalSection { }).generate "MakoConfig" {
@@ -16,7 +17,7 @@ in
       anchor = "top-center";
       background-color = "#${color.highlight}${alpha}";
       border-color = "#${color.border}${alpha}";
-      default-timeout = 10000;
+      default-timeout = timeout;
       font = "${config.module.style.font.serif.name} ${toString config.module.style.font.size.popup}";
       height = 120;
       icons = 0;

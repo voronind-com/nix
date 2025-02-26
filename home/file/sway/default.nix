@@ -10,6 +10,7 @@ let
   fontName = config.module.style.font.sansSerif.name;
   keyboardLayouts = config.module.keyboard.layouts;
   keyboardOptions = config.module.keyboard.options;
+  timeoutCursor = config.module.style.timeout.cursor;
 
   accent = config.module.style.color.accent + alpha;
   alpha = config.module.style.opacity.hex;
@@ -230,6 +231,7 @@ let
         fontName
         keyboardLayouts
         keyboardOptions
+        timeoutCursor
         wallpaper
         windowGap
         ;
