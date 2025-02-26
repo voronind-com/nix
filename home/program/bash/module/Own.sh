@@ -28,9 +28,3 @@ function own() {
 		chmod -077 -R "${file}"
 	done
 }
-
-function _complete_own() {
-	_autocomplete $(_get_users)
-}
-
-complete -F _complete_own own

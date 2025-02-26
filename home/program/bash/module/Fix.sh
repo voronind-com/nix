@@ -13,12 +13,6 @@ function fix_ethernet_speed() {
 	ethtool -s "${device}" speed "${speed}"
 }
 
-# Delete lost Gradle lock files.
-function fix_gradle_lock() {
-	cd "${HOME}/.gradle" && find -type f | grep \\.lock$ | xargs -- rm
-	cd -
-}
-
 # Fix pdfs when they don't want to be uploaded to Paperless.
 # Usage: fix_pdf [FILES]
 function fix_pdf() {
