@@ -37,18 +37,6 @@
             run = openWith "xdg-open";
           }
         ];
-        archive = [
-          {
-            desc = "Archive";
-            run = openWith "archive";
-          }
-        ];
-        archive_fast = [
-          {
-            desc = "Archive Fast";
-            run = openWith "archive_fast";
-          }
-        ];
         audio = [
           {
             desc = "Audio";
@@ -195,7 +183,6 @@
         let
           defaultUse = [
             "text"
-            "archive_fast"
             "hex"
           ];
           mkMime = mime: use: {
@@ -242,10 +229,8 @@
           {
             mime = "inode/directory";
             use = [
-              "archive"
-              "archive_fast"
-              "bottle_run"
               "audio_shuffle"
+              "bottle_run"
             ];
           }
           (mkMime "*" [ ])
