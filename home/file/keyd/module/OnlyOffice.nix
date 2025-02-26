@@ -1,13 +1,11 @@
 { pkgs, ... }:
 {
-  file = (pkgs.formats.ini { }).generate "keyd-onlyoffice-config" {
-    "onlyoffice-desktop-editors" = {
-      "alt.E" = "C-tab";
-      "alt.Q" = "C-S-tab";
+  file = (pkgs.formats.ini { }).generate "keyd-libreoffice-config" {
+    "libreoffice-*" = {
       "alt.a" = "home";
       "alt.b" = "pageup";
       "alt.d" = "end";
-      "alt.e" = "A-pagedown";
+      "alt.e" = "C-tab";
       "alt.f" = "pagedown";
       "alt.h" = "left";
       "alt.i" = "f2";
@@ -15,7 +13,7 @@
       "alt.k" = "up";
       "alt.l" = "right";
       "alt.p" = "C-v";
-      "alt.q" = "A-pageup";
+      "alt.q" = "C-S-tab";
       "alt.r" = "C-y";
       "alt.s" = "C-end";
       "alt.u" = "C-z";

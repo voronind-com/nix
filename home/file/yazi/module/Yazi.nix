@@ -68,7 +68,7 @@
           {
             desc = "Document";
             orphan = true;
-            run = openWith "onlyoffice-desktopeditors";
+            run = openWith "libreoffice";
           }
         ];
         hex = [

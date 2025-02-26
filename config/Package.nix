@@ -31,18 +31,6 @@ in
     # Common apps.
     (lib.mkIf cfg.common {
       environment.systemPackages = package.common;
-
-      xdg.mime.defaultApplications = {
-        # Use `file -i file.txt` to find file mime type.
-        # Use `xdg-mime query default "text/plain"` to find default app.
-        "application/pdf" = "org.gnome.Evince.desktop";
-        "application/vnd.openxmlformats-officedocument.*" = "onlyoffice-desktopeditors.desktop";
-        "audio/*" = "mpv.desktop";
-        "image/*" = "org.gnome.Loupe.desktop";
-        "text/*" = "nvim.desktop";
-        "video/*" = "mpv.desktop";
-      };
-
       services.gvfs.enable = true;
 
       # Chromium config.
