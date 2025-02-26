@@ -1,10 +1,11 @@
 # Toggle vpn.
 function vpn() {
-	notify_short
 	if [[ "$(_vpn)" == "on" ]]; then
 		nmcli connection down Vpn
+		notify_long
 	else
 		nmcli connection up Vpn
+		notify_short
 	fi
 }
 
