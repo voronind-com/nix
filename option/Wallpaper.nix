@@ -10,8 +10,8 @@ let
   hasGpu = config.module.amd.gpu.enable;
 
   # Set the wallpaper here.
-  url = "https://share.voronind.com/wallpaper/LiveWallpaperPcComKameHouse2560X1440.mp4";
-  sha256 = "sha256-e2s+gnWfQXdZkbqrbAylbTI3FQnuurNi6EqDf1GLV/Y=";
+  url = "https://share.voronind.com/wallpaper/AloneAndSadMoewallsCom.mp4";
+  sha256 = "sha256-v0LCdbW79Iv0JKaCC3nXmkGPZErvqFIH+wcqDnLnty0=";
   video = true;
 
   # Forse black and white for text.
