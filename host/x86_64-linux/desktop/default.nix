@@ -13,7 +13,11 @@
       gaming = true;
       work = true;
     };
-    zfs.pools = [ "game" ];
+    zfs.pools = [
+      "atlas"
+      "game"
+      "sun"
+    ];
     display = {
       primary = "HDMI-A-1";
       rotate.HDMI-A-1 = 180;
