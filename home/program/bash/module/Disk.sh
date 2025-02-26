@@ -9,3 +9,10 @@ function pdf() {
 function tdu() {
 	du -sh --si "${@}"
 }
+
+# Show apparent size in SI.
+# Current dir by default.
+# Usage: tdua [DIRS]
+function tdua() {
+	du -sh --si --apparent-size "${@}"
+}
