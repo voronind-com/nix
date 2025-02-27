@@ -6,35 +6,7 @@ function recursive() {
 		return 2
 	fi
 
-	local IFS=$'\n'
-	local current="${PWD}"
-	local dirs=$(find -type d)
-	local total=$(find -type d | wc -l) # TODO: don't call find twice. won't work with "echo ${dirs}".
-	local count=0
-	local failed=0
-
-	for dir in ${dirs}; do
-		# increment counter.
-		((count++))
-
-		# cd into the next dir.
-		cd "${current}" || failed=${?}
-		cd "${dir}" || failed=${?}
-
-		# echo status.
-		echo -e "${color_bblue}[${count}/${total}] ${dir}${color_default}"
-
-		# run command.
-		${*} || failed=${?}
-
-		# Add newline if not the last one.
-		[[ ${count} == "${total}" ]] || echo
-	done
-
-	# return back on complete.
-	cd "${current}" || failed=${?}
-
-	return ${failed}
+	eval _recursive 0 99999 ${*}
 }
 
 # Run something recursively over directories of 1 depth (excluding current dir).
@@ -45,33 +17,38 @@ function recursive1() {
 		return 2
 	fi
 
+	eval _recursive 1 1 ${*}
+}
+
+# Usage: _recursive <MINDEPTH> <MAXDEPTH> <CMD>
+function _recursive() {
 	local IFS=$'\n'
+	local mindepth=${1}
+	local maxdepth=${2}
+	local cmd=${@:3}
 	local current="${PWD}"
-	local dirs=$(find -mindepth 1 -maxdepth 1 -type d)
-	local total=$(find -mindepth 1 -maxdepth 1 -type d | wc -l) # TODO: don't call find twice. won't work with "echo ${dirs}".
+	local dirs=$(find -mindepth ${mindepth} -maxdepth ${maxdepth} -type d)
+	local total=$(printf "%s\n" ${dirs[@]} | wc -l)
 	local count=0
 	local failed=0
 
 	for dir in ${dirs}; do
-		# increment counter.
+		# Increment counter.
 		((count++))
 
-		# cd into the next dir.
-		cd "${current}"
-		cd "${dir}"
+		# Echo status.
+		echo -e "\n${color_bblue}[${count}/${total}] ${dir}${color_default}"
 
-		# echo status.
-		echo -e "${color_bblue}[${count}/${total}] ${dir}${color_default}"
+		# Cd into the next dir.
+		cd "${current}" || { failed=${?}; continue; }
+		cd "${dir}" || { failed=${?}; continue; }
 
-		# run command.
-		${*} || failed=${?}
-
-		# Add newline if not the last one.
-		[[ ${count} == "${total}" ]] || echo
+		# Run command.
+		eval ${cmd} || failed=${?}
 	done
 
 	# return back on complete.
-	cd "${current}"
+	cd "${current}" || failed=${?}
 
 	return ${failed}
 }
