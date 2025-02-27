@@ -40,8 +40,14 @@ function _recursive() {
 		echo -e "\n${color_bblue}[${count}/${total}] ${dir}${color_default}"
 
 		# Cd into the next dir.
-		cd "${current}" || { failed=${?}; continue; }
-		cd "${dir}" || { failed=${?}; continue; }
+		cd "${current}" || {
+			failed=${?}
+			continue
+		}
+		cd "${dir}" || {
+			failed=${?}
+			continue
+		}
 
 		# Run command.
 		eval ${cmd} || failed=${?}

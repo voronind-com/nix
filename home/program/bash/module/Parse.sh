@@ -114,7 +114,7 @@ function parse_uppercase() {
 function parse_titlecase() {
 	local IFS=$'\n'
 	local parts=($(_parse_split ${@}))
-	local minors=("is" "at" "of" "to" "in" "for" "the" "a" "an" "and" "but" "or" "on" "was" "were" "been" "be" "do" "did" "does" "not")
+	local minors=("a" "an" "and" "at" "be" "been" "but" "did" "do" "does" "for" "in" "is" "not" "of" "on" "or" "the" "to" "was" "were" "а" "без" "безо" "в" "вне" "во" "для" "до" "за" "и" "из" "изо" "или" "к" "ко" "ли" "ля" "меж" "на" "над" "не" "о" "об" "обо" "от" "ото" "по" "под" "подо" "при" "про" "с" "со" "уж")
 
 	echo -n "$(parse_sentencecase ${parts[0]})"
 	for part in ${parts[@]:1}; do
