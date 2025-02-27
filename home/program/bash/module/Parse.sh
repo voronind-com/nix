@@ -1,5 +1,5 @@
 export _PARSE_ALLOWED_CHARS="_-"
-export _PARSE_SPLIT_CHARS="\.\ _-"
+export _PARSE_SPLIT_CHARS="\.\ _"
 
 # Parse data and output simplified format.
 # Usage: parse_simple <STRING>
@@ -8,7 +8,7 @@ function parse_simple() {
 		-e "s/[${_PARSE_SPLIT_CHARS}]/_/g" \
 		-e "s/[^[:alnum:]${_PARSE_ALLOWED_CHARS}]//g" \
 		-e "s/_\+/_/g" -e "s/-\+/-/g" \
-		-e "s/_-/_/g" -e "s/-_/_/g" \
+		-e "s/_-/-/g" -e "s/-_/-/g" \
 		-e "s/_\+/_/g" \
 		-e "s/^_//" -e "s/_$//"
 }
