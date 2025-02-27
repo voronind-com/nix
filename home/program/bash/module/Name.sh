@@ -1,4 +1,4 @@
-# Rename dirs to `snake_case` and files to `PascalCase`. Careful with structured file names like archives!
+# Rename dirs to `snake_case` and files to `Start_Case`
 # Usage: name [FILES]
 function name() {
 	local IFS=$'\n'
@@ -6,15 +6,13 @@ function name() {
 	[[ ${targets} == "" ]] && targets=($(ls))
 
 	process() {
-		# Skip archive.
-		if $(_is_archive "${target}"); then
-			_iterate_skip "File is an archive, skip."
-			return 0
-		fi
-
 		if [[ -d ${target} ]]; then
 			local new_name=$(parse_snake ${target})
-			[[ -e ${new_name} ]] && return 0
+			[ "${target}" = "${new_name}" ] && return 0
+			[[ -e ${new_name} ]] && {
+				_error "${new_name}: Already exists!"
+				return 1
+			}
 
 			mv -- ${target} ${new_name} && echo ${new_name}
 		else
@@ -23,7 +21,11 @@ function name() {
 			[[ ${ext} == ".${target}" ]] && ext=""
 
 			local new_name="$(parse_startcase $(parse_snake ${name}))${ext}"
-			[[ -e ${new_name} ]] && return 0
+			[ "${target}" = "${new_name}" ] && return 0
+			[[ -e ${new_name} ]] && {
+				_error "${new_name}: Already exists!"
+				return 1
+			}
 
 			mv -- ${target} ${new_name} && echo ${new_name}
 		fi
@@ -47,12 +49,6 @@ function name_parse() {
 	fi
 
 	process() {
-		# Skip archive.
-		if $(_is_archive "${target}"); then
-			_iterate_skip "File is an archive, skip."
-			return 0
-		fi
-
 		# parse new name.
 		local ext=""
 		local name="${target}"
@@ -70,13 +66,11 @@ function name_parse() {
 		local new_name=$(${parser} "${name}")${ext,,}
 
 		# check if same name.
-		[[ ${target} == "${new_name}" ]] && return 0
-
-		# check if target name already exists.
-		if [[ -f ${new_name} ]]; then
+		[ "${target}" = "${new_name}" ] && return 0
+		[[ -e ${new_name} ]] && {
 			_error "${new_name}: Already exists!"
 			return 1
-		fi
+		}
 
 		# rename target.
 		mv -- "${target}" "${new_name}" && echo "${new_name}"
@@ -94,7 +88,7 @@ function name_hash() {
 	[[ ${targets} == "" ]] && targets=($(_ls_file))
 
 	process() {
-		# extract extension.
+		# Extract extension.
 		local extension="${target##*.}"
 		if [[ ${extension} == "${target}" ]]; then
 			extension=""
@@ -102,12 +96,16 @@ function name_hash() {
 			extension=".${extension}"
 		fi
 
-		# hash the new name.
+		# Hash the new name.
 		local hash=$(pv "${target}" | sha1sum | cut -d\  -f1)
 		new_name="${hash,,}${extension,,}"
 
-		# check if same name.
-		[[ ${target} == "${new_name}" ]] && return 0
+		# Check if same name.
+		[ "${target}" = "${new_name}" ] && return 0
+		[[ -e ${new_name} ]] && {
+			_error "${new_name}: Already exists!"
+			return 1
+		}
 
 		# rename target.
 		mv -- ${target} ${new_name} && echo ${new_name}
@@ -163,7 +161,11 @@ function name_show() {
 		local new_name="Episode S${season}E$(printf %02d ${episode}).${target##*.}"
 
 		# Skip on no change.
-		[[ ${target} == "${new_name}" ]] && return 0
+		[ "${target}" = "${new_name}" ] && return 0
+		[[ -e ${new_name} ]] && {
+			_error "${new_name}: Already exists!"
+			return 1
+		}
 
 		# rename target.
 		mv -- ${target} ${new_name} && echo ${new_name}
@@ -196,7 +198,11 @@ function name_manga() {
 		local new_name="${manga} Vol.${season} Ch.${episode}.${target##*.}"
 
 		# Skip on no change.
-		[[ ${target} == "${new_name}" ]] && return 0
+		[ "${target}" = "${new_name}" ] && return 0
+		[[ -e ${new_name} ]] && {
+			_error "${new_name}: Already exists!"
+			return 1
+		}
 
 		# Rename target.
 		mv -- ${target} ${new_name} && echo ${new_name}
@@ -225,7 +231,11 @@ function name_ext() {
 		local new_name="${target%.*}"."${extension}"
 
 		# Skip on no change.
-		[[ ${target} == "${new_name}" ]] && return 0
+		[ "${target}" = "${new_name}" ] && return 0
+		[[ -e ${new_name} ]] && {
+			_error "${new_name}: Already exists!"
+			return 1
+		}
 
 		# Rename target.
 		mv -- ${target} ${new_name} && echo ${new_name}
@@ -249,7 +259,11 @@ function name_prefix() {
 		local new_name="${new}${target#$old}"
 
 		# Skip on no change.
-		[[ ${target} == "${new_name}" ]] && return 0
+		[ "${target}" = "${new_name}" ] && return 0
+		[[ -e ${new_name} ]] && {
+			_error "${new_name}: Already exists!"
+			return 1
+		}
 
 		# Rename.
 		mv -- ${target} ${new_name} && echo ${new_name}
@@ -273,7 +287,11 @@ function name_postfix() {
 		local new_name="${target%$old}${new}"
 
 		# Skip on no change.
-		[[ ${target} == "${new_name}" ]] && return 0
+		[ "${target}" = "${new_name}" ] && return 0
+		[[ -e ${new_name} ]] && {
+			_error "${new_name}: Already exists!"
+			return 1
+		}
 
 		# Rename.
 		mv -- ${target} ${new_name} && echo ${new_name}
@@ -297,7 +315,11 @@ function name_replace() {
 		local new_name="${target//$old/$new}"
 
 		# Skip on no change.
-		[[ ${target} == "${new_name}" ]] && return 0
+		[ "${target}" = "${new_name}" ] && return 0
+		[[ -e ${new_name} ]] && {
+			_error "${new_name}: Already exists!"
+			return 1
+		}
 
 		# Rename.
 		mv -- ${target} ${new_name} && echo ${new_name}
@@ -347,13 +369,11 @@ function name_fix_numbering() {
 		local new_name=$(printf "%0${power}d" "${digit}")"${target#${digits[0]}}"
 
 		# Skip if the same name.
-		[[ ${target} == "${new_name}" ]] && return 0
-
-		# Check that file does not exist.
-		if [[ -e ${new_name} ]]; then
-			_error "${new_name}: File exists!"
+		[ "${target}" = "${new_name}" ] && return 0
+		[[ -e ${new_name} ]] && {
+			_error "${new_name}: Already exists!"
 			return 1
-		fi
+		}
 
 		mv -- ${target} ${new_name} && echo ${new_name}
 	}
@@ -386,13 +406,11 @@ function name_make_numbering() {
 		local new_name=$(printf "%0${power}d" "${iter}")"_${target#${digit}_}"
 
 		# Skip if the same name.
-		[[ ${target} == "${new_name}" ]] && return 0
-
-		# Check that file does not exist.
-		if [[ -e ${new_name} ]]; then
-			_error "${new_name}: File exists!"
+		[ "${target}" = "${new_name}" ] && return 0
+		[[ -e ${new_name} ]] && {
+			_error "${new_name}: Already exists!"
 			return 1
-		fi
+		}
 
 		mv -- ${target} ${new_name} && echo ${new_name}
 	}

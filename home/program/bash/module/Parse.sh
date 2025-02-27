@@ -1,22 +1,20 @@
 export _PARSE_ALLOWED_CHARS="_-"
-export _PARSE_SPLIT_CHARS="\.\ _"
+export _PARSE_SPLIT_CHARS="\.\ "
 
 # Parse data and output simplified format.
 # Usage: parse_simple <STRING>
 function parse_simple() {
-	echo "${*}" | sed \
-		-e "s/[${_PARSE_SPLIT_CHARS}]/_/g" \
+	echo "${*}" | sed -E \
+		-e "s/[${_PARSE_SPLIT_CHARS}]/${_PARSE_ALLOWED_CHARS:0:1}/g" \
 		-e "s/[^[:alnum:]${_PARSE_ALLOWED_CHARS}]//g" \
-		-e "s/_\+/_/g" -e "s/-\+/-/g" \
-		-e "s/_-/-/g" -e "s/-_/-/g" \
-		-e "s/_\+/_/g" \
-		-e "s/^_//" -e "s/_$//"
+		-e "s/([${_PARSE_ALLOWED_CHARS}])[${_PARSE_ALLOWED_CHARS}]+/\1/g" \
+		-e "s/^[${_PARSE_ALLOWED_CHARS}]//" -e "s/[${_PARSE_ALLOWED_CHARS}]$//"
 }
 
 # Parse to PascalCase.
 # Usage: parse_pascal <STRING>
 function parse_pascal() {
-	local parts=($(_get_parts $(parse_simple "${*}")))
+	local parts=($(_parse_split "${*}"))
 	local result
 
 	for part in "${parts[@]}"; do
@@ -25,13 +23,13 @@ function parse_pascal() {
 		result="${result}${word}"
 	done
 
-	echo "${result}"
+	parse_simple "${result}"
 }
 
 # Parse to snake_case.
 # Usage: parse_snake <STRING>
 function parse_snake() {
-	local parts=($(_get_parts $(parse_simple "${*}")))
+	local parts=($(_parse_split "${*}"))
 	local result
 
 	for part in "${parts[@]}"; do
@@ -39,13 +37,13 @@ function parse_snake() {
 		result="${result}_${word}"
 	done
 
-	echo "${result#_}"
+	parse_simple "${result#_}"
 }
 
 # Parse to kebab-case.
 # Usage: parse_kebab <STRING>
 function parse_kebab() {
-	local parts=($(_get_parts $(parse_simple "${*}")))
+	local parts=($(_parse_split "${*}"))
 	local result
 
 	for part in "${parts[@]}"; do
@@ -53,13 +51,13 @@ function parse_kebab() {
 		result="${result}-${word}"
 	done
 
-	echo "${result#-}"
+	parse_simple "${result#-}"
 }
 
 # Parse to camelCase.
 # Usage: parse_camel <STRING>
 function parse_camel() {
-	local parts=($(_get_parts $(parse_simple "${*}")))
+	local parts=($(_parse_split "${*}"))
 	local result
 
 	for part in "${parts[@]}"; do
@@ -68,13 +66,13 @@ function parse_camel() {
 		result="${result}${word}"
 	done
 
-	echo "${result,}"
+	parse_simple "${result,}"
 }
 
 # Parse to SNAKE_CASE_UPPERCASE. **NOT STABLE! Repeating results in different output.**
 # Usage: parse_snake_uppercase <STRING>
 function parse_snake_uppercase() {
-	local parts=($(_get_parts $(parse_simple "${*}")))
+	local parts=($(_parse_split "${*}"))
 	local result
 
 	for part in "${parts[@]}"; do
@@ -82,7 +80,7 @@ function parse_snake_uppercase() {
 		result="${result}_${word}"
 	done
 
-	echo "${result#_}"
+	parse_simple "${result#_}"
 }
 
 # Parse data keeping only alphanumeric characters.
@@ -130,20 +128,8 @@ function parse_startcase() {
 	echo
 }
 
-# Parse string to pretty Json.
-# Usage: parse_json <STRING>
-function parse_json() {
-	echo "${*}" | jq
-}
-
 # Split string by separators.
 # Usage: _parse_split <STRING>
 function _parse_split() {
-	echo "${*}" | sed -e "s/[A-Z]\+/\n&/g" -e "s/[0-9]\+/\n&\n/g" -e "s/[${_PARSE_SPLIT_CHARS}]/&\n/g" | sed -e "/^$/d"
-}
-
-# Get name parts.
-# Usage: _get_parts <STRING>
-function _get_parts() {
-	_parse_split "${*}" | sed -e "s/[${_PARSE_SPLIT_CHARS}]//g" | sed -e "/^$/d"
+	parse_simple "${*}" | sed -e "s/[A-Z]\+/\n&/g" -e "s/[0-9]\+/\n&\n/g" -e "s/[${_PARSE_SPLIT_CHARS}${_PARSE_ALLOWED_CHARS}]/&\n/g" | sed -e "/^$/d"
 }
