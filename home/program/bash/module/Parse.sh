@@ -109,25 +109,6 @@ function parse_uppercase() {
 	echo "${*^^}"
 }
 
-# Parse string to title case.
-# Usage: parse_titlecase <STRING>
-function parse_titlecase() {
-	local IFS=$'\n'
-	local parts=($(_parse_split ${@}))
-	local minors=("a" "an" "and" "at" "be" "been" "but" "did" "do" "does" "for" "in" "is" "not" "of" "on" "or" "the" "to" "was" "were" "а" "без" "безо" "в" "вне" "во" "для" "до" "за" "и" "из" "изо" "или" "к" "ко" "ли" "ля" "меж" "на" "над" "не" "о" "об" "обо" "от" "ото" "по" "под" "подо" "при" "про" "с" "со" "уж")
-
-	echo -n "$(parse_sentencecase ${parts[0]})"
-	for part in ${parts[@]:1}; do
-		if _contains $(echo ${part,,} | sed -e "s/[${_PARSE_SPLIT_CHARS}]//g") ${minors[@]}; then
-			echo -n "${part,,}"
-		else
-			echo -n "$(parse_sentencecase ${part})"
-		fi
-	done
-
-	echo
-}
-
 # Parse string to sentence case.
 # Usage: parse_sentencecase <STRING>
 function parse_sentencecase() {
