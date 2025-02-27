@@ -114,7 +114,7 @@ function parse_uppercase() {
 function parse_titlecase() {
 	local IFS=$'\n'
 	local parts=($(_parse_split ${@}))
-	local minors=("is" "at" "of" "to" "in" "for" "the" "a" "an" "and" "but" "or" "on" "was" "were" "been" "be" "do" "did" "does")
+	local minors=("is" "at" "of" "to" "in" "for" "the" "a" "an" "and" "but" "or" "on" "was" "were" "been" "be" "do" "did" "does" "not")
 
 	echo -n "$(parse_sentencecase ${parts[0]})"
 	for part in ${parts[@]:1}; do

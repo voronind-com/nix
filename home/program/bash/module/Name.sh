@@ -22,7 +22,7 @@ function name() {
 			local name=${target%.*}
 			[[ ${ext} == ".${target}" ]] && ext=""
 
-			local new_name="$(parse_pascal ${name})${ext}"
+			local new_name="$(parse_startcase $(parse_snake ${name}))${ext}"
 			[[ -e ${new_name} ]] && return 0
 
 			mv -- ${target} ${new_name} && echo ${new_name}
@@ -197,34 +197,6 @@ function name_manga() {
 
 		# Skip on no change.
 		[[ ${target} == "${new_name}" ]] && return 0
-
-		# Rename target.
-		mv -- ${target} ${new_name} && echo ${new_name}
-	}
-
-	_iterate_targets process ${targets[@]}
-}
-
-# Rename files for ffmpeg_music_meta format.
-# All files by default.
-# Usage: name_music [FILES]
-function name_music() {
-	local IFS=$'\n'
-	local targets=(${@})
-	[[ ${targets} == "" ]] && targets=($(ls))
-
-	process() {
-		# Extract new name.
-		local ext=${target##*.}
-
-		if [[ -d ${target} ]]; then
-			local new_name="$(parse_startcase $(parse_simple ${target%.*}))"
-		else
-			local new_name="$(parse_startcase $(parse_simple ${target%.*})).${ext}"
-		fi
-
-		# Skip on no change.
-		[[ ${target%/} == "${new_name}" ]] && return 0
 
 		# Rename target.
 		mv -- ${target} ${new_name} && echo ${new_name}

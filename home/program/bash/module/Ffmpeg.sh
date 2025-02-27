@@ -58,9 +58,11 @@ function ffmpeg_music_meta() {
 	local artist="${PWD%/*}"
 	artist="${artist##*/}"
 	artist="${artist//_/ }"
+	artist=$(parse_titlecase "${artist}")
 	local album="${PWD##*/}"
 	album="${album#*_}"
 	album="${album//_/ }"
+	album=$(parse_titlecase "${album}")
 	local year="${PWD##*/}"
 	year="${year%%_*}"
 	# local total=$(ls *.${format} | wc -l)
@@ -87,6 +89,7 @@ function ffmpeg_music_meta() {
 		local title="${file#*_}"
 		title="${title%.*}"
 		title="${title//_/ }"
+		title=$(parse_titlecase "${title}")
 
 		if [[ ${track} == "" ]]; then
 			_error "Failed to get the track number!"
