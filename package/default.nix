@@ -166,6 +166,10 @@
     jetbrains.idea-community
     nixd # Nix LSP.
     nixfmt-rfc-style # Nix formatter.
+    nodePackages.prettier # Css formatter.
+    nodePackages.prettier-plugin-toml # Toml formatter.
+    shfmt # Bash formatter.
+    stylua # Lua formatter.
     treefmt # Recursive formatter.
   ];
 
