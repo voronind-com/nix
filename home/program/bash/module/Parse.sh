@@ -131,5 +131,5 @@ function parse_startcase() {
 # Split string by separators.
 # Usage: _parse_split <STRING>
 function _parse_split() {
-	parse_simple "${*}" | sed -e "s/[A-Z]\+/\n&/g" -e "s/[0-9]\+/\n&\n/g" -e "s/[${_PARSE_SPLIT_CHARS}${_PARSE_ALLOWED_CHARS}]/&\n/g" | sed -e "/^$/d"
+	printf "%s" "${*}" | sed -e "s/[A-Z]\+/\n&/g" -e "s/[0-9]\+/\n&\n/g" -e "s/[${_PARSE_SPLIT_CHARS}${_PARSE_ALLOWED_CHARS}]/&\n/g" | sed -e "/^$/d"
 }
