@@ -7,12 +7,22 @@ function pdf() {
 # Current dir by default.
 # Usage: tdu [DIRS]
 function tdu() {
-	du -sh --si "${@}"
+	printf "Disk: %s\n" $(du -sh --si "${@}")
+	printf "Real: %s\n" $(du -sh --si --apparent-size "${@}")
 }
 
-# Show apparent size in SI.
-# Current dir by default.
-# Usage: tdua [DIRS]
-function tdua() {
-	du -sh --si --apparent-size "${@}"
+# Find disk ids.
+# Usage: fdid <SDx>
+function fdid() {
+	local sdx="${1}"
+	if [ "${sdx}" = "" ]; then
+		help fdid
+		return 2
+	fi
+
+	for file in /dev/disk/by-id/*; do
+		if [[ "$(readlink ${file})" =~ ${sdx} ]]; then
+			printf "%s\n" "${file}"
+		fi
+	done
 }
