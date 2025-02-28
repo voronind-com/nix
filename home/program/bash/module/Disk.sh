@@ -7,8 +7,10 @@ function pdf() {
 # Current dir by default.
 # Usage: tdu [DIRS]
 function tdu() {
-	printf "Disk: %s\n" $(du -sh --si "${@}")
-	printf "Real: %s\n" $(du -sh --si --apparent-size "${@}")
+	printf "\nDisk:\n"
+	du -sh --si "${@}"
+	printf "\nReal:\n"
+	du -sh --si --apparent-size "${@}"
 }
 
 # Find disk ids.
