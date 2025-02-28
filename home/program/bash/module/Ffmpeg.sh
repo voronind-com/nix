@@ -10,31 +10,20 @@ function ffmpeg_mux_audio() {
 }
 
 # Mux cover into music file.
-# Usage: ffmpeg_mux_cover <FORMAT> <COVER>
+# Usage: ffmpeg_mux_cover <COVER>
 function ffmpeg_mux_cover() {
 	if [[ ${1} == "" ]]; then
 		help ffmpeg_mux_cover
 		return 2
 	fi
 
-	local format="${1}"
-	local cover="${2}"
+	local cover="${1}"
 
 	mkdir out
 
-	case "${format}" in
-	# "mka"|"mkv")
-	#   for file in *.${format}; do
-	#     ffmpeg -i "${file}" -attach "${cover}" -map 0 -c copy -metadata:s:t mimetype="image/${cover##*.}" -metadata:s:t:0 filename="cover.${cover##*.}" "./out/${file}" || return 1
-	#   done
-	#   ;;
-	*)
-		for file in *.${format}; do
-			# ffmpeg -i "${file}" -i "${cover}" -map 0 -map 0:-v? -map 1 -codec copy -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)" -disposition:v attached_pic ./out/"${file}" || return 1
-			ffmpeg -i "${file}" -i "${cover}" -map 0 -map 1 -codec copy -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)" -disposition:v attached_pic ./out/"${file}" || return 1
-		done
-		;;
-	esac
+	for file in $(ls *.mp3 *.flac *.mka 2>/dev/null); do
+		ffmpeg -i "${file}" -i "${cover}" -map 0 -map 1 -codec copy -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)" -disposition:v attached_pic ./out/"${file}" || return 1
+	done
 
 	mv out/* .
 	rm -d out/ # && rm "${2}"
@@ -44,17 +33,8 @@ function ffmpeg_mux_cover() {
 # Top dir is the Artist name like this: `The_Beatles`.
 # Next are albums like this: `2010_My_love`.
 # Inside are songs like this: `01_sample.flac`.
-# Usage: ffmpeg_music_meta <FORMAT>
+# Usage: ffmpeg_music_meta
 function ffmpeg_music_meta() {
-	if [[ ${1} == "" ]]; then
-		help ffmpeg_music_meta
-		return 2
-	fi
-
-	local format="${1}"
-
-	ls *.${format} &>/dev/null || return 1
-
 	local artist="${PWD%/*}"
 	artist="${artist##*/}"
 	artist="${artist//_/ }"
@@ -65,7 +45,6 @@ function ffmpeg_music_meta() {
 	album=$(parse_startcase "${album}")
 	local year="${PWD##*/}"
 	year="${year%%_*}"
-	# local total=$(ls *.${format} | wc -l)
 
 	# Check.
 	if [[ ${album} == "" ]]; then
@@ -83,7 +62,7 @@ function ffmpeg_music_meta() {
 
 	mkdir out
 
-	for file in *.${format}; do
+	for file in $(ls *.mp3 *.flac *.mka 2>/dev/null); do
 		local track="${file%%_*}"
 		track=$((10#${track}))
 		local title="${file#*_}"
