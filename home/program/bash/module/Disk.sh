@@ -7,10 +7,18 @@ function pdf() {
 # Current dir by default.
 # Usage: tdu [DIRS]
 function tdu() {
-	printf "\nDisk:\n"
-	du -sh --si "${@}"
-	printf "\nReal:\n"
-	du -sh --si --apparent-size "${@}"
+	_tdu() {
+		local targets="${@}"
+		[ "${targets}" = "" ] && targets=(".")
+		printf "Path\tReal\tDisk\n"
+		printf "%s\t%s\t%s\n" "----" "----" "----"
+		for target in ${targets[@]}; do
+			local real=$(du -sh --apparent-size "${target}" | cut -f1)
+			local disk=$(du -sh "${target}" | cut -f1)
+			printf "${target}\t${real}\t${disk}\n"
+		done
+	}
+	_tdu "${@}" | column -t
 }
 
 # Find disk ids.
