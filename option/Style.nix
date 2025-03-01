@@ -125,8 +125,8 @@ in
 
     timeout = {
       key = mkIntOption 150;
-      cursor = mkIntOption 10000;
-      popup = mkIntOption 10000;
+      cursor = mkIntOption (10 * 60 * 1000);
+      popup = mkIntOption (10 * 1000);
     };
   };
 }
