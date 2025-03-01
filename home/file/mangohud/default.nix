@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
+let
+  color = config.module.style.color;
+in
 {
   # REF: https://github.com/flightlessmango/MangoHud#hud-configuration
   config = (pkgs.formats.iniWithGlobalSection { }).generate "MangoConfig" {
@@ -10,7 +13,7 @@
       fps_sampling_period = 1000;
       frame_timing = 0;
       gl_vsync = 0;
-      preset = "0,1,2";
+      preset = "1,2,3,0";
       toggle_fps_limit = "Shift_L+F2";
       toggle_logging = "Shift_L+F3";
       toggle_preset = "Shift_L+F1";
@@ -23,6 +26,14 @@
       no_display = 1;
     };
     "preset 1" = {
+      background_alpha = "0.0";
+      font_size = 8;
+      fps_only = 1;
+      hud_no_margin = 1;
+      text_color = color.misc;
+      text_outline = 0;
+    };
+    "preset 2" = {
       alpha = 1.0;
       arch = 0;
       background_alpha = 0.5;
@@ -43,7 +54,7 @@
       time = 0;
       vram = 0;
     };
-    "preset 2" = {
+    "preset 3" = {
       full = 1;
     };
   };
