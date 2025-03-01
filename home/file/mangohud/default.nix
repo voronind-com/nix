@@ -27,7 +27,7 @@ in
     };
     "preset 1" = {
       background_alpha = "0.0";
-      font_size = 8;
+      font_size = 11;
       fps_only = 1;
       hud_no_margin = 1;
       text_color = color.misc;
