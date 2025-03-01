@@ -1,36 +1,36 @@
 {
-  __findFile,
-  config,
   pkgs,
+  secret,
   util,
   ...
-}@args:
+}:
 let
-  bash = import <home/program/bash> args;
-  script = pkgs.writeText "backup-script" ''
-    source ${bash.modulesFile}
+  script = ''
+    function notify() {
+      curl -X POST -H 'Content-Type: Application/json' -d "${secret.tg.dt "true"}" ${secret.tg.bt} &>/dev/null
+    }
 
     function report() {
-      printf "''${*}\n"
-      notify "''${*}"
+      printf "%s\n" "$*"
+      notify "$*"
     }
 
     source="data"
     target="/alpha/backup/home/data"
 
     # Save media list.
-    cd /alpha && find anime game manga movie show study video -type d > "''${target}/Alpha.txt"
-    cd /omega && find anime movie show study video -type d > "''${target}/Omega.txt"
+    cd /alpha && find anime game manga movie show study video -type d > "$target/Alpha.txt"
+    cd /omega && find anime movie show study video -type d > "$target/Omega.txt"
 
     # Get current snapshot.
-    source_current=$(zfs list -H -o name -t snapshot ''${source} | tail --lines=1)
+    source_current=$(zfs list -H -o name -t snapshot $source | tail --lines=1)
 
     printf "SC=$source_current\n"
 
     # Replicate.
-    zfs send -R ''${source_current} > "''${target}/Data.zfs"
-    size=$(du --si -h "''${target}/Data.zfs")
-    report "💾 Backup complete ''${size} with version ''${source_current}."
+    zfs send $source_current > "$target/Data.zfs"
+    size=$(du --si -h --apparent-size "$target/Data.zfs")
+    report "💾 Backup complete $size with version $source_current."
 
     # Sync writes.
     zpool sync alpha
@@ -38,20 +38,15 @@ let
 in
 {
   systemd.services.backup = util.mkStaticSystemdService {
+    inherit script;
     enable = true;
     description = "Home system backup";
     serviceConfig.Type = "oneshot";
     path = with pkgs; [
-      bashInteractive
       coreutils
       curl
-      ripgrep
-      rsync
       zfs
     ];
-    script = ''
-      ${pkgs.bashInteractive}/bin/bash ${script}
-    '';
   };
 
   systemd.timers.backup = {
