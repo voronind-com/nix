@@ -29,7 +29,7 @@ Host laptop
 	Port 22143
 
 Host max
-	HostName fd09:8d46:b26:0:b19:f4fb:a99f:dbf1
+	HostName fd09:8d46:b26:0:c2a5:e8ff:feb5:d916
 	User root
 	Port 22143
 

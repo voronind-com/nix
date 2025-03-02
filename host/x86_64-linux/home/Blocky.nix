@@ -90,7 +90,7 @@
           "dasha.local" = "fd09:8d46:b26:0:2ef0:5dff:fe3b:778";
           "desktop.local" = "fd09:8d46:b26:0:dabb:c1ff:fecc:da30";
           "home.local" = config.module.const.home;
-          # "max.local" = "";
+          "max.local" = "fd09:8d46:b26:0:c2a5:e8ff:feb5:d916";
           "phone.local" = "fd09:8d46:b26:0:f774:b83e:61f0:6ebe";
           "printer.local" = "fd09:8d46:b26:0:9e1c:37ff:fe62:3fd5";
           "router.local" = "fd09:8d46:b26:0:9e9d:7eff:fe8e:3dc7";
