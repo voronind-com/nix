@@ -6,7 +6,7 @@ function ta() {
 
 	# Set default name.
 	# [[ "${name}" = "" ]] && name="main"
-	[[ ${name} == "" ]] && name=$(parse_alnum "${PWD##*/}")
+	[[ ${name} == "" ]] && name=$(printf "%s" "${PWD##*/}" | parse_alnum)
 
 	# Create session.
 	tmux new-session -s "${name}" -d &>/dev/null
@@ -39,7 +39,7 @@ function tl() {
 function tns() {
 	local name="${1}"
 
-	[[ ${name} == "" ]] && name=$(parse_alnum "${PWD##*/}")
+	[[ ${name} == "" ]] && name=$(printf "%s" "${PWD##*/}" | parse_alnum)
 
 	tmux rename-session "${name}"
 }
@@ -49,7 +49,7 @@ function tns() {
 function tnw() {
 	local name="${1}"
 
-	[[ ${name} == "" ]] && name=$(parse_alnum "${PWD##*/}")
+	[[ ${name} == "" ]] && name=$(printf "%s" "${PWD##*/}" | parse_alnum)
 
 	tmux rename-window "${name}"
 }
@@ -60,7 +60,7 @@ function tnw() {
 function tk() {
 	local name="${1}"
 
-	[[ ${name} == "" ]] && name=$(parse_alnum "${PWD##*/}")
+	[[ ${name} == "" ]] && name=$(printf "%s" "${PWD##*/}" | parse_alnum)
 
 	tmux kill-session -t "${name}"
 }

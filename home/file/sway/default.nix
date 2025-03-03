@@ -44,10 +44,10 @@ let
 
   prepFile = path: ext: ''
     # Focused app id by default.
-    curWindow=$(parse_snake $(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .app_id'))
+    curWindow=$(printf "%s" $(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .app_id') | parse_filename)
 
     # If no id (i.e. xwayland), then use a name (title).
-    [[ "''${curWindow}" = "null" ]] && curWindow=$(parse_snake $(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .name'))
+    [[ "''${curWindow}" = "null" ]] && curWindow=$(printf "%s" $(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .name') | parse_filename)
 
     # If no app in focus, use "unknown" dir.
     [[ "''${curWindow}" =~ ^[0-9]+$ ]] && curWindow="unknown"

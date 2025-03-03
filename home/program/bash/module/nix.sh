@@ -57,7 +57,7 @@ function nixpkgs_run() {
 function prefetch() {
 	local url="${1}"
 	local name="${1##*/}"
-	name=$(parse_alnum "${name%%\?*}")
+	name=$(printf "%s" "${name%%\?*}" | parse_alnum)
 
 	if [[ ${url} == "" ]]; then
 		help prefetch
