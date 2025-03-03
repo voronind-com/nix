@@ -8,7 +8,8 @@ function pdf() {
 # Usage: tdu [DIRS]
 function tdu() {
 	_tdu() {
-		local targets="${@}"
+		local IFS=$'\n'
+		local targets=("${@}")
 		[ "${targets}" = "" ] && targets=(".")
 		printf "Path\tReal\tDisk\n"
 		printf "%s\t%s\t%s\n" "----" "----" "----"
@@ -18,7 +19,7 @@ function tdu() {
 			printf "${target}\t${real}\t${disk}\n"
 		done
 	}
-	_tdu "${@}" | column -t
+	_tdu "${@}" | column -t -s $'\t'
 }
 
 # Find disk ids.
