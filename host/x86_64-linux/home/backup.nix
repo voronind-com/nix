@@ -19,8 +19,8 @@ let
     target="/alpha/backup/home/data"
 
     # Save media list.
-    cd /alpha && find anime game manga movie show study video -type d > "$target/Alpha.txt"
-    cd /omega && find anime movie show study video -type d > "$target/Omega.txt"
+    cd /alpha && find anime game manga movie show study video -type d > "$target/alpha.txt"
+    cd /omega && find anime movie show study video -type d > "$target/omega.txt"
 
     # Get current snapshot.
     source_current=$(zfs list -H -o name -t snapshot $source | tail --lines=1)
@@ -28,8 +28,8 @@ let
     printf "SC=$source_current\n"
 
     # Replicate.
-    zfs send $source_current > "$target/Data.zfs"
-    size=$(du --si -h --apparent-size "$target/Data.zfs")
+    zfs send $source_current > "$target/data.zfs"
+    size=$(du --si -h --apparent-size "$target/data.zfs")
     report "💾 Backup complete $size with version $source_current."
 
     # Sync writes.
