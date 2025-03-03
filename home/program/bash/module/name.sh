@@ -10,7 +10,7 @@ function name() {
 		local name=${target%.*}
 		[[ ${ext} == ".${target}" ]] && ext=""
 
-		local new_name="$(parse_file ${name})${ext,,}"
+		local new_name="$(printf "%s" "${name}" | parse_filename)${ext,,}"
 		[ "${target}" = "${new_name}" ] && return 0
 		[[ -e ${new_name} ]] && {
 			_error "${new_name}: Already exists!"
@@ -52,7 +52,7 @@ function name_parse() {
 		[[ ${ext#.} == "${name}" ]] && ext=""
 
 		# Get new name.
-		local new_name=$(${parser} "${name}")${ext,,}
+		local new_name=$(printf "%s" "${name}" | ${parser})${ext,,}
 
 		# check if same name.
 		[ "${target}" = "${new_name}" ] && return 0
@@ -331,7 +331,7 @@ function name_fix_numbering() {
 		# Check that starts with a digit.
 		[[ ${target} =~ ^[0-9] ]] || continue
 
-		local digits=($(parse_ints "${target}"))
+		local digits=($(printf "%s" "${target}" | parse_ints))
 		local digit="${digits[0]}"
 		digit=$((10#${digit}))
 
@@ -352,7 +352,7 @@ function name_fix_numbering() {
 		fi
 
 		# Prepare new name.
-		local digits=($(parse_ints "${target}"))
+		local digits=($(printf "%s" "${target}" | parse_ints))
 		local digit="${digits[0]}"
 		digit=$((10#${digit}))
 		local new_name=$(printf "%0${power}d" "${digit}")"${target#${digits[0]}}"
@@ -390,7 +390,7 @@ function name_make_numbering() {
 		((iter++))
 
 		# Prepare new name.
-		local digits=($(parse_ints "${target}"))
+		local digits=($(printf "%s" "${target}" | parse_ints))
 		local digit="${digits[0]}"
 		local new_name=$(printf "%0${power}d" "${iter}")"_${target#${digit}_}"
 
