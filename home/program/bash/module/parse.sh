@@ -8,7 +8,8 @@ function parse_simple() {
 		-e "s/[${_PARSE_SPLIT_CHARS}]/${_PARSE_ALLOWED_CHARS:0:1}/g" \
 		-e "s/[^[:alnum:]${_PARSE_ALLOWED_CHARS}]//g" \
 		-e "s/([${_PARSE_ALLOWED_CHARS}])[${_PARSE_ALLOWED_CHARS}]+/\1/g" \
-		-e "s/^[${_PARSE_ALLOWED_CHARS}]//" -e "s/[${_PARSE_ALLOWED_CHARS}]$//"
+		-e "s/^[${_PARSE_ALLOWED_CHARS}]//" \
+		-e "s/[${_PARSE_ALLOWED_CHARS}]$//"
 }
 
 # Parse to PascalCase.
@@ -139,7 +140,7 @@ function parse_filename() {
 		result="${result}_${word}"
 	done
 
-	printf "%s" "${result#_}" | parse_simple
+	printf "%s" "${result#_}" | _PARSE_ALLOWED_CHARS="_\.-" _PARSE_SPLIT_CHARS="\ " parse_simple
 }
 
 # Split string by separators.
