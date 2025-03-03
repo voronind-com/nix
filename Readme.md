@@ -42,7 +42,7 @@ Newest first.
 <br><a href="https://i.imgur.com/3EL63Ur.jpeg">Wallpaper link</a>
 </details>
 
-[My current wallpaper](option/Wallpaper.nix#L12)
+[My current wallpaper](option/Wallpaper.nix#L13)
 
 Color theming based on wallpaper thanks to [Stylix](https://github.com/danth/stylix).
 
