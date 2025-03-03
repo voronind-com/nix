@@ -173,25 +173,20 @@
           (mkName "*.mka" [ "audio" ])
           (mkName "*.nsp" [ "switch_install" ])
           (mkName "*.nsz" [ "switch_install" ])
-          (mkName "*.xlsx" [ "document" ])
 
           # Use `file -i file.txt` to find file mime type.
           # Use `xdg-mime query default "text/plain"` to find default app.
           (mkMime "application/pdf" [ "pdf" ])
-          (mkMime "audio/*" [ "audio" ])
-          (mkMime "image/*" [
-            "picture"
-            "picture_copy"
-            "picture_edit"
-            "picture_edit_quick"
-          ])
-          (mkMime "video/*" [ "video" ])
-          (mkMime "text/html" [ "browser" ])
+          (mkMime "application/vnd.oasis.opendocument.*" [ "document" ])
           (mkMime "application/vnd.openxmlformats-officedocument.*" [ "document" ])
+          (mkMime "application/vnd.sqlite3" [ "sqlite" ])
+          (mkMime "application/x-bittorrent" [ "torrent" ])
           (mkMime "application/x-executable" [ "steam_run" ])
           (mkMime "application/x-pie-executable" [ "steam_run" ])
-          (mkMime "application/x-bittorrent" [ "torrent" ])
-          (mkMime "application/vnd.sqlite3" [ "sqlite" ])
+          (mkMime "audio/*" [ "audio" ])
+          (mkMime "image/*" [ "picture" "picture_copy" "picture_edit" "picture_edit_quick" ])
+          (mkMime "text/html" [ "browser" ])
+          (mkMime "video/*" [ "video" ])
 
           {
             mime = "inode/directory";
