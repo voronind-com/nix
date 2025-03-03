@@ -8,9 +8,10 @@ excludes = [
 	"*.lock",
 	"*.ogg",
 	"*.patch",
-	"license",
 	"home/file/jetbrains/ideavimrc",
 	"home/file/ssh/config",
+	"license",
+	"package/jobber/project/*"
 ]
 
 [formatter.nixfmt-rfc-style]
