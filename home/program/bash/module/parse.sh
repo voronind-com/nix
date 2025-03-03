@@ -14,7 +14,7 @@ function parse_simple() {
 # Parse to PascalCase.
 # Usage: parse_pascal <STRING>
 function parse_pascal() {
-	local parts=($(_parse_split "${*}"))
+	local parts=($(_parse_split_strip "${*}"))
 	local result
 
 	for part in "${parts[@]}"; do
@@ -29,7 +29,7 @@ function parse_pascal() {
 # Parse to snake_case.
 # Usage: parse_snake <STRING>
 function parse_snake() {
-	local parts=($(_parse_split "${*}"))
+	local parts=($(_parse_split_strip "${*}"))
 	local result
 
 	for part in "${parts[@]}"; do
@@ -43,7 +43,7 @@ function parse_snake() {
 # Parse to kebab-case.
 # Usage: parse_kebab <STRING>
 function parse_kebab() {
-	local parts=($(_parse_split "${*}"))
+	local parts=($(_parse_split_strip "${*}"))
 	local result
 
 	for part in "${parts[@]}"; do
@@ -57,7 +57,7 @@ function parse_kebab() {
 # Parse to camelCase.
 # Usage: parse_camel <STRING>
 function parse_camel() {
-	local parts=($(_parse_split "${*}"))
+	local parts=($(_parse_split_strip "${*}"))
 	local result
 
 	for part in "${parts[@]}"; do
@@ -72,7 +72,7 @@ function parse_camel() {
 # Parse to SNAKE_CASE_UPPERCASE. **NOT STABLE! Repeating results in different output.**
 # Usage: parse_snake_uppercase <STRING>
 function parse_snake_uppercase() {
-	local parts=($(_parse_split "${*}"))
+	local parts=($(_parse_split_strip "${*}"))
 	local result
 
 	for part in "${parts[@]}"; do
@@ -128,8 +128,27 @@ function parse_startcase() {
 	echo
 }
 
+# Parse filename.
+# Usage: parse_file <STRING>
+function parse_file() {
+	local parts=($(_parse_split "${*}"))
+	local result
+
+	for part in "${parts[@]}"; do
+		local word="${part,,}"
+		result="${result}_${word}"
+	done
+
+	parse_simple "${result#_}"
+}
+
 # Split string by separators.
 # Usage: _parse_split <STRING>
 function _parse_split() {
 	printf "%s" "${*}" | sed -e "s/[A-Z]\+/\n&/g" -e "s/[0-9]\+/\n&\n/g" -e "s/[${_PARSE_SPLIT_CHARS}${_PARSE_ALLOWED_CHARS}]/&\n/g" | sed -e "/^$/d"
+}
+
+# Split string by separators and strip separation chars.
+function _parse_split_strip() {
+	__parse_split "${*}" | sed -e "s/[${_PARSE_SPLIT_CHARS}]//g" | sed -e "/^$/d"
 }

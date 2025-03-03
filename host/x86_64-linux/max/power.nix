@@ -1,6 +1,6 @@
 { __findFile, pkgs, ... }:
 let
-  wm2fc = pkgs.callPackage <package/wm2fc> { };
+  wm2fc = pkgs.callPackage <package/wm_2_fc> { };
 in
 {
   # hardware.cpu.amd.ryzen-smu.enable = true;
@@ -20,7 +20,7 @@ in
 
   systemd.services.radj = {
     enable = true;
-    description = "Ryzen Adj temperature limiter.";
+    description = "Ryzen Adj temperature limiter";
     serviceConfig.Type = "simple";
     wantedBy = [ "multi-user.target" ];
     path = with pkgs; [

@@ -5,7 +5,7 @@ let
   fontStep = 1;
 in
 {
-  file = (pkgs.formats.iniWithGlobalSection { }).generate "FootConfig" {
+  file = (pkgs.formats.iniWithGlobalSection { }).generate "foot-config" {
     globalSection = {
       dpi-aware = dpiAware;
       font = "${config.module.style.font.monospace.name}:size=${toString config.module.style.font.size.terminal}";

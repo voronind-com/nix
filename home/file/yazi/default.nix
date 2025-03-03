@@ -5,7 +5,7 @@
   ...
 }@args:
 {
-  keymap = (import ./module/Keymap.nix args).file;
-  theme = (import ./module/Theme.nix args).file;
-  yazi = (import ./module/Yazi.nix args).file;
+  keymap = (import ./module/keymap.nix args).file;
+  theme = (import ./module/theme.nix args).file;
+  yazi = (import ./module/yazi.nix args).file;
 }

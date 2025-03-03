@@ -588,22 +588,6 @@
         "type": "github"
       }
     },
-    "nvimGen": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1735503365,
-        "narHash": "sha256-s3Ky2uhRviKAaKF3iCF2uHctzk+kFV7BnqyxAGwqhbo=",
-        "owner": "David-Kunz",
-        "repo": "gen.nvim",
-        "rev": "e09a8dbffa139ad60d5b47998fcc8669ead1ebf4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "David-Kunz",
-        "repo": "gen.nvim",
-        "type": "github"
-      }
-    },
     "nvimGitsigns": {
       "flake": false,
       "locked": {
@@ -804,7 +788,6 @@
         "nvimCtags": "nvimCtags",
         "nvimDevicons": "nvimDevicons",
         "nvimDressing": "nvimDressing",
-        "nvimGen": "nvimGen",
         "nvimGitsigns": "nvimGitsigns",
         "nvimGruvboxMaterial": "nvimGruvboxMaterial",
         "nvimIndentoMatic": "nvimIndentoMatic",

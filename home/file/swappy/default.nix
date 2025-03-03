@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 {
-  config = (pkgs.formats.ini { }).generate "SwappyConfig" {
+  config = (pkgs.formats.ini { }).generate "swappy-config" {
     Default = {
       custom_color = with config.module.style.color; "rgba(${accentR},${accentG},${accentB},1)";
       early_exit = true;

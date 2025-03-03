@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 {
-  preferences = (pkgs.formats.json { }).generate "ChromiumConfig" {
+  preferences = (pkgs.formats.json { }).generate "chromium-config" {
     name = "Work";
     bookmark_bar.show_on_all_tabs = false;
     browser.show_home_button = false;
@@ -78,7 +78,7 @@
     };
   };
 
-  localState = (pkgs.formats.json { }).generate "ChromiumLocalState" {
+  localState = (pkgs.formats.json { }).generate "chromium-local-state" {
     browser = {
       first_run_finished = true;
       enabled_labs_experiments = [ "smooth-scrolling@2" ];
@@ -86,7 +86,7 @@
   };
 
   # REF: https://chromeenterprise.google/intl/en_us/policies/
-  policy = (pkgs.formats.json { }).generate "ChromiumPolicy" {
+  policy = (pkgs.formats.json { }).generate "chromium-policy" {
     DefaultBrowserSettingEnabled = false;
     URLBlocklist = [ "darkreader.org" ];
   };

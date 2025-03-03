@@ -12,7 +12,7 @@ let
   timeout = config.module.style.timeout.popup;
 in
 {
-  file = (pkgs.formats.iniWithGlobalSection { }).generate "MakoConfig" {
+  file = (pkgs.formats.iniWithGlobalSection { }).generate "mako-config" {
     globalSection = {
       anchor = "top-center";
       background-color = "#${color.highlight}${alpha}";

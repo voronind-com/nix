@@ -1,4 +1,4 @@
-# Rename dirs to `snake_case` and files to `Start_Case`
+# Rename files to `snake_case` with allowed `-` dash character.
 # Usage: name [FILES]
 function name() {
 	local IFS=$'\n'
@@ -6,29 +6,18 @@ function name() {
 	[[ ${targets} == "" ]] && targets=($(ls))
 
 	process() {
-		if [[ -d ${target} ]]; then
-			local new_name=$(parse_snake ${target})
-			[ "${target}" = "${new_name}" ] && return 0
-			[[ -e ${new_name} ]] && {
-				_error "${new_name}: Already exists!"
-				return 1
-			}
+		local ext=".${target##*.}"
+		local name=${target%.*}
+		[[ ${ext} == ".${target}" ]] && ext=""
 
-			mv -- ${target} ${new_name} && echo ${new_name}
-		else
-			local ext=".${target##*.}"
-			local name=${target%.*}
-			[[ ${ext} == ".${target}" ]] && ext=""
+		local new_name="$(parse_file ${name})${ext,,}"
+		[ "${target}" = "${new_name}" ] && return 0
+		[[ -e ${new_name} ]] && {
+			_error "${new_name}: Already exists!"
+			return 1
+		}
 
-			local new_name="$(parse_startcase $(parse_snake ${name}))${ext}"
-			[ "${target}" = "${new_name}" ] && return 0
-			[[ -e ${new_name} ]] && {
-				_error "${new_name}: Already exists!"
-				return 1
-			}
-
-			mv -- ${target} ${new_name} && echo ${new_name}
-		fi
+		mv -- ${target} ${new_name} && echo ${new_name}
 	}
 
 	_iterate_targets process ${targets[@]}

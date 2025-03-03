@@ -18,7 +18,6 @@ let
     "${inputs.nvimCtags}"
     "${inputs.nvimDevicons}"
     "${inputs.nvimDressing}"
-    "${inputs.nvimGen}"
     "${inputs.nvimGitsigns}"
     "${inputs.nvimGruvboxMaterial}"
     "${inputs.nvimIndentoMatic}"
@@ -33,57 +32,55 @@ let
 
   # Order of files to load.
   configs = [
-    ./module/key/Rekey.lua
-    ./module/key/Leader.lua
-    ./module/config/Autoread.lua
-    ./module/config/Etc.lua
-    ./module/config/Search.lua
-    ./module/config/Tab.lua
-    ./module/config/Highlight.lua
-    ./module/plugin/Filetree.lua
-    ./module/plugin/Gruvbox.lua
-    ./module/plugin/Bufferline.lua
-    ./module/plugin/Autoclose.lua
-    ./module/plugin/Gitsigns.lua
-    ./module/plugin/Trouble.lua
-    ./module/plugin/Closebuffers.lua
-    ./module/plugin/Telescope.lua
-    ./module/plugin/Todo.lua
-    ./module/plugin/Indent.lua
-    ./module/plugin/Align.lua
-    ./module/plugin/Treesitter.lua
-    ./module/plugin/Fold.lua
-    ./module/plugin/Gen.lua
-    ./module/plugin/Colorizer.lua
-    ./module/plugin/Dressing.lua
-    ./module/plugin/lsp/Go.lua
-    ./module/plugin/lsp/Haskell.lua
-    ./module/plugin/lsp/Lua.lua
-    ./module/plugin/lsp/Nix.lua
-    ./module/plugin/lsp/Rust.lua
-    ./module/plugin/lsp/Tex.lua
-    ./module/plugin/lsp/Ctags.lua
-    ./module/key/Autocomplete.lua
-    ./module/key/Buffer.lua
-    ./module/key/Cmd.lua
-    ./module/key/Colorscheme.lua
-    ./module/key/Filetree.lua
-    ./module/key/Gitsigns.lua
-    ./module/key/Navigation.lua
-    ./module/key/Prompt.lua
-    ./module/key/Save.lua
-    ./module/key/Sort.lua
-    ./module/key/TabWidth.lua
-    ./module/key/Telescope.lua
-    ./module/key/Terminal.lua
-    ./module/key/Trouble.lua
+    ./module/key/rekey.lua
+    ./module/key/leader.lua
+    ./module/config/autoread.lua
+    ./module/config/etc.lua
+    ./module/config/search.lua
+    ./module/config/tab.lua
+    ./module/config/highlight.lua
+    ./module/plugin/filetree.lua
+    ./module/plugin/gruvbox.lua
+    ./module/plugin/bufferline.lua
+    ./module/plugin/autoclose.lua
+    ./module/plugin/gitsigns.lua
+    ./module/plugin/trouble.lua
+    ./module/plugin/closebuffers.lua
+    ./module/plugin/telescope.lua
+    ./module/plugin/todo.lua
+    ./module/plugin/indent.lua
+    ./module/plugin/align.lua
+    ./module/plugin/treesitter.lua
+    ./module/plugin/fold.lua
+    ./module/plugin/colorizer.lua
+    ./module/plugin/dressing.lua
+    ./module/plugin/lsp/go.lua
+    ./module/plugin/lsp/haskell.lua
+    ./module/plugin/lsp/lua.lua
+    ./module/plugin/lsp/nix.lua
+    ./module/plugin/lsp/rust.lua
+    ./module/plugin/lsp/tex.lua
+    ./module/plugin/lsp/ctags.lua
+    ./module/key/autocomplete.lua
+    ./module/key/buffer.lua
+    ./module/key/cmd.lua
+    ./module/key/colorscheme.lua
+    ./module/key/filetree.lua
+    ./module/key/gitsigns.lua
+    ./module/key/navigation.lua
+    ./module/key/prompt.lua
+    ./module/key/save.lua
+    ./module/key/sort.lua
+    ./module/key/tab_width.lua
+    ./module/key/telescope.lua
+    ./module/key/terminal.lua
+    ./module/key/trouble.lua
   ];
 
   # Configuration.
   accent = config.module.style.color.accent;
   bg = config.module.style.color.bg.regular;
   fg = config.module.style.color.fg.dark;
-  ollamaModel = config.module.ollama.primaryModel;
   selection = config.module.style.color.selection;
 
   # Plugin paths to install.
@@ -96,7 +93,6 @@ let
       accent
       bg
       fg
-      ollamaModel
       selection
       ;
   };

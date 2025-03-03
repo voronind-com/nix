@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  file = (pkgs.formats.iniWithGlobalSection { }).generate "EditorconfigConfig" {
+  file = (pkgs.formats.iniWithGlobalSection { }).generate "editorconfig-config" {
     globalSection = {
       root = true;
     };

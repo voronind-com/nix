@@ -17,7 +17,7 @@ let
   file = import ./file args;
   package = import <package> args;
   programs = import ./program args;
-  stylix = import <system/Stylix.nix> args;
+  stylix = import <system/stylix.nix> args;
 in
 {
   options.home.android = {

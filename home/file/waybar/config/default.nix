@@ -3,7 +3,7 @@ let
   refreshInterval = 2;
 in
 {
-  file = (pkgs.formats.json { }).generate "WaybarConfig" {
+  file = (pkgs.formats.json { }).generate "waybar-config" {
     height = 34;
     layer = "top";
     margin-left = config.module.style.window.gap;

@@ -70,10 +70,6 @@
       flake = false;
       url = "github:stevearc/dressing.nvim";
     };
-    nvimGen = {
-      flake = false;
-      url = "github:David-Kunz/gen.nvim";
-    };
     nvimGitsigns = {
       flake = false;
       url = "github:lewis6991/gitsigns.nvim";
@@ -185,7 +181,7 @@
                   stylix.nixosModules.stylix
 
                   # HM config.
-                  ./home/NixOs.nix
+                  ./home/nixos.nix
                 ]
                 ++ (ls ./host/${system}/${hostname})
                 ++ (ls ./option)
@@ -198,7 +194,7 @@
                   pkgsMaster = nixpkgsMaster.legacyPackages.${system}.pkgs;
                   pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
                   secret = import ./secret { };
-                  util = import ./lib/Util.nix { inherit lib; };
+                  util = import ./lib/util.nix { inherit lib; };
                 in
                 {
                   inherit
@@ -245,14 +241,14 @@
           pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
           secret = import ./secret { };
           system = "aarch64-linux";
-          util = import ./lib/Util.nix { inherit lib; };
+          util = import ./lib/util.nix { inherit lib; };
         in
         nix-on-droid.lib.nixOnDroidConfiguration {
           inherit pkgs;
           modules = [
             { home.android.enable = true; }
             { home-manager.config.stylix.autoEnable = lib.mkForce false; }
-            ./home/Android.nix
+            ./home/android.nix
           ] ++ (ls ./option);
           extraSpecialArgs = {
             inherit

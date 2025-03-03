@@ -142,7 +142,7 @@ let
     fi
   '';
 
-  SelectRecording = pkgs.writeShellScriptBin "SelectRecording" ''
+  SelectRecording = pkgs.writeShellScriptBin "select-recording" ''
     ${vidStop} || {
       ${getSelection}
       ${getTransform}
@@ -158,7 +158,7 @@ let
     };
   '';
 
-  FullscreenRecording = pkgs.writeShellScriptBin "FullscreenRecording" ''
+  FullscreenRecording = pkgs.writeShellScriptBin "fullscreen-recording" ''
     ${vidStop} || {
       ${getTransform}
       ${vidPrepFile}
@@ -174,7 +174,7 @@ let
     };
   '';
 
-  FullscreenScreenshot = pkgs.writeShellScriptBin "FullscreenScreenshot" ''
+  FullscreenScreenshot = pkgs.writeShellScriptBin "fullscreen-screenshot" ''
     ${notifyEnd}
     ${picPrepFile}
 
@@ -182,7 +182,7 @@ let
     ${picRefLatestFile}
   '';
 
-  SelectScreenshot = pkgs.writeShellScriptBin "SelectScreenshot" ''
+  SelectScreenshot = pkgs.writeShellScriptBin "select-screenshot" ''
     ${getSelection}
     ${notifyStart}
     ${picPrepFile}
@@ -194,26 +194,26 @@ let
 
   swayRcRaw = pkgs.writeText "sway-rc-raw" (
     util.readFiles [
-      ./module/Mod.conf
-      ./module/Style.conf
-      ./module/Display.conf
-      ./module/Input.conf
-      ./module/Font.conf
-      ./module/Launcher.conf
-      ./module/Terminal.conf
-      ./module/TitleBar.conf
-      ./module/Navigation.conf
-      ./module/Notification.conf
-      ./module/Resize.conf
-      ./module/ScratchPad.conf
-      ./module/Screenshot.conf
-      ./module/Sound.conf
-      ./module/Tiling.conf
-      ./module/Workspace.conf
-      ./module/Keyd.conf
-      ./module/Waybar.conf
-      ./module/System.conf
-      ./module/Mouse.conf
+      ./module/mod.conf
+      ./module/style.conf
+      ./module/display.conf
+      ./module/input.conf
+      ./module/font.conf
+      ./module/launcher.conf
+      ./module/terminal.conf
+      ./module/titlebar.conf
+      ./module/navigation.conf
+      ./module/notification.conf
+      ./module/resize.conf
+      ./module/scratchpad.conf
+      ./module/screenshot.conf
+      ./module/sound.conf
+      ./module/tiling.conf
+      ./module/workspace.conf
+      ./module/keyd.conf
+      ./module/waybar.conf
+      ./module/system.conf
+      ./module/mouse.conf
     ]
   );
 

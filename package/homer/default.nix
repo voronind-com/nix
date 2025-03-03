@@ -5,8 +5,8 @@
   ...
 }@args:
 let
-  cfg = (import ./Config.nix args).file;
-  css = ./Custom.css;
+  cfg = (import ./config.nix args).file;
+  css = ./custom.css;
 in
 stdenv.mkDerivation (finalAttrs: {
   dontUnpack = true;

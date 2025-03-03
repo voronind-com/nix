@@ -1,4 +1,4 @@
 { pkgs, ... }@args:
 {
-  sessionVariables = import ./Variable.nix args;
+  sessionVariables = import ./variable.nix args;
 }

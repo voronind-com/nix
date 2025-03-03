@@ -23,7 +23,7 @@ in
     systemd.services.autoupdate = util.mkStaticSystemdService {
       enable = true;
       after = [ "network-online.target" ];
-      description = "Signed system auto-update.";
+      description = "Signed system auto-update";
       wants = [ "network-online.target" ];
       serviceConfig = {
         RuntimeMaxSec = "55m";

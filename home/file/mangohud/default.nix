@@ -4,7 +4,7 @@ let
 in
 {
   # REF: https://github.com/flightlessmango/MangoHud#hud-configuration
-  config = (pkgs.formats.iniWithGlobalSection { }).generate "MangoConfig" {
+  config = (pkgs.formats.iniWithGlobalSection { }).generate "mango-config" {
     globalSection = {
       af = 16;
       blacklist = "example";
@@ -21,7 +21,7 @@ in
     };
   };
 
-  presets = (pkgs.formats.ini { }).generate "MangoPresets" {
+  presets = (pkgs.formats.ini { }).generate "mango-presets" {
     "preset 0" = {
       no_display = 1;
     };

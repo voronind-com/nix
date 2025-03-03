@@ -28,7 +28,7 @@
       "calendar.alarms.onfortodos" = 0;
       "calendar.alarms.show" = true;
       "calendar.alarms.soundType" = 1;
-      "calendar.alarms.soundURL" = "file://${<static/Notification.ogg>}";
+      "calendar.alarms.soundURL" = "file://${<static/notification.ogg>}";
       "calendar.alarms.todoalarmlen" = reminderMinutes;
       "calendar.item.editInTab" = true;
       "calendar.notifications.times" = "-PT${toString reminderMinutes}M";

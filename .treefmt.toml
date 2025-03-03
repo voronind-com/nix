@@ -8,7 +8,7 @@ excludes = [
 	"*.lock",
 	"*.ogg",
 	"*.patch",
-	"License",
+	"license",
 	"home/file/jetbrains/ideavimrc",
 	"home/file/ssh/config",
 ]

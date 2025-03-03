@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   # REF: https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/yazi.toml
-  file = (pkgs.formats.toml { }).generate "YaziYaziConfig" {
+  file = (pkgs.formats.toml { }).generate "yazi-yazi-config" {
     manager = {
       # linemode       = "mtime";
       mouse_events = [ ];
@@ -184,7 +184,12 @@
           (mkMime "application/x-executable" [ "steam_run" ])
           (mkMime "application/x-pie-executable" [ "steam_run" ])
           (mkMime "audio/*" [ "audio" ])
-          (mkMime "image/*" [ "picture" "picture_copy" "picture_edit" "picture_edit_quick" ])
+          (mkMime "image/*" [
+            "picture"
+            "picture_copy"
+            "picture_edit"
+            "picture_edit_quick"
+          ])
           (mkMime "text/html" [ "browser" ])
           (mkMime "video/*" [ "video" ])
 

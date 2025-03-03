@@ -6,9 +6,9 @@
 }:
 let
   pipewire = pkgs.pipewire;
-  longogg = <static/Long.ogg>;
-  notificationogg = <static/Notification.ogg>;
-  shortogg = <static/Short.ogg>;
+  longogg = <static/long.ogg>;
+  notificationogg = <static/notification.ogg>;
+  shortogg = <static/short.ogg>;
 
   raw = pkgs.writeText "swayscript-raw" (util.readFiles (util.ls ./script));
   script =

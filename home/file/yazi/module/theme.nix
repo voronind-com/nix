@@ -22,7 +22,7 @@ let
 in
 {
   # REF: https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/theme.toml
-  file = (pkgs.formats.toml { }).generate "YaziThemeConfig" {
+  file = (pkgs.formats.toml { }).generate "yazi-theme-config" {
     manager =
       let
         mkMarker = markerColor: {

@@ -3,6 +3,7 @@
   inputs,
   lib,
   pkgs,
+  secret,
   ...
 }:
 {
@@ -14,6 +15,7 @@
   # Root user config.
   home.nixos.enable = true;
   user.root = true;
+  users.users.root.hashedPassword = lib.mkForce secret.password.live;
 
   # Required for live iso.
   networking.wireless.enable = lib.mkForce false;
