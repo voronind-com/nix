@@ -9,7 +9,7 @@ in
       # NOTE: Cups server - Share/Allow remote printing on main page.
       clientConf = ''
         DigestOptions DenyMD5
-        ServerName [${config.module.const.home}]
+        ServerName [${config.module.network.host.home.ip}]
       '';
     };
   };

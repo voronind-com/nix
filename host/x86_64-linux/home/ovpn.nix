@@ -12,7 +12,10 @@
 
 # SEE: https://github.com/OpenVPN/openvpn/blob/master/sample/sample-config-files/server.conf
 # SRC: https://github.com/TinCanTech/easy-tls
-{ pkgs, ... }:
+{ pkgs, config, ... }:
+let
+  network = config.module.network;
+in
 {
   environment.systemPackages = with pkgs; [
     easyrsa
@@ -24,7 +27,7 @@
     users.openvpn = {
       group = "openvpn";
       isSystemUser = true;
-      # uid          = 1000;
+      # uid = 1000;
     };
   };
 
@@ -48,9 +51,9 @@
       proto udp
       proto udp6
       push "dhcp-option DNS 10.0.0.1"
-      push "dhcp-option DNS fd09:8d46:b26:0:180c:8bff:fe13:2910"
+      push "dhcp-option DNS ${network.host.home.ip}"
       push "route 10.0.0.0 255.0.0.0"
-      push "route-ipv6 fd09:8d46:b26::/48"
+      push "route-ipv6 ${network.ula}"
       server 10.0.1.0 255.255.255.0
       server-ipv6 fd09:8d46:b27::/64
       status openvpn-status.log

@@ -4,12 +4,12 @@ Host *
 	ControlPersist yes
 
 Host dasha
-	HostName fd09:8d46:b26:0:2ef0:5dff:fe3b:778
+	HostName @dashaIp@
 	User root
 	Port 22143
 
 Host desktop
-	HostName fd09:8d46:b26:0:dabb:c1ff:fecc:da30
+	HostName @desktopIp@
 	User root
 	Port 22143
 
@@ -19,42 +19,22 @@ Host fmpmaven
 	Port 22
 
 Host home
-	HostName fd09:8d46:b26:0:180c:8bff:fe13:2910
-	User root
-	Port 22143
-
-Host laptop
-	HostName laptop.local
+	HostName @homeIp@
 	User root
 	Port 22143
 
 Host max
-	HostName fd09:8d46:b26:0:c2a5:e8ff:feb5:d916
+	HostName @maxIp@
 	User root
 	Port 22143
 
 Host nixbuilder
-	HostName fd09:8d46:b26:0:180c:8bff:fe13:2910
+	HostName @homeIp@
 	User nixbuilder
 	Port 22143
 	StrictHostKeyChecking=accept-new
 
-Host pi
-	HostName pi.local
-	User root
-	Port 22143
-
-Host pocket
-	HostName pocket.local
-	User root
-	Port 22143
-
 Host vpn
 	HostName 194.113.233.38
-	User root
-	Port 22143
-
-Host work
-	HostName work.local
 	User root
 	Port 22143

@@ -84,17 +84,18 @@
       };
       customDNS.mapping =
         let
+          host = config.module.network.host;
           block = host: { ${host} = "0.0.0.0,::"; };
         in
         {
-          "dasha.local" = "fd09:8d46:b26:0:2ef0:5dff:fe3b:778";
-          "desktop.local" = "fd09:8d46:b26:0:dabb:c1ff:fecc:da30";
-          "home.local" = config.module.const.home;
-          "max.local" = "fd09:8d46:b26:0:c2a5:e8ff:feb5:d916";
-          "phone.local" = "fd09:8d46:b26:0:f774:b83e:61f0:6ebe";
-          "printer.local" = "fd09:8d46:b26:0:9e1c:37ff:fe62:3fd5";
-          "router.local" = "fd09:8d46:b26:0:9e9d:7eff:fe8e:3dc7";
-          "voronind.com" = "10.0.0.1,${config.module.const.home}";
+          "dasha.local" = host.dasha.ip;
+          "desktop.local" = host.desktop.ip;
+          "home.local" = host.home.ip;
+          "max.local" = host.max.ip;
+          "phone.local" = host.phone.ip;
+          "printer.local" = host.printer.ip;
+          "router.local" = host.router.ip;
+          "voronind.com" = "10.0.0.1,${host.home.ip}";
         }
         // block "gosuslugi.ru"
         // block "rutube.ru"
