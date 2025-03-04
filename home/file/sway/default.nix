@@ -156,7 +156,7 @@ let
       ${vidTransform}
       ${vidRefLatestFile}
     };
-  '';
+  '' |> lib.getExe;
 
   FullscreenRecording = pkgs.writeShellScriptBin "fullscreen-recording" ''
     ${vidStop} || {
@@ -172,7 +172,7 @@ let
       ${vidTransform}
       ${vidRefLatestFile}
     };
-  '';
+  '' |> lib.getExe;
 
   FullscreenScreenshot = pkgs.writeShellScriptBin "fullscreen-screenshot" ''
     ${notifyEnd}
@@ -180,7 +180,7 @@ let
 
     ${screenshot} ${picFull} | ${picToFile} | ${picToBuffer}
     ${picRefLatestFile}
-  '';
+  '' |> lib.getExe;
 
   SelectScreenshot = pkgs.writeShellScriptBin "select-screenshot" ''
     ${getSelection}
@@ -190,7 +190,7 @@ let
     ${screenshot} ${picSelected} | ${picEdit} | ${picToFile} | ${picToBuffer}
     ${notifyEnd}
     ${picRefLatestFile}
-  '';
+  '' |> lib.getExe;
 
   swayRcRaw = pkgs.writeText "sway-rc-raw" (
     util.readFiles [
