@@ -10,12 +10,12 @@ let
   hasGpu = config.module.amd.gpu.enable;
 
   # Set the wallpaper here.
-  url = "https://share.voronind.com/wallpaper/Live_Wallpaper_Pc_Com-Bocchi-The-Blade-Runner-1920_X_1080.mp4";
-  sha256 = "sha256-7pwX+XvDv2Hg7OL+41OX2h5hGkKq5iUM0TJ+tplKM8M=";
+  url = "https://share.voronind.com/wallpaper/Anime-Girl-Watching-Sunset-Pixel-Moewalls-Com.mp4";
+  sha256 = "sha256-P3vnoMEi0owQ/3ovWWLA1c+sdlwczG3uDyAx7TzL+5Q=";
   video = true;
 
   # Forse black and white for text.
-  forceContrastText = true;
+  forceContrastText = false;
 
   # Predefined scheme instead of generated.
   # SEE: /etc/stylix/palette.json
