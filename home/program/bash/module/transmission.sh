@@ -11,17 +11,29 @@ function tdla() {
 
 # List download torrents.
 function tdll() {
-	transmission-remote home.local --list
+	tdl --list
 }
 
 # Remove torrent by id.
-# Usage: tdlr <ID>
+# Usage: tdlr <IDs>
 function tdlr() {
-	tdl -t"${@}" --remove
+	if [ "${*}" = "" ]; then
+		help tdlr
+		return 2
+	fi
+	local ids=$(printf "%s" "${*}" | tr ' ' ',')
+
+	tdl -t"${ids}" --remove
 }
 
 # Remove and delete files torrent by id.
-# Usage: tdlrd <ID>
+# Usage: tdlrd <IDs>
 function tdlrd() {
-	tdl -t"${@}" --remove-and-delete
+	if [ "${*}" = "" ]; then
+		help tdlr
+		return 2
+	fi
+	local ids=$(printf "%s" "${*}" | tr ' ' ',')
+
+	tdl -t"${ids}" --remove-and-delete
 }
