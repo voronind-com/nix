@@ -7,12 +7,12 @@ function own() {
 	local user="${1}"
 	local group="${1}"
 
-	# default to current dir.
+	# Default to current dir.
 	if [ "${files[*]}" = "" ]; then
 		files=(".")
 	fi
 
-	# default to current user.
+	# Default to current user.
 	if [ "${user}" = "" ]; then
 		user="${UID}"
 	fi
@@ -25,6 +25,6 @@ function own() {
 		chown "${user}":"${group}" -R "${file}" &>/dev/null
 
 		# remove access from group and others.
-		chmod -077 -R "${file}"
+		# chmod -077 -R "${file}"
 	done
 }

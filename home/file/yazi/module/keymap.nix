@@ -85,6 +85,101 @@
           run = "close";
         }
         {
+          on = ":";
+          desc = "Run shell command";
+          run = "shell";
+        }
+        {
+          on = [
+            ";"
+            "n"
+            "n"
+          ];
+          desc = "Rename all files";
+          run = ''shell --confirm name'';
+        }
+        {
+          on = [
+            ";"
+            "n"
+            "h"
+          ];
+          desc = "Rename to hashes";
+          run = ''shell --confirm name_hash'';
+        }
+        {
+          on = [
+            ";"
+            "n"
+            "s"
+          ];
+          desc = "Rename to show";
+          run = ''shell --confirm name_show'';
+        }
+        {
+          on = [
+            ";"
+            "o"
+            "v"
+          ];
+          desc = "Own by voronind";
+          run = ''shell --confirm own voronind $@'';
+        }
+        {
+          on = [
+            ";"
+            "o"
+            "r"
+          ];
+          desc = "Own by root";
+          run = ''shell --confirm own root $@'';
+        }
+        {
+          on = [
+            ";"
+            "o"
+            "d"
+          ];
+          desc = "Own by dasha";
+          run = ''shell --confirm own dasha $@'';
+        }
+        {
+          on = [
+            ";"
+            "p"
+            "p"
+          ];
+          desc = "Permissions private";
+          run = ''shell --confirm perm'';
+        }
+        {
+          on = [
+            ";"
+            "p"
+            "s"
+          ];
+          desc = "Permissions share";
+          run = ''shell --confirm perm_share'';
+        }
+        {
+          on = [
+            ";"
+            "g"
+            "e"
+          ];
+          desc = "Group by extension";
+          run = ''shell --confirm group_ext'';
+        }
+        {
+          on = [
+            ";"
+            "g"
+            "y"
+          ];
+          desc = "Group by year";
+          run = ''shell --confirm group_year'';
+        }
+        {
           on = [
             "g"
             "f"
