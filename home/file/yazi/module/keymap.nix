@@ -150,7 +150,16 @@
             "p"
           ];
           desc = "Permissions private";
-          run = ''shell --confirm perm'';
+          run = ''shell --confirm perm_private'';
+        }
+        {
+          on = [
+            ";"
+            "p"
+            "f"
+          ];
+          desc = "Permissions full share";
+          run = ''shell --confirm perm_full'';
         }
         {
           on = [
