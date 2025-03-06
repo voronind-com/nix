@@ -87,7 +87,7 @@
         {
           on = ":";
           desc = "Run shell command";
-          run = "shell";
+          run = "shell --interactive";
         }
         {
           on = [
