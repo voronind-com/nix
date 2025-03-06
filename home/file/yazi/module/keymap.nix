@@ -173,6 +173,15 @@
         {
           on = [
             ";"
+            "p"
+            "g"
+          ];
+          desc = "Permissions for group";
+          run = ''shell --confirm perm_group'';
+        }
+        {
+          on = [
+            ";"
             "g"
             "e"
           ];

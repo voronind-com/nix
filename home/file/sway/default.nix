@@ -142,55 +142,63 @@ let
     fi
   '';
 
-  SelectRecording = pkgs.writeShellScriptBin "select-recording" ''
-    ${vidStop} || {
+  SelectRecording =
+    pkgs.writeShellScriptBin "select-recording" ''
+      ${vidStop} || {
+        ${getSelection}
+        ${getTransform}
+        ${vidPrepFile}
+        ${notifyStart}
+        ${updateWaybar}
+        ${vidStartSelected}
+        ${notifyEnd}
+        ${updateWaybar}
+        ${vidMuxAudio}
+        ${vidTransform}
+        ${vidRefLatestFile}
+      };
+    ''
+    |> lib.getExe;
+
+  FullscreenRecording =
+    pkgs.writeShellScriptBin "fullscreen-recording" ''
+      ${vidStop} || {
+        ${getTransform}
+        ${vidPrepFile}
+        ${notifyStart}
+        ${updateWaybar}
+        ${vidStartFull}
+        ${notifyEnd}
+        ${updateWaybar}
+        ${vidEncode}
+        ${vidMuxAudio}
+        ${vidTransform}
+        ${vidRefLatestFile}
+      };
+    ''
+    |> lib.getExe;
+
+  FullscreenScreenshot =
+    pkgs.writeShellScriptBin "fullscreen-screenshot" ''
+      ${notifyEnd}
+      ${picPrepFile}
+
+      ${screenshot} ${picFull} | ${picToFile} | ${picToBuffer}
+      ${picRefLatestFile}
+    ''
+    |> lib.getExe;
+
+  SelectScreenshot =
+    pkgs.writeShellScriptBin "select-screenshot" ''
       ${getSelection}
-      ${getTransform}
-      ${vidPrepFile}
       ${notifyStart}
-      ${updateWaybar}
-      ${vidStartSelected}
+      ${picPrepFile}
+
+      ${screenshot} ${picSelected} | ${picEdit} | ${picToFile} | ${picToBuffer}
       ${notifyEnd}
-      ${updateWaybar}
-      ${vidMuxAudio}
-      ${vidTransform}
-      ${vidRefLatestFile}
-    };
-  '' |> lib.getExe;
-
-  FullscreenRecording = pkgs.writeShellScriptBin "fullscreen-recording" ''
-    ${vidStop} || {
-      ${getTransform}
-      ${vidPrepFile}
-      ${notifyStart}
-      ${updateWaybar}
-      ${vidStartFull}
-      ${notifyEnd}
-      ${updateWaybar}
-      ${vidEncode}
-      ${vidMuxAudio}
-      ${vidTransform}
-      ${vidRefLatestFile}
-    };
-  '' |> lib.getExe;
-
-  FullscreenScreenshot = pkgs.writeShellScriptBin "fullscreen-screenshot" ''
-    ${notifyEnd}
-    ${picPrepFile}
-
-    ${screenshot} ${picFull} | ${picToFile} | ${picToBuffer}
-    ${picRefLatestFile}
-  '' |> lib.getExe;
-
-  SelectScreenshot = pkgs.writeShellScriptBin "select-screenshot" ''
-    ${getSelection}
-    ${notifyStart}
-    ${picPrepFile}
-
-    ${screenshot} ${picSelected} | ${picEdit} | ${picToFile} | ${picToBuffer}
-    ${notifyEnd}
-    ${picRefLatestFile}
-  '' |> lib.getExe;
+      ${picRefLatestFile}
+    ''
+    |> lib.getExe;
 
   swayRcRaw = pkgs.writeText "sway-rc-raw" (
     util.readFiles [
