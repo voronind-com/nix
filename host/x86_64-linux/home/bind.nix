@@ -11,7 +11,6 @@ let
     (mkBind "forgejo" "/var/lib/forgejo")
     (mkBind "hass" "/var/lib/hass")
     (mkBind "jellyfin" "/var/lib/jellyfin")
-    (mkBind "jellyfin_cache" "/var/cache/jellyfin")
     (mkBind "kavita" "/var/lib/kavita")
     (mkBind "letsencrypt" "/etc/letsencrypt")
     (mkBind "murmur" "/var/lib/murmur")
