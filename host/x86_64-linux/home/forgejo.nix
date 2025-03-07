@@ -52,6 +52,12 @@
           SCHEDULE = "@midnight";
           TIMEOUT = gcTimeout;
         };
+        "cron.archive_cleanup" = {
+          ENABLED = true;
+          RUN_AT_START = true;
+          SCHEDULE = "@midnight";
+          TIMEOUT = "1h";
+        };
       };
   };
 }
