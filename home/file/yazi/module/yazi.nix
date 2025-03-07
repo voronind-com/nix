@@ -3,20 +3,20 @@
   # REF: https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/yazi.toml
   file = (pkgs.formats.toml { }).generate "yazi-yazi-config" {
     manager = {
-      # linemode       = "mtime";
+      linemode = "none"; # size
       mouse_events = [ ];
+      scrolloff = 1;
+      show_hidden = false;
+      show_symlink = true;
+      sort_by = "natural";
+      sort_dir_first = false;
+      sort_sensitive = false;
+      sort_translit = true;
       ratio = [
         1
         4
         3
       ];
-      scrolloff = 1;
-      show_hidden = false;
-      show_symlink = true;
-      sort_by = "natural";
-      sort_dir_first = true;
-      sort_sensitive = true;
-      sort_translit = true;
     };
 
     preview = {
