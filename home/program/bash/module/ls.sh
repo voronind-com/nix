@@ -10,12 +10,11 @@ function l() {
 	ccd "$@"
 }
 
-# List last modified files first.
+# List files using ls list.
 # Current dir by default.
 # Usage: ll [DIRS]
 function ll() {
-	ls -lhv --si --group-directories-first --color=auto -- "$@"
-	# ls -lhvtr --si --color=auto -- "$@"
+	ls -lhva --si --color=auto -- "$@"
 }
 
 # List files in tree structure.
@@ -38,21 +37,14 @@ function lll() {
 # Current dir by default.
 # Usage: llll [DIRS]
 function llll() {
-	ls -RlAhv --si --group-directories-first --color=auto -- "$@"
+	ls -Rlahv --si --color=auto -- "$@"
 }
 
-# List all files in dirs, incl. hidden files.
+# List files using ls list, sorted by mtime.
 # Current dir by default.
-# Usage: la [DIRS]
-function la() {
-	ls -lAh --si --group-directories-first --color=auto -- "$@"
-}
-
-# List all files in dirs, incl. hidden files, sorted by mtime.
-# Current dir by default.
-# Usage: lla [DIRS]
-function lla() {
-	ls -lAhtr --si --color=auto -- "$@"
+# Usage: llm [DIRS]
+function llm() {
+	ls -lahtr --si --color=auto -- "$@"
 }
 
 # List only files.
