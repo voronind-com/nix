@@ -199,6 +199,15 @@
         }
         {
           on = [
+            ";"
+            "d"
+            "u"
+          ];
+          desc = "Disk usage";
+          run = ''shell --confirm --block gdu'';
+        }
+        {
+          on = [
             "g"
             "f"
           ];
