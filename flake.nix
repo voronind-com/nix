@@ -22,7 +22,7 @@
 
     # SOURCE: https://github.com/danth/stylix
     stylix = {
-      url = "github:danth/stylix/release-24.05";
+      url = "github:danth/stylix/release-24.11";
       inputs = {
         home-manager.follows = "home-manager";
         nixpkgs.follows = "nixpkgs";
