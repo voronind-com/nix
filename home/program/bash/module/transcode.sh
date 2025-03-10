@@ -62,19 +62,19 @@ function transcode() {
 }
 
 function _transcode_mp3() {
-	ffmpeg -n -i "${1}" -c:a libmp3lame -f mp3 "${2}"
+	ffmpeg -hide_banner -n -i "${1}" -c:a libmp3lame -f mp3 "${2}"
 }
 
 function _transcode_flac() {
-	ffmpeg -n -i "${1}" -c:a flac -f flac "${2}"
+	ffmpeg -hide_banner -n -i "${1}" -c:a flac -f flac "${2}"
 }
 
 function _transcode_mka() {
-	ffmpeg -n -i "${1}" -ac 2 -c:a libopus -vn "${2}"
+	ffmpeg -hide_banner -n -i "${1}" -ac 2 -c:a libopus -vn "${2}"
 }
 
 function _transcode_mkv() {
-	ffmpeg -n -i "${1}" -map 0 -map -v -map V -map -t -dn -c:s srt -ac 2 -c:a libopus -c:v libsvtav1 "${2}"
+	ffmpeg -hide_banner -n -i "${1}" -map 0 -map -v -map V -map -t -dn -c:s srt -ac 2 -c:a libopus -c:v libsvtav1 "${2}"
 }
 
 function _transcode_jxl() {
