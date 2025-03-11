@@ -9,7 +9,7 @@ function networkwidget() {
 	local _bts_raw=($(timeout 2 bluetoothctl devices Connected)) # HACK: Sometimes it hangs, thus a timeout.
 	local _bts=()
 	local _bt_lowest=100
-	local icon="󰖩"
+	local icon=""
 	local class=""
 
 	for bt in ${_bts_raw[@]}; do
@@ -26,40 +26,38 @@ function networkwidget() {
 		_bts+=("${btinfo}")
 	done
 
-	if [[ ${_bts} != "" ]]; then
-		class="bt"
-		icon="󱛃"
-	fi
-
-	if [[ ${_vpns} != "" ]]; then
-		class="vpn"
-		icon="󱚿"
-	fi
-
-	if ! command -v nmcli &>/dev/null; then
-		class="disabled"
-		icon="󱚼"
-	elif [[ ${internet} != "full" ]]; then
-		class="issue"
-		icon="󱚵"
-	fi
-
-	if [[ ${_bt_lowest} -lt 21 ]]; then
+	if [ ${_bt_lowest} -lt 21 ]; then
 		class="btlow"
+		icon="󰥇"
+	elif ! command -v nmcli &>/dev/null; then
+		class="disabled"
+		icon="󰅛"
+	elif [ ${internet} != "full" ]; then
+		class="none"
+		icon="󰀝"
+	elif [ ${_vpns} != "" ]; then
+		class="vpn"
+		icon=""
+	elif [ ${_bts} != "" ]; then
+		class="bt"
+		icon="󰂯"
+	elif [ "${_wifis}" != "" ]; then
+		class="wifi"
+		icon="󰖩"
+	elif [ "${_ethernets}" != "" ]; then
+		class="ethernet"
+		icon=""
 	fi
 
 	for net in ${_vpns[@]}; do
 		networks+=" ${net}\\n"
 	done
-
 	for net in ${_ethernets[@]}; do
 		networks+=" ${net}\\n"
 	done
-
 	for net in ${_wifis[@]}; do
 		networks+="󰖩 ${net}\\n"
 	done
-
 	for bt in ${_bts[@]}; do
 		networks+="󰂯 ${bt}\\n"
 	done
