@@ -62,8 +62,9 @@ let
   '';
 
   refLatestFile = ext: ''
-    scrLatest="''${scrPath}/Latest.${ext}"
+    scrLatest="''${scrPath}/latest.${ext}"
     rm "''${scrLatest}"
+    rm "''${scrPath}/Latest.${ext}" # Remove old format, temporary.
     ln -s "''${scrLatestRef}" "''${scrLatest}"
   '';
 
