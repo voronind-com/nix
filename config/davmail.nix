@@ -7,13 +7,13 @@ in
     services.davmail = {
       enable = true;
       url = "https://mail.fsight.ru/ews/exchange.asmx";
-      config = {
-        davmail.server = true;
-        davmail.allowRemote = false;
-        davmail.bindAddress = "::1";
-        davmail.imapPort = 55143;
-        davmail.smtpPort = 55025;
-        davmail.caldavPort = 55080;
+      config.davmail = {
+        server = true;
+        allowRemote = false;
+        bindAddress = "::1";
+        imapPort = 55143;
+        smtpPort = 55025;
+        caldavPort = 55080;
       };
     };
   };
