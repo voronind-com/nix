@@ -1,15 +1,17 @@
+export VPN_NAME=Fsight
+
 # Toggle vpn.
 function vpn() {
 	if [[ "$(_vpn)" == "on" ]]; then
 		notify_long
-		nmcli connection down Vpn
+		nmcli connection down ${VPN_NAME}
 	else
 		notify_short
-		nmcli connection up Vpn
+		nmcli connection up ${VPN_NAME}
 	fi
 }
 
 function _vpn() {
-	local state=$(nmcli connection show Vpn | rg -i state.*activated)
+	local state=$(nmcli connection show ${VPN_NAME} | rg -i state.*activated)
 	[ "${state}" != "" ] && printf on || printf off
 }

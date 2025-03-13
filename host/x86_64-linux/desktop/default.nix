@@ -18,6 +18,17 @@
       "game"
       "sun"
     ];
+    secrets = [
+      "vpn/fsight/ca"
+      "vpn/fsight/cert"
+      "vpn/fsight/key"
+      "vpn/fsight/pw"
+    ];
+    network.setup = {
+      vpn = {
+        fsight = true;
+      };
+    };
     display = {
       primary = "HDMI-A-1";
       rotate.HDMI-A-1 = 180;

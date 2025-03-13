@@ -6,7 +6,6 @@
   module = {
     builder.client.enable = true;
     display.primary = "eDP-1";
-    network.setup.wifi = true;
     package.all = true;
     powersave.enable = true;
     print.enable = true;
@@ -18,7 +17,23 @@
       laptop = true;
       work = true;
     };
-    secrets = [ "wifi" ];
+    secrets = [
+      "vpn/fsight/ca"
+      "vpn/fsight/cert"
+      "vpn/fsight/key"
+      "vpn/fsight/pw"
+      "vpn/home/ca"
+      "vpn/home/cert"
+      "vpn/home/key"
+      "wifi"
+    ];
+    network.setup = {
+      wifi = true;
+      vpn = {
+        fsight = true;
+        home = true;
+      };
+    };
     hwmon = {
       file = "temp1_input";
       path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon";
