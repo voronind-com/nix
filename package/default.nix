@@ -8,6 +8,7 @@
 {
   core =
     (with pkgs; [
+      age # Encryption tool using ssh keys.
       android-tools # Android adb tool. Can be used to connect to itself via wireless debugging.
       binwalk # Can analyze files for other files inside them.
       bridge-utils # Network bridges.

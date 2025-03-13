@@ -1,13 +1,14 @@
 {
+  config,
   pkgs,
-  secret,
   util,
   ...
 }:
 let
   script = ''
     function notify() {
-      curl -X POST -H 'Content-Type: Application/json' -d "${secret.tg.dt "true"}" ${secret.tg.bt} &>/dev/null
+      local bot=$(cat ${config.age.secrets.telegram_notify.path})
+      curl -X POST -H 'Content-Type: Application/json' -d "{\"chat_id\":\"155897358\",\"text\":\"$*\",\"disable_notification\":\"true\"}" "$bot" &>/dev/null
     }
 
     function report() {

@@ -1,8 +1,41 @@
-{ config, ... }:
-let
-  host = config.module.network.host;
-in
-{
+{ ... }:
+rec {
+  network = {
+    ula = "fd09:8d46:b26::/48";
+    host = {
+      dasha = {
+        ip = "fd09:8d46:b26:0:2ef0:5dff:fe3b:778";
+        key = builtins.readFile ./ssh/dasha.key;
+      };
+      desktop = {
+        ip = "fd09:8d46:b26:0:dabb:c1ff:fecc:da30";
+        key = builtins.readFile ./ssh/desktop.key;
+      };
+      home = {
+        ip = "fd09:8d46:b26:0:180c:8bff:fe13:2910";
+        key = builtins.readFile ./ssh/home.key;
+      };
+      max = {
+        ip = "fd09:8d46:b26:0:c2a5:e8ff:feb5:d916";
+        key = builtins.readFile ./ssh/max.key;
+      };
+      phone = {
+        ip = "fd09:8d46:b26:0:f774:b83e:61f0:6ebe";
+        key = builtins.readFile ./ssh/phone.key;
+      };
+      printer = {
+        ip = "fd09:8d46:b26:0:9e1c:37ff:fe62:3fd5";
+      };
+      router = {
+        ip = "fd09:8d46:b26:0:9e9d:7eff:fe8e:3dc7";
+      };
+      thinkpad = {
+        ip = "fd09:8d46:b26:0:1685:7fff:feeb:6c25";
+        key = builtins.readFile ./ssh/thinkpad.key;
+      };
+    };
+  };
+
   # Password used for root user.
   # Use `mkpasswd -s`.
   password = {
@@ -15,13 +48,13 @@ in
   ssh = {
     # Keys that are allowed to connect via SSH.
     trustedKeys = [
-      host.phone.key
-      (builtins.readFile ./ssh.key)
+      network.host.phone.key
+      (builtins.readFile ./ssh/yubikey.key)
     ];
 
     # Keys that are allowd to connect via SSH to nixbuild user for Nix remote builds.
     builderKey = "nixbuilder-1:Skghjixd8lPzNe2ZEgYLM9Pu/wF9wiZtZGsdm3bo9h0=";
-    buildKeys = with host; [
+    buildKeys = with network.host; [
       dasha.key
       desktop.key
       max.key
@@ -32,56 +65,17 @@ in
   crypto = {
     # Git commit signing.
     sign.git = {
-      allowed = ./signers.key;
+      allowed = ./git/signers.key;
       format = "ssh";
-      key = ./ssh.key;
+      key = ./ssh/yubikey.key;
     };
 
     # List of accepted public keys.
     publicKeys = [
       {
-        source = ./gpg.key;
+        source = ./gpg/yubikey.key;
         trust = 5;
       }
     ];
-  };
-
-  tg = {
-    # Ob fs lo l.
-    bt =
-      "ht"
-      + "tp"
-      + "s://ap"
-      + "i.tel"
-      + "egra"
-      + "m.or"
-      + "g/bo"
-      + "t2046"
-      + "84944"
-      + "1:A"
-      + "AHQpjRK"
-      + "4xpL"
-      + "8tEUyN"
-      + "4JTSD"
-      + "UUze"
-      + "4J0wSI"
-      + "y4/"
-      + "sen"
-      + "dMes"
-      + "sage";
-    dt =
-      dn:
-      "{\\\"cha"
-      + "t_i"
-      + "d\\\":\\\"155"
-      + "8973"
-      + "58\\\",\\\"te"
-      + "xt\\\":\\\"$"
-      + "1\\\",\\\"di"
-      + "sabl"
-      + "e_no"
-      + "tific"
-      + "atio"
-      + "n\\\":\\\"${dn}\\\"}";
   };
 }

@@ -35,6 +35,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # SOURCE: https://github.com/ryantm/agenix
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs = {
+        darwin.follows = ""; # NOTE: Disable mac*s support.
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
+
     nixpkgsJobber.url = "github:nixos/nixpkgs/051f920625ab5aabe37c920346e3e69d7d34400e";
     poetry2nixJobber.url = "github:nix-community/poetry2nix/304f8235fb0729fd48567af34fcd1b58d18f9b95";
 
@@ -114,6 +124,7 @@
 
   outputs =
     {
+      agenix,
       home-manager,
       nix-on-droid,
       nixpkgs,
@@ -167,6 +178,14 @@
         let
           mkHost =
             { system, hostname }:
+            let
+              pkgsJobber = nixpkgsJobber.legacyPackages.${system}.pkgs;
+              pkgs = nixpkgs.legacyPackages.${system}.pkgs;
+              pkgsMaster = nixpkgsMaster.legacyPackages.${system}.pkgs;
+              pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
+              secret = import ./secret { };
+              util = import ./lib/util.nix { inherit lib; };
+            in
             lib.nixosSystem {
               inherit system;
               modules =
@@ -174,11 +193,20 @@
                   # Make a device hostname match the one from this config.
                   { networking.hostName = hostname; }
 
-                  # Add Home Manager module.
+                  # Home Manager module.
                   home-manager.nixosModules.home-manager
 
-                  # Add Stylix module.
+                  # Stylix module.
                   stylix.nixosModules.stylix
+
+                  # Agenix module.
+                  agenix.nixosModules.default
+                  {
+                    environment.systemPackages = [
+                      agenix.packages.${system}.default
+                      pkgs.age-plugin-yubikey
+                    ];
+                  }
 
                   # HM config.
                   ./home/nixos.nix
@@ -188,27 +216,19 @@
                 ++ (ls ./config)
                 ++ (ls ./overlay)
                 ++ (ls ./system);
-              specialArgs =
-                let
-                  pkgsJobber = nixpkgsJobber.legacyPackages.${system}.pkgs;
-                  pkgsMaster = nixpkgsMaster.legacyPackages.${system}.pkgs;
-                  pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
-                  secret = import ./secret { config = self.nixosConfigurations.${hostname}.config; };
-                  util = import ./lib/util.nix { inherit lib; };
-                in
-                {
-                  inherit
-                    __findFile
-                    inputs
-                    pkgsJobber
-                    pkgsMaster
-                    pkgsUnstable
-                    poetry2nixJobber
-                    secret
-                    self
-                    util
-                    ;
-                };
+              specialArgs = {
+                inherit
+                  __findFile
+                  inputs
+                  pkgsJobber
+                  pkgsMaster
+                  pkgsUnstable
+                  poetry2nixJobber
+                  secret
+                  self
+                  util
+                  ;
+              };
             };
 
           mkSystem = system: hostname: { "${hostname}" = mkHost { inherit system hostname; }; };
@@ -239,7 +259,7 @@
           pkgs = nixpkgs.legacyPackages.${system}.pkgs;
           pkgsMaster = nixpkgsMaster.legacyPackages.${system}.pkgs;
           pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
-          secret = import ./secret { config = self.nixOnDroidConfiguration.config; };
+          secret = import ./secret { };
           system = "aarch64-linux";
           util = import ./lib/util.nix { inherit lib; };
         in

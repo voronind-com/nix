@@ -12,9 +12,9 @@
 
 # SEE: https://github.com/OpenVPN/openvpn/blob/master/sample/sample-config-files/server.conf
 # SRC: https://github.com/TinCanTech/easy-tls
-{ pkgs, config, ... }:
+{ pkgs, secret, ... }:
 let
-  network = config.module.network;
+  network = secret.network;
 in
 {
   environment.systemPackages = with pkgs; [

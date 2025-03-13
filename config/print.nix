@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  secret,
+  ...
+}:
 let
   cfg = config.module.print;
 in
@@ -9,7 +14,7 @@ in
       # NOTE: Cups server - Share/Allow remote printing on main page.
       clientConf = ''
         DigestOptions DenyMD5
-        ServerName [${config.module.network.host.home.ip}]
+        ServerName [${secret.network.host.home.ip}]
       '';
     };
   };

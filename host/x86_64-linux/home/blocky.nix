@@ -1,4 +1,4 @@
-{ config, ... }:
+{ secret, ... }:
 {
   services.blocky = {
     enable = true;
@@ -84,7 +84,7 @@
       };
       customDNS.mapping =
         let
-          host = config.module.network.host;
+          host = secret.network.host;
           block = host: { ${host} = "0.0.0.0,::"; };
         in
         {

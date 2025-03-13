@@ -15,6 +15,7 @@ in
       router = true;
       server = true;
     };
+    secrets = [ "telegram_notify" ];
     zfs = {
       pools = [
         "alpha"

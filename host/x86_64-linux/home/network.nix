@@ -1,9 +1,14 @@
 # 10.0.0.0/24 & fd09:8d46:b26::/48 - phys clients (lan).
 # 10.0.1.0/24 & fd09:8d46:b27::/64 - vpn clients.
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  secret,
+  ...
+}:
 let
   internal = "10.0.0.1"; # Lan host IP address.
-  internal6 = config.module.network.host.home.ip; # Lan host IP6 address.
+  internal6 = secret.network.host.home.ip; # Lan host IP6 address.
 
   lan = "br0"; # Lan interface.
   wan = "enp8s0"; # Wan interface.

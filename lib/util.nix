@@ -17,7 +17,7 @@
   # Concat all nix file content by `file` key.
   catFile =
     files: args:
-    builtins.foldl' (acc: mod: acc + (builtins.readFile (import mod args).file) + "\n") "" files;
+    lib.foldl' (acc: mod: acc + (builtins.readFile (import mod args).file) + "\n") "" files;
 
   # Concat all nix files as a set.
   catSet =

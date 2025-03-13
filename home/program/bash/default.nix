@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  secret,
   util,
   ...
 }:
@@ -12,10 +11,6 @@ let
   neutral = "${config.module.style.color.neutralR};${config.module.style.color.neutralG};${config.module.style.color.neutralB}";
   positive = "${config.module.style.color.positiveR};${config.module.style.color.positiveG};${config.module.style.color.positiveB}";
 
-  tgbot = secret.tg.bt;
-  tgdata = secret.tg.dt "false";
-  tgdatasilent = secret.tg.dt "true";
-
   modulesRaw = pkgs.writeText "bash-user-modules-raw" (util.readFiles (util.ls ./module));
   modulesFile = pkgs.replaceVars modulesRaw {
     inherit
@@ -23,9 +18,6 @@ let
       negative
       neutral
       positive
-      tgbot
-      tgdata
-      tgdatasilent
       ;
   };
 

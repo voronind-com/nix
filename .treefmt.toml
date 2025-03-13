@@ -3,6 +3,7 @@
 
 walk = "git"
 excludes = [
+	"*.age",
 	"*.conf",
 	"*.key",
 	"*.lock",

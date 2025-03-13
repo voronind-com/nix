@@ -1,4 +1,4 @@
-{ config, ... }:
+{ secret, ... }:
 {
   config.module.const.host = {
     download = "/hot/download";
@@ -11,7 +11,7 @@
       sslCertificateKey = "/etc/letsencrypt/live/voronind.com/privkey.pem";
       allowLocal = ''
         allow 10.0.0.0/8;
-        allow ${config.module.network.ula};
+        allow ${secret.network.ula};
         allow 127.0.0.1/32;
         allow ::1/128;
         deny all;

@@ -1,6 +1,6 @@
-{ config, pkgs, ... }:
+{ secret, pkgs, ... }:
 let
-  host = config.module.network.host;
+  host = secret.network.host;
 in
 {
   config = pkgs.replaceVars ./config {

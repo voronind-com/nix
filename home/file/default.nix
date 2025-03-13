@@ -1,4 +1,5 @@
 {
+  __findFile,
   config,
   inputs,
   pkgs,
@@ -57,5 +58,6 @@ in
   ".nixpkgs_unstable".source = inputs.nixpkgsUnstable;
   ".parallel/will-cite".text = "";
   ".ssh/config".source = ssh.config;
+  ".ssh/identity".source = <secret/ssh>;
   ".template".source = ./template;
 }
