@@ -1,4 +1,9 @@
-{ __findFile, config, lib, ... }:
+{
+  __findFile,
+  config,
+  lib,
+  ...
+}:
 let
   cfg = config.module.secrets;
   dir = <secret/age>;

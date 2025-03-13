@@ -24,8 +24,8 @@ in
       "group/batteryinfo"
       "group/hardware"
       "pulseaudio"
-      "custom/display"
       "custom/network"
+      "custom/display"
     ];
     "sway/workspaces" = {
       all-outputs = true;

@@ -96,12 +96,28 @@ function displaywidget() {
 	local _recordingstate=$(recordingstate)
 	local _dndstate=$(dndstate)
 	local class=""
+	local icon=""
 
-	if [[ ${_monitorstate} == "Y" ]] || [[ ${_gamingstate} == "Y" ]] || [[ ${_recordingstate} == "Y" ]] || [[ ${_dndstate} == "Y" ]]; then
-		class="modified"
+	local ic_rec="󰻂"
+	local ic_dnd="󰂛"
+	local ic_power="󰔢"
+	local ic_gaming="󰊴"
+
+	if [ "${_recordingstate}" == "Y" ]; then
+		class="rec"
+		icon="${ic_rec}"
+	elif [ "${_dndstate}" == "Y" ]; then
+		class="dnd"
+		icon="${ic_dnd}"
+	elif [ "${_monitorstate}" == "Y" ]; then
+		class="power"
+		icon="${ic_power}"
+	elif [ "${_gamingstate}" == "Y" ]; then
+		class="gaming"
+		icon="${ic_gaming}"
 	fi
 
-	printf "%s" "{\"text\": \"󰍹\", \"tooltip\": \"󰍶 ${_dndstate}\\t󰶐 ${_monitorstate}\\n󰡈 ${_gamingstate}\\t󰻂 ${_recordingstate}\", \"class\": \"${class}\"}\n"
+	printf "%s" "{\"text\": \"${icon}\", \"tooltip\": \"${ic_rec} ${_recordingstate}\\t${ic_dnd} ${_dndstate}\\n${ic_power} ${_monitorstate}\\t${ic_gaming} ${_gamingstate}\", \"class\": \"${class}\"}\n"
 }
 
 function monitorstate() {

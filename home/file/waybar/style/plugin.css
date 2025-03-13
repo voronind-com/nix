@@ -62,7 +62,10 @@
 
 #battery.critical,
 #cpu.usage.critical,
-#custom-display.modified,
+#custom-display.dnd,
+#custom-display.rec,
+#custom-display.power,
+#custom-display.gaming,
 #custom-network.none,
 #custom-network.vpn,
 #custom-network.btlow,
