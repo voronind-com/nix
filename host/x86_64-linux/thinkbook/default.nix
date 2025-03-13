@@ -3,7 +3,7 @@
   user.voronind = true;
 
   module = {
-    builder.client.enable = true;
+    # builder.client.enable = true; # ISSUE: Needs network info.
     display.primary = "eDP-1";
     print.enable = true;
     purpose = {

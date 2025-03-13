@@ -24,6 +24,7 @@ let
     (mkSearchEngine "4p" "4pda"
       "https://4pda.to/forum/index.php?act=search&forums[]=all&source=all&query={searchTerms}"
     )
+    (mkSearchEngine "4l" "4lapy" "https://4lapy.ru/search/filter/?query={searchTerms}")
     (mkSearchEngine "ap" "Apteka" "https://apteka.ru/search/?q={searchTerms}")
     (mkSearchEngine "aw" "Arch Wiki" "https://wiki.archlinux.org/index.php?search={searchTerms}")
     (mkSearchEngine "dn" "DNS" "https://www.dns-shop.ru/search/?q={searchTerms}")

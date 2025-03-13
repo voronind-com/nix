@@ -1,4 +1,7 @@
-{ ... }:
+{ config, ... }:
+let
+  host = config.module.network.host;
+in
 {
   # Password used for root user.
   # Use `mkpasswd -s`.
@@ -12,20 +15,17 @@
   ssh = {
     # Keys that are allowed to connect via SSH.
     trustedKeys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJTI4IUkHH0JSzWDKOAMbzEDbyBXOrmTHRy+tpqJ8twx nix-on-droid@nothing2"
+      host.phone.key
       (builtins.readFile ./ssh.key)
     ];
 
     # Keys that are allowd to connect via SSH to nixbuild user for Nix remote builds.
     builderKey = "nixbuilder-1:Skghjixd8lPzNe2ZEgYLM9Pu/wF9wiZtZGsdm3bo9h0=";
-    buildKeys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIENY0NICXvlTOSZEwivRHEGO1PUzgsmoHwf+zqS7WsGV root@max"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEuuw5ek5wGB9KdBhCTxjV+CBpPU6RIOynHkFYC4dau3 root@dasha"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFHBAqquW9mzssSY22XBXvtAsa19WtIgM5xQ+mXZX6W9 root@thinkbook"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFgiYKFkMfiGOZCZIk+O7LtaoF6A3cHEFCqaPwXOM4rR root@thinkpad"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILwQVB+KGyTPi3NX2y6ahiM33y0ispmKbfbQgewnyvCq root@desktop"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJSWdbkYsRiDlKu8iT/k+JN4KY08iX9qh4VyqxlpEZcE root@home"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOaoyC/grc3SfO5blKWRUwW+dLlcfyvuvWjymprfIeqN root@msi"
+    buildKeys = with host; [
+      dasha.key
+      desktop.key
+      max.key
+      thinkpad.key
     ];
   };
 

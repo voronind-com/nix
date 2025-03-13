@@ -193,7 +193,7 @@
                   pkgsJobber = nixpkgsJobber.legacyPackages.${system}.pkgs;
                   pkgsMaster = nixpkgsMaster.legacyPackages.${system}.pkgs;
                   pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
-                  secret = import ./secret { };
+                  secret = import ./secret { config = self.nixosConfigurations.${hostname}.config; };
                   util = import ./lib/util.nix { inherit lib; };
                 in
                 {
@@ -239,7 +239,7 @@
           pkgs = nixpkgs.legacyPackages.${system}.pkgs;
           pkgsMaster = nixpkgsMaster.legacyPackages.${system}.pkgs;
           pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
-          secret = import ./secret { };
+          secret = import ./secret { config = self.nixOnDroidConfiguration.config; };
           system = "aarch64-linux";
           util = import ./lib/util.nix { inherit lib; };
         in
