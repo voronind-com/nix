@@ -10,12 +10,6 @@
           '';
         }
       ];
-      # unmanaged = [
-      #   "type:bridge"
-      #   "type:ethernet"
-      #   "type:loopback"
-      #   # "type:wireguard"
-      # ];
     };
   };
 
