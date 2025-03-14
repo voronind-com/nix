@@ -2,9 +2,9 @@
 # This way I am forced to apply the padding to children of each group
 # instead of the whole group.
 {
-  util,
-  pkgs,
   config,
+  pkgs,
+  util,
   ...
 }@args:
 let

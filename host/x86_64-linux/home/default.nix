@@ -7,7 +7,6 @@ in
 
   module = {
     builder.server.enable = true;
-    display.primary = "HDMI-A-1";
     package.all = true;
     wallpaper.video = false;
     purpose = {
@@ -16,6 +15,10 @@ in
       server = true;
     };
     secrets = [ "telegram_notify" ];
+    display = {
+      logo = "";
+      primary = "HDMI-A-1";
+    };
     zfs = {
       pools = [
         "alpha"

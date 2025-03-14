@@ -7,7 +7,6 @@
 
   module = {
     # builder.client.enable = true; # ISSUE: Needs network info.
-    display.primary = "eDP-1";
     print.enable = true;
     purpose = {
       creative = true;
@@ -15,6 +14,10 @@
       gaming = true;
       laptop = true;
       work = true;
+    };
+    display = {
+      logo = "󰡈";
+      primary = "eDP-1";
     };
     amd = {
       compute.enable = true;

@@ -32,6 +32,7 @@
     display = {
       primary = "HDMI-A-1";
       rotate.HDMI-A-1 = 180;
+      logo = "";
     };
     amd = {
       compute.enable = true;

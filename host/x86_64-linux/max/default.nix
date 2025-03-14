@@ -5,7 +5,6 @@
 
   module = {
     builder.client.enable = true;
-    display.primary = "eDP-1";
     package.all = true;
     powersave.enable = true;
     print.enable = true;
@@ -27,6 +26,10 @@
       "vpn/home/key"
       "wifi"
     ];
+    display = {
+      logo = "󱄅";
+      primary = "eDP-1";
+    };
     network.setup = {
       wifi = true;
       vpn = {

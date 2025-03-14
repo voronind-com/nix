@@ -5,7 +5,6 @@
   module = {
     amd.gpu.enable = true;
     builder.client.enable = true;
-    display.primary = "DP-1";
     package.all = true;
     print.enable = true;
     purpose = {
@@ -14,6 +13,10 @@
       disown = true;
       gaming = true;
       work = true;
+    };
+    display = {
+      logo = "";
+      primary = "DP-1";
     };
     zfs.pools = [
       "cold"

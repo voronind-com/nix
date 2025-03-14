@@ -4,10 +4,13 @@
 
   module = {
     # builder.client.enable = true; # ISSUE: Needs network info.
-    display.primary = "eDP-1";
     print.enable = true;
     purpose = {
       desktop = true;
+    };
+    display = {
+      logo = "󱡮";
+      primary = "eDP-1";
     };
     intel.cpu = {
       enable = true;

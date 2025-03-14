@@ -1,22 +1,25 @@
 {
   __findFile,
+  config,
   pkgs,
   util,
   ...
 }:
 let
-  pipewire = pkgs.pipewire;
+  logo = config.module.display.logo;
   longogg = <static/long.ogg>;
   notificationogg = <static/notification.ogg>;
+  pipewire = pkgs.pipewire;
   shortogg = <static/short.ogg>;
 
   raw = pkgs.writeText "swayscript-raw" (util.readFiles (util.ls ./script));
   script =
     (pkgs.replaceVars raw {
       inherit
-        pipewire
+        logo
         longogg
         notificationogg
+        pipewire
         shortogg
         ;
     }).overrideAttrs
