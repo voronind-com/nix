@@ -44,6 +44,7 @@
       lsof # Find current file users.
       lz4 # Fast af compression.
       man # App to read manuals.
+      mdcat # Markdown cli renderer.
       mtr # Traceroute tool.
       neovim # Text editor.
       nmap # Network scanning.
