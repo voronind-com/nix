@@ -26,7 +26,7 @@ in
       description = "Signed system auto-update";
       wants = [ "network-online.target" ];
       serviceConfig = {
-        RuntimeMaxSec = "55m";
+        # RuntimeMaxSec = "55m"; # NOTE: Doesn't work with oneshot.
         Type = "oneshot";
       };
       path = with pkgs; [
@@ -63,7 +63,7 @@ in
           exit 1
         };
 
-        make switch
+        timeout 55 make switch
       '';
     };
 
