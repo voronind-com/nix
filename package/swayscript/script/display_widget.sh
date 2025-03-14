@@ -96,7 +96,7 @@ function displaywidget() {
 	local _recordingstate=$(recordingstate)
 	local _dndstate=$(dndstate)
 	local class=""
-	local icon=""
+	local icon="" # 󰈈󰫢󱝂󱡄󰳊󰋑
 
 	local ic_rec="󰻂"
 	local ic_dnd="󰂛"
