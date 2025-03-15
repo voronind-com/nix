@@ -27,7 +27,7 @@
       "wifi"
     ];
     display = {
-      logo = "󱄅";
+      logo = "󰫢";
       primary = "eDP-1";
     };
     network.setup = {
