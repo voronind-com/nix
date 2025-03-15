@@ -13,8 +13,8 @@ Newest first.
 <img src="https://share.voronind.com/readme/04_video.gif" />
 <img width=400px src="https://share.voronind.com/readme/04_android_lock.png" />
 <img width=400px src="https://share.voronind.com/readme/04_android_nod.png" />
-<br><a href="https://ailivewallpapers.com/snowfall-pixel-live-wallpaper/">Wallpaper Source</a>
-<br><a href="https://share.voronind.com/wallpaper/Live_Wallpaper_Pc_Com-Snowfall-Pixel-1920_X_1074.mp4">Wallpaper Mirror</a>
+<br><a href="https://ailivewallpapers.com/lunatic-arknights-live-wallpaper/">Wallpaper Source</a>
+<br><a href="https://share.voronind.com/wallpaper/Live_Wallpaper_Pc_Com-Lunatic-Arknights-1920_X_1080.mp4">Wallpaper Mirror</a>
 </details>
 
 <details>
