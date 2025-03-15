@@ -10,6 +10,15 @@ Newest first.
 
 <details>
 <summary>Screenshot 1</summary>
+<img src="https://share.voronind.com/readme/04_video.gif" />
+<img width=400px src="https://share.voronind.com/readme/04_android_lock.png" />
+<img width=400px src="https://share.voronind.com/readme/04_android_nod.png" />
+<br><a href="https://ailivewallpapers.com/snowfall-pixel-live-wallpaper/">Wallpaper Source</a>
+<br><a href="https://share.voronind.com/wallpaper/Live_Wallpaper_Pc_Com-Snowfall-Pixel-1920_X_1074.mp4">Wallpaper Mirror</a>
+</details>
+
+<details>
+<summary>Screenshot 2</summary>
 <img src="https://share.voronind.com/readme/03_video.gif" />
 <img width=400px src="https://share.voronind.com/readme/03_android_lock.png" />
 <img width=400px src="https://share.voronind.com/readme/03_android_nod.png" />
@@ -18,7 +27,7 @@ Newest first.
 </details>
 
 <details>
-<summary>Screenshot 2</summary>
+<summary>Screenshot 3</summary>
 <img src="https://share.voronind.com/readme/02_Video.gif" />
 <img width=400px src="https://share.voronind.com/readme/02_AndroidLock.png" />
 <img width=400px src="https://share.voronind.com/readme/02_AndroidNod.png" />
@@ -27,20 +36,12 @@ Newest first.
 </details>
 <details>
 
-<summary>Screenshot 3</summary>
+<summary>Screenshot 4</summary>
 <img src="https://share.voronind.com/readme/01_Video.gif" />
 <img width=400px src="https://share.voronind.com/readme/01_AndroidLock.png" />
 <img width=400px src="https://share.voronind.com/readme/01_AndroidNod.png" />
 <br><a href="https://moewalls.com/games/garden-lake-minecraft-live-wallpaper/">Wallpaper Source</a>
 <br><a href="https://share.voronind.com/wallpaper/GardenLakeMinecraftMoewallsCom.mp4">Wallpaper Mirror</a>
-</details>
-
-<details>
-<summary>Screenshot 4</summary>
-<img src="https://i.imgur.com/rVFRtST.png" />
-<img width=400px src="https://i.imgur.com/eVultId.png" />
-<img width=400px src="https://i.imgur.com/NeX9430.png" />
-<br><a href="https://i.imgur.com/XG8bA49.jpeg">Wallpaper link</a>
 </details>
 
 [My current wallpaper](option/Wallpaper.nix#L13)
