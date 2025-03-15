@@ -52,7 +52,7 @@
 #custom-display,
 #custom-network,
 #memory,
-#pulseaudio,
+#pulseaudio.source-muted,
 #temperature {
 	/* prettier-ignore */
 	border-top: @borderSize@ solid transparent;
@@ -71,10 +71,12 @@
 #custom-network.btlow,
 #memory.critical,
 #pulseaudio.muted,
-#pulseaudio.source-muted,
+#pulseaudio,
 #temperature.critical {
 	/* prettier-ignore */
 	border-top: @borderSize@ solid @accent@;
+	/* prettier-ignore */
+	border-bottom: @borderSize@ solid transparent;
 }
 
 /* Widget-specific styling. */
