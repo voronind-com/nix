@@ -11,7 +11,7 @@
       type = lib.types.str;
     };
     logo = lib.mkOption {  # 󰈈󰫢󱝂󱡄󰳊󰋑
-      default = ""; # TODO: Check if they fixed ->  or 󱄅 
+      default = ""; # TODO: Check if they fixed ->  or 󱄅 
       type = lib.types.str;
     };
     rotate = lib.mkOption {
