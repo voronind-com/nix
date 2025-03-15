@@ -63,7 +63,7 @@ in
           exit 1
         };
 
-        timeout 55 make switch
+        timeout 55m make switch
       '';
     };
 
