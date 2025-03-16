@@ -1,3 +1,5 @@
+# Distrobox to run software inside the containers.
+# Almost never use it, might delete in the future.
 {
   config,
   lib,

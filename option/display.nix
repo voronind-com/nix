@@ -10,7 +10,8 @@
       default = "*";
       type = lib.types.str;
     };
-    logo = lib.mkOption {  # 󰈈󰫢󱝂󱡄󰳊󰋑
+    logo = lib.mkOption {
+      # 󰈈󰫢󱝂󱡄󰳊󰋑
       default = ""; # TODO: Check if they fixed ->  or 󱄅 
       type = lib.types.str;
     };

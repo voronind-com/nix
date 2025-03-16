@@ -1,7 +1,7 @@
 # System automatic updates.
 # This is a systemd service that pulls updates every hour.
 # Unlike system.autoUpgrade, this script also verifies my git signature
-# to prevent unathorized changes to hosts.
+# to prevent unathorized changes to hosts, and also prevents downgrades.
 {
   config,
   lib,
@@ -15,6 +15,7 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
+    # This is required to verify the git signature.
     programs.git = {
       enable = true;
       config.gpg.ssh.allowedSignersFile = toString secret.crypto.sign.git.allowed;

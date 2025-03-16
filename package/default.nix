@@ -103,7 +103,6 @@
     foot # Terminal emulator.
     fuzzel # Application launcher.
     grim # Screenshots.
-    light # Brightness control.
     mako # Notification system.
     mpvpaper # Video wallpapers.
     networkmanagerapplet # Internet configuration.

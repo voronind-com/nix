@@ -1,3 +1,4 @@
+# This module enables AMD compute support known as ROCM.
 {
   config,
   lib,
@@ -9,8 +10,8 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    nixpkgs.config.rocmSupport = true;
-    systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
     hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
+    nixpkgs.config.rocmSupport = true;
+    systemd.tmpfiles.settings.rocm-hip."/opt/rocm/hip"."L+".argument = "${pkgs.rocmPackages.clr}";
   };
 }

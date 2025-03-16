@@ -1,3 +1,4 @@
+# Kernel configuration.
 {
   config,
   lib,
@@ -10,6 +11,7 @@ in
 {
   config = lib.mkIf cfg.enable (
     lib.mkMerge [
+      # Default configuration.
       {
         boot.kernelPackages = pkgsUnstable.linuxPackages;
 
@@ -25,6 +27,7 @@ in
         };
       }
 
+      # Hardening.
       (lib.mkIf cfg.hardening {
         boot.kernel.sysctl = {
           # Spoof protection.
@@ -56,8 +59,10 @@ in
         };
       })
 
+      # Bypass mobile hotspot sharing by changing TTL.
       (lib.mkIf cfg.hotspotTtlBypass { boot.kernel.sysctl."net.ipv4.ip_default_ttl" = 65; })
 
+      # Router configuration.
       (lib.mkIf cfg.router {
         boot.kernel.sysctl = {
           # Allow spoofing.

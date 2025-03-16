@@ -1,3 +1,4 @@
+# Key remaping daemon.
 {
   config,
   lib,
@@ -6,6 +7,9 @@
 }:
 let
   cfg = config.module.keyd;
+
+  # Generate a config for all the letter keys.
+  # Useful as a hack to enable layers for non-mod keys.
   mkAllLetterKeysSet =
     mkValue:
     "abcdefghijklmnopqrstuvwxyz"

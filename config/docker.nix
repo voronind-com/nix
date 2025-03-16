@@ -1,3 +1,5 @@
+# Docker to run something that was packaged for docker specifically.
+# Like terraria-calamity server.
 { lib, config, ... }:
 let
   cfg = config.module.docker;

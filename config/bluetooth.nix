@@ -1,3 +1,4 @@
+# Configuration that enables bluetooth support.
 { config, lib, ... }:
 let
   cfg = config.module.bluetooth;

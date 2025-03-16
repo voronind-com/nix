@@ -1,3 +1,4 @@
+# Display configuration.
 { lib, config, ... }:
 let
   cfg = config.module.display;

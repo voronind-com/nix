@@ -1,3 +1,5 @@
+# This awesome piece of software lets me use corporate Exchange mail
+# as a proper IMAP protocol.
 { config, lib, ... }:
 let
   cfg = config.module.davmail;

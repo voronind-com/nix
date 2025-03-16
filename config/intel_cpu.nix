@@ -3,6 +3,7 @@
 let
   cfg = config.module.intel.cpu;
 
+  # CPU powersave by toggling boost only when needed.
   controlFile = "/sys/devices/system/cpu/intel_pstate/no_turbo";
   disableCmd = "0";
   enableCmd = "1";

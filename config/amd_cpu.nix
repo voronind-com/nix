@@ -1,7 +1,9 @@
+# Configuration specific for AMD CPUs.
 { config, lib, ... }:
 let
   cfg = config.module.amd.cpu;
 
+  # Powersave configuration (CPU boost toggle).
   controlFile = "/sys/devices/system/cpu/cpufreq/boost";
   disableCmd = "1";
   enableCmd = "0";
@@ -16,7 +18,7 @@ in
       (lib.mkIf cfg.powersave {
         module.powersave = {
           enable = true;
-          cpu.boost = { inherit controlFile enableCmd disableCmd; };
+          cpu.boost = { inherit controlFile disableCmd enableCmd; };
         };
       })
     ]

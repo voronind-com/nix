@@ -1,3 +1,4 @@
+# FTP server for legacy applications like my wireless scanner.
 { config, lib, ... }:
 let
   cfg = config.module.ftpd;
