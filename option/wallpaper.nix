@@ -10,10 +10,10 @@ let
   hasGpu = config.module.amd.gpu.enable;
 
   # Set the wallpaper here.
-  url = "https://share.voronind.com/wallpaper/Live_Wallpaper_Pc_Com-Noire-Night-3440_X_1440.mp4";
-  sha256 = "sha256-Z4H06S6YGdfWlJ8PZCzWx923DYWr78GK4v18/SGYlRY=";
+  url = "https://share.voronind.com/wallpaper/ecc3c2520837b0e140e7197c6ca5024037c70b2b.mp4";
+  sha256 = "sha256-BYdsI6d5+p/3Z+WRVDz1jAX14kBqvIu2JQKJOdIJ1Lo=";
   video = true;
-  forceContrastText = false;
+  forceContrastText = true;
 
   # Predefined scheme instead of generated.
   # SEE: /etc/stylix/palette.json
