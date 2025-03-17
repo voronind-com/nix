@@ -58,6 +58,7 @@ let
         (mkVideoLink "LiveWallpaperPc" "https://livewallpaperpc.com")
         (mkVideoLink "MoeWalls" "https://moewalls.com")
         (mkVideoLink "Motion Backgrounds" "https://motionbgs.com")
+        (mkVideoLink "Steam Points Shop" "https://store.steampowered.com/points/shop/c/backgrounds/cluster/1")
       ]
       ++ [
         (mkImageLink "Unsplash" "https://unsplash.com")
