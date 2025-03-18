@@ -57,6 +57,9 @@ let
     (mkSearchEngine "st" "Steam" "https://store.steampowered.com/search/?term={searchTerms}")
     (mkSearchEngine "sx" "SearX" "https://search.voronind.com/search?q={searchTerms}")
     (mkSearchEngine "wa" "Watch" "https://watch.voronind.com/web/#/search.html?query={searchTerms}")
+    (mkSearchEngine "wb" "Wildberries"
+      "https://www.wildberries.ru/catalog/0/search.aspx?search={searchTerms}"
+    )
     (mkSearchEngine "wp" "Wallpaper"
       "https://unsplash.com/s/photos/{searchTerms}?license=free&orientation=landscape"
     )
