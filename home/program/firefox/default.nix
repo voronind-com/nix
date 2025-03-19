@@ -27,6 +27,7 @@ let
     (mkSearchEngine "4l" "4lapy" "https://4lapy.ru/search/filter/?query={searchTerms}")
     (mkSearchEngine "ap" "Apteka" "https://apteka.ru/search/?q={searchTerms}")
     (mkSearchEngine "aw" "Arch Wiki" "https://wiki.archlinux.org/index.php?search={searchTerms}")
+    (mkSearchEngine "bt" "Booktracker" "https://flibusta.is/booksearch?ask={searchTerms}")
     (mkSearchEngine "dn" "DNS" "https://www.dns-shop.ru/search/?q={searchTerms}")
     (mkSearchEngine "fa" "Font Awesome" "https://fontawesome.com/search?q={searchTerms}&o=r&m=free")
     (mkSearchEngine "fb" "Flibusta" "https://flibusta.is/booksearch?ask={searchTerms}")

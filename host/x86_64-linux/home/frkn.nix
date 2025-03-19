@@ -17,10 +17,15 @@
       "ytimg.com"
       "youtu.be"
       "m.youtube.com"
+
       "rutracker.org"
       "rutracker.cc"
       "rutrk.org"
       "t-ru.org"
+
+      "booktracker.org"
+      "flibusta.is"
+
       "medium.com"
     ];
     udpPorts = [ "443" ];

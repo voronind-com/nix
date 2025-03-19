@@ -67,6 +67,7 @@ let
     ))
     (mkGroup "Pirate" "fa-skull-crossbones" [
       (mkLink "1337x" "fa-link" "https://1337x.to")
+      (mkLink "Booktracker" "fa-link" "https://booktracker.org")
       (mkLink "Cs.rin.ru" "fa-link" "https://cs.rin.ru/forum/index.php")
       (mkLink "DigitalCore" "fa-link" "https://digitalcore.club")
       (mkLink "FitGirl" "fa-link" "https://fitgirl-repacks.site")
