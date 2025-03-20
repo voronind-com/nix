@@ -94,8 +94,8 @@ in
       format-source = " 󰍬";
       format-source-muted = "";
       on-click = "pavucontrol";
-      on-click-middle = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
-      on-click-right = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+      on-click-middle = "swayscript sound_output_toggle";
+      on-click-right = "swayscript sound_input_toggle";
       scroll-step = 5;
     };
     mpris =
