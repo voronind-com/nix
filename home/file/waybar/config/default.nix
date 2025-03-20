@@ -91,7 +91,7 @@ in
     pulseaudio = {
       format = "{volume}%{icon}{format_source}";
       format-muted = "󰸈{format_source}";
-      format-source = " ";
+      format-source = " 󰍬";
       format-source-muted = "";
       on-click = "pavucontrol";
       on-click-middle = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
