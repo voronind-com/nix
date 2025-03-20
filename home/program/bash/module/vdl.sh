@@ -10,7 +10,7 @@ function vdl() {
 	local target="${@}" # What to download/update.
 
 	# If no [LINK] provided, try to read from `Src.txt`.
-	[[ ${target} == "" ]] && target="$(cat Src.txt)"
+	[[ ${target} == "" ]] && target="$(cat src.txt)"
 
 	# If could not get [LINK] eventually, show an error and exit.
 	if [[ ${target} == "" ]]; then
@@ -20,10 +20,10 @@ function vdl() {
 	fi
 
 	# Save [LINK] for later use.
-	[[ -f "Src.txt" ]] || echo "${target}" >Src.txt
+	[[ -f "src.txt" ]] || echo "${target}" >src.txt
 
 	# Download [LINK] content.
-	eval "yt-dlp -4 -S 'res:1080,codec:av1,codec:vp9,codec:h264' --download-archive Index.txt --embed-thumbnail --embed-subs --write-auto-subs --embed-metadata --merge-output-format mkv -cio '%(playlist_index)000006d_%(id)s.%(ext)s'" "${target}"
+	eval "yt-dlp -4 -S 'res:1080,codec:av1,codec:vp9,codec:h264' --download-archive index.txt --embed-thumbnail --embed-subs --write-auto-subs --embed-metadata --merge-output-format mkv -cio '%(playlist_index)000006d_%(id)s.%(ext)s'" "${target}"
 }
 
 # Download all videos from file with links.
