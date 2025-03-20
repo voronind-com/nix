@@ -16,7 +16,7 @@ in
     (final: prev: {
       swappy = prev.swappy.overrideAttrs (old: {
         patches = (old.patches or [ ]) ++ [
-          (pkgs.replaceVars <patch/swappy/default_color.patch> { inherit accentR accentG accentB; })
+          (pkgs.replaceVars <patch/swappy/default-color.patch> { inherit accentR accentG accentB; })
         ];
       });
     })

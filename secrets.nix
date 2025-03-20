@@ -1,5 +1,5 @@
 let
-  yubikey = builtins.readFile ./secret/age/yubikey_recepient.key;
+  yubikey = builtins.readFile ./secret/age/yubikey-recepient.key;
   host = (import ./secret { }).network.host;
 
   mkSecret =
@@ -20,7 +20,7 @@ let
 
   secrets = with host; [
     (mkSecret {
-      names = [ "telegram_notify" ];
+      names = [ "telegram-notify" ];
       hosts = [ home ];
     })
     (mkSecret {

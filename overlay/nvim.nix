@@ -4,7 +4,7 @@
   nixpkgs.overlays = [
     (final: prev: {
       neovim-unwrapped = prev.neovim-unwrapped.overrideAttrs (old: {
-        patches = (old.patches or [ ]) ++ [ <patch/nvim/press_enter.patch> ];
+        patches = (old.patches or [ ]) ++ [ <patch/nvim/press-enter.patch> ];
       });
     })
   ];

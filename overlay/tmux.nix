@@ -11,7 +11,7 @@
           repo = "tmux";
           rev = "db978db27161f57b01f22407d2dda2bce203c2cf";
         };
-        patches = (old.patches or [ ]) ++ [ <patch/tmux/selection_style.patch> ];
+        patches = (old.patches or [ ]) ++ [ <patch/tmux/selection-style.patch> ];
       });
     })
   ];

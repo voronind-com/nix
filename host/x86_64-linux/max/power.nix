@@ -1,6 +1,6 @@
 { __findFile, pkgs, ... }:
 let
-  wm2fc = pkgs.callPackage <package/wm_2_fc> { };
+  wm2fc = pkgs.callPackage <package/wm-2-fc> { };
 in
 {
   # hardware.cpu.amd.ryzen-smu.enable = true;

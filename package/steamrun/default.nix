@@ -4,7 +4,7 @@
     with pkgs;
     (steam.override {
       extraLibraries = _: [
-        (callPackage <package/openssl_100> { })
+        (callPackage <package/openssl-100> { })
         curlWithGnuTls
       ];
     }).run;

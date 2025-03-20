@@ -71,7 +71,7 @@ let
     ./module/key/prompt.lua
     ./module/key/save.lua
     ./module/key/sort.lua
-    ./module/key/tab_width.lua
+    ./module/key/tab-width.lua
     ./module/key/telescope.lua
     ./module/key/terminal.lua
     ./module/key/trouble.lua
