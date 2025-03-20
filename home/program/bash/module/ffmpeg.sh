@@ -37,11 +37,11 @@ function ffmpeg_mux_cover() {
 function ffmpeg_music_meta() {
 	local artist="${PWD%/*}"
 	artist="${artist##*/}"
-	artist="${artist//_/ }"
+	artist="${artist//[_-]/ }"
 	artist=$(printf "%s" "${artist}" | parse_startcase)
 	local album="${PWD##*/}"
 	album="${album#*_}"
-	album="${album//_/ }"
+	album="${album//[_-]/ }"
 	album=$(printf "%s" "${album}" | parse_startcase)
 	local year="${PWD##*/}"
 	year="${year%%_*}"
@@ -67,7 +67,7 @@ function ffmpeg_music_meta() {
 		track=$((10#${track}))
 		local title="${file#*_}"
 		title="${title%.*}"
-		title="${title//_/ }"
+		title="${title//[_-]/ }"
 		title=$(printf "%s" "${title}" | parse_startcase)
 
 		if [[ ${track} == "" ]]; then
