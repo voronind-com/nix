@@ -148,10 +148,10 @@ function parse_filename() {
 # Split string by separators.
 # Usage: _parse_split <STRING>
 function _parse_split() {
-	sed -e "s/[A-Z]\+/\n&/g" -e "s/[0-9]\+/\n&/g" -e "s/[${_PARSE_SPLIT_CHARS}${_PARSE_ALLOWED_CHARS}]/&\n/g" | sed -e "/^$/d"
+	sed -e "s/[A-Z]\+/\n&/g" -e "s/[${_PARSE_SPLIT_CHARS}${_PARSE_ALLOWED_CHARS}]/&\n/g" | sed -e "/^$/d"
 }
 
 # Split string by separators and strip separation chars.
 function _parse_split_strip() {
-	sed -e "s/[A-Z]\+/\n&/g" -e "s/[0-9]\+/\n&/g" -e "s/[${_PARSE_SPLIT_CHARS}${_PARSE_ALLOWED_CHARS}]/\n/g" | sed -e "/^$/d"
+	sed -e "s/[A-Z]\+/\n&/g" -e "s/[${_PARSE_SPLIT_CHARS}${_PARSE_ALLOWED_CHARS}]/\n/g" | sed -e "/^$/d"
 }
