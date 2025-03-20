@@ -132,7 +132,7 @@ function name_hash_check() {
 function name_show() {
 	local IFS=$'\n'
 	local season="$(realpath .)"
-	season="${season##*\ }"
+	season="${season##*[\ -]}"
 	local episode=0
 	local targets=(${@})
 	[[ ${targets} == "" ]] && targets=($(_ls_file))
