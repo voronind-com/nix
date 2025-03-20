@@ -6,7 +6,10 @@ function tdl() {
 # Download torrent files to home.
 # Usage: tdla <FILES>
 function tdla() {
-	tdl --add "${@}"
+	local IFS=$'\n'
+	for file in ${@}; do
+		tdl --add "${file}"
+	done
 }
 
 # List download torrents.
