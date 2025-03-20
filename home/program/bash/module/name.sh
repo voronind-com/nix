@@ -11,7 +11,7 @@ function name() {
 		[[ ${ext} == ".${target}" ]] && ext=""
 
 		local new_name="$(printf "%s" "${name}" | parse_filename)${ext,,}"
-		[ "${target}" = "${new_name}" ] && return 0
+		[ "${target%/}" = "${new_name}" ] && return 0
 		[[ -e ${new_name} ]] && {
 			_error "${new_name}: Already exists!"
 			return 1

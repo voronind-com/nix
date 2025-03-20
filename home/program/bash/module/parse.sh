@@ -1,11 +1,13 @@
 export _PARSE_ALLOWED_CHARS="_-"
 export _PARSE_SPLIT_CHARS="\.\ "
+export _PARSE_PRIMARY_CHAR="-"
+export _PARSE_SECONDARY_CHAR="_"
 
 # Parse data and output simplified format.
 # Usage: parse_simple <STRING>
 function parse_simple() {
 	sed -E \
-		-e "s/[${_PARSE_SPLIT_CHARS}]/${_PARSE_ALLOWED_CHARS:0:1}/g" \
+		-e "s/[${_PARSE_SPLIT_CHARS}]/${_PARSE_PRIMARY_CHAR}/g" \
 		-e "s/[^[:alnum:]${_PARSE_ALLOWED_CHARS}]//g" \
 		-e "s/([${_PARSE_ALLOWED_CHARS}])[${_PARSE_ALLOWED_CHARS}]+/\1/g" \
 		-e "s/^[${_PARSE_ALLOWED_CHARS}]//" \
@@ -137,16 +139,16 @@ function parse_filename() {
 
 	for part in "${parts[@]}"; do
 		local word="${part,,}"
-		result="${result}_${word}"
+		result="${result}${_PARSE_PRIMARY_CHAR}${word}"
 	done
 
-	printf "%s" "${result#_}" | _PARSE_ALLOWED_CHARS="_\.-" _PARSE_SPLIT_CHARS="\ " parse_simple
+	printf "%s" "${result#${_PARSE_PRIMARY_CHAR}}" | _PARSE_ALLOWED_CHARS="_\.-" _PARSE_SPLIT_CHARS="\ " parse_simple
 }
 
 # Split string by separators.
 # Usage: _parse_split <STRING>
 function _parse_split() {
-	sed -e "s/[A-Z]\+/\n&/g" -e "s/[0-9]\+/\n&\n/g" -e "s/[${_PARSE_SPLIT_CHARS}${_PARSE_ALLOWED_CHARS}]/&\n/g" | sed -e "/^$/d"
+	sed -e "s/[A-Z]\+/\n&/g" -e "s/[0-9]\+/\n&/g" -e "s/[${_PARSE_SPLIT_CHARS}${_PARSE_ALLOWED_CHARS}]/&\n/g" | sed -e "/^$/d"
 }
 
 # Split string by separators and strip separation chars.
