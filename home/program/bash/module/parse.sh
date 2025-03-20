@@ -153,5 +153,5 @@ function _parse_split() {
 
 # Split string by separators and strip separation chars.
 function _parse_split_strip() {
-	_parse_split | sed -e "s/[${_PARSE_SPLIT_CHARS}]//g" | sed -e "/^$/d"
+	_parse_split | sed -e "s/[${_PARSE_SPLIT_CHARS}${_PARSE_ALLOWED_CHARS}]//g" | sed -e "/^$/d"
 }
