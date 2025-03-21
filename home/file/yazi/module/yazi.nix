@@ -48,7 +48,7 @@
           {
             desc = "Audio Shuffle";
             orphan = true;
-            run = "mpv --no-video --shuffle \"$@\"/**";
+            run = openWith "mpv --no-video --shuffle";
           }
         ];
         bottle_run = [
