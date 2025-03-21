@@ -141,9 +141,11 @@ show:
 switch:
 	nixos-rebuild switch $(options) --flake $(flake)
 
-# NOTE: Use `nix flake update <INPUT>` for selective update.
 update:
 	nix flake update
+
+update-unstable:
+	nix flake update nixpkgsUnstable nixpkgsMaster
 
 verify: housekeep
 	git verify-commit HEAD
