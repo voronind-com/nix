@@ -3,6 +3,7 @@
   module.dpi.bypass = {
     enable = true;
     udpSupport = true;
+    udpPorts = [ "443" ];
     params = [
       "--dpi-desync=multisplit"
       "--dpi-desync-split-pos=10,midsld"
@@ -25,10 +26,10 @@
 
       "booktracker.org"
       "flibusta.is"
+      "libgen.is"
 
       "medium.com"
     ];
-    udpPorts = [ "443" ];
   };
 
   services = {
