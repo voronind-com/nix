@@ -87,6 +87,8 @@ in
             compose = "compose";
             delete = "delete";
             esc = "esc";
+            leftalt = "leftcontrol";
+            leftmeta = "leftcontrol";
             rightcontrol = "leftcontrol";
             rightshift = "delete";
           };
