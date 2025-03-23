@@ -82,7 +82,7 @@ let
     (mkExtension "{e7625f06-e252-479d-ac7a-db68aeaff2cb}" "https://addons.mozilla.org/firefox/downloads/latest/togglefonts/latest.xpi")
     # NOTE: This extension is helpful to find the required parameters for this config.
     # Or find them yourself inside the `about:support`.
-    # (mkExtension "queryamoid@kaply.com" "https://github.com/mkaply/queryamoid/releases/download/v0.1/query_amo_addon_id-0.1-fx.xpi")
+    (mkExtension "queryamoid@kaply.com" "https://github.com/mkaply/queryamoid/releases/download/v0.1/query_amo_addon_id-0.1-fx.xpi")
   ];
 
   prefs = [
