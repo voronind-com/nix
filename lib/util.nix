@@ -12,7 +12,13 @@
     builtins.concatStringsSep "\n" (stripTabs (lib.strings.splitString "\n" text));
 
   # List all files in a dir.
-  ls = path: map (f: "${path}/${f}") (builtins.attrNames (builtins.readDir path));
+  ls =
+    path:
+    map (f: "${path}/${f}") (
+      builtins.filter (i: builtins.readFileType "${path}/${i}" == "regular") (
+        builtins.attrNames (builtins.readDir path)
+      )
+    );
 
   # Concat all nix file content by `file` key.
   catFile =
@@ -21,7 +27,8 @@
 
   # Concat all nix files as a set.
   catSet =
-    files: args: builtins.foldl' (acc: mod: acc // mod) { } (map (file: import file args) files);
+    files: args:
+    builtins.foldl' (acc: mod: lib.recursiveUpdate acc mod) { } (map (file: import file args) files);
 
   # Concat all file contents.
   readFiles = files: builtins.foldl' (acc: mod: acc + (builtins.readFile mod) + "\n") "" files;
