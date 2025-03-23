@@ -8,10 +8,8 @@ let
     (mkSearchEngine "4l" "4lapy" "https://4lapy.ru/search/filter/?query={searchTerms}")
     (mkSearchEngine "ap" "Apteka" "https://apteka.ru/search/?q={searchTerms}")
     (mkSearchEngine "aw" "Arch Wiki" "https://wiki.archlinux.org/index.php?search={searchTerms}")
-    (mkSearchEngine "bt" "Booktracker" "https://flibusta.is/booksearch?ask={searchTerms}")
     (mkSearchEngine "dn" "DNS" "https://www.dns-shop.ru/search/?q={searchTerms}")
     (mkSearchEngine "fa" "Font Awesome" "https://fontawesome.com/search?q={searchTerms}&o=r&m=free")
-    (mkSearchEngine "fb" "Flibusta" "https://flibusta.is/booksearch?ask={searchTerms}")
     (mkSearchEngine "gh" "GitHub" "https://github.com/search?q={searchTerms}")
     (mkSearchEngine "gc" "GitHub Code" "https://github.com/search?q={searchTerms}&type=code")
     (mkSearchEngine "gn" "GitHub Notif" "https://github.com/notifications?query={searchTerms}")
@@ -29,7 +27,6 @@ let
     (mkSearchEngine "np" "NixOS Packages" "https://search.nixos.org/packages?query={searchTerms}")
     (mkSearchEngine "nt" "NixOS PR Tracker" "https://nixpk.gs/pr-tracker.html?pr={searchTerms}")
     (mkSearchEngine "oz" "Ozon" "https://www.ozon.ru/search?text={searchTerms}")
-    (mkSearchEngine "pa" "Pixel Art" "https://www.reddit.com/r/PixelArt/search/?q={searchTerms}")
     (mkSearchEngine "pd" "ProtonDB" "https://www.protondb.com/search?q={searchTerms}")
     (mkSearchEngine "pe" "Perekrestok" "https://www.perekrestok.ru/cat/search?search={searchTerms}")
     (mkSearchEngine "re" "Reddit" "https://www.reddit.com/search/?q={searchTerms}")
@@ -41,9 +38,6 @@ let
     (mkSearchEngine "wa" "Watch" "https://watch.voronind.com/web/#/search.html?query={searchTerms}")
     (mkSearchEngine "wb" "Wildberries"
       "https://www.wildberries.ru/catalog/0/search.aspx?search={searchTerms}"
-    )
-    (mkSearchEngine "wp" "Wallpaper"
-      "https://unsplash.com/s/photos/{searchTerms}?license=free&orientation=landscape"
     )
     (mkSearchEngine "yt" "YouTube" "https://yt.voronind.com/search?q={searchTerms}")
   ];
