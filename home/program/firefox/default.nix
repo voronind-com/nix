@@ -74,6 +74,7 @@ let
     # (mkExtension "addon@darkreader.org" "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi")
     (mkExtension "addon@darkreader.org" "file://${pkgs.callPackage <package/darkreader> args}/latest.xpi")
     (mkExtension "cliget@zaidabdulla.com" "https://addons.mozilla.org/firefox/downloads/latest/cliget/latest.xpi")
+    (mkExtension "firefox@tampermonkey.net" "https://addons.mozilla.org/firefox/downloads/latest/tampermonkey/latest.xpi")
     (mkExtension "foxyproxy@eric.h.jung" "https://addons.mozilla.org/firefox/downloads/latest/foxyproxy-standard/latest.xpi")
     (mkExtension "uBlock0@raymondhill.net" "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi")
     (mkExtension "{446900e4-71c2-419f-a6a7-df9c091e268b}" "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi")
