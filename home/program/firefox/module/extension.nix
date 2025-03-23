@@ -31,7 +31,7 @@ let
   };
 in
 {
-  policies.ExtensionSettings = {
+  policies = {
     "3rdparty".Extensions = extensionConfigs;
 
     ExtensionSettings = {
