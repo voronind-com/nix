@@ -1,5 +1,4 @@
 function sound_output_cycle() {
-	notify_short
 	local IFS=$'\n'
 	local current=$(pactl get-default-sink)
 	local all=($(pactl list short sinks | cut -f2))
@@ -11,6 +10,7 @@ function sound_output_cycle() {
 	[[ ${i_current} -lt ${i_total} ]] && i_target=$((i_current + 1))
 
 	pactl set-default-sink ${all[${i_target}]}
+	notify_short
 }
 
 function sound_input_cycle() {
