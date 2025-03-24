@@ -267,7 +267,7 @@
           inherit pkgs;
           modules = [
             { home.android.enable = true; }
-            { home-manager.config.stylix.autoEnable = lib.mkForce false; }
+            { home-manager.config.stylix.targets.gtk.enable = lib.mkForce false; } # HACK: Broken on Android.
             ./home/android.nix
           ] ++ (ls ./option);
           extraSpecialArgs = {
