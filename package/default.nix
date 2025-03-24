@@ -165,6 +165,7 @@
     android-studio
     cloc # Count Lines If Code.
     jetbrains.idea-community
+    mermaid-cli # Generate charts from Markdown.
     nixd # Nix LSP.
     nixfmt-rfc-style # Nix formatter.
     nodePackages.prettier # Css formatter.
