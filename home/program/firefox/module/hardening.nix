@@ -1,7 +1,4 @@
-{ pkgs, ... }:
-let
-
-in
+{ pkgs, lib, ... }:
 {
   policies = {
     DisableBuiltinPDFViewer = true;
@@ -51,7 +48,7 @@ in
         handlers = [
           {
             name = "GNOME Document Viewer";
-            path = "${pkgs.evince}/bin/evince";
+            path = "${lib.getExe pkgs.zathura}";
           }
         ];
       };

@@ -123,7 +123,6 @@
 
   common =
     (with pkgs; [
-      evince # Document viewer.
       gimp # Image manipulation program.
       glib # Gnome lib for gvfs mtp usage with Nintendo Switch.
       gnome-calculator # Calculator.
@@ -135,6 +134,7 @@
       obs-studio # Streaming/recording app.
       remmina # RDP app.
       upscayl # Image upscaler.
+      zathura # Document viewer.
 
       (mpv.override { scripts = [ mpvScripts.mpris ]; }) # Media player.
     ])

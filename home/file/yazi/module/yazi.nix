@@ -109,7 +109,7 @@
           {
             desc = "Pdf";
             orphan = true;
-            run = openWith "evince";
+            run = openWith "zathura";
           }
         ];
         switch_install = [
