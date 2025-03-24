@@ -54,8 +54,8 @@ let
         mkImageLink = name: url: mkLink name "fa-image" url;
       in
       [
+        (mkVideoLink "AiLiveWallpapers" "https://ailivewallpapers.com/")
         (mkVideoLink "DesktopHut" "https://www.desktophut.com")
-        (mkVideoLink "LiveWallpaperPc" "https://livewallpaperpc.com")
         (mkVideoLink "MoeWalls" "https://moewalls.com")
         (mkVideoLink "Motion Backgrounds" "https://motionbgs.com")
         (mkVideoLink "Steam Points Shop" "https://store.steampowered.com/points/shop/c/backgrounds/cluster/1")

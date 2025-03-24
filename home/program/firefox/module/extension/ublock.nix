@@ -40,21 +40,25 @@ let
     "user-filters"
   ];
 
-  userSettings = {
-    advancedUserEnabled = true;
-    autoUpdate = true;
-    cloudStorageEnabled = false;
-    contextMenuEnabled = true;
-    dynamicFilteringEnabled = true;
-    uiTheme = "dark";
-  }
-  |> lib.mapAttrsToList (n: v: [ "${toString n}" "${toString v}" ]);
+  userSettings =
+    {
+      advancedUserEnabled = true;
+      autoUpdate = true;
+      cloudStorageEnabled = false;
+      contextMenuEnabled = true;
+      dynamicFilteringEnabled = true;
+      uiTheme = "dark";
+    }
+    |> lib.mapAttrsToList (
+      n: v: [
+        "${toString n}"
+        "${toString v}"
+      ]
+    );
 in
 {
   "uBlock0@raymondhill.net" = {
     inherit userSettings;
-    toOverwrite = {
-      inherit filters filterLists;
-    };
+    toOverwrite = { inherit filters filterLists; };
   };
 }
