@@ -69,7 +69,20 @@ in
     (lib.mkIf cfg.creative { environment.systemPackages = package.creative; })
 
     # Development.
-    (lib.mkIf cfg.dev { environment.systemPackages = package.dev; })
+    (lib.mkIf cfg.dev {
+      environment.systemPackages = package.dev;
+
+      programs = {
+        direnv = {
+          enable = true;
+          silent = true;
+          nix-direnv.enable = true;
+          direnvrcExtra = ''
+            export SHELL_NAME=direnv
+          '';
+        };
+      };
+    })
 
     # Extras.
     (lib.mkIf cfg.extra { environment.systemPackages = package.extra; })
