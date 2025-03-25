@@ -8,12 +8,9 @@ in
     {
       inherit (config.module.style) cursor;
       enable = true;
-      autoEnable = false;
+      autoEnable = true;
       image = wallpaper.path;
       polarity = "dark";
-      targets = {
-        gtk.enable = true;
-      };
       fonts = with style.font; {
         inherit
           emoji
