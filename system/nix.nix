@@ -2,11 +2,9 @@
 {
   nixpkgs.config = {
     allowUnfree = true;
-    allowInsecurePredicate = x: true; # HACK: Nix is fucking annoying.
+    allowInsecurePredicate = x: true; # HACK: Nix is fucking annoying sometimes.
   };
   nix = {
-    registry.nixpkgs.flake = inputs.nixpkgs;
-    channel.enable = false;
     settings = {
       auto-optimise-store = true;
       keep-derivations = false;
@@ -24,5 +22,16 @@
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
+  };
+
+  # HACK: Remove channels from NIX_PATH.
+  nixpkgs.flake = {
+    setFlakeRegistry = false;
+    setNixPath = false;
+  };
+  nix = {
+    channel.enable = false;
+    nixPath = [ "nixpkgs=flake:nixpkgs" ];
+    registry.nixpkgs.flake = inputs.nixpkgs;
   };
 }
