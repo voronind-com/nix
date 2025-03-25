@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 {
   nixpkgs.config = {
     allowUnfree = true;
@@ -24,6 +24,12 @@
       options = "--delete-older-than 30d";
     };
   };
+
+  # Add source refs to etc.
+  environment.etc =
+    inputs
+    |> lib.mapAttrsToList (n: v: n)
+    |> lib.foldl' (acc: name: acc // { "source-${name}".source = inputs.${name}; }) { };
 
   # HACK: Remove channels from NIX_PATH.
   nixpkgs.flake = {

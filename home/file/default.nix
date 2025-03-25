@@ -53,9 +53,6 @@ in
   ".local/share/jellyfinmediaplayer/scripts/mpris.so".source =
     "${pkgs.mpvScripts.mpris}/share/mpv/scripts/mpris.so";
   ".nix".source = self;
-  ".nixpkgs".source = inputs.nixpkgs;
-  ".nixpkgs_master".source = inputs.nixpkgsMaster;
-  ".nixpkgs_unstable".source = inputs.nixpkgsUnstable;
   ".parallel/will-cite".text = "";
   ".ssh/config".source = ssh.config;
   ".ssh/identity".source = <secret/ssh>;
