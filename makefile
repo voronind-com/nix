@@ -135,6 +135,9 @@ no-nixconf:
 reboot: boot
 	reboot
 
+shell:
+	nix develop --no-pure-eval --accept-flake-config
+
 show:
 	nix flake show
 
