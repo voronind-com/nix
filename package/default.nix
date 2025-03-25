@@ -164,6 +164,7 @@
   dev = with pkgs; [
     android-studio
     cloc # Count Lines Of Code.
+    devenv # Dev environments.
     jetbrains.idea-community
     mermaid-cli # Generate charts from Markdown.
     typst # Markdown typesetting.
