@@ -3,6 +3,7 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowInsecurePredicate = x: true; # HACK: Nix is fucking annoying.
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
+  nix.channel.enable = false;
   nix.settings = {
     auto-optimise-store = true;
     keep-derivations = false;
