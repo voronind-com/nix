@@ -311,7 +311,7 @@
     "nix-github-actions": {
       "inputs": {
         "nixpkgs": [
-          "poetry2nixJobber",
+          "poetry2nix-jobber",
           "nixpkgs"
         ]
       },
@@ -405,7 +405,7 @@
         "type": "github"
       }
     },
-    "nixpkgsJobber": {
+    "nixpkgs-jobber": {
       "locked": {
         "lastModified": 1717786204,
         "narHash": "sha256-4q0s6m0GUcN7q+Y2DqD27iLvbcd1G50T2lv08kKxkSI=",
@@ -421,7 +421,7 @@
         "type": "github"
       }
     },
-    "nixpkgsMaster": {
+    "nixpkgs-master": {
       "locked": {
         "lastModified": 1742843223,
         "narHash": "sha256-eA6tIh9l8HJcsgWHCtQfabeD/UyFLIra4IxBwOEQFWY=",
@@ -437,7 +437,7 @@
         "type": "github"
       }
     },
-    "nixpkgsUnstable": {
+    "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1742669843,
         "narHash": "sha256-G5n+FOXLXcRx+3hCJ6Rt6ZQyF1zqQ0DL0sWAMn2Nk0w=",
@@ -523,7 +523,7 @@
         "type": "gitlab"
       }
     },
-    "nvimAlign": {
+    "nvim-align": {
       "flake": false,
       "locked": {
         "lastModified": 1738331029,
@@ -539,7 +539,7 @@
         "type": "github"
       }
     },
-    "nvimAutoclose": {
+    "nvim-autoclose": {
       "flake": false,
       "locked": {
         "lastModified": 1721556834,
@@ -555,7 +555,7 @@
         "type": "github"
       }
     },
-    "nvimBufferline": {
+    "nvim-bufferline": {
       "flake": false,
       "locked": {
         "lastModified": 1736870559,
@@ -571,7 +571,7 @@
         "type": "github"
       }
     },
-    "nvimCloseBuffers": {
+    "nvim-close-buffers": {
       "flake": false,
       "locked": {
         "lastModified": 1636931460,
@@ -587,7 +587,7 @@
         "type": "github"
       }
     },
-    "nvimColorizer": {
+    "nvim-colorizer": {
       "flake": false,
       "locked": {
         "lastModified": 1739747881,
@@ -603,7 +603,7 @@
         "type": "github"
       }
     },
-    "nvimCtags": {
+    "nvim-ctags": {
       "flake": false,
       "locked": {
         "lastModified": 1733669234,
@@ -619,7 +619,7 @@
         "type": "github"
       }
     },
-    "nvimDevicons": {
+    "nvim-devicons": {
       "flake": false,
       "locked": {
         "lastModified": 1740949470,
@@ -635,7 +635,7 @@
         "type": "github"
       }
     },
-    "nvimDressing": {
+    "nvim-dressing": {
       "flake": false,
       "locked": {
         "lastModified": 1739381641,
@@ -651,7 +651,7 @@
         "type": "github"
       }
     },
-    "nvimGitsigns": {
+    "nvim-git-signs": {
       "flake": false,
       "locked": {
         "lastModified": 1741781988,
@@ -667,7 +667,7 @@
         "type": "github"
       }
     },
-    "nvimGruvboxMaterial": {
+    "nvim-gruvbox-material": {
       "flake": false,
       "locked": {
         "lastModified": 1740402893,
@@ -683,7 +683,7 @@
         "type": "github"
       }
     },
-    "nvimIndentoMatic": {
+    "nvim-indentomatic": {
       "flake": false,
       "locked": {
         "lastModified": 1685816927,
@@ -699,7 +699,7 @@
         "type": "github"
       }
     },
-    "nvimLspconfig": {
+    "nvim-lspconfig": {
       "flake": false,
       "locked": {
         "lastModified": 1741692728,
@@ -715,7 +715,7 @@
         "type": "github"
       }
     },
-    "nvimPlenary": {
+    "nvim-plenary": {
       "flake": false,
       "locked": {
         "lastModified": 1739311008,
@@ -731,7 +731,7 @@
         "type": "github"
       }
     },
-    "nvimTelescope": {
+    "nvim-telescope": {
       "flake": false,
       "locked": {
         "lastModified": 1740415224,
@@ -747,7 +747,7 @@
         "type": "github"
       }
     },
-    "nvimTodo": {
+    "nvim-todo": {
       "flake": false,
       "locked": {
         "lastModified": 1736873412,
@@ -763,7 +763,7 @@
         "type": "github"
       }
     },
-    "nvimTree": {
+    "nvim-tree": {
       "flake": false,
       "locked": {
         "lastModified": 1740787655,
@@ -779,7 +779,7 @@
         "type": "github"
       }
     },
-    "nvimTreesitter": {
+    "nvim-treesitter": {
       "flake": false,
       "locked": {
         "lastModified": 1741854115,
@@ -795,7 +795,7 @@
         "type": "github"
       }
     },
-    "nvimTrouble": {
+    "nvim-trouble": {
       "flake": false,
       "locked": {
         "lastModified": 1739392872,
@@ -811,7 +811,7 @@
         "type": "github"
       }
     },
-    "poetry2nixJobber": {
+    "poetry2nix-jobber": {
       "inputs": {
         "flake-utils": "flake-utils",
         "nix-github-actions": "nix-github-actions",
@@ -841,28 +841,28 @@
         "nix-cursors": "nix-cursors",
         "nix-on-droid": "nix-on-droid",
         "nixpkgs": "nixpkgs",
-        "nixpkgsJobber": "nixpkgsJobber",
-        "nixpkgsMaster": "nixpkgsMaster",
-        "nixpkgsUnstable": "nixpkgsUnstable",
-        "nvimAlign": "nvimAlign",
-        "nvimAutoclose": "nvimAutoclose",
-        "nvimBufferline": "nvimBufferline",
-        "nvimCloseBuffers": "nvimCloseBuffers",
-        "nvimColorizer": "nvimColorizer",
-        "nvimCtags": "nvimCtags",
-        "nvimDevicons": "nvimDevicons",
-        "nvimDressing": "nvimDressing",
-        "nvimGitsigns": "nvimGitsigns",
-        "nvimGruvboxMaterial": "nvimGruvboxMaterial",
-        "nvimIndentoMatic": "nvimIndentoMatic",
-        "nvimLspconfig": "nvimLspconfig",
-        "nvimPlenary": "nvimPlenary",
-        "nvimTelescope": "nvimTelescope",
-        "nvimTodo": "nvimTodo",
-        "nvimTree": "nvimTree",
-        "nvimTreesitter": "nvimTreesitter",
-        "nvimTrouble": "nvimTrouble",
-        "poetry2nixJobber": "poetry2nixJobber",
+        "nixpkgs-jobber": "nixpkgs-jobber",
+        "nixpkgs-master": "nixpkgs-master",
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "nvim-align": "nvim-align",
+        "nvim-autoclose": "nvim-autoclose",
+        "nvim-bufferline": "nvim-bufferline",
+        "nvim-close-buffers": "nvim-close-buffers",
+        "nvim-colorizer": "nvim-colorizer",
+        "nvim-ctags": "nvim-ctags",
+        "nvim-devicons": "nvim-devicons",
+        "nvim-dressing": "nvim-dressing",
+        "nvim-git-signs": "nvim-git-signs",
+        "nvim-gruvbox-material": "nvim-gruvbox-material",
+        "nvim-indentomatic": "nvim-indentomatic",
+        "nvim-lspconfig": "nvim-lspconfig",
+        "nvim-plenary": "nvim-plenary",
+        "nvim-telescope": "nvim-telescope",
+        "nvim-todo": "nvim-todo",
+        "nvim-tree": "nvim-tree",
+        "nvim-treesitter": "nvim-treesitter",
+        "nvim-trouble": "nvim-trouble",
+        "poetry2nix-jobber": "poetry2nix-jobber",
         "stylix": "stylix"
       }
     },
@@ -1031,7 +1031,7 @@
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
-          "poetry2nixJobber",
+          "poetry2nix-jobber",
           "nixpkgs"
         ]
       },

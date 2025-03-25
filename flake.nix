@@ -2,8 +2,8 @@
   inputs = {
     # SOURCE: https://github.com/NixOS/nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgsMaster.url = "github:nixos/nixpkgs/master";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     # SOURCE: https://github.com/nix-community/home-manager
     home-manager = {
@@ -45,78 +45,78 @@
       };
     };
 
-    nixpkgsJobber.url = "github:nixos/nixpkgs/051f920625ab5aabe37c920346e3e69d7d34400e";
-    poetry2nixJobber.url = "github:nix-community/poetry2nix/304f8235fb0729fd48567af34fcd1b58d18f9b95";
+    nixpkgs-jobber.url = "github:nixos/nixpkgs/051f920625ab5aabe37c920346e3e69d7d34400e";
+    poetry2nix-jobber.url = "github:nix-community/poetry2nix/304f8235fb0729fd48567af34fcd1b58d18f9b95";
 
-    nvimAlign = {
+    nvim-align = {
       flake = false;
       url = "github:echasnovski/mini.align";
     };
-    nvimAutoclose = {
+    nvim-autoclose = {
       flake = false;
       url = "github:m4xshen/autoclose.nvim";
     };
-    nvimBufferline = {
+    nvim-bufferline = {
       flake = false;
       url = "github:akinsho/bufferline.nvim";
     };
-    nvimCloseBuffers = {
+    nvim-close-buffers = {
       flake = false;
       url = "github:kazhala/close-buffers.nvim";
     };
-    nvimColorizer = {
+    nvim-colorizer = {
       flake = false;
       url = "github:brenoprata10/nvim-highlight-colors";
     };
-    nvimCtags = {
+    nvim-ctags = {
       flake = false;
       url = "github:netmute/ctags-lsp.nvim";
     };
-    nvimDevicons = {
+    nvim-devicons = {
       flake = false;
       url = "github:nvim-tree/nvim-web-devicons";
     };
-    nvimDressing = {
+    nvim-dressing = {
       flake = false;
       url = "github:stevearc/dressing.nvim";
     };
-    nvimGitsigns = {
+    nvim-git-signs = {
       flake = false;
       url = "github:lewis6991/gitsigns.nvim";
     };
-    nvimGruvboxMaterial = {
+    nvim-gruvbox-material = {
       flake = false;
       url = "github:sainnhe/gruvbox-material";
     };
-    nvimIndentoMatic = {
+    nvim-indentomatic = {
       flake = false;
       url = "github:Darazaki/indent-o-matic";
     };
-    nvimLspconfig = {
+    nvim-lspconfig = {
       flake = false;
       url = "github:neovim/nvim-lspconfig";
     };
-    nvimPlenary = {
+    nvim-plenary = {
       flake = false;
       url = "github:nvim-lua/plenary.nvim";
     };
-    nvimTelescope = {
+    nvim-telescope = {
       flake = false;
       url = "github:nvim-telescope/telescope.nvim";
     };
-    nvimTodo = {
+    nvim-todo = {
       flake = false;
       url = "github:folke/todo-comments.nvim";
     };
-    nvimTree = {
+    nvim-tree = {
       flake = false;
       url = "github:nvim-tree/nvim-tree.lua";
     };
-    nvimTreesitter = {
+    nvim-treesitter = {
       flake = false;
       url = "github:nvim-treesitter/nvim-treesitter";
     };
-    nvimTrouble = {
+    nvim-trouble = {
       flake = false;
       url = "github:folke/trouble.nvim";
     };
@@ -128,10 +128,10 @@
       home-manager,
       nix-on-droid,
       nixpkgs,
-      nixpkgsJobber,
-      nixpkgsMaster,
-      nixpkgsUnstable,
-      poetry2nixJobber,
+      nixpkgs-jobber,
+      nixpkgs-master,
+      nixpkgs-unstable,
+      poetry2nix-jobber,
       self,
       stylix,
       ...
@@ -179,10 +179,10 @@
           mkHost =
             { system, hostname }:
             let
-              pkgsJobber = nixpkgsJobber.legacyPackages.${system}.pkgs;
+              pkgsJobber = nixpkgs-jobber.legacyPackages.${system}.pkgs;
               pkgs = nixpkgs.legacyPackages.${system}.pkgs;
-              pkgsMaster = nixpkgsMaster.legacyPackages.${system}.pkgs;
-              pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
+              pkgsMaster = nixpkgs-master.legacyPackages.${system}.pkgs;
+              pkgsUnstable = nixpkgs-unstable.legacyPackages.${system}.pkgs;
               secret = import ./secret { };
               util = import ./lib/util.nix { inherit lib; };
             in
@@ -223,7 +223,7 @@
                   pkgsJobber
                   pkgsMaster
                   pkgsUnstable
-                  poetry2nixJobber
+                  poetry2nix-jobber
                   secret
                   self
                   util
@@ -257,8 +257,8 @@
       nixOnDroidConfigurations.default =
         let
           pkgs = nixpkgs.legacyPackages.${system}.pkgs;
-          pkgsMaster = nixpkgsMaster.legacyPackages.${system}.pkgs;
-          pkgsUnstable = nixpkgsUnstable.legacyPackages.${system}.pkgs;
+          pkgsMaster = nixpkgs-master.legacyPackages.${system}.pkgs;
+          pkgsUnstable = nixpkgs-unstable.legacyPackages.${system}.pkgs;
           secret = import ./secret { };
           system = "aarch64-linux";
           util = import ./lib/util.nix { inherit lib; };

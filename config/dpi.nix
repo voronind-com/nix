@@ -14,7 +14,7 @@ in
 {
   # Use zapret module from nixpkgs master branch.
   disabledModules = [ "services/networking/zapret.nix" ];
-  imports = [ "${inputs.nixpkgsMaster}/nixos/modules/services/networking/zapret.nix" ];
+  imports = [ "${inputs.nixpkgs-master}/nixos/modules/services/networking/zapret.nix" ];
 
   config = lib.mkIf cfg.enable {
     services.zapret = {

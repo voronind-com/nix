@@ -4,13 +4,13 @@
   config,
   lib,
   pkgsJobber,
-  poetry2nixJobber,
+  poetry2nix-jobber,
   ...
 }:
 let
   script = import <package/jobber> {
     pkgs = pkgsJobber;
-    poetry2nix = poetry2nixJobber;
+    poetry2nix = poetry2nix-jobber;
   };
 in
 {

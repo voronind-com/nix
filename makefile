@@ -148,7 +148,7 @@ update:
 	nix flake update
 
 update-unstable:
-	nix flake update nixpkgsUnstable nixpkgsMaster
+	nix flake update nixpkgs-unstable nixpkgs-master
 
 verify: housekeep
 	git verify-commit HEAD

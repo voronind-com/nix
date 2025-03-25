@@ -8,7 +8,7 @@
 }:
 {
   disabledModules = [ "services/web-apps/invidious.nix" ];
-  imports = [ "${inputs.nixpkgsMaster}/nixos/modules/services/web-apps/invidious.nix" ];
+  imports = [ "${inputs.nixpkgs-master}/nixos/modules/services/web-apps/invidious.nix" ];
 
   services.invidious = {
     enable = true;
