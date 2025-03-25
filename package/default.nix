@@ -167,6 +167,8 @@
     devenv # Dev environments.
     jetbrains.idea-community
     mermaid-cli # Generate charts from Markdown.
+    nixd # Nix lsp.
+    nixfmt-rfc-style # Nix formatter.
     typst # Markdown typesetting.
   ];
 
