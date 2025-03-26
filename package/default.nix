@@ -83,7 +83,6 @@
       zstd # Great compression.
 
       # (pkgs.callPackage ./ytdlp {}) # Youtube downloader bin package.
-      (pkgs.callPackage ./ctagslsp { }) # Ctags LSP.
     ])
     ++ (with pkgsUnstable; [
       fastfetch # Systeminfo summary.

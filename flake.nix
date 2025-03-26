@@ -68,10 +68,6 @@
       flake = false;
       url = "github:brenoprata10/nvim-highlight-colors";
     };
-    nvim-ctags = {
-      flake = false;
-      url = "github:netmute/ctags-lsp.nvim";
-    };
     nvim-devicons = {
       flake = false;
       url = "github:nvim-tree/nvim-web-devicons";
