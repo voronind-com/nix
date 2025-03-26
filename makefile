@@ -7,8 +7,8 @@ build: verify check
 
 android:
 	nix-on-droid switch --flake $(flake)
-	cp ~/.Wallpaper /sdcard/Download/Wallpaper.jpg
-	cp ~/.Wallpaper /sdcard/Download/Wallpaper.png
+	cp ~/.wallpaper /sdcard/Download/wallpaper.jpg
+	cp ~/.wallpaper /sdcard/Download/wallpaper.png
 
 boot:
 	nixos-rebuild boot $(options) --flake $(flake)

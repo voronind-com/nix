@@ -1,0 +1,41 @@
+set adjust-open "best-fit"
+
+set pages-per-row 1
+
+set scroll-page-aware "true"
+set smooth-scroll "true"
+set scroll-full-overlap 0.01
+set scroll-step 100
+
+set zoom-min 10
+set guioptions ""
+
+set font "@font@"
+set default-bg "#@bg@"
+set default-fg "#@fg@"
+set statusbar-bg "#@bgStatus@"
+set statusbar-fg "#@fgStatus@"
+set inputbar-bg "#@bgInput@"
+set inputbar-fg "#@fgInput@"
+set notification-error-bg "#@bgError@"
+set notification-error-fg "#@fgError@"
+set notification-warning-bg "#@bgWarn@"
+set notification-warning-fg "#@fgWarn@" set highlight-color "#@hl@"
+set highlight-active-color "#@hlActive@"
+set completion-highlight-bg "#@bgHlComp@"
+set completion-highlight-fg "#@fgHlComp@"
+set completion-bg "#@bgComp@"
+set completion-fg "#@fgComp@"
+set notification-bg "#@bgNotif@"
+set notification-fg "#@fgNotif@"
+
+set recolor "true"
+set recolor-lightcolor "#@recLight@"
+set recolor-darkcolor "#@recDark@"
+set recolor-reverse-video "true"
+set recolor-keephue "true"
+
+set render-loading "false"
+set scroll-step 50
+
+set double-click-follow false
