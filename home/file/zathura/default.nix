@@ -21,8 +21,8 @@ let
   fgComp = color.fg.dark;
   bgNotif = color.bg.light;
   fgNotif = color.fg.dark;
-  recLight = color.fg.light;
-  recDark = color.bg.dark;
+  recLight = color.bg.dark;
+  recDark = color.fg.light;
 
   font = with cfg.font; "${sansSerif.name} ${toString size.application}";
 
