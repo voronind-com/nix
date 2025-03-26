@@ -1,5 +1,6 @@
 { pkgs, lib, ... }:
 {
+  # REF: https://mozilla.github.io/policy-templates/
   policies = {
     DisableBuiltinPDFViewer = true;
     DisableFirefoxAccounts = true;
@@ -39,19 +40,17 @@
       EnablePermissions = false;
     };
     Handlers = {
-      mimeTypes."application/pdf".action = "saveToDisk";
-    };
-    extensions = {
-      pdf = {
+      mimeTypes."application/pdf" = {
         action = "useHelperApp";
-        ask = true;
+        ask = false;
         handlers = [
           {
-            name = "GNOME Document Viewer";
+            name = "Zathura PDF Viewer";
             path = "${lib.getExe pkgs.zathura}";
           }
         ];
       };
+      # extensions.pdf = {};
     };
     Permissions = {
       Camera = {
