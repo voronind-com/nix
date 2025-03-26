@@ -12,6 +12,52 @@
 { pkgs, util, ... }@args:
 let
   virtualHosts = util.catSet (util.ls ./nginx) args;
+  errorCodes = [
+    "400"
+    "401"
+    "402"
+    "403"
+    "404"
+    "405"
+    "406"
+    "407"
+    "408"
+    "409"
+    "410"
+    "411"
+    "412"
+    "413"
+    "414"
+    "415"
+    "416"
+    "417"
+    "418"
+    "421"
+    "422"
+    "423"
+    "424"
+    "425"
+    "426"
+    "428"
+    "429"
+    "431"
+    "451"
+    "500"
+    "501"
+    "502"
+    "503"
+    "504"
+    "505"
+    "506"
+    "507"
+    "508"
+    "510"
+    "511"
+  ];
+  httpDog =
+    errorCodes
+    |> map (code: "error_page ${code} = https://http.cat/images/${code}.jpg;")
+    |> builtins.concatStringsSep "\n";
 in
 {
   environment.systemPackages = with pkgs; [ certbot ];
@@ -28,21 +74,23 @@ in
     eventsConfig = ''
       worker_connections 4096;
     '';
-    appendHttpConfig = ''
-      proxy_max_temp_file_size 0;
-      proxy_buffering off;
+    appendHttpConfig =
+      ''
+        proxy_max_temp_file_size 0;
+        proxy_buffering off;
 
-      server {
-        listen 443 ssl default_server;
-        server_name _;
+        server {
+          listen 443 ssl default_server;
+          server_name _;
 
-        ssl_certificate /etc/letsencrypt/live/voronind.com/fullchain.pem;
-        ssl_certificate_key /etc/letsencrypt/live/voronind.com/privkey.pem;
-        include /etc/letsencrypt/conf/options-ssl-nginx.conf;
-        ssl_dhparam /etc/letsencrypt/conf/ssl-dhparams.pem;
+          ssl_certificate /etc/letsencrypt/live/voronind.com/fullchain.pem;
+          ssl_certificate_key /etc/letsencrypt/live/voronind.com/privkey.pem;
+          include /etc/letsencrypt/conf/options-ssl-nginx.conf;
+          ssl_dhparam /etc/letsencrypt/conf/ssl-dhparams.pem;
 
-        return 403;
-      }
-    '';
+          return 404;
+        }
+      ''
+      + httpDog;
   };
 }
