@@ -7,9 +7,9 @@
     '';
 
     networkmanager.ensureProfiles.profiles = {
-      Wired = {
+      wired = {
         connection = {
-          id = "Wired";
+          id = "wired";
           type = "802-3-ethernet";
         };
         ipv4 = {

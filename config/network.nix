@@ -32,9 +32,9 @@ in
           };
 
           # Larisa Wifi.
-          Kotik = {
+          kotik = {
             connection = {
-              id = "Kotik";
+              id = "kotik";
               type = "wifi";
             };
             ipv4 = {
@@ -60,9 +60,9 @@ in
     (lib.mkIf cfg.setup.vpn.home {
       networking.networkmanager.ensureProfiles = {
         profiles = {
-          Home = {
+          home = {
             connection = {
-              id = "Home";
+              id = "home";
               type = "vpn";
             };
             vpn = {
@@ -92,9 +92,9 @@ in
         environmentFiles = [ config.age.secrets."vpn/fsight/pw".path ];
 
         profiles = {
-          Fsight = {
+          fsight = {
             connection = {
-              id = "Fsight";
+              id = "fsight";
               type = "vpn";
             };
             vpn = {

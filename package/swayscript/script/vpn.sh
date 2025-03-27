@@ -1,4 +1,4 @@
-export VPN_NAME=Fsight
+export VPN_NAME=fsight
 
 # Toggle vpn.
 function vpn() {
