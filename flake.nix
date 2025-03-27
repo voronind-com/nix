@@ -45,9 +45,6 @@
       };
     };
 
-    nixpkgs-jobber.url = "github:nixos/nixpkgs/051f920625ab5aabe37c920346e3e69d7d34400e";
-    poetry2nix-jobber.url = "github:nix-community/poetry2nix/304f8235fb0729fd48567af34fcd1b58d18f9b95";
-
     nvim-align = {
       flake = false;
       url = "github:echasnovski/mini.align";
@@ -124,10 +121,8 @@
       home-manager,
       nix-on-droid,
       nixpkgs,
-      nixpkgs-jobber,
       nixpkgs-master,
       nixpkgs-unstable,
-      poetry2nix-jobber,
       self,
       stylix,
       ...
@@ -175,7 +170,6 @@
           mkHost =
             { system, hostname }:
             let
-              pkgsJobber = nixpkgs-jobber.legacyPackages.${system}.pkgs;
               pkgs = nixpkgs.legacyPackages.${system}.pkgs;
               pkgsMaster = nixpkgs-master.legacyPackages.${system}.pkgs;
               pkgsUnstable = nixpkgs-unstable.legacyPackages.${system}.pkgs;
@@ -216,10 +210,8 @@
                 inherit
                   __findFile
                   inputs
-                  pkgsJobber
                   pkgsMaster
                   pkgsUnstable
-                  poetry2nix-jobber
                   secret
                   self
                   util
