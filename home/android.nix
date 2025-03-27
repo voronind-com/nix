@@ -5,8 +5,8 @@
   inputs,
   lib,
   pkgs,
-  pkgsMaster,
-  pkgsUnstable,
+  pkgs-master,
+  pkgs-unstable,
   self,
   ...
 }@args:

@@ -3,7 +3,7 @@
   config,
   inputs,
   pkgs,
-  pkgsMaster,
+  pkgs-master,
   ...
 }:
 {
@@ -13,7 +13,7 @@
   services.invidious = {
     enable = true;
     domain = "yt.voronind.com";
-    package = pkgsMaster.invidious;
+    package = pkgs-master.invidious;
     address = "::1";
     port = 3001;
     nginx.enable = false;

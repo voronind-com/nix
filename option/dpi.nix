@@ -1,8 +1,8 @@
-{ lib, pkgsMaster, ... }:
+{ lib, pkgs-master, ... }:
 {
   options.module.dpi.bypass = {
     enable = lib.mkEnableOption "the Zapret DPI bypass service.";
-    package = lib.mkPackageOption pkgsMaster "zapret" { };
+    package = lib.mkPackageOption pkgs-master "zapret" { };
     params = lib.mkOption {
       default = [ ];
       type = with lib.types; listOf str;

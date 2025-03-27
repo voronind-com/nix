@@ -3,6 +3,7 @@
   config,
   lib,
   pkgs,
+  pkgs-unstable,
   ...
 }@args:
 let
@@ -49,7 +50,10 @@ in
 
     # Gaming.
     (lib.mkIf cfg.gaming {
-      programs.steam.enable = true;
+      programs.steam = {
+        enable = true;
+        package = pkgs-unstable.steam;
+      };
       environment.systemPackages = package.gaming;
       hardware.graphics =
         let

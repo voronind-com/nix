@@ -2,7 +2,7 @@
 {
   config,
   lib,
-  pkgsUnstable,
+  pkgs-unstable,
   ...
 }:
 let
@@ -13,7 +13,7 @@ in
     lib.mkMerge [
       # Default configuration.
       {
-        boot.kernelPackages = pkgsUnstable.linuxPackages;
+        boot.kernelPackages = pkgs-unstable.linuxPackages;
 
         boot.kernel.sysctl = {
           # Allow sysrq.

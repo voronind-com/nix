@@ -1,8 +1,8 @@
 {
   inputs,
   pkgs,
-  pkgsMaster,
-  pkgsUnstable,
+  pkgs-master,
+  pkgs-unstable,
   ...
 }@args:
 {
@@ -84,14 +84,14 @@
 
       # (pkgs.callPackage ./ytdlp {}) # Youtube downloader bin package.
     ])
-    ++ (with pkgsUnstable; [
+    ++ (with pkgs-unstable; [
       fastfetch # Systeminfo summary.
       ffmpeg # Video/audio converter.
 
       # TODO: Move to stable.
       ltex-ls-plus # Latex LSP for neovim spellcheck.
     ])
-    ++ (with pkgsMaster; [
+    ++ (with pkgs-master; [
       xray # Proxy.
       yt-dlp # Video downloader.
       zapret # FRKN.
@@ -137,7 +137,7 @@
 
       (mpv.override { scripts = [ mpvScripts.mpris ]; }) # Media player.
     ])
-    ++ (with pkgsUnstable; [
+    ++ (with pkgs-unstable; [
       tor-browser # Privacy browser.
     ]);
 
@@ -146,7 +146,6 @@
     dxvk # Directx to Vulkan.
     mangohud # Realtime stats overlay.
     scanmem # Memory edit tool.
-    steam # Gaming platform.
     vkd3d # Directx to Vulkan.
     wine64 # Run Windows software on Linux.
 
@@ -186,7 +185,7 @@
       p7zip # Weird archive tool.
       qpdf # Fix pdfs.
     ])
-    ++ (with pkgsUnstable; [
+    ++ (with pkgs-unstable; [
       universal-android-debloater # Debloat Android devices.
     ]);
 }

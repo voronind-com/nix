@@ -139,6 +139,15 @@
             builtins.attrNames (builtins.readDir path)
           )
         );
+
+      # NOTE: Cut out the annoying parts here.
+      fuckingAnnoying = system: {
+        inherit system;
+        config = {
+          allowUnfreePredicate = (pkg: true);
+          allowInsecurePredicate = x: true;
+        };
+      };
     in
     {
       devShells =
@@ -170,9 +179,9 @@
           mkHost =
             { system, hostname }:
             let
-              pkgs = nixpkgs.legacyPackages.${system}.pkgs;
-              pkgsMaster = nixpkgs-master.legacyPackages.${system}.pkgs;
-              pkgsUnstable = nixpkgs-unstable.legacyPackages.${system}.pkgs;
+              pkgs = import inputs.nixpkgs (fuckingAnnoying system);
+              pkgs-master = import inputs.nixpkgs-master (fuckingAnnoying system);
+              pkgs-unstable = import inputs.nixpkgs-unstable (fuckingAnnoying system);
               secret = import ./secret { };
               util = import ./lib/util.nix { inherit lib; };
             in
@@ -210,8 +219,8 @@
                 inherit
                   __findFile
                   inputs
-                  pkgsMaster
-                  pkgsUnstable
+                  pkgs-master
+                  pkgs-unstable
                   secret
                   self
                   util
@@ -244,9 +253,9 @@
 
       nixOnDroidConfigurations.default =
         let
-          pkgs = nixpkgs.legacyPackages.${system}.pkgs;
-          pkgsMaster = nixpkgs-master.legacyPackages.${system}.pkgs;
-          pkgsUnstable = nixpkgs-unstable.legacyPackages.${system}.pkgs;
+          pkgs = import inputs.nixpkgs (fuckingAnnoying system);
+          pkgs-master = import inputs.nixpkgs-master (fuckingAnnoying system);
+          pkgs-unstable = import inputs.nixpkgs-unstable (fuckingAnnoying system);
           secret = import ./secret { };
           system = "aarch64-linux";
           util = import ./lib/util.nix { inherit lib; };
@@ -262,8 +271,8 @@
             inherit
               __findFile
               inputs
-              pkgsMaster
-              pkgsUnstable
+              pkgs-master
+              pkgs-unstable
               secret
               self
               util

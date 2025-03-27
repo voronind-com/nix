@@ -1,8 +1,9 @@
 { inputs, lib, ... }:
 {
   nixpkgs.config = {
-    allowUnfree = true;
-    allowInsecurePredicate = x: true; # HACK: Nix is fucking annoying sometimes.
+    # HACK: Nix is fucking annoying sometimes.
+    allowUnfreePredicate = (pkg: true);
+    allowInsecurePredicate = x: true;
   };
   nix = {
     settings = {
@@ -21,7 +22,7 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 30d";
+      options = "--delete-older-than 7d";
     };
   };
 

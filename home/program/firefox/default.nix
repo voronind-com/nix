@@ -2,13 +2,13 @@
   config,
   lib,
   pkgs,
-  pkgsUnstable,
+  pkgs-unstable,
   util,
   ...
 }@args:
 {
   enable = true;
-  package = pkgsUnstable.firefox-esr;
+  package = pkgs-unstable.firefox-esr;
   # languagePacks = [ "en-US" "ru" ];
 }
 // util.catSet (util.ls ./module) args

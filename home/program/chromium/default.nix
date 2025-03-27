@@ -1,11 +1,11 @@
 {
   pkgs,
-  pkgsUnstable,
+  pkgs-unstable,
   lib,
   ...
 }:
 let
-  package = pkgsUnstable.ungoogled-chromium;
+  package = pkgs-unstable.ungoogled-chromium;
   browserVersion = lib.versions.major package.version;
   extensions =
     let
@@ -75,7 +75,7 @@ in
 {
   inherit extensions package;
   enable = true;
-  dictionaries = with pkgsUnstable.hunspellDictsChromium; [ en_US ];
+  dictionaries = with pkgs-unstable.hunspellDictsChromium; [ en_US ];
   commandLineArgs = [
     # Disable animations.
     "--wm-window-animations-disabled"
