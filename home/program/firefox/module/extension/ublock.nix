@@ -1,11 +1,13 @@
 { config, lib, ... }:
 let
   filters = [
-    "telemost.yandex.ru##.Modal-Overlay:upward(div)" # Popups.
+    ''telemost.yandex.ru##.Modal-Overlay:upward(div)'' # Popups.
 
-    "www.wildberries.ru##a:matches-attr(href=/^\\/promo/):upward(div)"
-    "www.wildberries.ru##a:matches-attr(href=/^\\/subscription/)"
-    "www.wildberries.ru##div:matches-attr(class=/advertisement/)"
+    ''www.wildberries.ru##a:matches-attr(href=/^\/promo/):upward(div)''
+    ''www.wildberries.ru##a:matches-attr(href=/^\/subscription/)''
+    ''www.wildberries.ru##div:matches-attr(class=/advertisement/)''
+
+    ''support.fsight.ru##div[class="header-container__banner"]''
   ];
 
   # NOTE: Check in `Support` -> `Troubleshooting Information` tab.
