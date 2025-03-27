@@ -66,7 +66,7 @@
 
     xray = {
       enable = true;
-      settingsFile = "/data/secret/XrayClient.json";
+      settingsFile = "/data/secret/xray-client.json";
     };
   };
 }
