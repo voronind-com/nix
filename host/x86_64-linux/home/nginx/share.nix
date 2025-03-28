@@ -16,6 +16,9 @@ in
         inherit root;
         extraConfig = index + cfg.allowLocal;
       };
+      "= /favicon.ico" = {
+        return = "301 https://upload.wikimedia.org/wikipedia/commons/f/ff/Sharethis.svg";
+      };
       "/" = {
         inherit root;
         extraConfig = index;
