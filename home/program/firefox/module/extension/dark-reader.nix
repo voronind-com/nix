@@ -11,6 +11,7 @@ let
     "iot.voronind.com"
     "nixhub.io"
     "portal.fsight.ru"
+    "telemost.yandex.ru"
   ];
 in
 {
