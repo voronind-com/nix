@@ -70,11 +70,21 @@ function _transcode_flac() {
 }
 
 function _transcode_mka() {
-	ffmpeg -hide_banner -n -i "${1}" -ac 2 -c:a libopus -vn "${2}"
+	local braudio=$(_ffprobe_ba "${1}")
+	[[ ${braudio} -gt 128 ]] && braudio=128
+
+
+	ffmpeg -hide_banner -n -i "${1}" -ac 2 -c:a libopus -b:a ${braudio}k -vn "${2}"
 }
 
 function _transcode_mkv() {
-	ffmpeg -hide_banner -n -i "${1}" -map 0 -map -v -map V -map -t -dn -c:s srt -ac 2 -c:a libopus -c:v libsvtav1 "${2}"
+	local keyint=$(_ffprobe_keyint "${1}")
+	local braudio=$(_ffprobe_ba "${1}")
+	local fps=$(_ffprobe_fps "${1}")
+	[[ ${braudio} -gt 128 ]] && braudio=128
+	[[ ${fps} -gt 30 ]] && fps=30
+
+	ffmpeg -hide_banner -n -i "${1}" -map 0 -map -v -map V -map -t -dn -c:s srt -ac 2 -c:a libopus -c:v libsvtav1 -b:a ${braudio}k -vf "scale=-2:min'(1080,ih)' , fps=${fps}" -g ${keyint} "${2}"
 }
 
 function _transcode_jxl() {
