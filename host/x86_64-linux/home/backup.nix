@@ -7,7 +7,7 @@
 let
   script = ''
     function notify() {
-      local bot=$(cat ${config.age.secrets.telegram-notify.path})
+      local bot=$(cat /data/secret/telegram-notify.txt)
       curl -X POST -H 'Content-Type: Application/json' -d "{\"chat_id\":\"155897358\",\"text\":\"$*\",\"disable_notification\":\"true\"}" "$bot" &>/dev/null
     }
 

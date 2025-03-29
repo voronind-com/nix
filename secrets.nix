@@ -20,10 +20,6 @@ let
 
   secrets = with host; [
     (mkSecret {
-      names = [ "telegram-notify" ];
-      hosts = [ home ];
-    })
-    (mkSecret {
       names = [ "wifi" ];
       hosts = [
         max

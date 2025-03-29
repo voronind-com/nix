@@ -2,7 +2,7 @@
 {
   services.cloudflare-dyndns = {
     enable = true;
-    apiTokenFile = "/data/secret/cf-token";
+    apiTokenFile = "/data/secret/cf-token.txt";
     deleteMissing = false;
     ipv4 = true;
     ipv6 = true;

@@ -14,7 +14,6 @@ in
       router = true;
       server = true;
     };
-    secrets = [ "telegram-notify" ];
     display = {
       logo = "";
       primary = "HDMI-A-1";
