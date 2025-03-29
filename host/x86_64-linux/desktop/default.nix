@@ -20,6 +20,10 @@
         "game"
         "sun"
       ];
+      scrub = [
+        "atlas"
+        "sun"
+      ];
     };
     secrets = [
       "noreply-password"
