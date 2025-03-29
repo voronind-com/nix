@@ -5,6 +5,8 @@
     ftp = "/hot/ftp";
     share = "/hot/share";
     sync = "/data/sync";
+    noreply = "noreply@voronind.com";
+    admin = "admin@voronind.com";
     nginx = {
       domain = "voronind.com";
       sslCertificate = "/etc/letsencrypt/live/voronind.com/fullchain.pem";

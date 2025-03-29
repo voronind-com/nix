@@ -73,7 +73,6 @@ function _transcode_mka() {
 	local braudio=$(_ffprobe_ba "${1}")
 	[[ ${braudio} -gt 128 ]] && braudio=128
 
-
 	ffmpeg -hide_banner -n -i "${1}" -ac 2 -c:a libopus -b:a ${braudio}k -vn "${2}"
 }
 
