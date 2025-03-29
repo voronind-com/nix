@@ -9,5 +9,9 @@
       default = [ ];
       type = with lib.types; listOf str;
     };
+    notify = lib.mkOption {
+      default = false;
+      type = lib.types.bool;
+    };
   };
 }

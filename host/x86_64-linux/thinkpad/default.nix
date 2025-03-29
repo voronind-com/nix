@@ -7,6 +7,7 @@
     package.all = true;
     powerlimit.thinkpad.enable = true;
     print.enable = true;
+    zfs.notify = true;
     purpose = {
       creative = true;
       disown = true;
@@ -15,6 +16,7 @@
       work = true;
     };
     secrets = [
+      "noreply-password"
       "vpn/home/ca"
       "vpn/home/cert"
       "vpn/home/key"

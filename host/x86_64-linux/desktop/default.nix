@@ -13,12 +13,16 @@
       gaming = true;
       work = true;
     };
-    zfs.pools = [
-      "atlas"
-      "game"
-      "sun"
-    ];
+    zfs = {
+      notify = true;
+      pools = [
+        "atlas"
+        "game"
+        "sun"
+      ];
+    };
     secrets = [
+      "noreply-password"
       "vpn/fsight/ca"
       "vpn/fsight/cert"
       "vpn/fsight/key"

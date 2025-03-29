@@ -10,6 +10,7 @@
     print.enable = true;
     sway.extraConfig = [ "output eDP-1 scale 1.75" ];
     syncthing.enable = true;
+    zfs.notify = true;
     purpose = {
       creative = true;
       gaming = true;
@@ -17,6 +18,7 @@
       work = true;
     };
     secrets = [
+      "noreply-password"
       "vpn/fsight/ca"
       "vpn/fsight/cert"
       "vpn/fsight/key"

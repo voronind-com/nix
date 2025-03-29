@@ -13,7 +13,7 @@ let
     TO=$2
     shift
     (
-      echo "From: ZFS on ${host} <${sender}>";
+      echo "From: ZFS at ${host} <${sender}>";
       echo "To: $TO";
       echo "Subject: $SUBJECT";
       ${pkgs.coreutils}/bin/cat -;

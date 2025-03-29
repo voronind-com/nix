@@ -49,6 +49,15 @@ let
         thinkpad
       ];
     })
+    (mkSecret {
+      names = [ "noreply-password" ];
+      hosts = [
+        dasha
+        desktop
+        max
+        thinkpad
+      ];
+    })
   ];
 in
 builtins.foldl' (acc: secret: acc // secret) { } secrets

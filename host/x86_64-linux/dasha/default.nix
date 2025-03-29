@@ -14,14 +14,18 @@
       gaming = true;
       work = true;
     };
+    secrets = [ "noreply-password" ];
     display = {
       logo = "";
       primary = "DP-1";
     };
-    zfs.pools = [
-      "cold"
-      "hot"
-    ];
+    zfs = {
+      notify = true;
+      pools = [
+        "cold"
+        "hot"
+      ];
+    };
     syncthing = {
       enable = true;
       user = "dasha";
