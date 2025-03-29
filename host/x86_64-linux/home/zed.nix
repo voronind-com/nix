@@ -10,10 +10,11 @@ let
   recipient = config.module.const.host.admin;
   zfsMail = pkgs.writeShellScriptBin "zfs-mail" ''
     SUBJECT=$1
+    TO=$2
     shift
     (
       echo "From: ZFS on ${host} <${sender}>";
-      echo "To: ${recipient}";
+      echo "To: $TO";
       echo "Subject: $SUBJECT";
       ${pkgs.coreutils}/bin/cat -;
     ) | /run/wrappers/bin/sendmail $@
