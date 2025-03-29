@@ -25,7 +25,11 @@ in
         "hot"
         "omega"
       ];
-      scrub = [ "data" ];
+      scrub = [
+        "alpha"
+        "data"
+        "omega"
+      ];
     };
     syncthing = {
       enable = true;
