@@ -19,5 +19,23 @@ in
     };
 
     # Russian language.
+    i18n =
+      let
+        ru = "ru_RU.UTF-8";
+      in
+      {
+        defaultLocale = lib.mkForce ru;
+        extraLocaleSettings = {
+          LC_ADDRESS = lib.mkForce ru;
+          LC_IDENTIFICATION = lib.mkForce ru;
+          LC_MEASUREMENT = lib.mkForce ru;
+          LC_MONETARY = lib.mkForce ru;
+          LC_NAME = lib.mkForce ru;
+          LC_NUMERIC = lib.mkForce ru;
+          LC_PAPER = lib.mkForce ru;
+          LC_TELEPHONE = lib.mkForce ru;
+          LC_TIME = lib.mkForce ru;
+        };
+      };
   };
 }
