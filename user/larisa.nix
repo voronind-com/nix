@@ -22,7 +22,7 @@ in
       description = "Larisa Dranchak";
       hashedPassword = secret.password.larisa;
       isNormalUser = true;
-      uid = 1001;
+      uid = 1002;
       extraGroups = [
         "networkmanager"
         "video"
