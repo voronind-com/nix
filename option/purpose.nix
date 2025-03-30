@@ -7,6 +7,7 @@
     gaming = lib.mkEnableOption "gaming modules.";
     laptop = lib.mkEnableOption "laptop modules.";
     live = lib.mkEnableOption "live modules.";
+    parents = lib.mkEnableOption "parents modules";
     phone = lib.mkEnableOption "phone modules.";
     router = lib.mkEnableOption "router modules.";
     server = lib.mkEnableOption "server modules.";

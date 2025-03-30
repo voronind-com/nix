@@ -40,6 +40,7 @@ rec {
   # Use `mkpasswd -s`.
   password = {
     dasha = "$y$j9T$WGMPv/bRhGBUidcZLZ7CE/$raZhwFFdI/XvegVZVHLILJLMiBkOxSErc6gao/Cxt33";
+    larisa = "$y$j9T$374cEcaxC8DAfFtR28tJ..$wiVq6dVHrfdkxhIXXeJvpEpfhW5G11EqDt4rZMfe.Z9";
     live = "$y$j9T$nPMHO52xsFp6ZShidRwVC1$2w9BWmGsCkopKx3L3QLXOnJNCNwtwTOlQ/BzQJEerp0"; # "live".
     root = "$y$j9T$2QLDojShRRcjNJLy.eEbz1$cPqwveCpWH.Dbizv8ODUdu6M/YlxtVO60dalkjHGa8B";
     voronind = "$y$j9T$Ur/VIyHSkwjntGEa0dHV//$lzgc9Br591nvMwytxDbQOQcPBM2h3SKpT8LH8MdboX4";
