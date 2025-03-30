@@ -13,7 +13,7 @@ in
         accounts.default = {
           host = "smtp.voronind.com";
           tls = true;
-          tls_certcheck = false;  # ISSUE: Does not accept LE cert with `The certificate issuer is unknown` error.
+          tls_certcheck = false; # ISSUE: Does not accept LE cert with `The certificate issuer is unknown` error.
           tls_starttls = false;
           auth = true;
           port = 465;

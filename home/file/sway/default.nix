@@ -201,30 +201,7 @@ let
     ''
     |> lib.getExe;
 
-  swayRcRaw = pkgs.writeText "sway-rc-raw" (
-    util.readFiles [
-      ./module/mod.conf
-      ./module/style.conf
-      ./module/display.conf
-      ./module/input.conf
-      ./module/font.conf
-      ./module/launcher.conf
-      ./module/terminal.conf
-      ./module/titlebar.conf
-      ./module/navigation.conf
-      ./module/notification.conf
-      ./module/resize.conf
-      ./module/scratchpad.conf
-      ./module/screenshot.conf
-      ./module/sound.conf
-      ./module/tiling.conf
-      ./module/workspace.conf
-      ./module/keyd.conf
-      ./module/waybar.conf
-      ./module/system.conf
-      ./module/mouse.conf
-    ]
-  );
+  swayRcRaw = pkgs.writeText "sway-rc-raw" (util.readFiles (util.ls ./module));
 
   swayRc =
     (pkgs.replaceVars swayRcRaw {
