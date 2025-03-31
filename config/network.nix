@@ -111,6 +111,7 @@ in
               password-flags = 0;
               remote = "185.40.128.168:1196:udp";
               remote-cert-tls = "server";
+              reneg-sec = 0;
               service-type = "org.freedesktop.NetworkManager.openvpn";
               username = "dd.voronin";
               verify-x509-name = "name:Fsight CA";
