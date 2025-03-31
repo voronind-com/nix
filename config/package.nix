@@ -34,15 +34,15 @@ in
       environment.systemPackages = package.common;
       services.gvfs.enable = true;
 
-      # Chromium config.
-      environment.etc =
-        let
-          chromium = import <home/file/chromium> args;
-        in
-        {
-          "chromium/initial_preferences".source = lib.mkForce chromium.preferences;
-          "chromium/policies/managed/extra.json".source = lib.mkForce chromium.policy;
-        };
+      # Chromium config. # NOTE: Broken for parents.
+      # environment.etc =
+      #   let
+      #     chromium = import <home/file/chromium> args;
+      #   in
+      #   {
+      #     "chromium/initial_preferences".source = chromium.preferences;
+      #     "chromium/policies/managed/extra.json".source = chromium.policy;
+      #   };
     })
 
     # Desktop apps.

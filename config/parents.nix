@@ -43,7 +43,11 @@ in
         };
       };
 
-    # Add onlyoffice.
-    environment.systemPackages = with pkgs; [ onlyoffice-desktopeditors ];
+    # Add packages.
+    environment.systemPackages = with pkgs; [
+      chromium
+      firefox
+      onlyoffice-desktopeditors
+    ];
   };
 }

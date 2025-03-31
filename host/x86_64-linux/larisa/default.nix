@@ -1,6 +1,7 @@
 { ... }:
 {
   user.larisa = true;
+  home.nixos.enable = false;
 
   module = {
     amd.gpu.enable = true;
@@ -17,5 +18,10 @@
       enable = true;
       powersave = true;
     };
+  };
+
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "larisa";
   };
 }
