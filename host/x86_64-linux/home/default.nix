@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
   host = config.module.const.host;
 in
@@ -50,4 +50,7 @@ in
       path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon";
     };
   };
+
+  # NOTE: Manual gc as it is a sub.
+  nix.gc.automatic = lib.mkForce false;
 }
