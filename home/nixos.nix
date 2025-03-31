@@ -19,7 +19,7 @@ in
 
   options.home.nixos = {
     enable = lib.mkEnableOption "the NixOS user setup." // {
-      default = with purpose; desktop || laptop || live || server;
+      default = with purpose; desktop || laptop || live || server || parents;
     };
     users = lib.mkOption {
       default = [ ];

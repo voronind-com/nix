@@ -10,7 +10,7 @@ let
 in
 {
   options.user.root = lib.mkEnableOption "root." // {
-    default = with purpose; desktop || laptop || live || server;
+    default = with purpose; desktop || laptop || live || server || parents;
   };
 
   config = lib.mkIf cfg.root {

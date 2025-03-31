@@ -1,12 +1,10 @@
 { ... }:
 {
   user.larisa = true;
-  home.nixos.enable = false;
 
   module = {
     amd.gpu.enable = true;
     purpose = {
-      desktop = true;
       disown = true;
       parents = true;
     };

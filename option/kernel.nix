@@ -5,10 +5,10 @@ in
 {
   options.module.kernel = {
     enable = lib.mkEnableOption "the kernel tweaks." // {
-      default = with purpose; desktop || disown || laptop || router || server || work;
+      default = with purpose; desktop || disown || laptop || router || server || work || parents;
     };
     hardening = lib.mkOption {
-      default = with purpose; disown || laptop || router || server || work;
+      default = with purpose; disown || laptop || router || server || work || parents;
       type = lib.types.bool;
     };
     hotspotTtlBypass = lib.mkOption {
