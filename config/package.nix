@@ -33,16 +33,6 @@ in
     (lib.mkIf cfg.common {
       environment.systemPackages = package.common;
       services.gvfs.enable = true;
-
-      # Chromium config. # NOTE: Broken for parents.
-      # environment.etc =
-      #   let
-      #     chromium = import <home/file/chromium> args;
-      #   in
-      #   {
-      #     "chromium/initial_preferences".source = chromium.preferences;
-      #     "chromium/policies/managed/extra.json".source = chromium.policy;
-      #   };
     })
 
     # Desktop apps.

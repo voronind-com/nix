@@ -5,7 +5,6 @@
   ...
 }@args:
 let
-  chromium = import ./chromium args;
   git = import ./git args;
   mangohud = import ./mangohud args;
   waybar = import ./waybar args;
@@ -15,8 +14,6 @@ in
   ".config/MangoHud/MangoHud.conf".source = mangohud.config;
   ".config/MangoHud/presets.conf".source = mangohud.presets;
   ".config/btop/btop.conf".source = (import ./btop args).file;
-  ".config/chromium/Default/Preferences".source = chromium.preferences;
-  ".config/chromium/Local State".source = chromium.localState;
   ".config/foot/foot.ini".source = (import ./foot args).file;
   ".config/fuzzel/fuzzel.ini".source = (import ./fuzzel args).file;
   ".config/keyd/app.conf".text = (import ./keyd args).text;
