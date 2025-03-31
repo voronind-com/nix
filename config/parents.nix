@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.module.parents;
 in
@@ -37,5 +42,8 @@ in
           LC_TIME = lib.mkForce ru;
         };
       };
+
+    # Add onlyoffice.
+    environment.systemPackages = with pkgs; [ onlyoffice-desktopeditors ];
   };
 }
