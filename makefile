@@ -157,4 +157,4 @@ version:
 	nix flake metadata --json | jq .lastModified
 
 vm:
-	nix run $(options) $(flake)#nixosConfigurations.$(hostname).config.system.build.vm
+	nix run $(options) $(flake)#nixosConfigurations.${VM_HOST}.config.system.build.vm
