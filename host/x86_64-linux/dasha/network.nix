@@ -4,6 +4,7 @@
     firewall.extraCommands = ''
       # Local access.
       ip6tables -I INPUT -j ACCEPT -s ${secret.network.ula}
+      iptables -I INPUT -j ACCEPT -s 10.0.0.0/8
     '';
 
     networkmanager.ensureProfiles.profiles = {
