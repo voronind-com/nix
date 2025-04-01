@@ -18,7 +18,7 @@ function networkwidget() {
 	local ic_vpn="󰌾"
 	local ic_bt="󰂯"
 	local ic_wifi="󰖩"
-	local ic_ethernet="" # 󰾋󰈁
+	local ic_ethernet="󰈁" # 󰾋󰈁
 
 	for bt in ${_bts_raw[@]}; do
 		local name=$(printf "%s" ${bt} | cut -d\  -f3)
