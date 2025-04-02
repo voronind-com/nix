@@ -10,8 +10,8 @@ let
   hasGpu = config.module.amd.gpu.enable;
 
   # Set the wallpaper here.
-  url = "https://share.voronind.com/wallpaper/0de3572af17dabf2b80b541d862c279cb53d74a1.mp4";
-  sha256 = "sha256-967zy7Efb9ANNBMAbspbloFyajHTTavWnNUcsu6UH9w=";
+  url = "https://share.voronind.com/wallpaper/1e28046dfd8da616fb197e14a7fd83ebfa5303cb.mp4";
+  sha256 = "sha256-2ZDh55JBhFfTw2KjSvK2a7HIy97c72Onl5VNL7e/Ido=";
   video = true;
   forceContrastText = false;
 
