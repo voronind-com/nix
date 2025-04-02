@@ -77,13 +77,10 @@ function _transcode_mka() {
 }
 
 function _transcode_mkv() {
-	local keyint=$(_ffprobe_keyint "${1}")
-	local braudio=$(_ffprobe_ba "${1}")
 	local fps=$(_ffprobe_fps "${1}")
-	[[ ${braudio} -gt 128 ]] && braudio=128
 	[[ ${fps} -gt 30 ]] && fps=30
 
-	ffmpeg -hide_banner -n -i "${1}" -map 0 -map -v -map V -map -t -dn -c:s srt -ac 2 -c:a libopus -c:v libsvtav1 -b:a ${braudio}k -vf "scale=-2:min'(1080,ih)' , fps=${fps}" -g ${keyint} "${2}"
+	ffmpeg -hide_banner -n -i "${1}" -map 0 -map -v -map V -map -t -dn -c:s srt -ac 2 -c:a libopus -c:v libsvtav1 -vf "scale=-2:min'(1080,ih)' , fps=${fps}" "${2}"
 }
 
 function _transcode_jxl() {
