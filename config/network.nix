@@ -118,10 +118,12 @@ in
             vpn-secrets.password = "$FSIGHT_PW";
             ipv4 = {
               method = "auto";
+              never-default = true;
             };
             ipv6 = {
               addr-gen-mode = "stable-privacy";
               method = "auto";
+              never-default = true;
             };
           };
         };
