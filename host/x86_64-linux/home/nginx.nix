@@ -83,12 +83,19 @@ in
           listen 443 ssl default_server;
           server_name _;
 
+          location = /ip {
+            default_type text/plain;
+            return 200 "$remote_addr\n";
+          }
+
+          location / {
+            return 404;
+          }
+
           ssl_certificate /etc/letsencrypt/live/voronind.com/fullchain.pem;
           ssl_certificate_key /etc/letsencrypt/live/voronind.com/privkey.pem;
           include /etc/letsencrypt/conf/options-ssl-nginx.conf;
           ssl_dhparam /etc/letsencrypt/conf/ssl-dhparams.pem;
-
-          return 404;
         }
       ''
       + httpDog;
