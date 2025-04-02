@@ -14,8 +14,8 @@ function tdu() {
 		printf "Path\tReal\tDisk\n"
 		printf "%s\t%s\t%s\n" "----" "----" "----"
 		for target in ${targets[@]}; do
-			local real=$(du -sh --apparent-size "${target}" | cut -f1)
-			local disk=$(du -sh "${target}" | cut -f1)
+			local real=$(du -s --si --apparent-size "${target}" | cut -f1)
+			local disk=$(du -s --si "${target}" | cut -f1)
 			printf "${target}\t${real}\t${disk}\n"
 		done
 	}
