@@ -24,6 +24,7 @@ in
   ".config/tmux/tmux.conf".source = (import ./tmux args).config;
   ".config/waybar/config".source = waybar.config;
   ".config/waybar/style.css".source = waybar.style;
+  ".config/yazi/init.lua".source = yazi.init;
   ".config/yazi/keymap.toml".source = yazi.keymap;
   ".config/yazi/theme.toml".source = yazi.theme;
   ".config/yazi/yazi.toml".source = yazi.yazi;
