@@ -1,5 +1,7 @@
 { ... }:
 {
+  systemd.coredump.enable = false;
+
   # HACK: Fix for broken tmpfiles setup for some services like PowerLimit.
   systemd.timers.tmpfilesfix = {
     wantedBy = [ "timers.target" ];
