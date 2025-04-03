@@ -6,11 +6,7 @@ function name() {
 	[[ ${targets} == "" ]] && targets=($(ls))
 
 	process() {
-		local ext=".${target##*.}"
-		local name=${target%.*}
-		[[ ${ext} == ".${target}" ]] && ext=""
-
-		local new_name="$(printf "%s" "${name}" | parse_filename)${ext,,}"
+		local new_name=$(printf "%s" "${target}" | parse_filename)
 		[ "${target%/}" = "${new_name}" ] && return 0
 		[[ -e ${new_name} ]] && {
 			_error "${new_name}: Already exists!"
