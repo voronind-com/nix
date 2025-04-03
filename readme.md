@@ -2,7 +2,7 @@
 
 ## Please, support tabs in Nix!
 
-[Discussion](https://github.com/NixOS/nix/pull/2911) and [Open issue](https://github.com/NixOS/nix/issues/7834).
+[Discussion](https://github.com/NixOS/nix/pull/2911), [Open issue](https://github.com/NixOS/nix/issues/7834) and [Pull Request](https://github.com/NixOS/nix/pull/9971).
 
 ## Screenshots.
 
