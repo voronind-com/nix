@@ -20,8 +20,8 @@ let
     target="/alpha/backup/home/data"
 
     # Save media list.
-    cd /alpha && find anime game movie show study video -type d > "$target/alpha.txt" || true
-    cd /omega && find anime movie show study video -type d > "$target/omega.txt" || true
+    cd /alpha && find anime game movie show study video -type d > "$target/alpha.txt" || report "💾 Failed to list alpha!"
+    cd /omega && find anime movie show study video -type d > "$target/omega.txt" || report "💾 Failed to list omega!"
 
     # Get current snapshot.
     source_current=$(zfs list -H -o name -t snapshot $source | tail --lines=1)
