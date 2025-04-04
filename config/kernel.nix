@@ -7,6 +7,7 @@
 }:
 let
   cfg = config.module.kernel;
+  purpose = config.module.purpose;
 in
 {
   config = lib.mkIf cfg.enable (
@@ -26,6 +27,9 @@ in
           # "fs.file-max" = 999999;
         };
       }
+
+      # HACK: Stop ZFS sound stuttering with zstd.
+      (lib.mkIf (with purpose; desktop || laptop || parents) { boot.kernelParams = [ "preempt=full" ]; })
 
       # Hardening.
       (lib.mkIf cfg.hardening {
