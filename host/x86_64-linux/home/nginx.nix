@@ -56,7 +56,8 @@ let
   ];
   httpDog =
     errorCodes
-    |> map (code: "error_page ${code} = https://http.cat/images/${code}.jpg;")
+    # |> map (code: "error_page ${code} = https://http.cat/images/${code}.jpg;")
+    |> map (code: "error_page ${code} = https://http.dog/${code}.jpg;")
     |> builtins.concatStringsSep "\n";
 in
 {
