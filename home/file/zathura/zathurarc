@@ -39,3 +39,5 @@ set render-loading "false"
 set scroll-step 50
 
 set double-click-follow false
+set selection-clipboard clipboard
+set selection-notification false
