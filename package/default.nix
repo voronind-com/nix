@@ -1,10 +1,15 @@
 {
+  config,
   inputs,
+  lib,
   pkgs,
   pkgs-master,
   pkgs-unstable,
   ...
 }@args:
+let
+  purpose = config.module.purpose;
+in
 {
   core =
     (with pkgs; [
@@ -122,24 +127,25 @@
 
   common =
     (with pkgs; [
+      chromium # Spare browser.
       gimp # Image manipulation program.
       glib # Gnome lib for gvfs mtp usage with Nintendo Switch.
       gnome-calculator # Calculator.
       gparted # GUI disk utility just in case.
       jellyfin-media-player # Jellyfin client (self-hosted Netflix).
-      libreoffice # Office documents app suite.
       loupe # Image viewer.
       mumble # VoIP.
       obs-studio # Streaming/recording app.
       remmina # RDP app.
       upscayl # Image upscaler.
-      zathura # Document viewer.
+      zathura # PDF viewer.
 
       (mpv.override { scripts = [ mpvScripts.mpris ]; }) # Media player.
     ])
     ++ (with pkgs-unstable; [
       tor-browser # Privacy browser.
-    ]);
+    ])
+    ++ (if purpose.parents then [ pkgs.onlyoffice-desktopeditors ] else [ pkgs.libreoffice ]);
 
   gaming = with pkgs; [
     bottles # GUI for Wine.

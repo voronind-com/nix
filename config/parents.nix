@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 let
@@ -38,12 +37,5 @@ in
           LC_TIME = lib.mkForce ru;
         };
       };
-
-    # Add packages.
-    environment.systemPackages = with pkgs; [
-      chromium
-      firefox
-      onlyoffice-desktopeditors
-    ];
   };
 }
