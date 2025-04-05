@@ -72,7 +72,7 @@ function prefetch() {
 # Run nix locally with no builders.
 # Usage: nix_local <COMMAND>
 function nix_local() {
-	nix --option max-jobs $(_core_count) --builders "" --substituters https://cache.nixos.org ${@}
+	nix --option max-jobs $(nproc) --builders "" --substituters https://cache.nixos.org ${@}
 }
 
 # Run test app from other people PRs.
@@ -84,5 +84,5 @@ function nix_test() {
 	fi
 
 	local name=${*##*#}
-	SHELL_NAME="${name}" NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nix --option max-jobs $(_core_count) --builders "" --substituters https://cache.nixos.org shell --impure ${@}
+	SHELL_NAME="${name}" NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nix --option max-jobs $(nproc) --builders "" --substituters https://cache.nixos.org shell --impure ${@}
 }

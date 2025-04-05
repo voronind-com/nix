@@ -1,6 +1,7 @@
 # Get the number of avaialble cores (threads).
 function _core_count() {
-	cat /proc/cpuinfo | grep ^processor | wc -l
+	# cat /proc/cpuinfo | grep ^processor | wc -l
+	nproc
 }
 
 # Get the number of available memory (in mebibytes).
