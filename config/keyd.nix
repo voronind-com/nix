@@ -33,7 +33,7 @@ in
           main = {
             backspace = "delete"; # Delete key on backspace.
             capslock = "overload(control, esc)"; # Ctrl/esc combo.
-            compose = "layer(layer_alternative)";
+            # compose = "layer(layer_compose)";
             delete = "backslash";
             esc = "overload(layer_print, grave)"; # System controls.
             leftcontrol = "overload(layer_alternative, leftcontrol)"; # Alternative layer for home, end etc.
