@@ -36,7 +36,6 @@ in
   ".local/share/applications".text = "";
   ".local/share/jellyfinmediaplayer/scripts/mpris.so".source =
     "${pkgs.mpvScripts.mpris}/share/mpv/scripts/mpris.so";
-  ".parallel/will-cite".text = "";
   ".ssh/config".source = (import ./ssh args).config;
   ".ssh/identity".source = <secret/ssh>;
   ".template".source = ./template;

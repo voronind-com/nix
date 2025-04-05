@@ -56,7 +56,6 @@ in
       openssh # Ssh client.
       openssl # Cryptography.
       openvpn # Vpn client.
-      parallel # Run programs in parallel.
       parted # CLI disk partition tool.
       powertop # Monitor power usage.
       pv # IO progress bar.
