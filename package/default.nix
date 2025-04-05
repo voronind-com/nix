@@ -136,14 +136,15 @@ in
       obs-studio # Streaming/recording app.
       remmina # RDP app.
       upscayl # Image upscaler.
-      zathura # PDF viewer.
+
+      (if purpose.parents then [ onlyoffice-desktopeditors ] else [ libreoffice ])
+      (if purpose.parents then [ evince ] else [ zathura ])
 
       (mpv.override { scripts = [ mpvScripts.mpris ]; }) # Media player.
     ])
     ++ (with pkgs-unstable; [
       tor-browser # Privacy browser.
-    ])
-    ++ (if purpose.parents then [ pkgs.onlyoffice-desktopeditors ] else [ pkgs.libreoffice ]);
+    ]);
 
   gaming = with pkgs; [
     bottles # GUI for Wine.

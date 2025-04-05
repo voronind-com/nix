@@ -10,7 +10,7 @@ in
       default = true;
     };
     common = lib.mkEnableOption "Common Apps." // {
-      default = cfg.all || (with purpose; desktop || laptop);
+      default = cfg.all || (with purpose; desktop || laptop || parents);
     };
     creative = lib.mkEnableOption "Creative Apps." // {
       default = cfg.all || purpose.creative;
