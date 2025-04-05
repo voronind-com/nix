@@ -4,6 +4,8 @@
     firewall.extraCommands = ''
       # Local access.
       ip6tables -I INPUT -j ACCEPT -s ${secret.network.ula}
+
+      # Legacy for goldberg emu.
       iptables -I INPUT -j ACCEPT -s 10.0.0.0/8
     '';
 
