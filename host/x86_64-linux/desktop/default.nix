@@ -1,6 +1,9 @@
 { ... }:
 {
-  user.voronind = true;
+  user.user.voronind = {
+    enable = true;
+    primary = true;
+  };
 
   module = {
     builder.client.enable = true;

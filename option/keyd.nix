@@ -4,6 +4,6 @@ let
 in
 {
   options.module.keyd.enable = lib.mkEnableOption "the keyboard remaps." // {
-    default = with purpose; desktop || laptop || live || server;
+    default = with purpose; (desktop || laptop || live || server) && (!parents);
   };
 }

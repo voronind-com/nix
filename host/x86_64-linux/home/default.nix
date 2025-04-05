@@ -3,7 +3,7 @@ let
   host = config.module.const.host;
 in
 {
-  user.voronind = true;
+  user.user.voronind.enable = true;
 
   module = {
     builder.server.enable = true;

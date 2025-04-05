@@ -5,12 +5,18 @@
   ...
 }:
 let
-  cfg = config.user;
+  cfg = config.user.user.voronind;
 in
 {
-  options.user.voronind = lib.mkEnableOption "voronind.";
+  options.user.user.voronind = {
+    enable = lib.mkEnableOption "voronind.";
+    primary = lib.mkOption {
+      default = false;
+      type = lib.types.bool;
+    };
+  };
 
-  config = lib.mkIf cfg.voronind {
+  config = lib.mkIf cfg.enable {
     home.nixos.users = [
       {
         homeDirectory = "/home/voronind";

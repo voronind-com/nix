@@ -1,8 +1,11 @@
 { ... }:
 {
-  user = {
-    dasha = true;
-    voronind = true;
+  user.user = {
+    dasha = {
+      enable = true;
+      primary = true;
+    };
+    voronind.enable = true;
   };
 
   module = {

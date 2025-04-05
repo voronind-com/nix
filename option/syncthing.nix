@@ -15,7 +15,7 @@ in
       type = lib.types.attrs;
     };
     user = lib.mkOption {
-      default = "voronind";
+      default = config.user.primary;
       type = lib.types.str;
     };
     group = lib.mkOption {

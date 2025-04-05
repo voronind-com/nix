@@ -137,8 +137,8 @@ in
       remmina # RDP app.
       upscayl # Image upscaler.
 
-      (if purpose.parents then [ onlyoffice-desktopeditors ] else [ libreoffice ])
-      (if purpose.parents then [ evince ] else [ zathura ])
+      (if purpose.parents then onlyoffice-desktopeditors else libreoffice)
+      (if purpose.parents then evince else zathura)
 
       (mpv.override { scripts = [ mpvScripts.mpris ]; }) # Media player.
     ])

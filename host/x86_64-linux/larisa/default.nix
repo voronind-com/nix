@@ -1,10 +1,14 @@
 { ... }:
 {
-  user.larisa = true;
+  user.user.larisa = {
+    enable = true;
+    primary = true;
+  };
 
   module = {
     amd.gpu.enable = true;
     purpose = {
+      desktop = true;
       disown = true;
       parents = true;
     };
@@ -16,10 +20,5 @@
       enable = true;
       powersave = true;
     };
-  };
-
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "larisa";
   };
 }

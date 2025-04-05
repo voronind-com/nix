@@ -1,18 +1,23 @@
 { config, ... }:
+let
+  purpose = config.module.purpose;
+  en = "en_US.UTF-8";
+  ru = "ru_RU.UTF-8";
+in
 {
   time.timeZone = config.module.const.timeZone;
   i18n = {
-    defaultLocale = "en_US.UTF-8";
+    defaultLocale = if purpose.parents then ru else en;
     extraLocaleSettings = {
-      LC_ADDRESS = "ru_RU.UTF-8";
-      LC_IDENTIFICATION = "ru_RU.UTF-8";
-      LC_MEASUREMENT = "ru_RU.UTF-8";
-      LC_MONETARY = "ru_RU.UTF-8";
-      LC_NAME = "ru_RU.UTF-8";
-      LC_NUMERIC = "en_GB.UTF-8";
-      LC_PAPER = "ru_RU.UTF-8";
-      LC_TELEPHONE = "ru_RU.UTF-8";
-      LC_TIME = "en_GB.UTF-8";
+      LC_ADDRESS = ru;
+      LC_IDENTIFICATION = ru;
+      LC_MEASUREMENT = ru;
+      LC_MONETARY = ru;
+      LC_NAME = ru;
+      LC_NUMERIC = ru;
+      LC_PAPER = ru;
+      LC_TELEPHONE = ru;
+      LC_TIME = ru;
     };
   };
 }

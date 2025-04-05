@@ -64,7 +64,7 @@ in
           exit 1
         };
 
-        timeout 55m make switch
+        timeout ${toString (cfg.interval - 1)}m make switch
       '';
     };
 
@@ -72,7 +72,8 @@ in
       enable = true;
       wantedBy = [ "timers.target" ];
       timerConfig = {
-        OnCalendar = "hourly";
+        OnBootSec = "1m";
+        OnUnitInactiveSec = "${toString cfg.interval}m";
         Persistent = true;
         RandomizedDelaySec = 60;
         Unit = "autoupdate.service";

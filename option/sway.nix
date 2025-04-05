@@ -5,7 +5,7 @@ in
 {
   options.module.sway = {
     enable = lib.mkEnableOption "the Sway WM." // {
-      default = with purpose; desktop || laptop;
+      default = with purpose; (desktop || laptop) && (!parents);
     };
     extraConfig = lib.mkOption {
       default = [ ];

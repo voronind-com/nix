@@ -2,12 +2,13 @@
 let
   style = config.module.style;
   wallpaper = config.module.wallpaper;
+  purpose = config.module.purpose;
 in
 {
   stylix = lib.mkMerge [
     {
       inherit (config.module.style) cursor;
-      enable = true;
+      enable = !purpose.parents;
       autoEnable = true;
       image = wallpaper.path;
       polarity = "dark";

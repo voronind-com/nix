@@ -5,15 +5,21 @@
   ...
 }:
 let
-  cfg = config.user;
+  cfg = config.user.user.root;
   purpose = config.module.purpose;
 in
 {
-  options.user.root = lib.mkEnableOption "root." // {
-    default = with purpose; desktop || laptop || live || server || parents;
+  options.user.user.root = {
+    enable = lib.mkEnableOption "root." // {
+      default = with purpose; desktop || laptop || live || server;
+    };
+    primary = lib.mkOption {
+      default = false;
+      type = lib.types.bool;
+    };
   };
 
-  config = lib.mkIf cfg.root {
+  config = lib.mkIf cfg.enable {
     users.users.root.hashedPassword =
       if purpose.live then secret.password.live else secret.password.root;
     home.nixos.users = [

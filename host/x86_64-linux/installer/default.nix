@@ -14,7 +14,7 @@
 
   # Root user config.
   home.nixos.enable = true;
-  user.root = true;
+  user.user.root.enable = true;
   users.users.root.hashedPassword = lib.mkForce secret.password.live;
 
   # Required for live iso.

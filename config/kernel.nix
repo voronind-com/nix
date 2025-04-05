@@ -29,7 +29,7 @@ in
       }
 
       # HACK: Stop ZFS sound stuttering with zstd.
-      (lib.mkIf (with purpose; desktop || laptop || parents) { boot.kernelParams = [ "preempt=full" ]; })
+      (lib.mkIf (with purpose; desktop || laptop) { boot.kernelParams = [ "preempt=full" ]; })
 
       # Hardening.
       (lib.mkIf cfg.hardening {

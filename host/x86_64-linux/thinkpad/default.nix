@@ -1,6 +1,9 @@
 { ... }:
 {
-  user.dasha = true;
+  user.user.dasha = {
+    enable = true;
+    primary = true;
+  };
 
   module = {
     builder.client.enable = true;

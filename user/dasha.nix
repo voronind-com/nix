@@ -6,12 +6,18 @@
   ...
 }:
 let
-  cfg = config.user;
+  cfg = config.user.user.dasha;
 in
 {
-  options.user.dasha = lib.mkEnableOption "dasha.";
+  options.user.user.dasha = {
+    enable = lib.mkEnableOption "dasha.";
+    primary = lib.mkOption {
+      default = false;
+      type = lib.types.bool;
+    };
+  };
 
-  config = lib.mkIf cfg.dasha {
+  config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ nautilus ]; # NOTE: She wants it.
     home.nixos.users = [
       {

@@ -5,12 +5,18 @@
   ...
 }:
 let
-  cfg = config.user;
+  cfg = config.user.user.larisa;
 in
 {
-  options.user.larisa = lib.mkEnableOption "larisa.";
+  options.user.user.larisa = {
+    enable = lib.mkEnableOption "larisa.";
+    primary = lib.mkOption {
+      default = false;
+      type = lib.types.bool;
+    };
+  };
 
-  config = lib.mkIf cfg.larisa {
+  config = lib.mkIf cfg.enable {
     users.users.larisa = {
       createHome = true;
       description = "Лариса";

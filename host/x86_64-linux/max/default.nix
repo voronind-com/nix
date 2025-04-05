@@ -1,7 +1,10 @@
 # SEE: https://github.com/Sabrina-Fox/WM2-Help
 { __findFile, pkgs, ... }:
 {
-  user.voronind = true;
+  user.user.voronind = {
+    enable = true;
+    primary = true;
+  };
 
   module = {
     builder.client.enable = true;
