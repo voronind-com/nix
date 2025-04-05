@@ -9,15 +9,8 @@ let
   purpose = config.module.purpose;
 in
 {
-  options.user.user.live = {
-
-    enable = lib.mkEnableOption "live user." // {
-      default = purpose.live;
-    };
-    primary = lib.mkOption {
-      default = false;
-      type = lib.types.bool;
-    };
+  options.user.user.live.enable = lib.mkEnableOption "live user." // {
+    default = purpose.live;
   };
 
   config = lib.mkIf cfg.enable {

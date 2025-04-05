@@ -9,27 +9,40 @@ excludes = [
 	"*.lock",
 	"*.ogg",
 	"*.patch",
+	".envrc",
+	".gitignore",
 	"home/file/jetbrains/ideavimrc",
 	"home/file/ssh/config",
+	"home/file/zathura/zathurarc",
 	"license",
-	"package/jobber/project/*"
+	"makefile",
+	"package/jobber/project/*",
 ]
 
 [formatter.nixfmt-rfc-style]
 command  = "nixfmt"
-options  = [ "-s" ]
-includes = [ "*.nix" ]
+options  = ["-s"]
+includes = ["*.nix"]
 
 [formatter.shfmt]
 command  = "shfmt"
-options  = [ "-s", "-w" ]
-includes = [ "*.sh" ]
+options  = ["-s", "-w"]
+includes = ["*.sh"]
 
 [formatter.prettier]
 command  = "prettier"
-options  = [ "-w" ]
-includes = [ "*.css" ]
+options  = ["-w"]
+includes = ["*.css"]
 
 [formatter.stylua]
 command  = "stylua"
-includes = [ "*.lua" ]
+includes = ["*.lua"]
+
+[formatter.mdformat]
+command  = "mdformat"
+includes = ["*.md"]
+
+[formatter.taplo]
+command  = "taplo"
+options  = ["fmt", "-o", "indent_string=\t", "-o", "align_entries=true"]
+includes = ["*.toml", ".editorconfig"]

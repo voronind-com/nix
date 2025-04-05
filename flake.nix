@@ -159,18 +159,16 @@
           ${system}.default = pkgs.mkShell {
             nativeBuildInputs = with pkgs; [
               cloc
+              mdformat
               nixd
               nixfmt-rfc-style
               nodePackages.prettier
               nodePackages.prettier-plugin-toml
               shfmt
               stylua
+              taplo
               treefmt
             ];
-            # buildInputs = with pkgs; [ ];
-
-            # LD_LIBRARY_PATH   = "${lib.makeLibraryPath buildInputs}";
-            # SOURCE_DATE_EPOCH = "${toString self.lastModified}";
           };
         };
 

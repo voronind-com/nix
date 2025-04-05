@@ -9,14 +9,8 @@ let
   purpose = config.module.purpose;
 in
 {
-  options.user.user.root = {
-    enable = lib.mkEnableOption "root." // {
-      default = with purpose; desktop || laptop || live || server;
-    };
-    primary = lib.mkOption {
-      default = false;
-      type = lib.types.bool;
-    };
+  options.user.user.root.enable = lib.mkEnableOption "root." // {
+    default = with purpose; desktop || laptop || live || server;
   };
 
   config = lib.mkIf cfg.enable {
