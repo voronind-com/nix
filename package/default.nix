@@ -75,7 +75,6 @@ in
       tree # Show directory stricture as a tree.
       tree-sitter # A parser generator tool and an incremental parsing library.
       tun2socks # Use proxy as a vpn.
-      ueberzugpp # # Cli draw tool used by Yazi.
       unzip # Zip unarchive utility.
       usbutils # Usb utilities like udiskctl.
       utillinux # Common Linux utilities.
