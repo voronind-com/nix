@@ -21,6 +21,7 @@ let
     (mkBind "rabbitmq" "/var/lib/rabbitmq")
     (mkBind "sieve" "/var/sieve")
     (mkBind "tandoor" "/var/lib/tandoor-recipes")
+    (mkBind "thelounge" "/var/lib/thelounge")
     (mkBind "transmission" "/var/lib/transmission")
     (mkBind "uptime_kuma" "/var/lib/uptime-kuma")
     (mkBind "vaultwarden" "/var/lib/vaultwarden")
