@@ -8,8 +8,8 @@
   nix = {
     settings = {
       auto-optimise-store = true;
-      keep-derivations = false;
-      keep-outputs = false;
+      keep-derivations = true;
+      keep-outputs = true;
       # min-free = 10 * 1000 * 1000 * 1000;
       substituters = [ "https://nixos-cache-proxy.cofob.dev" ];
       experimental-features = [
