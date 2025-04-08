@@ -5,7 +5,7 @@
   ...
 }:
 let
-  color = config.module.style.color;
+  inherit (config.module.style) color;
   accentR = color.accentDecR;
   accentG = color.accentDecG;
   accentB = color.accentDecB;

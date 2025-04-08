@@ -1,6 +1,6 @@
 { lib, config, ... }:
 let
-  purpose = config.module.purpose;
+  inherit (config.module) purpose;
 in
 {
   options.module.distrobox.enable = lib.mkEnableOption "the distrobox." // {

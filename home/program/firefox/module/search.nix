@@ -1,4 +1,4 @@
-{ ... }:
+_:
 let
   searchEngines = [
     (mkSearchEngine "2g" "2gis" "https://2gis.ru/spb/search/{searchTerms}")

@@ -1,6 +1,6 @@
 let
   yubikey = builtins.readFile ./secret/age/yubikey-recepient.key;
-  host = (import ./secret { }).network.host;
+  inherit ((import ./secret { }).network) host;
 
   mkSecret =
     {

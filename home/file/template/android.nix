@@ -8,13 +8,13 @@
   outputs =
     { self, nixpkgs }@inputs:
     let
+      inherit (nixpkgs) lib;
       buildTools = "31.0.0";
       jdk = pkgs.jdk11;
-      lib = nixpkgs.lib;
       system = "x86_64-linux";
       androidSdk = androidComposition.androidsdk;
       pkgs = import nixpkgs {
-        system = system;
+        inherit system;
         config = {
           allowUnfree = true;
           android_sdk.accept_license = true;

@@ -1,4 +1,3 @@
-{ ... }:
 {
   services.privatebin = {
     enable = true;

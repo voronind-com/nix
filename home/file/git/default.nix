@@ -21,7 +21,7 @@
       pruneTags = true; # Prune tags that's gone.
     };
     gpg = {
-      format = secret.crypto.sign.git.format;
+      inherit (secret.crypto.sign.git) format;
       ssh.allowedSignersFile = toString secret.crypto.sign.git.allowed;
     };
     push = {

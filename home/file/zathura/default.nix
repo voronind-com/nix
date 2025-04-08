@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 let
   cfg = config.module.style;
+  inherit (cfg) color;
 
-  color = cfg.color;
   bg = color.bg.dark;
   fg = color.fg.light;
   bgStatus = color.bg.regular;

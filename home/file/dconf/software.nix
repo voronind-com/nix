@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   "org/gnome/software" = {
     download-updates = false;
     download-updates-notify = false;

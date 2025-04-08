@@ -1,4 +1,3 @@
-{ ... }:
 {
   services.openntpd = {
     enable = true;

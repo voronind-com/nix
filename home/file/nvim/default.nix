@@ -25,10 +25,10 @@ let
   moduleKey = util.ls ./module/key;
 
   # Configuration.
-  accent = config.module.style.color.accent;
-  bg = config.module.style.color.bg.regular;
-  fg = config.module.style.color.fg.dark;
-  selection = config.module.style.color.selection;
+  inherit (config.module.style) color;
+  inherit (color) accent selection;
+  bg = color.bg.regular;
+  fg = color.fg.dark;
 
   # Plugin paths to install.
   runtimeRc = builtins.foldl' (acc: r: acc + "set runtimepath+=${r}\n") "" runtimes;

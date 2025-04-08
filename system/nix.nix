@@ -2,7 +2,7 @@
 {
   nixpkgs.config = {
     # HACK: Nix is fucking annoying sometimes.
-    allowUnfreePredicate = (pkg: true);
+    allowUnfreePredicate = pkg: true;
     allowInsecurePredicate = x: true;
   };
   nix = {

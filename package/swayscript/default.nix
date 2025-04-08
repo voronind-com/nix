@@ -6,10 +6,9 @@
   ...
 }:
 let
-  logo = config.module.display.logo;
+  inherit (config.module.display) logo;
   longogg = <static/long.ogg>;
   notificationogg = <static/notification.ogg>;
-  pipewire = pkgs.pipewire;
   shortogg = <static/short.ogg>;
 
   raw = pkgs.writeText "swayscript-raw" (util.readFiles (util.ls ./script));
@@ -19,9 +18,9 @@ let
         logo
         longogg
         notificationogg
-        pipewire
         shortogg
         ;
+      inherit (pkgs) pipewire;
     }).overrideAttrs
       (old: {
         doCheck = false;

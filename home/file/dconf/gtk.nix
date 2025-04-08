@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   "org/gtk/gtk4/settings/file-chooser" = {
     date-format = "regular";
     location-mode = "path-bar";

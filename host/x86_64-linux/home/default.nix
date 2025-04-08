@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  host = config.module.const.host;
+  inherit (config.module.const) host;
 in
 {
   user.user.voronind.enable = true;

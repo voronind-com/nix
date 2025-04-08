@@ -84,7 +84,7 @@
       };
       customDNS.mapping =
         let
-          host = secret.network.host;
+          inherit (secret.network) host;
           block = host: { ${host} = "0.0.0.0,::"; };
         in
         {

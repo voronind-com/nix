@@ -1,4 +1,3 @@
-{ ... }:
 {
   # Allow Hass to talk to Zigbee dongle.
   users.users.hass.extraGroups = [

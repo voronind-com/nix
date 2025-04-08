@@ -14,7 +14,7 @@
 # SRC: https://github.com/TinCanTech/easy-tls
 { pkgs, secret, ... }:
 let
-  network = secret.network;
+  inherit (secret) network;
 in
 {
   environment.systemPackages = with pkgs; [

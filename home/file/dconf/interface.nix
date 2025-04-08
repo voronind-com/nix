@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   "org/gnome/desktop/interface" = {
     clock-show-date = true;
     clock-show-weekday = true;

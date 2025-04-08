@@ -6,8 +6,8 @@
   ...
 }:
 let
+  inherit (config.module) purpose;
   cfg = config.module.kernel;
-  purpose = config.module.purpose;
 in
 {
   config = lib.mkIf cfg.enable (

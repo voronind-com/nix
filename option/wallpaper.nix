@@ -5,8 +5,8 @@
   ...
 }:
 let
+  inherit (config.module) purpose;
   cfg = config.module.wallpaper;
-  purpose = config.module.purpose;
   hasGpu = config.module.amd.gpu.enable;
 
   # Set the wallpaper here.

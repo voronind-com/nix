@@ -1,4 +1,3 @@
-{ ... }:
 {
   services.forgejo = {
     enable = true;

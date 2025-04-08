@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   "org/gnome/nautilus/icon-view" = {
     default-zoom-level = "larger";
   };

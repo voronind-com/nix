@@ -5,7 +5,7 @@
   ...
 }@args:
 let
-  package = (pkgs.callPackage <package/homer> args);
+  package = pkgs.callPackage <package/homer> args;
 in
 {
   services.nginx = {

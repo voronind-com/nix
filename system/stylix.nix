@@ -1,8 +1,6 @@
 { config, lib, ... }:
 let
-  style = config.module.style;
-  wallpaper = config.module.wallpaper;
-  purpose = config.module.purpose;
+  inherit (config.module) style wallpaper purpose;
 in
 {
   stylix = lib.mkMerge [

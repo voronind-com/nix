@@ -1,4 +1,4 @@
-{ ... }:
+_:
 let
   mkMail = cfg: cfg // { thunderbird.enable = true; };
 

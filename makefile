@@ -17,6 +17,7 @@ cached:
 	$(eval options := $(subst eval-cache false,eval-cache true,$(options)))
 
 check: format
+	statix check || true # ISSUE: https://github.com/oppiliappan/statix/issues/88
 	nix flake check --show-trace
 
 # Fix Home Manager after restoring from backup post-install.

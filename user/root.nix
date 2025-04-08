@@ -5,8 +5,8 @@
   ...
 }:
 let
+  inherit (config.module) purpose;
   cfg = config.user.user.root;
-  purpose = config.module.purpose;
 in
 {
   options.user.user.root.enable = lib.mkEnableOption "root." // {

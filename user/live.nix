@@ -5,8 +5,8 @@
   ...
 }:
 let
+  inherit (config.module) purpose;
   cfg = config.user.user.live;
-  purpose = config.module.purpose;
 in
 {
   options.user.user.live.enable = lib.mkEnableOption "live user." // {

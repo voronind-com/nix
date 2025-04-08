@@ -1,4 +1,3 @@
-{ ... }:
 {
   user.user.dasha = {
     enable = true;

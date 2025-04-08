@@ -128,7 +128,7 @@
       ...
     }@inputs:
     let
-      lib = nixpkgs.lib;
+      inherit (nixpkgs) lib;
 
       __findFile = _: p: ./${p};
 
@@ -144,7 +144,7 @@
       fuckingAnnoying = system: {
         inherit system;
         config = {
-          allowUnfreePredicate = (pkg: true);
+          allowUnfreePredicate = pkg: true;
           allowInsecurePredicate = x: true;
         };
       };
@@ -165,6 +165,7 @@
               nodePackages.prettier
               nodePackages.prettier-plugin-toml
               shfmt
+              statix
               stylua
               taplo
               treefmt

@@ -1,6 +1,5 @@
 # REF: https://mozilla.github.io/policy-templates/
-{ ... }:
-{
+_: {
   policies = {
     AppAutoUpdate = false;
     AutofillAddressEnabled = true;

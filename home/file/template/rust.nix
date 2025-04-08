@@ -8,7 +8,7 @@
   outputs =
     { self, nixpkgs }@inputs:
     let
-      lib = nixpkgs.lib;
+      inherit (nixpkgs) lib;
       pkgs = nixpkgs.legacyPackages.${system};
       system = "x86_64-linux";
     in

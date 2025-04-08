@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 let
-  color = config.module.style.color;
+  inherit (config.module.style) color;
   border = {
     fg = "#${color.border}";
   };

@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  purpose = config.module.purpose;
+  inherit (config.module) purpose;
   en = "en_US.UTF-8";
   ru = "ru_RU.UTF-8";
 in

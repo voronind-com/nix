@@ -2,7 +2,6 @@
 # Overlays can change parameters in package builds, like source version.
 # This way you can change something in package without recreating the whole build process.
 # More info: https://nixos.wiki/wiki/Overlays
-{ ... }:
 {
   # Use a different revision.
   # nixpkgs.overlays = [ (final: prev: {

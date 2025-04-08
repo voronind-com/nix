@@ -1,6 +1,6 @@
 { secret, pkgs, ... }:
 let
-  host = secret.network.host;
+  inherit (secret.network) host;
 in
 {
   config = pkgs.replaceVars ./config {

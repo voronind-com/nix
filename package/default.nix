@@ -8,7 +8,7 @@
   ...
 }@args:
 let
-  purpose = config.module.purpose;
+  inherit (config.module) purpose;
 in
 {
   core =

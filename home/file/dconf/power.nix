@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   "org/gnome/settings-daemon/plugins/power" = {
     ambient-enabled = false;
     idle-dim = false;

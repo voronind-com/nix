@@ -1,5 +1,4 @@
-{ ... }:
-rec {
+_: rec {
   network = {
     ula = "fd09:8d46:b26::/48";
     host = {

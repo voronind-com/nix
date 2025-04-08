@@ -1,4 +1,3 @@
-{ ... }:
 {
   # systemd.services.jellyfin.serviceConfig.MemoryMax = cfg.memLimit;
 

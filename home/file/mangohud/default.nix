@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 let
-  color = config.module.style.color;
+  inherit (config.module.style) color;
 in
 {
   # REF: https://github.com/flightlessmango/MangoHud#hud-configuration

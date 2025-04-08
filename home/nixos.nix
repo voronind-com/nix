@@ -8,14 +8,14 @@
   ...
 }@args:
 let
+  inherit (config.module) purpose;
   cfg = config.home.nixos;
   env = import ./env args;
   file = import ./file args;
   program = import ./program args;
-  purpose = config.module.purpose;
 in
 {
-  imports = (util.ls <user>);
+  imports = util.ls <user>;
 
   options.home.nixos = {
     enable = lib.mkEnableOption "the NixOS user setup." // {

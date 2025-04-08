@@ -1,7 +1,7 @@
 { lib, config, ... }:
 let
+  inherit (config.module) purpose;
   cfg = config.module.package;
-  purpose = config.module.purpose;
 in
 {
   options.module.package = {

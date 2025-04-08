@@ -5,8 +5,8 @@
   ...
 }@args:
 let
+  inherit (config.module.style) color;
   alpha = config.module.style.opacity.hex;
-  color = config.module.style.color;
   max = 1;
   swayscript = pkgs.callPackage <package/swayscript> args;
   timeout = config.module.style.timeout.popup;

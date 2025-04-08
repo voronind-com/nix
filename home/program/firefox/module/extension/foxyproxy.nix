@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   "foxyproxy@eric.h.jung" = {
     mode = "pattern";
     sync = false;

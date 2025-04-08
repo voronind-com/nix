@@ -1,4 +1,4 @@
-{ ... }:
+_:
 let
   bookmarks = [ (mkBookmark "Dashboard" "https://home.voronind.com") ];
 

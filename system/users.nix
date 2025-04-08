@@ -1,4 +1,3 @@
-{ ... }:
 {
   # Default UMASK.
   # security.loginDefs.settings.UMASK = "077";

@@ -1,6 +1,6 @@
 # IRC web client.
 # SRC: https://github.com/thelounge/thelounge
-{ ... }: {
+{
   services.thelounge = {
     enable = true;
     extraConfig = {

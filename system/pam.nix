@@ -1,4 +1,3 @@
-{ ... }:
 {
   security.pam.loginLimits = [
     {

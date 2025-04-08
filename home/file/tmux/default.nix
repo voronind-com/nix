@@ -1,10 +1,11 @@
 { config, pkgs, ... }:
 let
-  accent = config.module.style.color.accent;
-  bg = config.module.style.color.bg.regular;
-  fg = config.module.style.color.fg.light;
-  selectionBg = config.module.style.color.selection;
-  selectionFg = config.module.style.color.fg.dark;
+  inherit (config.module.style) color;
+  inherit (color) accent;
+  bg = color.bg.regular;
+  fg = color.fg.light;
+  selectionBg = color.selection;
+  selectionFg = color.fg.dark;
 in
 {
   config = pkgs.replaceVars ./tmux.conf {
