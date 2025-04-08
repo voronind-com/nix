@@ -49,8 +49,8 @@ function gd() {
 	git diff "${@}"
 }
 
-# Git diff added.
-function gda() {
+# Git diff staged.
+function gds() {
 	git diff --cached "${@}"
 }
 
