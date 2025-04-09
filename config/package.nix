@@ -33,6 +33,17 @@ in
     (lib.mkIf cfg.common {
       environment.systemPackages = package.common;
       services.gvfs.enable = true;
+
+      # Use `file -i file.txt` to find file mime type.
+      # Use `xdg-mime query default "text/plain"` to find default app.
+      # Desktop files are in `/run/current-system/sw/share/applications`.
+      xdg.mime.defaultApplications = {
+        "application/pdf" = "org.pwmt.zathura.desktop";
+        "audio/*" = "mpv.desktop";
+        "image/*" = "org.gnome.Loupe.desktop";
+        "text/*" = "nvim.desktop";
+        "video/*" = "mpv.desktop";
+      };
     })
 
     # Desktop apps.
