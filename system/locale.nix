@@ -1,23 +1,27 @@
 { config, ... }:
 let
   inherit (config.module) purpose;
-  en = "en_US.UTF-8";
+  # en = "en_US.UTF-8";
   ru = "ru_RU.UTF-8";
+  c = "C.UTF-8";
+
+  locale = if purpose.parents then ru else c;
 in
 {
+  environment.variables.LC_ALL = locale;
   time.timeZone = config.module.const.timeZone;
   i18n = {
-    defaultLocale = if purpose.parents then ru else en;
+    defaultLocale = locale;
     extraLocaleSettings = {
-      LC_ADDRESS = ru;
-      LC_IDENTIFICATION = ru;
-      LC_MEASUREMENT = ru;
-      LC_MONETARY = ru;
-      LC_NAME = ru;
-      LC_NUMERIC = ru;
-      LC_PAPER = ru;
-      LC_TELEPHONE = ru;
-      LC_TIME = ru;
+      LC_ADDRESS = locale;
+      LC_IDENTIFICATION = locale;
+      LC_MEASUREMENT = locale;
+      LC_MONETARY = locale;
+      LC_NAME = locale;
+      LC_NUMERIC = locale;
+      LC_PAPER = locale;
+      LC_TELEPHONE = locale;
+      LC_TIME = locale;
     };
   };
 }
